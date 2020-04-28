@@ -24,6 +24,7 @@ internal extension UIImageView {
         }
         set {
             objc_setAssociatedObject(self, &actionKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            addTapGesture()
         }
     }
     

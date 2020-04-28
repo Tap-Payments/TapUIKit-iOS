@@ -24,16 +24,27 @@
                                     <constraint firstAttribute="width" priority="750" constant="80" id="bgI-FW-w1h"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aW-j1-99z" customClass="TapChip" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="20" y="136" width="80" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="40" id="5LL-xR-50r"/>
+                                    <constraint firstAttribute="width" priority="750" constant="80" id="Chp-dS-vEe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="3aW-j1-99z" firstAttribute="top" secondItem="JhO-6h-05P" secondAttribute="bottom" constant="8" id="3PX-bA-nqR"/>
                             <constraint firstItem="JhO-6h-05P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LQl-P8-pYS"/>
+                            <constraint firstItem="3aW-j1-99z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hNI-Uh-Ft0"/>
                             <constraint firstItem="JhO-6h-05P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="zZb-ZI-AiN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="tapChip" destination="JhO-6h-05P" id="mhH-gp-f6R"/>
+                        <outlet property="tapChip2" destination="3aW-j1-99z" id="IQv-td-1CO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

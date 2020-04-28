@@ -18,6 +18,7 @@ import UIKit
         }
     }
     
+    internal weak var parentChip:TapChip?
     
     required init?(coder: NSCoder) {
         super.init(coder:coder)
@@ -41,16 +42,19 @@ import UIKit
         self.image = image
         self.contentMode = .scaleAspectFit
         self.clickHandler = clickHandler
+        assignClickHandler()
     }
     
     /// This method will be responsible to add a click handler if defined for this accessory view
     internal func assignClickHandler() {
         // Check if the user defined a click handler and its parent is a TapChip, just a defensive code
-        if let nonNullClickHandler = clickHandler,
-            let parentChip:TapChip = self.superview as? TapChip {
+        if let nonNullClickHandler = clickHandler {
             // All good, then we define a tap gesture to fire the handler
             self.callback = {
-                nonNullClickHandler(parentChip)
+                
+                if let parentChip:TapChip = self.parentChip {
+                    nonNullClickHandler(parentChip)
+                }
             }
         }
     }

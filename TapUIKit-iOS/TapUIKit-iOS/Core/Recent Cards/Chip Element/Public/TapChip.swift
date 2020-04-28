@@ -76,6 +76,18 @@ import TapThemeManager2020
         }
     }
     
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        // In here we do listen to the trait collection change event :), this leads to changing the theme based on dark or light mode activated by the user at run time.
+        guard applyingDefaultTheme else {
+            // We will do nothing, if the view is using a customised given theme as it should be handled by the caller.
+            return
+        }
+        // If the view is set to use the default theme, hence, we change the theme based on the dark or light mode is activated
+        applyDefaultTheme()
+        applyTheme()
+    }
+    
     
     /// Internal helper method to apply the default theme
     internal func applyDefaultTheme() {
@@ -116,6 +128,7 @@ import TapThemeManager2020
         
         // If there is a left accessory we add it first
         if let nonNullLeftAccessory = leftAccessory {
+            nonNullLeftAccessory.parentChip = self
             stackView.addArrangedSubview(nonNullLeftAccessory)
         }
         
@@ -126,6 +139,7 @@ import TapThemeManager2020
         
         // If there is a right accessory we add it last
         if let nonNullRightAccessory = rightAccessory {
+            nonNullRightAccessory.parentChip = self
             stackView.addArrangedSubview(nonNullRightAccessory)
         }
         
@@ -207,8 +221,12 @@ import TapThemeManager2020
     }
     
     /// This method is responsible for applying the correct theme and setting and matching the theme attributes
-    internal func applyTheme() {
+    @objc public func applyTheme(themingDict:NSDictionary? = nil) {
         // Defensive coding to make sure theme is alredy selected before actually applying one
+        if let nonNullThemingDict = themingDict {
+            self.themingDictionary = nonNullThemingDict
+            applyingDefaultTheme = false
+        }
         guard let nonNullThemingDictionary = themingDictionary else {return}
         TapThemeManager.setTapTheme(themeDict: nonNullThemingDictionary)
         matchThemeAttribtes()
