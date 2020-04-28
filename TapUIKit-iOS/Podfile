@@ -15,4 +15,5 @@ target 'TapUIKit-iOS' do
 
   # Pods for TapUIKit-iOS
   pod 'SnapKit'
+  pod 'TapThemeManager2020'
 end

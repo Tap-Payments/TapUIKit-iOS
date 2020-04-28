@@ -19,6 +19,8 @@
 		E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0A2456F76A00D5A45A /* TapChip.swift */; };
 		E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */; };
 		E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */; };
+		E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */; };
+		E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		E8428E0A2456F76A00D5A45A /* TapChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChip.swift; sourceTree = "<group>"; };
 		E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipAccessoryView.swift; sourceTree = "<group>"; };
 		E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUIImageViewExtensions.swift; sourceTree = "<group>"; };
+		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
+		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +135,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8428E112457FDE600D5A45A /* Assets */,
 				E8428E0E2457F8C000D5A45A /* Extensions */,
 				E8428E062456EE5A00D5A45A /* Recent Cards */,
 			);
@@ -176,6 +181,15 @@
 				E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E8428E112457FDE600D5A45A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */,
+				E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +286,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */,
+				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

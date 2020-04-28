@@ -1,0 +1,36 @@
+{
+  "chipUI": {
+      "commonAttributes": {
+          "backgroundColor": "#000000",
+          "borderColor": "#FFFFFF",
+          "cornerRadius":8,
+          "borderWidth": 1,
+          "itemSpacing": 5,
+          "shadow":{
+              "color": "#FFFFFF",
+              "radius": 3,
+              "offsetWidth": 0,
+              "offsetHeight": 0,
+              "opacity": 1
+          },
+          "glowingShadow":{
+              "color": "#FFFFFF",
+              "radius": 3,
+              "offsetWidth": 0,
+              "offsetHeight": 0,
+              "opacity": 1
+          },
+          "widthMargin": 7
+      },
+      "rightAccessory": {
+          "width": 32
+      },
+      "leftAccessory": {
+          "width": 32
+      },
+      "contentLabel": {
+          "textColor": "#FFFFFF",
+          "textFont": "15"
+      }
+  }
+}
