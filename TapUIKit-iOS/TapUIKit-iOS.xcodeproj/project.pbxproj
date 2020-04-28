@@ -16,6 +16,9 @@
 		E8428DFB2456DB3200D5A45A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8428DF92456DB3200D5A45A /* Main.storyboard */; };
 		E8428DFD2456DB3200D5A45A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8428DFC2456DB3200D5A45A /* Assets.xcassets */; };
 		E8428E002456DB3200D5A45A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8428DFE2456DB3200D5A45A /* LaunchScreen.storyboard */; };
+		E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0A2456F76A00D5A45A /* TapChip.swift */; };
+		E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */; };
+		E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		E8428DFC2456DB3200D5A45A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8428DFF2456DB3200D5A45A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8428E012456DB3200D5A45A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8428E0A2456F76A00D5A45A /* TapChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChip.swift; sourceTree = "<group>"; };
+		E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipAccessoryView.swift; sourceTree = "<group>"; };
+		E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUIImageViewExtensions.swift; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +81,6 @@
 				6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */,
 				DF4C0BAE4F2FB5B88BFD1BD6 /* Pods-TapUIKit-iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -126,8 +131,51 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8428E0E2457F8C000D5A45A /* Extensions */,
+				E8428E062456EE5A00D5A45A /* Recent Cards */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E8428E062456EE5A00D5A45A /* Recent Cards */ = {
+			isa = PBXGroup;
+			children = (
+				E8428E072456EE8A00D5A45A /* Chip Element */,
+			);
+			path = "Recent Cards";
+			sourceTree = "<group>";
+		};
+		E8428E072456EE8A00D5A45A /* Chip Element */ = {
+			isa = PBXGroup;
+			children = (
+				E8428E092456F6CA00D5A45A /* Public */,
+				E8428E082456F6C200D5A45A /* Private */,
+			);
+			path = "Chip Element";
+			sourceTree = "<group>";
+		};
+		E8428E082456F6C200D5A45A /* Private */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		E8428E092456F6CA00D5A45A /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				E8428E0A2456F76A00D5A45A /* TapChip.swift */,
+				E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		E8428E0E2457F8C000D5A45A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +241,7 @@
 				TargetAttributes = {
 					E8428DE12456DAF300D5A45A = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 					E8428DF02456DB3200D5A45A = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -290,6 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */,
+				E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */,
+				E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = G46S76PUH4;
@@ -466,6 +519,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "company.tap.TapUIKit-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -475,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF4C0BAE4F2FB5B88BFD1BD6 /* Pods-TapUIKit-iOS.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = G46S76PUH4;
