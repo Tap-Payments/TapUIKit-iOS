@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import UIKit
+import class UIKit.UIImageView
+import class UIKit.UIImage
 /// A class that represents the right accessory, left accessory views to be used in TapChip UI element
 @objc public class TapChipAccessoryView:UIImageView {
     

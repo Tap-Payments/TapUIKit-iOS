@@ -8,7 +8,9 @@
 
 import Foundation
 import SnapKit
-import UIKit
+import class UIKit.UIStackView
+import class UIKit.UILabel
+import struct UIKit.CGFloat
 import TapThemeManager2020
 /// A class that represents the Chip view of right accessory, left accessory and a labe;l
 @objc public class TapChip:UIView {
