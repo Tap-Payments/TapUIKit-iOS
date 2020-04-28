@@ -39,6 +39,7 @@ import UIKit
     @objc convenience public init(image: UIImage?,clickHandler:((TapChip) -> ())? = nil) {
         self.init(image:image)
         self.image = image
+        self.contentMode = .scaleAspectFit
         self.clickHandler = clickHandler
     }
     

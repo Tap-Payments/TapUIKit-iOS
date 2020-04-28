@@ -13,6 +13,13 @@
               "offsetHeight": 0,
               "opacity": 1
           },
+          "glowingShadow":{
+              "color": "#FFFFFF",
+              "radius": 3,
+              "offsetWidth": 0,
+              "offsetHeight": 0,
+              "opacity": 1
+          },
           "widthMargin": 7
       },
       "rightAccessory": {

@@ -11,12 +11,14 @@ import SnapKit
 import UIKit
 import TapThemeManager2020
 /// A class that represents the Chip view of right accessory, left accessory and a labe;l
-@objc public class TapChip:UIStackView {
+@objc public class TapChip:UIView {
     
     /// The right accessory uiimageview of the chip element
     internal var rightAccessory:TapChipAccessoryView?
     /// The left accessory uiimageview of the chip element
     internal var leftAccessory:TapChipAccessoryView?
+    /// The main stack view that holds the inner components (card fields)
+    internal lazy var stackView = UIStackView()
     /// The content label of the chip element
     lazy internal var contentLabel:UILabel = UILabel()
     /// The spacing between the elements inside the chip ui and the left and right paddings
@@ -28,7 +30,7 @@ import TapThemeManager2020
     /// This defines in which path should we look into the theme based on the card input mode
     internal var themePath:String = "chipUI"
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder:coder)
         self.backgroundColor = .clear
     }
@@ -61,30 +63,58 @@ import TapThemeManager2020
     internal func addViews() {
         
         // Define the attributes needed for the stack view
-        self.axis = .horizontal
-        self.alignment = .center
-        self.backgroundColor = .clear
-        self.spacing = itemsSpacing
-        self.distribution = .fillProportionally
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.backgroundColor = .clear
+        stackView.spacing = itemsSpacing
+        stackView.distribution = .fillProportionally
+        self.addSubview(stackView)
         
         // If there is a left accessory we add it first
         if let nonNullLeftAccessory = leftAccessory {
-            self.addArrangedSubview(nonNullLeftAccessory)
+            stackView.addArrangedSubview(nonNullLeftAccessory)
         }
         
         // Define that we want the card nummber to fill as much width as possible
         contentLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         
-        self.addArrangedSubview(contentLabel)
+        stackView.addArrangedSubview(contentLabel)
         
         // If there is a right accessory we add it last
         if let nonNullRightAccessory = rightAccessory {
-            self.addArrangedSubview(nonNullRightAccessory)
+            stackView.addArrangedSubview(nonNullRightAccessory)
         }
         
     }
     
+    
+    /// This method is responsible for setting up the layout constraint to correctly layout the views of the Chip
     internal func setupConstraints() {
+        
+        // view constraints
+        self.snp.remakeConstraints { (make) in
+            make.height.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).leftAccessory.width")?.floatValue ?? 0))
+            make.width.equalTo(computeNeededWidth())
+        }
+        
+        // StackView constraints
+        stackView.snp.remakeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        // Left accessory constraints
+        if let nonNullLeftAccessory = leftAccessory {
+            nonNullLeftAccessory.snp.remakeConstraints { (make) in
+                make.height.width.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).leftAccessory.width")?.floatValue ?? 0))
+            }
+        }
+        
+        // Right accessory constraints
+        if let nonNullRightAccessory = rightAccessory {
+            nonNullRightAccessory.snp.remakeConstraints { (make) in
+                make.height.width.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).rightAccessory.width")?.floatValue ?? 0))
+            }
+        }
         
     }
     
