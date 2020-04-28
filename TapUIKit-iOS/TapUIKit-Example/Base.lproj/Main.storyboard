@@ -16,40 +16,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-6h-05P" customClass="TapChip" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="20" y="88" width="80" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-6h-05P">
+                                <rect key="frame" x="20" y="88" width="374" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="40" id="Vet-Of-B66"/>
-                                    <constraint firstAttribute="width" priority="750" constant="80" id="bgI-FW-w1h"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aW-j1-99z" customClass="TapChip" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="20" y="136" width="80" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="40" id="5LL-xR-50r"/>
-                                    <constraint firstAttribute="width" priority="750" constant="80" id="Chp-dS-vEe"/>
-                                </constraints>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left accessory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-Pr-2vH">
+                                <rect key="frame" x="20" y="136" width="112.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yax-gd-dH9">
+                                <rect key="frame" x="345" y="131" width="51" height="31"/>
+                                <connections>
+                                    <action selector="leftAccessoryChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="MXJ-2d-LRe"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right accessory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7d-cw-WS5">
+                                <rect key="frame" x="20" y="175" width="122.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-Q5-L5j">
+                                <rect key="frame" x="345" y="170" width="51" height="31"/>
+                                <connections>
+                                    <action selector="rightAccessoryChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7f9-Mn-QN3"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAq-rp-Vke">
+                                <rect key="frame" x="20" y="214" width="86" height="30"/>
+                                <state key="normal" title="Change Text"/>
+                                <connections>
+                                    <action selector="changeTextClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pk6-5s-Vg0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3aW-j1-99z" firstAttribute="top" secondItem="JhO-6h-05P" secondAttribute="bottom" constant="8" id="3PX-bA-nqR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f0h-Q5-L5j" secondAttribute="trailing" constant="20" id="0ZB-hB-rk3"/>
+                            <constraint firstItem="f0h-Q5-L5j" firstAttribute="centerY" secondItem="R7d-cw-WS5" secondAttribute="centerY" id="2Hp-Ng-ZWk"/>
+                            <constraint firstItem="f0h-Q5-L5j" firstAttribute="centerY" secondItem="R7d-cw-WS5" secondAttribute="centerY" id="5c4-oO-PyR"/>
                             <constraint firstItem="JhO-6h-05P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LQl-P8-pYS"/>
-                            <constraint firstItem="3aW-j1-99z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hNI-Uh-Ft0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yax-gd-dH9" secondAttribute="trailing" constant="20" id="YsI-EP-Baf"/>
+                            <constraint firstItem="Pdi-Pr-2vH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hji-be-VCp"/>
+                            <constraint firstItem="Pdi-Pr-2vH" firstAttribute="top" secondItem="JhO-6h-05P" secondAttribute="bottom" constant="8" id="jBA-2P-eXx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JhO-6h-05P" secondAttribute="trailing" constant="20" id="lBt-no-Dmx"/>
+                            <constraint firstItem="lAq-rp-Vke" firstAttribute="top" secondItem="R7d-cw-WS5" secondAttribute="bottom" constant="18" id="nPK-u1-Kof"/>
+                            <constraint firstItem="lAq-rp-Vke" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nYa-Ft-1vY"/>
+                            <constraint firstItem="R7d-cw-WS5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oeg-ve-dPu"/>
+                            <constraint firstItem="yax-gd-dH9" firstAttribute="centerY" secondItem="Pdi-Pr-2vH" secondAttribute="centerY" id="sow-cW-PJj"/>
+                            <constraint firstItem="R7d-cw-WS5" firstAttribute="top" secondItem="Pdi-Pr-2vH" secondAttribute="bottom" constant="18" id="yLP-gS-h6v"/>
                             <constraint firstItem="JhO-6h-05P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="zZb-ZI-AiN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="tapChip" destination="JhO-6h-05P" id="mhH-gp-f6R"/>
-                        <outlet property="tapChip2" destination="3aW-j1-99z" id="IQv-td-1CO"/>
+                        <outlet property="tapChipHolder" destination="JhO-6h-05P" id="3cu-am-kUi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="17"/>
+            <point key="canvasLocation" x="2444.9275362318845" y="16.741071428571427"/>
         </scene>
         <!--TapUIKit-->
         <scene sceneID="5A8-Cy-aD2">

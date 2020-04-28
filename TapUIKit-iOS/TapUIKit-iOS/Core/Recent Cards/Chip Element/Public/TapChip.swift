@@ -37,6 +37,11 @@ import TapThemeManager2020
         self.backgroundColor = .clear
     }
     
+    @objc public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .clear
+    }
+    
     /**
      Method used to setup the TapChip ui element with the needed views
      - Parameter contentString: The text to be displayed inside the label content of the TapChip

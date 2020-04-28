@@ -11,24 +11,80 @@ import TapUIKit_iOS
 
 class TapChipExampleViewController: UIViewController {
 
-    @IBOutlet weak var tapChip: TapChip!
-    @IBOutlet weak var tapChip2: TapChip!
+    @IBOutlet weak var tapChipHolder: UIView!
+    lazy var chipText = "∙∙∙∙ 1234"
+    lazy var showLeftAccessory:Bool = true
+    lazy var showRightAccessory:Bool = true
+    var tapChip:TapChip?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupTapChip()
+    }
+    
+    
+    func setupTapChip() {
+        if let nonNullTapChip = tapChip {
+            nonNullTapChip.removeFromSuperview()
+        }
+        
+        tapChip = TapChip(frame:tapChipHolder.bounds)
+        tapChipHolder.addSubview(tapChip!)
         let leftAccessory:TapChipAccessoryView = TapChipAccessoryView(image: UIImage(named: "visa")) { (tapChip) in
             tapChip.showShadow(glowing: true)
         }
         let rightAccessory:TapChipAccessoryView = TapChipAccessoryView(image: UIImage(named: "mastercard"))  { (tapChip) in
             tapChip.showShadow(glowing: false)
         }
-        tapChip.setup(contentString: "∙∙∙∙ 1234", rightAccessory: rightAccessory)
         
-        tapChip2.setup(contentString: "∙∙∙∙ 1234∙∙∙∙ 1234",leftAccessory: leftAccessory)
+        if showLeftAccessory && showRightAccessory {
+            tapChip!.setup(contentString: chipText, rightAccessory: rightAccessory, leftAccessory: leftAccessory)
+        }else if showLeftAccessory {
+            tapChip!.setup(contentString: chipText, leftAccessory: leftAccessory)
+        }else if showRightAccessory {
+            tapChip!.setup(contentString: chipText, rightAccessory: rightAccessory)
+        }else {
+            tapChip!.setup(contentString: chipText)
+        }
     }
     
-
+    @IBAction func leftAccessoryChanged(_ sender: Any) {
+        
+        if let uiswitch:UISwitch = sender as? UISwitch {
+            showLeftAccessory = uiswitch.isOn
+            setupTapChip()
+        }
+    }
+    
+    @IBAction func rightAccessoryChanged(_ sender: Any) {
+        if let uiswitch:UISwitch = sender as? UISwitch {
+            showRightAccessory = uiswitch.isOn
+            setupTapChip()
+        }
+    }
+    
+    @IBAction func changeTextClicked(_ sender: Any) {
+        let ac = UIAlertController(title: "Chip Content", message: "Enter a string value", preferredStyle: .alert)
+        ac.addTextField()
+        // Define what to do when the user fills in the value
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac, weak self] _ in
+            let answer = ac.textFields![0]
+            
+            if let contentValue:String = answer.text {
+                self?.chipText = contentValue
+                DispatchQueue.main.async {[weak self] in
+                    self?.setupTapChip()
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        DispatchQueue.main.async {[weak self] in
+            self?.present(ac, animated: true, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 
