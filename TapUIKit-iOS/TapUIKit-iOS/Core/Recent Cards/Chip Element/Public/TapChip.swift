@@ -63,11 +63,7 @@ import TapThemeManager2020
     internal func addViews() {
         
         // Define the attributes needed for the stack view
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.backgroundColor = .clear
-        stackView.spacing = itemsSpacing
-        stackView.distribution = .fillProportionally
+        setupStackView()
         self.addSubview(stackView)
         
         // If there is a left accessory we add it first
@@ -87,6 +83,18 @@ import TapThemeManager2020
         
     }
     
+    /// This method defines the needed attribtes and values for the horizontal stackview used to gather the chip ui subviews
+    internal func setupStackView() {
+        // horizontal type
+        stackView.axis = .horizontal
+        // Center items vertically
+        stackView.alignment = .center
+        stackView.backgroundColor = .clear
+        // Set the spacing between items
+        stackView.spacing = itemsSpacing
+        // Fill the stack view width with the elements
+        stackView.distribution = .fillProportionally
+    }
     
     /// This method is responsible for setting up the layout constraint to correctly layout the views of the Chip
     internal func setupConstraints() {
