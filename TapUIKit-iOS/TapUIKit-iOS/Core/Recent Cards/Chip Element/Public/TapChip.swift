@@ -142,6 +142,9 @@ import TapThemeManager2020
         stackView.spacing = itemsSpacing
         // Fill the stack view width with the elements
         stackView.distribution = .fillProportionally
+        
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: itemsSpacing, bottom: 0, right: itemsSpacing)
+        stackView.isLayoutMarginsRelativeArrangement = true
     }
     
     /// This method is responsible for setting up the layout constraint to correctly layout the views of the Chip
@@ -149,7 +152,7 @@ import TapThemeManager2020
         
         // view constraints
         self.snp.remakeConstraints { (make) in
-            make.height.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).leftAccessory.width")?.floatValue ?? 0))
+            make.height.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.chipHeight")?.floatValue ?? 0))
             make.width.equalTo(computeNeededWidth())
         }
         
@@ -179,8 +182,10 @@ import TapThemeManager2020
      - Returns: The needed width in float to display all the views
      */
     internal func computeNeededWidth() -> CGFloat {
-        // We will need the spacing in trailing and leading
+        // We will need the spacing in trailing and leading (which are the margins around the stack view)
         var neededWidth = 2*itemsSpacing
+        // The two spaces always will be there before first element and after last element
+        neededWidth += 2*itemsSpacing
         
         // If the user has left accessory stated, then we need to calculate its width and spacing
         if let _ = leftAccessory {
@@ -242,7 +247,7 @@ import TapThemeManager2020
         self.layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).radius")?.floatValue ?? 0)
         self.layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).commonAttributes.\(shadowPath).color")
         self.layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).offsetHeight")?.floatValue ?? 0))
-        self.layer.shadowOpacity = 0//Float(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.shadow.opacity")?.floatValue ?? 0)
+        self.layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).opacity")?.floatValue ?? 0)
         self.layer.masksToBounds = false
     }
     

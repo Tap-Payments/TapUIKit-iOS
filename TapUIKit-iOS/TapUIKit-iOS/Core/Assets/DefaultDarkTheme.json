@@ -6,15 +6,16 @@
           "cornerRadius":8,
           "borderWidth": 1,
           "itemSpacing": 5,
+          "chipHeight": 40,
           "shadow":{
-              "color": "#FFFFFF",
+              "color": "#00000014",
               "radius": 3,
               "offsetWidth": 0,
               "offsetHeight": 0,
               "opacity": 1
           },
           "glowingShadow":{
-              "color": "#FFFFFF",
+              "color": "#2ace00",
               "radius": 3,
               "offsetWidth": 0,
               "offsetHeight": 0,

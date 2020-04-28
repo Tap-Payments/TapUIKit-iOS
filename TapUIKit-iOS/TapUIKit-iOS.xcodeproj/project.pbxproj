@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		221795179BB6835241925D24 /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428DF32456DB3200D5A45A /* AppDelegate.swift */; };
@@ -21,7 +20,49 @@
 		E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */; };
 		E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */; };
 		E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */; };
+		E8428E1924581ECB00D5A45A /* unionpay.png in Resources */ = {isa = PBXBuildFile; fileRef = E8428E1624581ECA00D5A45A /* unionpay.png */; };
+		E8428E1A24581ECB00D5A45A /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = E8428E1724581ECA00D5A45A /* visa.png */; };
+		E8428E1B24581ECB00D5A45A /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = E8428E1824581ECA00D5A45A /* mastercard.png */; };
+		E8428E1C2458209400D5A45A /* TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; };
+		E8428E1D2458209400D5A45A /* TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
+		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E8428E1E2458209400D5A45A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8428DD92456DAF300D5A45A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8428DE12456DAF300D5A45A;
+			remoteInfo = "TapUIKit-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E8428E202458209400D5A45A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8428E1D2458209400D5A45A /* TapUIKit_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8428E23245820EF00D5A45A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -45,6 +86,9 @@
 		E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUIImageViewExtensions.swift; sourceTree = "<group>"; };
 		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
 		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
+		E8428E1624581ECA00D5A45A /* unionpay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unionpay.png; sourceTree = "<group>"; };
+		E8428E1724581ECA00D5A45A /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
+		E8428E1824581ECA00D5A45A /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				221795179BB6835241925D24 /* Pods_TapUIKit_iOS.framework in Frameworks */,
+				E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */,
+				E8428E1C2458209400D5A45A /* TapUIKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +166,9 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E8428E1824581ECA00D5A45A /* mastercard.png */,
+				E8428E1624581ECA00D5A45A /* unionpay.png */,
+				E8428E1724581ECA00D5A45A /* visa.png */,
 				E8428DF32456DB3200D5A45A /* AppDelegate.swift */,
 				E8428DF52456DB3200D5A45A /* SceneDelegate.swift */,
 				E8428DF72456DB3200D5A45A /* ViewController.swift */,
@@ -215,6 +263,7 @@
 				E8428DDE2456DAF300D5A45A /* Sources */,
 				E8428DDF2456DAF300D5A45A /* Frameworks */,
 				E8428DE02456DAF300D5A45A /* Resources */,
+				E8428E23245820EF00D5A45A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,10 +282,13 @@
 				E8428DED2456DB3200D5A45A /* Sources */,
 				E8428DEE2456DB3200D5A45A /* Frameworks */,
 				E8428DEF2456DB3200D5A45A /* Resources */,
+				E8428E202458209400D5A45A /* Embed Frameworks */,
+				17815313BA80ED437D9FB0D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E8428E1F2458209400D5A45A /* PBXTargetDependency */,
 			);
 			name = "TapUIKit-Example";
 			productName = "TapUIKit-Example";
@@ -296,7 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8428E002456DB3200D5A45A /* LaunchScreen.storyboard in Resources */,
+				E8428E1A24581ECB00D5A45A /* visa.png in Resources */,
 				E8428DFD2456DB3200D5A45A /* Assets.xcassets in Resources */,
+				E8428E1B24581ECB00D5A45A /* mastercard.png in Resources */,
+				E8428E1924581ECB00D5A45A /* unionpay.png in Resources */,
 				E8428DFB2456DB3200D5A45A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +359,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		17815313BA80ED437D9FB0D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2F899D75F54D583E25413091 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +444,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8428E1F2458209400D5A45A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8428DE12456DAF300D5A45A /* TapUIKit-iOS */;
+			targetProxy = E8428E1E2458209400D5A45A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E8428DF92456DB3200D5A45A /* Main.storyboard */ = {
@@ -535,9 +615,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "company.tap.TapUIKit-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -563,8 +644,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "company.tap.TapUIKit-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

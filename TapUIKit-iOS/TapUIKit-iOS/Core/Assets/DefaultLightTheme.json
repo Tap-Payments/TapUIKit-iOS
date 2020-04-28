@@ -1,36 +1,37 @@
 {
-  "chipUI": {
-      "commonAttributes": {
-          "backgroundColor": "#000000",
-          "borderColor": "#FFFFFF",
-          "cornerRadius":8,
-          "borderWidth": 1,
-          "itemSpacing": 5,
-          "shadow":{
-              "color": "#FFFFFF",
-              "radius": 3,
-              "offsetWidth": 0,
-              "offsetHeight": 0,
-              "opacity": 1
-          },
-          "glowingShadow":{
-              "color": "#FFFFFF",
-              "radius": 3,
-              "offsetWidth": 0,
-              "offsetHeight": 0,
-              "opacity": 1
-          },
-          "widthMargin": 7
-      },
-      "rightAccessory": {
-          "width": 32
-      },
-      "leftAccessory": {
-          "width": 32
-      },
-      "contentLabel": {
-          "textColor": "#FFFFFF",
-          "textFont": "15"
-      }
-  }
+    "chipUI": {
+        "commonAttributes": {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#0066FF",
+            "cornerRadius": 8,
+            "borderWidth": 0,
+            "itemSpacing": 5,
+            "chipHeight": 40,
+            "shadow":{
+                "color": "#00000014",
+                "radius": 3,
+                "offsetWidth": 0,
+                "offsetHeight": 0,
+                "opacity": 1
+            },
+            "glowingShadow":{
+                "color": "#2ACE00",
+                "radius": 3,
+                "offsetWidth": 0,
+                "offsetHeight": 0,
+                "opacity": 1
+            },
+            "widthMargin": 7
+        },
+        "rightAccessory": {
+            "width": 32
+        },
+        "leftAccessory": {
+            "width": 32
+        },
+        "contentLabel": {
+            "textColor": "#000000",
+            "textFont": "15"
+        }
+    }
 }
