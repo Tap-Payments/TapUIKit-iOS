@@ -54,7 +54,7 @@
         <!--TapUIKit-->
         <scene sceneID="5A8-Cy-aD2">
             <objects>
-                <viewController id="Y10-KD-FHQ" sceneMemberID="viewController">
+                <viewController id="Y10-KD-FHQ" customClass="ViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qTd-oi-5YS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,7 +99,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="upY-42-0Tr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="TapUIKit" id="10o-fn-et5"/>
+                    <navigationItem key="navigationItem" title="TapUIKit" id="10o-fn-et5">
+                        <barButtonItem key="backBarButtonItem" title=" " id="tyZ-hk-nmk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="fYi-Or-1wA" id="B4s-dh-acT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQe-si-Cnu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

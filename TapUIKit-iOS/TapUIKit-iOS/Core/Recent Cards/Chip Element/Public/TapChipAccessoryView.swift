@@ -19,6 +19,7 @@ import class UIKit.UIImage
         }
     }
     
+    /// A weak reference to the parent chip holding the accessory views, this will be used in the callback when an accesory is clicked
     internal weak var parentChip:TapChip?
     
     required init?(coder: NSCoder) {
