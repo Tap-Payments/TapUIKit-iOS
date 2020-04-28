@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
+		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428DF32456DB3200D5A45A /* AppDelegate.swift */; };
 		E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428DF52456DB3200D5A45A /* SceneDelegate.swift */; };
@@ -68,6 +69,7 @@
 		CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC9E6344249A1CA65DA9FC2F /* Pods-TapUIKit-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DF4C0BAE4F2FB5B88BFD1BD6 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapUIKit_iOS.h; sourceTree = "<group>"; };
 		E8428DE62456DAF300D5A45A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E835ADB3245850E700E55A68 /* GoogleService-Info.plist */,
 				E8428E2624583B2F00D5A45A /* TapChipExample */,
 				E8428DF32456DB3200D5A45A /* AppDelegate.swift */,
 				E8428DF52456DB3200D5A45A /* SceneDelegate.swift */,
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8428E002456DB3200D5A45A /* LaunchScreen.storyboard in Resources */,
+				E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */,
 				E8428DFD2456DB3200D5A45A /* Assets.xcassets in Resources */,
 				E8428DFB2456DB3200D5A45A /* Main.storyboard in Resources */,
 			);
