@@ -37,19 +37,67 @@ import TapThemeManager2020
     
     /**
      Method used to setup the TapChip ui element with the needed views
-      - Parameter contentString: The text to be displayed inside the label content of the TapChip
-      - Parameter rightAccessory: The right accessory you need to display if any, default is nil
-      - Parameter leftAccessory: The left accessory you need to display if any, default is nil
+     - Parameter contentString: The text to be displayed inside the label content of the TapChip
+     - Parameter rightAccessory: The right accessory you need to display if any, default is nil
+     - Parameter leftAccessory: The left accessory you need to display if any, default is nil
+     - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
+     - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
      */
-    @objc public func setup(contentString:String, rightAccessory:TapChipAccessoryView? = nil, leftAccessory:TapChipAccessoryView? = nil) {
+    @objc public func setup(contentString:String, rightAccessory:TapChipAccessoryView? = nil, leftAccessory:TapChipAccessoryView? = nil, themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil) {
         
         // Asssign and attach the internal values with the given ones
         self.contentLabel.text = contentString
         self.rightAccessory = rightAccessory
         self.leftAccessory = leftAccessory
-        applyingDefaultTheme = true
+        // Decide which theme we will use
+        themeSelector(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
         // Kick off the layout inflation
         setupViews()
+    }
+    
+    /**
+    Method used to decide which theme will we use from a given dict, given json or the default one
+    - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
+    - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
+    */
+    internal func themeSelector(themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil) {
+        applyingDefaultTheme = false
+        if let nonNullCustomDictionaryTheme = themeDictionary {
+            // The user provided a custom dictionary theme
+            themingDictionary = nonNullCustomDictionaryTheme
+        }else if let nonNullCustomJsonTheme = jsonTheme {
+            // The user provided a custom json theme file
+            TapThemeManager.setTapTheme(jsonName: nonNullCustomJsonTheme)
+            themingDictionary = TapThemeManager.currentTheme
+        }else {
+            // Then we se the default theme
+            applyingDefaultTheme = true
+            applyDefaultTheme()
+        }
+    }
+    
+    
+    /// Internal helper method to apply the default theme
+    internal func applyDefaultTheme() {
+        // Check if the file exists
+        let bundle:Bundle = Bundle(for: type(of: self))
+        // Based on the current display mode, we decide which default theme file we will use
+        let themeFile:String = (self.traitCollection.userInterfaceStyle == .dark) ? "DefaultDarkTheme" : "DefaultLightTheme"
+        // Defensive code to make sure all is loaded correctly
+        guard let jsonPath = bundle.path(forResource: themeFile, ofType: "json") else {
+            print("TapThemeManager WARNING: Can't find json 'DefaultTheme'")
+            return
+        }
+        // Check if the file is correctly parsable
+        guard
+            let data = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)),
+            let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed),
+            let jsonDict = json as? NSDictionary else {
+                print("TapThemeManager WARNING: Can't read json 'DefaultTheme' at: \(jsonPath)")
+                return
+        }
+        themingDictionary = jsonDict
+        applyingDefaultTheme = true
     }
     
     /// The method that organises the steps needed to correctly draw the view and its subviews
@@ -153,9 +201,11 @@ import TapThemeManager2020
         return neededWidth
     }
     
-    /// This method is responsible for setting and matching the theme attributes
+    /// This method is responsible for applying the correct theme and setting and matching the theme attributes
     internal func applyTheme() {
-        
+        // Defensive coding to make sure theme is alredy selected before actually applying one
+        guard let nonNullThemingDictionary = themingDictionary else {return}
+        TapThemeManager.setTapTheme(themeDict: nonNullThemingDictionary)
         matchThemeAttribtes()
         
     }
