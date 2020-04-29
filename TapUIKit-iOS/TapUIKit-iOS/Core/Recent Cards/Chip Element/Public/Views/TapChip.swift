@@ -49,7 +49,7 @@ import TapThemeManager2020
         
         // Asssign and attach the internal values with the given ones
         self.viewModel = viewModel
-        self.contentLabel.text = viewModel.bodyContent
+        self.viewModel?.viewModelDelegate = self
         // Decide which theme we will use
         themeSelector(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
         // Kick off the layout inflation
@@ -135,7 +135,8 @@ import TapThemeManager2020
         
         // Define that we want the card nummber to fill as much width as possible
         contentLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
-        
+        self.contentLabel.text = viewModel?.bodyContent ?? ""
+        contentLabel.textAlignment = .center
         stackView.addArrangedSubview(contentLabel)
         
         // If there is a right accessory we add it last
@@ -148,6 +149,12 @@ import TapThemeManager2020
     
     /// This method defines the needed attribtes and values for the horizontal stackview used to gather the chip ui subviews
     internal func setupStackView() {
+        // init the stack view to reflect any changes in the viewmodel
+        stackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        
+        stackView = UIStackView()
+        stackView.removeFromSuperview()
+        
         // horizontal type
         stackView.axis = .horizontal
         // Center items vertically
@@ -270,4 +277,12 @@ import TapThemeManager2020
         self.layer.masksToBounds = false
     }
     
+}
+
+
+
+extension TapChip:TapCellViewModelDelegate {
+    public func viewModelDidChange(viewModel: TapCellViewModel) {
+        setupViews()
+    }
 }

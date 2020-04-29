@@ -17,6 +17,14 @@ class TapChipExampleViewController: UIViewController {
     lazy var showRightAccessory:Bool = true
     var tapChip:TapChip?
     lazy var tapChipViewModel:TapChipCellViewModel = .init()
+    let leftAccessory:TapChipAccessoryView = TapChipAccessoryView(image: UIImage(named: "visa")) { (tapChip) in
+        tapChip.showShadow(glowing: true)
+    }
+    let rightAccessory:TapChipAccessoryView = TapChipAccessoryView(image: UIImage(named: "mastercard"))  { (tapChip) in
+        tapChip.showShadow(glowing: false)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,12 +39,6 @@ class TapChipExampleViewController: UIViewController {
         
         tapChip = TapChip(frame:tapChipHolder.bounds)
         tapChipHolder.addSubview(tapChip!)
-        let leftAccessory:TapChipAccessoryView = TapChipAccessoryView(image: UIImage(named: "visa")) { (tapChip) in
-            tapChip.showShadow(glowing: true)
-        }
-        let rightAccessory:TapChipAccessoryView = TapChipAccessoryView(image: UIImage(named: "mastercard"))  { (tapChip) in
-            tapChip.showShadow(glowing: false)
-        }
         
         tapChipViewModel = .init(leftAccessory: leftAccessory, rightAccessory: rightAccessory, bodyContent: chipText)
         
@@ -46,15 +48,13 @@ class TapChipExampleViewController: UIViewController {
     @IBAction func leftAccessoryChanged(_ sender: Any) {
         
         if let uiswitch:UISwitch = sender as? UISwitch {
-            showLeftAccessory = uiswitch.isOn
-            setupTapChip()
+            tapChipViewModel.leftAccessory =  (uiswitch.isOn) ? leftAccessory : nil
         }
     }
     
     @IBAction func rightAccessoryChanged(_ sender: Any) {
         if let uiswitch:UISwitch = sender as? UISwitch {
-            showRightAccessory = uiswitch.isOn
-            setupTapChip()
+            tapChipViewModel.rightAccessory =  (uiswitch.isOn) ? rightAccessory : nil
         }
     }
     
@@ -68,7 +68,7 @@ class TapChipExampleViewController: UIViewController {
             if let contentValue:String = answer.text {
                 self?.chipText = contentValue
                 DispatchQueue.main.async {[weak self] in
-                    self?.setupTapChip()
+                    self?.tapChipViewModel.bodyContent =  self?.chipText ?? ""
                 }
             }
         }

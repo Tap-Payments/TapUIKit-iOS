@@ -12,11 +12,23 @@ import Foundation
 @objc public class TapChipCellViewModel:TapCellViewModel {
     
     /// The left accessory uiimageview of the chip element
-    internal var leftAccessory:TapChipAccessoryView?
+    @objc public var leftAccessory:TapChipAccessoryView?{
+        didSet{
+            dataChanged()
+        }
+    }
     /// The right accessory uiimageview of the chip element
-    internal var rightAccessory:TapChipAccessoryView?
+    @objc public var rightAccessory:TapChipAccessoryView?{
+        didSet{
+            dataChanged()
+        }
+    }
     /// The content label of the chip element
-    internal lazy var bodyContent:String = ""
+    @objc public var bodyContent:String = ""{
+        didSet{
+            dataChanged()
+        }
+    }
     
     /**
         Creates a recent card view model to be used to draw data inside a recent card chip cell
@@ -31,4 +43,8 @@ import Foundation
         self.bodyContent = bodyContent
     }
     
+    
+    internal func dataChanged() {
+        notifyViewModelChanged(viewModel: self)
+    }
 }
