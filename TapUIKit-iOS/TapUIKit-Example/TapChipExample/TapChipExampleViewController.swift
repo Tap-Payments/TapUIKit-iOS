@@ -16,7 +16,7 @@ class TapChipExampleViewController: UIViewController {
     lazy var showLeftAccessory:Bool = true
     lazy var showRightAccessory:Bool = true
     var tapChip:TapChip?
-    
+    lazy var tapChipViewModel:TapChipCellViewModel = .init()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,15 +38,9 @@ class TapChipExampleViewController: UIViewController {
             tapChip.showShadow(glowing: false)
         }
         
-        if showLeftAccessory && showRightAccessory {
-            tapChip!.setup(contentString: chipText, rightAccessory: rightAccessory, leftAccessory: leftAccessory)
-        }else if showLeftAccessory {
-            tapChip!.setup(contentString: chipText, leftAccessory: leftAccessory)
-        }else if showRightAccessory {
-            tapChip!.setup(contentString: chipText, rightAccessory: rightAccessory)
-        }else {
-            tapChip!.setup(contentString: chipText)
-        }
+        tapChipViewModel = .init(leftAccessory: leftAccessory, rightAccessory: rightAccessory, bodyContent: chipText)
+        
+        tapChip!.setup(viewModel: tapChipViewModel)
     }
     
     @IBAction func leftAccessoryChanged(_ sender: Any) {

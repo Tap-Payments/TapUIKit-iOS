@@ -15,10 +15,8 @@ import TapThemeManager2020
 /// A class that represents the Chip view of right accessory, left accessory and a labe;l
 @objc public class TapChip:UIView {
     
-    /// The right accessory uiimageview of the chip element
-    internal var rightAccessory:TapChipAccessoryView?
-    /// The left accessory uiimageview of the chip element
-    internal var leftAccessory:TapChipAccessoryView?
+    /// The view model that has the data you need to display in the chip ui
+    internal var viewModel:TapChipCellViewModel?
     /// The main stack view that holds the inner components (card fields)
     internal lazy var stackView = UIStackView()
     /// The content label of the chip element
@@ -44,18 +42,14 @@ import TapThemeManager2020
     
     /**
      Method used to setup the TapChip ui element with the needed views
-     - Parameter contentString: The text to be displayed inside the label content of the TapChip
-     - Parameter rightAccessory: The right accessory you need to display if any, default is nil
-     - Parameter leftAccessory: The left accessory you need to display if any, default is nil
      - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
      - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
      */
-    @objc public func setup(contentString:String, rightAccessory:TapChipAccessoryView? = nil, leftAccessory:TapChipAccessoryView? = nil, themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil) {
+    @objc public func setup(viewModel:TapChipCellViewModel, themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil) {
         
         // Asssign and attach the internal values with the given ones
-        self.contentLabel.text = contentString
-        self.rightAccessory = rightAccessory
-        self.leftAccessory = leftAccessory
+        self.viewModel = viewModel
+        self.contentLabel.text = viewModel.bodyContent
         // Decide which theme we will use
         themeSelector(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
         // Kick off the layout inflation
@@ -134,7 +128,7 @@ import TapThemeManager2020
         self.addSubview(stackView)
         
         // If there is a left accessory we add it first
-        if let nonNullLeftAccessory = leftAccessory {
+        if let nonNullLeftAccessory = viewModel?.leftAccessory {
             nonNullLeftAccessory.parentChip = self
             stackView.addArrangedSubview(nonNullLeftAccessory)
         }
@@ -145,7 +139,7 @@ import TapThemeManager2020
         stackView.addArrangedSubview(contentLabel)
         
         // If there is a right accessory we add it last
-        if let nonNullRightAccessory = rightAccessory {
+        if let nonNullRightAccessory = viewModel?.rightAccessory {
             nonNullRightAccessory.parentChip = self
             stackView.addArrangedSubview(nonNullRightAccessory)
         }
@@ -183,41 +177,19 @@ import TapThemeManager2020
         }
         
         // Left accessory constraints
-        if let nonNullLeftAccessory = leftAccessory {
+        if let nonNullLeftAccessory = viewModel?.leftAccessory {
             nonNullLeftAccessory.snp.remakeConstraints { (make) in
                 make.height.width.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).leftAccessory.width")?.floatValue ?? 0))
             }
         }
         
         // Right accessory constraints
-        if let nonNullRightAccessory = rightAccessory {
+        if let nonNullRightAccessory = viewModel?.rightAccessory {
             nonNullRightAccessory.snp.remakeConstraints { (make) in
                 make.height.width.equalTo(CGFloat(TapThemeManager.numberValue(for: "\(themePath).rightAccessory.width")?.floatValue ?? 0))
             }
         }
         
-    }
-    
-    
-    @objc public func hideLeftAccessory() {
-        // Left accessory exists
-        if let nonNullLeftAccessory = leftAccessory {
-            stackView.removeArrangedSubview(nonNullLeftAccessory)
-            nonNullLeftAccessory.removeFromSuperview()
-            leftAccessory = nil
-            setupConstraints()
-        }
-        
-    }
-    
-    @objc public func hideRightAccessory() {
-        // Right accessory exists
-        if let nonNullRightAccessory = rightAccessory {
-            stackView.removeArrangedSubview(nonNullRightAccessory)
-            nonNullRightAccessory.removeFromSuperview()
-            rightAccessory = nil
-            setupConstraints()
-        }
     }
     
     /**
@@ -231,7 +203,7 @@ import TapThemeManager2020
         neededWidth += 2*itemsSpacing
         
         // If the user has left accessory stated, then we need to calculate its width and spacing
-        if let _ = leftAccessory {
+        if let _ = viewModel?.leftAccessory {
             neededWidth += CGFloat(TapThemeManager.numberValue(for: "\(themePath).leftAccessory.width")?.floatValue ?? 0)
             neededWidth += itemsSpacing
         }
@@ -241,7 +213,7 @@ import TapThemeManager2020
         neededWidth += size.width
         
         // If the user has right accessory stated, then we need to calculate its width and spacing
-        if let _ = rightAccessory {
+        if let _ = viewModel?.rightAccessory {
             neededWidth += itemsSpacing
             neededWidth += CGFloat(TapThemeManager.numberValue(for: "\(themePath).rightAccessory.width")?.floatValue ?? 0)
         }
