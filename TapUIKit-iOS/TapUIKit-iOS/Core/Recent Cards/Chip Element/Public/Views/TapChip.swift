@@ -198,6 +198,28 @@ import TapThemeManager2020
         
     }
     
+    
+    @objc public func hideLeftAccessory() {
+        // Left accessory exists
+        if let nonNullLeftAccessory = leftAccessory {
+            stackView.removeArrangedSubview(nonNullLeftAccessory)
+            nonNullLeftAccessory.removeFromSuperview()
+            leftAccessory = nil
+            setupConstraints()
+        }
+        
+    }
+    
+    @objc public func hideRightAccessory() {
+        // Right accessory exists
+        if let nonNullRightAccessory = rightAccessory {
+            stackView.removeArrangedSubview(nonNullRightAccessory)
+            nonNullRightAccessory.removeFromSuperview()
+            rightAccessory = nil
+            setupConstraints()
+        }
+    }
+    
     /**
      This method calculates the needed width to show all the views needed inside the chip ui
      - Returns: The needed width in float to display all the views
