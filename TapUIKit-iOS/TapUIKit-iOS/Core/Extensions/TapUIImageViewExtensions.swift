@@ -8,10 +8,12 @@
 
 /// This will be a class that holds the extensions developed to the UIImageview needed to simplify the development of the different ui kits
 import Foundation
-import UIKit
+import class UIKit.UIImage
+import class UIKit.UIImageView
+import class UIKit.UITapGestureRecognizer
 
 
-
+// MARK:- UIImageView extensions
 // MARK:- Making the image view tappable extension
 internal typealias SimpleClosure = (() -> ())
 private var actionKey : UInt8 = 1
@@ -52,4 +54,20 @@ internal extension UIImageView {
     @objc private func tapped() {
         callback()
     }
+}
+
+// MARK:- UIImage extensions
+// MARK:- Loading UIImage from a given class's bundle
+internal extension UIImage {
+    
+    /**
+     Load an Image asset from a dynamic bundle based on the caller class type
+     - Parameter name: The name of theimage you want to load
+     - Parameter classType: type(of:class) where class is the original class where you want to load the image from its bundle
+     */
+    static func loadLocally(with name:String,from classType:AnyClass) -> UIImage? {
+        let bundle:Bundle = Bundle(for:classType)
+        return UIImage(named: name, in: bundle, compatibleWith: nil)
+    }
+    
 }
