@@ -49,7 +49,9 @@ import TapThemeManager2020
         
         // Asssign and attach the internal values with the given ones
         self.viewModel = viewModel
-        self.viewModel?.viewModelDelegate = self
+        self.viewModel?.viewModelDidChange = { [weak self] (viewModel) in
+            self?.setupViews()
+        }
         // Decide which theme we will use
         themeSelector(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
         // Kick off the layout inflation
@@ -277,12 +279,4 @@ import TapThemeManager2020
         self.layer.masksToBounds = false
     }
     
-}
-
-
-
-extension TapChip:TapCellViewModelDelegate {
-    public func viewModelDidChange(viewModel: TapCellViewModel) {
-        setupViews()
-    }
 }

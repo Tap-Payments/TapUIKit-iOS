@@ -41,10 +41,18 @@ import Foundation
         self.leftAccessory = leftAccessory
         self.rightAccessory = rightAccessory
         self.bodyContent = bodyContent
+        
     }
     
     
-    internal func dataChanged() {
+    private func dataChanged() {
         notifyViewModelChanged(viewModel: self)
     }
 }
+
+/*extension TapCellViewModelDelegate where Self: TapChip {
+
+    func leftAccessoryClicked(tapChip:TapChip){fatalError("leftAccessoryClicked should be implemented by delegate")}
+    func rightAccessoryClicked(tapChip:TapChip){fatalError("leftAccessoryClicked should be implemented by delegate")}
+
+}*/
