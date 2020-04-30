@@ -31,6 +31,9 @@
 		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
 		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */; };
+		E8CD5C172459B4F00089185A /* TapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD5C162459B4F00089185A /* TapCollectionViewCell.swift */; };
+		E8CD5C192459B53C0089185A /* TapRecentCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD5C182459B53C0089185A /* TapRecentCardCollectionViewCell.swift */; };
+		E8CD5C1B2459B6680089185A /* TapGoPayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD5C1A2459B6680089185A /* TapGoPayCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
 		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
 		E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipExampleViewController.swift; sourceTree = "<group>"; };
+		E8CD5C162459B4F00089185A /* TapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8CD5C182459B53C0089185A /* TapRecentCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8CD5C1A2459B6680089185A /* TapGoPayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayCollectionViewCell.swift; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +158,9 @@
 		E835ADB624585AC000E55A68 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD5C162459B4F00089185A /* TapCollectionViewCell.swift */,
+				E8CD5C182459B53C0089185A /* TapRecentCardCollectionViewCell.swift */,
+				E8CD5C1A2459B6680089185A /* TapGoPayCollectionViewCell.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -480,8 +489,11 @@
 			files = (
 				E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */,
 				E835ADC02459808700E55A68 /* TapGoPayCellViewModel.swift in Sources */,
+				E8CD5C172459B4F00089185A /* TapCollectionViewCell.swift in Sources */,
+				E8CD5C192459B53C0089185A /* TapRecentCardCollectionViewCell.swift in Sources */,
 				E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */,
 				E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */,
+				E8CD5C1B2459B6680089185A /* TapGoPayCollectionViewCell.swift in Sources */,
 				E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */,
 				E835ADBE24597F2F00E55A68 /* TapChipCellViewModel.swift in Sources */,
 				E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */,
