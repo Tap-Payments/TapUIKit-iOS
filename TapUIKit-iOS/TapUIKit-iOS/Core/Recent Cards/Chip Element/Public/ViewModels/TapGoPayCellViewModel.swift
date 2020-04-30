@@ -10,7 +10,7 @@ import Foundation
 import class UIKit.UIImage
 /// This class is responsible for creating a viewmodel for feeding up the tap goPay chip view, which has a static left accessory view and static body content
 @objc public class TapGoPayCellViewModel:TapChipCellViewModel {
-    
+    internal typealias GoPayCellConfigurator = CollectionCellConfigurator<TapGoPayCollectionViewCell, TapGoPayCellViewModel>
     /**
         Creates a recent card view model to be used to draw data inside a recent card chip cell
     - Parameter leftAccessoryImage: The image you want to show as the left accessory. Default is nil, in this case will be the card brand image
@@ -33,4 +33,7 @@ import class UIKit.UIImage
         }
     }
     
+    override func convertToCellConfigrator() -> CellConfigurator {
+        return GoPayCellConfigurator.init(item: self)
+    }
 }

@@ -11,11 +11,6 @@ import TapUIKit_iOS
 
 class TapChipExampleViewController: UIViewController {
     
-    public typealias TapRecentCardCellConfig = CollectionCellConfigurator<TapRecentCardCollectionViewCell, TapCardRecentCardCellViewModel>
-    
-    lazy var collectionDataSource:[CellConfigurator] = [TapRecentCardCellConfig.init(item: .init(leftAccessoryImage: UIImage(named: "visa"), bodyContent: "1234 5678")),TapRecentCardCellConfig.init(item: .init(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "9876 5432"))]
-    
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tapChipHolder: UIView!
     lazy var chipText = "∙∙∙∙ 1234"
     lazy var showLeftAccessory:Bool = true
@@ -94,18 +89,4 @@ class TapChipExampleViewController: UIViewController {
     }
     */
 
-}
-
-
-extension TapChipExampleViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate,  UICollectionViewDataSource {
-   
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionDataSource.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-    }
-    
-    
 }

@@ -22,5 +22,9 @@ public class TapCellViewModel: NSObject {
             nonNullChangeBlock(viewModel)
         }
     }
+    
+    internal func convertToCellConfigrator() -> CellConfigurator {
+        fatalError("Should be implemented by sub classes")
+    }
 }
 

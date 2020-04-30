@@ -7,7 +7,6 @@
 //
 
 /// This will be a class that holds the extensions developed to the UIImageview needed to simplify the development of the different ui kits
-import Foundation
 import class UIKit.UIImage
 import class UIKit.UIImageView
 import class UIKit.UITapGestureRecognizer

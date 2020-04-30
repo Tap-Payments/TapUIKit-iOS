@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for recent cards","navigationID":"TapChipExampleViewController"])
+        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController"])
+        dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController"])
         tableView.dataSource = self
         tableView.delegate = self
     }

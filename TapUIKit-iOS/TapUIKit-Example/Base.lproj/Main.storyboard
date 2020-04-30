@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,10 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-6h-05P">
-                                <rect key="frame" x="20" y="88" width="374" height="40"/>
+                                <rect key="frame" x="20" y="88" width="50" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="40" id="Vet-Of-B66"/>
+                                    <constraint firstAttribute="width" constant="50" id="t2g-h1-D9R"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left accessory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-Pr-2vH">
@@ -55,43 +55,16 @@
                                     <action selector="changeTextClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pk6-5s-Vg0"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ai6-bW-e7G">
-                                <rect key="frame" x="20" y="244" width="374" height="128"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="GQt-9C-NTm"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WuX-Pb-3xd">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sampleCell" id="7D8-7z-qIp">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hVb-5a-BR9">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f0h-Q5-L5j" secondAttribute="trailing" constant="20" id="0ZB-hB-rk3"/>
                             <constraint firstItem="f0h-Q5-L5j" firstAttribute="centerY" secondItem="R7d-cw-WS5" secondAttribute="centerY" id="2Hp-Ng-ZWk"/>
                             <constraint firstItem="f0h-Q5-L5j" firstAttribute="centerY" secondItem="R7d-cw-WS5" secondAttribute="centerY" id="5c4-oO-PyR"/>
-                            <constraint firstItem="ai6-bW-e7G" firstAttribute="top" secondItem="lAq-rp-Vke" secondAttribute="bottom" id="69w-CF-Uj1"/>
                             <constraint firstItem="JhO-6h-05P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LQl-P8-pYS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ai6-bW-e7G" secondAttribute="trailing" constant="20" id="TiP-df-v6D"/>
-                            <constraint firstItem="ai6-bW-e7G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="YKQ-c4-FRp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yax-gd-dH9" secondAttribute="trailing" constant="20" id="YsI-EP-Baf"/>
                             <constraint firstItem="Pdi-Pr-2vH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hji-be-VCp"/>
                             <constraint firstItem="Pdi-Pr-2vH" firstAttribute="top" secondItem="JhO-6h-05P" secondAttribute="bottom" constant="8" id="jBA-2P-eXx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JhO-6h-05P" secondAttribute="trailing" constant="20" id="lBt-no-Dmx"/>
                             <constraint firstItem="lAq-rp-Vke" firstAttribute="top" secondItem="R7d-cw-WS5" secondAttribute="bottom" constant="18" id="nPK-u1-Kof"/>
                             <constraint firstItem="lAq-rp-Vke" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nYa-Ft-1vY"/>
                             <constraint firstItem="R7d-cw-WS5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oeg-ve-dPu"/>
@@ -102,13 +75,44 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="ai6-bW-e7G" id="Y1z-Ow-4mL"/>
                         <outlet property="tapChipHolder" destination="JhO-6h-05P" id="3cu-am-kUi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2444.9275362318845" y="16.741071428571427"/>
+        </scene>
+        <!--Tap Recent Cards Example View Controller-->
+        <scene sceneID="Ngf-Vn-7R7">
+            <objects>
+                <viewController storyboardIdentifier="TapRecentCardsExampleViewController" id="sfU-JF-0G4" customClass="TapRecentCardsExampleViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fLJ-Nz-62K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-RF-xUi" customClass="TapRecentCollectionView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sV8-bt-MiF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="ghg-RF-xUi" secondAttribute="trailing" id="Wrg-Id-mFJ"/>
+                            <constraint firstItem="ghg-RF-xUi" firstAttribute="top" secondItem="WNc-rx-v9k" secondAttribute="top" id="hUk-C8-Lbo"/>
+                            <constraint firstItem="ghg-RF-xUi" firstAttribute="leading" secondItem="WNc-rx-v9k" secondAttribute="leading" id="iDM-5g-GEB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WNc-rx-v9k"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapRecentCardsView" destination="ghg-RF-xUi" id="7Ay-np-Ig4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xd3-rl-toj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2445" y="714"/>
         </scene>
         <!--TapUIKit-->
         <scene sceneID="5A8-Cy-aD2">

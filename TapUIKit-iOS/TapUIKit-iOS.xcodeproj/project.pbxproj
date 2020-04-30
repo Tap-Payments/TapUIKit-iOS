@@ -23,7 +23,7 @@
 		E8428E002456DB3200D5A45A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8428DFE2456DB3200D5A45A /* LaunchScreen.storyboard */; };
 		E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0A2456F76A00D5A45A /* TapChip.swift */; };
 		E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */; };
-		E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */; };
+		E8428E102457F8D900D5A45A /* TapUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E0F2457F8D900D5A45A /* TapUIExtensions.swift */; };
 		E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */; };
 		E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */; };
 		E8428E1C2458209400D5A45A /* TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; };
@@ -31,9 +31,14 @@
 		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
 		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */; };
-		E8CD5C172459B4F00089185A /* TapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD5C162459B4F00089185A /* TapCollectionViewCell.swift */; };
-		E8CD5C192459B53C0089185A /* TapRecentCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD5C182459B53C0089185A /* TapRecentCardCollectionViewCell.swift */; };
-		E8CD5C1B2459B6680089185A /* TapGoPayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD5C1A2459B6680089185A /* TapGoPayCollectionViewCell.swift */; };
+		E8AE0DEA245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE0DE9245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift */; };
+		E8AE0DF1245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE0DEF245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift */; };
+		E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */; };
+		E8AE0DF5245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE0DF3245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift */; };
+		E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */; };
+		E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */; };
+		E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */; };
+		E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,13 +101,18 @@
 		E8428E012456DB3200D5A45A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8428E0A2456F76A00D5A45A /* TapChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChip.swift; sourceTree = "<group>"; };
 		E8428E0C2457F2C500D5A45A /* TapChipAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipAccessoryView.swift; sourceTree = "<group>"; };
-		E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUIImageViewExtensions.swift; sourceTree = "<group>"; };
+		E8428E0F2457F8D900D5A45A /* TapUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUIExtensions.swift; sourceTree = "<group>"; };
 		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
 		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
 		E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipExampleViewController.swift; sourceTree = "<group>"; };
-		E8CD5C162459B4F00089185A /* TapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCollectionViewCell.swift; sourceTree = "<group>"; };
-		E8CD5C182459B53C0089185A /* TapRecentCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardCollectionViewCell.swift; sourceTree = "<group>"; };
-		E8CD5C1A2459B6680089185A /* TapGoPayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8AE0DE9245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardsExampleViewController.swift; sourceTree = "<group>"; };
+		E8AE0DEF245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayCollectionViewCell.xib; sourceTree = "<group>"; };
+		E8AE0DF3245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapRecentCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellConfiguration.swift; sourceTree = "<group>"; };
+		E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCollectionView.swift; sourceTree = "<group>"; };
+		E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardsCollectionViewModel.swift; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,19 +160,9 @@
 		E835ADB524585A7600E55A68 /* TapCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
-				E835ADB624585AC000E55A68 /* Public */,
+				E8ED3106245AD98500A62D09 /* Internal */,
 			);
 			path = TapCollectionCell;
-			sourceTree = "<group>";
-		};
-		E835ADB624585AC000E55A68 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				E8CD5C162459B4F00089185A /* TapCollectionViewCell.swift */,
-				E8CD5C182459B53C0089185A /* TapRecentCardCollectionViewCell.swift */,
-				E8CD5C1A2459B6680089185A /* TapGoPayCollectionViewCell.swift */,
-			);
-			path = Public;
 			sourceTree = "<group>";
 		};
 		E835ADB724597A9000E55A68 /* Views */ = {
@@ -218,6 +218,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E8AE0DE6245AEC57007AAE1F /* TapRecentCardsExample */,
 				E835ADB3245850E700E55A68 /* GoogleService-Info.plist */,
 				E8428E2624583B2F00D5A45A /* TapChipExample */,
 				E8428DF32456DB3200D5A45A /* AppDelegate.swift */,
@@ -244,6 +245,7 @@
 		E8428E062456EE5A00D5A45A /* Recent Cards */ = {
 			isa = PBXGroup;
 			children = (
+				E8ED3107245AD9B700A62D09 /* TapCollectionView */,
 				E835ADB524585A7600E55A68 /* TapCollectionCell */,
 				E8428E072456EE8A00D5A45A /* Chip Element */,
 			);
@@ -278,7 +280,7 @@
 		E8428E0E2457F8C000D5A45A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E8428E0F2457F8D900D5A45A /* TapUIImageViewExtensions.swift */,
+				E8428E0F2457F8D900D5A45A /* TapUIExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,6 +301,51 @@
 				E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */,
 			);
 			path = TapChipExample;
+			sourceTree = "<group>";
+		};
+		E8AE0DE6245AEC57007AAE1F /* TapRecentCardsExample */ = {
+			isa = PBXGroup;
+			children = (
+				E8AE0DE9245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift */,
+			);
+			path = TapRecentCardsExample;
+			sourceTree = "<group>";
+		};
+		E8ED3106245AD98500A62D09 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */,
+				E8AE0DEF245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift */,
+				E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */,
+				E8AE0DF3245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift */,
+				E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		E8ED3107245AD9B700A62D09 /* TapCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E8ED310B245ADA0A00A62D09 /* ViewModels */,
+				E8ED3108245AD9C300A62D09 /* Public */,
+			);
+			path = TapCollectionView;
+			sourceTree = "<group>";
+		};
+		E8ED3108245AD9C300A62D09 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		E8ED310B245ADA0A00A62D09 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +448,8 @@
 			files = (
 				E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */,
 				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
+				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
+				E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,13 +538,15 @@
 			files = (
 				E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */,
 				E835ADC02459808700E55A68 /* TapGoPayCellViewModel.swift in Sources */,
-				E8CD5C172459B4F00089185A /* TapCollectionViewCell.swift in Sources */,
-				E8CD5C192459B53C0089185A /* TapRecentCardCollectionViewCell.swift in Sources */,
+				E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */,
+				E8AE0DF5245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift in Sources */,
+				E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */,
 				E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */,
 				E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */,
-				E8CD5C1B2459B6680089185A /* TapGoPayCollectionViewCell.swift in Sources */,
-				E8428E102457F8D900D5A45A /* TapUIImageViewExtensions.swift in Sources */,
+				E8428E102457F8D900D5A45A /* TapUIExtensions.swift in Sources */,
 				E835ADBE24597F2F00E55A68 /* TapChipCellViewModel.swift in Sources */,
+				E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */,
+				E8AE0DF1245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift in Sources */,
 				E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +559,7 @@
 				E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */,
 				E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */,
 				E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */,
+				E8AE0DEA245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
