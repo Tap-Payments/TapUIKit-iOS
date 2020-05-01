@@ -8,7 +8,7 @@
             "itemSpacing": 5,
             "chipHeight": 40,
             "shadow":{
-                "color": "#000000",
+                "color": "#00000014",
                 "radius": 3,
                 "offsetWidth": 0,
                 "offsetHeight": 0,

@@ -56,4 +56,12 @@ internal class TapGenericCollectionViewCell: UICollectionViewCell {
     func cellViewModel() -> TapCellViewModel? {
         fatalError("Must be implemeneted by the sub class")
     }
+    
+    func selectCell() {
+        fatalError("Must be implemeneted by the sub class")
+    }
+    
+    func deSelectCell() {
+        fatalError("Must be implemeneted by the sub class")
+    }
 }

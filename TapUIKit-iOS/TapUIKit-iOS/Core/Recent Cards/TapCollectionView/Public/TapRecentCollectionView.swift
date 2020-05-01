@@ -69,6 +69,7 @@ import TapThemeManager2020
         flowLayout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = .clear
+        collectionView.allowsMultipleSelection = false
         addSubview(collectionView)
         viewModel.registerCells(on: collectionView)
         
@@ -120,7 +121,10 @@ extension TapRecentCollectionView:UICollectionViewDelegate, UICollectionViewData
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectItem(at: indexPath)
-        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        viewModel.didDeSelectItem(at: indexPath)
     }
     
 

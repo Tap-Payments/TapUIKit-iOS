@@ -31,6 +31,10 @@ import class UIKit.UINib
         handleItemSelection(cell: cellConfigurator(at: indexPath))
     }
     
+    internal func didDeSelectItem(at indexPath:IndexPath) {
+        handleItemDeSelection(cell: cellConfigurator(at: indexPath))
+    }
+    
     internal func registerCells(on collectionView:UICollectionView) {
         
         collectionView.register(UINib(nibName:String(describing: TapRecentCardCollectionViewCell.self), bundle: Bundle(for: TapRecentCardCollectionViewCell.self)), forCellWithReuseIdentifier: String(describing: TapRecentCardCollectionViewCell.self))
@@ -48,6 +52,8 @@ import class UIKit.UINib
         
         if let clickedCell:TapGenericCollectionViewCell = cell.collectionViewCell,
            let nonNullDelegate = delegate{
+            clickedCell.selectCell()
+            
             switch clickedCell.cellViewModel().self {
             case is TapGoPayCellViewModel:
                 nonNullDelegate.goPayClicked(with: clickedCell.cellViewModel() as! TapGoPayCellViewModel)
@@ -57,6 +63,13 @@ import class UIKit.UINib
                 break
             }
             
+        }
+    }
+    
+    internal func handleItemDeSelection(cell: CellConfigurator) {
+        
+        if let clickedCell:TapGenericCollectionViewCell = cell.collectionViewCell {
+            clickedCell.deSelectCell()
         }
     }
     

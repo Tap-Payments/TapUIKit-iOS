@@ -25,6 +25,9 @@ class TapSeparatorCollectionViewCell: TapGenericCollectionViewCell {
     override func cellViewModel() -> TapCellViewModel? {
         return nil
     }
+    
+    override func selectCell() {}
+    override func deSelectCell() {}
 
 }
 

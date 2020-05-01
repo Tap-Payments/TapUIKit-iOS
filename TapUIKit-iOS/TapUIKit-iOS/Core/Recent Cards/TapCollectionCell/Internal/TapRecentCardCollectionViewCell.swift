@@ -24,6 +24,14 @@ class TapRecentCardCollectionViewCell: TapGenericCollectionViewCell {
     override func cellViewModel() -> TapCardRecentCardCellViewModel? {
         return viewModel
     }
+    
+    override func selectCell() {
+        tapChipCard.showShadow(glowing: true)
+    }
+    
+    override func deSelectCell() {
+         tapChipCard.showShadow(glowing: false)
+    }
 }
 
 
