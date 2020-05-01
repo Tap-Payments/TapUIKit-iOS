@@ -8,14 +8,21 @@
 
 import UIKit
 
-class TapGoPayCollectionViewCell: UICollectionViewCell {
+class TapGoPayCollectionViewCell: TapGenericCollectionViewCell {
 
     @IBOutlet weak var containterView: UIStackView!
-    var tapCardChip: TapChip?
+    var tapChipCard: TapChip = .init()
+    var viewModel:TapGoPayCellViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        tapChipCard = TapChip(frame:containterView.bounds)
+        containterView.addArrangedSubview(tapChipCard)
         // Initialization code
+    }
+    
+    override func cellViewModel() -> TapGoPayCellViewModel? {
+        return viewModel
     }
 
 }
@@ -24,13 +31,15 @@ extension TapGoPayCollectionViewCell: ConfigurableCell {
     typealias DataType = TapGoPayCellViewModel
     
     func configure(data: TapGoPayCellViewModel) {
-        tapCardChip = TapChip(frame:containterView.bounds)
-        containterView.addArrangedSubview(tapCardChip!)
-        tapCardChip!.setup(viewModel: data)
+        
+        viewModel = data
+        
+        tapChipCard.setup(viewModel: data)
+        
         self.layoutIfNeeded()
     }
     
     func size() -> CGSize {
-        return CGSize(width:tapCardChip!.computeNeededWidth(),height: 40)
+        return CGSize(width:tapChipCard.computeNeededWidth(),height: 40)
     }
 }

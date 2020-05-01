@@ -16,21 +16,22 @@ class TapRecentCardsExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewModel:TapCardsCollectionViewModel = .init(with: [TapGoPayCellViewModel(),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "visa"), bodyContent: "123 456"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012")])
+        let viewModel:TapCardsCollectionViewModel = .init(with: [TapGoPayCellViewModel(),TapSeparatorViewModel(),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "visa"), bodyContent: "123 456"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012")])
         //let viewModel:TapCardsCollectionViewModel = .init(with: [TapGoPayCellViewModel()])
         // Do any additional setup after loading the view.
         tapRecentCardsView.setup(with: viewModel)
+        
+        viewModel.delegate = self
+    }
+}
+
+
+extension TapRecentCardsExampleViewController: TapCardsCollectionProtocol {
+    func recentCardClicked(with viewModel: TapCardRecentCardCellViewModel) {
+        print("CARD CLICKED : \(viewModel.bodyContent)")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func goPayClicked(with viewModel: TapGoPayCellViewModel) {
+        print("GO PAY CLICKED")
     }
-    */
-
 }

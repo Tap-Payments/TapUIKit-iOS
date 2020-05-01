@@ -7,6 +7,7 @@
 //
 
 import SnapKit
+import TapThemeManager2020
 
 @objc public class TapRecentCollectionView: UIView {
 
@@ -29,11 +30,35 @@ import SnapKit
     
     
     internal func setupViews() {
+        
+        applyTheme()
         addViews()
         addConstrains()
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    internal func applyTheme() {
+        
+        // Check if the file exists
+        let bundle:Bundle = Bundle(for: type(of: self))
+        // Based on the current display mode, we decide which default theme file we will use
+        let themeFile:String = (self.traitCollection.userInterfaceStyle == .dark) ? "DefaultDarkTheme" : "DefaultLightTheme"
+        // Defensive code to make sure all is loaded correctly
+        guard let jsonPath = bundle.path(forResource: themeFile, ofType: "json") else {
+            print("TapThemeManager WARNING: Can't find json 'DefaultTheme'")
+            return
+        }
+        // Check if the file is correctly parsable
+        guard
+            let data = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)),
+            let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed),
+            let jsonDict = json as? NSDictionary else {
+                print("TapThemeManager WARNING: Can't read json 'DefaultTheme' at: \(jsonPath)")
+                return
+        }
+        TapThemeManager.setTapTheme(themeDict: jsonDict)
     }
     
     internal func addViews() {
@@ -52,9 +77,17 @@ import SnapKit
     
     internal func addConstrains() {
         collectionView.snp.remakeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
         }
     }
+    
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+           super.traitCollectionDidChange(previousTraitCollection)
+           applyTheme()
+       }
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -87,6 +120,27 @@ extension TapRecentCollectionView:UICollectionViewDelegate, UICollectionViewData
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectItem(at: indexPath)
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
+    
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
+        // splace between two cell horizonatally
+        return 8
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+        // splace between two cell vertically
+        return 7
+    }
+    
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
+        // give space top left bottom and right for cells
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+   
 }
 

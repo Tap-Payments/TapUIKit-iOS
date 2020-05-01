@@ -94,6 +94,12 @@ import TapThemeManager2020
     
     /// Internal helper method to apply the default theme
     internal func applyDefaultTheme() {
+        // Check if there is a theme already applied
+        if let nonNullCurrentTheme = TapThemeManager.currentTheme {
+            themingDictionary = nonNullCurrentTheme
+            applyingDefaultTheme = false
+            return
+        }
         // Check if the file exists
         let bundle:Bundle = Bundle(for: type(of: self))
         // Based on the current display mode, we decide which default theme file we will use

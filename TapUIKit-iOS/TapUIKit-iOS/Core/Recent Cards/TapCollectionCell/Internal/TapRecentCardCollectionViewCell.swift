@@ -8,14 +8,21 @@
 
 import UIKit
 
-class TapRecentCardCollectionViewCell: UICollectionViewCell {
+class TapRecentCardCollectionViewCell: TapGenericCollectionViewCell {
 
     @IBOutlet weak var containerView: UIStackView!
-    var tapChipCard: TapChip?
+    var tapChipCard: TapChip = .init()
+    var viewModel:TapCardRecentCardCellViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        tapChipCard = TapChip(frame:containerView.bounds)
+        containerView.addArrangedSubview(tapChipCard)
+    }
+    
+    override func cellViewModel() -> TapCardRecentCardCellViewModel? {
+        return viewModel
     }
 }
 
@@ -25,14 +32,13 @@ extension TapRecentCardCollectionViewCell: ConfigurableCell {
     typealias DataType = TapCardRecentCardCellViewModel
     
     func configure(data: TapCardRecentCardCellViewModel) {
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        tapChipCard = TapChip(frame:containerView.bounds)
-        containerView.addArrangedSubview(tapChipCard!)
-        tapChipCard!.setup(viewModel: data)
+        //containerView.translatesAutoresizingMaskIntoConstraints = false
+        viewModel = data
+        tapChipCard.setup(viewModel: data)
         self.layoutIfNeeded()
     }
     
     func size() -> CGSize {
-        return CGSize(width:tapChipCard!.computeNeededWidth(),height: 40)
+        return CGSize(width:tapChipCard.computeNeededWidth(),height: 40)
     }
 }
