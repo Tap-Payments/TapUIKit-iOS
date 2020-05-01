@@ -6,7 +6,8 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import class UIKit.UIStackView
+import struct UIKit.CGSize
 
 class TapGoPayCollectionViewCell: TapGenericCollectionViewCell {
 

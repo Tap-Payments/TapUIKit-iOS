@@ -6,20 +6,12 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import struct UIKit.CGSize
 
 class TapSeparatorCollectionViewCell: TapGenericCollectionViewCell {
 
-    //@IBOutlet weak var containerView: UIStackView!
-    //var imageView: UIImageView = UIImageView()
-    
-    override func awakeFromNib() {
+     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        /*imageView.image = UIImage.loadLocally(with: "separator", from: type(of: self))
-        imageView.contentMode = .scaleToFill
-        containerView.addArrangedSubview(imageView)*/
-        //containerView.alignment = .center
     }
     
     override func cellViewModel() -> TapCellViewModel? {

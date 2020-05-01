@@ -11,9 +11,7 @@ import struct UIKit.CGSize
 import class UIKit.UICollectionView
 import class UIKit.UICollectionViewCell
 
-protocol ConfigurableCellBase: class{}
-
-protocol ConfigurableCell:ConfigurableCellBase {
+protocol ConfigurableCell {
     associatedtype DataType
     func configure(data: DataType)
     func size() -> CGSize
