@@ -1,5 +1,10 @@
 {
     "recentCards": {
+        "collectionView": {
+            "spaceBetweenCells":7,
+            "backgroundColor": "#000000",
+            "height": 40
+        },
         "chipUI": {
             "commonAttributes": {
                 "backgroundColor": "#000000",
