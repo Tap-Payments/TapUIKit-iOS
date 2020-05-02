@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MOLH
 
 class ViewController: UIViewController {
     
@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController"])
         tableView.dataSource = self
         tableView.delegate = self
+        MOLH.setLanguageTo("en")
+        MOLH.reset()
     }
 }
 

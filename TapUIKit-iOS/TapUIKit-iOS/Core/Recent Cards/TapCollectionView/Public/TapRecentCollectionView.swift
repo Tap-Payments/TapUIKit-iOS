@@ -8,9 +8,9 @@
 
 import SnapKit
 import TapThemeManager2020
-
+import MOLH
 /// This class represents the UIView that Tap uses to show the list of the recently used card scrollable view
-@objc public class TapRecentCollectionView: UIView {
+@objc public class TapRecentCollectionView: MOLHView {
 
     /// The view model that has the data to be shown inside the view and responsible for firing events
     private var viewModel:TapCardsCollectionViewModel = .init()
@@ -73,7 +73,7 @@ import TapThemeManager2020
     internal func addViews() {
         
         // Adjust the flow layout of the collection view by setting the spacing and the scrolling direction
-        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
         flowLayout.scrollDirection = .horizontal
@@ -81,6 +81,7 @@ import TapThemeManager2020
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = .clear
         collectionView.allowsMultipleSelection = false
+        
         addSubview(collectionView)
         
         // We will ask the view model to register all the needed custom cells to be displayed on our collection view
@@ -146,6 +147,7 @@ extension TapRecentCollectionView:UICollectionViewDelegate, UICollectionViewData
         return CGFloat(TapThemeManager.numberValue(for: "\(themePath).spaceBetweenCells")?.floatValue ?? 0)
     }
 }
+
 
 extension TapRecentCollectionView {
     /**

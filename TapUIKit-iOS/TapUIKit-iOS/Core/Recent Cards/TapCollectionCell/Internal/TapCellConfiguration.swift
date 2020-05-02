@@ -10,6 +10,7 @@ import class UIKit.UIView
 import struct UIKit.CGSize
 import class UIKit.UICollectionView
 import class UIKit.UICollectionViewCell
+import class UIKit.UICollectionViewFlowLayout
 
 /// Protocol that defines the methods and data inside our Tap Generic cell, to be used to allow the collectionview to render cells without actually knowing them
 protocol ConfigurableCell {
@@ -80,3 +81,11 @@ internal class TapGenericCollectionViewCell: UICollectionViewCell {
         fatalError("Must be implemeneted by the sub class")
     }
 }
+
+
+internal class flippableCollectionLayout:UICollectionViewFlowLayout{
+    override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+        return true
+    }
+}
+

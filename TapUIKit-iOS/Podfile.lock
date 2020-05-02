@@ -61,6 +61,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.6.0):
     - GoogleUtilities/Logger
+  - MOLH (1.3)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -72,6 +73,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - MOLH
   - SnapKit
   - TapThemeManager2020
 
@@ -87,6 +89,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - MOLH
     - nanopb
     - PromisesObjC
     - SnapKit
@@ -103,11 +106,12 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 061fe7d9b476710e3cd8ea51e8e07d8b67c2b420
   GoogleDataTransportCCTSupport: 0f39025e8cf51f168711bd3fb773938d7e62ddb5
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  MOLH: a31ef0b87351074d81253606a96b290f9eca161a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   TapThemeManager2020: df3be57f5e815931e8ba63c407d3d68248ed6a7d
 
-PODFILE CHECKSUM: 0627e937ddc57e42b22d0c56b93443fdcde39a8f
+PODFILE CHECKSUM: 6187073f894059af1f8eba416aa2e0185936e125
 
 COCOAPODS: 1.8.4

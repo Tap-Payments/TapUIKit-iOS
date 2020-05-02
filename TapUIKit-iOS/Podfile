@@ -5,6 +5,7 @@ target 'TapUIKit-Example' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Firebase/Analytics'
+  pod 'MOLH'
   # Pods for TapUIKit-Example
 
 end
@@ -16,4 +17,5 @@ target 'TapUIKit-iOS' do
   # Pods for TapUIKit-iOS
   pod 'SnapKit'
   pod 'TapThemeManager2020'
+  pod 'MOLH'
 end
