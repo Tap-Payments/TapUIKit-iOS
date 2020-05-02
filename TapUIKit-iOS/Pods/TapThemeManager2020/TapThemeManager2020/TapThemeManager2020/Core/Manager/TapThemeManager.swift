@@ -64,9 +64,16 @@ public extension TapThemeManager {
     */
     @objc class func setTapTheme(jsonName: String) {
         // Check if the file exists
+        guard let jsonDict = loadDictFrom(jsonName: jsonName) else {return}
+        // All good, now change the theme :)
+        self.setTapTheme(themeDict: jsonDict)
+    }
+    
+     class func loadDictFrom(jsonName: String) -> NSDictionary? {
+        // Check if the file exists
         guard let jsonPath = TapThemePath.themeJsonPath(fileName: jsonName) else {
             print("TapThemeManager WARNING: Can't find json '\(jsonName)'")
-            return
+            return nil
         }
         // Check if the file is correctly parsable
         guard
@@ -74,10 +81,10 @@ public extension TapThemeManager {
             let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed),
             let jsonDict = json as? NSDictionary else {
             print("TapThemeManager WARNING: Can't read json '\(jsonName)' at: \(jsonPath)")
-            return
+            return nil
         }
-        // All good, now change the theme :)
-        self.setTapTheme(themeDict: jsonDict)
+        
+        return jsonDict
     }
     
     /**

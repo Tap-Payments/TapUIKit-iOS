@@ -91,10 +91,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-RF-xUi" customClass="TapRecentCollectionView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="sV8-bt-MiF"/>
+                                    <constraint firstAttribute="height" constant="70" id="sV8-bt-MiF"/>
                                 </constraints>
                             </view>
                         </subviews>

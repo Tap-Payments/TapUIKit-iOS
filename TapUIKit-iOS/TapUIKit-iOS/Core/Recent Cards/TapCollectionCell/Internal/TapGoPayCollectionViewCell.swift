@@ -42,7 +42,7 @@ extension TapGoPayCollectionViewCell: ConfigurableCell {
         
         viewModel = data
         
-        tapChipCard.setup(viewModel: data)
+        tapChipCard.setup(viewModel: data,themeAlreadyApplied: true)
         
         self.layoutIfNeeded()
     }

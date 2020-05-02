@@ -16,6 +16,16 @@ import TapThemeManager2020
     private var viewModel:TapCardsCollectionViewModel = .init()
     /// The collection view that will be used to show a horizontal scrollable list of recent cards
     private lazy var collectionView:UICollectionView = UICollectionView()
+    /// States if the view is using the default TAP theme or a custom one
+    internal lazy var applyingDefaultTheme:Bool = true
+    /// The current theme being applied
+    internal var themingDictionary:NSDictionary?
+    /// This defines in which path should we look into the theme based on the card input mode
+    internal var themePath:String = "recentCards.collectionView"
+    /// Defines if we need to apply a theme from our own, default is false. This is used if the caller already applied a theme
+    internal lazy var themeAlreadyApplied:Bool = false
+    
+    internal static var weSetTheTheme:Bool?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,11 +38,21 @@ import TapThemeManager2020
     /**
      Setupu the view by passing in the viewModel
      - Parameter viewModel: The view model that has the needed info to be shown and rendered inside the view
+     - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
+     - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
+     - Parameter themeAlreadyApplied: Defines if we need to apply a theme from our own, default is false. This is used if the caller already applied a theme
      */
-    @objc public func setup(with viewModel:TapCardsCollectionViewModel) {
+    @objc public func setup(with viewModel:TapCardsCollectionViewModel, themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil,themeAlreadyApplied: Bool = false) {
         // Save the view
         self.viewModel = viewModel
-        // Setup the needed views and constraints
+        self.themeAlreadyApplied = themeAlreadyApplied
+        // Decide which theme we will use
+        if themeAlreadyApplied {
+            themingDictionary = TapThemeManager.currentTheme
+        }else {
+            configureThemeSource(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
+        }
+        // Kick off the layout inflation
         setupViews()
     }
     
@@ -47,28 +67,6 @@ import TapThemeManager2020
         
         collectionView.delegate = self
         collectionView.dataSource = self
-    }
-    
-    internal func applyTheme() {
-        
-        // Check if the file exists
-        let bundle:Bundle = Bundle(for: type(of: self))
-        // Based on the current display mode, we decide which default theme file we will use
-        let themeFile:String = (self.traitCollection.userInterfaceStyle == .dark) ? "DefaultDarkTheme" : "DefaultLightTheme"
-        // Defensive code to make sure all is loaded correctly
-        guard let jsonPath = bundle.path(forResource: themeFile, ofType: "json") else {
-            print("TapThemeManager WARNING: Can't find json 'DefaultTheme'")
-            return
-        }
-        // Check if the file is correctly parsable
-        guard
-            let data = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)),
-            let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed),
-            let jsonDict = json as? NSDictionary else {
-                print("TapThemeManager WARNING: Can't read json 'DefaultTheme' at: \(jsonPath)")
-                return
-        }
-        TapThemeManager.setTapTheme(themeDict: jsonDict)
     }
     
     /// Method used to add and configure the subviews
@@ -103,9 +101,15 @@ import TapThemeManager2020
     
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
            super.traitCollectionDidChange(previousTraitCollection)
-        // If we are using the default theme, then we will listen to the display mode changes and apply light or dark mode respectively
-           applyTheme()
-       }
+        // In here we do listen to the trait collection change event :), this leads to changing the theme based on dark or light mode activated by the user at run time.
+         guard applyingDefaultTheme && !themeAlreadyApplied else {
+                   // We will do nothing, if the view is using a customised given theme as it should be handled by the caller.
+                   return
+               }
+        // If the view is set to use the default theme, hence, we change the theme based on the dark or light mode is activated
+        applyDefaultTheme()
+        applyTheme()
+    }
 }
 
 // Extension that will implement the needed logic to configure and listen to events coming in the collection voew
@@ -123,7 +127,6 @@ extension TapRecentCollectionView:UICollectionViewDelegate, UICollectionViewData
         
         // Ask the cell to configure itself
         cellConfig.configure(cell: cell)
-        cell.layoutIfNeeded()
         
         return cell
     }
@@ -137,22 +140,71 @@ extension TapRecentCollectionView:UICollectionViewDelegate, UICollectionViewData
         // Inform the view model that user deselected a certain cell
         viewModel.didDeSelectItem(at: indexPath)
     }
-
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
-        // splace between two cell horizonatally
-        return 8
-    }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-        // splace between two cell vertically
-        return 7
+        // splace between two cell horizontally
+        return CGFloat(TapThemeManager.numberValue(for: "\(themePath).spaceBetweenCells")?.floatValue ?? 0)
+    }
+}
+
+extension TapRecentCollectionView {
+    /**
+       Method used to decide which theme will we use from a given dict, given json or the default one
+       - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
+       - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
+       */
+    internal func configureThemeSource(themeDictionary: NSDictionary? = nil, jsonTheme: String? = nil) {
+        guard let themeDict = themeSelector(themeDictionary: themeDictionary, jsonTheme: jsonTheme) else {
+            // Then we se the default theme
+            applyingDefaultTheme = true
+            applyDefaultTheme()
+            return
+        }
+        applyingDefaultTheme = false
+        themingDictionary = themeDict
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
-        // give space top left bottom and right for cells
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    /// Internal helper method to apply the default theme
+    internal func applyDefaultTheme() {
+       // Check if there is a theme already applied
+        if themeAlreadyApplied {
+            return
+        }
+        // Check if the file exists
+        let bundle:Bundle = Bundle(for: type(of: self))
+        guard let jsonDict = loadTheme(from: bundle, lightModeName: "DefaultLightTheme", darkModeName: "DefaultDarkTheme") else {
+            return
+        }
+        
+        themingDictionary = jsonDict
+        applyingDefaultTheme = true
     }
     
-   
+     /// This method is responsible for applying the correct theme and setting and matching the theme attributes
+       @objc public func applyTheme(themingDict:NSDictionary? = nil) {
+           // Defensive coding to make sure theme is alredy selected before actually applying one
+           if !themeAlreadyApplied {
+               if let nonNullThemingDict = themingDict {
+                   self.themingDictionary = nonNullThemingDict
+                   applyingDefaultTheme = false
+               }
+               guard let nonNullThemingDictionary = themingDictionary else {return}
+               TapThemeManager.setTapTheme(themeDict: nonNullThemingDictionary)
+           }
+           matchThemeAttribtes()
+           
+       }
+    
+    /// This method matches the correct ui elements to its theme path inside the theme object
+    internal func matchThemeAttribtes() {
+       // background color
+        self.tap_theme_backgroundColor = ThemeUIColorSelector.init(keyPath: "\(themePath).backgroundColor")
+        // The border color
+        self.layer.tap_theme_borderColor = ThemeCgColorSelector.init(keyPath: "\(themePath).borderColor")
+        // The border width
+        self.layer.tap_theme_borderWidth = ThemeCGFloatSelector.init(keyPath: "\(themePath).borderWidth")
+        // The border rounded corners
+        self.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
+    }
 }
 

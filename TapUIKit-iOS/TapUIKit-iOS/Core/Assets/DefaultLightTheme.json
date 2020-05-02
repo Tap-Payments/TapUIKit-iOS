@@ -3,7 +3,10 @@
         "collectionView": {
             "spaceBetweenCells":7,
             "backgroundColor": "#FFFFFF",
-            "height": 40
+            "height": 90,
+            "borderColor": "#0066FF",
+            "cornerRadius": 8,
+            "borderWidth": 0
         },
         "chipUI": {
             "commonAttributes": {
