@@ -97,23 +97,21 @@ import class UIKit.UINib
     internal func handleItemSelection(cell: CellConfigurator) {
         
         // Defensice code to check first, if there is an actual cell passed and there is a delegate that wants to hear back from us
-        if let clickedCell:TapGenericCollectionViewCell = cell.collectionViewCell,
-           let nonNullDelegate = delegate{
-            // All good
-            
+        if let clickedCell:TapGenericCollectionViewCell = cell.collectionViewCell {
             // We inform the cell to perform the ui related to being selected
             clickedCell.selectCell()
-            
-            // Based on the selected cell type, we determine which delegate method we will call
-            switch clickedCell.cellViewModel().self {
-            case is TapGoPayCellViewModel:
-                nonNullDelegate.goPayClicked(with: clickedCell.cellViewModel() as! TapGoPayCellViewModel)
-            case is TapCardRecentCardCellViewModel:
-                nonNullDelegate.recentCardClicked(with: clickedCell.cellViewModel() as! TapCardRecentCardCellViewModel)
-            default:
-                break
+           if let nonNullDelegate = delegate {
+                // All good
+                // Based on the selected cell type, we determine which delegate method we will call
+                switch clickedCell.cellViewModel().self {
+                case is TapGoPayCellViewModel:
+                    nonNullDelegate.goPayClicked(with: clickedCell.cellViewModel() as! TapGoPayCellViewModel)
+                case is TapCardRecentCardCellViewModel:
+                    nonNullDelegate.recentCardClicked(with: clickedCell.cellViewModel() as! TapCardRecentCardCellViewModel)
+                default:
+                    break
+                }
             }
-            
         }
     }
     
