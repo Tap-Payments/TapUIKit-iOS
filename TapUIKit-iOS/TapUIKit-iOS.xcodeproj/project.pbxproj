@@ -40,6 +40,7 @@
 		E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */; };
 		E8AE0DFE245B10C0007AAE1F /* TapSeparatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE0DFD245B10C0007AAE1F /* TapSeparatorViewModel.swift */; };
 		E8AE0E00245B620F007AAE1F /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DFF245B620F007AAE1F /* separator.png */; };
+		E8ECF5A3245EA06900C88BE0 /* TapRecentCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */; };
 		E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */; };
 		E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */; };
 		E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */; };
@@ -118,6 +119,7 @@
 		E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8AE0DFD245B10C0007AAE1F /* TapSeparatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewModel.swift; sourceTree = "<group>"; };
 		E8AE0DFF245B620F007AAE1F /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
+		E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardsView.swift; sourceTree = "<group>"; };
 		E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellConfiguration.swift; sourceTree = "<group>"; };
 		E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCollectionView.swift; sourceTree = "<group>"; };
 		E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardsCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		E8428E062456EE5A00D5A45A /* Recent Cards */ = {
 			isa = PBXGroup;
 			children = (
+				E8ECF5A1245E9F9900C88BE0 /* RecentCardsView */,
 				E8ED3107245AD9B700A62D09 /* TapCollectionView */,
 				E835ADB524585A7600E55A68 /* TapCollectionCell */,
 				E8428E072456EE8A00D5A45A /* Chip Element */,
@@ -324,6 +327,30 @@
 			path = TapRecentCardsExample;
 			sourceTree = "<group>";
 		};
+		E8ECF5A1245E9F9900C88BE0 /* RecentCardsView */ = {
+			isa = PBXGroup;
+			children = (
+				E8ECF5A5245EA28C00C88BE0 /* ViewModels */,
+				E8ECF5A4245EA28700C88BE0 /* Views */,
+			);
+			path = RecentCardsView;
+			sourceTree = "<group>";
+		};
+		E8ECF5A4245EA28700C88BE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E8ECF5A5245EA28C00C88BE0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E8ED3106245AD98500A62D09 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,17 +366,17 @@
 			isa = PBXGroup;
 			children = (
 				E8ED310B245ADA0A00A62D09 /* ViewModels */,
-				E8ED3108245AD9C300A62D09 /* Public */,
+				E8ED3108245AD9C300A62D09 /* Views */,
 			);
 			path = TapCollectionView;
 			sourceTree = "<group>";
 		};
-		E8ED3108245AD9C300A62D09 /* Public */ = {
+		E8ED3108245AD9C300A62D09 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */,
 			);
-			path = Public;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E8ED310B245ADA0A00A62D09 /* ViewModels */ = {
@@ -553,6 +580,7 @@
 				E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */,
 				E835ADC02459808700E55A68 /* TapGoPayCellViewModel.swift in Sources */,
 				E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */,
+				E8ECF5A3245EA06900C88BE0 /* TapRecentCardsView.swift in Sources */,
 				E8AE0DF5245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift in Sources */,
 				E8AE0DFE245B10C0007AAE1F /* TapSeparatorViewModel.swift in Sources */,
 				E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */,
@@ -792,6 +820,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -812,6 +841,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

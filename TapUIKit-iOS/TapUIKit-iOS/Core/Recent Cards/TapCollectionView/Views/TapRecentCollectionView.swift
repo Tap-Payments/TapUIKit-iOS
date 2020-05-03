@@ -24,9 +24,7 @@ import MOLH
     internal var themePath:String = "recentCards.collectionView"
     /// Defines if we need to apply a theme from our own, default is false. This is used if the caller already applied a theme
     internal lazy var themeAlreadyApplied:Bool = false
-    
-    internal static var weSetTheTheme:Bool?
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

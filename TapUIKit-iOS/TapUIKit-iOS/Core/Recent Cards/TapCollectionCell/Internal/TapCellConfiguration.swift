@@ -82,8 +82,11 @@ internal class TapGenericCollectionViewCell: UICollectionViewCell {
     }
 }
 
-
+/// A subclass for the uicollecrionviewflow layout to control RTL or LTR scrolling
 internal class flippableCollectionLayout:UICollectionViewFlowLayout{
+    /**
+     Override the given attribute to decide what is the scrolling direction based on the currently selected language direction
+     */
     override var flipsHorizontallyInOppositeLayoutDirection: Bool {
         return MOLHLanguage.isRTLLanguage()
     }
