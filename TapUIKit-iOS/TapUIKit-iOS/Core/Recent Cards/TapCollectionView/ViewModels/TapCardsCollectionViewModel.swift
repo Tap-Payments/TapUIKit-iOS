@@ -21,6 +21,11 @@ import class UIKit.UINib
     - Parameter viewModel : The TapGoPayCellViewModel holding the information about the clicked/selected GoPay
     */
     @objc func goPayClicked(with viewModel:TapGoPayCellViewModel)
+    /**
+     Will be fired once a user clicks on a edit button
+     - Parameter viewModel : The TapCardRecentCardCellViewModel holding the information about the clicked/selected recent card
+     */
+    @objc func editRecentCardsClicked()
 }
 
 /// Represents the View model responsible for managing the data and the events shown and reacted to inside the TapRecentCards view
@@ -126,6 +131,17 @@ import class UIKit.UINib
             
             // We inform the cell to perform the ui related to being deselected
             clickedCell.deSelectCell()
+        }
+    }
+    
+    /**
+    The method is responsible for the logic to be done when the user clicks on the Edit cards button
+    */
+    internal func handleEditCardClick() {
+        // Defensive code to check first, if there is an delegte
+        if let nonNullDelegate = delegate {
+            // All good
+            nonNullDelegate.editRecentCardsClicked()
         }
     }
     

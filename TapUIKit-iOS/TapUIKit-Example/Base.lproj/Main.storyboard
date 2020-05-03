@@ -97,22 +97,43 @@
                                     <constraint firstAttribute="height" constant="70" id="sV8-bt-MiF"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m8O-uw-xAH">
+                                <rect key="frame" x="20" y="195" width="374" height="647"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delegates callbacks from the view above ☝ will be noted down 👇" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLB-Fy-Rnd">
+                                <rect key="frame" x="20" y="134" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="m8O-uw-xAH" secondAttribute="trailing" constant="20" id="3yX-Kh-EPy"/>
+                            <constraint firstItem="m8O-uw-xAH" firstAttribute="top" secondItem="fLB-Fy-Rnd" secondAttribute="bottom" constant="20" id="LMg-Zu-rgC"/>
                             <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="ghg-RF-xUi" secondAttribute="trailing" id="Wrg-Id-mFJ"/>
+                            <constraint firstItem="fLB-Fy-Rnd" firstAttribute="top" secondItem="ghg-RF-xUi" secondAttribute="bottom" constant="20" id="cXF-5s-0zv"/>
                             <constraint firstItem="ghg-RF-xUi" firstAttribute="top" secondItem="WNc-rx-v9k" secondAttribute="top" id="hUk-C8-Lbo"/>
                             <constraint firstItem="ghg-RF-xUi" firstAttribute="leading" secondItem="WNc-rx-v9k" secondAttribute="leading" id="iDM-5g-GEB"/>
+                            <constraint firstItem="WNc-rx-v9k" firstAttribute="bottom" secondItem="m8O-uw-xAH" secondAttribute="bottom" constant="20" id="k5b-hR-1qn"/>
+                            <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="fLB-Fy-Rnd" secondAttribute="trailing" constant="20" id="q0H-Lj-tNR"/>
+                            <constraint firstItem="fLB-Fy-Rnd" firstAttribute="leading" secondItem="WNc-rx-v9k" secondAttribute="leading" constant="20" id="tkB-RP-e9n"/>
+                            <constraint firstItem="m8O-uw-xAH" firstAttribute="leading" secondItem="fLJ-Nz-62K" secondAttribute="leading" constant="20" id="xJk-cT-Cli"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WNc-rx-v9k"/>
                     </view>
                     <connections>
+                        <outlet property="callBackTextView" destination="m8O-uw-xAH" id="E3N-OS-iad"/>
                         <outlet property="tapRecentCardsView" destination="ghg-RF-xUi" id="7Ay-np-Ig4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd3-rl-toj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="714"/>
+            <point key="canvasLocation" x="2444.9275362318845" y="713.83928571428567"/>
         </scene>
         <!--TapUIKit-->
         <scene sceneID="5A8-Cy-aD2">
@@ -206,16 +227,37 @@
                                     <constraint firstAttribute="height" constant="106" id="l5R-Yn-rs6"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EUx-jK-Z2J">
+                                <rect key="frame" x="20" y="231" width="374" height="645"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delegates callbacks from the view above ☝ will be noted down 👇" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfF-n1-qnh">
+                                <rect key="frame" x="20" y="170" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Jpx-zC-iGr" firstAttribute="top" secondItem="sIe-86-UOH" secondAttribute="top" id="3lO-pM-pw9"/>
+                            <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="bfF-n1-qnh" secondAttribute="trailing" constant="20" id="7nc-pT-xqZ"/>
+                            <constraint firstItem="EUx-jK-Z2J" firstAttribute="top" secondItem="bfF-n1-qnh" secondAttribute="bottom" constant="20" id="IAT-rV-uaN"/>
+                            <constraint firstItem="bfF-n1-qnh" firstAttribute="top" secondItem="Jpx-zC-iGr" secondAttribute="bottom" constant="20" id="TlN-Uc-loM"/>
+                            <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="EUx-jK-Z2J" secondAttribute="trailing" constant="20" id="TrX-V7-j9o"/>
                             <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="Jpx-zC-iGr" secondAttribute="trailing" id="hPp-Ds-DEf"/>
+                            <constraint firstItem="bfF-n1-qnh" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" constant="20" id="huM-ju-dVJ"/>
                             <constraint firstItem="Jpx-zC-iGr" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" id="u6v-YR-Nzi"/>
+                            <constraint firstAttribute="bottom" secondItem="EUx-jK-Z2J" secondAttribute="bottom" constant="20" id="v4b-gV-J46"/>
+                            <constraint firstItem="EUx-jK-Z2J" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" constant="20" id="y8v-rb-uOW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sIe-86-UOH"/>
                     </view>
                     <connections>
+                        <outlet property="callBackTextView" destination="EUx-jK-Z2J" id="Maq-yu-WMs"/>
                         <outlet property="tapRecentCardsView" destination="Jpx-zC-iGr" id="7Iu-S2-yPl"/>
                     </connections>
                 </viewController>

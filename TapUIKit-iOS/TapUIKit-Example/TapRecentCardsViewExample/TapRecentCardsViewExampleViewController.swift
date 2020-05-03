@@ -13,6 +13,7 @@ import MOLH
 
 class TapRecentCardsViewExampleViewController: UIViewController {
 
+    @IBOutlet weak var callBackTextView: UITextView!
     @IBOutlet weak var tapRecentCardsView: TapRecentCardsView!
     lazy var lang:String = "en"
     /// Configure the localisation Manager
@@ -28,19 +29,25 @@ class TapRecentCardsViewExampleViewController: UIViewController {
         super.viewWillAppear(animated)
         sharedLocalisationManager.localisationLocale = MOLHLanguage.currentAppleLanguage().lowercased()
         let viewModel:TapCardsCollectionViewModel = .init(with: [TapGoPayCellViewModel(),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "visa"), bodyContent: "123 456"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012")])
+        viewModel.delegate = self
         tapRecentCardsView.setup(with: viewModel)
         tapRecentCardsView.localize(shouldFlip:true)
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension TapRecentCardsViewExampleViewController: TapCardsCollectionProtocol {
+    func editRecentCardsClicked() {
+        print("EDIT CLICKED")
+        callBackTextView.text = "EDIT CLICKED\n\(callBackTextView.text ?? "")"
     }
-    */
-
+    
+    func recentCardClicked(with viewModel: TapCardRecentCardCellViewModel) {
+        print("CARD CLICKED : \(viewModel.bodyContent)")
+        callBackTextView.text = "CARD CLICKED : \(viewModel.bodyContent)\n\(callBackTextView.text ?? "")"
+    }
+    
+    func goPayClicked(with viewModel: TapGoPayCellViewModel) {
+        print("GO PAY CLICKED")
+        callBackTextView.text = "GO PAY CLICKED\n\(callBackTextView.text ?? "")"
+    }
 }

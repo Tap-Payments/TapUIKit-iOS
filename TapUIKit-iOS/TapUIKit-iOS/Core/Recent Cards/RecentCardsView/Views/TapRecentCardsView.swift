@@ -69,6 +69,7 @@ import LocalisationManagerKit_iOS
         
         leftButton.setTitle("Recent", for: .normal)
         rightButton.setTitle("Edit", for: .normal)
+        rightButton.addTarget(self, action: #selector(recentButtonClicked), for:.touchUpInside)
         headerView.addSubview(leftButton)
         headerView.addSubview(rightButton)
         
@@ -119,6 +120,10 @@ import LocalisationManagerKit_iOS
         if shouldFlip {
             MOLH.setLanguageTo(sharedLocalisationManager.localisationLocale ?? "en")
         }
+    }
+    
+    @objc internal func recentButtonClicked() {
+        viewModel.handleEditCardClick()
     }
 }
 

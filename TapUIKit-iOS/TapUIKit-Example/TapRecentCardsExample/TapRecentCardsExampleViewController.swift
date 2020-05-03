@@ -13,6 +13,7 @@ class TapRecentCardsExampleViewController: UIViewController {
 
     @IBOutlet weak var tapRecentCardsView: TapRecentCollectionView!
     lazy var lang:String = "en"
+    @IBOutlet weak var callBackTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,11 +26,18 @@ class TapRecentCardsExampleViewController: UIViewController {
 
 
 extension TapRecentCardsExampleViewController: TapCardsCollectionProtocol {
+    func editRecentCardsClicked() {
+        print("EDIT CLICKED")
+        callBackTextView.text = "EDIT CLICKED\n\(callBackTextView.text ?? "")"
+    }
+    
     func recentCardClicked(with viewModel: TapCardRecentCardCellViewModel) {
         print("CARD CLICKED : \(viewModel.bodyContent)")
+        callBackTextView.text = "CARD CLICKED : \(viewModel.bodyContent)\n\(callBackTextView.text ?? "")"
     }
     
     func goPayClicked(with viewModel: TapGoPayCellViewModel) {
         print("GO PAY CLICKED")
+        callBackTextView.text = "GO PAY CLICKED\n\(callBackTextView.text ?? "")"
     }
 }
