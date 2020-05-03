@@ -18,4 +18,6 @@ target 'TapUIKit-iOS' do
   pod 'SnapKit'
   pod 'TapThemeManager2020'
   pod 'MOLH'
+  pod 'LocalisationManagerKit-iOS'
+  pod 'CommonDataModelsKit-iOS'
 end
