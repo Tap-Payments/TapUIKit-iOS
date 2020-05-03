@@ -17,10 +17,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController"])
-        dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController"])
+        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController","lang":"0"])
+        dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController","lang":"1"])
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         MOLH.setLanguageTo("en")
         MOLH.reset()
     }
@@ -43,12 +47,34 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
         
         if let destnationVC:UIViewController = storyboard?.instantiateViewController(withIdentifier: dataSource[indexPath.row]["navigationID"]!) {
             destnationVC.title = dataSource[indexPath.row]["title"]
-            self.navigationController?.pushViewController(destnationVC, animated: true)
+            if dataSource[indexPath.row]["lang"] == "1" {
+                showLanguageSelection { (selectedLanguage) in
+                    MOLH.setLanguageTo(selectedLanguage)
+                    self.navigationController?.pushViewController(destnationVC, animated: true)
+                }
+            }else {
+                self.navigationController?.pushViewController(destnationVC, animated: true)
+            }
         }
         
     }
     
-    
+    func showLanguageSelection(completion:@escaping (String)->()) {
+        
+        let alert:UIAlertController = UIAlertController(title: "Language", message: "Choose a language", preferredStyle: .actionSheet)
+        let englishAction:UIAlertAction = UIAlertAction(title: "English", style: .default) { (_) in
+            completion("en")
+        }
+        let arabicAction:UIAlertAction = UIAlertAction(title: "Arabic", style: .default) { (_) in
+            completion("ar")
+        }
+        let cancelAction:UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(englishAction)
+        alert.addAction(arabicAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
     
 }
 
