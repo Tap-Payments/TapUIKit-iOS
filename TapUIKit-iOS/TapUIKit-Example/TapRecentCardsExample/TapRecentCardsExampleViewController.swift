@@ -12,7 +12,7 @@ import TapUIKit_iOS
 class TapRecentCardsExampleViewController: UIViewController {
 
     @IBOutlet weak var tapRecentCardsView: TapRecentCollectionView!
-    
+    lazy var lang:String = "en"
     override func viewDidLoad() {
         super.viewDidLoad()
         

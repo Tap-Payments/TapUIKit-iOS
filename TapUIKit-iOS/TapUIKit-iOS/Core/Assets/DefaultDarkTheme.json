@@ -20,6 +20,7 @@
         "chipUI": {
             "commonAttributes": {
                 "backgroundColor": "#0000004C",
+                "glowingBackgroundColor": "#000000",
                 "borderColor": "#FFFFFF",
                 "cornerRadius":8,
                 "borderWidth": 1,

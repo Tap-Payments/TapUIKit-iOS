@@ -275,6 +275,8 @@ import TapThemeManager2020
         self.layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).offsetHeight")?.floatValue ?? 0))
         self.layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.\(shadowPath).opacity")?.floatValue ?? 0)
         self.layer.masksToBounds = false
+        
+        self.tap_theme_backgroundColor = (glowing) ? ThemeUIColorSelector.init(keyPath: "\(themePath).commonAttributes.glowingBackgroundColor") : ThemeUIColorSelector.init(keyPath: "\(themePath).commonAttributes.backgroundColor")
     }
     
 }

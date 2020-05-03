@@ -10,6 +10,9 @@
 import SnapKit
 import TapThemeManager2020
 import MOLH
+import class CommonDataModelsKit_iOS.TapCommonConstants
+import LocalisationManagerKit_iOS
+
 /// Represents the Tap view that fully shows the recent cards view as per the design
 @objc public class TapRecentCardsView: MOLHView {
 
@@ -33,7 +36,8 @@ import MOLH
     internal var themingDictionary:NSDictionary?
     /// This defines in which path should we look into the theme based on the card input mode
     internal var themePath:String = "recentCards"
-    
+    /// Configure the localisation Manager
+    internal let sharedLocalisationManager = TapLocalisationManager.shared
     
     /**
     Setup the view by passing in the viewModel
@@ -55,6 +59,8 @@ import MOLH
         // We add the constraints needed to correctly layout the views
         addConstrains()
         recentCardsCollectionView.setup(with: viewModel)
+        
+        localize()
     }
     
     
@@ -85,21 +91,33 @@ import MOLH
         
         leftButton.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(28)
             make.height.equalTo(30)
         }
         
         rightButton.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-28)
             make.height.equalTo(30)
         }
         
         recentCardsCollectionView.snp.remakeConstraints { (make) in
             make.top.equalTo(headerView.snp.bottom)
             make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-16)
-            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-28)
+            make.leading.equalToSuperview().offset(28)
+        }
+    }
+    
+    @objc public func localize(shouldFlip:Bool = false) {
+        // The default localisation file location
+        let defaultLocalisationFilePath:URL = TapCommonConstants.pathForDefaultLocalisation()
+        // Assign the localisation values
+        leftButton.setTitle(sharedLocalisationManager.localisedValue(for: "Common.recent", with: defaultLocalisationFilePath), for: .normal)
+        rightButton.setTitle(sharedLocalisationManager.localisedValue(for: "Common.edit", with: defaultLocalisationFilePath), for: .normal)
+        
+        if shouldFlip {
+            MOLH.setLanguageTo(sharedLocalisationManager.localisationLocale ?? "en")
         }
     }
 }

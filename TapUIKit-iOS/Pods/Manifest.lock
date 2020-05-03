@@ -1,5 +1,5 @@
 PODS:
-  - CommonDataModelsKit-iOS (1.0.3)
+  - CommonDataModelsKit-iOS (1.0.5)
   - Firebase/Analytics (6.23.0):
     - Firebase/Core
   - Firebase/Core (6.23.0):
@@ -102,7 +102,7 @@ SPEC REPOS:
     - TapThemeManager2020
 
 SPEC CHECKSUMS:
-  CommonDataModelsKit-iOS: 0a0710cea57d70638a1a6f09ab4373c863afaee3
+  CommonDataModelsKit-iOS: 3444abc39de8708ebdd3148d3431673be39d6fe9
   Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
   FirebaseAnalytics: 558f7a03d19de451093032c806f39d5f9dff096e
   FirebaseCore: a2788a0d5f6c1dff17b8f79b4a73654a8d4bfdbd
