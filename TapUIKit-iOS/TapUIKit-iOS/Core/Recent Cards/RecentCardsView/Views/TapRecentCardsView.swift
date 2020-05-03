@@ -9,9 +9,9 @@
 
 import SnapKit
 import TapThemeManager2020
-
+import MOLH
 /// Represents the Tap view that fully shows the recent cards view as per the design
-@objc public class TapRecentCardsView: UIView {
+@objc public class TapRecentCardsView: MOLHView {
 
     /// This is the button to represent the left button in the UI
     internal lazy var leftButton:UIButton = UIButton()
