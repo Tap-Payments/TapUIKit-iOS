@@ -19,6 +19,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController","lang":"0"])
         dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController","lang":"1"])
+        dataSource.append(["title":"Full Tap Recent Cards","subtitle":"Shows a the full view with action buttons and scrolling cards","navigationID":"TapRecentCardsViewExampleViewController","lang":"0"])
+        
         tableView.dataSource = self
         tableView.delegate = self
     }

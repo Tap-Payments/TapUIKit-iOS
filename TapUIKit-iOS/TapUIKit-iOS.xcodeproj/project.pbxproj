@@ -31,6 +31,7 @@
 		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
 		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */; };
+		E879885F245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879885E245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift */; };
 		E8AE0DEA245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE0DE9245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift */; };
 		E8AE0DF1245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE0DEF245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift */; };
 		E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */; };
@@ -110,6 +111,7 @@
 		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
 		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
 		E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipExampleViewController.swift; sourceTree = "<group>"; };
+		E879885E245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardsViewExampleViewController.swift; sourceTree = "<group>"; };
 		E8AE0DE9245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardsExampleViewController.swift; sourceTree = "<group>"; };
 		E8AE0DEF245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E879885D245EA90700D643A2 /* TapRecentCardsViewExample */,
 				E8AE0DE6245AEC57007AAE1F /* TapRecentCardsExample */,
 				E835ADB3245850E700E55A68 /* GoogleService-Info.plist */,
 				E8428E2624583B2F00D5A45A /* TapChipExample */,
@@ -317,6 +320,14 @@
 				E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */,
 			);
 			path = TapChipExample;
+			sourceTree = "<group>";
+		};
+		E879885D245EA90700D643A2 /* TapRecentCardsViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				E879885E245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift */,
+			);
+			path = TapRecentCardsViewExample;
 			sourceTree = "<group>";
 		};
 		E8AE0DE6245AEC57007AAE1F /* TapRecentCardsExample */ = {
@@ -602,6 +613,7 @@
 				E8428DF82456DB3200D5A45A /* ViewController.swift in Sources */,
 				E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */,
 				E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */,
+				E879885F245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift in Sources */,
 				E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */,
 				E8AE0DEA245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift in Sources */,
 			);

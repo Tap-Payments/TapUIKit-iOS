@@ -191,5 +191,37 @@
             </objects>
             <point key="canvasLocation" x="666.66666666666674" y="16.741071428571427"/>
         </scene>
+        <!--Tap Recent Cards View Example View Controller-->
+        <scene sceneID="Ilm-pg-jA2">
+            <objects>
+                <viewController storyboardIdentifier="TapRecentCardsViewExampleViewController" id="fDm-Oi-vWh" customClass="TapRecentCardsViewExampleViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wjI-aS-N8r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-zC-iGr" customClass="TapRecentCardsView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="106"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="106" id="l5R-Yn-rs6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Jpx-zC-iGr" firstAttribute="top" secondItem="sIe-86-UOH" secondAttribute="top" id="3lO-pM-pw9"/>
+                            <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="Jpx-zC-iGr" secondAttribute="trailing" id="hPp-Ds-DEf"/>
+                            <constraint firstItem="Jpx-zC-iGr" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" id="u6v-YR-Nzi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sIe-86-UOH"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapRecentCardsView" destination="Jpx-zC-iGr" id="7Iu-S2-yPl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXI-E3-h51" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2445" y="1450"/>
+        </scene>
     </scenes>
 </document>

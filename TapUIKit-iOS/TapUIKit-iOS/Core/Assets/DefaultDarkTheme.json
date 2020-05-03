@@ -1,16 +1,25 @@
 {
     "recentCards": {
+        "backGroundColor": "#000000",
         "collectionView": {
             "spaceBetweenCells":7,
-            "backgroundColor": "#000000",
+            "backgroundColor": "#00000000",
             "height": 43,
             "borderColor": "#0066FF",
             "cornerRadius": 8,
             "borderWidth": 0
         },
+        "headerView": {
+            "buttons": {
+                "textColor": "#FFFFFF",
+                "font": "15",
+                "backGroundColor": "#00000000"
+            },
+            "backGroundColor": "#00000000"
+        },
         "chipUI": {
             "commonAttributes": {
-                "backgroundColor": "#000000",
+                "backgroundColor": "#0000004C",
                 "borderColor": "#FFFFFF",
                 "cornerRadius":8,
                 "borderWidth": 1,

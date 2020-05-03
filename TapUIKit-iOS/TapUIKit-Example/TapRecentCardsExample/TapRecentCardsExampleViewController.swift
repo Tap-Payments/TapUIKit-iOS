@@ -17,8 +17,6 @@ class TapRecentCardsExampleViewController: UIViewController {
         super.viewDidLoad()
         
         let viewModel:TapCardsCollectionViewModel = .init(with: [TapGoPayCellViewModel(),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "visa"), bodyContent: "123 456"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012"),TapCardRecentCardCellViewModel(leftAccessoryImage: UIImage(named: "mastercard"), bodyContent: "789 012")])
-        //let viewModel:TapCardsCollectionViewModel = .init(with: [TapGoPayCellViewModel()])
-        // Do any additional setup after loading the view.
         tapRecentCardsView.setup(with: viewModel)
         
         viewModel.delegate = self
