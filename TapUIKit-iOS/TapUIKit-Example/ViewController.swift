@@ -8,6 +8,7 @@
 
 import UIKit
 import MOLH
+import TapThemeManager2020
 
 class ViewController: UIViewController {
     
@@ -52,9 +53,11 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
             if dataSource[indexPath.row]["lang"] == "1" {
                 showLanguageSelection { (selectedLanguage) in
                     MOLH.setLanguageTo(selectedLanguage)
+                    TapThemeManager.setDefaultTapTheme()
                     self.navigationController?.pushViewController(destnationVC, animated: true)
                 }
             }else {
+                TapThemeManager.setDefaultTapTheme()
                 self.navigationController?.pushViewController(destnationVC, animated: true)
             }
         }

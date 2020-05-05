@@ -6,6 +6,7 @@ target 'TapUIKit-Example' do
   use_frameworks!
   pod 'Firebase/Analytics'
   pod 'MOLH'
+  pod 'TapThemeManager2020'
   # Pods for TapUIKit-Example
 
 end

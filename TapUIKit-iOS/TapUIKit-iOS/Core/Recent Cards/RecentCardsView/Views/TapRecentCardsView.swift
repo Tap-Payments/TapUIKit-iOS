@@ -30,10 +30,6 @@ import LocalisationManagerKit_iOS
             setupViews()
         }
     }
-    /// States if the view is using the default TAP theme or a custom one
-    internal lazy var applyingDefaultTheme:Bool = true
-    /// The current theme being applied
-    internal var themingDictionary:NSDictionary?
     /// This defines in which path should we look into the theme based on the card input mode
     internal var themePath:String = "recentCards"
     /// Configure the localisation Manager
@@ -42,11 +38,8 @@ import LocalisationManagerKit_iOS
     /**
     Setup the view by passing in the viewModel
     - Parameter viewModel: The view model that has the needed info to be shown and rendered inside the view
-    - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
-    - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
     */
-    @objc public func setup(with viewModel:TapCardsCollectionViewModel,themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil) {
-        configureThemeSource(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
+    @objc public func setup(with viewModel:TapCardsCollectionViewModel) {
         self.viewModel = viewModel
     }
     
@@ -128,43 +121,9 @@ import LocalisationManagerKit_iOS
 }
 
 extension TapRecentCardsView {
-    /**
-       Method used to decide which theme will we use from a given dict, given json or the default one
-       - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
-       - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
-       */
-    internal func configureThemeSource(themeDictionary: NSDictionary? = nil, jsonTheme: String? = nil) {
-        guard let themeDict = themeSelector(themeDictionary: themeDictionary, jsonTheme: jsonTheme) else {
-            // Then we se the default theme
-            applyingDefaultTheme = true
-            applyDefaultTheme()
-            return
-        }
-        applyingDefaultTheme = false
-        themingDictionary = themeDict
-    }
-    
-    /// Internal helper method to apply the default theme
-    internal func applyDefaultTheme() {
-        // Check if the file exists
-        let bundle:Bundle = Bundle(for: type(of: self))
-        guard let jsonDict = loadTheme(from: bundle, lightModeName: "DefaultLightTheme", darkModeName: "DefaultDarkTheme") else {
-            return
-        }
-        
-        themingDictionary = jsonDict
-        applyingDefaultTheme = true
-    }
     
      /// This method is responsible for applying the correct theme and setting and matching the theme attributes
-       @objc public func applyTheme(themingDict:NSDictionary? = nil) {
-           // Defensive coding to make sure theme is alredy selected before actually applying one
-           if let nonNullThemingDict = themingDict {
-               self.themingDictionary = nonNullThemingDict
-               applyingDefaultTheme = false
-           }
-           guard let nonNullThemingDictionary = themingDictionary else {return}
-           TapThemeManager.setTapTheme(themeDict: nonNullThemingDictionary)
+       @objc public func applyTheme() {
            matchThemeAttribtes()
            
        }

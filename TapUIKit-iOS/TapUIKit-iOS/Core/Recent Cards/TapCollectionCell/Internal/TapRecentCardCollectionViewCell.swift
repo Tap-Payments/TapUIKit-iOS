@@ -43,7 +43,7 @@ extension TapRecentCardCollectionViewCell: ConfigurableCell {
     func configure(data: TapCardRecentCardCellViewModel) {
         //containerView.translatesAutoresizingMaskIntoConstraints = false
         viewModel = data
-        tapChipCard.setup(viewModel: data,themeAlreadyApplied: true)
+        tapChipCard.setup(viewModel: data)
         self.layoutIfNeeded()
     }
     

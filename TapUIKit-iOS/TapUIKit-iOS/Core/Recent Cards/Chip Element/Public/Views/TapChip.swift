@@ -23,12 +23,6 @@ import TapThemeManager2020
     lazy internal var contentLabel:UILabel = UILabel()
     /// The spacing between the elements inside the chip ui and the left and right paddings
     lazy internal var itemsSpacing:CGFloat = 7
-    /// States if the view is using the default TAP theme or a custom one
-    internal lazy var applyingDefaultTheme:Bool = true
-    /// Defines if we need to apply a theme from our own, default is false. This is used if the caller already applied a theme
-    internal lazy var themeAlreadyApplied:Bool = false
-    /// The current theme being applied
-    internal var themingDictionary:NSDictionary?
     /// This defines in which path should we look into the theme based on the card input mode
     internal var themePath:String = "recentCards.chipUI"
     
@@ -44,71 +38,23 @@ import TapThemeManager2020
     
     /**
      Method used to setup the TapChip ui element with the needed views
-     - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
-     - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
-     - Parameter themeAlreadyApplied: Defines if we need to apply a theme from our own, default is false. This is used if the caller already applied a theme
      */
-    @objc public func setup(viewModel:TapChipCellViewModel, themeDictionary:NSDictionary? = nil,jsonTheme:String? = nil, themeAlreadyApplied:Bool = false) {
+    @objc public func setup(viewModel:TapChipCellViewModel) {
         
         // Asssign and attach the internal values with the given ones
         self.viewModel = viewModel
-        self.themeAlreadyApplied = themeAlreadyApplied
         
         self.viewModel?.viewModelDidChange = { [weak self] (viewModel) in
             self?.setupViews()
-        }
-        // Decide which theme we will use
-        if themeAlreadyApplied {
-            themingDictionary = TapThemeManager.currentTheme
-        }else {
-            configureThemeSource(themeDictionary: themingDictionary, jsonTheme: jsonTheme)
         }
         // Kick off the layout inflation
         setupViews()
     }
     
-    /**
-       Method used to decide which theme will we use from a given dict, given json or the default one
-       - Parameter themeDictionary: Defines the theme needed to be applied as a dictionary if any. Default is nil
-       - Parameter jsonTheme: Defines the theme needed to be applied as a json file file name if any. Default is nil
-       */
-    internal func configureThemeSource(themeDictionary: NSDictionary? = nil, jsonTheme: String? = nil) {
-        guard let themeDict = themeSelector(themeDictionary: themeDictionary, jsonTheme: jsonTheme) else {
-            // Then we se the default theme
-            applyingDefaultTheme = true
-            applyDefaultTheme()
-            return
-        }
-        applyingDefaultTheme = false
-        themingDictionary = themeDict
-    }
-    
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        // In here we do listen to the trait collection change event :), this leads to changing the theme based on dark or light mode activated by the user at run time.
-        guard applyingDefaultTheme && !themeAlreadyApplied else {
-            // We will do nothing, if the view is using a customised given theme as it should be handled by the caller.
-            return
-        }
-        // If the view is set to use the default theme, hence, we change the theme based on the dark or light mode is activated
-        applyDefaultTheme()
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
-    }
-    
-    
-    /// Internal helper method to apply the default theme
-    internal func applyDefaultTheme() {
-        // Check if there is a theme already applied
-        if themeAlreadyApplied {
-            return
-        }
-        // Check if the file exists
-        let bundle:Bundle = Bundle(for: type(of: self))
-        guard let jsonDict = loadTheme(from: bundle, lightModeName: "DefaultLightTheme", darkModeName: "DefaultDarkTheme") else {
-            return
-        }
-        themingDictionary = jsonDict
-        applyingDefaultTheme = true
     }
     
     /// The method that organises the steps needed to correctly draw the view and its subviews
@@ -227,18 +173,8 @@ import TapThemeManager2020
     }
     
     /// This method is responsible for applying the correct theme and setting and matching the theme attributes
-    @objc public func applyTheme(themingDict:NSDictionary? = nil) {
-        // Defensive coding to make sure theme is alredy selected before actually applying one
-        if !themeAlreadyApplied {
-            if let nonNullThemingDict = themingDict {
-                self.themingDictionary = nonNullThemingDict
-                applyingDefaultTheme = false
-            }
-            guard let nonNullThemingDictionary = themingDictionary else {return}
-            TapThemeManager.setTapTheme(themeDict: nonNullThemingDictionary)
-        }
+    @objc public func applyTheme() {
         matchThemeAttribtes()
-        
     }
     
     /// This method matches the correct ui elements to its theme path inside the theme object
