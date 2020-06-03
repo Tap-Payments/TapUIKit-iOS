@@ -102,4 +102,8 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
         return true
     }
     
+    
+    func tapBottomSheetInitialHeight() -> CGFloat {
+        return 200
+    }
 }
