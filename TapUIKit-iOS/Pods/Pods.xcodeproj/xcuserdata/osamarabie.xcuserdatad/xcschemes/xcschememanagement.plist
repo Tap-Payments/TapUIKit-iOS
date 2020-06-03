@@ -116,47 +116,54 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>SnapKit.xcscheme</key>
+		<key>PullUpController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>TapAdditionsKit.xcscheme</key>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>TapFontsKit-Fonts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
-		</dict>
-		<key>TapFontsKit.xcscheme</key>
+		<key>TapAdditionsKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
-		<key>TapSwiftFixes.xcscheme</key>
+		<key>TapFontsKit-Fonts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
-		<key>TapThemeManager2020.xcscheme</key>
+		<key>TapFontsKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>TapSwiftFixes.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>22</integer>
+		</dict>
+		<key>TapThemeManager2020.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>23</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>

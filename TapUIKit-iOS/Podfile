@@ -21,4 +21,5 @@ target 'TapUIKit-iOS' do
   pod 'MOLH'
   pod 'LocalisationManagerKit-iOS'
   pod 'CommonDataModelsKit-iOS'
+  pod 'PullUpController' 
 end
