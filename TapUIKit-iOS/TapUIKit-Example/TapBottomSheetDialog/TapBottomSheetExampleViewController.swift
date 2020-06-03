@@ -103,4 +103,9 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
         return 20
     }
     
+    
+    func shouldDismissWhenClickingOutside() -> Bool {
+        return true
+    }
+    
 }

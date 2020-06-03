@@ -39,6 +39,12 @@ import PullUpController
     - Returns: The corners sides you want to apply the radius values to
     */
     @objc optional func modalControllerRadiousCorners() -> UIRectCorner
+    
+    /**
+     Defines if the popup should dismiss itself if the user clicked outside the presented controller
+     - Returns: true to dismiss and false to ignore the clicks
+    */
+    @objc optional func shouldDismissWhenClickingOutside() -> Bool
 }
 
 /// This class represents the bottom sheet popup with all of its configuration
@@ -49,6 +55,9 @@ import PullUpController
     
     /// Holds a reference to the last/currenty displayed modal view controller
     private var addedPullUpController:PullUpController?
+    
+    /// The button that will fill the un filled area, will be used to listen to clicking outside the modal view to dismiss it if the caller asked for this
+    private var dismissButton:UIButton = .init()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +80,8 @@ import PullUpController
         }
         // If no data source is providede, we use the defaul values
         applyUI(with: dataSource.backGroundColor(), and: dataSource.blurEffect?())
+        // Add the dismiss on click outside
+        addDismissOnClickingOutside()
         
         // Let us add the pull up controller if any
         showPullUpController()
@@ -144,15 +155,59 @@ import PullUpController
         })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    /// Handles the logic needed to remove or add the feature of dismissing the bottom sheet upon clicking outside the modal view controller
+    private func addDismissOnClickingOutside() {
+        
+        // First, remove the button  just defensive coding
+        dismissButton.removeFromSuperview()
+        // Second, configure the dismiss button
+        configureTheDismissButton()
+        // Second check if the datasource asked to dismiss when clicking outside
+        guard let dataSource = dataSource, let _ = dataSource.shouldDismissWhenClickingOutside?() else {
+            // This means the caller didn't ask for dismiss upon clicking outside
+            return
+        }
+        
+        // If the caller asked to dismiss upon clicking outside the modal view controller
+        view.addSubview(dismissButton)
+        view.bringSubviewToFront(dismissButton)
+        
     }
-    */
+    
+    
+    private func configureTheDismissButton() {
+        dismissButton = .init(frame: view.frame)
+        dismissButton.addTarget(self, action:#selector(dismissBottomSheet), for: .touchUpInside)
+    }
+    
+    /// This method will be mainly for detecting if the user clicks in the background and dismiss self if the caller asked for this
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        guard let location = touch?.location(in: self.view) else { return }
+    
+        // Make sure that there is a data source and the caller wants to dismiss upon clicking outside
+        guard let dataSource = dataSource, let modalController = addedPullUpController, let _ = dataSource.shouldDismissWhenClickingOutside?() else { return }
+        
+        // Detect if the user clicked inside the popup modal controller or in the outside area
+        
+        if !modalController.view.frame.contains(location) {
+            // This means the user clicked in the empty backround and we need to dismiss ourselves
+            dismissBottomSheet()
+        }
+    }
+    
+    /// This method is responsible for the dismissal logic
+    @objc private func dismissBottomSheet() {
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let modalController = self?.addedPullUpController  else {
+                self?.dismiss(animated: true, completion: nil)
+                return
+            }
+            
+            modalController.dismiss(animated: true) {
+                self?.dismiss(animated: false, completion: nil)
+            }
+        }
+    }
 }
-
