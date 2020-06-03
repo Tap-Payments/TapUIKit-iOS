@@ -52,6 +52,12 @@ import PullUpController
     */
     @objc optional func tapBottomSheetShouldAutoDismiss() -> Bool
     
+    /**
+     Defines the points where you want the modal controller to jump to based on where the user dragged the controller
+     - Returns: list of heights the controller will be adjusted to the nearest one based on user dragging end. Default all skipping points by 5 from 0 to the initial height
+     */
+    @objc optional func tapBottomSheetStickingPoints() -> [CGFloat]
+    
     
 }
 
@@ -65,7 +71,7 @@ import PullUpController
     @objc public var dataSource:TapBottomSheetDialogDataSource?
     
     /// Holds a reference to the last/currenty displayed modal view controller
-    private var addedPullUpController:PullUpController?
+    private var addedPullUpController:TapPresentableViewController?
     
     /// The button that will fill the un filled area, will be used to listen to clicking outside the modal view to dismiss it if the caller asked for this
     private var dismissButton:UIButton = .init()
@@ -98,7 +104,7 @@ import PullUpController
     
     ///Defines the initial height to show the modal controller default is 100
     private var tapBottomSheetInitialHeight:CGFloat {
-        guard let dataSource = dataSource, let height = dataSource.tapBottomSheetInitialHeight?() else { return 100 }
+        guard let dataSource = dataSource, let height = dataSource.tapBottomSheetInitialHeight?(), height < ConstantManager.TapBottomSheetMinimumHeight else { return 100 }
         return height
     }
     ///Defines the radious value for the .topLeft and .topRight corners for the modal controller default [.topRight,.topLeft]
@@ -111,6 +117,13 @@ import PullUpController
     private var tapBottomSheetShouldAutoDismiss:Bool {
            guard let dataSource = dataSource, let shouldDismiss = dataSource.tapBottomSheetShouldAutoDismiss?() else { return true }
            return shouldDismiss
+    }
+    
+    ///Defines the points where you want the modal controller to jump to based on where the user dragged the controller default [50,100]
+    private var tapBottomSheetStickingPoints:[CGFloat] {
+        guard let dataSource = dataSource, let sitckingPoints = dataSource.tapBottomSheetStickingPoints?() else { return [ConstantManager.TapBottomSheetMinimumHeight,tapBottomSheetInitialHeight] }
+        
+        return [50] + sitckingPoints
     }
     
     
@@ -182,7 +195,6 @@ import PullUpController
     */
     private func showPullUpController() {
         
-        
         // first remove any added controller before, defennsive coding
         if let oldController = addedPullUpController { removePullUpController(oldController, animated: true) }
         
@@ -192,13 +204,28 @@ import PullUpController
         guard let nonNullPresentController = addedPullUpController else { return }
         // Add the controller and move it to the first sticky point needed
         nonNullPresentController.view.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
+        // Add the sticky points
+        addStickyPoints(to: nonNullPresentController)
         
-        addPullUpController(nonNullPresentController, initialStickyPointOffset: 50, animated: false, completion: { [weak self] (_) in
+        addPullUpController(nonNullPresentController, initialStickyPointOffset: ConstantManager.TapBottomSheetMinimumHeight, animated: false, completion: { [weak self] (_) in
             DispatchQueue.main.async {
                 guard let nonNullPullUpController = self?.addedPullUpController else { return }
                 nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true, completion: nil)
             }
         })
+    }
+    
+    /**
+     Handles the logic to create the sticky points for the modal controller
+    - Parameter pullUpController: The modal controller we want to adjust its sticky points
+     */
+    private func addStickyPoints(to pullUpController:TapPresentableViewController) {
+        // Tell it the initial height, as this is a sticky point
+        pullUpController.initialHeight = tapBottomSheetInitialHeight
+        // Tell it the max height, will use it in case the caller didn't define stcky points and we will create our own
+        pullUpController.maxHeight = self.view.frame.height - 20
+        // Tell it the points the caller passed if any
+        pullUpController.tapBottomSheetStickingPoints = tapBottomSheetStickingPoints
     }
     
     /// Handles the logic needed to remove or add the feature of dismissing the bottom sheet upon clicking outside the modal view controller

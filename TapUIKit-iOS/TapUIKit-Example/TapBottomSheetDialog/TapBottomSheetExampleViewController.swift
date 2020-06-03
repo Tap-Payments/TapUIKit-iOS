@@ -70,17 +70,6 @@ class TapBottomSheetExampleViewController: UIViewController {
         present(bottomSheetController, animated: true, completion: nil)
         
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
 
 extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
@@ -105,5 +94,10 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     
     func tapBottomSheetInitialHeight() -> CGFloat {
         return 200
+    }
+    
+    
+    func tapBottomSheetStickingPoints() -> [CGFloat] {
+        return [50,100,200,300,400,500,600]
     }
 }
