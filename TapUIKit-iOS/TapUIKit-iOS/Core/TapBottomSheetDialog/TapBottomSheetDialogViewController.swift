@@ -27,6 +27,18 @@ import PullUpController
     - Returns: The Viewcontroller to modally present. Optional and default is nil
     */
     @objc optional func viewControllerToPresent() -> TapPresentableViewController?
+    
+    /**
+    Defines the radious value for the .topLeft and .topRight corners for the modal controller
+    - Returns: The radious value for the .topLeft and .topRight corners for the modal controller
+    */
+    @objc optional func modalControllerRadious() -> CGFloat
+    
+    /**
+    Defines the corners you want to apply the radius value to
+    - Returns: The corners sides you want to apply the radius values to
+    */
+    @objc optional func modalControllerRadiousCorners() -> UIRectCorner
 }
 
 /// This class represents the bottom sheet popup with all of its configuration
@@ -61,7 +73,7 @@ import PullUpController
         applyUI(with: dataSource.backGroundColor(), and: dataSource.blurEffect?())
         
         // Let us add the pull up controller if any
-        showPullUpController(with: dataSource.viewControllerToPresent?())
+        showPullUpController()
     }
     
     /**
@@ -105,17 +117,25 @@ import PullUpController
     
     /**
     Handles adding a modal controller with the needed configurations
-    - Parameter presentViewController: The controller we need to display as a modal popup controller
     */
-    private func showPullUpController(with presentViewController:TapPresentableViewController? = nil) {
+    private func showPullUpController() {
+        
         
         // first remove any added controller before, defennsive coding
         if let oldController = addedPullUpController { removePullUpController(oldController, animated: true) }
+        
+        // Make sure there is a data source that will provide the controllers
+        guard let dataSource = dataSource else {
+            return
+        }
+        
         // hold a reference to the controller we will display
-        addedPullUpController = presentViewController
+        addedPullUpController = dataSource.viewControllerToPresent?()
         // If there is no controller passed, we just return
-        guard let nonNullPresentController = presentViewController else { return }
+        guard let nonNullPresentController = addedPullUpController else { return }
         // Add the controller and move it to the first sticky point needed
+        nonNullPresentController.view.tapRoundCorners(corners: (dataSource.modalControllerRadiousCorners?() ?? [.topLeft,.topRight]), radius: (dataSource.modalControllerRadious?() ?? 0))
+        
         addPullUpController(nonNullPresentController, initialStickyPointOffset: 50, animated: false, completion: { [weak self] (_) in
             DispatchQueue.main.async {
                 guard let nonNullPullUpController = self?.addedPullUpController else { return }

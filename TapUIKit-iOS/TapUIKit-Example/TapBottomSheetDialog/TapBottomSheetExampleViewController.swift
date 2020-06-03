@@ -98,4 +98,9 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
         return toPresentController
     }
     
+    
+    func modalControllerRadious() -> CGFloat {
+        return 20
+    }
+    
 }

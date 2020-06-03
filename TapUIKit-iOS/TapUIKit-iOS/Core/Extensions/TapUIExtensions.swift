@@ -69,3 +69,21 @@ internal extension UIImage {
         return UIImage(named: name, in: bundle, compatibleWith: nil)
     }
 }
+
+
+
+// MARK:- UIView extensions
+// MARK:- Making corner radious for certain corners
+extension UIView {
+    /**
+    Assigns a radious value to certain corners
+    - Parameter corners: The  corners we want to apply the radious to
+    - Parameter radius: The radius value we want  to apply
+    */
+    func tapRoundCorners(corners:UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
+}
