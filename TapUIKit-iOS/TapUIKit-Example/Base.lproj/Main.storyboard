@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7i5-gI-gA8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7i5-gI-gA8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -264,6 +264,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXI-E3-h51" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2445" y="1450"/>
+        </scene>
+        <!--Tap Bottom Sheet Example View Controller-->
+        <scene sceneID="yev-RG-8LS">
+            <objects>
+                <viewController storyboardIdentifier="TapBottomSheetExampleViewController" id="tKL-jM-7S4" customClass="TapBottomSheetExampleViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A0b-8N-P5X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUe-LR-wIk">
+                                <rect key="frame" x="145.5" y="44" width="123" height="30"/>
+                                <state key="normal" title="Background Color"/>
+                                <connections>
+                                    <action selector="backgroundColorClicked:" destination="tKL-jM-7S4" eventType="touchUpInside" id="MKO-Ua-eqP"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jvd-fH-OfN">
+                                <rect key="frame" x="20" y="111" width="374" height="32"/>
+                                <segments>
+                                    <segment title="None"/>
+                                    <segment title="Extra light"/>
+                                    <segment title="Light"/>
+                                    <segment title="Dark"/>
+                                </segments>
+                                <connections>
+                                    <action selector="blurEffectChanged:" destination="tKL-jM-7S4" eventType="valueChanged" id="g5h-dy-xrD"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blur effect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en3-l8-6tG">
+                                <rect key="frame" x="20" y="82" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlz-bv-ODV">
+                                <rect key="frame" x="164" y="162" width="86" height="30"/>
+                                <state key="normal" title="Show Popup"/>
+                                <connections>
+                                    <action selector="showPopupClicked:" destination="tKL-jM-7S4" eventType="touchUpInside" id="Z7O-qZ-rFh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jvd-fH-OfN" firstAttribute="top" secondItem="en3-l8-6tG" secondAttribute="bottom" constant="8" id="9zc-sN-zs3"/>
+                            <constraint firstItem="LUe-LR-wIk" firstAttribute="centerX" secondItem="A0b-8N-P5X" secondAttribute="centerX" id="J2X-Iu-uKG"/>
+                            <constraint firstItem="rlz-bv-ODV" firstAttribute="top" secondItem="jvd-fH-OfN" secondAttribute="bottom" constant="20" id="P51-pm-QPi"/>
+                            <constraint firstItem="LUe-LR-wIk" firstAttribute="top" secondItem="CIg-lk-hFD" secondAttribute="top" id="QwB-P1-J9y"/>
+                            <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="jvd-fH-OfN" secondAttribute="trailing" constant="20" id="WSj-uk-1vh"/>
+                            <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="en3-l8-6tG" secondAttribute="trailing" constant="20" id="g03-SG-bkU"/>
+                            <constraint firstItem="en3-l8-6tG" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="jpZ-hc-ySy"/>
+                            <constraint firstItem="rlz-bv-ODV" firstAttribute="centerX" secondItem="A0b-8N-P5X" secondAttribute="centerX" id="q10-tb-ZVW"/>
+                            <constraint firstItem="en3-l8-6tG" firstAttribute="top" secondItem="LUe-LR-wIk" secondAttribute="bottom" constant="8" id="toh-Pe-YFR"/>
+                            <constraint firstItem="jvd-fH-OfN" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="zTN-NE-ps2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CIg-lk-hFD"/>
+                    </view>
+                    <connections>
+                        <outlet property="blurEffectSegment" destination="jvd-fH-OfN" id="fJj-2M-5oJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qJG-FZ-kks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2437.68115942029" y="2181.6964285714284"/>
         </scene>
     </scenes>
 </document>

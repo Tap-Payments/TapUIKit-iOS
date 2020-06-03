@@ -1,4 +1,5 @@
 PODS:
+  - Capable/Colors (1.1.4)
   - CommonDataModelsKit-iOS (1.0.6)
   - Firebase/Analytics (6.23.0):
     - Firebase/Core
@@ -71,6 +72,8 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - PullUpController (0.8.0)
+  - SheetyColors (1.2.0):
+    - Capable/Colors (~> 1.1)
   - SnapKit (5.0.1)
   - TapAdditionsKit/Foundation/Bundle (1.3.6)
   - TapAdditionsKit/Foundation/Locale (1.3.6)
@@ -89,11 +92,13 @@ DEPENDENCIES:
   - LocalisationManagerKit-iOS
   - MOLH
   - PullUpController
+  - SheetyColors
   - SnapKit
   - TapThemeManager2020
 
 SPEC REPOS:
   trunk:
+    - Capable
     - CommonDataModelsKit-iOS
     - Firebase
     - FirebaseAnalytics
@@ -110,6 +115,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PullUpController
+    - SheetyColors
     - SnapKit
     - TapAdditionsKit
     - TapFontsKit
@@ -117,6 +123,7 @@ SPEC REPOS:
     - TapThemeManager2020
 
 SPEC CHECKSUMS:
+  Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   CommonDataModelsKit-iOS: d815248f87571b1c86e7209165f632d1b4ea0096
   Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
   FirebaseAnalytics: 558f7a03d19de451093032c806f39d5f9dff096e
@@ -133,12 +140,13 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
+  SheetyColors: 8dc64a666415be8a81df3c5d44b9088d6f8bee2e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   TapAdditionsKit: 136b2174e775b105f8fd17eac6a4da2951e0f05b
   TapFontsKit: 81106c9d97fb0e839444bfaea47c8ad17d8896e5
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: 5f29998f4da1322d2a62486bedefad178348638b
 
-PODFILE CHECKSUM: d887025b0b501a1ebd7072f55a15478306ee9044
+PODFILE CHECKSUM: 5b1d0ece09f8aafe94a14cfbd0faee79c3231e95
 
 COCOAPODS: 1.9.3

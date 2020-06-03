@@ -18,9 +18,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController","lang":"0"])
-        dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController","lang":"1"])
-        dataSource.append(["title":"Full Tap Recent Cards","subtitle":"Shows a the full view with action buttons and scrolling cards","navigationID":"TapRecentCardsViewExampleViewController","lang":"1"])
+        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController","lang":"0","push":"1"])
+        dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController","lang":"1","push":"1"])
+        dataSource.append(["title":"Full Tap Recent Cards","subtitle":"Shows a the full view with action buttons and scrolling cards","navigationID":"TapRecentCardsViewExampleViewController","lang":"1","push":"1"])
+        dataSource.append(["title":"Tap Bottom Sheet Dialog","subtitle":"Displays the Tap bottom popup modal contoller","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -54,14 +55,21 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
                 showLanguageSelection { (selectedLanguage) in
                     MOLH.setLanguageTo(selectedLanguage)
                     TapThemeManager.setDefaultTapTheme()
-                    self.navigationController?.pushViewController(destnationVC, animated: true)
+                    self.showController(contoller: destnationVC, push: self.dataSource[indexPath.row]["push"] == "1")
                 }
             }else {
                 TapThemeManager.setDefaultTapTheme()
-                self.navigationController?.pushViewController(destnationVC, animated: true)
+                showController(contoller: destnationVC, push: dataSource[indexPath.row]["push"] == "1")
             }
         }
-        
+    }
+    
+    func showController(contoller:UIViewController, push:Bool) {
+        if push {
+            navigationController?.pushViewController(contoller, animated: true)
+        }else {
+            present(contoller, animated: true, completion: nil)
+        }
     }
     
     func showLanguageSelection(completion:@escaping (String)->()) {
