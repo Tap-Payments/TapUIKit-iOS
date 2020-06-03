@@ -14,37 +14,45 @@ import PullUpController
      Defines the background color for the not filled part of the bottom sheet view controller
      - Returns: UIColor that defines the not filled part color. Default is clear with alpha of 0.5
      */
-    @objc func backGroundColor() -> UIColor
+    @objc func tapBottomSheetBackGroundColor() -> UIColor
     
     /**
     Defines the blur visual effect if required
     - Returns: The UIBlurEffect needed to be applied. Optional and default is none
     */
-    @objc optional func blurEffect() -> UIBlurEffect?
+    @objc optional func tapBottomSheetBlurEffect() -> UIBlurEffect?
     
     /**
     Defines the actual controller you want to display as a popup modal
     - Returns: The Viewcontroller to modally present. Optional and default is nil
     */
-    @objc optional func viewControllerToPresent() -> TapPresentableViewController?
+    @objc optional func tapBottomSheetViewControllerToPresent() -> TapPresentableViewController?
     
     /**
     Defines the radious value for the .topLeft and .topRight corners for the modal controller
     - Returns: The radious value for the .topLeft and .topRight corners for the modal controller
     */
-    @objc optional func modalControllerRadious() -> CGFloat
+    @objc optional func tapBottomSheetControllerRadious() -> CGFloat
+    
+    /**
+    Defines the radious value for the .topLeft and .topRight corners for the modal controller
+    - Returns: The radious value for the .topLeft and .topRight corners for the modal controller
+    */
+    @objc optional func tapBottomSheetInitialHeight() -> CGFloat
     
     /**
     Defines the corners you want to apply the radius value to
     - Returns: The corners sides you want to apply the radius values to
     */
-    @objc optional func modalControllerRadiousCorners() -> UIRectCorner
+    @objc optional func tapBottomSheetRadiousCorners() -> UIRectCorner
     
     /**
      Defines if the popup should dismiss itself if the user clicked outside the presented controller
      - Returns: true to dismiss and false to ignore the clicks
     */
-    @objc optional func shouldDismissWhenClickingOutside() -> Bool
+    @objc optional func tapBottomSheetShouldAutoDismiss() -> Bool
+    
+    
 }
 
 /// This class represents the bottom sheet popup with all of its configuration
@@ -79,7 +87,7 @@ import PullUpController
             return
         }
         // If no data source is providede, we use the defaul values
-        applyUI(with: dataSource.backGroundColor(), and: dataSource.blurEffect?())
+        applyUI(with: dataSource.tapBottomSheetBackGroundColor(), and: dataSource.tapBottomSheetBlurEffect?())
         // Add the dismiss on click outside
         addDismissOnClickingOutside()
         
@@ -141,11 +149,11 @@ import PullUpController
         }
         
         // hold a reference to the controller we will display
-        addedPullUpController = dataSource.viewControllerToPresent?()
+        addedPullUpController = dataSource.tapBottomSheetViewControllerToPresent?()
         // If there is no controller passed, we just return
         guard let nonNullPresentController = addedPullUpController else { return }
         // Add the controller and move it to the first sticky point needed
-        nonNullPresentController.view.tapRoundCorners(corners: (dataSource.modalControllerRadiousCorners?() ?? [.topLeft,.topRight]), radius: (dataSource.modalControllerRadious?() ?? 0))
+        nonNullPresentController.view.tapRoundCorners(corners: (dataSource.tapBottomSheetRadiousCorners?() ?? [.topLeft,.topRight]), radius: (dataSource.tapBottomSheetControllerRadious?() ?? 0))
         
         addPullUpController(nonNullPresentController, initialStickyPointOffset: 50, animated: false, completion: { [weak self] (_) in
             DispatchQueue.main.async {
@@ -163,7 +171,7 @@ import PullUpController
         // Second, configure the dismiss button
         configureTheDismissButton()
         // Second check if the datasource asked to dismiss when clicking outside
-        guard let dataSource = dataSource, let _ = dataSource.shouldDismissWhenClickingOutside?() else {
+        guard let dataSource = dataSource, let _ = dataSource.tapBottomSheetShouldAutoDismiss?() else {
             // This means the caller didn't ask for dismiss upon clicking outside
             return
         }

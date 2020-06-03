@@ -85,26 +85,20 @@ class TapBottomSheetExampleViewController: UIViewController {
 
 extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     
-    func backGroundColor() -> UIColor {
+    func tapBottomSheetBackGroundColor() -> UIColor {
         return bottomSheetBackgroundColor
     }
     
-    func blurEffect() -> UIBlurEffect? {
+    func tapBottomSheetBlurEffect() -> UIBlurEffect? {
         return bottomSheetBlurEffect
     }
     
     
-    func viewControllerToPresent() -> TapPresentableViewController? {
+    func tapBottomSheetViewControllerToPresent() -> TapPresentableViewController? {
         return toPresentController
     }
     
-    
-    func modalControllerRadious() -> CGFloat {
-        return 20
-    }
-    
-    
-    func shouldDismissWhenClickingOutside() -> Bool {
+    func tapBottomSheetShouldAutoDismiss() -> Bool {
         return true
     }
     
