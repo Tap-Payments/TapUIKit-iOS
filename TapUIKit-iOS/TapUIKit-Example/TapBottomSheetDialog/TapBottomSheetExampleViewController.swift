@@ -14,9 +14,12 @@ class TapBottomSheetExampleViewController: UIViewController {
     
     
     @IBOutlet weak var blurEffectSegment: UISegmentedControl!
+    @IBOutlet weak var initialHeightLabel: UILabel!
     
     var bottomSheetBackgroundColor:UIColor = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
+    var dismissWhenClickOutSide:Bool = true
+    var initialHeight:CGFloat = 100
     var toPresentController:ToPresentAsPopupViewController {
         storyboard?.instantiateViewController(withIdentifier: "ToPresentAsPopupViewController") as! ToPresentAsPopupViewController
     }
@@ -70,6 +73,16 @@ class TapBottomSheetExampleViewController: UIViewController {
         present(bottomSheetController, animated: true, completion: nil)
         
     }
+    @IBAction func dismissSwitchChanged(_ sender: Any) {
+        guard let sender:UISwitch = sender as? UISwitch else { return }
+        dismissWhenClickOutSide = sender.isOn
+    }
+    @IBAction func initialHeightSliderChanged(_ sender: Any) {
+        guard let sender:UISlider = sender as? UISlider else { return }
+        
+        initialHeight = CGFloat(sender.value)
+        initialHeightLabel.text = "Initial Height \(Int(initialHeight)) PX"
+    }
 }
 
 extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
@@ -88,12 +101,12 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     }
     
     func tapBottomSheetShouldAutoDismiss() -> Bool {
-        return true
+        return dismissWhenClickOutSide
     }
     
     
     func tapBottomSheetInitialHeight() -> CGFloat {
-        return 200
+        return initialHeight
     }
     
     

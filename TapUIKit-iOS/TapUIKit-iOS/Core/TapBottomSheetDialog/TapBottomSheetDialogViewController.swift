@@ -104,7 +104,7 @@ import PullUpController
     
     ///Defines the initial height to show the modal controller default is 100
     private var tapBottomSheetInitialHeight:CGFloat {
-        guard let dataSource = dataSource, let height = dataSource.tapBottomSheetInitialHeight?(), height < ConstantManager.TapBottomSheetMinimumHeight else { return 100 }
+        guard let dataSource = dataSource, let height = dataSource.tapBottomSheetInitialHeight?(), height > ConstantManager.TapBottomSheetMinimumHeight else { return 100 }
         return height
     }
     ///Defines the radious value for the .topLeft and .topRight corners for the modal controller default [.topRight,.topLeft]
