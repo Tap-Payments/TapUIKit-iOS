@@ -17,7 +17,9 @@ class TapBottomSheetExampleViewController: UIViewController {
     
     var bottomSheetBackgroundColor:UIColor = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
-    
+    var toPresentController:ToPresentAsPopupViewController {
+        storyboard?.instantiateViewController(withIdentifier: "ToPresentAsPopupViewController") as! ToPresentAsPopupViewController
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,6 +91,11 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     
     func blurEffect() -> UIBlurEffect? {
         return bottomSheetBlurEffect
+    }
+    
+    
+    func viewControllerToPresent() -> TapPresentableViewController? {
+        return toPresentController
     }
     
 }

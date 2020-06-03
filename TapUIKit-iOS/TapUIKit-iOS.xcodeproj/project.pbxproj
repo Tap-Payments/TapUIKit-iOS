@@ -11,6 +11,8 @@
 		E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */; };
 		E80E8AA52487C053009AF18F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA42487C053009AF18F /* Constants.swift */; };
 		E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */; };
+		E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */; };
+		E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADB924597B0500E55A68 /* TapCellViewModel.swift */; };
 		E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */; };
@@ -94,6 +96,8 @@
 		E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetDialogViewController.swift; sourceTree = "<group>"; };
 		E80E8AA42487C053009AF18F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetExampleViewController.swift; sourceTree = "<group>"; };
+		E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPresentableViewController.swift; sourceTree = "<group>"; };
+		E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToPresentAsPopupViewController.swift; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADB924597B0500E55A68 /* TapCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellViewModel.swift; sourceTree = "<group>"; };
 		E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardRecentCardCellViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */,
+				E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */,
 			);
 			path = TapBottomSheetDialog;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */,
+				E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */,
 			);
 			path = TapBottomSheetDialog;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */,
 				E8AE0DFB245B1073007AAE1F /* TapSeparatorCollectionViewCell.swift in Sources */,
 				E8AE0DF1245AFED3007AAE1F /* TapGoPayCollectionViewCell.swift in Sources */,
+				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
 				E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +646,7 @@
 			files = (
 				E8428DF82456DB3200D5A45A /* ViewController.swift in Sources */,
 				E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */,
+				E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */,
 				E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */,
 				E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */,
 				E879885F245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift in Sources */,

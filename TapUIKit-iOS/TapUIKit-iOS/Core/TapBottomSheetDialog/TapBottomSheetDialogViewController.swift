@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import PullUpController
 
 /// The data source needed to configure the data of the TAP sheet controller
 @objc public protocol TapBottomSheetDialogDataSource {
@@ -17,10 +17,16 @@ import UIKit
     @objc func backGroundColor() -> UIColor
     
     /**
-    Defines the blur visual effect if reuired
+    Defines the blur visual effect if required
     - Returns: The UIBlurEffect needed to be applied. Optional and default is none
     */
     @objc optional func blurEffect() -> UIBlurEffect?
+    
+    /**
+    Defines the actual controller you want to display as a popup modal
+    - Returns: The Viewcontroller to modally present. Optional and default is nil
+    */
+    @objc optional func viewControllerToPresent() -> TapPresentableViewController?
 }
 
 /// This class represents the bottom sheet popup with all of its configuration
@@ -28,6 +34,9 @@ import UIKit
 
     /// The data source object to provide the configurations needed to customise the bottom sheet controller
     @objc public var dataSource:TapBottomSheetDialogDataSource?
+    
+    /// Holds a reference to the last/currenty displayed modal view controller
+    private var addedPullUpController:PullUpController?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +59,9 @@ import UIKit
         }
         // If no data source is providede, we use the defaul values
         applyUI(with: dataSource.backGroundColor(), and: dataSource.blurEffect?())
+        
+        // Let us add the pull up controller if any
+        showPullUpController(with: dataSource.viewControllerToPresent?())
     }
     
     /**
@@ -67,6 +79,16 @@ import UIKit
             oldBlurView.removeFromSuperview()
         }
         
+        // let us the blur effect
+        addBlurEffect(with: blurEffect)
+    }
+    
+    /**
+    Applies the blur effect
+    - Parameter blurEffect: The blurring effect we will set to the background
+    */
+    private func addBlurEffect(with blurEffect:UIBlurEffect? = nil) {
+        // Make sure that there is a blur effect to add
         guard let blurEffect = blurEffect else { return }
         
         // If the caller provided a blur effect, we create a blur effect and vibrancy views and we add them to the view
@@ -79,7 +101,27 @@ import UIKit
         vibrancyEffectView.frame = view.bounds
         blurredEffectView.contentView.addSubview(vibrancyEffectView)
         view.addSubview(blurredEffectView)
+    }
+    
+    /**
+    Handles adding a modal controller with the needed configurations
+    - Parameter presentViewController: The controller we need to display as a modal popup controller
+    */
+    private func showPullUpController(with presentViewController:TapPresentableViewController? = nil) {
         
+        // first remove any added controller before, defennsive coding
+        if let oldController = addedPullUpController { removePullUpController(oldController, animated: true) }
+        // hold a reference to the controller we will display
+        addedPullUpController = presentViewController
+        // If there is no controller passed, we just return
+        guard let nonNullPresentController = presentViewController else { return }
+        // Add the controller and move it to the first sticky point needed
+        addPullUpController(nonNullPresentController, initialStickyPointOffset: 50, animated: false, completion: { [weak self] (_) in
+            DispatchQueue.main.async {
+                guard let nonNullPullUpController = self?.addedPullUpController else { return }
+                nonNullPullUpController.pullUpControllerMoveToVisiblePoint(100, animated: true, completion: nil)
+            }
+        })
     }
     
 
