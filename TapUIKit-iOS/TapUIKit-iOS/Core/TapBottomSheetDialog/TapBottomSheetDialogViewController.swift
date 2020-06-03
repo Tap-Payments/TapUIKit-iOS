@@ -174,29 +174,13 @@ import PullUpController
         
     }
     
-    
+    /// Creates and configure the dismiss button
     private func configureTheDismissButton() {
         dismissButton = .init(frame: view.frame)
         dismissButton.addTarget(self, action:#selector(dismissBottomSheet), for: .touchUpInside)
     }
     
-    /// This method will be mainly for detecting if the user clicks in the background and dismiss self if the caller asked for this
-    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        guard let location = touch?.location(in: self.view) else { return }
-    
-        // Make sure that there is a data source and the caller wants to dismiss upon clicking outside
-        guard let dataSource = dataSource, let modalController = addedPullUpController, let _ = dataSource.shouldDismissWhenClickingOutside?() else { return }
-        
-        // Detect if the user clicked inside the popup modal controller or in the outside area
-        
-        if !modalController.view.frame.contains(location) {
-            // This means the user clicked in the empty backround and we need to dismiss ourselves
-            dismissBottomSheet()
-        }
-    }
-    
-    /// This method is responsible for the dismissal logic
+     /// This method is responsible for the dismissal logic
     @objc private func dismissBottomSheet() {
         DispatchQueue.main.async { [weak self] in
             
