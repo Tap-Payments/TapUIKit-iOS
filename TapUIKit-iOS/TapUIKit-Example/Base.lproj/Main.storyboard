@@ -280,13 +280,6 @@
                                     <action selector="backgroundColorClicked:" destination="tKL-jM-7S4" eventType="touchUpInside" id="MKO-Ua-eqP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlz-bv-ODV">
-                                <rect key="frame" x="164" y="267.5" width="86" height="30"/>
-                                <state key="normal" title="Show Popup"/>
-                                <connections>
-                                    <action selector="showPopupClicked:" destination="tKL-jM-7S4" eventType="touchUpInside" id="Z7O-qZ-rFh"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jvd-fH-OfN">
                                 <rect key="frame" x="20" y="111" width="374" height="32"/>
                                 <segments>
@@ -329,27 +322,53 @@
                                     <action selector="initialHeightSliderChanged:" destination="tKL-jM-7S4" eventType="valueChanged" id="9n9-6F-pTX"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Corner Radius = 12 PX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd4-qU-Rps">
+                                <rect key="frame" x="20" y="255.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="UeT-av-eEG">
+                                <rect key="frame" x="18" y="284" width="378" height="31"/>
+                                <connections>
+                                    <action selector="cornerRadiusliderChanged:" destination="tKL-jM-7S4" eventType="valueChanged" id="TSP-QN-WST"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlz-bv-ODV">
+                                <rect key="frame" x="164" y="322" width="86" height="30"/>
+                                <state key="normal" title="Show Popup"/>
+                                <connections>
+                                    <action selector="showPopupClicked:" destination="tKL-jM-7S4" eventType="touchUpInside" id="Z7O-qZ-rFh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Vd4-qU-Rps" firstAttribute="top" secondItem="40c-7W-6cL" secondAttribute="bottom" constant="8" id="0y3-ag-7ap"/>
                             <constraint firstItem="40c-7W-6cL" firstAttribute="top" secondItem="s9b-67-4N1" secondAttribute="bottom" constant="8" id="3nx-Ij-h4m"/>
                             <constraint firstItem="MqH-uz-b5W" firstAttribute="centerY" secondItem="RWd-o8-bvN" secondAttribute="centerY" id="5oE-DE-4zp"/>
                             <constraint firstItem="s9b-67-4N1" firstAttribute="top" secondItem="MqH-uz-b5W" secondAttribute="bottom" constant="8" id="8yh-yY-1DV"/>
                             <constraint firstItem="MqH-uz-b5W" firstAttribute="leading" secondItem="A0b-8N-P5X" secondAttribute="leading" constant="20" id="9MA-uT-npW"/>
                             <constraint firstItem="jvd-fH-OfN" firstAttribute="top" secondItem="en3-l8-6tG" secondAttribute="bottom" constant="8" id="9zc-sN-zs3"/>
+                            <constraint firstItem="Vd4-qU-Rps" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="AEd-hY-YD6"/>
+                            <constraint firstItem="UeT-av-eEG" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="Fqw-vc-x7y"/>
                             <constraint firstItem="LUe-LR-wIk" firstAttribute="centerX" secondItem="A0b-8N-P5X" secondAttribute="centerX" id="J2X-Iu-uKG"/>
+                            <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="UeT-av-eEG" secondAttribute="trailing" constant="20" id="MB6-5L-4xD"/>
                             <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="s9b-67-4N1" secondAttribute="trailing" constant="20" id="Q5u-th-OrX"/>
                             <constraint firstItem="LUe-LR-wIk" firstAttribute="top" secondItem="CIg-lk-hFD" secondAttribute="top" id="QwB-P1-J9y"/>
+                            <constraint firstItem="UeT-av-eEG" firstAttribute="top" secondItem="Vd4-qU-Rps" secondAttribute="bottom" constant="8" id="TyW-yi-zsW"/>
                             <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="jvd-fH-OfN" secondAttribute="trailing" constant="20" id="WSj-uk-1vh"/>
                             <constraint firstItem="40c-7W-6cL" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="Ycn-wQ-LpF"/>
                             <constraint firstItem="RWd-o8-bvN" firstAttribute="top" secondItem="jvd-fH-OfN" secondAttribute="bottom" constant="8" id="Yxv-vD-Ngf"/>
                             <constraint firstItem="MqH-uz-b5W" firstAttribute="top" secondItem="jvd-fH-OfN" secondAttribute="bottom" constant="8" id="a9n-tb-9SU"/>
+                            <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="Vd4-qU-Rps" secondAttribute="trailing" constant="20" id="bxm-1Z-APe"/>
                             <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="en3-l8-6tG" secondAttribute="trailing" constant="20" id="g03-SG-bkU"/>
+                            <constraint firstItem="rlz-bv-ODV" firstAttribute="top" secondItem="UeT-av-eEG" secondAttribute="bottom" constant="8" id="hbo-Wr-GRC"/>
                             <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="40c-7W-6cL" secondAttribute="trailing" constant="20" id="hpc-xv-R0k"/>
                             <constraint firstItem="en3-l8-6tG" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="jpZ-hc-ySy"/>
-                            <constraint firstItem="rlz-bv-ODV" firstAttribute="top" secondItem="40c-7W-6cL" secondAttribute="bottom" constant="20" id="ksr-A8-Yx4"/>
                             <constraint firstItem="s9b-67-4N1" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="n9K-Hy-bed"/>
                             <constraint firstItem="rlz-bv-ODV" firstAttribute="centerX" secondItem="A0b-8N-P5X" secondAttribute="centerX" id="q10-tb-ZVW"/>
+                            <constraint firstItem="UeT-av-eEG" firstAttribute="top" secondItem="Vd4-qU-Rps" secondAttribute="bottom" constant="8" id="rQe-a3-5PB"/>
                             <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="MqH-uz-b5W" secondAttribute="trailing" constant="20" id="tJk-jF-xFW"/>
                             <constraint firstItem="CIg-lk-hFD" firstAttribute="trailing" secondItem="RWd-o8-bvN" secondAttribute="trailing" constant="20" id="tcK-Yl-tzi"/>
                             <constraint firstItem="en3-l8-6tG" firstAttribute="top" secondItem="LUe-LR-wIk" secondAttribute="bottom" constant="8" id="toh-Pe-YFR"/>
@@ -359,6 +378,7 @@
                     </view>
                     <connections>
                         <outlet property="blurEffectSegment" destination="jvd-fH-OfN" id="fJj-2M-5oJ"/>
+                        <outlet property="conerRadiusLabel" destination="Vd4-qU-Rps" id="f0q-GB-eub"/>
                         <outlet property="initialHeightLabel" destination="s9b-67-4N1" id="GVE-XU-aPU"/>
                     </connections>
                 </viewController>

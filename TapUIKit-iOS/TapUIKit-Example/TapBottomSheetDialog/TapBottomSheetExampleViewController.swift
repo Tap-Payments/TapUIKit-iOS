@@ -15,11 +15,13 @@ class TapBottomSheetExampleViewController: UIViewController {
     
     @IBOutlet weak var blurEffectSegment: UISegmentedControl!
     @IBOutlet weak var initialHeightLabel: UILabel!
+    @IBOutlet weak var conerRadiusLabel: UILabel!
     
     var bottomSheetBackgroundColor:UIColor = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
     var dismissWhenClickOutSide:Bool = true
     var initialHeight:CGFloat = 100
+    var cornerRadius:CGFloat = 12
     var toPresentController:ToPresentAsPopupViewController {
         storyboard?.instantiateViewController(withIdentifier: "ToPresentAsPopupViewController") as! ToPresentAsPopupViewController
     }
@@ -83,6 +85,13 @@ class TapBottomSheetExampleViewController: UIViewController {
         initialHeight = CGFloat(sender.value)
         initialHeightLabel.text = "Initial Height \(Int(initialHeight)) PX"
     }
+    
+    @IBAction func cornerRadiusliderChanged(_ sender: Any) {
+        guard let sender:UISlider = sender as? UISlider else { return }
+        
+        cornerRadius = CGFloat(sender.value)
+        conerRadiusLabel.text = "Corner Radius \(Int(cornerRadius)) PX"
+    }
 }
 
 extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
@@ -110,7 +119,7 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     }
     
     func tapBottomSheetControllerRadious() -> CGFloat {
-        12
+        return cornerRadius
     }
     
     func tapBottomSheetRadiousCorners() -> UIRectCorner {
