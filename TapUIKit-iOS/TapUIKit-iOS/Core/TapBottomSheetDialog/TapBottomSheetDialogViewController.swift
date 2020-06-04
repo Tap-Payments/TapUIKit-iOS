@@ -102,6 +102,9 @@ import GestureRecognizerClosures
     /// The data source object to provide the configurations needed to customise the bottom sheet controller
     @objc public var dataSource:TapBottomSheetDialogDataSource?
     
+    /// The  delegate object to listen for events from the bottom sheet controller
+    @objc public var delegate:TapBottomSheetDialogDelegate?
+    
     /// Holds a reference to the last/currenty displayed modal view controller
     private var addedPullUpController:TapPresentableViewController?
     
@@ -266,7 +269,10 @@ import GestureRecognizerClosures
         addPullUpController(nonNullPresentController, initialStickyPointOffset: tapBottomSheetInitialHeight, animated: false, completion: { [weak self] (_) in
             DispatchQueue.main.async {
                 guard let nonNullPullUpController = self?.addedPullUpController else { return }
-                nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true, completion: nil)
+                nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true,completion: {
+                    guard let delegate = self?.delegate else { return }
+                    delegate.tapBottomSheetPresented?()
+                })
             }
         })
     }
@@ -309,8 +315,8 @@ import GestureRecognizerClosures
     
      /// This method is responsible for the dismissal logic
     @objc private func dismissBottomSheet() {
+        delegate?.tapBottomSheetPresented?()
         DispatchQueue.main.async { [weak self] in
-            
             guard let modalController = self?.addedPullUpController  else {
                 self?.dismiss(animated: true, completion: nil)
                 return

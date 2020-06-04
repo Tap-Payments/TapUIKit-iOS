@@ -16,6 +16,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     @IBOutlet weak var blurEffectSegment: UISegmentedControl!
     @IBOutlet weak var initialHeightLabel: UILabel!
     @IBOutlet weak var conerRadiusLabel: UILabel!
+    @IBOutlet weak var eventsTextView: UITextView!
     
     var bottomSheetBackgroundColor:UIColor = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
@@ -129,4 +130,26 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     func tapBottomSheetStickingPoints() -> [CGFloat] {
         return [20,100,200,300,400,500,600]
     }
+}
+
+
+extension TapBottomSheetExampleViewController: TapBottomSheetDialogDelegate {
+    
+    
+    func tapBottomSheetPresented() {
+        eventsTextView.text = "Controller presented\n\(eventsTextView.text ?? "")"
+    }
+    
+    func tapBottomSheetWillDismiss() {
+        eventsTextView.text = "Controller will dismiss\n\(eventsTextView.text ?? "")"
+    }
+    
+    func tapBottomSheetDidTapOutside() {
+        eventsTextView.text = "Controller did tap outside\n\(eventsTextView.text ?? "")"
+    }
+    
+    func tapBottomSheetHeightChanged(with newHeight: CGFloat) {
+        eventsTextView.text = "Controller changed height with \(newHeight)\n\(eventsTextView.text ?? "")"
+    }
+    
 }
