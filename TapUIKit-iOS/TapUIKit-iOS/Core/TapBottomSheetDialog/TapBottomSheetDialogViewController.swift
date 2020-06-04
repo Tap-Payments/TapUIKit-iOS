@@ -7,7 +7,7 @@
 //
 
 import PullUpController
-//import SwipeTransition
+import GestureRecognizerClosures
 
 /// The data source needed to configure the data of the TAP sheet controller
 @objc public protocol TapBottomSheetDialogDataSource {
@@ -142,10 +142,26 @@ import PullUpController
     // MARK: Override methods
     public final override func viewDidLoad() {
         super.viewDidLoad()
-        // Apply dismissing upon swiping down for iOS < 13, as in iOS13+ it comes by default
-        //if #available(iOS 13.0, *) {self.swipeToDismiss?.isEnabled = false} else { self.swipeToDismiss?.isEnabled = true }
+        
+        // for iOS < 13, swiping down will not automatically dismiss the controller, we need to take care of this
+        handleDismissOneSwipeDown()
+        
         // First thing to do is to apply the customisation data from the data source
         reloadDataSource()
+    }
+    
+    /// For iOS < 13, swiping down will not automatically dismiss the controller, we need to take care of this
+    private func handleDismissOneSwipeDown() {
+        // Apply dismissing upon swiping down for iOS < 13, as in iOS13+ it comes by default
+        view.onSwipeDown { [weak self] (_) in
+            // iOS13+ handles it automatically
+            if #available(iOS 13.0, *) {
+                return
+            } else {
+                // Fallback on earlier versions, we need to dismiss by hand now
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     

@@ -23,4 +23,5 @@ target 'TapUIKit-iOS' do
   pod 'LocalisationManagerKit-iOS'
   pod 'CommonDataModelsKit-iOS'
   pod 'PullUpController'
+  pod 'GestureRecognizerClosures'
 end
