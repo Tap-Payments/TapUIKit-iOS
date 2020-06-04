@@ -72,6 +72,7 @@ class TapBottomSheetExampleViewController: UIViewController {
         
         let bottomSheetController = TapBottomSheetDialogViewController()
         bottomSheetController.dataSource = self
+        bottomSheetController.delegate = self
         bottomSheetController.modalPresentationStyle = .overFullScreen
         present(bottomSheetController, animated: true, completion: nil)
         

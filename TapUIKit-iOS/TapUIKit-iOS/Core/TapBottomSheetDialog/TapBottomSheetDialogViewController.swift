@@ -297,9 +297,6 @@ import GestureRecognizerClosures
         dismissButton.removeFromSuperview()
         // Second, configure the dismiss button
         configureTheDismissButton()
-        // Second check if the datasource asked to dismiss when clicking outside
-        guard tapBottomSheetShouldAutoDismiss else {// This means the caller didn't ask for dismiss upon clicking outside
-            return }
         
         // If the caller asked to dismiss upon clicking outside the modal view controller
         view.addSubview(dismissButton)
@@ -310,12 +307,22 @@ import GestureRecognizerClosures
     /// Creates and configure the dismiss button
     private func configureTheDismissButton() {
         dismissButton = .init(frame: view.frame)
-        dismissButton.addTarget(self, action:#selector(dismissBottomSheet), for: .touchUpInside)
+        // Second check if the datasource asked to dismiss when clicking outside
+        if tapBottomSheetShouldAutoDismiss  {// This means the caller asked for dismiss upon clicking outside
+            dismissButton.addTarget(self, action:#selector(dismissBottomSheet), for: .touchUpInside)
+        }
+        // In all cases we need to fire the delegate func of tapping outside
+        dismissButton.addTarget(self, action:#selector(tappedOutside), for: .touchUpInside)
     }
     
+    /// This method handles the logic of firing the tap outside the filled area delegate
+    @objc private func tappedOutside() {
+        guard let delegate = delegate else { return }
+        delegate.tapBottomSheetDidTapOutside?()
+    }
      /// This method is responsible for the dismissal logic
     @objc private func dismissBottomSheet() {
-        delegate?.tapBottomSheetPresented?()
+        delegate?.tapBottomSheetWillDismiss?()
         DispatchQueue.main.async { [weak self] in
             guard let modalController = self?.addedPullUpController  else {
                 self?.dismiss(animated: true, completion: nil)
