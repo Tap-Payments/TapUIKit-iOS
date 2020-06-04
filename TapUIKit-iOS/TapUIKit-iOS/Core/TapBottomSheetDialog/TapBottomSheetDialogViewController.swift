@@ -126,8 +126,8 @@ import PullUpController
         return [50] + sitckingPoints
     }
     
-    
-    public override func viewDidLoad() {
+    // MARK: Override methods
+    public final override func viewDidLoad() {
         super.viewDidLoad()
         // First thing to do is to apply the customisation data from the data source
         reloadDataSource()
@@ -223,7 +223,7 @@ import PullUpController
         // Tell it the initial height, as this is a sticky point
         pullUpController.initialHeight = tapBottomSheetInitialHeight
         // Tell it the max height, will use it in case the caller didn't define stcky points and we will create our own
-        pullUpController.maxHeight = self.view.frame.height - 20
+        pullUpController.maxHeight = self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint
         // Tell it the points the caller passed if any
         pullUpController.tapBottomSheetStickingPoints = tapBottomSheetStickingPoints
     }

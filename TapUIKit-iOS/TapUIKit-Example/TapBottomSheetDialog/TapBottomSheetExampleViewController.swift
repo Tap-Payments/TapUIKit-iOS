@@ -109,6 +109,13 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
         return initialHeight
     }
     
+    func tapBottomSheetControllerRadious() -> CGFloat {
+        12
+    }
+    
+    func tapBottomSheetRadiousCorners() -> UIRectCorner {
+        return [.topLeft,.topRight]
+    }
     
     func tapBottomSheetStickingPoints() -> [CGFloat] {
         return [50,100,200,300,400,500,600]

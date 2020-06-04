@@ -7,6 +7,7 @@
 //
 
 import PullUpController
+
 /// Inheric this class for any view controller you want to show as bottom dialog modal popup
 @objc open class TapPresentableViewController: PullUpController {
     
@@ -15,6 +16,11 @@ import PullUpController
     internal var minimumHeight:CGFloat = ConstantManager.TapBottomSheetMinimumHeight
     internal var initialHeight:CGFloat = 100
     internal var maxHeight:CGFloat = 500
+    
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     public override final var pullUpControllerMiddleStickyPoints: [CGFloat] {
         let stickyPoints = tapBottomSheetStickingPoints ?? generateDefaultStickyPoints()
@@ -34,4 +40,32 @@ import PullUpController
         return stickyPoints
     }
     
+    
+    
+    public override final func pullUpControllerWillMove(to point: CGFloat) {
+       // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
+        // check if the
+    }
+    
+    public override final func pullUpControllerDidDrag(to point: CGFloat) {
+        //print("POINT DID DRAG TO : \(point) - With Frame \(self.view.frame)")
+        
+        
+        // Calculate the min Y point we can go it, check if the user passed sticky points, then move to the most top one otherwise use our predefined constant
+        //let minYPoint = self.pullUpControllerAllStickyPoints.last ?? (point-ConstantManager.TapBottomSheetMinimumYPoint)
+        
+        // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
+        if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
+            // If yes, then we need to move it back to the minimum allowed Y point
+            //self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
+        }
+    }
+    
+    public override final func pullUpControllerDidMove(to point: CGFloat) {
+         print("POINT DID MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
+        if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
+            // If yes, then we need to move it back to the minimum allowed Y point
+            self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
+        }
+    }
 }
