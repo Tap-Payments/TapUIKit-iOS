@@ -17,7 +17,14 @@ class ToPresentAsPopupViewController: TapPresentableViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func dismissMySelfClicked(_ sender: Any) {
+        self.dismissTheController()
+    }
+    
+    @IBAction func changeHeightClicked(_ sender: Any) {
+        self.changeHeight(to: CGFloat(Int.random(in: 50 ..< 600)))
+    }
+    
     /*
     // MARK: - Navigation
 

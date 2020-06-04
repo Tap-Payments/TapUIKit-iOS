@@ -58,7 +58,7 @@ internal protocol TapPresentableViewControllerDelegate {
        // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
         // Check if the new point is lower than the dismiss Y threshold
         if point <= ConstantManager.TapBottomSheetMinimumYPoint {
-            dismiss(animated: true, completion: nil)
+            dismissView()
         }
     }
     
@@ -73,5 +73,19 @@ internal protocol TapPresentableViewControllerDelegate {
         // check if we need to inform the delegate about the new position we are in now
         guard let delegate = delegate else { return }
         delegate.tapBottomSheetHeightChanged(with: point)
+    }
+    
+    
+    private func dismissView() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc public func dismissTheController() {
+        dismissView()
+    }
+    
+    @objc public func changeHeight(to newHeight:CGFloat) {
+        guard newHeight > minimumHeight && newHeight < (pullUpControllerAllStickyPoints.last ?? maxHeight) else { return }
+        pullUpControllerMoveToVisiblePoint(newHeight, animated: true, completion: nil)
     }
 }

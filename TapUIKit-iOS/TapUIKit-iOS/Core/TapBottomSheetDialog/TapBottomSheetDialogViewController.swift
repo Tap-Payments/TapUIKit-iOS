@@ -178,6 +178,9 @@ import GestureRecognizerClosures
         reloadDataSource()
     }
     
+    
+    
+    
     /// For iOS < 13, swiping down will not automatically dismiss the controller, we need to take care of this
     private func handleDismissOneSwipeDown() {
         // Apply dismissing upon swiping down for iOS < 13, as in iOS13+ it comes by default
@@ -189,6 +192,9 @@ import GestureRecognizerClosures
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if let delegate = delegate {
+            delegate.tapBottomSheetWillDismiss?()
+        }
         guard let nonNullPullUpController = addedPullUpController else { return }
         self.removePullUpController(nonNullPullUpController, animated: false)
     }
@@ -324,7 +330,7 @@ import GestureRecognizerClosures
     }
      /// This method is responsible for the dismissal logic
     @objc private func dismissBottomSheet() {
-        delegate?.tapBottomSheetWillDismiss?()
+        //delegate?.tapBottomSheetWillDismiss?()
         DispatchQueue.main.async { [weak self] in
             // Check first if we have a pull up controller, we remove it first then we dismiss
             guard let modalController = self?.addedPullUpController  else {
