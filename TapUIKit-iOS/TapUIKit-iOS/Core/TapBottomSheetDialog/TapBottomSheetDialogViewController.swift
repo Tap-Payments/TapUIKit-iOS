@@ -27,7 +27,7 @@ import GestureRecognizerClosures
     Defines the actual controller you want to display as a popup modal
     - Returns: The Viewcontroller to modally present. Optional and default is nil
     */
-    @objc optional func tapBottomSheetViewControllerToPresent() -> TapPresentableViewController?
+    @objc optional func tapBottomSheetViewControllerToPresent() -> UIViewController?
     
     /**
     Defines the radious value for the .topLeft and .topRight corners for the modal controller
@@ -51,7 +51,7 @@ import GestureRecognizerClosures
     Defines the corners you want to apply the radius value to
     - Returns: The corners sides you want to apply the radius values to
     */
-    @objc optional func tapBottomSheetRadiousCorners() -> UIRectCorner
+    @objc optional func tapBottomSheetRadiousCorners() -> CACornerMask
     
     /**
      Defines if the popup should dismiss itself if the user clicked outside the presented controller
@@ -132,7 +132,7 @@ import GestureRecognizerClosures
     }
     
     ///Defines the actual controller you want to display as a popup modal default none
-    private var tapBottomSheetViewControllerToPresent:TapPresentableViewController? {
+    private var tapBottomSheetViewControllerToPresent:UIViewController? {
         guard let dataSource = dataSource, let presentController = dataSource.tapBottomSheetViewControllerToPresent?() else { return nil }
         return presentController
     }
@@ -149,8 +149,8 @@ import GestureRecognizerClosures
         return height
     }
     ///Defines the radious value for the .topLeft and .topRight corners for the modal controller default [.topRight,.topLeft]
-    private var tapBottomSheetRadiousCorners:UIRectCorner {
-        guard let dataSource = dataSource, let corners = dataSource.tapBottomSheetRadiousCorners?() else { return [.topRight,.topLeft] }
+    private var tapBottomSheetRadiousCorners:CACornerMask {
+        guard let dataSource = dataSource, let corners = dataSource.tapBottomSheetRadiousCorners?() else { return [.layerMinXMinYCorner, .layerMaxXMinYCorner] }
         return corners
     }
     
@@ -264,13 +264,18 @@ import GestureRecognizerClosures
         if let oldController = addedPullUpController { removePullUpController(oldController, animated: true) }
         
         // hold a reference to the controller we will display
-        addedPullUpController = tapBottomSheetViewControllerToPresent
+        addedPullUpController = TapPresentableViewController(nibName: "TapPullUpWrapperViewController", bundle: Bundle(for: type(of: self)))
         // If there is no controller passed, we just return
         guard let nonNullPresentController = addedPullUpController else { return }
+        // Assign the passed presentable controller
+        nonNullPresentController.childVC = tapBottomSheetViewControllerToPresent
+        
+        // Pass the rounded corners details
+        nonNullPresentController.tapBottomSheetControllerRadious = tapBottomSheetControllerRadious
+        nonNullPresentController.tapBottomSheetRadiousCorners = tapBottomSheetRadiousCorners
         // Assign delegate
         nonNullPresentController.delegate = self
         // Add the controller and move it to the first sticky point needed
-        nonNullPresentController.view.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
         // Add the sticky points
         addStickyPoints(to: nonNullPresentController)
         
@@ -342,6 +347,21 @@ import GestureRecognizerClosures
                 self?.dismiss(animated: false, completion: nil)
             }
         }
+    }
+    
+    
+    
+    @objc public func dismissTheController() {
+        dismissBottomSheet()
+    }
+    
+    @objc public func changeHeight(to newHeight:CGFloat) {
+        guard let nonNullPullUpController = addedPullUpController else { return }
+        guard newHeight > ConstantManager.TapBottomSheetMinimumHeight,
+            newHeight < (nonNullPullUpController.pullUpControllerAllStickyPoints.last ?? self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint)
+            else { return }
+        
+        nonNullPullUpController.pullUpControllerMoveToVisiblePoint(newHeight, animated: true, completion: nil)
     }
 }
 

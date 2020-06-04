@@ -13,6 +13,7 @@
 		E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */; };
 		E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */; };
 		E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */; };
+		E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADB924597B0500E55A68 /* TapCellViewModel.swift */; };
 		E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */; };
@@ -98,6 +99,7 @@
 		E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetExampleViewController.swift; sourceTree = "<group>"; };
 		E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPresentableViewController.swift; sourceTree = "<group>"; };
 		E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToPresentAsPopupViewController.swift; sourceTree = "<group>"; };
+		E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapPullUpWrapperViewController.xib; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADB924597B0500E55A68 /* TapCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellViewModel.swift; sourceTree = "<group>"; };
 		E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardRecentCardCellViewModel.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */,
 				E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */,
 				E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */,
+				E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 			files = (
 				E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */,
 				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
+				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
 				E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
@@ -868,7 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -889,7 +893,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

@@ -23,8 +23,11 @@ class TapBottomSheetExampleViewController: UIViewController {
     var dismissWhenClickOutSide:Bool = true
     var initialHeight:CGFloat = 100
     var cornerRadius:CGFloat = 12
+    var bottomSheetController = TapBottomSheetDialogViewController()
     var toPresentController:ToPresentAsPopupViewController {
-        storyboard?.instantiateViewController(withIdentifier: "ToPresentAsPopupViewController") as! ToPresentAsPopupViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ToPresentAsPopupViewController") as! ToPresentAsPopupViewController
+        vc.delegate = self
+        return vc
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +73,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     
     @IBAction func showPopupClicked(_ sender: Any) {
         
-        let bottomSheetController = TapBottomSheetDialogViewController()
+        bottomSheetController = TapBottomSheetDialogViewController()
         bottomSheetController.dataSource = self
         bottomSheetController.delegate = self
         bottomSheetController.modalPresentationStyle = .overFullScreen
@@ -107,7 +110,7 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     }
     
     
-    func tapBottomSheetViewControllerToPresent() -> TapPresentableViewController? {
+    func tapBottomSheetViewControllerToPresent() -> UIViewController? {
         return toPresentController
     }
     
@@ -124,8 +127,8 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
         return cornerRadius
     }
     
-    func tapBottomSheetRadiousCorners() -> UIRectCorner {
-        return [.topLeft,.topRight]
+    func tapBottomSheetRadiousCorners() -> CACornerMask {
+        return [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func tapBottomSheetStickingPoints() -> [CGFloat] {
@@ -153,4 +156,15 @@ extension TapBottomSheetExampleViewController: TapBottomSheetDialogDelegate {
         eventsTextView.text = "Controller changed height with \(newHeight)\n\(eventsTextView.text ?? "")"
     }
     
+}
+
+
+extension TapBottomSheetExampleViewController : ToPresentAsPopupViewControllerDelegate {
+    func dismissMySelfClicked() {
+        bottomSheetController.dismissTheController()
+    }
+    
+    func changeHeightClicked() {
+        bottomSheetController.changeHeight(to: CGFloat(Int.random(in: 50 ..< 600)))
+    }
 }

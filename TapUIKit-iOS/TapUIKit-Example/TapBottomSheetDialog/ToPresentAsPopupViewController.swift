@@ -8,9 +8,14 @@
 
 import UIKit
 import TapUIKit_iOS
+protocol  ToPresentAsPopupViewControllerDelegate {
+    func dismissMySelfClicked()
+    func changeHeightClicked()
+}
+class ToPresentAsPopupViewController: UIViewController {
 
-class ToPresentAsPopupViewController: TapPresentableViewController {
-
+    var delegate:ToPresentAsPopupViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,11 +23,15 @@ class ToPresentAsPopupViewController: TapPresentableViewController {
     }
     
     @IBAction func dismissMySelfClicked(_ sender: Any) {
-        self.dismissTheController()
+        //self.dismissTheController()
+        guard let delegate = delegate else { return }
+        delegate.dismissMySelfClicked()
     }
     
     @IBAction func changeHeightClicked(_ sender: Any) {
-        self.changeHeight(to: CGFloat(Int.random(in: 50 ..< 600)))
+        guard let delegate = delegate else { return }
+        delegate.changeHeightClicked()
+        //self.changeHeight(to: CGFloat(Int.random(in: 50 ..< 600)))
     }
     
     /*

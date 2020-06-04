@@ -21,20 +21,33 @@ internal protocol TapPresentableViewControllerDelegate {
 
 
 /// Inheric this class for any view controller you want to show as bottom dialog modal popup
-@objc open class TapPresentableViewController: PullUpController {
+internal class TapPresentableViewController: PullUpController {
     
     
+    @IBOutlet weak var containerView: UIView!
     internal var tapBottomSheetStickingPoints:[CGFloat]?
     internal var minimumHeight:CGFloat = ConstantManager.TapBottomSheetMinimumHeight
     internal var initialHeight:CGFloat = 100
     internal var maxHeight:CGFloat = 500
     internal var delegate:TapPresentableViewControllerDelegate?
+    internal var childVC:UIViewController?
+    internal var tapBottomSheetRadiousCorners:CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    internal var tapBottomSheetControllerRadious:CGFloat = 12
     
-    open override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        guard let childVC = childVC else { return }
+        addChild(childVC)
+        childVC.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        childVC.view.frame = containerView.bounds
+        childVC.view.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
+        containerView.addSubview(childVC.view)
+        childVC.didMove(toParent: self)
+        
     }
     
-    public override final var pullUpControllerMiddleStickyPoints: [CGFloat] {
+    override var pullUpControllerMiddleStickyPoints: [CGFloat] {
         let stickyPoints = tapBottomSheetStickingPoints ?? generateDefaultStickyPoints()
         tapBottomSheetStickingPoints = stickyPoints
         return stickyPoints
@@ -54,7 +67,7 @@ internal protocol TapPresentableViewControllerDelegate {
     
     
     ///Computes the point the view will be moved to, and calculates the auto dismissal logic
-    public override final func pullUpControllerWillMove(to point: CGFloat) {
+    override func pullUpControllerWillMove(to point: CGFloat) {
        // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
         // Check if the new point is lower than the dismiss Y threshold
         if point <= ConstantManager.TapBottomSheetMinimumYPoint {
@@ -63,7 +76,7 @@ internal protocol TapPresentableViewControllerDelegate {
     }
     
     /// Will use this override method to always make sure the view is not dragged up beyond a certain Y limit
-    public override final func pullUpControllerDidMove(to point: CGFloat) {
+    override func pullUpControllerDidMove(to point: CGFloat) {
          // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
         if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
             // If yes, then we need to move it back to the minimum allowed Y point
@@ -80,12 +93,4 @@ internal protocol TapPresentableViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc public func dismissTheController() {
-        dismissView()
-    }
-    
-    @objc public func changeHeight(to newHeight:CGFloat) {
-        guard newHeight > minimumHeight && newHeight < (pullUpControllerAllStickyPoints.last ?? maxHeight) else { return }
-        pullUpControllerMoveToVisiblePoint(newHeight, animated: true, completion: nil)
-    }
 }

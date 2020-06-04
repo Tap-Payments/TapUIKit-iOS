@@ -80,10 +80,9 @@ internal extension UIView {
     - Parameter corners: The  corners we want to apply the radious to
     - Parameter radius: The radius value we want  to apply
     */
-    func tapRoundCorners(corners:UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
+    func tapRoundCorners(corners:CACornerMask, radius: CGFloat) {
+        self.layer.cornerRadius = CGFloat(radius)
+        self.clipsToBounds = true
+        self.layer.maskedCorners = corners
     }
 }
