@@ -7,6 +7,19 @@
 //
 
 import PullUpController
+
+/// A delegate of events from the pull up controller
+internal protocol TapPresentableViewControllerDelegate {
+    
+    /**
+     Will be fired once the user changed the height of the presented control by dragging it
+     - Parameter newHeight : Represents the new height of the controller after the drag operation
+     */
+    func tapBottomSheetHeightChanged(with newHeight:CGFloat)
+    
+}
+
+
 /// Inheric this class for any view controller you want to show as bottom dialog modal popup
 @objc open class TapPresentableViewController: PullUpController {
     
@@ -15,7 +28,7 @@ import PullUpController
     internal var minimumHeight:CGFloat = ConstantManager.TapBottomSheetMinimumHeight
     internal var initialHeight:CGFloat = 100
     internal var maxHeight:CGFloat = 500
-    
+    internal var delegate:TapPresentableViewControllerDelegate?
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,20 +62,6 @@ import PullUpController
         }
     }
     
-    public override final func pullUpControllerDidDrag(to point: CGFloat) {
-        print("POINT DID DRAG TO : \(point) - With Frame \(self.view.frame)")
-        
-        
-        // Calculate the min Y point we can go it, check if the user passed sticky points, then move to the most top one otherwise use our predefined constant
-        //let minYPoint = self.pullUpControllerAllStickyPoints.last ?? (point-ConstantManager.TapBottomSheetMinimumYPoint)
-        
-        
-        if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
-            // If yes, then we need to move it back to the minimum allowed Y point
-            //self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
-        }
-    }
-    
     /// Will use this override method to always make sure the view is not dragged up beyond a certain Y limit
     public override final func pullUpControllerDidMove(to point: CGFloat) {
          // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
@@ -70,5 +69,9 @@ import PullUpController
             // If yes, then we need to move it back to the minimum allowed Y point
             self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
         }
+        
+        // check if we need to inform the delegate about the new position we are in now
+        guard let delegate = delegate else { return }
+        delegate.tapBottomSheetHeightChanged(with: point)
     }
 }

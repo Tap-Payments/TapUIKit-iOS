@@ -261,6 +261,8 @@ import GestureRecognizerClosures
         addedPullUpController = tapBottomSheetViewControllerToPresent
         // If there is no controller passed, we just return
         guard let nonNullPresentController = addedPullUpController else { return }
+        // Assign delegate
+        nonNullPresentController.delegate = self
         // Add the controller and move it to the first sticky point needed
         nonNullPresentController.view.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
         // Add the sticky points
@@ -324,14 +326,23 @@ import GestureRecognizerClosures
     @objc private func dismissBottomSheet() {
         delegate?.tapBottomSheetWillDismiss?()
         DispatchQueue.main.async { [weak self] in
+            // Check first if we have a pull up controller, we remove it first then we dismiss
             guard let modalController = self?.addedPullUpController  else {
                 self?.dismiss(animated: true, completion: nil)
                 return
             }
-            
+            // Otherwise, we dismiss ourselves directly
             modalController.dismiss(animated: true) {
                 self?.dismiss(animated: false, completion: nil)
             }
         }
+    }
+}
+
+
+extension TapBottomSheetDialogViewController: TapPresentableViewControllerDelegate {
+    func tapBottomSheetHeightChanged(with newHeight: CGFloat) {
+        guard let delegate = delegate else { return }
+        delegate.tapBottomSheetHeightChanged?(with: newHeight)
     }
 }
