@@ -69,7 +69,7 @@ class TapBottomSheetExampleViewController: UIViewController {
         
         let bottomSheetController = TapBottomSheetDialogViewController()
         bottomSheetController.dataSource = self
-        
+        bottomSheetController.modalPresentationStyle = .overFullScreen
         present(bottomSheetController, animated: true, completion: nil)
         
     }
@@ -118,6 +118,6 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     }
     
     func tapBottomSheetStickingPoints() -> [CGFloat] {
-        return [50,100,200,300,400,500,600]
+        return [20,100,200,300,400,500,600]
     }
 }

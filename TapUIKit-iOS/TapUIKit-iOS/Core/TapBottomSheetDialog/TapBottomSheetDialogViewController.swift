@@ -7,6 +7,7 @@
 //
 
 import PullUpController
+//import SwipeTransition
 
 /// The data source needed to configure the data of the TAP sheet controller
 @objc public protocol TapBottomSheetDialogDataSource {
@@ -39,6 +40,12 @@ import PullUpController
     - Returns: The height value initialy set the controller to
     */
     @objc optional func tapBottomSheetInitialHeight() -> CGFloat
+    
+    /**
+     Defines the point when the view is dragged and reached a height threshold
+     - Returns: The height threshold we shall dismiss after it
+     */
+    @objc optional func tapBottomSheetDismissBelowHeight() -> CGFloat
     
     /**
     Defines the corners you want to apply the radius value to
@@ -90,6 +97,12 @@ import PullUpController
         return blurEffect
     }
     
+    ///Defines the point when the view is dragged and reached a height threshold, should be lower than 20
+    private var tapBottomSheetDismissBelowHeight:CGFloat {
+        guard let dataSource = dataSource, let tapBottomSheetDismissBelowHeight = dataSource.tapBottomSheetDismissBelowHeight?(), tapBottomSheetDismissBelowHeight < ConstantManager.TapBottomSheetMinimumYPoint else { return ConstantManager.TapBottomSheetMinimumYPoint }
+        return tapBottomSheetDismissBelowHeight
+    }
+    
     ///Defines the actual controller you want to display as a popup modal default none
     private var tapBottomSheetViewControllerToPresent:TapPresentableViewController? {
         guard let dataSource = dataSource, let presentController = dataSource.tapBottomSheetViewControllerToPresent?() else { return nil }
@@ -120,19 +133,27 @@ import PullUpController
     }
     
     ///Defines the points where you want the modal controller to jump to based on where the user dragged the controller default [50,100]
-    private var tapBottomSheetStickingPoints:[CGFloat] {
-        guard let dataSource = dataSource, let sitckingPoints = dataSource.tapBottomSheetStickingPoints?() else { return [ConstantManager.TapBottomSheetMinimumHeight,tapBottomSheetInitialHeight] }
+    private var tapBottomSheetStickingPoints:[CGFloat]? {
+        guard let dataSource = dataSource, let sitckingPoints = dataSource.tapBottomSheetStickingPoints?() else { return nil }
         
-        return [50] + sitckingPoints
+        return [ConstantManager.TapBottomSheetMinimumYPoint] + sitckingPoints
     }
     
     // MARK: Override methods
     public final override func viewDidLoad() {
         super.viewDidLoad()
+        // Apply dismissing upon swiping down for iOS < 13, as in iOS13+ it comes by default
+        //if #available(iOS 13.0, *) {self.swipeToDismiss?.isEnabled = false} else { self.swipeToDismiss?.isEnabled = true }
         // First thing to do is to apply the customisation data from the data source
         reloadDataSource()
     }
     
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let nonNullPullUpController = addedPullUpController else { return }
+        self.removePullUpController(nonNullPullUpController, animated: false)
+    }
     
     /// Call this method when you need the bottom controller to update its look based in reloading th configurations from the data source again
     @objc public func reloadDataSource() {
@@ -207,7 +228,7 @@ import PullUpController
         // Add the sticky points
         addStickyPoints(to: nonNullPresentController)
         
-        addPullUpController(nonNullPresentController, initialStickyPointOffset: ConstantManager.TapBottomSheetMinimumHeight, animated: false, completion: { [weak self] (_) in
+        addPullUpController(nonNullPresentController, initialStickyPointOffset: tapBottomSheetInitialHeight, animated: false, completion: { [weak self] (_) in
             DispatchQueue.main.async {
                 guard let nonNullPullUpController = self?.addedPullUpController else { return }
                 nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true, completion: nil)
