@@ -68,6 +68,31 @@ import GestureRecognizerClosures
     
 }
 
+/// The data source needed to configure the data of the TAP sheet controller
+@objc public protocol TapBottomSheetDialogDelegate {
+    
+    /**
+     Will be fired just before the sheet is dismissed
+     */
+    @objc optional func tapBottomSheetWillDismiss()
+    
+    /**
+     Will be fired if the user clicks in the dimmed area non filled by the presented controller
+     */
+    @objc optional func tapBottomSheetDidTapOutside()
+    
+    /**
+     Will be fired once the user changed the height of the presented control by dragging it
+     - Parameter newHeight : Represents the new height of the controller after the drag operation
+     */
+    @objc optional func tapBottomSheetHeightChanged(with newHeight:CGFloat)
+    
+    /**
+     Will be fired once the controller is presented
+     */
+    @objc optional func tapBottomSheetPresented()
+}
+
 /// This class represents the bottom sheet popup with all of its configuration
 @objc public class TapBottomSheetDialogViewController: UIViewController {
 
@@ -154,13 +179,7 @@ import GestureRecognizerClosures
     private func handleDismissOneSwipeDown() {
         // Apply dismissing upon swiping down for iOS < 13, as in iOS13+ it comes by default
         view.onSwipeDown { [weak self] (_) in
-            // iOS13+ handles it automatically
-            if #available(iOS 13.0, *) {
-                return
-            } else {
-                // Fallback on earlier versions, we need to dismiss by hand now
-                self?.dismiss(animated: true, completion: nil)
-            }
+            self?.dismissBottomSheet()
         }
     }
     
