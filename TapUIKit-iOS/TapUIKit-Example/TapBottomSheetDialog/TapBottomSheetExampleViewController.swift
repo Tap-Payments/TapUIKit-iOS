@@ -76,7 +76,7 @@ class TapBottomSheetExampleViewController: UIViewController {
         bottomSheetController = TapBottomSheetDialogViewController()
         bottomSheetController.dataSource = self
         bottomSheetController.delegate = self
-        bottomSheetController.modalPresentationStyle = .overFullScreen
+        bottomSheetController.modalPresentationStyle = .overCurrentContext
         present(bottomSheetController, animated: true, completion: nil)
         
     }
