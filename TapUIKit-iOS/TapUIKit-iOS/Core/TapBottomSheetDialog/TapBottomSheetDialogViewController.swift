@@ -7,7 +7,7 @@
 //
 
 import PullUpController
-import GestureRecognizerClosures
+import TapThemeManager2020
 
 /// The data source needed to configure the data of the TAP sheet controller
 @objc public protocol TapBottomSheetDialogDataSource {
@@ -15,7 +15,7 @@ import GestureRecognizerClosures
      Defines the background color for the not filled part of the bottom sheet view controller
      - Returns: UIColor that defines the not filled part color. Default is clear with alpha of 0.5
      */
-    @objc func tapBottomSheetBackGroundColor() -> UIColor
+    @objc func tapBottomSheetBackGroundColor() -> UIColor?
     
     /**
     Defines the blur visual effect if required
@@ -112,10 +112,12 @@ import GestureRecognizerClosures
     private var dismissButton:UIButton = .init()
     
     // MARK: Default values for needed variables
+    /// This defines in which path should we look into the theme based on the card input mode
+    internal var themePath:String = "tapBottomSheet"
     
-    ///Defines the background color for the not filled part of the bottom sheet view controller default is .init(white: 0, alpha: 0.5)
-    private var tapBottomSheetBackgroundColor:UIColor {
-        guard let dataSource = dataSource else { return .init(white: 0, alpha: 0.5) }
+    ///Defines the background color for the not filled part of the bottom sheet view controller
+    private var tapBottomSheetBackgroundColor:UIColor? {
+        guard let dataSource = dataSource else { return nil }
         return dataSource.tapBottomSheetBackGroundColor()
     }
     
@@ -170,25 +172,10 @@ import GestureRecognizerClosures
     // MARK: Override methods
     public final override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // for iOS < 13, swiping down will not automatically dismiss the controller, we need to take care of this
-        handleDismissOneSwipeDown()
-        
+       
         // First thing to do is to apply the customisation data from the data source
         reloadDataSource()
     }
-    
-    
-    
-    
-    /// For iOS < 13, swiping down will not automatically dismiss the controller, we need to take care of this
-    private func handleDismissOneSwipeDown() {
-        // Apply dismissing upon swiping down for iOS < 13, as in iOS13+ it comes by default
-        view.onSwipeDown { [weak self] (_) in
-            self?.dismissBottomSheet()
-        }
-    }
-    
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -216,15 +203,26 @@ import GestureRecognizerClosures
         showPullUpController()
     }
     
+    
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        //applyTheme()
+    }
+    
     /**
      Applies the given ui attributes to the view controller
      - Parameter backgroundColor: The color we will set to the background
      - Parameter blurEffect: The blurring effect we will set to the background
      */
-    private func applyUI(with backgroundColor:UIColor, and blurEffect:UIBlurEffect? = nil) {
+    private func applyUI(with backgroundColor:UIColor?, and blurEffect:UIBlurEffect? = nil) {
         
-        // Set the background color
-        view.backgroundColor = backgroundColor
+        // Set the background color o use the theme manager one
+        if let backgroundColor = backgroundColor {
+            view.backgroundColor = backgroundColor
+        }else {
+            applyTheme()
+        }
         
         // Make sure we remove the old blur effect if any first
         if let oldBlurView = view.viewWithTag(ConstantManager.TapBottomSheetContainerTag) {
@@ -233,6 +231,11 @@ import GestureRecognizerClosures
         
         // let us the blur effect
         addBlurEffect(with: blurEffect)
+    }
+    
+    
+    internal func applyTheme() {
+        view.tap_theme_backgroundColor = .init(keyPath: "\(themePath).dimmedColor")
     }
     
     /**

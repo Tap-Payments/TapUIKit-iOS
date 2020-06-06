@@ -18,7 +18,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     @IBOutlet weak var conerRadiusLabel: UILabel!
     @IBOutlet weak var eventsTextView: UITextView!
     
-    var bottomSheetBackgroundColor:UIColor = .init(white: 0, alpha: 0.5)
+    var bottomSheetBackgroundColor:UIColor? = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
     var dismissWhenClickOutSide:Bool = true
     var initialHeight:CGFloat = 100
@@ -36,22 +36,33 @@ class TapBottomSheetExampleViewController: UIViewController {
     }
     
     @IBAction func backgroundColorClicked(_ sender: Any) {
-        // Create a SheetyColors view with your configuration
-        let config = SheetyColorsConfig(alphaEnabled: true, hapticFeedbackEnabled: true, initialColor: bottomSheetBackgroundColor, title: "Background color", type: .rgb)
-        let sheetyColors = SheetyColorsController(withConfig: config)
         
-        // Add a button to accept the selected color
-        let selectAction = UIAlertAction(title: "Select Color", style: .destructive, handler: { [weak self] _ in
-            self?.bottomSheetBackgroundColor = sheetyColors.color
-        })
+        let alertController:UIAlertController = .init(title: "Color or Theme Manager?", message: "Provide a single color, or you can use the default theme manager that will listen for dark mode", preferredStyle: .actionSheet)
         
-        sheetyColors.addAction(selectAction)
+        let colorSelection:UIAlertAction = .init(title: "Color", style: .default) { [weak self] (_) in
+            // Create a SheetyColors view with your configuration
+            let config = SheetyColorsConfig(alphaEnabled: true, hapticFeedbackEnabled: true, initialColor: self?.bottomSheetBackgroundColor ?? .white, title: "Background color", type: .rgb)
+            let sheetyColors = SheetyColorsController(withConfig: config)
+            
+            // Add a button to accept the selected color
+            let selectAction = UIAlertAction(title: "Select Color", style: .destructive, handler: { [weak self] _ in
+                self?.bottomSheetBackgroundColor = sheetyColors.color
+            })
+            
+            sheetyColors.addAction(selectAction)
+            
+            self?.present(sheetyColors, animated: true, completion: nil)
+        }
         
-        // Add a cancel button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        sheetyColors.addAction(cancelAction)
+        let themeManagerAction:UIAlertAction = .init(title: "Tap Theme Manager", style: .default) { [weak self] _ in
+            self?.bottomSheetBackgroundColor = nil
+        }
         
-        present(sheetyColors, animated: true, completion: nil)
+        
+        alertController.addAction(colorSelection)
+        alertController.addAction(themeManagerAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func blurEffectChanged(_ sender: Any) {
@@ -65,6 +76,8 @@ class TapBottomSheetExampleViewController: UIViewController {
                 bottomSheetBlurEffect = .init(style: .light)
             case 3:
                 bottomSheetBlurEffect = .init(style: .dark)
+            case 4:
+                bottomSheetBlurEffect = .init(style: .prominent)
             default:
                 break
         }
@@ -101,7 +114,7 @@ class TapBottomSheetExampleViewController: UIViewController {
 
 extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     
-    func tapBottomSheetBackGroundColor() -> UIColor {
+    func tapBottomSheetBackGroundColor() -> UIColor? {
         return bottomSheetBackgroundColor
     }
     

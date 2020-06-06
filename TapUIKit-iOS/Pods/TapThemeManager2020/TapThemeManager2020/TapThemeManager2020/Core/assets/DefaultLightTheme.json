@@ -130,5 +130,8 @@
               "textFont": "15"
           }
       }
+  },
+  "tapBottomSheet": {
+      "dimmedColor": "#00000080",
   }
 }

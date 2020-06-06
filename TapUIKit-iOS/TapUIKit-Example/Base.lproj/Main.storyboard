@@ -290,6 +290,7 @@
                                     <segment title="Extra light"/>
                                     <segment title="Light"/>
                                     <segment title="Dark"/>
+                                    <segment title="Prominent"/>
                                 </segments>
                                 <connections>
                                     <action selector="blurEffectChanged:" destination="tKL-jM-7S4" eventType="valueChanged" id="g5h-dy-xrD"/>
