@@ -163,6 +163,7 @@ public class TapVerticalView: UIView {
         }
     }
     
+    /// Loads in the custom TaoVerticalView Xib from the local bundle and attach it to the created frame
     private func setupXib() {
         
         // 1. Load the nib
@@ -179,4 +180,24 @@ public class TapVerticalView: UIView {
         // 3. Add this container view as the subview
         addSubview(containerView)
     }
+}
+
+/// Defines the type and the configuration of the needed animations
+public enum TapVerticalViewAnimationType {
+    case bounceIn(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
+    case bounceOut(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
+    case slideIn(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
+    case slideOut(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
+    case fadeIn(duration:Double?,delay:Double?)
+    case fadeOut(duration:Double?,delay:Double?)
+    case popIn(duration:Double?,delay:Double?)
+    case popOut(duration:Double?,delay:Double?)
+}
+
+/// Defines the direction the animation will be applied to
+public enum TapVerticalViewAnimationDirection {
+    case left
+    case right
+    case bottom
+    case top
 }
