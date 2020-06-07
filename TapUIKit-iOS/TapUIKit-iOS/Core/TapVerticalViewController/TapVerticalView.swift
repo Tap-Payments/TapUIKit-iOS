@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SimpleAnimation
 
 /// The protocol for the delegates and notifications fired from the TapVerticalView
 @objc public protocol TapVerticalViewDelegate {
@@ -66,6 +67,8 @@ public class TapVerticalView: UIView {
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Make sure this is the notfication we want to listen to which is the contentSize of the scroll view
         guard let keyPath = keyPath, keyPath == "contentSize", object as? UIScrollView == scrollView, let delegate = delegate else { return }
+        // Make sure the new heigt is not 0
+        guard scrollView.contentSize.height > 0 else { return }
         // Inform the delegate if any, that the view has new size
         delegate.innerSizeChanged?(to: scrollView.contentSize, with: self.frame)
         
@@ -133,8 +136,9 @@ public class TapVerticalView: UIView {
     /**
      Updates the list of vertical arranged views and adjusts it to match a list of given views.
      - Parameter newView: The list of the new views to be shown in the vertical hierarchy
+     - Parameter animationSequence: Determine what animation's sequence to apply for views removals and additions. Default is performing both in parallel
      */
-    public func updateSubViews(with newViews:[UIView]) {
+    public func updateSubViews(with newViews:[UIView],and animationSequence:TapVerticalUpdatesAnimationSequence = .parallel) {
         
         var toBeRemovedViews:[UIView] = []
         var toBeAddedViews:[UIView] = []
@@ -154,21 +158,44 @@ public class TapVerticalView: UIView {
         }
         
         // Delete and add the calculated views
-        toBeRemovedViews.forEach{stackView.removeArrangedSubview($0)}
-        toBeAddedViews.forEach{stackView.addArrangedSubview($0)}
+        remove(subViews: toBeRemovedViews, animationSequence: animationSequence)
+
+        let delay:Double =  500
         
-        // Make sure they are of the same order now!
-        for (newIndex, newView) in newViews.enumerated() {
-            
-            let oldIndex = stackView.arrangedSubviews.firstIndex(of: newView)
-            if oldIndex != newIndex {
-                stackView.removeArrangedSubview(newView)
-                stackView.insertArrangedSubview(newView, at: newIndex)
+        // Add and sort the new views to be added
+        add(subViews: toBeAddedViews, animationSequence: animationSequence, delay: Int((animationSequence == .none || animationSequence == .parallel) ? 0 : delay))
+    }
+    
+    private func remove(subViews:[UIView], animationSequence:TapVerticalUpdatesAnimationSequence) {
+        if animationSequence == .none {
+            subViews.forEach{stackView.removeArrangedSubview($0)}
+        }else {
+            subViews.forEach{ subView in
+                subView.fadeOut{ [weak self] _ in
+                    self?.stackView.removeArrangedSubview(subView)
+                }
             }
         }
     }
     
-    /// Loads in the custom TaoVerticalView Xib from the local bundle and attach it to the created frame
+    private func add(subViews:[UIView], animationSequence:TapVerticalUpdatesAnimationSequence, delay:Int = 0) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) { [weak self] in
+            subViews.forEach{self?.stackView.addArrangedSubview($0)}
+            // Make sure they are of the same order now!
+            for (newIndex, newView) in subViews.enumerated() {
+                
+                let oldIndex = self?.stackView.arrangedSubviews.firstIndex(of: newView)
+                if oldIndex != newIndex {
+                    self?.stackView.removeArrangedSubview(newView)
+                    self?.stackView.insertArrangedSubview(newView, at: newIndex)
+                    newView.bounceIn(from: .bottom)
+                }
+            }
+        }
+    }
+    
+    /// Loads in the custom TapVerticalView Xib from the local bundle and attach it to the created frame
     private func setupXib() {
         
         // 1. Load the nib
@@ -205,4 +232,14 @@ public enum TapVerticalViewAnimationDirection {
     case right
     case bottom
     case top
+}
+
+/// Defines what sequence to apply when removing and adding set of views to the vertical hierarchy
+public enum TapVerticalUpdatesAnimationSequence {
+    /// Do nothing
+    case none
+    /// Animate removals and additions in parallel
+    case parallel
+    /// Animate removals first, then animate the additions
+    case removeAllFirst
 }
