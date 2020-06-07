@@ -77,7 +77,7 @@ class TapBottomSheetExampleViewController: UIViewController {
             case 3:
                 bottomSheetBlurEffect = .init(style: .dark)
             case 4:
-                bottomSheetBlurEffect = .init(style: .prominent)
+                bottomSheetBlurEffect = .init(style: .regular)
             default:
                 break
         }
@@ -91,8 +91,8 @@ class TapBottomSheetExampleViewController: UIViewController {
         bottomSheetController.delegate = self
         bottomSheetController.modalPresentationStyle = .overCurrentContext
         present(bottomSheetController, animated: true, completion: nil)
-        
     }
+    
     @IBAction func dismissSwitchChanged(_ sender: Any) {
         guard let sender:UISwitch = sender as? UISwitch else { return }
         dismissWhenClickOutSide = sender.isOn

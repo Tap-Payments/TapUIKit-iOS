@@ -51,6 +51,8 @@
 		E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */; };
 		E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */; };
 		E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */; };
+		E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F779AE248CD7C600215403 /* TapVerticalView.swift */; };
+		E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8F779B0248CD7D300215403 /* TapVerticalView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellConfiguration.swift; sourceTree = "<group>"; };
 		E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCollectionView.swift; sourceTree = "<group>"; };
 		E8ED310C245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardsCollectionViewModel.swift; sourceTree = "<group>"; };
+		E8F779AE248CD7C600215403 /* TapVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapVerticalView.swift; sourceTree = "<group>"; };
+		E8F779B0248CD7D300215403 /* TapVerticalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapVerticalView.xib; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,6 +284,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8F779A9248CD60400215403 /* TapVerticalViewController */,
 				E80E8AA12487B6A1009AF18F /* TapBottomSheetDialog */,
 				E8428E112457FDE600D5A45A /* Assets */,
 				E8428E0E2457F8C000D5A45A /* Extensions */,
@@ -432,6 +437,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		E8F779A9248CD60400215403 /* TapVerticalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8F779AE248CD7C600215403 /* TapVerticalView.swift */,
+				E8F779B0248CD7D300215403 /* TapVerticalView.xib */,
+			);
+			path = TapVerticalViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -535,6 +549,7 @@
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
 				E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */,
+				E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
 				E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */,
@@ -625,6 +640,7 @@
 			files = (
 				E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */,
 				E80E8AA52487C053009AF18F /* Constants.swift in Sources */,
+				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
 				E835ADC02459808700E55A68 /* TapGoPayCellViewModel.swift in Sources */,
 				E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */,
 				E8ECF5A3245EA06900C88BE0 /* TapRecentCardsView.swift in Sources */,

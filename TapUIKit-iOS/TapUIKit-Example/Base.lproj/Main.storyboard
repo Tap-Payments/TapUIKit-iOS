@@ -441,9 +441,19 @@
                                     <action selector="changeHeightClicked:" destination="wCF-eT-W0v" eventType="touchUpInside" id="fMU-2N-nyi"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XnJ-tc-cxQ" customClass="TapVerticalView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="8" y="162" width="398" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KmX-7J-QF5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="XnJ-tc-cxQ" firstAttribute="top" secondItem="s6Y-ES-JY8" secondAttribute="bottom" constant="8" id="2Aq-Th-GKY"/>
+                            <constraint firstItem="XnJ-tc-cxQ" firstAttribute="leading" secondItem="lo2-Dl-q7f" secondAttribute="leading" constant="8" id="f8y-kg-zmh"/>
+                            <constraint firstItem="lo2-Dl-q7f" firstAttribute="trailing" secondItem="XnJ-tc-cxQ" secondAttribute="trailing" constant="8" id="n8A-F9-rtP"/>
                             <constraint firstItem="uiQ-Jg-ViW" firstAttribute="top" secondItem="lo2-Dl-q7f" secondAttribute="top" constant="20" id="rlg-8p-Ihi"/>
                             <constraint firstItem="s6Y-ES-JY8" firstAttribute="top" secondItem="uiQ-Jg-ViW" secondAttribute="bottom" constant="30" id="sjI-xB-VpV"/>
                             <constraint firstItem="uiQ-Jg-ViW" firstAttribute="centerX" secondItem="X6B-qq-xIG" secondAttribute="centerX" id="ysh-Cp-cCR"/>

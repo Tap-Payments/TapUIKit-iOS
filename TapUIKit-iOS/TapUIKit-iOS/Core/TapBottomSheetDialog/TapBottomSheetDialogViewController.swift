@@ -251,10 +251,10 @@ import TapThemeManager2020
         blurredEffectView.tag = ConstantManager.TapBottomSheetContainerTag
         blurredEffectView.frame = view.bounds
         
-        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-        let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-        vibrancyEffectView.frame = view.bounds
-        blurredEffectView.contentView.addSubview(vibrancyEffectView)
+        //let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        //let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+        //vibrancyEffectView.frame = view.bounds
+        //blurredEffectView.contentView.addSubview(vibrancyEffectView)
         view.addSubview(blurredEffectView)
     }
     
