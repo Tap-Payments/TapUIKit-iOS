@@ -353,18 +353,33 @@ import TapThemeManager2020
     }
     
     
-    
+    /// Will disimiss the whole controller and the presented controller in the bottom sheet
     @objc public func dismissTheController() {
         dismissBottomSheet()
     }
     
+    /**
+     Will change the height of the presented bottom sheet, with maximum of maxHeight -10 and minimum of minHeight + 10
+     - Parameter newHeight: The new height the sheet should animate itself to
+     */
     @objc public func changeHeight(to newHeight:CGFloat) {
+        var mutableHeight = newHeight
+        // Make sure defensive coding, that there is a presented controller ready
         guard let nonNullPullUpController = addedPullUpController else { return }
-        guard newHeight > ConstantManager.TapBottomSheetMinimumHeight,
-            newHeight < (nonNullPullUpController.pullUpControllerAllStickyPoints.last ?? self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint)
-            else { return }
         
-        nonNullPullUpController.pullUpControllerMoveToVisiblePoint(newHeight, animated: true, completion: nil)
+        // Make sure the new height lies between the maximum and minimum allowed heights provided from the data source
+        if mutableHeight < ConstantManager.TapBottomSheetMinimumHeight {
+            mutableHeight = ConstantManager.TapBottomSheetMinimumHeight + 10
+        }
+        
+        let maxHeight = (nonNullPullUpController.pullUpControllerAllStickyPoints.last ?? self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint)
+        
+        if mutableHeight > maxHeight {
+            mutableHeight = maxHeight - 10
+        }
+        
+        // All good, time to animate the height :)
+        nonNullPullUpController.pullUpControllerMoveToVisiblePoint(mutableHeight, animated: true, completion: nil)
     }
 }
 

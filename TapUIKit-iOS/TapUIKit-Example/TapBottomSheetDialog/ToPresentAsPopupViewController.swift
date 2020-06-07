@@ -11,6 +11,7 @@ import TapUIKit_iOS
 protocol  ToPresentAsPopupViewControllerDelegate {
     func dismissMySelfClicked()
     func changeHeightClicked()
+    func changeHeight(to newHeight:CGFloat)
     func updateStackViews(with views:[UIView])
 }
 class ToPresentAsPopupViewController: UIViewController {
@@ -20,7 +21,7 @@ class ToPresentAsPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tapVerticalView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -40,7 +41,7 @@ class ToPresentAsPopupViewController: UIViewController {
     @IBAction func changeTheViewsDynamically(_ sender: Any) {
         
         var views:[UIView] = []
-        for _ in 1..<Int.random(in: 1 ..< 5) {
+        for _ in 0..<Int.random(in: 1 ..< 10) {
             let newView:UIView = .init()
             newView.backgroundColor =  UIColor(red: .random(in: 0...1),
                                                      green: .random(in: 0...1),
@@ -64,4 +65,15 @@ class ToPresentAsPopupViewController: UIViewController {
     }
     */
 
+}
+
+
+extension ToPresentAsPopupViewController: TapVerticalViewDelegate {
+    
+    func innerSizeChanged(to newSize: CGSize, with frame: CGRect) {
+        print("DELEGATE CALL BACK WITH SIZE \(newSize) and Frame of :\(frame)")
+        guard let delegate = delegate else { return }
+        delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaInsets.bottom + 5)
+    }
+    
 }

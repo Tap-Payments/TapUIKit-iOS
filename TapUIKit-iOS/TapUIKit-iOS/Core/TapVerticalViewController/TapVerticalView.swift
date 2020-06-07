@@ -8,11 +8,28 @@
 
 import UIKit
 
+/// The protocol for the delegates and notifications fired from the TapVerticalView
+@objc public protocol TapVerticalViewDelegate {
+    /**
+     Fired when the inner content size of the scroll view size has been changed due to adding and/or removing subviews
+     - Parameter newSize: The new size after the sub views updates
+     - Parameter frame: The frame of the TapVerticalView with respect to its superview
+     */
+    @objc optional func innerSizeChanged(to newSize:CGSize, with frame:CGRect)
+}
+
+/// The Tap wrapper view for having a dynamic height sizing scrollable vertical subview
 public class TapVerticalView: UIView {
     
-    @IBOutlet var stackView: UIStackView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var containerView: UIView!
+    /// The stackview which is used as the backbone for laying out the views in a vertical fashion
+    @IBOutlet internal var stackView: UIStackView!
+    /// The scroll view which wraps the stackview to provide the scrollability whenever needed
+    @IBOutlet internal weak var scrollView: UIScrollView!
+    /// The main view loaded from the Xib
+    @IBOutlet internal weak var containerView: UIView!
+    
+    /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
+    public var delegate:TapVerticalViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,13 +41,16 @@ public class TapVerticalView: UIView {
         commonInit()
     }
     
+    /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         setupXib()
         setupStackScrollView()
     }
     
     
+    /// Configure the scroll view and stack view constraints and attach the scrolling view inner content to the stack view
     private func setupStackScrollView() {
+        // Add the observer to listen to changes in the content size of the scroll view, this will be affected by updating the subviews of the stackview
         scrollView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         scrollView.addSubview(stackView)
         
@@ -42,43 +62,62 @@ public class TapVerticalView: UIView {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
-    
+    /// It is overriden to listen to the change in size of the scroll view
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath, keyPath == "contentSize" else { return }
-        DispatchQueue.main.async {
-            print("CONTENT \(self.scrollView.contentSize)")
-        }
+        // Make sure this is the notfication we want to listen to which is the contentSize of the scroll view
+        guard let keyPath = keyPath, keyPath == "contentSize", object as? UIScrollView == scrollView, let delegate = delegate else { return }
+        // Inform the delegate if any, that the view has new size
+        delegate.innerSizeChanged?(to: scrollView.contentSize, with: self.frame)
         
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
         self.containerView.frame = bounds
     }
     
+    /**
+     Removes an arranged subview from the vertical hierarchy
+     - Parameter view: The view to be deleted
+     */
     public func remove(view:UIView) {
         handleDeletion(for: view)
     }
     
-    public func remove(view:UIView, at index:Int) {
+    /**
+     Removes an arranged subview from the vertical hierarchy
+     - Parameter index: The index of the view to be deleted
+     */
+    public func remove(at index:Int) {
         let subViews = stackView.arrangedSubviews
         guard subViews.count > index else { return }
 
         handleDeletion(for: subViews[index])
     }
     
+    /**
+     Handles all the logic needed to remove an arranged subview from the vertical hierarchy
+     - Parameter view: The view to be deleted
+     */
     private func handleDeletion(for view:UIView) {
         stackView.removeArrangedSubview(view)
     }
     
-    
+    /**
+     Adds an arranged subview to the vertical hierarchy at a certain position
+     - Parameter view: The view to be added
+     - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
+     */
     public func add(view:UIView, at index:Int? = nil) {
         handleAddition(of: view, at: index)
     }
-    
+    /**
+     Handles all the logic needed to add an arranged subview to the vertical hierarchy
+     - Parameter view: The view to be added
+     - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
+     */
     private func handleAddition(of view:UIView, at index:Int? = nil) {
-        
+        // If the index is not defined, then we just add it to the end
         if let index = index {
             stackView.insertArrangedSubview(view, at: index)
         }else{
@@ -86,6 +125,10 @@ public class TapVerticalView: UIView {
         }
     }
     
+    /**
+     Updates the list of vertical arranged views and adjusts it to match a list of given views.
+     - Parameter newView: The list of the new views to be shown in the vertical hierarchy
+     */
     public func updateSubViews(with newViews:[UIView]) {
         
         var toBeRemovedViews:[UIView] = []
