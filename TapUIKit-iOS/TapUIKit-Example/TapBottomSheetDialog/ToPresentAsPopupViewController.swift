@@ -63,19 +63,7 @@ class ToPresentAsPopupViewController: UIViewController {
         }
         
         let replaceLastSlideIn:UIAlertAction = .init(title: "Slide in replacing last item of 3 views. Will add three views, then the replacement", style: .default) { _ in
-            var views:[UIView] = []
-            for _ in 0..<3 {
-                let newView:UIView = .init()
-                newView.backgroundColor =  UIColor(red: .random(in: 0...1),
-                                                   green: .random(in: 0...1),
-                                                   blue: .random(in: 0...1),
-                                                   alpha: 1.0)
-                newView.translatesAutoresizingMaskIntoConstraints = false
-                newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-                views.append(newView)
-            }
-            
-            self.tapVerticalView.updateSubViews(with: views,and: .none)
+            self.addRandomViews(count: 3)
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
                 let newView:UIView = .init()
                 newView.backgroundColor =  UIColor(red: .random(in: 0...1),
@@ -90,19 +78,7 @@ class ToPresentAsPopupViewController: UIViewController {
         }
         
         let replaceLastFadeIn:UIAlertAction = .init(title: "Fade in replacing last item of 3 views. Will add three views, then the replacement", style: .default) { _ in
-            var views:[UIView] = []
-            for _ in 0..<3 {
-                let newView:UIView = .init()
-                newView.backgroundColor =  UIColor(red: .random(in: 0...1),
-                                                   green: .random(in: 0...1),
-                                                   blue: .random(in: 0...1),
-                                                   alpha: 1.0)
-                newView.translatesAutoresizingMaskIntoConstraints = false
-                newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-                views.append(newView)
-            }
-            
-            self.tapVerticalView.updateSubViews(with: views,and: .none)
+            self.addRandomViews(count: 3)
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
                 let newView:UIView = .init()
                 newView.backgroundColor =  UIColor(red: .random(in: 0...1),
@@ -116,7 +92,8 @@ class ToPresentAsPopupViewController: UIViewController {
             }
         }
         
-        let addFirstSlideIn:UIAlertAction = .init(title: "Add item at the top with slide in", style: .default) { _ in
+        let addFirstSlideIn:UIAlertAction = .init(title: "Slide item at the top. Will add 3 views, then animate an insertion", style: .default) { _ in
+            self.addRandomViews(count: 3)
             let newView:UIView = .init()
             newView.backgroundColor =  UIColor(red: .random(in: 0...1),
                                                green: .random(in: 0...1),
@@ -124,10 +101,13 @@ class ToPresentAsPopupViewController: UIViewController {
                                                alpha: 1.0)
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-            self.tapVerticalView.add(view: newView, at: 0, with: .bounceIn(.bottom, duration: nil, delay: nil))
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
+                self.tapVerticalView.add(view: newView, at: 0, with: .bounceIn(.bottom, duration: nil, delay: nil))
+            }
         }
         
-        let addFirstFadeIn:UIAlertAction = .init(title: "Add item at the top with fade in", style: .default) { _ in
+        let addFirstFadeIn:UIAlertAction = .init(title: "Fade in item at the top. Will add 3 views, then animate an insertion", style: .default) { _ in
+            self.addRandomViews(count: 3)
             let newView:UIView = .init()
             newView.backgroundColor =  UIColor(red: .random(in: 0...1),
                                                green: .random(in: 0...1),
@@ -135,7 +115,9 @@ class ToPresentAsPopupViewController: UIViewController {
                                                alpha: 1.0)
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-            self.tapVerticalView.add(view: newView, at: 0, with: .fadeIn(duration: nil, delay: nil))
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
+                self.tapVerticalView.add(view: newView, at: 0, with: .fadeIn(duration: nil, delay: nil))
+            }
         }
         
         alertController.addAction(random)
@@ -146,6 +128,22 @@ class ToPresentAsPopupViewController: UIViewController {
         
         present(alertController, animated: true, completion: nil)
         
+    }
+    
+    func addRandomViews(count:Int) {
+        var views:[UIView] = []
+        for _ in 0..<count {
+            let newView:UIView = .init()
+            newView.backgroundColor =  UIColor(red: .random(in: 0...1),
+                                               green: .random(in: 0...1),
+                                               blue: .random(in: 0...1),
+                                               alpha: 1.0)
+            newView.translatesAutoresizingMaskIntoConstraints = false
+            newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
+            views.append(newView)
+        }
+        
+        self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
     
     /*
