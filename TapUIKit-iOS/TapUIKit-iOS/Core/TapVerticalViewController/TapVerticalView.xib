@@ -13,8 +13,6 @@
                 <outlet property="containerView" destination="iN0-l3-epB" id="rxe-2N-XoY"/>
                 <outlet property="scrollView" destination="DK2-Wu-MF0" id="juh-hj-KCL"/>
                 <outlet property="stackView" destination="tT2-ez-5Th" id="9hq-ma-5JH"/>
-                <outlet property="stackView1" destination="Vis-J7-YIN" id="uZm-07-kkK"/>
-                <outlet property="stackView2" destination="Qea-XA-vcA" id="Ic4-c4-TtG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -42,22 +40,6 @@
         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" id="tT2-ez-5Th">
             <rect key="frame" x="0.0" y="0.0" width="110" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vis-J7-YIN">
-                    <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
-                    <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="phK-Q7-ijv"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qea-XA-vcA">
-                    <rect key="frame" x="0.0" y="200" width="110" height="400"/>
-                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="BOL-qx-68Z"/>
-                    </constraints>
-                </view>
-            </subviews>
             <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="YTh-fO-4cB"/>
             <point key="canvasLocation" x="729" y="25"/>

@@ -24,4 +24,5 @@ target 'TapUIKit-iOS' do
   pod 'CommonDataModelsKit-iOS'
   pod 'PullUpController'
   pod 'GestureRecognizerClosures'
+  pod "SimpleAnimation"
 end

@@ -75,6 +75,7 @@ PODS:
   - PullUpController (0.8.0)
   - SheetyColors (1.2.0):
     - Capable/Colors (~> 1.1)
+  - SimpleAnimation (0.4.2)
   - SnapKit (5.0.1)
   - TapAdditionsKit/Foundation/Bundle (1.3.6)
   - TapAdditionsKit/Foundation/Locale (1.3.6)
@@ -95,6 +96,7 @@ DEPENDENCIES:
   - MOLH
   - PullUpController
   - SheetyColors
+  - SimpleAnimation
   - SnapKit
   - TapThemeManager2020
 
@@ -119,6 +121,7 @@ SPEC REPOS:
     - PromisesObjC
     - PullUpController
     - SheetyColors
+    - SimpleAnimation
     - SnapKit
     - TapAdditionsKit
     - TapFontsKit
@@ -145,12 +148,13 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   SheetyColors: 8dc64a666415be8a81df3c5d44b9088d6f8bee2e
+  SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   TapAdditionsKit: 136b2174e775b105f8fd17eac6a4da2951e0f05b
   TapFontsKit: 81106c9d97fb0e839444bfaea47c8ad17d8896e5
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: c7aef8e660a583296e3284f6cd651836ffe53dc7
 
-PODFILE CHECKSUM: 77fb5ff4ebc66a5a379f65389f1269360cadda1a
+PODFILE CHECKSUM: 1e1e2453a76516bab5698d2f36ebd5fb315c559b
 
 COCOAPODS: 1.9.3

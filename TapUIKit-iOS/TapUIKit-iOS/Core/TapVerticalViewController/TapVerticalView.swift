@@ -12,10 +12,6 @@ public class TapVerticalView: UIView {
     
     @IBOutlet var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBOutlet weak var stackView1: UIView!
-    @IBOutlet weak var stackView2: UIView!
-    
     @IBOutlet weak var containerView: UIView!
     
     override init(frame: CGRect) {
@@ -61,11 +57,41 @@ public class TapVerticalView: UIView {
         self.containerView.frame = bounds
     }
     
-    func setupXib() {
+    public func remove(view:UIView) {
+        handleDeletion(for: view)
+    }
+    
+    public func remove(view:UIView, at index:Int) {
+        let subViews = stackView.arrangedSubviews
+        guard subViews.count > index else { return }
+
+        handleDeletion(for: subViews[index])
+    }
+    
+    private func handleDeletion(for view:UIView) {
+        stackView.removeArrangedSubview(view)
+    }
+    
+    
+    public func add(view:UIView, at index:Int? = nil) {
+        handleAddition(of: view, at: index)
+    }
+    
+    private func handleAddition(of view:UIView, at index:Int? = nil) {
+        
+        if let index = index {
+            stackView.insertArrangedSubview(view, at: index)
+        }else{
+            stackView.addArrangedSubview(view)
+        }
+    }
+    
+    
+    private func setupXib() {
         
         // 1. Load the nib
         guard let nibs = Bundle.init(for: TapVerticalView.self).loadNibNamed("TapVerticalView", owner: self, options: nil),
-        nibs.count > 0,
+            nibs.count > 0,
             let loadedView:UIView = nibs[0] as? UIView else { return }
         
         self.containerView = loadedView
@@ -76,5 +102,5 @@ public class TapVerticalView: UIView {
         
         // 3. Add this container view as the subview
         addSubview(containerView)
-}
+    }
 }
