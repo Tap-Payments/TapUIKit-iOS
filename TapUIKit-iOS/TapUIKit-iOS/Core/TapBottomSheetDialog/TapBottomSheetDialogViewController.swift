@@ -121,6 +121,9 @@ import TapThemeManager2020
         return dataSource.tapBottomSheetBackGroundColor()
     }
     
+    private var heightTimer:Timer?
+    private var lastRequestedHeight:CGFloat = 0
+    
     ///Defines the blur visual effect if required default none
     private var tapBottomSheetBlurEffect:UIBlurEffect? {
         guard let dataSource = dataSource, let blurEffect = dataSource.tapBottomSheetBlurEffect?() else { return nil }
@@ -363,23 +366,38 @@ import TapThemeManager2020
      - Parameter newHeight: The new height the sheet should animate itself to
      */
     @objc public func changeHeight(to newHeight:CGFloat) {
-        var mutableHeight = newHeight
+        lastRequestedHeight = newHeight
         // Make sure defensive coding, that there is a presented controller ready
         guard let nonNullPullUpController = addedPullUpController else { return }
         
         // Make sure the new height lies between the maximum and minimum allowed heights provided from the data source
-        if mutableHeight < ConstantManager.TapBottomSheetMinimumHeight {
-            mutableHeight = ConstantManager.TapBottomSheetMinimumHeight + 10
+        if lastRequestedHeight < ConstantManager.TapBottomSheetMinimumHeight {
+            lastRequestedHeight = ConstantManager.TapBottomSheetMinimumHeight + 10
         }
         
         let maxHeight = (nonNullPullUpController.pullUpControllerAllStickyPoints.last ?? self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint)
         
-        if mutableHeight > maxHeight {
-            mutableHeight = maxHeight - 10
+        if lastRequestedHeight > maxHeight {
+            lastRequestedHeight = maxHeight - 10
         }
         
+        // Cancel previous request and only animate this one
+        if let timer = heightTimer {
+            timer.invalidate()
+        }
         // All good, time to animate the height :)
-        nonNullPullUpController.pullUpControllerMoveToVisiblePoint(mutableHeight, animated: true, completion: nil)
+        heightTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
+    }
+    
+    
+    // called every time interval from the timer
+    @objc internal func timerAction() {
+        
+        // Make sure defensive coding, that there is a presented controller ready
+        guard let nonNullPullUpController = addedPullUpController else { return }
+        
+        
+        nonNullPullUpController.pullUpControllerMoveToVisiblePoint(lastRequestedHeight, animated: true, completion: nil)
     }
 }
 

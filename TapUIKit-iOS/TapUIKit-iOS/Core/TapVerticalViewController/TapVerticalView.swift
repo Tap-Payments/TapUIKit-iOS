@@ -96,7 +96,7 @@ public class TapVerticalView: UIView {
     public func remove(at index:Int, with animation:TapVerticalViewAnimationType? = nil) {
         let subViews = stackView.arrangedSubviews
         guard subViews.count > index else { return }
-
+        
         handleDeletion(for: subViews[index], with: animation)
     }
     
@@ -106,7 +106,32 @@ public class TapVerticalView: UIView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
     private func handleDeletion(for view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
-        stackView.removeArrangedSubview(view)
+        
+        // Check if there is an animation we need to do
+        guard let animation = animation else {
+            stackView.removeArrangedSubview(view)
+            return
+        }
+        
+        switch animation {
+        case .bounceIn(let direction,_,_):
+            view.bounceIn(from: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+        case .bounceOut(let direction,_,_):
+            view.bounceOut(to: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+        case .fadeIn:
+            view.fadeIn(completion: {_ in self.stackView.removeArrangedSubview(view)})
+        case .fadeOut:
+            view.fadeOut(completion: {_ in self.stackView.removeArrangedSubview(view)})
+        case .slideIn(let direction,_,_):
+            view.slideIn(from: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+        case .slideOut(let direction,_,_):
+            view.slideOut(to: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+        case .popIn:
+            view.popIn()
+        case .popOut:
+            view.popOut()
+        }
+        
     }
     
     /**
@@ -130,6 +155,28 @@ public class TapVerticalView: UIView {
             stackView.insertArrangedSubview(view, at: index)
         }else{
             stackView.addArrangedSubview(view)
+        }
+        
+        // Check if there is an animation we need to do
+        guard let animation = animation else { return }
+        
+        switch animation {
+            case .bounceIn(let direction,_,_):
+                view.bounceIn(from: direction.animationKitDirection())
+            case .bounceOut(let direction,_,_):
+                view.bounceOut(to: direction.animationKitDirection())
+            case .fadeIn:
+                view.fadeIn()
+            case .fadeOut:
+                view.fadeOut()
+            case .slideIn(let direction,_,_):
+                view.slideIn(from: direction.animationKitDirection())
+            case .slideOut(let direction,_,_):
+                view.slideOut(to: direction.animationKitDirection())
+            case .popIn:
+                view.popIn()
+            case .popOut:
+                view.popOut()
         }
     }
     
@@ -159,7 +206,7 @@ public class TapVerticalView: UIView {
         
         // Delete and add the calculated views
         remove(subViews: toBeRemovedViews, animationSequence: animationSequence)
-
+        
         let delay:Double =  500
         
         // Add and sort the new views to be added
@@ -189,7 +236,9 @@ public class TapVerticalView: UIView {
                 if oldIndex != newIndex {
                     self?.stackView.removeArrangedSubview(newView)
                     self?.stackView.insertArrangedSubview(newView, at: newIndex)
-                    newView.bounceIn(from: .bottom)
+                    if animationSequence != .none {
+                        newView.bounceIn(from: .bottom)
+                    }
                 }
             }
         }
@@ -232,6 +281,20 @@ public enum TapVerticalViewAnimationDirection {
     case right
     case bottom
     case top
+    
+    
+    internal func animationKitDirection() -> SimpleAnimationEdge {
+        switch self {
+        case .left:
+            return .left
+        case .right:
+            return .right
+        case .bottom:
+            return .bottom
+        case .top:
+            return .top
+        }
+    }
 }
 
 /// Defines what sequence to apply when removing and adding set of views to the vertical hierarchy
@@ -243,3 +306,5 @@ public enum TapVerticalUpdatesAnimationSequence {
     /// Animate removals first, then animate the additions
     case removeAllFirst
 }
+
+
