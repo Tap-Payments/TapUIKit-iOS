@@ -450,6 +450,9 @@
                                 <state key="normal" title="Change subviews">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeTheViewsDynamically:" destination="wCF-eT-W0v" eventType="touchUpInside" id="d12-b4-5ax"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -467,6 +470,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lo2-Dl-q7f"/>
                     </view>
+                    <connections>
+                        <outlet property="tapVerticalView" destination="XnJ-tc-cxQ" id="Jhx-Dq-9jZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BCT-PD-BHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

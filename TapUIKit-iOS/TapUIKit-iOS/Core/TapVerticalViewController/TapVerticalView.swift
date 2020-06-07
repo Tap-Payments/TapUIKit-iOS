@@ -86,6 +86,39 @@ public class TapVerticalView: UIView {
         }
     }
     
+    public func updateSubViews(with newViews:[UIView]) {
+        
+        var toBeRemovedViews:[UIView] = []
+        var toBeAddedViews:[UIView] = []
+        
+        // Check which views we will delete, which doesn't exist in the new views list
+        stackView.arrangedSubviews.forEach { currentSubview in
+            if !newViews.contains(currentSubview) {
+                toBeRemovedViews.append(currentSubview)
+            }
+        }
+        
+        // Check which views we will add, which exists only in the new views list
+        newViews.forEach { newSubview in
+            if !stackView.arrangedSubviews.contains(newSubview) {
+                toBeAddedViews.append(newSubview)
+            }
+        }
+        
+        // Delete and add the calculated views
+        toBeRemovedViews.forEach{stackView.removeArrangedSubview($0)}
+        toBeAddedViews.forEach{stackView.addArrangedSubview($0)}
+        
+        // Make sure they are of the same order now!
+        for (newIndex, newView) in newViews.enumerated() {
+            
+            let oldIndex = stackView.arrangedSubviews.firstIndex(of: newView)
+            if oldIndex != newIndex {
+                stackView.removeArrangedSubview(newView)
+                stackView.insertArrangedSubview(newView, at: newIndex)
+            }
+        }
+    }
     
     private func setupXib() {
         

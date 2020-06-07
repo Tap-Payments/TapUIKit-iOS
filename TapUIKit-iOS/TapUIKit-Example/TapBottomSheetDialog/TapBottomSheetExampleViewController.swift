@@ -180,4 +180,9 @@ extension TapBottomSheetExampleViewController : ToPresentAsPopupViewControllerDe
     func changeHeightClicked() {
         bottomSheetController.changeHeight(to: CGFloat(Int.random(in: 50 ..< 600)))
     }
+    
+    
+    func updateStackViews(with views: [UIView]) {
+        
+    }
 }
