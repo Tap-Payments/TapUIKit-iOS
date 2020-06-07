@@ -124,7 +124,7 @@ class ToPresentAsPopupViewController: UIViewController {
                                                alpha: 1.0)
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-            self.tapVerticalView.add(view: newView, at: 0, with: .bounceIn(.top, duration: nil, delay: nil))
+            self.tapVerticalView.add(view: newView, at: 0, with: .bounceIn(.bottom, duration: nil, delay: nil))
         }
         
         let addFirstFadeIn:UIAlertAction = .init(title: "Add item at the top with fade in", style: .default) { _ in
@@ -141,8 +141,8 @@ class ToPresentAsPopupViewController: UIViewController {
         alertController.addAction(random)
         alertController.addAction(replaceLastSlideIn)
         alertController.addAction(replaceLastFadeIn)
-        //alertController.addAction(addFirstSlideIn)
-        //alertController.addAction(addFirstFadeIn)
+        alertController.addAction(addFirstSlideIn)
+        alertController.addAction(addFirstFadeIn)
         
         present(alertController, animated: true, completion: nil)
         
