@@ -79,27 +79,30 @@ public class TapVerticalView: UIView {
     /**
      Removes an arranged subview from the vertical hierarchy
      - Parameter view: The view to be deleted
+     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    public func remove(view:UIView) {
-        handleDeletion(for: view)
+    public func remove(view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
+        handleDeletion(for: view, with: animation)
     }
     
     /**
      Removes an arranged subview from the vertical hierarchy
      - Parameter index: The index of the view to be deleted
+     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    public func remove(at index:Int) {
+    public func remove(at index:Int, with animation:TapVerticalViewAnimationType? = nil) {
         let subViews = stackView.arrangedSubviews
         guard subViews.count > index else { return }
 
-        handleDeletion(for: subViews[index])
+        handleDeletion(for: subViews[index], with: animation)
     }
     
     /**
      Handles all the logic needed to remove an arranged subview from the vertical hierarchy
      - Parameter view: The view to be deleted
+     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    private func handleDeletion(for view:UIView) {
+    private func handleDeletion(for view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
         stackView.removeArrangedSubview(view)
     }
     
@@ -107,16 +110,18 @@ public class TapVerticalView: UIView {
      Adds an arranged subview to the vertical hierarchy at a certain position
      - Parameter view: The view to be added
      - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
+     - Parameter animation: The animation to be applied while doing the view addition. Default is nil
      */
-    public func add(view:UIView, at index:Int? = nil) {
-        handleAddition(of: view, at: index)
+    public func add(view:UIView, at index:Int? = nil, with animation:TapVerticalViewAnimationType? = nil) {
+        handleAddition(of: view, at: index,with: animation)
     }
     /**
      Handles all the logic needed to add an arranged subview to the vertical hierarchy
      - Parameter view: The view to be added
      - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
+     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    private func handleAddition(of view:UIView, at index:Int? = nil) {
+    private func handleAddition(of view:UIView, at index:Int? = nil, with animation:TapVerticalViewAnimationType? = nil) {
         // If the index is not defined, then we just add it to the end
         if let index = index {
             stackView.insertArrangedSubview(view, at: index)
