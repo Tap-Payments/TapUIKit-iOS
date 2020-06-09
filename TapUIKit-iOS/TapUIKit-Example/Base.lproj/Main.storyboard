@@ -534,6 +534,63 @@
             </objects>
             <point key="canvasLocation" x="2438" y="2890"/>
         </scene>
+        <!--Tap Drag Handler View Controller-->
+        <scene sceneID="1HW-A6-xca">
+            <objects>
+                <viewController storyboardIdentifier="TapDragHandlerViewController" id="eix-zN-OJE" customClass="TapDragHandlerViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CWZ-3B-96n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can you see the handler below me?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1t-oI-iDe">
+                                <rect key="frame" x="52" y="44" width="310.5" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygr-Eb-bqc" customClass="TapDragHandlerView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Vpf-hl-OcM"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animate Width &amp; Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBo-Xf-H7D">
+                                <rect key="frame" x="0.0" y="236" width="349" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jj-fd-IWA">
+                                <rect key="frame" x="357" y="231" width="51" height="31"/>
+                                <connections>
+                                    <action selector="animateSwitch:" destination="eix-zN-OJE" eventType="valueChanged" id="R3V-il-D94"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5jj-fd-IWA" firstAttribute="centerY" secondItem="dBo-Xf-H7D" secondAttribute="centerY" id="5HG-te-1oA"/>
+                            <constraint firstItem="5jj-fd-IWA" firstAttribute="leading" secondItem="dBo-Xf-H7D" secondAttribute="trailing" constant="8" id="6o0-lY-FxM"/>
+                            <constraint firstItem="d1t-oI-iDe" firstAttribute="centerX" secondItem="CWZ-3B-96n" secondAttribute="centerX" id="IjX-AE-PiY"/>
+                            <constraint firstItem="dBo-Xf-H7D" firstAttribute="top" secondItem="ygr-Eb-bqc" secondAttribute="bottom" constant="20" id="LBl-fc-YFv"/>
+                            <constraint firstItem="ygr-Eb-bqc" firstAttribute="leading" secondItem="yC0-TD-Ssu" secondAttribute="leading" id="LfY-WO-KWh"/>
+                            <constraint firstItem="dBo-Xf-H7D" firstAttribute="leading" secondItem="yC0-TD-Ssu" secondAttribute="leading" id="NwN-1x-gqe"/>
+                            <constraint firstItem="yC0-TD-Ssu" firstAttribute="trailing" secondItem="ygr-Eb-bqc" secondAttribute="trailing" id="c0S-qv-qzL"/>
+                            <constraint firstItem="yC0-TD-Ssu" firstAttribute="trailing" secondItem="5jj-fd-IWA" secondAttribute="trailing" constant="8" id="dDR-Vf-TiS"/>
+                            <constraint firstItem="d1t-oI-iDe" firstAttribute="top" secondItem="yC0-TD-Ssu" secondAttribute="top" id="ikj-ak-HS1"/>
+                            <constraint firstItem="ygr-Eb-bqc" firstAttribute="top" secondItem="d1t-oI-iDe" secondAttribute="bottom" constant="20" id="ohu-ag-nV3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yC0-TD-Ssu"/>
+                    </view>
+                    <connections>
+                        <outlet property="dragView" destination="ygr-Eb-bqc" id="GuZ-Vf-KJd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zoW-4d-Xyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2437.68115942029" y="3630.8035714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>

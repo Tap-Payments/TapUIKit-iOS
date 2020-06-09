@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 /// Represents a standalone configurable view to show a drag handler at the top of the bottom sheet
-class TapDragHandlerView: UIView {
+public class TapDragHandlerView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
