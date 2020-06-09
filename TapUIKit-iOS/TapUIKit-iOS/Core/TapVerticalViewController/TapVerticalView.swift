@@ -243,24 +243,6 @@ public class TapVerticalView: UIView {
             }
         }
     }
-    
-    /*/// Loads in the custom TapVerticalView Xib from the local bundle and attach it to the created frame
-    private func setupXib() {
-        
-        // 1. Load the nib
-        guard let nibs = Bundle.init(for: TapVerticalView.self).loadNibNamed("TapVerticalView", owner: self, options: nil),
-            nibs.count > 0,
-            let loadedView:UIView = nibs[0] as? UIView else { return }
-        
-        self.containerView = loadedView
-        
-        // 2. Set the bounds for the container view
-        self.containerView.frame = bounds
-        self.containerView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        
-        // 3. Add this container view as the subview
-        addSubview(containerView)
-    }*/
 }
 
 /// Defines the type and the configuration of the needed animations

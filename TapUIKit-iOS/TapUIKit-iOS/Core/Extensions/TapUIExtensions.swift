@@ -90,9 +90,10 @@ internal extension UIView {
     
     // MARK:- Loading a nib dynamicallu
     /**
-     Assigns a radious value to certain corners
-     - Parameter corners: The  corners we want to apply the radious to
-     - Parameter radius: The radius value we want  to apply
+     Load a XIB file into a UIView
+     - Parameter bundle: The bundle to load the XIB from, default is the XIB containing the UIView
+     - Parameter identefier: The name of the XIB, default is the name of the UIView
+     - Parameter addAsSubView: Indicates whether the method should add the loaded XIB into the UIView, default is true
      */
     func setupXIB(from bundle:Bundle? = nil, with identefier: String? = nil, then addAsSubView:Bool = true) -> UIView {
         
