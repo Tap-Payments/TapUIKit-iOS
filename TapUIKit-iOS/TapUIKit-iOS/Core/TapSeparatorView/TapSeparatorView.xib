@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="5NS-3q-OrJ"/>
                 <outlet property="separationLine" destination="j0K-Si-gFc" id="LH8-Ea-kS4"/>
+                <outlet property="separationLineHeightConstraint" destination="pFf-bR-WhQ" id="p5Q-nI-v72"/>
                 <outlet property="separationLineLeadingConstraint" destination="Iuz-9M-Ppx" id="pDw-kd-0bO"/>
                 <outlet property="separationLineTrailingConstraint" destination="JAb-MO-pSg" id="0WD-ye-Vcn"/>
             </connections>
@@ -22,8 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0K-Si-gFc">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="2"/>
+                    <rect key="frame" x="0.0" y="0.66666666666666652" width="414" height="1"/>
                     <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="pFf-bR-WhQ"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,9 +35,7 @@
                 <constraint firstItem="j0K-Si-gFc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Iuz-9M-Ppx"/>
                 <constraint firstAttribute="trailing" secondItem="j0K-Si-gFc" secondAttribute="trailing" id="JAb-MO-pSg"/>
                 <constraint firstItem="j0K-Si-gFc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g68-JL-AGV"/>
-                <constraint firstItem="j0K-Si-gFc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jab-e9-t13"/>
                 <constraint firstItem="j0K-Si-gFc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kir-ZK-jlM"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="j0K-Si-gFc" secondAttribute="bottom" id="qv8-vn-egf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

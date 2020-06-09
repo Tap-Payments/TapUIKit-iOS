@@ -143,5 +143,9 @@
     },
     "tapBottomSheet": {
         "dimmedColor": "black50"
+    },
+    "tapSeparationLine": {
+        "backgroundColor": "veryLightPinkTwo",
+        "height" : 1
     }
 }

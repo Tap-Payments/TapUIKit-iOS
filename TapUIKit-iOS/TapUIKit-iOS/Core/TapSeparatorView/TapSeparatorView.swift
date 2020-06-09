@@ -7,13 +7,22 @@
 //
 
 import UIKit
-
+import TapThemeManager2020
+/// A custom UIView that shows a separator between different cells/lines/sections, Theme path : "tapSeparationLine"
 public class TapSeparatorView: UIView {
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var separationLine: UIView!
-    @IBOutlet weak var separationLineTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var separationLineLeadingConstraint: NSLayoutConstraint!
     
+    /// The container view that holds everything from the XIB
+    @IBOutlet var containerView: UIView!
+    /// The view that represents the separation line we need to draw
+    @IBOutlet var separationLine: UIView!
+    /// The trailing constraint of the separation line, to be used in animating the width of the line
+    @IBOutlet weak var separationLineTrailingConstraint: NSLayoutConstraint!
+    /// The leadin constraint of the separation line, to be used in animating the width of the line
+    @IBOutlet weak var separationLineLeadingConstraint: NSLayoutConstraint!
+    /// The height constraint of the separation line, to be used to set the line height as per the theme
+    @IBOutlet weak var separationLineHeightConstraint: NSLayoutConstraint!
+    /// The path to look for theme entry in
+    private let themePath = "tapSeparationLine"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,26 +36,36 @@ public class TapSeparatorView: UIView {
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
-        setupXib()
+        self.containerView = setupXIB()
+        separationLine.translatesAutoresizingMaskIntoConstraints = false
+        applyTheme()
     }
     
-    
-    /// Loads in the custom TapVerticalView Xib from the local bundle and attach it to the created frame
-    private func setupXib() {
-        
-        // 1. Load the nib
-        guard let nibs = Bundle.init(for: TapVerticalView.self).loadNibNamed("TapSeparatorView", owner: self, options: nil),
-            nibs.count > 0,
-            let loadedView:UIView = nibs[0] as? UIView else { return }
-        
-        self.containerView = loadedView
-        
-        // 2. Set the bounds for the container view
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         self.containerView.frame = bounds
-        self.containerView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        
-        // 3. Add this container view as the subview
-        addSubview(containerView)
     }
+    
+}
 
+// Mark:- Theme methods
+extension TapSeparatorView {
+    /// Consolidated one point to apply all needed theme methods
+    public func applyTheme() {
+        matchThemeAttributes()
+    }
+    
+    /// Match the UI attributes with the correct theming entries
+    private func matchThemeAttributes() {
+        separationLine.tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        separationLineHeightConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 1)
+        layoutIfNeeded()
+    }
+    
+    /// Listen to light/dark mde changes and apply the correct theme based on the new style
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        applyTheme()
+    }
 }

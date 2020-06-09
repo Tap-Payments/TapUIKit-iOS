@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
 import SimpleAnimation
 
 /// The protocol for the delegates and notifications fired from the TapVerticalView
