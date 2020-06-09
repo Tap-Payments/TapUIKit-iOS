@@ -78,20 +78,30 @@
                     <color key="textColor" red="0.29411764705882354" green="0.28235294117647058" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6X-cO-idT" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="75" y="52" width="320" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="vN5-E7-gHa"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" constant="19" id="AZx-tL-oOS"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="ru4-Og-B3o" secondAttribute="leading" id="QKV-Q7-eLH"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="c84-Gb-Q9q"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O6B-nj-GYC" secondAttribute="trailing" constant="8" id="hny-Wg-FYc"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="19" id="juW-ik-laF"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="vD0-za-T5D"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="153"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.85326086956522"/>
         </view>
     </objects>
 </document>

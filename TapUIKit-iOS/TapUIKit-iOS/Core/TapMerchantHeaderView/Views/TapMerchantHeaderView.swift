@@ -8,7 +8,8 @@
 
 import TapThemeManager2020
 import struct UIKit.CGFloat
-
+import MapleBacon
+import SimpleAnimation
 /// A view represents the merchant header section in the checkout UI
 public class TapMerchantHeaderView: UIView {
 
@@ -26,6 +27,12 @@ public class TapMerchantHeaderView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     /// The lower label
     @IBOutlet weak var subtitleLabel: UILabel!
+    
+    public var viewModel:TapMerchantHeaderViewModel? {
+        didSet{
+            reload()
+        }
+    }
     
     /// The path to look for theme entry in
     private let themePath = "merchantHeaderView"
@@ -51,6 +58,62 @@ public class TapMerchantHeaderView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds
+    }
+    
+    /// This will change the values of titles and images to match the latest values in the associated view model
+    public func reload() {
+        // First defensive coding, make sure we have a valid view model to load the data from
+        guard let viewModel = viewModel else { return }
+        setLabels(viewModel: viewModel)
+        setImages(viewModel: viewModel)
+    }
+    
+    /**
+     Updates all the labels with the corresponding values in the view model
+     - Parameter viewModel: The view model used to fetch the values from
+     */
+    private func setLabels(viewModel: TapMerchantHeaderViewModel) {
+        
+        // Handle title and subtitle labels
+        titleLabel.text = viewModel.getTitle()
+        subtitleLabel.text = viewModel.getSubTitle()
+        merchantLogoPlaceHolderInitialLabel.text = viewModel.getMerchantPlaceHolder()
+    }
+    
+    /**
+     Updates all the image vuews with the corresponding values in the view model
+     - Parameter viewModel: The view model used to fetch the values from
+     */
+    private func setImages(viewModel: TapMerchantHeaderViewModel) {
+        // Merchant logo has a specific logic, as its placeholder is a full view not an image
+        loadMerchantLogo(with: viewModel.getIconURL())
+    }
+    
+    /**
+     Loads the merchant icon from a url and shows a place holder as per the design with view and intials label
+     - Parameter remoteIconUrl: The url to load the logo from
+     - Parameter labelInitial: The initial label to show in the palceholder
+     */
+    private func loadMerchantLogo(with remoteIconUrl:String) {
+        // First we show the placeholder and hide the imageview until we load it from the internet
+        merchantLogoPlaceHolderView.fadeIn()
+        merchantLogoImageView.fadeOut()
+        
+        // Make sure we have a valid URL
+        guard let iconURL:URL = URL(string: remoteIconUrl) else { return }
+        // load the image from the URL
+        merchantLogoImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
+            // Check the downloaded image is a proper image
+            guard let downloadedImage = downloadedImage else { return }
+            
+            // Set the image and show it
+            DispatchQueue.main.async { [weak self] in
+                self?.merchantLogoImageView.image = downloadedImage
+                self?.merchantLogoPlaceHolderView.fadeOut()
+                self?.merchantLogoImageView.fadeIn()
+            }
+        }
+        
     }
 
 }
