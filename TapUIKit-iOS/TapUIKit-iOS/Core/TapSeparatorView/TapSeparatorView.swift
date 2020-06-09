@@ -88,6 +88,8 @@ extension TapSeparatorView {
     private func matchThemeAttributes() {
         separationLine.tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         separationLineHeightConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 1)
+        separationLineLeadingConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 1)
+        separationLineTrailingConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).initialTrailingConstraint")?.floatValue ?? 0)
         layoutIfNeeded()
     }
     

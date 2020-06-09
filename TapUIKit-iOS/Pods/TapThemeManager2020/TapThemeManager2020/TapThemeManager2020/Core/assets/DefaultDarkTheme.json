@@ -145,7 +145,8 @@
         "dimmedColor": "black50"
     },
     "tapSeparationLine": {
-        "backgroundColor": "veryLightPinkTwo",
-        "height" : 1
+        "backgroundColor": "white",
+        "height" : 1,
+        "initialTrailingConstraint" : 0
     }
 }

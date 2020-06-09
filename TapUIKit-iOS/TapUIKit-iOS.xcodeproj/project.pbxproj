@@ -49,6 +49,7 @@
 		E8AE0E00245B620F007AAE1F /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DFF245B620F007AAE1F /* separator.png */; };
 		E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */; };
 		E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */; };
+		E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */; };
 		E8ECF5A3245EA06900C88BE0 /* TapRecentCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */; };
 		E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */; };
 		E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */; };
@@ -139,6 +140,7 @@
 		E8AE0DFF245B620F007AAE1F /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
 		E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorView.swift; sourceTree = "<group>"; };
 		E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorView.xib; sourceTree = "<group>"; };
+		E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewController.swift; sourceTree = "<group>"; };
 		E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardsView.swift; sourceTree = "<group>"; };
 		E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellConfiguration.swift; sourceTree = "<group>"; };
 		E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCollectionView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E8E92B3D248F708700DD7DBB /* TapSeparatorView */,
 				E80E8AA62487C1FF009AF18F /* TapBottomSheetDialog */,
 				E879885D245EA90700D643A2 /* TapRecentCardsViewExample */,
 				E8AE0DE6245AEC57007AAE1F /* TapRecentCardsExample */,
@@ -387,6 +390,14 @@
 			children = (
 				E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */,
 				E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */,
+			);
+			path = TapSeparatorView;
+			sourceTree = "<group>";
+		};
+		E8E92B3D248F708700DD7DBB /* TapSeparatorView */ = {
+			isa = PBXGroup;
+			children = (
+				E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */,
 			);
 			path = TapSeparatorView;
 			sourceTree = "<group>";
@@ -681,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8428DF82456DB3200D5A45A /* ViewController.swift in Sources */,
+				E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */,
 				E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */,
 				E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */,
 				E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */,

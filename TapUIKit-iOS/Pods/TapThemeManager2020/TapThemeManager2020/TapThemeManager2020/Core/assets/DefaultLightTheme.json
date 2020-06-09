@@ -146,6 +146,7 @@
   },
   "tapSeparationLine": {
       "backgroundColor": "veryLightPinkTwo",
-      "height" : 1
+      "height" : 1,
+      "initialTrailingConstraint" : 0
   }
 }
