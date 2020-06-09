@@ -18,7 +18,14 @@ class TapSeparatorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func animateSwitch(_ sender: Any) {
+        
+        guard let animateSwitch = sender as? UISwitch else { return }
+        
+        separatorView.changeWidth(with: animateSwitch.isOn ? 0 : 20)
+        
+    }
+    
     /*
     // MARK: - Navigation
 

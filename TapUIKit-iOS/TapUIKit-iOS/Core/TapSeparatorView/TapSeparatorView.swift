@@ -70,7 +70,7 @@ public class TapSeparatorView: UIView {
         separationLineLeadingConstraint.constant = leadingTrailingValue
         separationLineTrailingConstraint.constant = leadingTrailingValue
         
-        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
             self?.layoutIfNeeded()
         }, completion: nil)
     }
@@ -88,8 +88,7 @@ extension TapSeparatorView {
     private func matchThemeAttributes() {
         separationLine.tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         separationLineHeightConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 1)
-        separationLineLeadingConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 1)
-        separationLineTrailingConstraint.constant = CGFloat(TapThemeManager.numberValue(for: "\(themePath).initialTrailingConstraint")?.floatValue ?? 0)
+        changeWidth(with: CGFloat(TapThemeManager.numberValue(for: "\(themePath).initialTrailingConstraint")?.floatValue ?? 1))
         layoutIfNeeded()
     }
     
