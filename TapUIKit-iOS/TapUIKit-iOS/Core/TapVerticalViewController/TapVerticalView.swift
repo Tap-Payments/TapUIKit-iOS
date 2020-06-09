@@ -44,7 +44,7 @@ public class TapVerticalView: UIView {
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
-        setupXib()
+        self.containerView = setupXIB()
         setupStackScrollView()
     }
     
@@ -244,7 +244,7 @@ public class TapVerticalView: UIView {
         }
     }
     
-    /// Loads in the custom TapVerticalView Xib from the local bundle and attach it to the created frame
+    /*/// Loads in the custom TapVerticalView Xib from the local bundle and attach it to the created frame
     private func setupXib() {
         
         // 1. Load the nib
@@ -260,7 +260,7 @@ public class TapVerticalView: UIView {
         
         // 3. Add this container view as the subview
         addSubview(containerView)
-    }
+    }*/
 }
 
 /// Defines the type and the configuration of the needed animations

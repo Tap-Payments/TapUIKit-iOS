@@ -13,11 +13,11 @@ import class UIKit.UITapGestureRecognizer
 import TapThemeManager2020
 
 // MARK:- UIImageView extensions
-// MARK:- Making the image view tappable extension
+
 internal typealias SimpleClosure = (() -> ())
 private var actionKey : UInt8 = 1
 internal extension UIImageView {
-    
+    // MARK:- Making the image view tappable extension
     // The callback function that will be set when the caller wants to make it as clickable
     var callback: SimpleClosure {
         get {
@@ -56,9 +56,9 @@ internal extension UIImageView {
 }
 
 // MARK:- UIImage extensions
-// MARK:- Loading UIImage from a given class's bundle
+
 internal extension UIImage {
-    
+    // MARK:- Loading UIImage from a given class's bundle
     /**
      Load an Image asset from a dynamic bundle based on the caller class type
      - Parameter name: The name of theimage you want to load
@@ -73,8 +73,9 @@ internal extension UIImage {
 
 
 // MARK:- UIView extensions
-// MARK:- Making corner radious for certain corners
+
 internal extension UIView {
+    // MARK:- Making corner radious for certain corners
     /**
     Assigns a radious value to certain corners
     - Parameter corners: The  corners we want to apply the radious to
@@ -84,5 +85,36 @@ internal extension UIView {
         self.layer.cornerRadius = CGFloat(radius)
         self.clipsToBounds = true
         self.layer.maskedCorners = corners
+    }
+    
+    
+    // MARK:- Loading a nib dynamicallu
+    /**
+     Assigns a radious value to certain corners
+     - Parameter corners: The  corners we want to apply the radious to
+     - Parameter radius: The radius value we want  to apply
+     */
+    func setupXIB(from bundle:Bundle? = nil, with identefier: String? = nil, then addAsSubView:Bool = true) -> UIView {
+        
+        // Whether we use the passed bundle if any, or by default we use the bundle that contains the caller UIView
+        let bundle = bundle ?? Bundle(for: Self.self)
+        // Whether we use the passed identefier if any, or by default we use the default identefier for self
+        let identefier = identefier ??  String(describing: type(of: self))
+        
+        // Load the XIB file
+        guard let nibs = bundle.loadNibNamed(identefier, owner: self, options: nil),
+            nibs.count > 0, let loadedView:UIView = nibs[0] as? UIView else { fatalError("Couldn't load Xib \(identefier)") }
+        
+        let newContainerView = loadedView
+        
+        //Set the bounds for the container view
+        newContainerView.frame = bounds
+        newContainerView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        
+        // Check if needed to add it as subview
+        if addAsSubView {
+            addSubview(newContainerView)
+        }
+        return newContainerView
     }
 }
