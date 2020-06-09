@@ -73,7 +73,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6B-nj-GYC">
-                    <rect key="frame" x="66" y="11.666666666666666" width="340" height="0.0"/>
+                    <rect key="frame" x="66" y="11.666666666666666" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                     <color key="textColor" red="0.29411764705882354" green="0.28235294117647058" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -90,13 +90,12 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" constant="19" id="AZx-tL-oOS"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
-                <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="ru4-Og-B3o" secondAttribute="leading" id="QKV-Q7-eLH"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="c84-Gb-Q9q"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O6B-nj-GYC" secondAttribute="trailing" constant="8" id="hny-Wg-FYc"/>
                 <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="19" id="juW-ik-laF"/>
                 <constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
+                <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="tzR-Tl-aDE"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="vD0-za-T5D"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
