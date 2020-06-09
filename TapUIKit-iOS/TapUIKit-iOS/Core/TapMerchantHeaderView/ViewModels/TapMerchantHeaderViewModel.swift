@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+import LocalisationManagerKit_iOS
+import class CommonDataModelsKit_iOS.TapCommonConstants
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
 public class TapMerchantHeaderViewModel {
     
@@ -18,6 +19,10 @@ public class TapMerchantHeaderViewModel {
     /// The url to load the merchant's logo from
     internal var iconURL:String?
     
+    /// Localisation kit keypath
+    internal var localizationPath = "TapMerchantSection"
+    /// Configure the localisation Manager
+    internal let sharedLocalisationManager = TapLocalisationManager.shared
     /**
      Init method with the needed data
      - Parameter title: The text to be displayed in the title label, default is localized Payment For
@@ -35,7 +40,7 @@ public class TapMerchantHeaderViewModel {
      - Returns: Whether a predefined passed value from the parent or the default localization for "PAYMENT FOR"
      */
     public func getTitle() -> String {
-        return title ?? ""
+        return title ?? sharedLocalisationManager.localisedValue(for: "\(localizationPath).paymentFor", with: TapCommonConstants.pathForDefaultLocalisation())
     }
     
     /**
@@ -43,7 +48,7 @@ public class TapMerchantHeaderViewModel {
      - Returns: Whether a predefined passed value from the parent or the default localization for Merchant Name
      */
     public func getSubTitle() -> String {
-        return (subTitle ?? "").uppercased()
+        return subTitle ?? ""
     }
     
     /**

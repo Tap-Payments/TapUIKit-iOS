@@ -8,6 +8,7 @@
 
 import UIKit
 import TapUIKit_iOS
+import MOLH
 
 class TapMerchantHeaderViewController: UIViewController {
 
@@ -26,12 +27,13 @@ class TapMerchantHeaderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tapMerchantHeaderView.changeViewModel(with: viewModel)
     }
     
     
     func createDefaultViewModel() {
-        viewModel = .init(title: "PAYMENT FOR", subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
+        viewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
     }
     
     @IBAction func resetDefaultClicked(_ sender: Any) {
@@ -40,7 +42,7 @@ class TapMerchantHeaderViewController: UIViewController {
     }
     
     @IBAction func applyChangesClicked(_ sender: Any) {
-        viewModel = .init(title: "PAYMENT FOR", subTitle: merchantNameTextField.text ?? "", iconURL: merchantLogoTextField.text ?? "")
+        viewModel = .init(subTitle: merchantNameTextField.text ?? "", iconURL: merchantLogoTextField.text ?? "")
         tapMerchantHeaderView.changeViewModel(with: viewModel)
     }
 }

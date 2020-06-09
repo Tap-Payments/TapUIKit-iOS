@@ -5,12 +5,12 @@
 //  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct 	CoreGraphics.CGBase.CGFloat
-import class 	CoreGraphics.CGDataProvider.CGDataProvider
-import class 	CoreGraphics.CGFont.CGFont
-import func 	CoreText.CTFontManager.CTFontManagerRegisterGraphicsFont
-import func 	TapSwiftFixes.synchronized
-import class	UIKit.UIFont.UIFont
+import struct     CoreGraphics.CGBase.CGFloat
+import class     CoreGraphics.CGDataProvider.CGDataProvider
+import class     CoreGraphics.CGFont.CGFont
+import func     CoreText.CTFontManager.CTFontManagerRegisterGraphicsFont
+import func     TapSwiftFixes.synchronized
+import class    UIKit.UIFont.UIFont
 import Foundation
 
 /*!
@@ -29,7 +29,7 @@ public class FontProvider {
     ///   - size: Font size
     ///   - languageIdentifier: Language identifier.
     /// - Returns: UIFont
-    public static func localizedFont(_ originalName: TapFont, size: CGFloat, languageIdentifier: String) -> UIFont {
+    public static func localizedFont(_ originalName: TapFont, size: CGFloat, languageIdentifier: String) -> UIFont? {
         
         var fontName: TapFont
         
@@ -56,7 +56,7 @@ public class FontProvider {
     // MARK: - Internal -
     // MARK: Methods
     
-    internal static func fontWith(name: TapFont, size: CGFloat) -> UIFont {
+    internal static func fontWith(name: TapFont, size: CGFloat) -> UIFont? {
         
         switch name {
             
@@ -83,7 +83,8 @@ public class FontProvider {
             
             guard let font = UIFont(name: name.fileName, size: size) else {
                 
-                fatalError("Failed to instantiate font \(name.fileName)")
+                //fatalError("Failed to instantiate font \(name.fileName)")
+                return nil
             }
             
             return font
@@ -105,15 +106,15 @@ public class FontProvider {
         
         return [
             
-            .helveticaNeueThin: 	.arabicHelveticaNeueLight,
-            .helveticaNeueLight: 	.arabicHelveticaNeueLight,
-            .helveticaNeueMedium: 	.arabicHelveticaNeueRegular,
-            .helveticaNeueRegular:	.arabicHelveticaNeueRegular,
-            .helveticaNeueBold: 	.arabicHelveticaNeueBold,
-            .circeExtraLight: 		.arabicHelveticaNeueLight,
-            .circeLight: 			.arabicHelveticaNeueLight,
-            .circeRegular: 			.arabicHelveticaNeueRegular,
-            .circeBold: 			.arabicHelveticaNeueBold,
+            .helveticaNeueThin:     .arabicHelveticaNeueLight,
+            .helveticaNeueLight:     .arabicHelveticaNeueLight,
+            .helveticaNeueMedium:     .arabicHelveticaNeueRegular,
+            .helveticaNeueRegular:    .arabicHelveticaNeueRegular,
+            .helveticaNeueBold:     .arabicHelveticaNeueBold,
+            .circeExtraLight:         .arabicHelveticaNeueLight,
+            .circeLight:             .arabicHelveticaNeueLight,
+            .circeRegular:             .arabicHelveticaNeueRegular,
+            .circeBold:             .arabicHelveticaNeueBold,
             .robotoThin:     .arabicHelveticaNeueLight,
             .robotoLight:     .arabicHelveticaNeueLight,
             .robotoMedium:     .arabicHelveticaNeueRegular,

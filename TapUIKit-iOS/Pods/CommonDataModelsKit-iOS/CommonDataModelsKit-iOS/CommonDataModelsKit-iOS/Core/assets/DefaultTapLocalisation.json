@@ -7,6 +7,9 @@
             "cardExpiryPlaceHolder": "MM/YY",
             "cardSaveLabel": "For faster and more secure checkout,\nsave your card"
         },
+        "TapMerchantSection": {
+            "paymentFor" : "PAYMENT FOR"
+        },
         "Common": {
             "next": "Next",
             "previous": "Previous",
@@ -22,6 +25,9 @@
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",
             "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة"
+        },
+        "TapMerchantSection": {
+            "paymentFor" : "سأدفع لـ"
         },
         "Common": {
             "next": "التالي",

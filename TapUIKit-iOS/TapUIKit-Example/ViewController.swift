@@ -9,6 +9,7 @@
 import UIKit
 import MOLH
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
 
 class ViewController: UIViewController {
     
@@ -56,6 +57,7 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
             destnationVC.title = dataSource[indexPath.row]["title"]
             if dataSource[indexPath.row]["lang"] == "1" {
                 showLanguageSelection { (selectedLanguage) in
+                    TapLocalisationManager.shared.localisationLocale = selectedLanguage
                     MOLH.setLanguageTo(selectedLanguage)
                     TapThemeManager.setDefaultTapTheme()
                     self.showController(contoller: destnationVC, push: self.dataSource[indexPath.row]["push"] == "1")
