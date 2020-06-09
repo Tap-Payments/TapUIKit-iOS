@@ -9,15 +9,22 @@
 import TapThemeManager2020
 import struct UIKit.CGFloat
 
+/// A view represents the merchant header section in the checkout UI
 public class TapMerchantHeaderView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
+    /// The containter view for the area of merchant place holder and real icon image
     @IBOutlet weak var merchantLogoContainerView: UIView!
+    /// The placeholder view we show until we load the logo image
     @IBOutlet weak var merchantLogoPlaceHolderView: UIView!
+    /// The initials labels we show as a placeholder until we load the logo image
     @IBOutlet weak var merchantLogoPlaceHolderInitialLabel: UILabel!
+    /// The imageview that rendersthe merchant logo
     @IBOutlet weak var merchantLogoImageView: UIImageView!
+    /// The upper label
     @IBOutlet weak var titleLabel: UILabel!
+    /// The lower label
     @IBOutlet weak var subtitleLabel: UILabel!
     
     /// The path to look for theme entry in
