@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
 import TapThemeManager2020
 /// A custom UIView that shows a separator between different cells/lines/sections, Theme path : "tapSeparationLine"
 public class TapSeparatorView: UIView {
@@ -24,6 +23,7 @@ public class TapSeparatorView: UIView {
     /// The path to look for theme entry in
     private let themePath = "tapSeparationLine"
     
+    // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -44,6 +44,35 @@ public class TapSeparatorView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds
+    }
+    
+    // Mark:- Interface methods
+    
+    /**
+        Call this method when you want the separator to change its width to a certain value
+     - Parameter widthValue : The new width value you want to apply for the separator
+     - Parameter animated : Indicates whether the width change should be animated or not, default is true
+     */
+    public func changeWidth(to widthValue:CGFloat, animated:Bool = true) {
+        // As all width values are controlled by leading and trailing constrains, we need to first calculate the needed leading and trailing to apply the new given width value
+        let differenceInWidth = frame.width - widthValue
+        // Distrubte the width difference equally between the leading and trailing constraints
+        let trailingLeadingConstraint = differenceInWidth / 2
+        changeWidth(with: trailingLeadingConstraint, animated: animated)
+    }
+    
+    /**
+     Call this method when you want the separator to change its width relatively to the containter view
+     - Parameter leadingTrailingValue : The new leading and trailing value. The passed value will be applied for both constraints
+     - Parameter animated : Indicates whether the width change should be animated or not, default is true
+     */
+    public func changeWidth(with leadingTrailingValue:CGFloat, animated:Bool = true) {
+        separationLineLeadingConstraint.constant = leadingTrailingValue
+        separationLineTrailingConstraint.constant = leadingTrailingValue
+        
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
+            self?.layoutIfNeeded()
+        }, completion: nil)
     }
     
 }

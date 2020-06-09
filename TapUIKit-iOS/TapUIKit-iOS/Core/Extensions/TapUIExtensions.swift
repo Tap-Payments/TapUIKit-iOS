@@ -10,8 +10,9 @@
 import class UIKit.UIImage
 import class UIKit.UIImageView
 import class UIKit.UITapGestureRecognizer
-import TapThemeManager2020
-
+import class UIKit.UIView
+import struct UIKit.CGFloat
+import struct UIKit.CACornerMask
 // MARK:- UIImageView extensions
 
 internal typealias SimpleClosure = (() -> ())
@@ -88,7 +89,7 @@ internal extension UIView {
     }
     
     
-    // MARK:- Loading a nib dynamicallu
+    // MARK:- Loading a nib dynamically
     /**
      Load a XIB file into a UIView
      - Parameter bundle: The bundle to load the XIB from, default is the XIB containing the UIView
