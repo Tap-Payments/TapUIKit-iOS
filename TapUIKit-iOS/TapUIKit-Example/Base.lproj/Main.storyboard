@@ -591,6 +591,74 @@
             </objects>
             <point key="canvasLocation" x="2437.68115942029" y="3630.8035714285711"/>
         </scene>
+        <!--Tap Merchant Header View Controller-->
+        <scene sceneID="9Tu-Zg-Gyb">
+            <objects>
+                <viewController storyboardIdentifier="TapMerchantHeaderViewController" id="ADS-In-qS1" customClass="TapMerchantHeaderViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JwK-XA-FaU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTx-Ek-WDT" customClass="TapMerchantHeaderView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="64" width="414" height="53"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="Nyw-BG-U6a"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Merchant Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVy-lE-3t4">
+                                <rect key="frame" x="20" y="137" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Merchant Logo URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxD-sp-StG">
+                                <rect key="frame" x="20" y="191" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhk-31-Xx1">
+                                <rect key="frame" x="20" y="233" width="93" height="30"/>
+                                <state key="normal" title="Reset Default"/>
+                                <connections>
+                                    <action selector="resetDefaultClicked:" destination="ADS-In-qS1" eventType="touchUpInside" id="5e7-Si-Xlu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMu-X4-oJS">
+                                <rect key="frame" x="292" y="233" width="102" height="30"/>
+                                <state key="normal" title="Apply changes"/>
+                                <connections>
+                                    <action selector="applyChangesClicked:" destination="ADS-In-qS1" eventType="touchUpInside" id="503-T7-0R3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PTx-Ek-WDT" firstAttribute="leading" secondItem="DNC-PF-tdx" secondAttribute="leading" id="4fM-Vd-kqa"/>
+                            <constraint firstItem="kVy-lE-3t4" firstAttribute="top" secondItem="PTx-Ek-WDT" secondAttribute="bottom" constant="20" id="6Zv-xx-QWq"/>
+                            <constraint firstItem="Vhk-31-Xx1" firstAttribute="top" secondItem="KxD-sp-StG" secondAttribute="bottom" constant="8" id="Mvl-AU-I68"/>
+                            <constraint firstItem="DNC-PF-tdx" firstAttribute="trailing" secondItem="kVy-lE-3t4" secondAttribute="trailing" constant="20" id="QeQ-Fl-sdw"/>
+                            <constraint firstItem="kVy-lE-3t4" firstAttribute="leading" secondItem="DNC-PF-tdx" secondAttribute="leading" constant="20" id="Y0c-ai-D96"/>
+                            <constraint firstItem="DNC-PF-tdx" firstAttribute="trailing" secondItem="PTx-Ek-WDT" secondAttribute="trailing" id="cMi-Ha-wJx"/>
+                            <constraint firstItem="DNC-PF-tdx" firstAttribute="trailing" secondItem="KxD-sp-StG" secondAttribute="trailing" constant="20" id="dOj-Ks-WId"/>
+                            <constraint firstItem="Vhk-31-Xx1" firstAttribute="leading" secondItem="DNC-PF-tdx" secondAttribute="leading" constant="20" id="hZg-lh-16R"/>
+                            <constraint firstItem="KxD-sp-StG" firstAttribute="leading" secondItem="DNC-PF-tdx" secondAttribute="leading" constant="20" id="oPd-2H-cpK"/>
+                            <constraint firstItem="aMu-X4-oJS" firstAttribute="top" secondItem="KxD-sp-StG" secondAttribute="bottom" constant="8" id="omA-7i-WDL"/>
+                            <constraint firstItem="KxD-sp-StG" firstAttribute="top" secondItem="kVy-lE-3t4" secondAttribute="bottom" constant="20" id="qa6-X1-4Vl"/>
+                            <constraint firstItem="PTx-Ek-WDT" firstAttribute="top" secondItem="DNC-PF-tdx" secondAttribute="top" constant="20" id="sSd-1A-lXg"/>
+                            <constraint firstItem="DNC-PF-tdx" firstAttribute="trailing" secondItem="aMu-X4-oJS" secondAttribute="trailing" constant="20" id="zFb-Pz-cXX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DNC-PF-tdx"/>
+                    </view>
+                    <connections>
+                        <outlet property="merchantLogoTextField" destination="KxD-sp-StG" id="1G2-1T-okk"/>
+                        <outlet property="merchantNameTextField" destination="kVy-lE-3t4" id="hkk-2z-gcZ"/>
+                        <outlet property="tapMerchantHeaderView" destination="PTx-Ek-WDT" id="r5d-OH-dke"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jTM-2p-yUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2438" y="4364"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>

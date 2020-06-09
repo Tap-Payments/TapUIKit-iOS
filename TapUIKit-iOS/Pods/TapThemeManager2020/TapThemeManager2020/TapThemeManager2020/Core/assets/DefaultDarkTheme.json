@@ -163,7 +163,7 @@
         "merchantLogoCorner" : 8,
         "merchantLogoPlaceHolderColor" : "white",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
-        "merchantLogoPlaceHolderColor" : "black",
+        "merchantLogoPlaceHolderLabelColor" : "black",
         "backgroundColor" : "black"
     }
 }

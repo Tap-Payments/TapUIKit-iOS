@@ -60,6 +60,10 @@ public class TapMerchantHeaderView: UIView {
         self.containerView.frame = bounds
     }
     
+    public func changeViewModel(with viewModel:TapMerchantHeaderViewModel) {
+        self.viewModel = viewModel
+    }
+    
     /// This will change the values of titles and images to match the latest values in the associated view model
     public func reload() {
         // First defensive coding, make sure we have a valid view model to load the data from
@@ -109,8 +113,9 @@ public class TapMerchantHeaderView: UIView {
             // Set the image and show it
             DispatchQueue.main.async { [weak self] in
                 self?.merchantLogoImageView.image = downloadedImage
-                self?.merchantLogoPlaceHolderView.fadeOut()
-                self?.merchantLogoImageView.fadeIn()
+                self?.merchantLogoPlaceHolderView.fadeOut(completion:{ _ in
+                    self?.merchantLogoImageView.fadeIn()
+                })
             }
         }
         
@@ -139,7 +144,7 @@ extension TapMerchantHeaderView {
         merchantLogoContainerView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).merchantLogoCorner")
         merchantLogoPlaceHolderView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderColor")
         merchantLogoPlaceHolderInitialLabel.tap_theme_font = .init(stringLiteral: "\(themePath).merchantLogoPlaceHolderFont")
-        merchantLogoPlaceHolderInitialLabel.tap_theme_textColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderColor")
+        merchantLogoPlaceHolderInitialLabel.tap_theme_textColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderLabelColor")
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
     }

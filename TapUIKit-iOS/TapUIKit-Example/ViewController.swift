@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         dataSource.append(["title":"Tap Bottom Sheet Dialog","subtitle":"Displays the Tap bottom popup modal contoller","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         dataSource.append(["title":"Tap Separator View","subtitle":"Displays the separator view used in the UX","navigationID":"TapSeparatorViewController","lang":"0","push":"0"])
         dataSource.append(["title":"Tap Drag Handler View","subtitle":"Displays the drag handler view used in the UX","navigationID":"TapDragHandlerViewController","lang":"0","push":"0"])
-        
+        dataSource.append(["title":"Tap Merchant Header View","subtitle":"Displays the Tap Merchant head section view","navigationID":"TapMerchantHeaderViewController","lang":"0","push":"0"])
         
         tableView.dataSource = self
         tableView.delegate = self
