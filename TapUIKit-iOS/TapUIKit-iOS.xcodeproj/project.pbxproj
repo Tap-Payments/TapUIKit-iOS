@@ -50,6 +50,8 @@
 		E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */; };
 		E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */; };
 		E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */; };
+		E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B41248F7AC200DD7DBB /* TapDragHandlerView.swift */; };
+		E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B43248F7ACA00DD7DBB /* TapDragHandlerView.xib */; };
 		E8ECF5A3245EA06900C88BE0 /* TapRecentCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */; };
 		E8ED3105245AD90200A62D09 /* TapCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */; };
 		E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */; };
@@ -141,6 +143,8 @@
 		E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorView.swift; sourceTree = "<group>"; };
 		E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorView.xib; sourceTree = "<group>"; };
 		E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewController.swift; sourceTree = "<group>"; };
+		E8E92B41248F7AC200DD7DBB /* TapDragHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapDragHandlerView.swift; sourceTree = "<group>"; };
+		E8E92B43248F7ACA00DD7DBB /* TapDragHandlerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapDragHandlerView.xib; sourceTree = "<group>"; };
 		E8ECF5A2245EA06900C88BE0 /* TapRecentCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCardsView.swift; sourceTree = "<group>"; };
 		E8ED3104245AD90200A62D09 /* TapCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellConfiguration.swift; sourceTree = "<group>"; };
 		E8ED3109245AD9FA00A62D09 /* TapRecentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecentCollectionView.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8E92B40248F7AAE00DD7DBB /* TapDragHandlerView */,
 				E8E92B38248F5C7800DD7DBB /* TapSeparatorView */,
 				E8F779A9248CD60400215403 /* TapVerticalViewController */,
 				E80E8AA12487B6A1009AF18F /* TapBottomSheetDialog */,
@@ -400,6 +405,15 @@
 				E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */,
 			);
 			path = TapSeparatorView;
+			sourceTree = "<group>";
+		};
+		E8E92B40248F7AAE00DD7DBB /* TapDragHandlerView */ = {
+			isa = PBXGroup;
+			children = (
+				E8E92B41248F7AC200DD7DBB /* TapDragHandlerView.swift */,
+				E8E92B43248F7ACA00DD7DBB /* TapDragHandlerView.xib */,
+			);
+			path = TapDragHandlerView;
 			sourceTree = "<group>";
 		};
 		E8ECF5A1245E9F9900C88BE0 /* RecentCardsView */ = {
@@ -571,6 +585,7 @@
 			files = (
 				E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */,
 				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
+				E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */,
 				E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */,
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
@@ -674,6 +689,7 @@
 				E8AE0DF5245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift in Sources */,
 				E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */,
 				E8AE0DFE245B10C0007AAE1F /* TapSeparatorViewModel.swift in Sources */,
+				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
 				E8ED310A245AD9FA00A62D09 /* TapRecentCollectionView.swift in Sources */,
 				E8428E0B2456F76A00D5A45A /* TapChip.swift in Sources */,
 				E8428E0D2457F2C500D5A45A /* TapChipAccessoryView.swift in Sources */,

@@ -69,8 +69,8 @@
 		009714CA856664F3977116C8FBEBB4B4 /* HapticFeedbackProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C329BBD2F22CF64DED35C9A3C4F12904 /* HapticFeedbackProviderProtocol.swift */; };
 		00D27218A8199A050BC7FA8E8564170F /* GULAppDelegateSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E68D2930430286D70FA3AC25550AB1C /* GULAppDelegateSwizzler.m */; };
 		01C550A53C9E2047C83F8E85BBB558E6 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7708CCD8000073D44F86718D3FDAD2 /* ConstraintLayoutSupportDSL.swift */; };
+		01D4D14E56468BF9CDE8254130595F1F /* TapThemePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD75F8D0A87E2C6923376F5EE21DD4 /* TapThemePath.swift */; };
 		0219F1BC5ABECD578BCE1A05E02621E5 /* GDTCOREvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A79D6596704FC9E4E3FFAE5BA6AAE /* GDTCOREvent.m */; };
-		0328CA6B33A09087AE916A4BBC8AE7F6 /* LocalisationManagerKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A3AD99B848D07EFA5513770B007AEE /* LocalisationManagerKit_iOS.framework */; };
 		039EAFE7935113805F3FC21BF1B7C9D5 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9065C93EEB293EF4C9B3EFF986D6CFF2 /* LayoutConstraint.swift */; };
 		039FEC3FA2CB289DD059E047F1262058 /* FIRInstallationsErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 93BB7E2FEF04FE2D48A2827FBCA75F57 /* FIRInstallationsErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03D601A5DFD1ACB07FF029E4791BC0F7 /* FBLPromise+Recover.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 814770C7170197207C676C8D61113C47 /* FBLPromise+Recover.h */; };
@@ -87,8 +87,10 @@
 		09B9B5EAF11F349381974F3B286ADD68 /* GDTCCTUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A34B896BD3F1F4051050AB5703CE3F /* GDTCCTUploader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		09BE233E2230EC56C6EA5ECA34C40DC2 /* GULLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A210B875FA14C083F11F05D84DE2D93C /* GULLogger.m */; };
 		09F2344CDF2289F7B806ED72CB1E16C9 /* FIRAppAssociationRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AE56C07E54B7BF30B218D99BC535E7 /* FIRAppAssociationRegistration.m */; };
+		0A04A98AD43EA0A2B10021CCBDA1B452 /* ThemeImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB069CE8A9818725838BD7FAF1E887E /* ThemeImageSelector.swift */; };
 		0A12C7C7EEE78E6E740FBBC9B85CCD4A /* FBLPromise+Validate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A735C14318EFBF56BDE072623EE70CE /* FBLPromise+Validate.m */; };
 		0A143BFFBCBBBD87A70DCCD9D4B763A0 /* GDTCCTPrioritizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 453FF66B23EA93247D459BFFF1959485 /* GDTCCTPrioritizer.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0C6BCF34D111B33905A4BD0BD2B69E93 /* ThemeFontSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60FA11D3F8F87FAD2440030D7256074 /* ThemeFontSelector.swift */; };
 		0C77B02528C18EFA63A92E3EB4BF65FC /* FBLPromise+Await.h in Headers */ = {isa = PBXBuildFile; fileRef = 74E97B7B55DF1D920FD4C9C97F287573 /* FBLPromise+Await.h */; };
 		0CD27F496DB10BDD252B85501F71593F /* GestureRecognizerClosures-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 053470674080233BD39B5629A7A15605 /* GestureRecognizerClosures-dummy.m */; };
 		0CDE1736E199F42AF437784B3351CE31 /* FBLPromise+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 7409D10CEA4B210E152A7762E8347343 /* FBLPromise+Async.m */; };
@@ -100,10 +102,11 @@
 		0F63359410800815C9DC5E816A0B8134 /* cct.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = E238AD70C70C15CC33942A8A22DB80C3 /* cct.nanopb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCC1BDA70D15C9B0B3699789E902410 /* FBLPromise+Recover.h in Headers */ = {isa = PBXBuildFile; fileRef = 814770C7170197207C676C8D61113C47 /* FBLPromise+Recover.h */; };
 		0FE0697F33D7E0B7DA1149A396065DD3 /* FBLPromise+Race.m in Sources */ = {isa = PBXBuildFile; fileRef = 90841BFB2DCB3B0134BA2959F4E3806F /* FBLPromise+Race.m */; };
+		10B918A4C2A48E6BE1F2599C88D23FD8 /* TapThemeManager2020-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D567FC8078871CD5DC82A7A98FE6D20A /* TapThemeManager2020-dummy.m */; };
 		113F77673DA593A11F5966A25AB63770 /* FIRInstallationsIDController.h in Headers */ = {isa = PBXBuildFile; fileRef = CE48637C692DE8767064F8EED55150F0 /* FIRInstallationsIDController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		114F372E14412017A7F22A51339E7D0C /* GDTCORFlatFileStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F93504455AD7F6D51AC7E6DEB66EF5F /* GDTCORFlatFileStorage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		11ADA407F1B6E1814B026340E67560E7 /* ThemeKeyboardAppearanceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44CC0F101AB15BC4318E4A3697FF2E /* ThemeKeyboardAppearanceSelector.swift */; };
 		1235DF7AB88B191F671FC8EFE9474DCE /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7EE001359D4B5C5A9F922D7266CC2 /* FontProvider.swift */; };
-		126A0AACD45F7887A659D65EE35896AB /* UIHexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F74D0E8FC218841C5BBA096160BD11 /* UIHexColor.swift */; };
 		1283C3CD0AEA8ADA00836DED82EB409B /* FIRErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A30092C6EB3ED17B0FACCDA1BF101DB /* FIRErrorCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		133B08A68AA7F57B042F5798DC992520 /* FBLPromise+Always.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 06496746F8C986DCA9E4FE28779B20B6 /* FBLPromise+Always.h */; };
 		136D621DE6F903694063ABD553425188 /* GULReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = D1F1741FF40BBECE10F077CD0B30DA3C /* GULReachabilityChecker.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -117,13 +120,12 @@
 		17A622B1BA287D4AE3AA3672D4B0E512 /* ExceptionCatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CE444433FCDCCBACF4C872DE146E543B /* ExceptionCatcher.m */; };
 		17CE20F638835265E1137E64C62418B8 /* SheetyColorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07A810D3F34CFC4FAC954A17726E6B /* SheetyColorsDelegate.swift */; };
 		1956E392D500F3CD899D39A5F805736D /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC0852554509F679D76385C5259E69C /* Typealiases.swift */; };
+		195EF7153832B1258CE0C4450E96EA20 /* TapThemeManager+array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31409BFA1E4C7C5D1ECCF3D1738F287F /* TapThemeManager+array.swift */; };
 		196ECC69DF946B7C4054EBA6F7889BAC /* GoogleUtilities-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4CC707611D48F70E6EF41C0C16CA8 /* GoogleUtilities-dummy.m */; };
 		19772A56673C90F7A73792CFA2E0F419 /* HexTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD5EC95B40BEF6C3EB3F18EF5D40EDB /* HexTextFieldDelegate.swift */; };
-		19A56350075F64ABC89797264A7FEB02 /* ThemeNavigationBarAppearanceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54795C8F89FEC01AD81713418D158AA8 /* ThemeNavigationBarAppearanceSelector.swift */; };
 		1ABA2B507962FB92E51A2CA70A819741 /* FIRErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = FCEB358CCACD5888B301AE8479B0BE91 /* FIRErrors.m */; };
 		1AF45247A423D1F7918FA16F433E037D /* CommonDataModelsKit-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9129A9D7BDA4FE10645719E9B7FF6F99 /* CommonDataModelsKit-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AFB1E9136716C0B61D6C700FF1E60FD /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF4E60E9F0876E80036355F423EC23 /* ConstraintLayoutGuide+Extensions.swift */; };
-		1B4F23D35ABDDD105E6648F8E65E9C90 /* ThemeDictionarySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F56BBD072341456A4EAC9D8023D71D /* ThemeDictionarySelector.swift */; };
 		1BBA62CFB027EF624716247A2A087398 /* FBLPromise+Validate.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 8B4640A87C5AF8379A3899F233EB9122 /* FBLPromise+Validate.h */; };
 		1D2EA517C1A6D6C322664F2EDAEB5D4B /* PullUpController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B7FA90E0C6AC03DCC5177CBE228D84 /* PullUpController-dummy.m */; };
 		1D80FBD9CC021C0ECFE2E55D23CE7AD6 /* GDTCORUploadPackage.h in Headers */ = {isa = PBXBuildFile; fileRef = 825B1BF77B62A22F1C3265D280B42BF3 /* GDTCORUploadPackage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,14 +139,12 @@
 		227BA892B7D196A50374D4E32DFCBCBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC49C963A3DB82E49DDE8505EB4767 /* UIKit.framework */; };
 		232B2F922E972D9F43D2EE15ACECE734 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D06679C87311DBD4E551BA5968901 /* ConstraintPriority.swift */; };
 		23F5BF1F35FC39E638C6FD789992E5A0 /* ThreadingFixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A2C3B5F73773FB1CFCDB268341AB0 /* ThreadingFixes.swift */; };
-		251F15CADF830DBBF0AAB3B9909E3179 /* ThemeStatusBarStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932B625C17D665AE26350AAEE5E9BBC /* ThemeStatusBarStyleSelector.swift */; };
 		26B88567B31289C7148311178E3D358A /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2FFCB26DD59ECEBE792DF75D588FEB /* UIView+SimpleAnimation.swift */; };
 		274D5532F48E629EC97D42890737B40F /* GDTCORTransport_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E9AA213F4DF095848843B69A664CF691 /* GDTCORTransport_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2788E9F589E8F661B76557EFA402A2DE /* GestureRecognizerClosures-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C458753379DAEDE7218C19D16598679 /* GestureRecognizerClosures-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		286C2CA03207DE59F5B70265C260CA8C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBFE8B95C9A5DE34CE510D9DCE037291 /* Colors.xcassets */; };
 		294DF61467891D4A15B8BE8DA7B249C8 /* FIRApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FBF2C6CF9B576221AEF0726C05FEAC /* FIRApp.m */; };
 		2A1BBBC87AC2367BD14610A9D10D285E /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04B8E27BBD9268A937194C96177A91 /* ConstraintAttributes.swift */; };
-		2A2CD146DA9566AC27B2AAA72D0429E2 /* ThemeUIColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844785891206DD70671AB6A34837287 /* ThemeUIColorSelector.swift */; };
 		2A2FE436765CD69D0B06BED5EAA6B9DE /* Bundle+framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = C843ED7364A1B480FF63349350B69759 /* Bundle+framework.swift */; };
 		2A51E59835AB30B21DF3FEA526E815BE /* UIBarButtonItem+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D60B2524ADACFCD80D05BE546165 /* UIBarButtonItem+Closures.swift */; };
 		2BE6B1BAF461DFC8BBFB9F15BDA4CBFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
@@ -169,8 +169,10 @@
 		3657F01D685082A4E35B44A32D4F4B6B /* FIRInstallationsStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 3628DCD67003F8251DF87B1003948799 /* FIRInstallationsStatus.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		36B4A654CEFE81FDDCCE68B6055BC09B /* pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FC81F15886FABA8B2DCEB7E9496A348 /* pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37201CA41B277FE64658DE0EB7228B97 /* FBLPromise+Race.h in Headers */ = {isa = PBXBuildFile; fileRef = 260A82DEBF81CDDA020DCA4C58EDA982 /* FBLPromise+Race.h */; };
+		375EAC5FB71D429FA5D7E0FCB6FD0D6C /* DefaultDarkTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = B859C727AB44618DA63B30825D648B2A /* DefaultDarkTheme.json */; };
 		386F3436307ED18774FD30FEC49279C6 /* OSLogType+greaterEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8843ABE5360744AC300F796E2074406A /* OSLogType+greaterEqual.swift */; };
 		38BFC3CD5480E0EEAB911DD3BD7BFCD5 /* MOLH-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D13E6E2FF8BACA8CD6481C8E31631 /* MOLH-dummy.m */; };
+		3959AF31D3D44FA8438B3A519DBA0032 /* ThemeScrollViewIndicatorStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9117963B0FC2CD80AEB8825E5BB0E6 /* ThemeScrollViewIndicatorStyleSelector.swift */; };
 		3999E05ED92EC4228CA26EB230DB43AC /* GDTCORTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = F0288479E652FCB6CDC6A309DE5B1577 /* GDTCORTransport.m */; };
 		3A202D86DBF24057A7C44A86E23865C1 /* FIRAnalyticsConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ABEB7DCE38B60FE7900325BBE15C28F /* FIRAnalyticsConfiguration.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3B5A6465606762C6EB7BF68923C55487 /* FIRAnalyticsConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F1ECBD2F8E7DA953B3C1991C7A555 /* FIRAnalyticsConfiguration.m */; };
@@ -181,6 +183,7 @@
 		3E60D0242AC504FF24EE1F1DAEEE591F /* GULNSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B334F74E1EBFF8235BA8621F62F84E7 /* GULNSData+zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA07194D2A2C60ED0313F110376232A /* Color+wcag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C3846A3439F474F92406921C5220A /* Color+wcag.swift */; };
 		3F8C3D8C881AC44E04F58F42D409FC7D /* FBLPromise+Reduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CD98ADD221F641143FFA13D679A3084 /* FBLPromise+Reduce.h */; };
+		4041C16D7102B193AEF40D7C813FE5BB /* ThemeCGFloatSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B8787F9F97CA5F93E38755DF8C5AA /* ThemeCGFloatSelector.swift */; };
 		4052927BB834BC2DBFD22DAFB3FFF568 /* FIRInstallationsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 2439C46BC53E3EE9BB92D6D362A55E81 /* FIRInstallationsStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		41633EE7DFDBA1E003D38C4E26CA8988 /* AppearenceProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E5FF64D3C0D9447FEAD6A5D9818216 /* AppearenceProviderProtocol.swift */; };
 		420BDBE9A1B2BF4B3096F5C37D3CC3BC /* GDTCORConsoleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA274AA35989B52C223CEDA7D916925 /* GDTCORConsoleLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -193,7 +196,6 @@
 		46A843A9E8649817906128924C1AF4AE /* MOLHFontLocalizableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382B4BC504CAA0851F5111BF30654A4 /* MOLHFontLocalizableViews.swift */; };
 		4777554C153B236B131B65B82D265D9B /* GDTCORLifecycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F203295F11096DB3ABBE1D424AB7302 /* GDTCORLifecycle.m */; };
 		497A593D49008335CA1284AF1B2D3CF5 /* FIRInstallationsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D278AA670232927C5B87519EE8425A /* FIRInstallationsStore.m */; };
-		497B423C67ACBE334E44EB1725B30C88 /* TapThemePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74989648C7734629D6740E574B7D9715 /* TapThemePath.swift */; };
 		498F3B2C27A36DA214991D54EC95F997 /* FIRInstallationsSingleOperationPromiseCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A6727E0DDCA5E972A0338618E1B9D25 /* FIRInstallationsSingleOperationPromiseCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4A093247DF82B38BC8A5A3CDE8C5377E /* FIRLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = E0F660581439B7088307043E1B120AE3 /* FIRLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4AE716C8CE1833E6A3314B910C450EB8 /* FIRInstallationsIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F89430390A62118817AB54EEEBFDBD3 /* FIRInstallationsIDController.m */; };
@@ -207,13 +209,14 @@
 		4E8BE587E67282C497B8C0E771D6FE1B /* GULNetworkLoggerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DA8C85963D9F4E6C6457131AD1A033E /* GULNetworkLoggerProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4F2652151317DBE93AC02C7CCD48928B /* GULSceneDelegateSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0535275506E72F747CF4BF4E261E3A /* GULSceneDelegateSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4F8FDE1577465D3C046317BA3EC628C0 /* FBLPromise+Catch.h in Headers */ = {isa = PBXBuildFile; fileRef = F8121FBE98EF7933B97461A09DA62870 /* FBLPromise+Catch.h */; };
-		5008458F232F3A2B2CDD5CFB8B3F6D53 /* TapThemeManagerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825B8A435D5792813CF034610954E2CB /* TapThemeManagerParser.swift */; };
 		50E718CD13DE2700DE0EA2DD0A736B2A /* GDTCORPrioritizer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD05E6D0953FC3F1031FCD0B370CD47D /* GDTCORPrioritizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		513303ECE271CC6E07A6B56F049B1345 /* RGBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA29928F4F03D9342D7691951783135 /* RGBViewModel.swift */; };
 		5191C8FB86B7E9C0AD61F660CF2F1157 /* FIRComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 03441B9CBEACAD6BFDC98B5C1B6A1071 /* FIRComponent.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		51A05DBEE9E4F741043264680C7BEAB7 /* LocalisationManagerKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A3AD99B848D07EFA5513770B007AEE /* LocalisationManagerKit_iOS.framework */; };
 		51CD5887014967E77E58F5A163996454 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A717AF6DE8B53FFB613E19CF1CD6751E /* ConstraintMaker.swift */; };
 		534F09CA93D9F9A350C671C041EFAF6D /* TapCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0CB7F9CB59A9AEA675611B2D995DB /* TapCommonConstants.swift */; };
 		53700E4BBF691D0AF0D79CEBD8252B21 /* GDTCORUploadCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C4967992F39ECCA007F49154A193D73 /* GDTCORUploadCoordinator.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		538AB30F9180232AF676983742F95CC0 /* ViewsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87B8AE845CECD97A1A27723FB38C00 /* ViewsExtensions.swift */; };
 		54019D077A2AE98DC131AEF3326C6E5D /* GULMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E5EC5CEA44344BB46EB44FCAF6303B /* GULMutableDictionary.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5612114F7BCB79AA3F479A734A45EA4B /* GULSecureCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4C784BF72D01B86DF2ADB8250397B0 /* GULSecureCoding.m */; };
 		56BB28B5920C466E5902D3B12F21BD3F /* GULSceneDelegateSwizzler_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8BCFC28BE8ACDE8F0481BAA10A407A /* GULSceneDelegateSwizzler_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -221,17 +224,17 @@
 		5854DF509E8A016B6235793D04083035 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F407969C94F30FC7C943F0F0673A991E /* ConstraintConstantTarget.swift */; };
 		588C7B6AEC8626D8871787D4EA9251B8 /* UIView+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80191951E1DDB2951A8863EC591DA8BA /* UIView+Closures.swift */; };
 		58A43ACC1FFBCC2F3EA6A25797071D79 /* GULHeartbeatDateStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6D4F7857DC762F73A6F6E51999B808 /* GULHeartbeatDateStorage.m */; };
-		591AB77932EE8DEDD708E63FE5E7BE74 /* ThemeCgColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D2EC9889B5CF1D27FB78D28FCF3219 /* ThemeCgColorSelector.swift */; };
 		59BCF23690D35E682AF7213B1AA8B121 /* GDTCORRegistrar.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C09BE77E0C4159C6773E42B7882222 /* GDTCORRegistrar.m */; };
+		5A0475EC36F0078C3E37B7CFF630AACB /* UIHexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3741120919F1CD25D4AE83D7A1060 /* UIHexColor.swift */; };
 		5A1795B5B248E82EE3BB663E00D98BAB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1D235A05FAEF9894E6137F062AA6CD2 /* Roboto-Regular.ttf */; };
 		5A24E5E52A87429B33BD0F8B2A6037F6 /* LocalisationManagerKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E565C85DD33647EEA67E90E7B76719 /* LocalisationManagerKit-iOS-dummy.m */; };
+		5A3DD0215691350EF0A503748DD9974D /* ThemeStringAttributesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD53255FA9B4E38DA6ADEAB7BC790B18 /* ThemeStringAttributesSelector.swift */; };
 		5A8EDB5FAAB15BD6E5B6421AD25BA78D /* FBLPromise+Then.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 97CDB62FF434ADFA15A75AEB516BECD5 /* FBLPromise+Then.h */; };
 		5ABD222F5BC504866D2FCE4E5859AC2F /* FIRInstallationsVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E279206799461210C2D8D8AAEA1ABD2 /* FIRInstallationsVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B67E826A0DCEFEE57F1B6E47855FDDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		5B7C1D4CABC9266CA6B09098A9500E44 /* GoogleDataTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F1752CE353BDD19D0FD83EAFA5125C /* GoogleDataTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C1180DCDA66B2CC0EB7CA7EABA74DCD /* FIRInstallationsIIDStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A79067760B231B7750B3A5F649620A54 /* FIRInstallationsIIDStore.m */; };
 		5C1378BFC82B04CFFF911D037782CCD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC49C963A3DB82E49DDE8505EB4767 /* UIKit.framework */; };
-		5C67ED56E042252EA4E2D50816A54DAF /* ThemeBlurEffectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCDC53607DC4BA3756B30944FE1E825 /* ThemeBlurEffectSelector.swift */; };
 		5D1A036B3D324201E867909005995960 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		5D3649E8A09F1BE20653DDEB3BF7A78A /* pb_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = D5A7080327B6DB56623C5E60DEC80ADB /* pb_decode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D599C8F1B5C0C8661B3897D33B5FCDE /* FIRApp.h in Headers */ = {isa = PBXBuildFile; fileRef = D5836CDEAAFD8BCE3676DB6D89F4E7BE /* FIRApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -252,21 +255,21 @@
 		6447709A38CB47D0D4B539C0DFF9F728 /* GULSceneDelegateSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 288C43A791DC2E99829AE89490365850 /* GULSceneDelegateSwizzler.m */; };
 		6555EE2AE374EE32F457F03D348ED0A3 /* GDTCORConsoleLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FB41DBA2A3A3BF9032DD2A44E91A0FBD /* GDTCORConsoleLogger.m */; };
 		65680F571546ACC1DEF3C50E40B29EE6 /* GDTCORUploadPackage_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5038B474D00E3D2F25F1A360D2ECC6 /* GDTCORUploadPackage_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		657C2635DE2B450976F23588470071B0 /* ThemeFontSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E68BA6F18832C7CE5BF731A54C4AD5 /* ThemeFontSelector.swift */; };
+		65C9BAB6ADD9D87C8427D22E1A0B7750 /* ThemeStateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27E679B88954AD3CB941D1D6ED5E35 /* ThemeStateSelector.swift */; };
 		6696856EFDB79AF45B1E2D3D0E5B19B3 /* UIControl+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C99552747E7093DAB7BD40C28F8A3C /* UIControl+Closures.swift */; };
 		66BAC46138F756EA7ADCD79C51ABE4CB /* SheetyColorsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD68B73462F57E4F58E23EF78E8BCF34 /* SheetyColorsViewModelProtocol.swift */; };
 		6730E006B7764F221BB7F81F7DB749F0 /* PromisesObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BC22A91EC70B79A59191E98C4916EF4 /* PromisesObjC-dummy.m */; };
-		673AA3BB026CF35E9020D9CA0F48717A /* ViewsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC5A6DEE70AA29CE56F77545CDF368 /* ViewsExtensions.swift */; };
 		67F172904F7959C4715F3CFE9B1B4B10 /* FIRInstallations.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34D7986BC44BB37092EDBFC2D2FD8D /* FIRInstallations.m */; };
-		680B1C1C0A71883A3EFFFBFE6712F15F /* ThemeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF942571FE4858B26BD598B59D596AA0 /* ThemeSelector.swift */; };
+		68076ABB349AA4B3C1A3F32097E69A96 /* TapThemeManagerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069DDCF527FE5208BD2D79F37628B58F /* TapThemeManagerParser.swift */; };
 		687367CBB546BE7842F53CA954984191 /* FBLPromise+Catch.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = F8121FBE98EF7933B97461A09DA62870 /* FBLPromise+Catch.h */; };
+		68C048E4C195241E6F98110291B84266 /* ThemeCgColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300133FF436F3ADF258F0F117E3EC7BE /* ThemeCgColorSelector.swift */; };
 		69C4123A15898007F90AC7D2B778DD73 /* GDTCORDataFuture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F52767AB6FC163688F0497AFACD409E /* GDTCORDataFuture.m */; };
 		69CCBEEDFCA6D743D80026568D961919 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77B655C6657F09909D947B7E718EE6 /* ConstraintMakerExtendable.swift */; };
 		69E3A06BBDFDC7D06A9D4BDC4E895E73 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB76FF9AE30A19E8FD9E10442F11C15 /* ConstraintRelatableTarget.swift */; };
 		6A009E335A4087A3D5FD7A1D31C403EC /* Image+averageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD343BC97E6ECC558EE534EA99FE6FF /* Image+averageColor.swift */; };
+		6A3AB957AD60C12524AFAC312F92AFFA /* SelectorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473EEE8CD6B6269BFEF3E9F1E27370E1 /* SelectorsConstants.swift */; };
 		6A789FEDD6D65DEB0888A4AB486DB224 /* pb_common.c in Sources */ = {isa = PBXBuildFile; fileRef = 789895D076CFA03B2084A79D419E44AA /* pb_common.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc -fno-objc-arc"; }; };
 		6A9BAB8845A46379E69D055193EC5871 /* FIRDiagnosticsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9828EA36DDEC9CA86A13C96FC31C0781 /* FIRDiagnosticsData.m */; };
-		6B520FFBB8DEBE55FDED4FDFECFA863C /* TapFontKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06B242215DBA038ED70EC8FFA9B967 /* TapFontKit_iOS.framework */; };
 		6B6CD41EA0E92DE12D6390B15A0C6D74 /* firebasecore.nanopb.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC2161982AFEE165B4F2421539DD19 /* firebasecore.nanopb.c */; };
 		6BB1DB29C9AD3D64D85A2A92137DB18F /* Pods-TapUIKit-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB5180DC2302DCF778CEFF163A28BE4 /* Pods-TapUIKit-Example-dummy.m */; };
 		6BE2C54051D87CF133172B5EE6D314E4 /* UIColor+rgbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079390770ADB0636986F3AE13BC1D73 /* UIColor+rgbaColor.swift */; };
@@ -278,17 +281,17 @@
 		6D72A391A5E8B931A40E0EEE1122CE92 /* FIRInstallationsStoredItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 89758A2713AA3DD04B150BD095E6FE6E /* FIRInstallationsStoredItem.m */; };
 		6DB7FA55CF03822E59F4731C8E89A09C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2389A5D9E8B9C5CC37BA6910F50F03C7 /* Images.xcassets */; };
 		6E0EB9E7FAAEDBB7A73ECF3095F69C4A /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795FE3DD7C34D09D8591F9B5194DA01A /* UILayoutSupport+Extensions.swift */; };
-		6E73FCB5079FB8586A6F880EE692B51F /* TapThemeManager2020-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C4A1649C8AB93A6B55D027DDE9D089 /* TapThemeManager2020-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		700C326F6CD4B6B2C6D6BE5171880DD4 /* FBLPromise+Timeout.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 1BC9DA2EE2392C542417374E48DE5451 /* FBLPromise+Timeout.h */; };
 		70CC0E371F02D25DFDD42EDE03FF29BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		71DE9DC2FA583526AB4D1FD7F00C099C /* ConstraintDirectionalInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D68A37989CAEE9738688C084E57D223 /* ConstraintDirectionalInsetTarget.swift */; };
 		71E4F4F630E051B6EB9EB397F49F2A1E /* FBLPromise+Testing.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 6AEB474A2C43DE1F36CE5A161DC545A7 /* FBLPromise+Testing.h */; };
 		7240A6549182A730393A15CD2E120A99 /* FIRInstallationsIIDStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 124148C3CB364B80983DCDCC77E81E8D /* FIRInstallationsIIDStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7264B3837EB91F0C5EBD6AA1A9531C90 /* GULUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB9B9E30CF0CAA43133F682ED85BCFD /* GULUserDefaults.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		72BDCE9E63C774819C59630979F9D8CD /* ThemeKeyboardAppearanceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B722BF03B3C84625D3628147799998 /* ThemeKeyboardAppearanceSelector.swift */; };
 		733882D0B9F269B5548564BEB05BCD22 /* GoogleDataTransport-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE97DE50885AD7A7D73DACD36483D98 /* GoogleDataTransport-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		733BE8D49ABACB58578A7818F809498C /* TapFontKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658D84CFDD430895A08C2F51B586252 /* TapFontKit-iOS-dummy.m */; };
+		73CFA6BEE7950A7EE3AD8EA06F0907B7 /* TapThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE606A0365E61E9984DE5FC07726346A /* TapThemeManager.swift */; };
 		73FE47BDC5B749B3E3CFBF41F35F23B1 /* GDTCORUploadPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 628E2549194FA8EB2BABA7E83AF2759B /* GDTCORUploadPackage.m */; };
+		749FC8C67A6AA6110AA7F58B58A6F324 /* ThemeDictionarySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916EFCFBA8F45B2A83FF0318638FD574 /* ThemeDictionarySelector.swift */; };
 		757C477AF763DFCA1BE5A5D78341AFE8 /* FirebaseCoreDiagnostics-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B18A6348CA436F2B5CCEB648269AA9 /* FirebaseCoreDiagnostics-dummy.m */; };
 		75E146C12D1287228A0B493E87CDE31F /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828922B66570B0AE4FFF9FF500758A72 /* ConstraintMakerRelatable.swift */; };
 		77C9889055A3B32EA13A9616824DB0ED /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25A0DAAB7B5497BE3F8F1807B4904A /* ConstraintLayoutGuideDSL.swift */; };
@@ -296,12 +299,12 @@
 		7948EA26B6D64877EAAE4F0CBE1B1D27 /* CoreGraphicsFixes.h in Headers */ = {isa = PBXBuildFile; fileRef = 839C5670EB711B9528A6B80D7F59FF47 /* CoreGraphicsFixes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		79CD9BC9B31762CE8D5E2D29A13924BB /* FIRVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 55A003A313C2E7285A3C8F3B7ABA1D23 /* FIRVersion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		79E0AD4F4180F0958392212CA49E755F /* FIRInstallationsHTTPError.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A2D582802501D1F4107AB1C666F705 /* FIRInstallationsHTTPError.m */; };
-		7A15AEEC13299ADCEA9B4593CA851A7D /* ThemeImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E166B6098DAA0742C726A80E0057C7D /* ThemeImageSelector.swift */; };
 		7A76275CFABD678B7D6686BA2D222783 /* Circe-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462B9762D8EAE0B80A3E1C5C9D4BF535 /* Circe-Light.ttf */; };
 		7AD63B4E31423B951E1A9B93AB6D67EE /* GULSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF0DD1645854A5C527B521747D0B898 /* GULSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7B072A9BCE30017BC8B236980BA577FA /* GULAppDelegateSwizzler_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E2C9656D989898CE1FE617B17E683CA2 /* GULAppDelegateSwizzler_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7C1702076F3A31D8D2D45A4A9F09B266 /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCEC16A06DD0D596C442991F362CD19 /* ConstraintMakerEditable.swift */; };
 		7D4EA0195D1D4B1FEEAB1142DF02717F /* GULAppDelegateSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = CDD95FCDB2E37A77F4CF1D59FB238ADD /* GULAppDelegateSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		7D82F2238FC2E5B8C9DB0AD6014E55C0 /* ThemeUIColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD768558A70B631123A5F94CAAE4EBD /* ThemeUIColorSelector.swift */; };
 		7DD647696261BBB0319DEC61EFB231F1 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47AD954CDA7C883A91A8CCD4070FBD0 /* UIColor+hex.swift */; };
 		7E16A851A76EC685E70BD072B57672B7 /* FBLPromiseError.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 58B62E840797E0FE99069569030AA935 /* FBLPromiseError.h */; };
 		7E5F55DE3AC17BA4FA9D94CFBB23A89E /* FBLPromise+Retry.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B8BD5B89A1576982A4D3310D97A276 /* FBLPromise+Retry.m */; };
@@ -310,7 +313,6 @@
 		7F580FA35BD86EDA98F6E29F0B75630B /* NSFont+fontProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B132A627D45A60D2B92756EA971C83 /* NSFont+fontProps.swift */; };
 		7FF9552D3349B08C1AD64BC2475BEAB9 /* FirebaseInstallations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E03D4DBCD06AB87BC22EDE56CD88BE15 /* FirebaseInstallations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8010AB8B9E544F88E90E3E762143C071 /* FontProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FED8EA13D39C07C8A7DDF8CB7EE122 /* FontProps.swift */; };
-		81E748E5CF0202611F1D02AA012F9F79 /* UIKit+TapTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDA264604E8E2C03034E4F392D5B9B /* UIKit+TapTheme.swift */; };
 		825A977B244746D1AB62EE93F5ABD142 /* GDTCOREvent+NetworkConnectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E20FDBB9A63DC9DC7C56B26B0D85A283 /* GDTCOREvent+NetworkConnectionInfo.m */; };
 		8277256ADEC3C4DCF79957D1CA681A9A /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF91CD53DD9B0E79F97C29DF400122 /* ConstraintDSL.swift */; };
 		829A299E764B6F15DE7052086D7A6A99 /* RGBAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8127F2E6096D13DA0AC66F7A86F30 /* RGBAColor.swift */; };
@@ -332,13 +334,12 @@
 		89C1C6F90694B35E9C5CD2145B99A7BB /* FBLPromise+Timeout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC9DA2EE2392C542417374E48DE5451 /* FBLPromise+Timeout.h */; };
 		8A77DDEE62494C3D749EBBAB907565D1 /* FIRInstallationsErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 447FEA9DD39103B8744B5B80B7C03D25 /* FIRInstallationsErrorUtil.m */; };
 		8AF91AA2F4A3E160B3691EC585E8B955 /* FIRComponentContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 810C05895889D2BBBDD6A325B789804B /* FIRComponentContainer.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		8B0ABB0BE4200F66B4A59A2E7E2EC73D /* ThemeCGFloatSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6D0BF50BE41DB47945B12B38AF45A /* ThemeCGFloatSelector.swift */; };
-		8B86282C947BB838D181B3D812C3E9E8 /* DefaultLightTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F77BFE1E128EAD5021BA9F22C4D119 /* DefaultLightTheme.json */; };
 		8CD2C26E40CE68DAC60C358B35600DA5 /* FIRInstallations.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD6BA33C9D85F40CD4E830049CEDC09 /* FIRInstallations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D16265DA7CAD0A406817EE5A4D88A1D /* MOLHLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A8DDED87309BDF19276053C274CC78 /* MOLHLanguage.swift */; };
 		8D1E72A6BA27450809F69DB8DBCCF654 /* Capable-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6E252237FC29635277FF958DE926F /* Capable-dummy.m */; };
 		8D66B4056D31D247ABE2BB58E05D56CD /* FIRInstallationsErrorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D9758338F4D76FD41F8DD9D94C12446D /* FIRInstallationsErrorUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8DE4C3A8FD9E0E1115308E2A4896FA8A /* GULMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B67459AFF77E4BE5D3B68B782D77D77A /* GULMutableDictionary.m */; };
+		8E117B1FDABB8591964E0EC8B3116D41 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F35D82F60789E7A7ADF9139BB8C19F6 /* images.xcassets */; };
 		8E33DC561A3DC337F5A7FD3C5FFB381E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		8E3542A386D941174DB77EA5A8AE60A3 /* TapLocalisationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202F0ECBC8806E05323077844649394 /* TapLocalisationManager.swift */; };
 		8E4286E593026D0134E7EC9360AAD28E /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB293EEB79AC6E8FB7922232641756C4 /* Roboto-Thin.ttf */; };
@@ -354,7 +355,6 @@
 		979243DB7BF5C1BFB5966534EA7F7651 /* FirebaseCore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 837725F82FD7A39224D5B80B0E191113 /* FirebaseCore-dummy.m */; };
 		97A67A6F7F6F739B4707910C0A25EF49 /* HelveticaNeueLTW20-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62079051769ED7AF54B7975E57F1FBF8 /* HelveticaNeueLTW20-Bold.ttf */; };
 		97CF55B7E0719297FAEBA79CD5D37988 /* GULSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F3EF509E4108EC1B14CEBEC806C610 /* GULSwizzler.m */; };
-		988B36847D22BE7E1337C86B84086573 /* ThemeVibranceBlurEffectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90CC143B7014376C71216AE1998CC2 /* ThemeVibranceBlurEffectSelector.swift */; };
 		98BC38F964FA856EBFF4A1910983AD93 /* FIRCoreDiagnosticsConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E54F8BBE68D26B68979EA7BA2721371 /* FIRCoreDiagnosticsConnector.m */; };
 		99B5296A5EDECE0557B9DA53D9E19CA1 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD366D3117FDE3C8753E14D39C46AFC /* ConstraintItem.swift */; };
 		9A5C86C936D2FBA884750AB191DB220F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
@@ -372,18 +372,21 @@
 		9D38F0B7B54BF4C21E897E4EF6FC83DA /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF12F91E9119C29EE70BD9330C00468 /* Roboto-Light.ttf */; };
 		9E0383E78D5B200469C654A283AF3D94 /* FBLPromise+Any.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 61A1198DCFD3FE87825D0E6152A22800 /* FBLPromise+Any.h */; };
 		9E2A037E4D6EF9CD80A27514CB192F30 /* FBLPromiseError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D256D55DE3962E9EDE6760D9CA2B078 /* FBLPromiseError.m */; };
-		9E7B7FA13C319D6A8DD54F57958A7E57 /* TapThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EA3F8E180AD41A4E7625FB988CAF3F /* TapThemeManager.swift */; };
+		9E776D5CBD2ECA434DCD7DA1DE6A6E3D /* ThemeActivityIndicatorViewStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D18D9225E66A793F40A58A35773161 /* ThemeActivityIndicatorViewStyleSelector.swift */; };
+		A0917E213D592DE9908FBE7C66314EB7 /* UIKit+TapTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4FA4482924831A1DB19AF27984E95C /* UIKit+TapTheme.swift */; };
 		A116B1A6BE9F541080C992FEE35E5F0F /* FIRDependency.h in Headers */ = {isa = PBXBuildFile; fileRef = 85FD43C8FE72ADE3FAE8F549F262168B /* FIRDependency.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		A23723E5AD38CB12F7E6A3ABA38FA32B /* ThemeStringAttributesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16865CF974B217A226CE5DC6EE30A21 /* ThemeStringAttributesSelector.swift */; };
 		A270CD9EC3C541FE86E65AEDCEF500CF /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1EACDFCE92DBEB61D8B66733F4708 /* ConstraintLayoutGuide.swift */; };
 		A39907EFF1F61E218A7CEF0833DE4D70 /* SheetyColorsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA868ACAFD0EF7E4944846FD76E48A1 /* SheetyColorsType.swift */; };
 		A434853FF326942D7EB2F558C99FD85C /* FirebaseCore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EB20C45684B2A785637B0BBBB69928BD /* FirebaseCore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A447B171D91F4D6131F653E31E730D37 /* TapFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D205B6520B4469B17560ABF46C4A2F0 /* TapFont+Additions.swift */; };
 		A4B8862042EA2B5031701F7DA3FB9F39 /* GDTCOREvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EF0519A5EFFD1AAC512AA34C63475FB /* GDTCOREvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4BA3929D2ABDB7A3A30D66F228B565B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC49C963A3DB82E49DDE8505EB4767 /* UIKit.framework */; };
 		A4DF3AB01471BD888F4FD4EC2E9A21BE /* FIRComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D735E96D4649F828F4CFBEFA8E6DB36B /* FIRComponent.m */; };
 		A540159A7432B65339486F2FA341D755 /* FirebaseCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CB0430C4EEBA57A674CF310823C8E28 /* FirebaseCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D2D0F41A16F5FD3756D4919CDD23E2 /* FIRAppAssociationRegistration.h in Headers */ = {isa = PBXBuildFile; fileRef = C87709350777AC60D6BA20EFAD8E2A6E /* FIRAppAssociationRegistration.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		A624D694690721B712C0D70AB1AD5CDD /* ThemeStatusBarStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6534056143D269101E8CE934CE4C35B2 /* ThemeStatusBarStyleSelector.swift */; };
 		A66ED57B365A35434C5BAF4B990819B7 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BC1E5B05552D12B40C940AA23877D1 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7806E26E08554608AE29A9CA4B208AD /* ThemeBarStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA22955955AC131DBEA9379AC5A5BA3 /* ThemeBarStyleSelector.swift */; };
 		A7B4565D86554562F11B0E6AF6555740 /* TapSwiftFixes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6E5A26927659738287E78D0DD8CEC /* TapSwiftFixes-dummy.m */; };
 		A7ECD770EA58D773407E9B4CC26A6D8A /* PullUpController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2FE30DCAE4B7105396E390DA6B7A94 /* PullUpController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A809469B6F4A9D350254A59B5B8BDB0E /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23192A40385D84B82A2FE35B5649FA08 /* Roboto-Black.ttf */; };
@@ -393,7 +396,6 @@
 		AA05FF900C318FF163DDB51F9A0700AB /* GDTCORStorageProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B3261F58264821588D64032123612379 /* GDTCORStorageProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ABF99A187E110B6F62BB3441ABCCC206 /* FBLPromise+Reduce.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39DCB174D6CD688707ED249CBFEACB /* FBLPromise+Reduce.m */; };
 		AC35C9341C4BB156BB26FDD237EE3721 /* ConstraintDirectionalInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3784BC7C261F8D19117A86CC56698 /* ConstraintDirectionalInsets.swift */; };
-		ACF54B66DB9ADE890820F2418CF21A5C /* SelectorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDD57E5C4347C62F32E7B37859B26ED /* SelectorsConstants.swift */; };
 		AD744118640D6FF88AE90B68E1BAD0F0 /* FIRInstallationsAuthTokenResultInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 49C28C031BD3CAF0778092E30BD43EA4 /* FIRInstallationsAuthTokenResultInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AE3FE2AAD1054C4C48145732F4D7E533 /* GrayscaleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DEB4DABCEFA6DC335149E9B5256C5 /* GrayscaleColor.swift */; };
 		AE7CF4245E5EE9DF00F66606E939CC92 /* FBLPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = BE7BAFA93EE428B1A15733B11CA7AF41 /* FBLPromise.h */; };
@@ -404,7 +406,6 @@
 		B1CED1A7020036EF1162C520EAF960BB /* MOLH-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57207F05B77043A36872409C76B0BCF7 /* MOLH-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2ADBA919A83F3489D1643A24A241C8B /* FIRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4668FFCF853CF1900E817EC73CF7F2 /* FIRConfiguration.m */; };
 		B2F44AF266B61D2FDCE8C1325092AF05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
-		B30824A38ECA29FB688AC3407E93AF18 /* TapThemeManager+array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0AB206DBB128E067CFAE66ECF47FB /* TapThemeManager+array.swift */; };
 		B3577A37064E0779B66A34520BF755AB /* FBLPromise+Any.h in Headers */ = {isa = PBXBuildFile; fileRef = 61A1198DCFD3FE87825D0E6152A22800 /* FBLPromise+Any.h */; };
 		B3DA463FE22DD22C783EA37F931CEFC9 /* FIRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D80C87E191C4FBB2FAF81278BB9203B /* FIRLogger.m */; };
 		B3FC39E935107BD0F270F8AF385DBF9F /* GoogleDataTransportCCTSupport-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E95E7E6FBB6B4582A51CAFE439E698C /* GoogleDataTransportCCTSupport-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -422,12 +423,13 @@
 		B79E683059398347D30F641EB0D6D947 /* FIROptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5802F2D17949751E54EAC8A3E66C78 /* FIROptions.m */; };
 		B872EAA5A74C6F4DD9882BDD91B45E8E /* GDTCORPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6790583269905D5EED4611CF3C335B /* GDTCORPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8B4D132C9EF342369FF5471B99CB5D8 /* SheetyColorsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3568E92F6476DD2BDE3379089CC0AE31 /* SheetyColorsConfig.swift */; };
+		B8F5F3CF885D6BD9109E14D9245B0534 /* ThemeNavigationBarAppearanceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CFF96D9D6796C085870E81A253266 /* ThemeNavigationBarAppearanceSelector.swift */; };
 		B96208FB4E8E0B19FE841621A530E87A /* FIRConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B86D020F35A272CF090C048D8C4B66D /* FIRConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA8AF0CCF12B99D7536C662611ADB1FD /* GDTCCTUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 584001D84DEF83A1DF449DA5C1217BFE /* GDTCCTUploader.m */; };
 		BBA28BBCAC8587841BA9D6E4649E83F6 /* FIRInstallationsAuthTokenResult.h in Headers */ = {isa = PBXBuildFile; fileRef = E794C7A16F24E221FA623C177D915917 /* FIRInstallationsAuthTokenResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC68C6125681CE6D77AACD3CFE5C8443 /* FBLPromise+Do.h in Headers */ = {isa = PBXBuildFile; fileRef = C7D28404AE58B26AECF182D930A5521B /* FBLPromise+Do.h */; };
 		BD30D501178A064D19E7DB0BDEED207C /* GDTCORTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A93E97221BABDBFBEE13207256A2A2 /* GDTCORTransformer.m */; };
-		BD3FB7FA0990097ACDEA38EE0FE312FF /* ThemeActivityIndicatorViewStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC4C0F3E3DB91A30DB391E5A3E787F2 /* ThemeActivityIndicatorViewStyleSelector.swift */; };
+		BDF367183BB1A8CFA69D7FA19C4ECC3C /* DefaultLightTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 53A46A43EA8122BE6AB122D47B121BBA /* DefaultLightTheme.json */; };
 		BE3DCE46739A692E70F683C0C35C3892 /* FBLPromise+Retry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E5CA6B202557A8A2ECA2924FE151941 /* FBLPromise+Retry.h */; };
 		BECA67DFB5E0984DFAEFCB775C31972E /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18757F1837B344CD5294F135FD39B81 /* ConstraintView.swift */; };
 		BF08BC85875ECC5F80F249620BA6FF98 /* GDTCORReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1EBB52AFB45A779F366EA0FE9E1F77 /* GDTCORReachability.m */; };
@@ -438,15 +440,14 @@
 		C1A3D1C30DD1CB85D99E30618C29647A /* HelveticaNeueLTW20-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10FFC83C957039949202DF190594CD75 /* HelveticaNeueLTW20-Light.ttf */; };
 		C2A36421CFCFA6376C089F0D5F241373 /* GoogleUtilities-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44DC616907AA30A70AB9B3A09FAE760D /* GoogleUtilities-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C412F27D75AFC0DF0F0289DBB270931C /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2A1121BF26207FD693E5ED0F962F4 /* ConstraintMakerFinalizable.swift */; };
+		C475FE68830C7FFF35593ECCE2C58DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		C4911EEAA641272059F07EE0E6EF8A31 /* GULAppEnvironmentUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 20FB535CFC03CA14D50896128AB31685 /* GULAppEnvironmentUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C51C3D70CCB9260030FA831AF35788CC /* pb_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = 07E4819A1B0F6CC2418CDC743D73B1DE /* pb_decode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc"; }; };
 		C5421D3A7E3DD0E33F633F97C5EEFEA5 /* FBLPromise+Do.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = C7D28404AE58B26AECF182D930A5521B /* FBLPromise+Do.h */; };
 		C9B69A2DADCF4B8077257581A5BA278C /* Pods-TapUIKit-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B6CA1E87AB11A76150D0F442DA9B1C /* Pods-TapUIKit-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9BAB94BF8CC0A923C07742892C75C83 /* TapThemeManager2020-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E24EBF63AB189C538390369B05F6CA /* TapThemeManager2020-dummy.m */; };
 		CB2738B22CD5D06CA90F94093E48DDAE /* FIRComponentType.h in Headers */ = {isa = PBXBuildFile; fileRef = F874C73380B8AA60F688A606126E555D /* FIRComponentType.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		CBD6C33EDA705688C4E4D90AB9F52DFD /* FBLPromise+Timeout.m in Sources */ = {isa = PBXBuildFile; fileRef = 171B2227133CEAAD7F988840FA28FEFC /* FBLPromise+Timeout.m */; };
 		CCA8FC84008C994A3FFAE58B41201FE8 /* FIRInstallationsStoredAuthToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E6728269D2E53D81621C06C3FDDB234 /* FIRInstallationsStoredAuthToken.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CE3A6509D7DD104538392E422F92356C /* NSObject+tapTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81F6FCBE917FBBE243353FD625CE269 /* NSObject+tapTheme.swift */; };
 		CE62FEABA57B2B53EABF8C7DCCC6B2C4 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DCFFD5CCA4E894B0C5E32842ED175 /* ConstraintRelation.swift */; };
 		CEF123E9C8B4FD3D3654297488F5C198 /* GDTCORUploadCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE410D2CF9E937814A76CBC57409422 /* GDTCORUploadCoordinator.m */; };
 		CF32AB3643282DABAECAAFC9AEC6547A /* PreviewColorViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626873B5B6B2482879E394FA4B3235A /* PreviewColorViewDelegate.swift */; };
@@ -456,7 +457,6 @@
 		D2D5F0AA0A1A56FB11377C86B551234A /* FBLPromise+Wrap.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 3136AB755F1AE05F69E113F8D7E9616B /* FBLPromise+Wrap.h */; };
 		D3F33604DC14387C008316354DDFC920 /* GDTCORDataFuture.h in Headers */ = {isa = PBXBuildFile; fileRef = 60CC6733C94B6E82DCC87D8F70620F5C /* GDTCORDataFuture.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D4697DC40F3B059E4A0867838CA1814E /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D61610E61E4EDCE10FB043C788BFD7 /* ConstraintMultiplierTarget.swift */; };
-		D47BA7E32DAACAB7B1D8ED340240EB48 /* ThemeStateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932556FD70A6C9A5D090214A0ED3376F /* ThemeStateSelector.swift */; };
 		D4AB4069490084063DB376C9B6803531 /* FBLPromise+Retry.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 2E5CA6B202557A8A2ECA2924FE151941 /* FBLPromise+Retry.h */; };
 		D542F2806D78202E89894939750D8457 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		D5C7E82437FE04F2CD8A96072D2E9593 /* FIRInstallationsAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD6BCE1C8528546AE79B14734D43DFA /* FIRInstallationsAPIService.m */; };
@@ -477,19 +477,20 @@
 		DBBFB726B54D132205F42D6FD8E81979 /* GDTCCTPrioritizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A369B71731A787D2F84FA04D83A6BF /* GDTCCTPrioritizer.m */; };
 		DC3C2443C8BC49AB8E74A4932F38C30B /* FIRInstallationsHTTPError.h in Headers */ = {isa = PBXBuildFile; fileRef = 8510EF35757A0A878234F0DBA5CB3E58 /* FIRInstallationsHTTPError.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DC9F542FFB8235328C3D3D1713D97ECF /* GULReachabilityMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B8CA7061854834936CD382C48F015B4 /* GULReachabilityMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD352C0C6E42F6FBA570254112233971 /* ThemeBlurEffectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0941CFDC11C4E6599450104A5EB08E82 /* ThemeBlurEffectSelector.swift */; };
 		DD42B0B6F5C438EAC3157888E5D0B381 /* FBLPromises.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 9D9DB25BEBD9502B42B338AFD1311AD0 /* FBLPromises.h */; };
 		DE044DB2449F368530C637131283D76E /* GDTCORTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = E55189D5C1EE807A0A1A326C0AF65D62 /* GDTCORTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE5C50E7CC3E96E2982522C455704372 /* Circe-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41AC74897EC706CA2A77CD0D2C25DFB /* Circe-ExtraLight.ttf */; };
 		DFFCCD3FB8D6FF0C5DCFF0F47CA498E8 /* FIRInstallationsAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = CF98B4CA76E5EED8EE90ECA099A97CF7 /* FIRInstallationsAPIService.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E0D79B99FA0829955C64DD543DA11B13 /* ThemeVibranceBlurEffectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FC7C3ECD002157BF9EDD79E3E4DF4 /* ThemeVibranceBlurEffectSelector.swift */; };
 		E15DCBBD465EC45EB08436FDC284379A /* GULApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = F99674C3A5CF34C561DBD424BBDDE0FB /* GULApplication.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E270DE9CF8267344181F36624F0E4EC8 /* MOLH.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1BE08890EACFE930389ED07F3EA6E /* MOLH.swift */; };
-		E29C09617BF87BF947D53FDAC1863564 /* ThemeBarStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E17A5C7843BFE19003CD916B6CE84E /* ThemeBarStyleSelector.swift */; };
+		E283AE125BD9692F776BD4DFEF570AFB /* TapFontKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06B242215DBA038ED70EC8FFA9B967 /* TapFontKit_iOS.framework */; };
 		E4A62623BCCFF4670E75A06222D71804 /* FBLPromise+Any.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC390E48AB768AC80A2A733353B9A69 /* FBLPromise+Any.m */; };
 		E4E88BC89BAD91A2CFED33C63A48F16D /* ConformanceLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A45843FBF01E8FD933E06E0420D4CE /* ConformanceLevel.swift */; };
 		E520D68A6B8222A6A57026300B20B3B6 /* GDTCORReachability_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 805031978A067935ACB82CBFAD635915 /* GDTCORReachability_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E5BD23251D9B828CF290A4377A778857 /* GDTCOREvent_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 514309AD7F0A8AE659412AF3F609B60E /* GDTCOREvent_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E5C30929AF956517D81638E47A48C807 /* CoreGraphicsFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9459C6941D0FE37E51E0303AFC83F0FF /* CoreGraphicsFixes.m */; };
-		E666E732E627ECFA35281A193C57DF4F /* ThemeScrollViewIndicatorStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B36FDE5070A8BA8C772DAA858E8719 /* ThemeScrollViewIndicatorStyleSelector.swift */; };
 		E6C3AC1533E09AB22822D392C9B9CFCC /* FIRDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA6F833BDD621DD13FAB0F5AB8E27B /* FIRDependency.m */; };
 		E7430AE796662DFA4CA9CE988D527100 /* GDTCORUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E609471BE13668864AA86CEA566EC54 /* GDTCORUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E87A45A4F65F25893399B754CF63301E /* TapSwiftFixes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC38D15F84AB18F3C98B3A910D00E92 /* TapSwiftFixes.framework */; };
@@ -518,19 +519,19 @@
 		F3379436EEF6A4AB006A76224F00D2C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		F3C596550BB24716220A0BB86334FCEC /* FIRInstallationsIIDTokenStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FE46F6AAEB3552F901205C9CB51AA64 /* FIRInstallationsIIDTokenStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F41ED6009FE6A446559897BFF07B52AB /* SimpleAnimation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7F29EEC6D4FB83E6132B96931C84AC /* SimpleAnimation-dummy.m */; };
-		F67A5BB7B6612EA25F9897132DB45667 /* DefaultDarkTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 91C4B5B434D9DE390C40BEBE7BD071DA /* DefaultDarkTheme.json */; };
 		F7340FD4F69C73B02E4C7322E4F1CE8B /* GDTCCTCompressionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 787DEAA8FDEB47A5DFA005ABB38B1DC5 /* GDTCCTCompressionHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F7AA265E750AEB57104DBD920D8A921B /* FIRInstallationsStoredItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B7D9B9A0D912FC1BE61DB38F2724FCA1 /* FIRInstallationsStoredItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F7C520D3DA44B2E32BC07AD27F8FB272 /* TapThemeManager2020-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B614C2EB1ADA0F0534628C36D6D1B3 /* TapThemeManager2020-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7C8DB6DBA8E83BB9B37ED2DB26BB15E /* GDTCORTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 318B1B4AD3FE4D625F04E2E6D0B088D7 /* GDTCORTransformer.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		F8BFA88DC60B02EFD7D6C122B38F436B /* TapFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE8798F55F1B1CFC47033CD3B18C65 /* TapFont+Additions.swift */; };
 		F96B8A6ECFFCEB11F74EFC497B64D31F /* FIRLoggerLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F44498B1267246D281428A4B3DD0097 /* FIRLoggerLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9B2A521BC18DDEA1E00CB071347C6AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		FA1D14E2CCC19B8F734B1346F528E62C /* FBLPromisePrivate.h in Copy . Private Headers */ = {isa = PBXBuildFile; fileRef = B1B4ADB686B5AF9637A4164763BDD435 /* FBLPromisePrivate.h */; };
+		FB289C717E53C221101AEE61D1717272 /* NSObject+tapTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2892929950A5CB6D9E2EDE7AAE4303 /* NSObject+tapTheme.swift */; };
 		FBED05764440E7FEF17C007B2437FB0D /* FIRVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = C35DF8FE72A968D02F58AFCF52E07ED5 /* FIRVersion.m */; };
 		FC00D8B97C08E739D357E66A4695C529 /* SheetyColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483F983C0594D7950A20C5A32A979A3 /* SheetyColorProtocol.swift */; };
 		FC775095597914294ABF7C56BF70052A /* FIRComponentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E164135BE73374F4E7D098F352395 /* FIRComponentContainer.m */; };
+		FD22FE19A7C48CECA2E31FE7E5BDCE6F /* ThemeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556B801EB649E883CA7CA6A47DBA702F /* ThemeSelector.swift */; };
 		FD408F236ABEFD9F40B4C3659B6C82B5 /* FIRDiagnosticsData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5793F55B9C7EF05B2D11C6738A5B9E94 /* FIRDiagnosticsData.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		FD640E6B1517967914AD08BF7C2634C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		FDEEC001D0E1EFCD0C290E4826F39990 /* FBLPromise+All.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = E5422B3FC626B3C32D4487BEC18586B7 /* FBLPromise+All.h */; };
 		FE24AC47C6DCFE758BD5AC42C8B46182 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CF731E81171C6FFC9D734A90B053C2 /* Foundation.framework */; };
 		FE4104BF18D4D78A4D90E46C4B33F315 /* Capable-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 825711DED23B4F704CDCC14BB3C0D667 /* Capable-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -674,6 +675,13 @@
 			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
 			remoteInfo = SnapKit;
 		};
+		67C599C1571ECED6852B18ABCD2B07B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F533AA510B62E4F3B56C094378F820D6;
+			remoteInfo = "TapFontKit-iOS";
+		};
 		6867871D4B7A21EE84AEF0AEA348DE03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -800,13 +808,6 @@
 			remoteGlobalIDString = 4402AFF83DBDC4DD07E198685FDC2DF2;
 			remoteInfo = FirebaseCore;
 		};
-		B78C87D270CA5656EBB377D647972BEB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 48D7FFECE792D5C478227EFA6E2D5A43;
-			remoteInfo = "LocalisationManagerKit-iOS";
-		};
 		BBDC7C661CA5567D3925BC0747CAAEC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -877,6 +878,13 @@
 			remoteGlobalIDString = 87803597EB3F20FC46472B85392EC4FD;
 			remoteInfo = FirebaseInstallations;
 		};
+		CBC2F3AC78C718271E16396436CD017A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48D7FFECE792D5C478227EFA6E2D5A43;
+			remoteInfo = "LocalisationManagerKit-iOS";
+		};
 		D5C20BCD284A9EB8BDEC664518B847AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -918,13 +926,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2A84B9D796D0D04B87F4B7C8561AAF92;
 			remoteInfo = TapSwiftFixes;
-		};
-		E89B758EE1EF4A98DFAB2A342BEBE7F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F533AA510B62E4F3B56C094378F820D6;
-			remoteInfo = "TapFontKit-iOS";
 		};
 		EFB5B57A4CAE1A7DF1624EFDB79A1E09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1041,14 +1042,18 @@
 		053470674080233BD39B5629A7A15605 /* GestureRecognizerClosures-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GestureRecognizerClosures-dummy.m"; sourceTree = "<group>"; };
 		05731D4564B45C6A847C77700966EA00 /* UIColor+hsbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+hsbaColor.swift"; path = "SheetyColors/Classes/HSB/Models/Extensions/UIColor+hsbaColor.swift"; sourceTree = "<group>"; };
 		06496746F8C986DCA9E4FE28779B20B6 /* FBLPromise+Always.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Always.h"; path = "Sources/FBLPromises/include/FBLPromise+Always.h"; sourceTree = "<group>"; };
+		069DDCF527FE5208BD2D79F37628B58F /* TapThemeManagerParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemeManagerParser.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManagerParser.swift; sourceTree = "<group>"; };
 		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07695E082308B6C227BAEAFF1BFB9996 /* GDTCORAssert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORAssert.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORAssert.h; sourceTree = "<group>"; };
 		07E4819A1B0F6CC2418CDC743D73B1DE /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_decode.c; sourceTree = "<group>"; };
 		081C3846A3439F474F92406921C5220A /* Color+wcag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Color+wcag.swift"; path = "Source/Colors/Extensions/Color+wcag.swift"; sourceTree = "<group>"; };
 		084F0E40BF7A3F329AF3E1CA256A8683 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
 		0895FD2106E4FDA7FAB8DD5EF334920E /* FIRConfigurationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRConfigurationInternal.h; path = FirebaseCore/Sources/Private/FIRConfigurationInternal.h; sourceTree = "<group>"; };
+		0941CFDC11C4E6599450104A5EB08E82 /* ThemeBlurEffectSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBlurEffectSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeBlurEffectSelector.swift; sourceTree = "<group>"; };
 		09F97ED08C0D322D99B23C88C9339766 /* Firebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.release.xcconfig; sourceTree = "<group>"; };
+		0A44CC0F101AB15BC4318E4A3697FF2E /* ThemeKeyboardAppearanceSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeKeyboardAppearanceSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeKeyboardAppearanceSelector.swift; sourceTree = "<group>"; };
 		0BC0852554509F679D76385C5259E69C /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
+		0BF3741120919F1CD25D4AE83D7A1060 /* UIHexColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIHexColor.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Extensions/UIHexColor.swift; sourceTree = "<group>"; };
 		0C7D13E6E2FF8BACA8CD6481C8E31631 /* MOLH-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MOLH-dummy.m"; sourceTree = "<group>"; };
 		0C869B56D0F2A521085FA0EFB4FBE9D2 /* GDTCCTNanopbHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCCTNanopbHelpers.h; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTNanopbHelpers.h; sourceTree = "<group>"; };
 		0CA868ACAFD0EF7E4944846FD76E48A1 /* SheetyColorsType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsType.swift; path = SheetyColors/Classes/Common/Models/SheetyColorsType.swift; sourceTree = "<group>"; };
@@ -1069,6 +1074,7 @@
 		11C2B4792F2236E1FC41A57A4E8DFDA8 /* FIRInstallationsItem+RegisterInstallationAPI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FIRInstallationsItem+RegisterInstallationAPI.m"; path = "FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsItem+RegisterInstallationAPI.m"; sourceTree = "<group>"; };
 		11C35C82A12038E93E05DE295C1CE087 /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
 		124148C3CB364B80983DCDCC77E81E8D /* FIRInstallationsIIDStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsIIDStore.h; path = FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDStore.h; sourceTree = "<group>"; };
+		12D18D9225E66A793F40A58A35773161 /* ThemeActivityIndicatorViewStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeActivityIndicatorViewStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeActivityIndicatorViewStyleSelector.swift; sourceTree = "<group>"; };
 		12D4F227FF7D2CB2D6EBE7FC6A167BDA /* GULOriginalIMPConvenienceMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULOriginalIMPConvenienceMacros.h; path = GoogleUtilities/MethodSwizzler/Private/GULOriginalIMPConvenienceMacros.h; sourceTree = "<group>"; };
 		135D82BA1EAEB70A000496034DECCF80 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseInstallations.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1076,7 +1082,6 @@
 		14B18A6348CA436F2B5CCEB648269AA9 /* FirebaseCoreDiagnostics-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FirebaseCoreDiagnostics-dummy.m"; sourceTree = "<group>"; };
 		15E11D4879489139DFFE3E4AA5512A20 /* Pods-TapUIKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapUIKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		15E644B63F1321C1A7251CC477D5A592 /* FIROptionsInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIROptionsInternal.h; path = FirebaseCore/Sources/Private/FIROptionsInternal.h; sourceTree = "<group>"; };
-		15EA3F8E180AD41A4E7625FB988CAF3F /* TapThemeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemeManager.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManager.swift; sourceTree = "<group>"; };
 		1658D84CFDD430895A08C2F51B586252 /* TapFontKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapFontKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		16D3DF80D5F2B029C826469CB06CF318 /* SheetyColorsViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewDelegate.swift; path = SheetyColors/Classes/Common/ViewModels/Protocols/SheetyColorsViewDelegate.swift; sourceTree = "<group>"; };
 		171B2227133CEAAD7F988840FA28FEFC /* FBLPromise+Timeout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Timeout.m"; path = "Sources/FBLPromises/FBLPromise+Timeout.m"; sourceTree = "<group>"; };
@@ -1085,6 +1090,7 @@
 		19F6E5A26927659738287E78D0DD8CEC /* TapSwiftFixes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapSwiftFixes-dummy.m"; sourceTree = "<group>"; };
 		1A2FE30DCAE4B7105396E390DA6B7A94 /* PullUpController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PullUpController-umbrella.h"; sourceTree = "<group>"; };
 		1ABEB7DCE38B60FE7900325BBE15C28F /* FIRAnalyticsConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAnalyticsConfiguration.h; path = FirebaseCore/Sources/Private/FIRAnalyticsConfiguration.h; sourceTree = "<group>"; };
+		1BB069CE8A9818725838BD7FAF1E887E /* ThemeImageSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeImageSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeImageSelector.swift; sourceTree = "<group>"; };
 		1BC9DA2EE2392C542417374E48DE5451 /* FBLPromise+Timeout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Timeout.h"; path = "Sources/FBLPromises/include/FBLPromise+Timeout.h"; sourceTree = "<group>"; };
 		1BEE64CAB88590E9899AB0D705CF27EB /* DefaultTapLocalisation.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultTapLocalisation.json; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/assets/DefaultTapLocalisation.json"; sourceTree = "<group>"; };
 		1C0535275506E72F747CF4BF4E261E3A /* GULSceneDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSceneDelegateSwizzler.h; path = GoogleUtilities/SceneDelegateSwizzler/Private/GULSceneDelegateSwizzler.h; sourceTree = "<group>"; };
@@ -1108,6 +1114,7 @@
 		28641BF302CDAA10DF0B8A6057C10D77 /* FIRInstallationsItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsItem.m; path = FirebaseInstallations/Source/Library/FIRInstallationsItem.m; sourceTree = "<group>"; };
 		288C43A791DC2E99829AE89490365850 /* GULSceneDelegateSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSceneDelegateSwizzler.m; path = GoogleUtilities/SceneDelegateSwizzler/GULSceneDelegateSwizzler.m; sourceTree = "<group>"; };
 		29C77ECAB02EB7545B9698C61C841E82 /* Circe-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Thin.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Thin.ttf"; sourceTree = "<group>"; };
+		29F23BF23800B10602A8D5CE07C6EB2E /* TapThemeManager2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapThemeManager2020.release.xcconfig; sourceTree = "<group>"; };
 		2B195F77B53B99280A3F9B392558E3E3 /* LocalisationManagerKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LocalisationManagerKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		2BC0CB7F9CB59A9AEA675611B2D995DB /* TapCommonConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCommonConstants.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/Constants/TapCommonConstants.swift"; sourceTree = "<group>"; };
 		2BD03279E3833C65AC57AD0C4F2F1680 /* ImageArea.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageArea.swift; path = Source/Colors/Models/ImageArea.swift; sourceTree = "<group>"; };
@@ -1115,7 +1122,6 @@
 		2C1E50E56FF40AC7B1DE030FB30B9F59 /* FIRErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrors.h; path = FirebaseCore/Sources/Private/FIRErrors.h; sourceTree = "<group>"; };
 		2CC390E48AB768AC80A2A733353B9A69 /* FBLPromise+Any.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Any.m"; path = "Sources/FBLPromises/FBLPromise+Any.m"; sourceTree = "<group>"; };
 		2CCD28338355003C3715B42023524748 /* PullUpController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PullUpController.framework; path = PullUpController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D5C24699BBC1214F4C563101C7BF085 /* TapThemeManager2020.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TapThemeManager2020.modulemap; sourceTree = "<group>"; };
 		2DC38D15F84AB18F3C98B3A910D00E92 /* TapSwiftFixes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapSwiftFixes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD366D3117FDE3C8753E14D39C46AFC /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		2E279206799461210C2D8D8AAEA1ABD2 /* FIRInstallationsVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsVersion.h; path = FirebaseInstallations/Source/Library/Public/FIRInstallationsVersion.h; sourceTree = "<group>"; };
@@ -1123,23 +1129,27 @@
 		2EC3C6C05E250DF2E8A42570B1C17381 /* nanopb-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-umbrella.h"; sourceTree = "<group>"; };
 		2EF0519A5EFFD1AAC512AA34C63475FB /* GDTCOREvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREvent.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCOREvent.h; sourceTree = "<group>"; };
 		2FC81F15886FABA8B2DCEB7E9496A348 /* pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
+		300133FF436F3ADF258F0F117E3EC7BE /* ThemeCgColorSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeCgColorSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeCgColorSelector.swift; sourceTree = "<group>"; };
+		305E0B557B7448FB4E294797FEF3D9D1 /* TapThemeManager2020.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TapThemeManager2020.modulemap; sourceTree = "<group>"; };
 		30665B61E6232D596E747ECDC79C8563 /* FBLPromise+Then.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Then.m"; path = "Sources/FBLPromises/FBLPromise+Then.m"; sourceTree = "<group>"; };
 		306A79D6596704FC9E4E3FFAE5BA6AAE /* GDTCOREvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCOREvent.m; path = GoogleDataTransport/GDTCORLibrary/GDTCOREvent.m; sourceTree = "<group>"; };
 		30C4FB3889D1D76A9B360E0E4801FAD9 /* FirebaseCoreDiagnostics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseCoreDiagnostics.release.xcconfig; sourceTree = "<group>"; };
 		3136AB755F1AE05F69E113F8D7E9616B /* FBLPromise+Wrap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Wrap.h"; path = "Sources/FBLPromises/include/FBLPromise+Wrap.h"; sourceTree = "<group>"; };
+		31409BFA1E4C7C5D1ECCF3D1738F287F /* TapThemeManager+array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TapThemeManager+array.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManager+array.swift"; sourceTree = "<group>"; };
 		318B1B4AD3FE4D625F04E2E6D0B088D7 /* GDTCORTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransformer.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransformer.h; sourceTree = "<group>"; };
 		324E7578413670459F2055EA9E908920 /* CommonDataModelsKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CommonDataModelsKit_iOS.framework; path = "CommonDataModelsKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBLPromises.framework; path = PromisesObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		337EBF3509069BBFD6BF0B7F1BB28C31 /* GULReachabilityChecker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULReachabilityChecker.m; path = GoogleUtilities/Reachability/GULReachabilityChecker.m; sourceTree = "<group>"; };
+		33DD75F8D0A87E2C6923376F5EE21DD4 /* TapThemePath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemePath.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemePath.swift; sourceTree = "<group>"; };
 		3568E92F6476DD2BDE3379089CC0AE31 /* SheetyColorsConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsConfig.swift; path = SheetyColors/Classes/Common/Models/SheetyColorsConfig.swift; sourceTree = "<group>"; };
 		3628DCD67003F8251DF87B1003948799 /* FIRInstallationsStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsStatus.h; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsStatus.h; sourceTree = "<group>"; };
 		369E64F6596DC06BB2FEF7C8C2B6F5E7 /* FIRCoreDiagnosticsInterop.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsInterop.h; path = Interop/CoreDiagnostics/Public/FIRCoreDiagnosticsInterop.h; sourceTree = "<group>"; };
 		371F4A78FF5C15F79746D9EB4F6F2A45 /* GoogleUtilities-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-prefix.pch"; sourceTree = "<group>"; };
 		3744D3470E02E6F00F6D89542A0F8759 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
+		374CFF96D9D6796C085870E81A253266 /* ThemeNavigationBarAppearanceSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeNavigationBarAppearanceSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeNavigationBarAppearanceSelector.swift; sourceTree = "<group>"; };
 		37C99552747E7093DAB7BD40C28F8A3C /* UIControl+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIControl+Closures.swift"; path = "GestureRecognizerClosures/UIControl+Closures.swift"; sourceTree = "<group>"; };
 		38AE56C07E54B7BF30B218D99BC535E7 /* FIRAppAssociationRegistration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAppAssociationRegistration.m; path = FirebaseCore/Sources/FIRAppAssociationRegistration.m; sourceTree = "<group>"; };
 		38BDD6316280F344F28AD96939991CF9 /* FIRCoreDiagnosticsData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsData.h; path = Interop/CoreDiagnostics/Public/FIRCoreDiagnosticsData.h; sourceTree = "<group>"; };
-		38DC5A6DEE70AA29CE56F77545CDF368 /* ViewsExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewsExtensions.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Extensions/ViewsExtensions.swift; sourceTree = "<group>"; };
 		396E5416204FE6ED4F10D28CC4EB45F3 /* GULLoggerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerLevel.h; path = GoogleUtilities/Logger/Public/GULLoggerLevel.h; sourceTree = "<group>"; };
 		3ACBA541FD25EF51F9ECA44DACA2CAC8 /* UIColor+grayscaleColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+grayscaleColor.swift"; path = "SheetyColors/Classes/Grayscale/Models/Extensions/UIColor+grayscaleColor.swift"; sourceTree = "<group>"; };
 		3B334F74E1EBFF8235BA8621F62F84E7 /* GULNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULNSData+zlib.h"; path = "GoogleUtilities/NSData+zlib/GULNSData+zlib.h"; sourceTree = "<group>"; };
@@ -1151,7 +1161,6 @@
 		3FB202EEB730D47FFD7D5F0660642584 /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
 		40AF4E60E9F0876E80036355F423EC23 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		42B2F21130C18AEEBDB8A906833CBA49 /* Firebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.debug.xcconfig; sourceTree = "<group>"; };
-		42C4A1649C8AB93A6B55D027DDE9D089 /* TapThemeManager2020-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapThemeManager2020-umbrella.h"; sourceTree = "<group>"; };
 		4334416DE85F44ACB82196C30AC5C1CA /* GULNetwork.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetwork.m; path = GoogleUtilities/Network/GULNetwork.m; sourceTree = "<group>"; };
 		43EC62341085E7A6678D6BB38317B21D /* CGFloat+constrainToRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGFloat+constrainToRange.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/CGFloat+constrainToRange.swift"; sourceTree = "<group>"; };
 		440ACDC18AEB289B3A8B2F1027593607 /* FIRCoreDiagnosticsConnector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsConnector.h; path = FirebaseCore/Sources/Private/FIRCoreDiagnosticsConnector.h; sourceTree = "<group>"; };
@@ -1164,11 +1173,10 @@
 		462B9762D8EAE0B80A3E1C5C9D4BF535 /* Circe-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Light.ttf"; sourceTree = "<group>"; };
 		463D9C554601F8A01176B9439CD98FF3 /* FIRInstallationsStoredAuthToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsStoredAuthToken.m; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredAuthToken.m; sourceTree = "<group>"; };
 		46981811FD24CCE9B64664CB5B681746 /* TapThemeManager2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TapThemeManager2020.framework; path = TapThemeManager2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		473EEE8CD6B6269BFEF3E9F1E27370E1 /* SelectorsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorsConstants.swift; path = TapThemeManager2020/TapThemeManager2020/Core/enums/SelectorsConstants.swift; sourceTree = "<group>"; };
 		47E318009D44EF1F7F8503AABA84DECE /* FirebaseAnalytics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseAnalytics.release.xcconfig; sourceTree = "<group>"; };
 		4868A5D3246DDB6C3D88910A0C94A063 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		48D2EC9889B5CF1D27FB78D28FCF3219 /* ThemeCgColorSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeCgColorSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeCgColorSelector.swift; sourceTree = "<group>"; };
 		48E5EC5CEA44344BB46EB44FCAF6303B /* GULMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULMutableDictionary.h; path = GoogleUtilities/Network/Private/GULMutableDictionary.h; sourceTree = "<group>"; };
-		4983F00451CDE5F90694F36657C289AC /* TapThemeManager2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapThemeManager2020.debug.xcconfig; sourceTree = "<group>"; };
 		49891596E59FEB4421DAE83DF9CBA865 /* TapFontKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "TapFontKit-iOS.modulemap"; sourceTree = "<group>"; };
 		49C28C031BD3CAF0778092E30BD43EA4 /* FIRInstallationsAuthTokenResultInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsAuthTokenResultInternal.h; path = FirebaseInstallations/Source/Library/FIRInstallationsAuthTokenResultInternal.h; sourceTree = "<group>"; };
 		4A30092C6EB3ED17B0FACCDA1BF101DB /* FIRErrorCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrorCode.h; path = FirebaseCore/Sources/Private/FIRErrorCode.h; sourceTree = "<group>"; };
@@ -1188,6 +1196,7 @@
 		4E95E7E6FBB6B4582A51CAFE439E698C /* GoogleDataTransportCCTSupport-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleDataTransportCCTSupport-umbrella.h"; sourceTree = "<group>"; };
 		4ED6E252237FC29635277FF958DE926F /* Capable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Capable-dummy.m"; sourceTree = "<group>"; };
 		4F5971D9586EFFCE3084505A35D5EBF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		4FD768558A70B631123A5F94CAAE4EBD /* ThemeUIColorSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeUIColorSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeUIColorSelector.swift; sourceTree = "<group>"; };
 		507879BB6AC94452A7CF05381D616CF2 /* Pods-TapUIKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TapUIKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		50A34B896BD3F1F4051050AB5703CE3F /* GDTCCTUploader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCCTUploader.h; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTUploader.h; sourceTree = "<group>"; };
 		50C6CFDEBACFE798532F6473E7551F1C /* GULNetworkURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkURLSession.m; path = GoogleUtilities/Network/GULNetworkURLSession.m; sourceTree = "<group>"; };
@@ -1195,11 +1204,12 @@
 		51C2A8AD2A2628AA55D1C7D01C5D5B6F /* GestureClosure.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GestureClosure.swift; path = GestureRecognizerClosures/GestureClosure.swift; sourceTree = "<group>"; };
 		52F4F156B5A6B293C2998EEB8E625877 /* SheetyColors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SheetyColors.debug.xcconfig; sourceTree = "<group>"; };
 		52F5243E3D20684B7F561E6CA0F092B2 /* LocalisationManagerKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "LocalisationManagerKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		53A46A43EA8122BE6AB122D47B121BBA /* DefaultLightTheme.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultLightTheme.json; path = TapThemeManager2020/TapThemeManager2020/Core/assets/DefaultLightTheme.json; sourceTree = "<group>"; };
 		53B4EE569320406DEA4F857C9C254B76 /* GULKeychainUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULKeychainUtils.h; path = GoogleUtilities/Environment/Public/GULKeychainUtils.h; sourceTree = "<group>"; };
 		54082A01A3AA8B1CF3C832277A8D166C /* HapticFeedbackProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HapticFeedbackProvider.swift; path = SheetyColors/Classes/Common/Models/HapticFeedbackProvider.swift; sourceTree = "<group>"; };
 		543999E228352FF4951569D531DA0CB7 /* FirebaseCoreDiagnostics-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseCoreDiagnostics-Info.plist"; sourceTree = "<group>"; };
-		54795C8F89FEC01AD81713418D158AA8 /* ThemeNavigationBarAppearanceSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeNavigationBarAppearanceSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeNavigationBarAppearanceSelector.swift; sourceTree = "<group>"; };
 		548AABAAD4ECF7997A7BFDCC9D5DDE83 /* CommonDataModelsKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CommonDataModelsKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		556B801EB649E883CA7CA6A47DBA702F /* ThemeSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeSelector.swift; sourceTree = "<group>"; };
 		55A003A313C2E7285A3C8F3B7ABA1D23 /* FIRVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRVersion.h; path = FirebaseCore/Sources/FIRVersion.h; sourceTree = "<group>"; };
 		57207F05B77043A36872409C76B0BCF7 /* MOLH-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MOLH-umbrella.h"; sourceTree = "<group>"; };
 		5793F55B9C7EF05B2D11C6738A5B9E94 /* FIRDiagnosticsData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDiagnosticsData.h; path = FirebaseCore/Sources/Private/FIRDiagnosticsData.h; sourceTree = "<group>"; };
@@ -1213,6 +1223,7 @@
 		5CB6EAAA6FF4C9F8DB753F71499D4F45 /* GULLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLogger.h; path = GoogleUtilities/Logger/Private/GULLogger.h; sourceTree = "<group>"; };
 		5CD343BC97E6ECC558EE534EA99FE6FF /* Image+averageColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Image+averageColor.swift"; path = "Source/Colors/Extensions/Image+averageColor.swift"; sourceTree = "<group>"; };
 		5D256D55DE3962E9EDE6760D9CA2B078 /* FBLPromiseError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBLPromiseError.m; path = Sources/FBLPromises/FBLPromiseError.m; sourceTree = "<group>"; };
+		5D27E679B88954AD3CB941D1D6ED5E35 /* ThemeStateSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStateSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStateSelector.swift; sourceTree = "<group>"; };
 		5DB71F94B24554273C5F3B7C41CD68D3 /* GoogleDataTransportCCTSupport-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleDataTransportCCTSupport-dummy.m"; sourceTree = "<group>"; };
 		5E54F8BBE68D26B68979EA7BA2721371 /* FIRCoreDiagnosticsConnector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCoreDiagnosticsConnector.m; path = FirebaseCore/Sources/FIRCoreDiagnosticsConnector.m; sourceTree = "<group>"; };
 		5EA29928F4F03D9342D7691951783135 /* RGBViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RGBViewModel.swift; path = SheetyColors/Classes/RGB/ViewModels/RGBViewModel.swift; sourceTree = "<group>"; };
@@ -1230,6 +1241,7 @@
 		648E2D1766050B4DA734F478561E2676 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		6490B9DAA1E26D26209E132244E34344 /* CommonDataModelsKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CommonDataModelsKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		65173E7841F55F16A93619366E2B7FCB /* Pods-TapUIKit-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapUIKit-Example.modulemap"; sourceTree = "<group>"; };
+		6534056143D269101E8CE934CE4C35B2 /* ThemeStatusBarStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStatusBarStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStatusBarStyleSelector.swift; sourceTree = "<group>"; };
 		66B02F52CF9F66146B358F3439B3E5D9 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		671DCA5BFA597FF3BA33758F4B81C9B3 /* UIFont+fontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+fontProps.swift"; path = "Source/Colors/Extensions/UIFont+fontProps.swift"; sourceTree = "<group>"; };
 		67CC86FAAF9D702FF7A567C1190D1183 /* FirebaseCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FirebaseCore.modulemap; sourceTree = "<group>"; };
@@ -1246,10 +1258,10 @@
 		6BBF91CD53DD9B0E79F97C29DF400122 /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
 		6BC22A91EC70B79A59191E98C4916EF4 /* PromisesObjC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PromisesObjC-dummy.m"; sourceTree = "<group>"; };
 		6BFBD137B432D65770ABBE80799CADA0 /* Pods-TapUIKit-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapUIKit-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6C2892929950A5CB6D9E2EDE7AAE4303 /* NSObject+tapTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+tapTheme.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/NSObject+tapTheme.swift"; sourceTree = "<group>"; };
 		6D33B91605BBFA4B122BD96925BA6960 /* GDTCORTransformer_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransformer_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransformer_Private.h; sourceTree = "<group>"; };
 		6D65E5BB4AEF9EE241435CDC5FAC8D7A /* FIRInstallationsLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsLogger.h; path = FirebaseInstallations/Source/Library/FIRInstallationsLogger.h; sourceTree = "<group>"; };
 		6DF9CE64945973EAB64D298F0DBB8525 /* SheetyColors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SheetyColors.framework; path = SheetyColors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E166B6098DAA0742C726A80E0057C7D /* ThemeImageSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeImageSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeImageSelector.swift; sourceTree = "<group>"; };
 		6E5625C437259F514690F1EC65FDCCB0 /* Pods-TapUIKit-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TapUIKit-Example-frameworks.sh"; sourceTree = "<group>"; };
 		6ED86F1E74DDBEDD94016E6CA7639632 /* GDTCORTargets.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTargets.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORTargets.h; sourceTree = "<group>"; };
 		6F229D68DDE3766F0A5D032129185F7B /* Circe-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Regular.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Regular.ttf"; sourceTree = "<group>"; };
@@ -1264,7 +1276,6 @@
 		730EE0A8EF85E20EBE773760863E19BE /* GDTCOREventDataObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREventDataObject.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventDataObject.h; sourceTree = "<group>"; };
 		7409D10CEA4B210E152A7762E8347343 /* FBLPromise+Async.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Async.m"; path = "Sources/FBLPromises/FBLPromise+Async.m"; sourceTree = "<group>"; };
 		7417D7F05C9EBDFBA5D8807098575513 /* TapFontKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapFontKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		74989648C7734629D6740E574B7D9715 /* TapThemePath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemePath.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemePath.swift; sourceTree = "<group>"; };
 		74E97B7B55DF1D920FD4C9C97F287573 /* FBLPromise+Await.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Await.h"; path = "Sources/FBLPromises/include/FBLPromise+Await.h"; sourceTree = "<group>"; };
 		757D06679C87311DBD4E551BA5968901 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		76481E9DC2BEFA44D4F6B35507AFB5F1 /* FIRComponentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRComponentType.m; path = FirebaseCore/Sources/FIRComponentType.m; sourceTree = "<group>"; };
@@ -1274,29 +1285,27 @@
 		793FE2C63FCA5ACD2A5270FB6B4E5813 /* FIRInstallationsLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsLogger.m; path = FirebaseInstallations/Source/Library/FIRInstallationsLogger.m; sourceTree = "<group>"; };
 		795BEBF6F428C5684FEC396DFBA29FF4 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		795FE3DD7C34D09D8591F9B5194DA01A /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
-		79F77BFE1E128EAD5021BA9F22C4D119 /* DefaultLightTheme.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultLightTheme.json; path = TapThemeManager2020/TapThemeManager2020/Core/assets/DefaultLightTheme.json; sourceTree = "<group>"; };
 		7A0406299673574DDE72ACF6EB2E78C3 /* GoogleDataTransport-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleDataTransport-dummy.m"; sourceTree = "<group>"; };
 		7A1FD6EA0E8131C82BBB37576231AB0A /* GestureRecognizerClosures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GestureRecognizerClosures.release.xcconfig; sourceTree = "<group>"; };
 		7BCAED9FC691162042E5AFD174D73B10 /* SheetyColors-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SheetyColors-umbrella.h"; sourceTree = "<group>"; };
 		7BDAC3F5DE1F596C9890395502AAD50E /* TapCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCard.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/TapCard.swift"; sourceTree = "<group>"; };
 		7C4FEEEB76B3F90405D1820075C7D5B1 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
-		7C617157C62CA2F8673CB50FF9CF4DFC /* TapThemeManager2020-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapThemeManager2020-prefix.pch"; sourceTree = "<group>"; };
 		7E722A54868A6FF636170316B78FC48F /* FBLPromise+Async.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Async.h"; path = "Sources/FBLPromises/include/FBLPromise+Async.h"; sourceTree = "<group>"; };
 		7E788B3BFA89951C3A054EB498106E6B /* FBLPromise+All.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+All.m"; path = "Sources/FBLPromises/FBLPromise+All.m"; sourceTree = "<group>"; };
+		7F35D82F60789E7A7ADF9139BB8C19F6 /* images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = TapThemeManager2020/TapThemeManager2020/Core/assets/images.xcassets; sourceTree = "<group>"; };
 		7FDF68387C5B5914BD59E39870DE2A87 /* PullUpController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PullUpController-Info.plist"; sourceTree = "<group>"; };
 		7FE46F6AAEB3552F901205C9CB51AA64 /* FIRInstallationsIIDTokenStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsIIDTokenStore.h; path = FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDTokenStore.h; sourceTree = "<group>"; };
 		80191951E1DDB2951A8863EC591DA8BA /* UIView+Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Closures.swift"; path = "GestureRecognizerClosures/UIView+Closures.swift"; sourceTree = "<group>"; };
 		80316539DEEBF00257753828FD8302C6 /* FBLPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBLPromise.m; path = Sources/FBLPromises/FBLPromise.m; sourceTree = "<group>"; };
 		805031978A067935ACB82CBFAD635915 /* GDTCORReachability_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORReachability_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORReachability_Private.h; sourceTree = "<group>"; };
+		805FC7C3ECD002157BF9EDD79E3E4DF4 /* ThemeVibranceBlurEffectSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeVibranceBlurEffectSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeVibranceBlurEffectSelector.swift; sourceTree = "<group>"; };
 		80BF520AFC5746D428131B79CC054E1A /* MOLHSizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MOLHSizable.swift; path = Sources/MOLH/MOLHSizable.swift; sourceTree = "<group>"; };
 		80D278AA670232927C5B87519EE8425A /* FIRInstallationsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsStore.m; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStore.m; sourceTree = "<group>"; };
-		80D6D0BF50BE41DB47945B12B38AF45A /* ThemeCGFloatSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeCGFloatSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeCGFloatSelector.swift; sourceTree = "<group>"; };
 		80D7EE001359D4B5C5A9F922D7266CC2 /* FontProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProvider.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/FontProvider.swift"; sourceTree = "<group>"; };
 		810C05895889D2BBBDD6A325B789804B /* FIRComponentContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentContainer.h; path = FirebaseCore/Sources/Private/FIRComponentContainer.h; sourceTree = "<group>"; };
 		814770C7170197207C676C8D61113C47 /* FBLPromise+Recover.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Recover.h"; path = "Sources/FBLPromises/include/FBLPromise+Recover.h"; sourceTree = "<group>"; };
 		825711DED23B4F704CDCC14BB3C0D667 /* Capable-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Capable-umbrella.h"; sourceTree = "<group>"; };
 		825B1BF77B62A22F1C3265D280B42BF3 /* GDTCORUploadPackage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORUploadPackage.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORUploadPackage.h; sourceTree = "<group>"; };
-		825B8A435D5792813CF034610954E2CB /* TapThemeManagerParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemeManagerParser.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManagerParser.swift; sourceTree = "<group>"; };
 		828922B66570B0AE4FFF9FF500758A72 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		82EE841FF9828D75AF8067F44DB899F1 /* GrayscaleViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrayscaleViewModel.swift; path = SheetyColors/Classes/Grayscale/ViewModels/GrayscaleViewModel.swift; sourceTree = "<group>"; };
 		830DD92C048F6EAFCB373288F6B49FE0 /* Circe-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraBold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -1335,11 +1344,10 @@
 		91044B549DB78248193898E9CBFCD999 /* GoogleDataTransport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleDataTransport.release.xcconfig; sourceTree = "<group>"; };
 		9129A9D7BDA4FE10645719E9B7FF6F99 /* CommonDataModelsKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CommonDataModelsKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		9155F1D53DCBF70C859C00D5226B1231 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		916EFCFBA8F45B2A83FF0318638FD574 /* ThemeDictionarySelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeDictionarySelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeDictionarySelector.swift; sourceTree = "<group>"; };
 		91A2348D8E63F2212905F56BE6D77116 /* FirebaseCoreDiagnosticsInterop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseCoreDiagnosticsInterop.debug.xcconfig; sourceTree = "<group>"; };
 		91A7F57005CF63BCEFA3F87ABC569BD8 /* GoogleDataTransport.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleDataTransport.modulemap; sourceTree = "<group>"; };
-		91C4B5B434D9DE390C40BEBE7BD071DA /* DefaultDarkTheme.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultDarkTheme.json; path = TapThemeManager2020/TapThemeManager2020/Core/assets/DefaultDarkTheme.json; sourceTree = "<group>"; };
 		92CE8EB6FF521A2AE34FF5DF16617B81 /* PromisesObjC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromisesObjC-umbrella.h"; sourceTree = "<group>"; };
-		932556FD70A6C9A5D090214A0ED3376F /* ThemeStateSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStateSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStateSelector.swift; sourceTree = "<group>"; };
 		9366A1791C5037B845367B725BBD2BF2 /* FBLPromise+Do.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Do.m"; path = "Sources/FBLPromises/FBLPromise+Do.m"; sourceTree = "<group>"; };
 		93BB7E2FEF04FE2D48A2827FBCA75F57 /* FIRInstallationsErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsErrors.h; path = FirebaseInstallations/Source/Library/Public/FIRInstallationsErrors.h; sourceTree = "<group>"; };
 		9459C6941D0FE37E51E0303AFC83F0FF /* CoreGraphicsFixes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CoreGraphicsFixes.m; path = Common/Source/CoreGraphicsFixes/CoreGraphicsFixes.m; sourceTree = "<group>"; };
@@ -1348,26 +1356,27 @@
 		94BEB02876B701D94F72110FABD5A9CF /* LocalisationManagerKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LocalisationManagerKit_iOS.framework; path = "LocalisationManagerKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CA71EEE56EF115E2616628475A92A7 /* HelveticaNeueLTW20-Roman.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Roman.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Roman.ttf"; sourceTree = "<group>"; };
 		965CC6D9109704F06DD836E118EB1C43 /* SheetyColors-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SheetyColors-prefix.pch"; sourceTree = "<group>"; };
+		9664BE669A294E8608064D4730024147 /* TapThemeManager2020-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapThemeManager2020-prefix.pch"; sourceTree = "<group>"; };
 		96B7FA90E0C6AC03DCC5177CBE228D84 /* PullUpController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PullUpController-dummy.m"; sourceTree = "<group>"; };
 		96C09BE77E0C4159C6773E42B7882222 /* GDTCORRegistrar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORRegistrar.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORRegistrar.m; sourceTree = "<group>"; };
-		96C0AB206DBB128E067CFAE66ECF47FB /* TapThemeManager+array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TapThemeManager+array.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManager+array.swift"; sourceTree = "<group>"; };
 		97118B31859515936648CCBF62924ABE /* PullUpController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PullUpController.swift; path = PullUpController/PullUpController.swift; sourceTree = "<group>"; };
 		9717DAB6588EEAAB5EA3BDA2B6F097E7 /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97BD313490C252001AE5DC2A7E043C47 /* SimpleAnimation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SimpleAnimation.modulemap; sourceTree = "<group>"; };
 		97CDB62FF434ADFA15A75AEB516BECD5 /* FBLPromise+Then.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Then.h"; path = "Sources/FBLPromises/include/FBLPromise+Then.h"; sourceTree = "<group>"; };
 		9828EA36DDEC9CA86A13C96FC31C0781 /* FIRDiagnosticsData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRDiagnosticsData.m; path = FirebaseCore/Sources/FIRDiagnosticsData.m; sourceTree = "<group>"; };
-		9844785891206DD70671AB6A34837287 /* ThemeUIColorSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeUIColorSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeUIColorSelector.swift; sourceTree = "<group>"; };
 		98851222103EA658D42B06CF49DA929E /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9896A0ECC5557981767F981ECD4EEFBA /* GULSecureCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSecureCoding.h; path = GoogleUtilities/Environment/Public/GULSecureCoding.h; sourceTree = "<group>"; };
 		98A369B71731A787D2F84FA04D83A6BF /* GDTCCTPrioritizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCCTPrioritizer.m; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/GDTCCTPrioritizer.m; sourceTree = "<group>"; };
 		98D6843C06833E007291DECBA2EB9AC1 /* SimpleAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAnimation.debug.xcconfig; sourceTree = "<group>"; };
+		993E4ADCEB4EAD8EC70AFBE8B2E1C735 /* TapThemeManager2020-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapThemeManager2020-Info.plist"; sourceTree = "<group>"; };
 		9A1F1ECBD2F8E7DA953B3C1991C7A555 /* FIRAnalyticsConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAnalyticsConfiguration.m; path = FirebaseCore/Sources/FIRAnalyticsConfiguration.m; sourceTree = "<group>"; };
 		9A735C14318EFBF56BDE072623EE70CE /* FBLPromise+Validate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Validate.m"; path = "Sources/FBLPromises/FBLPromise+Validate.m"; sourceTree = "<group>"; };
 		9AE97DE50885AD7A7D73DACD36483D98 /* GoogleDataTransport-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleDataTransport-umbrella.h"; sourceTree = "<group>"; };
 		9B8CA7061854834936CD382C48F015B4 /* GULReachabilityMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityMessageCode.h; path = GoogleUtilities/Reachability/Private/GULReachabilityMessageCode.h; sourceTree = "<group>"; };
 		9BCEC16A06DD0D596C442991F362CD19 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
 		9BD4E6448CEEECC5DC26D81F64A68CBF /* FIRBundleUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRBundleUtil.h; path = FirebaseCore/Sources/FIRBundleUtil.h; sourceTree = "<group>"; };
+		9D205B6520B4469B17560ABF46C4A2F0 /* TapFont+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TapFont+Additions.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/TapFont+Additions.swift"; sourceTree = "<group>"; };
 		9D49170DF1D6E205E737EC29216C998C /* MOLH.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MOLH.modulemap; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D9DB25BEBD9502B42B338AFD1311AD0 /* FBLPromises.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBLPromises.h; path = Sources/FBLPromises/include/FBLPromises.h; sourceTree = "<group>"; };
@@ -1378,6 +1387,7 @@
 		9EFF8828830C62ACBEEAED0B62E696FB /* GULNetworkConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkConstants.h; path = GoogleUtilities/Network/Private/GULNetworkConstants.h; sourceTree = "<group>"; };
 		9F203295F11096DB3ABBE1D424AB7302 /* GDTCORLifecycle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORLifecycle.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORLifecycle.m; sourceTree = "<group>"; };
 		9F8049409EEE47E927F0C4EBC18E86A5 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
+		9F87B8AE845CECD97A1A27723FB38C00 /* ViewsExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewsExtensions.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Extensions/ViewsExtensions.swift; sourceTree = "<group>"; };
 		A0F3784BC7C261F8D19117A86CC56698 /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Source/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
 		A1FA6F833BDD621DD13FAB0F5AB8E27B /* FIRDependency.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRDependency.m; path = FirebaseCore/Sources/FIRDependency.m; sourceTree = "<group>"; };
 		A210B875FA14C083F11F05D84DE2D93C /* GULLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULLogger.m; path = GoogleUtilities/Logger/GULLogger.m; sourceTree = "<group>"; };
@@ -1402,18 +1412,18 @@
 		A7CEC4F4D421FEBA8D7CD06362CB313B /* HexTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HexTextField.swift; path = SheetyColors/Classes/Common/Views/HexTextField.swift; sourceTree = "<group>"; };
 		A8094A22241F69209D62C92A5258F73E /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A9CE9D8ED78C2524A321D85D6A0FDDC2 /* GULNetworkMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkMessageCode.h; path = GoogleUtilities/Network/Private/GULNetworkMessageCode.h; sourceTree = "<group>"; };
-		A9E24EBF63AB189C538390369B05F6CA /* TapThemeManager2020-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapThemeManager2020-dummy.m"; sourceTree = "<group>"; };
 		AA4F96027063E6EF3B61C2595E2170EB /* GDTCORClock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORClock.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORClock.m; sourceTree = "<group>"; };
 		AA8BCFC28BE8ACDE8F0481BAA10A407A /* GULSceneDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSceneDelegateSwizzler_Private.h; path = GoogleUtilities/SceneDelegateSwizzler/Internal/GULSceneDelegateSwizzler_Private.h; sourceTree = "<group>"; };
+		AA9117963B0FC2CD80AEB8825E5BB0E6 /* ThemeScrollViewIndicatorStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeScrollViewIndicatorStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeScrollViewIndicatorStyleSelector.swift; sourceTree = "<group>"; };
 		AB5D2F71DDCCDA70553C4A2157312966 /* AppearenceProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProvider.swift; path = SheetyColors/Classes/Common/Models/AppearenceProvider.swift; sourceTree = "<group>"; };
 		ABA0DDBA4DB8CF4DD9F9B77B0033C737 /* TapFontKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		ABEC9BA0C5CA66C0FC6D5DBB280F9CCE /* HSBAColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBAColor.swift; path = SheetyColors/Classes/HSB/Models/HSBAColor.swift; sourceTree = "<group>"; };
 		ABF12F91E9119C29EE70BD9330C00468 /* Roboto-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Capable.framework; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC2B8787F9F97CA5F93E38755DF8C5AA /* ThemeCGFloatSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeCGFloatSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeCGFloatSelector.swift; sourceTree = "<group>"; };
 		AD07A810D3F34CFC4FAC954A17726E6B /* SheetyColorsDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsDelegate.swift; path = SheetyColors/Classes/Common/ViewModels/SheetyColorsDelegate.swift; sourceTree = "<group>"; };
 		AE2184FA6BD8F72D9D265E84E86570EA /* TapSwiftFixes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TapSwiftFixes.modulemap; sourceTree = "<group>"; };
 		AE37047EFA912623ECEF10ABB031292A /* GDTCORClock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORClock.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORClock.h; sourceTree = "<group>"; };
-		AEDD57E5C4347C62F32E7B37859B26ED /* SelectorsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorsConstants.swift; path = TapThemeManager2020/TapThemeManager2020/Core/enums/SelectorsConstants.swift; sourceTree = "<group>"; };
 		B07EA0EDFF4F189C4D31C81FD2C2B267 /* SheetyColors-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SheetyColors-Info.plist"; sourceTree = "<group>"; };
 		B0FAA6BE1225EAB6B990C1FCF4190FF0 /* nanopb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = nanopb.release.xcconfig; sourceTree = "<group>"; };
 		B12FFBFC6DB82CA9B593E7BBFA9360ED /* GULReachabilityChecker+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULReachabilityChecker+Internal.h"; path = "GoogleUtilities/Reachability/GULReachabilityChecker+Internal.h"; sourceTree = "<group>"; };
@@ -1429,8 +1439,6 @@
 		B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleUtilities.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49F4813AD8DBEA84BF078F12349D22C /* FirebaseInstallations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseInstallations-Info.plist"; sourceTree = "<group>"; };
 		B4C1B57A30F24965C1C809AB9DF3BF77 /* GoogleDataTransportCCTSupport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleDataTransportCCTSupport.debug.xcconfig; sourceTree = "<group>"; };
-		B4E17A5C7843BFE19003CD916B6CE84E /* ThemeBarStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBarStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeBarStyleSelector.swift; sourceTree = "<group>"; };
-		B5DE8798F55F1B1CFC47033CD3B18C65 /* TapFont+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TapFont+Additions.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/TapFont+Additions.swift"; sourceTree = "<group>"; };
 		B67459AFF77E4BE5D3B68B782D77D77A /* GULMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULMutableDictionary.m; path = GoogleUtilities/Network/GULMutableDictionary.m; sourceTree = "<group>"; };
 		B6B132A627D45A60D2B92756EA971C83 /* NSFont+fontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFont+fontProps.swift"; path = "Source/Colors/Extensions/NSFont+fontProps.swift"; sourceTree = "<group>"; };
 		B6B8BD5B89A1576982A4D3310D97A276 /* FBLPromise+Retry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Retry.m"; path = "Sources/FBLPromises/FBLPromise+Retry.m"; sourceTree = "<group>"; };
@@ -1438,32 +1446,31 @@
 		B762F01AFD381BD783F642D3C3C74A7F /* Pods-TapUIKit-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapUIKit-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		B7A1204CBDEB8BD23C7CE3CA6E11D20C /* HSBViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBViewModel.swift; path = SheetyColors/Classes/HSB/ViewModels/HSBViewModel.swift; sourceTree = "<group>"; };
 		B7D9B9A0D912FC1BE61DB38F2724FCA1 /* FIRInstallationsStoredItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsStoredItem.h; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredItem.h; sourceTree = "<group>"; };
-		B81F6FCBE917FBBE243353FD625CE269 /* NSObject+tapTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+tapTheme.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/NSObject+tapTheme.swift"; sourceTree = "<group>"; };
+		B859C727AB44618DA63B30825D648B2A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultDarkTheme.json; path = TapThemeManager2020/TapThemeManager2020/Core/assets/DefaultDarkTheme.json; sourceTree = "<group>"; };
 		B8C1BE08890EACFE930389ED07F3EA6E /* MOLH.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MOLH.swift; path = Sources/MOLH/MOLH.swift; sourceTree = "<group>"; };
 		B946C08BA2E7FAB4DE59116835023C9C /* GoogleAppMeasurement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleAppMeasurement.debug.xcconfig; sourceTree = "<group>"; };
 		B9A320D26188167304ABA13912A78A06 /* TapCountryCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCountryCode.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCountryCode.swift"; sourceTree = "<group>"; };
-		B9CDA264604E8E2C03034E4F392D5B9B /* UIKit+TapTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIKit+TapTheme.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/UIKit+TapTheme.swift"; sourceTree = "<group>"; };
 		B9DF76FFF70B97950F9856DA6F91E367 /* MOLH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MOLH.release.xcconfig; sourceTree = "<group>"; };
 		B9F9425CC197227DBA8E90023BFC2E7B /* MOLH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MOLH.debug.xcconfig; sourceTree = "<group>"; };
 		BA1EBB52AFB45A779F366EA0FE9E1F77 /* GDTCORReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORReachability.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORReachability.m; sourceTree = "<group>"; };
 		BAA277858DB1341EF0A7940344C32508 /* PreviewColorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewColorView.swift; path = SheetyColors/Classes/Common/Views/PreviewColorView.swift; sourceTree = "<group>"; };
 		BAE1F63ECEAC39AD583670885C7C73C5 /* TapFontKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapFontKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		BB7CBE9417729807DFE4D4A2CF6C4F5A /* TapFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFont.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/TapFont.swift"; sourceTree = "<group>"; };
-		BBCDC53607DC4BA3756B30944FE1E825 /* ThemeBlurEffectSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBlurEffectSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeBlurEffectSelector.swift; sourceTree = "<group>"; };
 		BBE8A97F22DAC84579A3B6C3142F4E0F /* Capable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Capable.release.xcconfig; sourceTree = "<group>"; };
 		BBFE8B95C9A5DE34CE510D9DCE037291 /* Colors.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = SheetyColors/Classes/Common/Resources/Colors.xcassets; sourceTree = "<group>"; };
 		BC351459408AB40B38BF862855183ADF /* TapSwiftFixes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TapSwiftFixes.framework; path = TapSwiftFixes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD3F52487C0D31B2EEE728EA83A2C431 /* PromisesObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.debug.xcconfig; sourceTree = "<group>"; };
+		BD53255FA9B4E38DA6ADEAB7BC790B18 /* ThemeStringAttributesSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStringAttributesSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStringAttributesSelector.swift; sourceTree = "<group>"; };
 		BDECD2CD545D42481B61DCA951F6A142 /* FirebaseInstallations-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FirebaseInstallations-dummy.m"; sourceTree = "<group>"; };
 		BE38932D59FAF93A22E65551B59BA374 /* GDTCORFlatFileStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORFlatFileStorage.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORFlatFileStorage.m; sourceTree = "<group>"; };
+		BE606A0365E61E9984DE5FC07726346A /* TapThemeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemeManager.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManager.swift; sourceTree = "<group>"; };
 		BE7BAFA93EE428B1A15733B11CA7AF41 /* FBLPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBLPromise.h; path = Sources/FBLPromises/include/FBLPromise.h; sourceTree = "<group>"; };
 		BEB2651AD8E96173C238DB8CD3F125B3 /* GDTCORPlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORPlatform.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORPlatform.m; sourceTree = "<group>"; };
 		BF25A0DAAB7B5497BE3F8F1807B4904A /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		BF7628480158313FE2BA5AB4A1027CB7 /* GDTCCTNanopbHelpers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCCTNanopbHelpers.m; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/GDTCCTNanopbHelpers.m; sourceTree = "<group>"; };
-		BF90CC143B7014376C71216AE1998CC2 /* ThemeVibranceBlurEffectSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeVibranceBlurEffectSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeVibranceBlurEffectSelector.swift; sourceTree = "<group>"; };
 		C08458E41805C7C6CD69FA47BF487E1D /* SheetyColorsViewControllerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewControllerProtocol.swift; path = SheetyColors/Classes/Common/Views/Protocols/SheetyColorsViewControllerProtocol.swift; sourceTree = "<group>"; };
+		C177D90C6A114278F118C5B8719C2E26 /* TapThemeManager2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapThemeManager2020.debug.xcconfig; sourceTree = "<group>"; };
 		C1FE4DE9AD86AC785C3B65FC9AAB3B27 /* SheetyColorsConfigProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsConfigProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/SheetyColorsConfigProtocol.swift; sourceTree = "<group>"; };
-		C2B722BF03B3C84625D3628147799998 /* ThemeKeyboardAppearanceSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeKeyboardAppearanceSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeKeyboardAppearanceSelector.swift; sourceTree = "<group>"; };
 		C2D57C95FC108ADBCC0BB4953D1859B0 /* FirebaseInstallations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseInstallations.release.xcconfig; sourceTree = "<group>"; };
 		C329BBD2F22CF64DED35C9A3C4F12904 /* HapticFeedbackProviderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HapticFeedbackProviderProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/HapticFeedbackProviderProtocol.swift; sourceTree = "<group>"; };
 		C35DF8FE72A968D02F58AFCF52E07ED5 /* FIRVersion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRVersion.m; path = FirebaseCore/Sources/FIRVersion.m; sourceTree = "<group>"; };
@@ -1485,6 +1492,7 @@
 		CA9542F1CC7926AFA9B7E58505A832DA /* pb_encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_encode.h; sourceTree = "<group>"; };
 		CAEDA2F83D8F5DCFF86B466B7A82683D /* TapSwiftFixes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapSwiftFixes-umbrella.h"; sourceTree = "<group>"; };
 		CC13DBDB0AAE6688FF64BC04B2F67A36 /* NSColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSColor+rgbaColor.swift"; path = "Source/Colors/Extensions/NSColor+rgbaColor.swift"; sourceTree = "<group>"; };
+		CCA22955955AC131DBEA9379AC5A5BA3 /* ThemeBarStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBarStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeBarStyleSelector.swift; sourceTree = "<group>"; };
 		CCA5B4EDBF95CD9CBABD0705C3198C82 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		CCAAD6E22E9CE6420307E1B521638867 /* PullUpController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PullUpController.debug.xcconfig; sourceTree = "<group>"; };
 		CCB5180DC2302DCF778CEFF163A28BE4 /* Pods-TapUIKit-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapUIKit-Example-dummy.m"; sourceTree = "<group>"; };
@@ -1498,18 +1506,16 @@
 		CFD6BA33C9D85F40CD4E830049CEDC09 /* FIRInstallations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallations.h; path = FirebaseInstallations/Source/Library/Public/FIRInstallations.h; sourceTree = "<group>"; };
 		D07F4B2919CA22DF865F7B0F2D305E2D /* FBLPromise+Delay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Delay.m"; path = "Sources/FBLPromises/FBLPromise+Delay.m"; sourceTree = "<group>"; };
 		D0A8DDED87309BDF19276053C274CC78 /* MOLHLanguage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MOLHLanguage.swift; path = Sources/MOLH/MOLHLanguage.swift; sourceTree = "<group>"; };
-		D0E68BA6F18832C7CE5BF731A54C4AD5 /* ThemeFontSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeFontSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeFontSelector.swift; sourceTree = "<group>"; };
-		D0F56BBD072341456A4EAC9D8023D71D /* ThemeDictionarySelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeDictionarySelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeDictionarySelector.swift; sourceTree = "<group>"; };
-		D16865CF974B217A226CE5DC6EE30A21 /* ThemeStringAttributesSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStringAttributesSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStringAttributesSelector.swift; sourceTree = "<group>"; };
 		D1F1741FF40BBECE10F077CD0B30DA3C /* GULReachabilityChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityChecker.h; path = GoogleUtilities/Reachability/Private/GULReachabilityChecker.h; sourceTree = "<group>"; };
-		D22A72ABC310FBC0801BADCF6A1EDAB8 /* TapThemeManager2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapThemeManager2020.release.xcconfig; sourceTree = "<group>"; };
 		D2CC6C92B67D1D4756D6F51FE8C5B225 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		D2E172B567AE4FA8C0447828B902DAFB /* nanopb.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = nanopb.modulemap; sourceTree = "<group>"; };
+		D3B614C2EB1ADA0F0534628C36D6D1B3 /* TapThemeManager2020-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapThemeManager2020-umbrella.h"; sourceTree = "<group>"; };
 		D47AD954CDA7C883A91A8CCD4070FBD0 /* UIColor+hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+hex.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/UIColor+hex.swift"; sourceTree = "<group>"; };
 		D4CDEE857C10FD552D18E805335EA56A /* TapCurrencyCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCurrencyCode.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCurrencyCode.swift"; sourceTree = "<group>"; };
-		D57117D641444F76C1904E605844DE53 /* TapThemeManager2020-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapThemeManager2020-Info.plist"; sourceTree = "<group>"; };
+		D567FC8078871CD5DC82A7A98FE6D20A /* TapThemeManager2020-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapThemeManager2020-dummy.m"; sourceTree = "<group>"; };
 		D5836CDEAAFD8BCE3676DB6D89F4E7BE /* FIRApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRApp.h; path = FirebaseCore/Sources/Public/FIRApp.h; sourceTree = "<group>"; };
 		D5A7080327B6DB56623C5E60DEC80ADB /* pb_decode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_decode.h; sourceTree = "<group>"; };
+		D60FA11D3F8F87FAD2440030D7256074 /* ThemeFontSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeFontSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeFontSelector.swift; sourceTree = "<group>"; };
 		D63E9825098A784747D3C2A5B832109A /* Pods-TapUIKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapUIKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		D6C091BE005A814725CE8CDBE2D32988 /* SheetyColorsViewFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsViewFactory.swift; path = SheetyColors/Classes/Common/Factory/SheetyColorsViewFactory.swift; sourceTree = "<group>"; };
 		D722543A0AB5C8FF86E2FADF9666FE26 /* FirebaseInstallations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseInstallations.h; path = FirebaseInstallations/Source/Library/Public/FirebaseInstallations.h; sourceTree = "<group>"; };
@@ -1524,15 +1530,14 @@
 		DB293EEB79AC6E8FB7922232641756C4 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Thin.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		DB77B655C6657F09909D947B7E718EE6 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
 		DCA9953738F1EF8D1DC0FD823EF82438 /* TapFontKit-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-prefix.pch"; sourceTree = "<group>"; };
-		DCC4C0F3E3DB91A30DB391E5A3E787F2 /* ThemeActivityIndicatorViewStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeActivityIndicatorViewStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeActivityIndicatorViewStyleSelector.swift; sourceTree = "<group>"; };
 		DD05E6D0953FC3F1031FCD0B370CD47D /* GDTCORPrioritizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORPrioritizer.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORPrioritizer.h; sourceTree = "<group>"; };
 		DDB76FF9AE30A19E8FD9E10442F11C15 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
 		DDB9B9E30CF0CAA43133F682ED85BCFD /* GULUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULUserDefaults.h; path = GoogleUtilities/UserDefaults/Private/GULUserDefaults.h; sourceTree = "<group>"; };
 		DE06213B9618E2DC559981DBA34EF2A9 /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 		DE3F85D4E715F05580208D7280052005 /* CIImage+initWithImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CIImage+initWithImage.swift"; path = "Source/Colors/Extensions/CIImage+initWithImage.swift"; sourceTree = "<group>"; };
+		DE4FA4482924831A1DB19AF27984E95C /* UIKit+TapTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIKit+TapTheme.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/UIKit+TapTheme.swift"; sourceTree = "<group>"; };
 		DE71CCF6554ECD7B33933D113E4C4845 /* FBLPromise+Recover.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Recover.m"; path = "Sources/FBLPromises/FBLPromise+Recover.m"; sourceTree = "<group>"; };
 		DE7B78E5B185FED204A3E439B4156CA1 /* GULNetworkURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkURLSession.h; path = GoogleUtilities/Network/Private/GULNetworkURLSession.h; sourceTree = "<group>"; };
-		DF942571FE4858B26BD598B59D596AA0 /* ThemeSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeSelector.swift; sourceTree = "<group>"; };
 		E03A697D8A3ADC72369E1A7E540D3978 /* GDTCORRegistrar_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORRegistrar_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORRegistrar_Private.h; sourceTree = "<group>"; };
 		E03D4DBCD06AB87BC22EDE56CD88BE15 /* FirebaseInstallations-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseInstallations-umbrella.h"; sourceTree = "<group>"; };
 		E0F660581439B7088307043E1B120AE3 /* FIRLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLogger.h; path = FirebaseCore/Sources/Private/FIRLogger.h; sourceTree = "<group>"; };
@@ -1546,18 +1551,15 @@
 		E2C9656D989898CE1FE617B17E683CA2 /* GULAppDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler_Private.h; path = GoogleUtilities/AppDelegateSwizzler/Internal/GULAppDelegateSwizzler_Private.h; sourceTree = "<group>"; };
 		E2FED8EA13D39C07C8A7DDF8CB7EE122 /* FontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProps.swift; path = Source/Colors/Models/FontProps.swift; sourceTree = "<group>"; };
 		E39128A6F1B1EDB95029748553A64B5B /* GDTCORLifecycle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORLifecycle.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORLifecycle.h; sourceTree = "<group>"; };
-		E3F74D0E8FC218841C5BBA096160BD11 /* UIHexColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIHexColor.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Extensions/UIHexColor.swift; sourceTree = "<group>"; };
 		E41AC74897EC706CA2A77CD0D2C25DFB /* Circe-ExtraLight.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraLight.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraLight.ttf"; sourceTree = "<group>"; };
 		E4F34C9D4F36F55A483CE7E5F629EA22 /* FirebaseCoreDiagnostics.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FirebaseCoreDiagnostics.modulemap; sourceTree = "<group>"; };
 		E5422B3FC626B3C32D4487BEC18586B7 /* FBLPromise+All.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+All.h"; path = "Sources/FBLPromises/include/FBLPromise+All.h"; sourceTree = "<group>"; };
 		E55189D5C1EE807A0A1A326C0AF65D62 /* GDTCORTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransport.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORTransport.h; sourceTree = "<group>"; };
-		E5B36FDE5070A8BA8C772DAA858E8719 /* ThemeScrollViewIndicatorStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeScrollViewIndicatorStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeScrollViewIndicatorStyleSelector.swift; sourceTree = "<group>"; };
 		E61DE89C75C2DAAC298CD71D1195BBBB /* FIRInstallationsSingleOperationPromiseCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsSingleOperationPromiseCache.m; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsSingleOperationPromiseCache.m; sourceTree = "<group>"; };
 		E6A50FBBD79381CBF6D1B3B0ADB03208 /* TapSwiftFixes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapSwiftFixes.debug.xcconfig; sourceTree = "<group>"; };
 		E7425A113982645E98682F654EA878D2 /* Pods-TapUIKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapUIKit-iOS.modulemap"; sourceTree = "<group>"; };
 		E794C7A16F24E221FA623C177D915917 /* FIRInstallationsAuthTokenResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsAuthTokenResult.h; path = FirebaseInstallations/Source/Library/Public/FIRInstallationsAuthTokenResult.h; sourceTree = "<group>"; };
 		E7FBF2C6CF9B576221AEF0726C05FEAC /* FIRApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRApp.m; path = FirebaseCore/Sources/FIRApp.m; sourceTree = "<group>"; };
-		E932B625C17D665AE26350AAEE5E9BBC /* ThemeStatusBarStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStatusBarStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStatusBarStyleSelector.swift; sourceTree = "<group>"; };
 		E9666B73B2F81DC2CB19AEB625A31107 /* UIColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+rgbaColor.swift"; path = "Source/Colors/Extensions/UIColor+rgbaColor.swift"; sourceTree = "<group>"; };
 		E9AA213F4DF095848843B69A664CF691 /* GDTCORTransport_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransport_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransport_Private.h; sourceTree = "<group>"; };
 		EA306B0BE2E5FC91CECA69241DAD4001 /* GULNetworkConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkConstants.m; path = GoogleUtilities/Network/GULNetworkConstants.m; sourceTree = "<group>"; };
@@ -1649,6 +1651,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1BABA90C1D9CC37952CF22D6F11517F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C475FE68830C7FFF35593ECCE2C58DA5 /* Foundation.framework in Frameworks */,
+				51A05DBEE9E4F741043264680C7BEAB7 /* LocalisationManagerKit_iOS.framework in Frameworks */,
+				E283AE125BD9692F776BD4DFEF570AFB /* TapFontKit_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2198D7610462DF2F4F375F01F8CEE4F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1731,16 +1743,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE24AC47C6DCFE758BD5AC42C8B46182 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8CDA830766CFBD267403BC078A2E2625 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FD640E6B1517967914AD08BF7C2634C7 /* Foundation.framework in Frameworks */,
-				0328CA6B33A09087AE916A4BBC8AE7F6 /* LocalisationManagerKit_iOS.framework in Frameworks */,
-				6B520FFBB8DEBE55FDED4FDFECFA863C /* TapFontKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2233,6 +2235,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		83B20F804D9106919DEB119A7E594B60 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B859C727AB44618DA63B30825D648B2A /* DefaultDarkTheme.json */,
+				53A46A43EA8122BE6AB122D47B121BBA /* DefaultLightTheme.json */,
+				7F35D82F60789E7A7ADF9139BB8C19F6 /* images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		84D77A8E877E67509F0DC90CC79BCC83 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2306,52 +2318,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SimpleAnimation";
-			sourceTree = "<group>";
-		};
-		9540FD072EAF430EA2DC789BC7D60284 /* TapThemeManager2020 */ = {
-			isa = PBXGroup;
-			children = (
-				B81F6FCBE917FBBE243353FD625CE269 /* NSObject+tapTheme.swift */,
-				AEDD57E5C4347C62F32E7B37859B26ED /* SelectorsConstants.swift */,
-				B5DE8798F55F1B1CFC47033CD3B18C65 /* TapFont+Additions.swift */,
-				15EA3F8E180AD41A4E7625FB988CAF3F /* TapThemeManager.swift */,
-				96C0AB206DBB128E067CFAE66ECF47FB /* TapThemeManager+array.swift */,
-				825B8A435D5792813CF034610954E2CB /* TapThemeManagerParser.swift */,
-				74989648C7734629D6740E574B7D9715 /* TapThemePath.swift */,
-				DCC4C0F3E3DB91A30DB391E5A3E787F2 /* ThemeActivityIndicatorViewStyleSelector.swift */,
-				B4E17A5C7843BFE19003CD916B6CE84E /* ThemeBarStyleSelector.swift */,
-				BBCDC53607DC4BA3756B30944FE1E825 /* ThemeBlurEffectSelector.swift */,
-				48D2EC9889B5CF1D27FB78D28FCF3219 /* ThemeCgColorSelector.swift */,
-				80D6D0BF50BE41DB47945B12B38AF45A /* ThemeCGFloatSelector.swift */,
-				D0F56BBD072341456A4EAC9D8023D71D /* ThemeDictionarySelector.swift */,
-				D0E68BA6F18832C7CE5BF731A54C4AD5 /* ThemeFontSelector.swift */,
-				6E166B6098DAA0742C726A80E0057C7D /* ThemeImageSelector.swift */,
-				C2B722BF03B3C84625D3628147799998 /* ThemeKeyboardAppearanceSelector.swift */,
-				54795C8F89FEC01AD81713418D158AA8 /* ThemeNavigationBarAppearanceSelector.swift */,
-				E5B36FDE5070A8BA8C772DAA858E8719 /* ThemeScrollViewIndicatorStyleSelector.swift */,
-				DF942571FE4858B26BD598B59D596AA0 /* ThemeSelector.swift */,
-				932556FD70A6C9A5D090214A0ED3376F /* ThemeStateSelector.swift */,
-				E932B625C17D665AE26350AAEE5E9BBC /* ThemeStatusBarStyleSelector.swift */,
-				D16865CF974B217A226CE5DC6EE30A21 /* ThemeStringAttributesSelector.swift */,
-				9844785891206DD70671AB6A34837287 /* ThemeUIColorSelector.swift */,
-				BF90CC143B7014376C71216AE1998CC2 /* ThemeVibranceBlurEffectSelector.swift */,
-				E3F74D0E8FC218841C5BBA096160BD11 /* UIHexColor.swift */,
-				B9CDA264604E8E2C03034E4F392D5B9B /* UIKit+TapTheme.swift */,
-				38DC5A6DEE70AA29CE56F77545CDF368 /* ViewsExtensions.swift */,
-				976E37861CFD34FAD80152C10329A064 /* Resources */,
-				A81F658660B897206F9E58EC922D76D0 /* Support Files */,
-			);
-			name = TapThemeManager2020;
-			path = TapThemeManager2020;
-			sourceTree = "<group>";
-		};
-		976E37861CFD34FAD80152C10329A064 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				91C4B5B434D9DE390C40BEBE7BD071DA /* DefaultDarkTheme.json */,
-				79F77BFE1E128EAD5021BA9F22C4D119 /* DefaultLightTheme.json */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		994CE93689DF2B2317903300D6DD76DD /* Frameworks */ = {
@@ -2459,21 +2425,6 @@
 				FE731AA268253ED62838EDA423148FE7 /* GULUserDefaults.m */,
 			);
 			name = UserDefaults;
-			sourceTree = "<group>";
-		};
-		A81F658660B897206F9E58EC922D76D0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2D5C24699BBC1214F4C563101C7BF085 /* TapThemeManager2020.modulemap */,
-				A9E24EBF63AB189C538390369B05F6CA /* TapThemeManager2020-dummy.m */,
-				D57117D641444F76C1904E605844DE53 /* TapThemeManager2020-Info.plist */,
-				7C617157C62CA2F8673CB50FF9CF4DFC /* TapThemeManager2020-prefix.pch */,
-				42C4A1649C8AB93A6B55D027DDE9D089 /* TapThemeManager2020-umbrella.h */,
-				4983F00451CDE5F90694F36657C289AC /* TapThemeManager2020.debug.xcconfig */,
-				D22A72ABC310FBC0801BADCF6A1EDAB8 /* TapThemeManager2020.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TapThemeManager2020";
 			sourceTree = "<group>";
 		};
 		A83B783D88CD76122835CB4A12B8D403 /* nanopb */ = {
@@ -2803,7 +2754,7 @@
 				BCE7F66FAB239D2B30B3DCD86734377B /* SwiftLint */,
 				CEEE4DDF7261711E20A6276A170FB4BC /* TapFontKit-iOS */,
 				AA14DD226AF152CA158A3768589405D5 /* TapSwiftFixes */,
-				9540FD072EAF430EA2DC789BC7D60284 /* TapThemeManager2020 */,
+				F594494011AE4223299655CC645F99B0 /* TapThemeManager2020 */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2899,6 +2850,21 @@
 			name = decode;
 			sourceTree = "<group>";
 		};
+		E32E8DD23B034F6AFA1682057264CB3F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				305E0B557B7448FB4E294797FEF3D9D1 /* TapThemeManager2020.modulemap */,
+				D567FC8078871CD5DC82A7A98FE6D20A /* TapThemeManager2020-dummy.m */,
+				993E4ADCEB4EAD8EC70AFBE8B2E1C735 /* TapThemeManager2020-Info.plist */,
+				9664BE669A294E8608064D4730024147 /* TapThemeManager2020-prefix.pch */,
+				D3B614C2EB1ADA0F0534628C36D6D1B3 /* TapThemeManager2020-umbrella.h */,
+				C177D90C6A114278F118C5B8719C2E26 /* TapThemeManager2020.debug.xcconfig */,
+				29F23BF23800B10602A8D5CE07C6EB2E /* TapThemeManager2020.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TapThemeManager2020";
+			sourceTree = "<group>";
+		};
 		E7B80D4AD20217A715EC7A49200C52CB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2972,6 +2938,43 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Firebase";
+			sourceTree = "<group>";
+		};
+		F594494011AE4223299655CC645F99B0 /* TapThemeManager2020 */ = {
+			isa = PBXGroup;
+			children = (
+				6C2892929950A5CB6D9E2EDE7AAE4303 /* NSObject+tapTheme.swift */,
+				473EEE8CD6B6269BFEF3E9F1E27370E1 /* SelectorsConstants.swift */,
+				9D205B6520B4469B17560ABF46C4A2F0 /* TapFont+Additions.swift */,
+				BE606A0365E61E9984DE5FC07726346A /* TapThemeManager.swift */,
+				31409BFA1E4C7C5D1ECCF3D1738F287F /* TapThemeManager+array.swift */,
+				069DDCF527FE5208BD2D79F37628B58F /* TapThemeManagerParser.swift */,
+				33DD75F8D0A87E2C6923376F5EE21DD4 /* TapThemePath.swift */,
+				12D18D9225E66A793F40A58A35773161 /* ThemeActivityIndicatorViewStyleSelector.swift */,
+				CCA22955955AC131DBEA9379AC5A5BA3 /* ThemeBarStyleSelector.swift */,
+				0941CFDC11C4E6599450104A5EB08E82 /* ThemeBlurEffectSelector.swift */,
+				300133FF436F3ADF258F0F117E3EC7BE /* ThemeCgColorSelector.swift */,
+				AC2B8787F9F97CA5F93E38755DF8C5AA /* ThemeCGFloatSelector.swift */,
+				916EFCFBA8F45B2A83FF0318638FD574 /* ThemeDictionarySelector.swift */,
+				D60FA11D3F8F87FAD2440030D7256074 /* ThemeFontSelector.swift */,
+				1BB069CE8A9818725838BD7FAF1E887E /* ThemeImageSelector.swift */,
+				0A44CC0F101AB15BC4318E4A3697FF2E /* ThemeKeyboardAppearanceSelector.swift */,
+				374CFF96D9D6796C085870E81A253266 /* ThemeNavigationBarAppearanceSelector.swift */,
+				AA9117963B0FC2CD80AEB8825E5BB0E6 /* ThemeScrollViewIndicatorStyleSelector.swift */,
+				556B801EB649E883CA7CA6A47DBA702F /* ThemeSelector.swift */,
+				5D27E679B88954AD3CB941D1D6ED5E35 /* ThemeStateSelector.swift */,
+				6534056143D269101E8CE934CE4C35B2 /* ThemeStatusBarStyleSelector.swift */,
+				BD53255FA9B4E38DA6ADEAB7BC790B18 /* ThemeStringAttributesSelector.swift */,
+				4FD768558A70B631123A5F94CAAE4EBD /* ThemeUIColorSelector.swift */,
+				805FC7C3ECD002157BF9EDD79E3E4DF4 /* ThemeVibranceBlurEffectSelector.swift */,
+				0BF3741120919F1CD25D4AE83D7A1060 /* UIHexColor.swift */,
+				DE4FA4482924831A1DB19AF27984E95C /* UIKit+TapTheme.swift */,
+				9F87B8AE845CECD97A1A27723FB38C00 /* ViewsExtensions.swift */,
+				83B20F804D9106919DEB119A7E594B60 /* Resources */,
+				E32E8DD23B034F6AFA1682057264CB3F /* Support Files */,
+			);
+			name = TapThemeManager2020;
+			path = TapThemeManager2020;
 			sourceTree = "<group>";
 		};
 		F61631B7D797639C048330595018204A /* Colors */ = {
@@ -3147,14 +3150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2788E9F589E8F661B76557EFA402A2DE /* GestureRecognizerClosures-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		433A7696E058581D09E9EC2734BC84E0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E73FCB5079FB8586A6F880EE692B51F /* TapThemeManager2020-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3362,6 +3357,14 @@
 				65680F571546ACC1DEF3C50E40B29EE6 /* GDTCORUploadPackage_Private.h in Headers */,
 				733882D0B9F269B5548564BEB05BCD22 /* GoogleDataTransport-umbrella.h in Headers */,
 				5B7C1D4CABC9266CA6B09098A9500E44 /* GoogleDataTransport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE9CEBA3C50CF55C9E705809F67D2CD9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7C520D3DA44B2E32BC07AD27F8FB272 /* TapThemeManager2020-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3802,18 +3805,18 @@
 		};
 		F73BD4CA6A0B23F38687F2A3BB7E5EC7 /* TapThemeManager2020 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1EADD52671499FB46A50317B6FF3428 /* Build configuration list for PBXNativeTarget "TapThemeManager2020" */;
+			buildConfigurationList = 4CED020D46C965B9DCC204066B6CAD6C /* Build configuration list for PBXNativeTarget "TapThemeManager2020" */;
 			buildPhases = (
-				433A7696E058581D09E9EC2734BC84E0 /* Headers */,
-				D0196C51AFF32EDC7DF3D1EBECE9F51D /* Sources */,
-				8CDA830766CFBD267403BC078A2E2625 /* Frameworks */,
-				FDA6EA65172D9A326FE1B6349CA1A756 /* Resources */,
+				FE9CEBA3C50CF55C9E705809F67D2CD9 /* Headers */,
+				D3FF9246DB56E6EF07F4F721956E993C /* Sources */,
+				1BABA90C1D9CC37952CF22D6F11517F7 /* Frameworks */,
+				8B293721383AFA090F9A277C9697AF77 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F8A27AE6EEC211F67CAD54635B0F5924 /* PBXTargetDependency */,
-				D7FD3FE9EAF025BF5A67A99BD344E2C1 /* PBXTargetDependency */,
+				B912494EF43CD0F080E38344A062D30F /* PBXTargetDependency */,
+				2FC9D9241902D40709112352D99ACD2B /* PBXTargetDependency */,
 			);
 			name = TapThemeManager2020;
 			productName = TapThemeManager2020;
@@ -3980,6 +3983,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B293721383AFA090F9A277C9697AF77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				375EAC5FB71D429FA5D7E0FCB6FD0D6C /* DefaultDarkTheme.json in Resources */,
+				BDF367183BB1A8CFA69D7FA19C4ECC3C /* DefaultLightTheme.json in Resources */,
+				8E117B1FDABB8591964E0EC8B3116D41 /* images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C691CAA90D9565F2EFF5EF823D8A80C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4036,15 +4049,6 @@
 			files = (
 				286C2CA03207DE59F5B70265C260CA8C /* Colors.xcassets in Resources */,
 				6DB7FA55CF03822E59F4731C8E89A09C /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FDA6EA65172D9A326FE1B6349CA1A756 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F67A5BB7B6612EA25F9897132DB45667 /* DefaultDarkTheme.json in Resources */,
-				8B86282C947BB838D181B3D812C3E9E8 /* DefaultLightTheme.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4407,38 +4411,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0196C51AFF32EDC7DF3D1EBECE9F51D /* Sources */ = {
+		D3FF9246DB56E6EF07F4F721956E993C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3A6509D7DD104538392E422F92356C /* NSObject+tapTheme.swift in Sources */,
-				ACF54B66DB9ADE890820F2418CF21A5C /* SelectorsConstants.swift in Sources */,
-				F8BFA88DC60B02EFD7D6C122B38F436B /* TapFont+Additions.swift in Sources */,
-				B30824A38ECA29FB688AC3407E93AF18 /* TapThemeManager+array.swift in Sources */,
-				9E7B7FA13C319D6A8DD54F57958A7E57 /* TapThemeManager.swift in Sources */,
-				C9BAB94BF8CC0A923C07742892C75C83 /* TapThemeManager2020-dummy.m in Sources */,
-				5008458F232F3A2B2CDD5CFB8B3F6D53 /* TapThemeManagerParser.swift in Sources */,
-				497B423C67ACBE334E44EB1725B30C88 /* TapThemePath.swift in Sources */,
-				BD3FB7FA0990097ACDEA38EE0FE312FF /* ThemeActivityIndicatorViewStyleSelector.swift in Sources */,
-				E29C09617BF87BF947D53FDAC1863564 /* ThemeBarStyleSelector.swift in Sources */,
-				5C67ED56E042252EA4E2D50816A54DAF /* ThemeBlurEffectSelector.swift in Sources */,
-				591AB77932EE8DEDD708E63FE5E7BE74 /* ThemeCgColorSelector.swift in Sources */,
-				8B0ABB0BE4200F66B4A59A2E7E2EC73D /* ThemeCGFloatSelector.swift in Sources */,
-				1B4F23D35ABDDD105E6648F8E65E9C90 /* ThemeDictionarySelector.swift in Sources */,
-				657C2635DE2B450976F23588470071B0 /* ThemeFontSelector.swift in Sources */,
-				7A15AEEC13299ADCEA9B4593CA851A7D /* ThemeImageSelector.swift in Sources */,
-				72BDCE9E63C774819C59630979F9D8CD /* ThemeKeyboardAppearanceSelector.swift in Sources */,
-				19A56350075F64ABC89797264A7FEB02 /* ThemeNavigationBarAppearanceSelector.swift in Sources */,
-				E666E732E627ECFA35281A193C57DF4F /* ThemeScrollViewIndicatorStyleSelector.swift in Sources */,
-				680B1C1C0A71883A3EFFFBFE6712F15F /* ThemeSelector.swift in Sources */,
-				D47BA7E32DAACAB7B1D8ED340240EB48 /* ThemeStateSelector.swift in Sources */,
-				251F15CADF830DBBF0AAB3B9909E3179 /* ThemeStatusBarStyleSelector.swift in Sources */,
-				A23723E5AD38CB12F7E6A3ABA38FA32B /* ThemeStringAttributesSelector.swift in Sources */,
-				2A2CD146DA9566AC27B2AAA72D0429E2 /* ThemeUIColorSelector.swift in Sources */,
-				988B36847D22BE7E1337C86B84086573 /* ThemeVibranceBlurEffectSelector.swift in Sources */,
-				126A0AACD45F7887A659D65EE35896AB /* UIHexColor.swift in Sources */,
-				81E748E5CF0202611F1D02AA012F9F79 /* UIKit+TapTheme.swift in Sources */,
-				673AA3BB026CF35E9020D9CA0F48717A /* ViewsExtensions.swift in Sources */,
+				FB289C717E53C221101AEE61D1717272 /* NSObject+tapTheme.swift in Sources */,
+				6A3AB957AD60C12524AFAC312F92AFFA /* SelectorsConstants.swift in Sources */,
+				A447B171D91F4D6131F653E31E730D37 /* TapFont+Additions.swift in Sources */,
+				195EF7153832B1258CE0C4450E96EA20 /* TapThemeManager+array.swift in Sources */,
+				73CFA6BEE7950A7EE3AD8EA06F0907B7 /* TapThemeManager.swift in Sources */,
+				10B918A4C2A48E6BE1F2599C88D23FD8 /* TapThemeManager2020-dummy.m in Sources */,
+				68076ABB349AA4B3C1A3F32097E69A96 /* TapThemeManagerParser.swift in Sources */,
+				01D4D14E56468BF9CDE8254130595F1F /* TapThemePath.swift in Sources */,
+				9E776D5CBD2ECA434DCD7DA1DE6A6E3D /* ThemeActivityIndicatorViewStyleSelector.swift in Sources */,
+				A7806E26E08554608AE29A9CA4B208AD /* ThemeBarStyleSelector.swift in Sources */,
+				DD352C0C6E42F6FBA570254112233971 /* ThemeBlurEffectSelector.swift in Sources */,
+				68C048E4C195241E6F98110291B84266 /* ThemeCgColorSelector.swift in Sources */,
+				4041C16D7102B193AEF40D7C813FE5BB /* ThemeCGFloatSelector.swift in Sources */,
+				749FC8C67A6AA6110AA7F58B58A6F324 /* ThemeDictionarySelector.swift in Sources */,
+				0C6BCF34D111B33905A4BD0BD2B69E93 /* ThemeFontSelector.swift in Sources */,
+				0A04A98AD43EA0A2B10021CCBDA1B452 /* ThemeImageSelector.swift in Sources */,
+				11ADA407F1B6E1814B026340E67560E7 /* ThemeKeyboardAppearanceSelector.swift in Sources */,
+				B8F5F3CF885D6BD9109E14D9245B0534 /* ThemeNavigationBarAppearanceSelector.swift in Sources */,
+				3959AF31D3D44FA8438B3A519DBA0032 /* ThemeScrollViewIndicatorStyleSelector.swift in Sources */,
+				FD22FE19A7C48CECA2E31FE7E5BDCE6F /* ThemeSelector.swift in Sources */,
+				65C9BAB6ADD9D87C8427D22E1A0B7750 /* ThemeStateSelector.swift in Sources */,
+				A624D694690721B712C0D70AB1AD5CDD /* ThemeStatusBarStyleSelector.swift in Sources */,
+				5A3DD0215691350EF0A503748DD9974D /* ThemeStringAttributesSelector.swift in Sources */,
+				7D82F2238FC2E5B8C9DB0AD6014E55C0 /* ThemeUIColorSelector.swift in Sources */,
+				E0D79B99FA0829955C64DD543DA11B13 /* ThemeVibranceBlurEffectSelector.swift in Sources */,
+				5A0475EC36F0078C3E37B7CFF630AACB /* UIHexColor.swift in Sources */,
+				A0917E213D592DE9908FBE7C66314EB7 /* UIKit+TapTheme.swift in Sources */,
+				538AB30F9180232AF676983742F95CC0 /* ViewsExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4539,6 +4543,12 @@
 			name = GestureRecognizerClosures;
 			target = 872DEBAB8DABC1BA93120BE8157F6E4C /* GestureRecognizerClosures */;
 			targetProxy = 88BA6EAC4C6F7BD00196FE3B0DC9B95B /* PBXContainerItemProxy */;
+		};
+		2FC9D9241902D40709112352D99ACD2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TapFontKit-iOS";
+			target = F533AA510B62E4F3B56C094378F820D6 /* TapFontKit-iOS */;
+			targetProxy = 67C599C1571ECED6852B18ABCD2B07B2 /* PBXContainerItemProxy */;
 		};
 		347B17B6392A3E81F95A5A2813481C78 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4726,6 +4736,12 @@
 			target = 2A84B9D796D0D04B87F4B7C8561AAF92 /* TapSwiftFixes */;
 			targetProxy = 3E60AC2E60D49F310B2F99FC258BBF73 /* PBXContainerItemProxy */;
 		};
+		B912494EF43CD0F080E38344A062D30F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "LocalisationManagerKit-iOS";
+			target = 48D7FFECE792D5C478227EFA6E2D5A43 /* LocalisationManagerKit-iOS */;
+			targetProxy = CBC2F3AC78C718271E16396436CD017A /* PBXContainerItemProxy */;
+		};
 		C217101135EFE0403239B5B2FC6C3632 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = nanopb;
@@ -4761,12 +4777,6 @@
 			name = SnapKit;
 			target = 19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */;
 			targetProxy = 5E5B941C26BBFA0DE0AF530A1D4A68D2 /* PBXContainerItemProxy */;
-		};
-		D7FD3FE9EAF025BF5A67A99BD344E2C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "TapFontKit-iOS";
-			target = F533AA510B62E4F3B56C094378F820D6 /* TapFontKit-iOS */;
-			targetProxy = E89B758EE1EF4A98DFAB2A342BEBE7F0 /* PBXContainerItemProxy */;
 		};
 		DA2618DC34DEBEA24821FAB60001ADD3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4821,12 +4831,6 @@
 			name = "LocalisationManagerKit-iOS";
 			target = 48D7FFECE792D5C478227EFA6E2D5A43 /* LocalisationManagerKit-iOS */;
 			targetProxy = 594E773C2FAA3CF9C4BA715DA7FE9CAA /* PBXContainerItemProxy */;
-		};
-		F8A27AE6EEC211F67CAD54635B0F5924 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "LocalisationManagerKit-iOS";
-			target = 48D7FFECE792D5C478227EFA6E2D5A43 /* LocalisationManagerKit-iOS */;
-			targetProxy = B78C87D270CA5656EBB377D647972BEB /* PBXContainerItemProxy */;
 		};
 		FD7FFC18DDE8D049C817E5F819EF924E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4965,6 +4969,43 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1CFAE0FB15CAA86648F2AA8B862F5507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29F23BF23800B10602A8D5CE07C6EB2E /* TapThemeManager2020.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TapThemeManager2020/TapThemeManager2020-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020.modulemap";
+				PRODUCT_MODULE_NAME = TapThemeManager2020;
+				PRODUCT_NAME = TapThemeManager2020;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5240,6 +5281,42 @@
 			};
 			name = Debug;
 		};
+		4531CD636EB9F9E9A7916EF4CAE57C35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C177D90C6A114278F118C5B8719C2E26 /* TapThemeManager2020.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TapThemeManager2020/TapThemeManager2020-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020.modulemap";
+				PRODUCT_MODULE_NAME = TapThemeManager2020;
+				PRODUCT_NAME = TapThemeManager2020;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		46994DCB488B9A4D8A0834A2B1138F72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E1CD94AE199FFD9C2032B51559E5DE1 /* FirebaseInstallations.debug.xcconfig */;
@@ -5327,42 +5404,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		4B789A52809B9BF39472114EEDB0E65E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4983F00451CDE5F90694F36657C289AC /* TapThemeManager2020.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TapThemeManager2020/TapThemeManager2020-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020.modulemap";
-				PRODUCT_MODULE_NAME = TapThemeManager2020;
-				PRODUCT_NAME = TapThemeManager2020;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		50D084C9A608D3C71C16CFC08E10520F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -6474,43 +6515,6 @@
 			};
 			name = Release;
 		};
-		E96499E8095E1864F8B4DF1A2C7549C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D22A72ABC310FBC0801BADCF6A1EDAB8 /* TapThemeManager2020.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TapThemeManager2020/TapThemeManager2020-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TapThemeManager2020/TapThemeManager2020.modulemap";
-				PRODUCT_MODULE_NAME = TapThemeManager2020;
-				PRODUCT_NAME = TapThemeManager2020;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		E9960C3A0B22694E65BCB5F313055DB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD3F52487C0D31B2EEE728EA83A2C431 /* PromisesObjC.debug.xcconfig */;
@@ -6796,6 +6800,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4CED020D46C965B9DCC204066B6CAD6C /* Build configuration list for PBXNativeTarget "TapThemeManager2020" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4531CD636EB9F9E9A7916EF4CAE57C35 /* Debug */,
+				1CFAE0FB15CAA86648F2AA8B862F5507 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		64226705F95C1BCEC55B9DBDBE968DD4 /* Build configuration list for PBXAggregateTarget "FirebaseCoreDiagnosticsInterop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -6855,15 +6868,6 @@
 			buildConfigurations = (
 				6BBC0EB80E65A2615CC7CCB00D0B3817 /* Debug */,
 				7E94E32EF3810A6F74EF64853D07E0D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A1EADD52671499FB46A50317B6FF3428 /* Build configuration list for PBXNativeTarget "TapThemeManager2020" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4B789A52809B9BF39472114EEDB0E65E /* Debug */,
-				E96499E8095E1864F8B4DF1A2C7549C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

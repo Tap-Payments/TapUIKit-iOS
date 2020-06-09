@@ -148,5 +148,22 @@
         "backgroundColor": "white",
         "height" : 1,
         "initialTrailingConstraint" : 0
+    },
+    "tapDragHandler": {
+        "image" : "tapHandlerImage",
+        "width" : 75,
+        "height" : 2,
+        "corder" : 2
+    },
+    "merchantHeaderView": {
+        "titleLabelFont" : "Roboto-Regular,12",
+        "titleLabelColor" : "white",
+        "subTitleLabelFont" : "Roboto-Regular,16",
+        "subTitleLabelColor" : "white",
+        "merchantLogoCorner" : 8,
+        "merchantLogoPlaceHolderColor" : "white",
+        "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
+        "merchantLogoPlaceHolderColor" : "black",
+        "backgroundColor" : "black"
     }
 }

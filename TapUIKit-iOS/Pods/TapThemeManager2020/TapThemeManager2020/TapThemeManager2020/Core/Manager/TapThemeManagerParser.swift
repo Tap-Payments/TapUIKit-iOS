@@ -132,7 +132,11 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
            return imageValue(fromLocalURL: filePath)
         } else {
             // Try to parse the image from the main bundle
-            return imageValue(imageName: parsedImageName)
+            guard let mainBundleImage = imageValue(imageName: parsedImageName) else {
+                // Try last thing to load from the ThemeManager bundle (mainly these will be the default tap assets)
+                return UIImage(named: parsedImageName, in: Bundle(for: TapThemeManager.self), compatibleWith: nil)
+            }
+            return mainBundleImage
         }
     }
     

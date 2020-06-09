@@ -70,9 +70,13 @@ public class TapSeparatorView: UIView {
         separationLineLeadingConstraint.constant = leadingTrailingValue
         separationLineTrailingConstraint.constant = leadingTrailingValue
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
-            self?.layoutIfNeeded()
-        }, completion: nil)
+        if animated {
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
+                self?.layoutIfNeeded()
+                }, completion: nil)
+        }else{
+            layoutIfNeeded()
+        }
     }
     
 }
