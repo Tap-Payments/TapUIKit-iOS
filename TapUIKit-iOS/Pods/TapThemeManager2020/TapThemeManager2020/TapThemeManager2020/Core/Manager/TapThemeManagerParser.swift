@@ -10,7 +10,7 @@ import class UIKit.UIFont
 import class UIKit.UIColor
 import struct UIKit.CGFloat
 import enum UIKit.UIStatusBarStyle
-import enum TapFontsKit.TapFont
+import TapFontKit_iOS
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 
 /// All the methods required to parse String values provided in the theme file into readable iOS values like UIColor, UIFont, etc.
@@ -73,7 +73,24 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
     public class func colorValue(for keyPath: String) -> UIColor? {
         // First we need to gett tthe HEX value as string
         guard let parsedRGBString = stringValue(for: keyPath) else { return nil }
-        // Now we use our hex extenstion
+        // We need to check did the theme pass a hex color or a name of a saved color
+        guard let parsedColor = try? UIColor(tap_hex: parsedRGBString) else {
+            // This means, the user didn't pass a valid HEX value, could be the a name of a registered color in theme file in the path Global.Colors
+            print("TapThemeManager WARNING: Not convert RGBA Hex string \(parsedRGBString) at key path: \(keyPath). Will check if there is a valid color provided in the path GlobalValues.Colors.\(parsedRGBString)")
+            return globalColorValue(for: "GlobalValues.Colors.\(parsedRGBString)")
+        }
+        return parsedColor
+    }
+    
+    /**
+     - The method for getting a UIColor value from the current theme dictionary from the global colors section
+     - Parameter keyPath: The key of the UIColor needed
+     - Returns: The UIColor value of the key, and nil if doesn't exist
+     */
+    private class func globalColorValue(for keyPath: String) -> UIColor? {
+        // First we need to gett tthe HEX value as string
+        guard let parsedRGBString = stringValue(for: keyPath) else { return nil }
+        // let us check if the user provided a valid hex color
         guard let parsedColor = try? UIColor(tap_hex: parsedRGBString) else {
             print("TapThemeManager WARNING: Not convert RGBA Hex string \(parsedRGBString) at key path: \(keyPath)")
             return nil
@@ -103,8 +120,13 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
        - Parameter keyPath: The key of the UIImage needed
        - Returns: The UIImage value of the key, and nil if doesn't exist
        */
-    public class func imageValue(for keyPath: String) -> UIImage? {
+    public class func imageValue(for keyPath: String,from bundle:Bundle? = nil) -> UIImage? {
         guard let parsedImageName = stringValue(for: keyPath) else { return nil }
+        // Check if the user passed the Bundle of assets we need to get the image from
+        if let bundle = bundle {
+            guard let image =  UIImage(named: parsedImageName, in: bundle, compatibleWith: nil) else { return nil }
+            return image
+        }
         // Incase we will add afterwards reading from different paths other than the Main Bundle
         if let filePath = TapThemePath.themeURL?.appendingPathComponent(parsedImageName).path {
            return imageValue(fromLocalURL: filePath)
@@ -134,14 +156,15 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
                 return fontFromMainBundle
             }else{
                 // If not, we check it in our default common fonts kit
-                do {
+                return FontProvider.localizedFont(.TapFont(from: elements[0]), size: CGFloat(Float(elements[1]) ?? 12), languageIdentifier: TapLocalisationManager.shared.localisationLocale ?? "en")
+                /*do {
                   let data = try JSONEncoder().encode(elements[0])
                   let decoder = JSONDecoder()
                   let tapFont:TapFont = try decoder.decode(TapFont.self, from: data)
                     return tapFont.localizedWithSize(CGFloat(Float(elements[1])!), languageIdentifier: (TapLocalisationManager.shared.localisationLocale ?? "en"))
                 } catch {
                   print(error.localizedDescription)
-                }
+                }*/
             }
         }
         

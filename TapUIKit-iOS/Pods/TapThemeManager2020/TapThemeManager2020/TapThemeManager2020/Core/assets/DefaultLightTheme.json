@@ -1,7 +1,17 @@
 {
+    "GlobalValues" : {
+        "Colors" : {
+            "white" : "#FFFFFF",
+            "black" : "#000000",
+            "black50" : "#00000080",
+            "lightPeach" : "#b6b6b6",
+            "greyishBrown" : "#4b4847",
+            "veryLightPinkTwo" : "#dfdfdf"
+        }
+    },
   "inlineCard": {
       "commonAttributes": {
-          "backgroundColor": "#FFFFFF",
+          "backgroundColor": "white",
           "borderColor": "#0066FF",
           "cornerRadius": 0,
           "borderWidth": 1,
@@ -24,22 +34,22 @@
           "width": 32
       },
       "textFields": {
-          "textColor": "#000000",
+          "textColor": "black",
           "errorTextColor": "#FF0000",
           "font": "15",
           "placeHolderColor" : "#00000055"
       },
       "saveCardOption": {
-          "labelTextColor": "#000000",
+          "labelTextColor": "black",
           "labelTextFont": "20",
-          "switchTintColor": "#FFFFFF",
-          "switchThumbColor": "#FFFFFF",
+          "switchTintColor": "white",
+          "switchThumbColor": "white",
           "switchOnThumbColor": "#2ACE00"
       }
   },
   "fullCard": {
       "commonAttributes": {
-          "backgroundColor": "#FFFFFF",
+          "backgroundColor": "white",
           "borderColor": "#00000000",
           "cornerRadius":0,
           "borderWidth": 0,
@@ -63,16 +73,16 @@
           "width": 32
       },
       "textFields": {
-          "textColor": "#000000",
+          "textColor": "black",
           "errorTextColor": "#FF0000",
           "font": "15",
           "placeHolderColor" : "#00000055"
       },
       "saveCardOption": {
-          "labelTextColor": "#000000",
+          "labelTextColor": "black",
           "labelTextFont": "15",
-          "switchTintColor": "#FFFFFF",
-          "switchThumbColor": "#FFFFFF",
+          "switchTintColor": "white",
+          "switchThumbColor": "white",
           "switchOnThumbColor": "#2ACE00"
       }
   },
@@ -80,7 +90,7 @@
       "backGroundColor": "#e9e9e9",
       "collectionView": {
           "spaceBetweenCells":7,
-          "backgroundColor": "#FFFFFF00",
+          "backgroundColor": "white00",
           "height": 90,
           "borderColor": "#0066FF",
           "cornerRadius": 8,
@@ -96,8 +106,8 @@
       },
       "chipUI": {
           "commonAttributes": {
-              "backgroundColor": "#FFFFFF4C",
-              "glowingBackgroundColor": "#FFFFFF",
+              "backgroundColor": "white4C",
+              "glowingBackgroundColor": "white",
               "borderColor": "#0066FF",
               "cornerRadius": 8,
               "borderWidth": 0,
@@ -126,12 +136,12 @@
               "width": 32
           },
           "contentLabel": {
-              "textColor": "#000000",
+              "textColor": "black",
               "textFont": "15"
           }
       }
   },
   "tapBottomSheet": {
-      "dimmedColor": "#00000080",
+      "dimmedColor": "black50",
   }
 }

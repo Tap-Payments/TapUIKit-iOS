@@ -1,13 +1,23 @@
 {
+    "GlobalValues" : {
+        "Colors" : {
+            "white" : "#FFFFFF",
+            "black" : "#000000",
+            "black50" : "#00000080",
+            "lightPeach" : "#b6b6b6",
+            "greyishBrown" : "#4b4847",
+            "veryLightPinkTwo" : "#dfdfdf"
+        }
+    },
     "inlineCard": {
         "commonAttributes": {
-            "backgroundColor": "#000000",
-            "borderColor": "#FFFFFF",
+            "backgroundColor": "black",
+            "borderColor": "white",
             "cornerRadius":0,
             "borderWidth": 1,
             "itemSpacing": 5,
             "shadow":{
-                "color": "#FFFFFF",
+                "color": "white",
                 "radius": 3,
                 "offsetWidth": 0,
                 "offsetHeight": 0,
@@ -24,29 +34,29 @@
             "width": 32
         },
         "textFields": {
-            "textColor": "#FFFFFF",
+            "textColor": "white",
             "errorTextColor": "#FF0000",
             "font": "15",
-            "placeHolderColor" : "#FFFFFFAA"
+            "placeHolderColor" : "whiteAA"
         },
         "saveCardOption": {
-            "labelTextColor": "#FFFFFF",
+            "labelTextColor": "white",
             "labelTextFont": "15",
-            "switchTintColor": "#000000",
-            "switchThumbColor": "#000000",
-            "switchOnThumbColor": "#FFFFFF"
+            "switchTintColor": "black",
+            "switchThumbColor": "black",
+            "switchOnThumbColor": "white"
         }
     },
     "fullCard": {
         "commonAttributes": {
-            "backgroundColor": "#000000",
+            "backgroundColor": "black",
             "borderColor": "#FFF50000",
             "cornerRadius":0,
             "borderWidth": 0,
             "itemSpacing": 5,
-            "separatorColor": "#FFFFFF",
+            "separatorColor": "white",
             "shadow":{
-                "color": "#FFFFFF",
+                "color": "white",
                 "radius": 3,
                 "offsetWidth": 0,
                 "offsetHeight": 0,
@@ -63,21 +73,21 @@
             "width": 32
         },
         "textFields": {
-            "textColor": "#FFFFFF",
+            "textColor": "white",
             "errorTextColor": "#FF0000",
             "font": "15",
-            "placeHolderColor" : "#FFFFFFAA"
+            "placeHolderColor" : "whiteAA"
         },
         "saveCardOption": {
-            "labelTextColor": "#FFFFFF",
+            "labelTextColor": "white",
             "labelTextFont": "15",
-            "switchTintColor": "#000000",
-            "switchThumbColor": "#000000",
-            "switchOnThumbColor": "#FFFFFF"
+            "switchTintColor": "black",
+            "switchThumbColor": "black",
+            "switchOnThumbColor": "white"
         }
     },
     "recentCards": {
-        "backGroundColor": "#000000",
+        "backGroundColor": "black",
         "collectionView": {
             "spaceBetweenCells":7,
             "backgroundColor": "#00000000",
@@ -88,7 +98,7 @@
         },
         "headerView": {
             "buttons": {
-                "textColor": "#FFFFFF",
+                "textColor": "white",
                 "font": "15",
                 "backGroundColor": "#00000000"
             },
@@ -97,8 +107,8 @@
         "chipUI": {
             "commonAttributes": {
                 "backgroundColor": "#0000004C",
-                "glowingBackgroundColor": "#000000",
-                "borderColor": "#FFFFFF",
+                "glowingBackgroundColor": "black",
+                "borderColor": "white",
                 "cornerRadius":8,
                 "borderWidth": 1,
                 "itemSpacing": 5,
@@ -126,12 +136,12 @@
                 "width": 32
             },
             "contentLabel": {
-                "textColor": "#FFFFFF",
+                "textColor": "white",
                 "textFont": "15"
             }
         }
     },
     "tapBottomSheet": {
-        "dimmedColor": "#FFFFFF80",
+        "dimmedColor": "black50"
     }
 }
