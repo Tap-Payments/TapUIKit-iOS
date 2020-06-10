@@ -18,6 +18,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     @IBOutlet weak var conerRadiusLabel: UILabel!
     @IBOutlet weak var eventsTextView: UITextView!
     
+    var showWallOfGlory:Bool = false
     var bottomSheetBackgroundColor:UIColor? = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
     var dismissWhenClickOutSide:Bool = true
@@ -26,6 +27,11 @@ class TapBottomSheetExampleViewController: UIViewController {
     var bottomSheetController = TapBottomSheetDialogViewController()
     var toPresentController:ToPresentAsPopupViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ToPresentAsPopupViewController") as! ToPresentAsPopupViewController
+        vc.delegate = self
+        return vc
+    }
+    var gloryPresentController:ExampleWallOfGloryViewController {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ExampleWallOfGloryViewController") as! ExampleWallOfGloryViewController
         vc.delegate = self
         return vc
     }
@@ -124,7 +130,7 @@ extension TapBottomSheetExampleViewController:TapBottomSheetDialogDataSource {
     
     
     func tapBottomSheetViewControllerToPresent() -> UIViewController? {
-        return toPresentController
+        return showWallOfGlory ? gloryPresentController : toPresentController
     }
     
     func tapBottomSheetShouldAutoDismiss() -> Bool {

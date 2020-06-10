@@ -659,6 +659,36 @@
             </objects>
             <point key="canvasLocation" x="2438" y="4364"/>
         </scene>
+        <!--Example Wall Of Glory View Controller-->
+        <scene sceneID="DDu-ts-Dm4">
+            <objects>
+                <viewController storyboardIdentifier="ExampleWallOfGloryViewController" id="5Ga-VW-gqZ" customClass="ExampleWallOfGloryViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wN4-ZW-HOD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVq-mQ-vQh" customClass="TapVerticalView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="8" y="64" width="398" height="778"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="oVq-mQ-vQh" secondAttribute="trailing" constant="8" id="WSa-74-mkh"/>
+                            <constraint firstItem="DGq-3B-tfj" firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" constant="20" id="eiJ-07-jR6"/>
+                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="leading" secondItem="DGq-3B-tfj" secondAttribute="leading" constant="8" id="ut2-NP-mel"/>
+                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="top" secondItem="DGq-3B-tfj" secondAttribute="top" constant="20" id="vpn-O8-fYr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DGq-3B-tfj"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapVerticalView" destination="oVq-mQ-vQh" id="SMe-ih-4Ad"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jei-to-QDS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3490" y="2890"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>
