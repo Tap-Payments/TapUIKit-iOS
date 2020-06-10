@@ -44,7 +44,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         // The TapMerchantHeaderView
         let merchantHeaderView:TapMerchantHeaderView = .init()
         merchantHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        merchantHeaderView.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        merchantHeaderView.heightAnchor.constraint(equalToConstant: 55).isActive = true
         views.append(merchantHeaderView)
         merchantHeaderView.changeViewModel(with: tapMerchantHeaderViewModel)
         

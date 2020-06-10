@@ -668,16 +668,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVq-mQ-vQh" customClass="TapVerticalView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="8" y="64" width="398" height="778"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="oVq-mQ-vQh" secondAttribute="trailing" constant="8" id="WSa-74-mkh"/>
-                            <constraint firstItem="DGq-3B-tfj" firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" constant="20" id="eiJ-07-jR6"/>
-                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="leading" secondItem="DGq-3B-tfj" secondAttribute="leading" constant="8" id="ut2-NP-mel"/>
-                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="top" secondItem="DGq-3B-tfj" secondAttribute="top" constant="20" id="vpn-O8-fYr"/>
+                            <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="oVq-mQ-vQh" secondAttribute="trailing" id="WSa-74-mkh"/>
+                            <constraint firstItem="DGq-3B-tfj" firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" id="eiJ-07-jR6"/>
+                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="leading" secondItem="DGq-3B-tfj" secondAttribute="leading" id="ut2-NP-mel"/>
+                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="top" secondItem="DGq-3B-tfj" secondAttribute="top" id="vpn-O8-fYr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DGq-3B-tfj"/>
                     </view>
