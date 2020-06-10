@@ -79,7 +79,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6X-cO-idT" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="75" y="51.666666666666664" width="320" height="1.3333333333333357"/>
+                    <rect key="frame" x="19" y="51.666666666666664" width="376" height="1.3333333333333357"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1.5" id="vN5-E7-gHa"/>
@@ -92,7 +92,7 @@
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="c84-Gb-Q9q"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
-                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="19" id="juW-ik-laF"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="hZs-zS-7wd"/>
                 <constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="tzR-Tl-aDE"/>
