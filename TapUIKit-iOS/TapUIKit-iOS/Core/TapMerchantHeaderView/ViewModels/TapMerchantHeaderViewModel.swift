@@ -9,15 +9,44 @@
 import Foundation
 import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
+import RxCocoa
+
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
 public struct TapMerchantHeaderViewModel {
-    
+    // MARK:- RX Internal Observables
     /// The text to be displayed in the title label
-    public var title:String?
+    internal var titleObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
     /// The text to be displayed in the subtitle label
-    internal var subTitle:String?
+    internal var subTitleObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
     /// The url to load the merchant's logo from
-    internal var iconURL:String?
+    internal var iconObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    
+    // MARK:- Public normal swift variables
+    /// The text to be displayed in the title label
+    public var title:String? {
+        willSet{
+            titleObservable.accept(newValue ?? "")
+        }
+    }
+    /// The text to be displayed in the subtitle label
+    public var subTitle:String? {
+        willSet{
+            subTitleObservable.accept(newValue ?? "")
+        }
+    }
+    /// The url to load the merchant's logo from
+    public var iconURL:String? {
+        willSet{
+            iconObservable.accept(newValue ?? "")
+        }
+    }
+    
+    /// The text to be displayed in initials placeholder for merchant logo
+    public var merchantPlaceHolder:String  {
+        get{
+            getMerchantPlaceHolder()
+        }
+    }
     
     /// Localisation kit keypath
     internal var localizationPath = "TapMerchantSection"
@@ -30,32 +59,12 @@ public struct TapMerchantHeaderViewModel {
      - Parameter iconURL: The url to load the merchant's logo from, defailt is merchant icon url
      */
     public init(title:String? = nil ,subTitle:String? = nil, iconURL:String? = nil) {
-        self.title = title
-        self.subTitle = subTitle
-        self.iconURL = iconURL
-    }
-    /**
-        The text to be displayed in the title label
-     - Returns: Whether a predefined passed value from the parent or the default localization for "PAYMENT FOR"
-     */
-    public func getTitle() -> String {
-        return title ?? sharedLocalisationManager.localisedValue(for: "\(localizationPath).paymentFor", with: TapCommonConstants.pathForDefaultLocalisation())
-    }
-    
-    /**
-     The text to be displayed in the subt title label
-     - Returns: Whether a predefined passed value from the parent or the default localization for Merchant Name
-     */
-    public func getSubTitle() -> String {
-        return subTitle ?? ""
-    }
-    
-    /**
-     The url to load the merchant's logo from
-     - Returns: Whether a predefined passed value from the parent or the default stored merchant logo icon
-     */
-    public func getIconURL() -> String {
-        return iconURL ?? ""
+        defer {
+            self.title = title ?? sharedLocalisationManager.localisedValue(for: "\(localizationPath).paymentFor", with: TapCommonConstants.pathForDefaultLocalisation())
+            self.subTitle = subTitle
+            self.iconURL = iconURL
+        }
+        
     }
     
     /**
@@ -64,9 +73,7 @@ public struct TapMerchantHeaderViewModel {
      */
     public func getMerchantPlaceHolder() -> String {
         // Make sure we have a merchant name of length > 0
-        let merchantName = getSubTitle()
-        guard merchantName.count > 0 else { return "" }
-        
+        guard let merchantName = subTitle,merchantName.count > 0 else { return "" }        
         return merchantName.prefix(1).uppercased()
     }
     

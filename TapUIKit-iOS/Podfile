@@ -26,4 +26,6 @@ target 'TapUIKit-iOS' do
   pod 'GestureRecognizerClosures'
   pod "SimpleAnimation"
   pod "MapleBacon"
+  pod 'RxSwift'
+  pod 'RxCocoa'
 end

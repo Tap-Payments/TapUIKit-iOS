@@ -16,11 +16,7 @@ class TapMerchantHeaderViewController: UIViewController {
     @IBOutlet weak var merchantNameTextField: UITextField!
     @IBOutlet weak var merchantLogoTextField: UITextField!
     
-    var viewModel:TapMerchantHeaderViewModel = .init() {
-        didSet {
-            tapMerchantHeaderView.changeViewModel(with: viewModel)
-        }
-    }
+    var viewModel:TapMerchantHeaderViewModel = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +42,8 @@ class TapMerchantHeaderViewController: UIViewController {
     }
     
     @IBAction func applyChangesClicked(_ sender: Any) {
-        viewModel = .init(subTitle: merchantNameTextField.text ?? "", iconURL: merchantLogoTextField.text ?? "")
-        tapMerchantHeaderView.changeViewModel(with: viewModel)
+        viewModel.subTitle = merchantNameTextField.text ?? ""
+        viewModel.iconURL = merchantLogoTextField.text ?? ""
     }
 }
 

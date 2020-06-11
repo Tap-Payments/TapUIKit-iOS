@@ -74,6 +74,12 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
   - PullUpController (0.8.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - SheetyColors (1.2.0):
     - Capable/Colors (~> 1.1)
   - SimpleAnimation (0.4.2)
@@ -101,6 +107,8 @@ DEPENDENCIES:
   - MapleBacon
   - MOLH
   - PullUpController
+  - RxCocoa
+  - RxSwift
   - SheetyColors
   - SimpleAnimation
   - SnapKit
@@ -127,6 +135,9 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PullUpController
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SheetyColors
     - SimpleAnimation
     - SnapKit
@@ -155,6 +166,9 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SheetyColors: 8dc64a666415be8a81df3c5d44b9088d6f8bee2e
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -163,6 +177,6 @@ SPEC CHECKSUMS:
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: d4f6b7ae11f625d7145da324a0c5e36896054076
 
-PODFILE CHECKSUM: 759888e4b3259629fdae6585b5ffac26385604d4
+PODFILE CHECKSUM: 94314f70141ffa374b5dafff246a1da648608e53
 
 COCOAPODS: 1.9.3

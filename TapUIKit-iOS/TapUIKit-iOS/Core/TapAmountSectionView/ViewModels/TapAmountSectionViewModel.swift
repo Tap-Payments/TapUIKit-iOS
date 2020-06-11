@@ -9,11 +9,27 @@ import Foundation
 import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
+import RxCocoa
 /// The view model that controlls the data shown inside a TapAmountSectionView
 public struct TapAmountSectionViewModel {
+    // MARK:- RX Internal Observables
+    /// Represent the original transaction total amount
+    internal var originalAmountObserver:BehaviorRelay<Double> = .init(value: 0)
+    /// Represent the original transaction currenc code
+    internal var originalCurrencyObserver:BehaviorRelay<TapCurrencyCode?> = .init(value: nil)
+    /// Represent the converted transaction total amount if any
+    internal var convertedAmountObserver:BehaviorRelay<Double> = .init(value: 0)
+    /// Represent the converted transaction currenc code if any
+    internal var convertedCurrencyObserver:BehaviorRelay<TapCurrencyCode?> = .init(value: nil)
+    /// Represent the number of items in the current transaction
+    internal var itemsNumberObserver:BehaviorRelay<Int> = .init(value: 0)
+    /// Indicates if the number of items should be shown
+    internal var showItemsObserver:BehaviorRelay<Bool> = .init(value: true)
+    /// Indicates if the amount labels should be shown
+    internal var showAmount:BehaviorRelay<Bool> = .init(value: true)
     
     
-    
+    // MARK:- Public normal swift variables
     /// Represent the original transaction total amount
     public var originalTransactionAmount:Double = 0
     /// Represent the original transaction currenc code

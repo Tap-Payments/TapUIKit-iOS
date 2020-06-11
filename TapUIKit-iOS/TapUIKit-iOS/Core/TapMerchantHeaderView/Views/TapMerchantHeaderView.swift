@@ -10,6 +10,8 @@ import TapThemeManager2020
 import struct UIKit.CGFloat
 import MapleBacon
 import SimpleAnimation
+import RxSwift
+
 /// A view represents the merchant header section in the checkout UI
 public class TapMerchantHeaderView: UIView {
 
@@ -28,9 +30,11 @@ public class TapMerchantHeaderView: UIView {
     /// The lower label
     @IBOutlet weak var subtitleLabel: UILabel!
     
+    private let disposeBag:DisposeBag = .init()
+    
     public var viewModel:TapMerchantHeaderViewModel? {
         didSet{
-            reload()
+            createObservables()
         }
     }
     
@@ -48,6 +52,43 @@ public class TapMerchantHeaderView: UIView {
         commonInit()
     }
     
+    
+    private func createObservables() {
+        bindLabels()
+        bindImages()
+    }
+    
+    ///Updates all the labels with the corresponding values in the view model
+    private func bindLabels() {
+        guard let viewModel = viewModel else { return }
+        
+        // Bind the title label to the title observable
+        viewModel.titleObservable
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: "")
+            .drive(titleLabel.rx.text).disposed(by: disposeBag)
+        
+        // Bind the subtitle label and merchant initial label to the subtitle observable
+        viewModel.subTitleObservable.map{ $0.uppercased() }
+            .distinctUntilChanged()
+            .map{($0,viewModel.merchantPlaceHolder)}
+            .subscribe(onNext: { [weak self] (merchantName, merchantPlaceHolder) in
+                self?.subtitleLabel.text = merchantName
+                self?.merchantLogoPlaceHolderInitialLabel.text = merchantPlaceHolder
+            }).disposed(by: disposeBag)
+    }
+    
+    ///Updates all the labels with the corresponding values in the view model
+    private func bindImages() {
+        guard let viewModel = viewModel else { return }
+        // Bind the icon image to the iconURL observable
+        viewModel.iconObservable
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] iconURL in
+                self?.loadMerchantLogo(with: iconURL)
+            }).disposed(by: disposeBag)
+    }
+    
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.containerView = setupXIB()
@@ -62,35 +103,6 @@ public class TapMerchantHeaderView: UIView {
     
     public func changeViewModel(with viewModel:TapMerchantHeaderViewModel) {
         self.viewModel = viewModel
-    }
-    
-    /// This will change the values of titles and images to match the latest values in the associated view model
-    public func reload() {
-        // First defensive coding, make sure we have a valid view model to load the data from
-        guard let viewModel = viewModel else { return }
-        setLabels(viewModel: viewModel)
-        setImages(viewModel: viewModel)
-    }
-    
-    /**
-     Updates all the labels with the corresponding values in the view model
-     - Parameter viewModel: The view model used to fetch the values from
-     */
-    private func setLabels(viewModel: TapMerchantHeaderViewModel) {
-        
-        // Handle title and subtitle labels
-        titleLabel.text = viewModel.getTitle()
-        subtitleLabel.text = viewModel.getSubTitle()
-        merchantLogoPlaceHolderInitialLabel.text = viewModel.getMerchantPlaceHolder()
-    }
-    
-    /**
-     Updates all the image vuews with the corresponding values in the view model
-     - Parameter viewModel: The view model used to fetch the values from
-     */
-    private func setImages(viewModel: TapMerchantHeaderViewModel) {
-        // Merchant logo has a specific logic, as its placeholder is a full view not an image
-        loadMerchantLogo(with: viewModel.getIconURL())
     }
     
     /**
