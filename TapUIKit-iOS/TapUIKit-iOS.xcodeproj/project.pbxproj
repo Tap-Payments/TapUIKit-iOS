@@ -50,6 +50,8 @@
 		E8AE0E00245B620F007AAE1F /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DFF245B620F007AAE1F /* separator.png */; };
 		E8C590932490A27000E03424 /* ExampleWallOfGloryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590922490A27000E03424 /* ExampleWallOfGloryViewController.swift */; };
 		E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590FA24922AF600E03424 /* TapAmountSectionViewModel.swift */; };
+		E8C590FF249293E200E03424 /* TapAmountSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590FE249293E200E03424 /* TapAmountSectionView.swift */; };
+		E8C59101249293EA00E03424 /* TapAmountSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C59100249293EA00E03424 /* TapAmountSectionView.xib */; };
 		E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */; };
 		E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */; };
 		E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */; };
@@ -150,6 +152,8 @@
 		E8AE0DFF245B620F007AAE1F /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
 		E8C590922490A27000E03424 /* ExampleWallOfGloryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleWallOfGloryViewController.swift; sourceTree = "<group>"; };
 		E8C590FA24922AF600E03424 /* TapAmountSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionViewModel.swift; sourceTree = "<group>"; };
+		E8C590FE249293E200E03424 /* TapAmountSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionView.swift; sourceTree = "<group>"; };
+		E8C59100249293EA00E03424 /* TapAmountSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapAmountSectionView.xib; sourceTree = "<group>"; };
 		E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorView.swift; sourceTree = "<group>"; };
 		E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorView.xib; sourceTree = "<group>"; };
 		E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewController.swift; sourceTree = "<group>"; };
@@ -445,6 +449,8 @@
 		E8C590F924922AEA00E03424 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8C590FE249293E200E03424 /* TapAmountSectionView.swift */,
+				E8C59100249293EA00E03424 /* TapAmountSectionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -683,6 +689,7 @@
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8E92B4E248FA4E900DD7DBB /* TapMerchantHeaderView.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
+				E8C59101249293EA00E03424 /* TapAmountSectionView.xib in Resources */,
 				E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */,
 				E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
@@ -779,6 +786,7 @@
 				E835ADC02459808700E55A68 /* TapGoPayCellViewModel.swift in Sources */,
 				E8E92B52248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift in Sources */,
 				E8ED310D245ADA2D00A62D09 /* TapCardsCollectionViewModel.swift in Sources */,
+				E8C590FF249293E200E03424 /* TapAmountSectionView.swift in Sources */,
 				E8ECF5A3245EA06900C88BE0 /* TapRecentCardsView.swift in Sources */,
 				E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */,
 				E8AE0DF5245B0160007AAE1F /* TapRecentCardCollectionViewCell.swift in Sources */,
