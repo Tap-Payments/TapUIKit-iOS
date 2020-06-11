@@ -69,10 +69,8 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru4-Og-B3o">
                     <rect key="frame" x="66" y="4" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                    <color key="textColor" red="0.6588235294" green="0.6588235294" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <size key="shadowOffset" width="0.0" height="0.5"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6B-nj-GYC">
                     <rect key="frame" x="66" y="5" width="0.0" height="0.0"/>
@@ -90,13 +88,13 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="yOw-Pk-KqX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="5hJ-Gy-d2r"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" constant="19" id="AZx-tL-oOS"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="IvH-V0-pjR"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
-                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="hZs-zS-7wd"/>
                 <constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
+                <constraint firstItem="yOw-Pk-KqX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ogw-He-kAH"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="tzR-Tl-aDE"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="vD0-za-T5D"/>
             </constraints>
