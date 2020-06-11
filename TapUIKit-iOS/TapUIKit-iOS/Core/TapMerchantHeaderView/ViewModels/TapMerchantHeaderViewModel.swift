@@ -10,10 +10,10 @@ import Foundation
 import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
-public class TapMerchantHeaderViewModel {
+public struct TapMerchantHeaderViewModel {
     
     /// The text to be displayed in the title label
-    internal var title:String?
+    public var title:String?
     /// The text to be displayed in the subtitle label
     internal var subTitle:String?
     /// The url to load the merchant's logo from
@@ -34,7 +34,6 @@ public class TapMerchantHeaderViewModel {
         self.subTitle = subTitle
         self.iconURL = iconURL
     }
-    
     /**
         The text to be displayed in the title label
      - Returns: Whether a predefined passed value from the parent or the default localization for "PAYMENT FOR"

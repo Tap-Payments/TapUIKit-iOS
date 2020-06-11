@@ -6,7 +6,8 @@
             "black50" : "#00000080",
             "lightPeach" : "#b6b6b6",
             "greyishBrown" : "#4b4847",
-            "veryLightPinkTwo" : "#dfdfdf"
+            "veryLightPinkTwo" : "#dfdfdf",
+            "brownGrey" : "#a8a8a8"
         }
     },
     "inlineCard": {
@@ -164,6 +165,21 @@
         "merchantLogoPlaceHolderColor" : "white",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "black",
+        "backgroundColor" : "black"
+    },
+    "amountSectionView": {
+        "originalAmountLabelFont" : "Roboto-Regular,20",
+        "originalAmountLabelColor" : "white",
+        "convertedAmountLabelFont" : "Roboto-Light,14",
+        "convertedAmountLabelColor" : "white",
+        "itemsLabelFont" : "Roboto-Light,9",
+        "itemsLabelColor" : "greyishBrown",
+        "itemsNumberButtonBackgroundColor" : "whiteTwo",
+        "itemsNumberButtonBorder" : {
+            "color" : "veryLightPinkTwo",
+            "width" : 1
+        },
+        "itemsNumberButtonCorner" : "12.5",
         "backgroundColor" : "black"
     }
 }

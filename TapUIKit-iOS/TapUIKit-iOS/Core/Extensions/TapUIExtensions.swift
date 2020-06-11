@@ -120,3 +120,23 @@ internal extension UIView {
         return newContainerView
     }
 }
+
+// MARK:- Encodable extensions
+
+extension Encodable {
+    // MARK:- Convert an Encodable to Dictionary
+    var dictionary: [String: Any]? {
+        guard let data = try? JSONEncoder().encode(self) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
+    }
+}
+
+// MARK:- Decodable extensions
+extension Decodable {
+    // MARK:- Create from Dictionary or array
+    init(from: Any) throws {
+        let data = try JSONSerialization.data(withJSONObject: from, options: .prettyPrinted)
+        let decoder = JSONDecoder()
+        self = try decoder.decode(Self.self, from: data)
+    }
+}

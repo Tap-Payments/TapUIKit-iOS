@@ -15,7 +15,10 @@
             "previous": "Previous",
             "done": "Done",
             "recent": "Recent",
-            "edit": "Edit"
+            "edit": "Edit",
+            "close": "Close",
+            "items": "Items",
+            "item": "Item"
         }
     },
     "ar": {
@@ -34,7 +37,10 @@
             "previous": "السابق",
             "done": "تم",
             "recent": "كروت سابقة",
-            "edit": "تعديل"
+            "edit": "تعديل",
+            "close": "غلق",
+            "items": "منتجات",
+            "item": "منتج"
         }
     }
 }

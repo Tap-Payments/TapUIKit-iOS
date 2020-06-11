@@ -16,7 +16,11 @@ class TapMerchantHeaderViewController: UIViewController {
     @IBOutlet weak var merchantNameTextField: UITextField!
     @IBOutlet weak var merchantLogoTextField: UITextField!
     
-    var viewModel:TapMerchantHeaderViewModel = .init()
+    var viewModel:TapMerchantHeaderViewModel = .init() {
+        didSet {
+            tapMerchantHeaderView.changeViewModel(with: viewModel)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

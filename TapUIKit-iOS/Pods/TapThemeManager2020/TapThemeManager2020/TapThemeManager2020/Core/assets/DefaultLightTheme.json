@@ -6,7 +6,8 @@
             "black50" : "#00000080",
             "lightPeach" : "#b6b6b6",
             "greyishBrown" : "#4b4847",
-            "veryLightPinkTwo" : "#dfdfdf"
+            "veryLightPinkTwo" : "#dfdfdf",
+            "brownGrey" : "#a8a8a8"
         }
     },
     "inlineCard": {
@@ -152,7 +153,7 @@
     "tapDragHandler": {
         "image" : "tapHandlerImage",
         "width" : 75,
-        "height" : 4,
+        "height" : 2,
         "corder" : 2
     },
     "merchantHeaderView": {
@@ -164,6 +165,21 @@
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
+        "backgroundColor" : "white"
+    },
+    "amountSectionView": {
+        "originalAmountLabelFont" : "Roboto-Regular,20",
+        "originalAmountLabelColor" : "greyishBrown",
+        "convertedAmountLabelFont" : "Roboto-Light,14",
+        "convertedAmountLabelColor" : "brownGrey",
+        "itemsLabelFont" : "Roboto-Light,9",
+        "itemsLabelColor" : "greyishBrown",
+        "itemsNumberButtonBackgroundColor" : "whiteTwo",
+        "itemsNumberButtonBorder" : {
+            "color" : "veryLightPinkTwo",
+            "width" : 1
+        },
+        "itemsNumberButtonCorner" : "12.5",
         "backgroundColor" : "white"
     }
 }
