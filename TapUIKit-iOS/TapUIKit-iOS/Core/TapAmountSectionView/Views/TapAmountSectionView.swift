@@ -9,6 +9,7 @@
 import UIKit
 import TapThemeManager2020
 import RxSwift
+import SimpleAnimation
 
 public class TapAmountSectionView: UIView {
 
@@ -105,10 +106,13 @@ public class TapAmountSectionView: UIView {
             // Then we need to show this label inside the stack view, first we need to check if it is not already added
             if !amountsStackView.arrangedSubviews.contains(label) {
                 amountsStackView.insertArrangedSubview(label, at: position)
+                label.fadeIn()
             }
         }else {
             // Then we need to remove this label from the stack view
-            amountsStackView.removeArrangedSubview(label)
+            label.fadeOut { [weak self] _ in
+                self?.amountsStackView.removeArrangedSubview(label)
+            }
         }
     }
     
