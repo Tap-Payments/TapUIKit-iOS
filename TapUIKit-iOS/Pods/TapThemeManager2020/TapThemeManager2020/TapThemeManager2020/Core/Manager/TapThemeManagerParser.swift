@@ -76,7 +76,7 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
         // We need to check did the theme pass a hex color or a name of a saved color
         guard let parsedColor = try? UIColor(tap_hex: parsedRGBString) else {
             // This means, the user didn't pass a valid HEX value, could be the a name of a registered color in theme file in the path Global.Colors
-            print("TapThemeManager WARNING: Not convert RGBA Hex string \(parsedRGBString) at key path: \(keyPath). Will check if there is a valid color provided in the path GlobalValues.Colors.\(parsedRGBString)")
+           // print("TapThemeManager WARNING: Not convert RGBA Hex string \(parsedRGBString) at key path: \(keyPath). Will check if there is a valid color provided in the path GlobalValues.Colors.\(parsedRGBString)")
             return globalColorValue(for: "GlobalValues.Colors.\(parsedRGBString)")
         }
         return parsedColor
@@ -92,7 +92,7 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
         guard let parsedRGBString = stringValue(for: keyPath) else { return nil }
         // let us check if the user provided a valid hex color
         guard let parsedColor = try? UIColor(tap_hex: parsedRGBString) else {
-            print("TapThemeManager WARNING: Not convert RGBA Hex string \(parsedRGBString) at key path: \(keyPath)")
+            //print("TapThemeManager WARNING: Not convert RGBA Hex string \(parsedRGBString) at key path: \(keyPath)")
             return nil
         }
         return parsedColor

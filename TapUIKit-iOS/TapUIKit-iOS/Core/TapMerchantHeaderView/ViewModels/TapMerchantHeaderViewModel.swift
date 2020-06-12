@@ -6,8 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import Foundation
-import LocalisationManagerKit_iOS
+import class LocalisationManagerKit_iOS.TapLocalisationManager
 import class CommonDataModelsKit_iOS.TapCommonConstants
 import RxCocoa
 

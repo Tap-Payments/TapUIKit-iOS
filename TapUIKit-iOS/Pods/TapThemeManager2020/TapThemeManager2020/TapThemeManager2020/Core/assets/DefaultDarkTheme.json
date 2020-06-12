@@ -7,7 +7,8 @@
             "lightPeach" : "#b6b6b6",
             "greyishBrown" : "#4b4847",
             "veryLightPinkTwo" : "#dfdfdf",
-            "brownGrey" : "#a8a8a8"
+            "brownGrey" : "#a8a8a8",
+            "whiteTwo": "#f4f4f4"
         }
     },
     "inlineCard": {

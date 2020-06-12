@@ -52,6 +52,7 @@
 		E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590FA24922AF600E03424 /* TapAmountSectionViewModel.swift */; };
 		E8C590FF249293E200E03424 /* TapAmountSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590FE249293E200E03424 /* TapAmountSectionView.swift */; };
 		E8C59101249293EA00E03424 /* TapAmountSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C59100249293EA00E03424 /* TapAmountSectionView.xib */; };
+		E8C5910424936C6E00E03424 /* TapAmountSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C5910324936C6E00E03424 /* TapAmountSectionViewController.swift */; };
 		E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */; };
 		E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */; };
 		E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */; };
@@ -154,6 +155,7 @@
 		E8C590FA24922AF600E03424 /* TapAmountSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionViewModel.swift; sourceTree = "<group>"; };
 		E8C590FE249293E200E03424 /* TapAmountSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionView.swift; sourceTree = "<group>"; };
 		E8C59100249293EA00E03424 /* TapAmountSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapAmountSectionView.xib; sourceTree = "<group>"; };
+		E8C5910324936C6E00E03424 /* TapAmountSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionViewController.swift; sourceTree = "<group>"; };
 		E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorView.swift; sourceTree = "<group>"; };
 		E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorView.xib; sourceTree = "<group>"; };
 		E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E8C5910224936C4F00E03424 /* TapAmountSectionView */,
 				E8C5908F2490A21A00E03424 /* WallOfGloryExample */,
 				E87CEA46248FBFA3002F2332 /* TapMerchantHeaderView */,
 				E8E92B47248F976300DD7DBB /* TapHandlerView */,
@@ -453,6 +456,14 @@
 				E8C59100249293EA00E03424 /* TapAmountSectionView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E8C5910224936C4F00E03424 /* TapAmountSectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E8C5910324936C6E00E03424 /* TapAmountSectionViewController.swift */,
+			);
+			path = TapAmountSectionView;
 			sourceTree = "<group>";
 		};
 		E8E92B38248F5C7800DD7DBB /* TapSeparatorView */ = {
@@ -822,6 +833,7 @@
 				E8C590932490A27000E03424 /* ExampleWallOfGloryViewController.swift in Sources */,
 				E879885F245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift in Sources */,
 				E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */,
+				E8C5910424936C6E00E03424 /* TapAmountSectionViewController.swift in Sources */,
 				E8AE0DEA245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift in Sources */,
 				E87CEA48248FBFBC002F2332 /* TapMerchantHeaderViewController.swift in Sources */,
 			);
