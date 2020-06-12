@@ -704,22 +704,111 @@
                                     <constraint firstAttribute="height" constant="60" id="Uj4-UR-X4n"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfn-zv-AqU">
+                                <rect key="frame" x="20" y="137" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wh2-l8-hrp">
+                                <rect key="frame" x="345" y="132" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="SQn-gl-Od5"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Amounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kk-zL-0Dn">
+                                <rect key="frame" x="20" y="176" width="115" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgn-yV-Hag">
+                                <rect key="frame" x="345" y="171" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="2Qr-d6-S2I"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Conversions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5I-jz-lVc">
+                                <rect key="frame" x="20" y="215" width="141.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HeB-fK-iTq">
+                                <rect key="frame" x="345" y="210" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="H94-0E-SNy"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZS-V9-1Sa">
+                                <rect key="frame" x="20" y="250" width="147" height="30"/>
+                                <state key="normal" title="Set Original Currency"/>
+                                <connections>
+                                    <action selector="currencySelectionClicked:" destination="bv6-Mm-rO5" eventType="touchUpInside" id="snj-tP-wQd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txX-xm-DW4">
+                                <rect key="frame" x="228" y="249" width="166" height="30"/>
+                                <state key="normal" title="Set Converted Currency"/>
+                                <connections>
+                                    <action selector="currencySelectionClicked:" destination="bv6-Mm-rO5" eventType="touchUpInside" id="9Od-Zk-bmL"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Original Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aev-zS-Buo">
+                                <rect key="frame" x="20" y="288" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Converted Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cse-ap-rLP">
+                                <rect key="frame" x="20" y="342" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PZS-V9-1Sa" firstAttribute="leading" secondItem="YA8-pl-mPp" secondAttribute="leading" constant="20" id="1r7-sf-FhR"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="Aev-zS-Buo" secondAttribute="trailing" constant="20" id="1um-hA-2IY"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="5nC-N0-TOc" secondAttribute="trailing" id="2Yk-p0-sKU"/>
+                            <constraint firstItem="Zgn-yV-Hag" firstAttribute="top" secondItem="wh2-l8-hrp" secondAttribute="bottom" constant="8" id="6PQ-Yg-JUD"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="Zgn-yV-Hag" secondAttribute="trailing" constant="20" id="7d2-zE-PEl"/>
+                            <constraint firstItem="HeB-fK-iTq" firstAttribute="top" secondItem="Zgn-yV-Hag" secondAttribute="bottom" constant="8" id="7pd-jZ-iSa"/>
+                            <constraint firstItem="Aev-zS-Buo" firstAttribute="top" secondItem="PZS-V9-1Sa" secondAttribute="bottom" constant="8" id="9Sy-0t-nf9"/>
+                            <constraint firstItem="cse-ap-rLP" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="A72-Bc-Tg6"/>
+                            <constraint firstItem="4Kk-zL-0Dn" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="BcK-i1-twF"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="cse-ap-rLP" secondAttribute="trailing" constant="20" id="Eku-0U-gdd"/>
+                            <constraint firstItem="cse-ap-rLP" firstAttribute="top" secondItem="Aev-zS-Buo" secondAttribute="bottom" constant="20" id="KYM-nc-cfr"/>
+                            <constraint firstItem="Yfn-zv-AqU" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="LXH-Np-t5m"/>
                             <constraint firstItem="5nC-N0-TOc" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" id="MjT-HX-GkF"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="HeB-fK-iTq" secondAttribute="trailing" constant="20" id="MvE-eA-m3U"/>
+                            <constraint firstItem="txX-xm-DW4" firstAttribute="top" secondItem="HeB-fK-iTq" secondAttribute="bottom" constant="8" id="P2K-EW-cP4"/>
+                            <constraint firstItem="Yfn-zv-AqU" firstAttribute="centerY" secondItem="wh2-l8-hrp" secondAttribute="centerY" id="Q1N-fG-fU0"/>
+                            <constraint firstItem="PZS-V9-1Sa" firstAttribute="top" secondItem="e5I-jz-lVc" secondAttribute="bottom" constant="14" id="U1O-Yk-yNn"/>
                             <constraint firstItem="5nC-N0-TOc" firstAttribute="top" secondItem="XXT-YM-RM3" secondAttribute="top" constant="20" id="ar5-Ia-HvN"/>
+                            <constraint firstItem="4Kk-zL-0Dn" firstAttribute="centerY" secondItem="Zgn-yV-Hag" secondAttribute="centerY" id="bWc-lH-Kh8"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="txX-xm-DW4" secondAttribute="trailing" constant="20" id="f5T-Ob-iUD"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="wh2-l8-hrp" secondAttribute="trailing" constant="20" id="h4x-HV-eJu"/>
+                            <constraint firstItem="e5I-jz-lVc" firstAttribute="centerY" secondItem="HeB-fK-iTq" secondAttribute="centerY" id="jsR-HG-Z40"/>
+                            <constraint firstItem="wh2-l8-hrp" firstAttribute="top" secondItem="5nC-N0-TOc" secondAttribute="bottom" constant="8" id="lwS-PB-0ah"/>
+                            <constraint firstItem="Aev-zS-Buo" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="mTw-2P-C9p"/>
+                            <constraint firstItem="e5I-jz-lVc" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="vM6-or-iww"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XXT-YM-RM3"/>
                     </view>
                     <connections>
+                        <outlet property="amountsSwitch" destination="Zgn-yV-Hag" id="1Qw-lq-Nqc"/>
+                        <outlet property="convertSwitch" destination="HeB-fK-iTq" id="fge-ic-eoc"/>
+                        <outlet property="convertedCurrencyButton" destination="txX-xm-DW4" id="m3u-BA-HHN"/>
+                        <outlet property="convertedTextField" destination="cse-ap-rLP" id="Fx6-md-JRb"/>
+                        <outlet property="itemsSwitch" destination="wh2-l8-hrp" id="hLS-FW-Fzh"/>
+                        <outlet property="originalAmountTextField" destination="Aev-zS-Buo" id="VVm-eD-vgB"/>
+                        <outlet property="originalCurrencyButton" destination="PZS-V9-1Sa" id="A1T-5c-x2e"/>
                         <outlet property="tapAmountSectionView" destination="5nC-N0-TOc" id="frP-ND-KQI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYa-a0-2dh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="5056"/>
+            <point key="canvasLocation" x="2437.68115942029" y="5055.8035714285716"/>
         </scene>
     </scenes>
     <resources>

@@ -76,15 +76,26 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsi-ku-Cc3" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="56.666666666666664" width="414" height="1.3333333333333357"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1.5" id="QML-ap-8f6"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="B0d-u1-6BX"/>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="K7h-ib-Lxc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CxV-eQ-hP9"/>
                 <constraint firstItem="j2W-ua-sQI" firstAttribute="leading" secondItem="K7h-ib-Lxc" secondAttribute="trailing" constant="8" id="T0s-Zf-AzC"/>
                 <constraint firstItem="j2W-ua-sQI" firstAttribute="centerY" secondItem="K7h-ib-Lxc" secondAttribute="centerY" id="ToD-Ht-0ca"/>
+                <constraint firstItem="Xsi-ku-Cc3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="VX4-kJ-sGf"/>
                 <constraint firstAttribute="trailing" secondItem="j2W-ua-sQI" secondAttribute="trailing" constant="20" id="XaN-eB-fI6"/>
                 <constraint firstItem="K7h-ib-Lxc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ZGv-AC-eGB"/>
                 <constraint firstItem="K7h-ib-Lxc" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="g3i-ju-Bk6"/>
+                <constraint firstItem="Xsi-ku-Cc3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBQ-Rj-bqv"/>
+                <constraint firstItem="Xsi-ku-Cc3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="zVy-fK-OmM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
