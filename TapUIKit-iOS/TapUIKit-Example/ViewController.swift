@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         dataSource.append(["title":"Tap Separator View","subtitle":"Displays the separator view used in the UX","navigationID":"TapSeparatorViewController","lang":"0","push":"0"])
         dataSource.append(["title":"Tap Drag Handler View","subtitle":"Displays the drag handler view used in the UX","navigationID":"TapDragHandlerViewController","lang":"0","push":"0"])
         dataSource.append(["title":"Tap Merchant Header View","subtitle":"Displays the Tap Merchant head section view","navigationID":"TapMerchantHeaderViewController","lang":"1","push":"0"])
-        dataSource.append(["title":"Tap Amount Section View","subtitle":"Displays the Tap Amount section view","navigationID":"TapAmountSectionViewController","lang":"0","push":"0"])
+        dataSource.append(["title":"Tap Amount Section View","subtitle":"Displays the Tap Amount section view","navigationID":"TapAmountSectionViewController","lang":"1","push":"0"])
         dataSource.append(["title":"Wall Of Glory","subtitle":"Shows all ui components from Checkout SDK done in action","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         
         tableView.dataSource = self

@@ -145,18 +145,19 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
      - Parameter keyPath: The key of the UIFont needed
      - Returns: The UIFont value of the key, and nil if doesn't exist
      */
-    public class func fontValue(for keyPath: String) -> UIFont? {
+    public class func fontValue(for keyPath: String,shouldLocalise: Bool = true) -> UIFont? {
         // First of all, check if the font textual info presented
         guard let parsedFontString = stringValue(for: keyPath) else { return nil }
-        return fontValue(from: parsedFontString)
+        return fontValue(from: parsedFontString,shouldLocalise: shouldLocalise)
     }
     
-    internal class func fontValue(from string: String) -> UIFont {
+    internal class func fontValue(from string: String,shouldLocalise: Bool = true) -> UIFont {
         // Check if the theme file provides both font name and font size
         let elements = string.components(separatedBy: ",")
         if elements.count == 2 {
             // First we check it in our default common fonts kit
-            if let fontFromFontKit = FontProvider.localizedFont(.TapFont(from: elements[0]), size: CGFloat(Float(elements[1]) ?? 12), languageIdentifier: TapLocalisationManager.shared.localisationLocale ?? "en") {
+            let languageIdentefier = shouldLocalise ? (TapLocalisationManager.shared.localisationLocale ?? "en") : "en"
+            if let fontFromFontKit = FontProvider.localizedFont(.TapFont(from: elements[0]), size: CGFloat(Float(elements[1]) ?? 12), languageIdentifier: languageIdentefier) {
                 return fontFromFontKit
             }else {
                 // If not, we Check if the font exists in the caller main bundle

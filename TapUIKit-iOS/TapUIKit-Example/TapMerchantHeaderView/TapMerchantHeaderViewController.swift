@@ -8,7 +8,6 @@
 
 import UIKit
 import TapUIKit_iOS
-import MOLH
 
 class TapMerchantHeaderViewController: UIViewController {
 

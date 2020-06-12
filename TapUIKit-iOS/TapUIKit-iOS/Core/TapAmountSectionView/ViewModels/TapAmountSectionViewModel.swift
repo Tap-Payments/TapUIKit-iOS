@@ -8,6 +8,7 @@
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 import class CommonDataModelsKit_iOS.TapCommonConstants
 import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
+import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 import RxCocoa
 /// The view model that controlls the data shown inside a TapAmountSectionView
@@ -104,7 +105,10 @@ public struct TapAmountSectionViewModel {
             return
         }
         
-        let formatter = TapAmountedCurrencyFormatter {$0.currency = currencyCode}
+        let formatter = TapAmountedCurrencyFormatter {
+            $0.currency = currencyCode
+            $0.locale = CurrencyLocale.englishUnitedStates
+        }
         observer.accept(formatter.string(from: amount) ?? "KD0.000")
     }
     

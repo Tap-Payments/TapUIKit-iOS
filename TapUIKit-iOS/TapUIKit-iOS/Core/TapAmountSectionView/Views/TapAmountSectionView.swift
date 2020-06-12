@@ -138,10 +138,10 @@ extension TapAmountSectionView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        amountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).originalAmountLabelFont")
+        amountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).originalAmountLabelFont",shouldLocalise:false)
         amountLabel.tap_theme_textColor = .init(keyPath: "\(themePath).originalAmountLabelColor")
         
-        convertedAmountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).convertedAmountLabelFont")
+        convertedAmountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).convertedAmountLabelFont",shouldLocalise:false)
         convertedAmountLabel.tap_theme_textColor = .init(keyPath: "\(themePath).convertedAmountLabelColor")
         
         itemsNumberLabel.tap_theme_font = .init(stringLiteral: "\(themePath).itemsLabelFont")
