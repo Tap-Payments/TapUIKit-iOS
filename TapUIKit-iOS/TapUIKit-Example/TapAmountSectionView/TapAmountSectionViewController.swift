@@ -21,6 +21,7 @@ class TapAmountSectionViewController: UIViewController {
     @IBOutlet weak var convertedCurrencyButton: UIButton!
     @IBOutlet weak var originalAmountTextField: UITextField!
     @IBOutlet weak var convertedTextField: UITextField!
+    @IBOutlet weak var currencyCodeSegment: UISegmentedControl!
     
     var oiginalAmount:Double = 10000 {
         didSet {
@@ -110,6 +111,13 @@ class TapAmountSectionViewController: UIViewController {
         }
     }
     
+    @IBAction func currencyCodeChanged(_ sender: Any) {
+        guard let segment:UISegmentedControl = sender as? UISegmentedControl else { return }
+        
+        if segment == currencyCodeSegment {
+            viewModel.tapCurrencyFormatterSymbol = (segment.selectedSegmentIndex == 0) ? .ISO : .LocalSymbol
+        }
+    }
     
     
     @objc func textFieldDidChange(_ textField: UITextField) {

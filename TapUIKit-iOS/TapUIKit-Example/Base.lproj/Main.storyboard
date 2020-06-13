@@ -741,34 +741,45 @@
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZS-V9-1Sa">
-                                <rect key="frame" x="20" y="250" width="147" height="30"/>
+                                <rect key="frame" x="20" y="283" width="147" height="30"/>
                                 <state key="normal" title="Set Original Currency"/>
                                 <connections>
                                     <action selector="currencySelectionClicked:" destination="bv6-Mm-rO5" eventType="touchUpInside" id="snj-tP-wQd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txX-xm-DW4">
-                                <rect key="frame" x="228" y="249" width="166" height="30"/>
+                                <rect key="frame" x="228" y="283" width="166" height="30"/>
                                 <state key="normal" title="Set Converted Currency"/>
                                 <connections>
                                     <action selector="currencySelectionClicked:" destination="bv6-Mm-rO5" eventType="touchUpInside" id="9Od-Zk-bmL"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Original Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aev-zS-Buo">
-                                <rect key="frame" x="20" y="288" width="374" height="34"/>
+                                <rect key="frame" x="20" y="321" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Converted Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cse-ap-rLP">
-                                <rect key="frame" x="20" y="342" width="374" height="34"/>
+                                <rect key="frame" x="20" y="375" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pca-69-hjh">
+                                <rect key="frame" x="20" y="244" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Currency Code"/>
+                                    <segment title="Currency Symbol"/>
+                                </segments>
+                                <connections>
+                                    <action selector="currencyCodeChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="rje-Z4-Ow8"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PZS-V9-1Sa" firstAttribute="leading" secondItem="YA8-pl-mPp" secondAttribute="leading" constant="20" id="1r7-sf-FhR"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="Aev-zS-Buo" secondAttribute="trailing" constant="20" id="1um-hA-2IY"/>
+                            <constraint firstItem="pca-69-hjh" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="2NG-Re-Ho1"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="5nC-N0-TOc" secondAttribute="trailing" id="2Yk-p0-sKU"/>
                             <constraint firstItem="Zgn-yV-Hag" firstAttribute="top" secondItem="wh2-l8-hrp" secondAttribute="bottom" constant="8" id="6PQ-Yg-JUD"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="Zgn-yV-Hag" secondAttribute="trailing" constant="20" id="7d2-zE-PEl"/>
@@ -781,17 +792,19 @@
                             <constraint firstItem="Yfn-zv-AqU" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="LXH-Np-t5m"/>
                             <constraint firstItem="5nC-N0-TOc" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" id="MjT-HX-GkF"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="HeB-fK-iTq" secondAttribute="trailing" constant="20" id="MvE-eA-m3U"/>
-                            <constraint firstItem="txX-xm-DW4" firstAttribute="top" secondItem="HeB-fK-iTq" secondAttribute="bottom" constant="8" id="P2K-EW-cP4"/>
                             <constraint firstItem="Yfn-zv-AqU" firstAttribute="centerY" secondItem="wh2-l8-hrp" secondAttribute="centerY" id="Q1N-fG-fU0"/>
-                            <constraint firstItem="PZS-V9-1Sa" firstAttribute="top" secondItem="e5I-jz-lVc" secondAttribute="bottom" constant="14" id="U1O-Yk-yNn"/>
+                            <constraint firstItem="txX-xm-DW4" firstAttribute="top" secondItem="PZS-V9-1Sa" secondAttribute="top" id="UoI-SE-TTk"/>
                             <constraint firstItem="5nC-N0-TOc" firstAttribute="top" secondItem="XXT-YM-RM3" secondAttribute="top" constant="20" id="ar5-Ia-HvN"/>
                             <constraint firstItem="4Kk-zL-0Dn" firstAttribute="centerY" secondItem="Zgn-yV-Hag" secondAttribute="centerY" id="bWc-lH-Kh8"/>
+                            <constraint firstItem="PZS-V9-1Sa" firstAttribute="top" secondItem="pca-69-hjh" secondAttribute="bottom" constant="8" id="coJ-jv-0B8"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="txX-xm-DW4" secondAttribute="trailing" constant="20" id="f5T-Ob-iUD"/>
+                            <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="pca-69-hjh" secondAttribute="trailing" constant="20" id="gDa-sQ-C8x"/>
                             <constraint firstItem="XXT-YM-RM3" firstAttribute="trailing" secondItem="wh2-l8-hrp" secondAttribute="trailing" constant="20" id="h4x-HV-eJu"/>
                             <constraint firstItem="e5I-jz-lVc" firstAttribute="centerY" secondItem="HeB-fK-iTq" secondAttribute="centerY" id="jsR-HG-Z40"/>
                             <constraint firstItem="wh2-l8-hrp" firstAttribute="top" secondItem="5nC-N0-TOc" secondAttribute="bottom" constant="8" id="lwS-PB-0ah"/>
                             <constraint firstItem="Aev-zS-Buo" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="mTw-2P-C9p"/>
                             <constraint firstItem="e5I-jz-lVc" firstAttribute="leading" secondItem="XXT-YM-RM3" secondAttribute="leading" constant="20" id="vM6-or-iww"/>
+                            <constraint firstItem="pca-69-hjh" firstAttribute="top" secondItem="e5I-jz-lVc" secondAttribute="bottom" constant="8" id="wz5-qy-j1i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XXT-YM-RM3"/>
                     </view>
@@ -800,6 +813,7 @@
                         <outlet property="convertSwitch" destination="HeB-fK-iTq" id="fge-ic-eoc"/>
                         <outlet property="convertedCurrencyButton" destination="txX-xm-DW4" id="m3u-BA-HHN"/>
                         <outlet property="convertedTextField" destination="cse-ap-rLP" id="Fx6-md-JRb"/>
+                        <outlet property="currencyCodeSegment" destination="pca-69-hjh" id="hxz-a1-tK8"/>
                         <outlet property="itemsSwitch" destination="wh2-l8-hrp" id="hLS-FW-Fzh"/>
                         <outlet property="originalAmountTextField" destination="Aev-zS-Buo" id="VVm-eD-vgB"/>
                         <outlet property="originalCurrencyButton" destination="PZS-V9-1Sa" id="A1T-5c-x2e"/>

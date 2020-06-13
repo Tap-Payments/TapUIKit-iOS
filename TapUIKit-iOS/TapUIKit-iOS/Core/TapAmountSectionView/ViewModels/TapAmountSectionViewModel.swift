@@ -71,6 +71,13 @@ public struct TapAmountSectionViewModel {
             showAmount.accept(shouldShowAmount)
         }
     }
+    /// Indicates to show the currency symbol or the currency code
+    public var tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO {
+        didSet {
+            originalTransactionAmount = originalTransactionAmount + 0
+            convertedTransactionAmount = convertedTransactionAmount + 0
+        }
+    }
     
     /// Localisation kit keypath
     internal var localizationPath = "TapMerchantSection"
@@ -86,8 +93,9 @@ public struct TapAmountSectionViewModel {
      - Parameter numberOfItems:Represent the original transaction total amount
      - Parameter shouldShowItems:Represent the original transaction total amount
      - Parameter shouldShowAmount:Represent the original transaction total amount
+     - Parameter tapCurrencyFormatterSymbol:Indicates to show the currency symbol or the currency code
      */
-    public init(originalTransactionAmount: Double = 0, originalTransactionCurrency: TapCurrencyCode? = nil, convertedTransactionAmount: Double = 0, convertedTransactionCurrency: TapCurrencyCode? = nil, numberOfItems: Int = 0, shouldShowItems: Bool = true, shouldShowAmount: Bool = true) {
+    public init(originalTransactionAmount: Double = 0, originalTransactionCurrency: TapCurrencyCode? = nil, convertedTransactionAmount: Double = 0, convertedTransactionCurrency: TapCurrencyCode? = nil, numberOfItems: Int = 0, shouldShowItems: Bool = true, shouldShowAmount: Bool = true,tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO) {
         defer {
             self.originalTransactionAmount = originalTransactionAmount
             self.originalTransactionCurrency = originalTransactionCurrency
@@ -96,6 +104,7 @@ public struct TapAmountSectionViewModel {
             self.numberOfItems = numberOfItems
             self.shouldShowItems = shouldShowItems
             self.shouldShowAmount = shouldShowAmount
+            self.tapCurrencyFormatterSymbol = tapCurrencyFormatterSymbol
         }
     }
     
@@ -104,12 +113,22 @@ public struct TapAmountSectionViewModel {
             observer.accept("")
             return
         }
+        let weakTapCurrencyFormatterSymbol = tapCurrencyFormatterSymbol
         
         let formatter = TapAmountedCurrencyFormatter {
             $0.currency = currencyCode
             $0.locale = CurrencyLocale.englishUnitedStates
+            // Check if the caller wants to show the currency symbol instead of the code
+            if weakTapCurrencyFormatterSymbol == .LocalSymbol {
+                $0.currencySymbol = currencyCode.symbolRawValue
+                $0.localizeCurrencySymbol = true
+            }
         }
         observer.accept(formatter.string(from: amount) ?? "KD0.000")
     }
-    
+}
+
+public enum TapCurrencyFormatterSymbol {
+    case ISO
+    case LocalSymbol
 }

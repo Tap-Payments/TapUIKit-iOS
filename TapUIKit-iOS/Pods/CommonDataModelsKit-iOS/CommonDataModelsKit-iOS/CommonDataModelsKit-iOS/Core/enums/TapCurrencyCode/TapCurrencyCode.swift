@@ -11,953 +11,953 @@ import Foundation
 @objc public enum TapCurrencyCode: Int, RawRepresentable, CaseIterable {
     
     /// United Arab Emirates dirham currency code
-        case AED
-        /// Afghan afghani currency code
-        case AFN
-        /// Albanian lek currency code
-        case ALL
-        /// Armenian dram currency code
-        case AMD
-        /// Netherlands Antillean guilder currency code
-        case ANG
-        /// Angolan kwanza currency code
-        case AOA
-        /// Argentine peso currency code
-        case ARS
-        /// Australian dollar currency code
-        case AUD
-        /// Aruban florin currency code
-        case AWG
-        /// Azerbaijani manat currency code
-        case AZN
-        /// Bosnia and Herzegovina convertible mark currency code
-        case BAM
-        /// Barbados dollar currency code
-        case BBD
-        /// Bangladeshi taka currency code
-        case BDT
-        /// Bulgarian lev currency code
-        case BGN
-        /// Bahraini dinar currency code
-        case BHD
-        /// Burundian franc currency code
-        case BIF
-        /// Bermudian dollar currency code
-        case BMD
-        /// Brunei dollar currency code
-        case BND
-        /// Boliviano currency code
-        case BOB
-        /// Bolivian Mvdol (funds code) currency code
-        case BOV
-        /// Brazilian real currency code
-        case BRL
-        /// Bahamian dollar currency code
-        case BSD
-        /// Bhutanese ngultrum currency code
-        case BTN
-        /// Botswana pula currency code
-        case BWP
-        /// Belarusian ruble currency code
-        case BYN
-        /// Belize dollar currency code
-        case BZD
-        /// Canadian dollar currency code
-        case CAD
-        /// Congolese franc currency code
-        case CDF
-        /// WIR Euro (complementary currency) currency code
-        case CHE
-        /// Swiss franc currency code
-        case CHF
-        /// WIR Franc (complementary currency) currency code
-        case CHW
-        /// Unidad de Fomento (funds code) currency code
-        case CLF
-        /// Chilean peso currency code
-        case CLP
-        /// Renminbi (Chinese) yuan[7] currency code
-        case CNY
-        /// Colombian peso currency code
-        case COP
-        /// Unidad de Valor Real (UVR) (funds code)[8] currency code
-        case COU
-        /// Costa Rican colon currency code
-        case CRC
-        /// Cuban convertible peso currency code
-        case CUC
-        /// Cuban peso currency code
-        case CUP
-        /// Cape Verdean escudo currency code
-        case CVE
-        /// Czech koruna currency code
-        case CZK
-        /// Djiboutian franc currency code
-        case DJF
-        /// Danish krone currency code
-        case DKK
-        /// Dominican peso currency code
-        case DOP
-        /// Algerian dinar currency code
-        case DZD
-        /// Egyptian pound currency code
-        case EGP
-        /// Eritrean nakfa currency code
-        case ERN
-        /// Ethiopian birr currency code
-        case ETB
-        /// Euro currency code
-        case EUR
-        /// Fiji dollar currency code
-        case FJD
-        /// Falkland Islands pound currency code
-        case FKP
-        /// Pound sterling currency code
-        case GBP
-        /// Georgian lari currency code
-        case GEL
-        /// Ghanaian cedi currency code
-        case GHS
-        /// Gibraltar pound currency code
-        case GIP
-        /// Gambian dalasi currency code
-        case GMD
-        /// Guinean franc currency code
-        case GNF
-        /// Guatemalan quetzal currency code
-        case GTQ
-        /// Guyanese dollar currency code
-        case GYD
-        /// Hong Kong dollar currency code
-        case HKD
-        /// Honduran lempira currency code
-        case HNL
-        /// Croatian kuna currency code
-        case HRK
-        /// Haitian gourde currency code
-        case HTG
-        /// Hungarian forint currency code
-        case HUF
-        /// Indonesian rupiah currency code
-        case IDR
-        /// Israeli new shekel currency code
-        case ILS
-        /// Indian rupee currency code
-        case INR
-        /// Iraqi dinar currency code
-        case IQD
-        /// Iranian rial currency code
-        case IRR
-        /// Icelandic króna currency code
-        case ISK
-        /// Jamaican dollar currency code
-        case JMD
-        /// Jordanian dinar currency code
-        case JOD
-        /// Japanese yen currency code
-        case JPY
-        /// Kenyan shilling currency code
-        case KES
-        /// Kyrgyzstani som currency code
-        case KGS
-        /// Cambodian riel currency code
-        case KHR
-        /// Comoro franc currency code
-        case KMF
-        /// North Korean won currency code
-        case KPW
-        /// South Korean won currency code
-        case KRW
-        /// Kuwaiti dinar currency code
-        case KWD
-        /// Cayman Islands dollar currency code
-        case KYD
-        /// Kazakhstani tenge currency code
-        case KZT
-        /// Lao kip currency code
-        case LAK
-        /// Lebanese pound currency code
-        case LBP
-        /// Sri Lankan rupee currency code
-        case LKR
-        /// Liberian dollar currency code
-        case LRD
-        /// Lesotho loti currency code
-        case LSL
-        /// Libyan dinar currency code
-        case LYD
-        /// Moroccan dirham currency code
-        case MAD
-        /// Moldovan leu currency code
-        case MDL
-        /// Malagasy ariary currency code
-        case MGA
-        /// Macedonian denar currency code
-        case MKD
-        /// Myanmar kyat currency code
-        case MMK
-        /// Mongolian tögrög currency code
-        case MNT
-        /// Macanese pataca currency code
-        case MOP
-        /// Mauritian rupee currency code
-        case MUR
-        /// Maldivian rufiyaa currency code
-        case MVR
-        /// Malawian kwacha currency code
-        case MWK
-        /// Mexican peso currency code
-        case MXN
-        /// Mexican Unidad de Inversion (UDI) (funds code) currency code
-        case MXV
-        /// Malaysian ringgit currency code
-        case MYR
-        /// Mozambican metical currency code
-        case MZN
-        /// Namibian dollar currency code
-        case NAD
-        /// Nigerian naira currency code
-        case NGN
-        /// Nicaraguan córdoba currency code
-        case NIO
-        /// Norwegian krone currency code
-        case NOK
-        /// Nepalese rupee currency code
-        case NPR
-        /// New Zealand dollar currency code
-        case NZD
-        /// Omani rial currency code
-        case OMR
-        /// Panamanian balboa currency code
-        case PAB
-        /// Peruvian sol currency code
-        case PEN
-        /// Papua New Guinean kina currency code
-        case PGK
-        /// Philippine peso[13] currency code
-        case PHP
-        /// Pakistani rupee currency code
-        case PKR
-        /// Polish złoty currency code
-        case PLN
-        /// Paraguayan guaraní currency code
-        case PYG
-        /// Qatari riyal currency code
-        case QAR
-        /// Romanian leu currency code
-        case RON
-        /// Serbian dinar currency code
-        case RSD
-        /// Russian ruble currency code
-        case RUB
-        /// Rwandan franc currency code
-        case RWF
-        /// Saudi riyal currency code
-        case SAR
-        /// Solomon Islands dollar currency code
-        case SBD
-        /// Seychelles rupee currency code
-        case SCR
-        /// Sudanese pound currency code
-        case SDG
-        /// Swedish krona/kronor currency code
-        case SEK
-        /// Singapore dollar currency code
-        case SGD
-        /// Saint Helena pound currency code
-        case SHP
-        /// Sierra Leonean leone currency code
-        case SLL
-        /// Somali shilling currency code
-        case SOS
-        /// Surinamese dollar currency code
-        case SRD
-        /// South Sudanese pound currency code
-        case SSP
-        /// Salvadoran colón currency code
-        case SVC
-        /// Syrian pound currency code
-        case SYP
-        /// Swazi lilangeni currency code
-        case SZL
-        /// Thai baht currency code
-        case THB
-        /// Tajikistani somoni currency code
-        case TJS
-        /// Turkmenistan manat currency code
-        case TMT
-        /// Tunisian dinar currency code
-        case TND
-        /// Tongan paʻanga currency code
-        case TOP
-        /// Turkish lira currency code
-        case TRY
-        /// Trinidad and Tobago dollar currency code
-        case TTD
-        /// New Taiwan dollar currency code
-        case TWD
-        /// Tanzanian shilling currency code
-        case TZS
-        /// Ukrainian hryvnia currency code
-        case UAH
-        /// Ugandan shilling currency code
-        case UGX
-        /// United States dollar currency code
-        case USD
-        /// United States dollar (next day) (funds code) currency code
-        case USN
-        /// Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code) currency code
-        case UYI
-        /// Uruguayan peso currency code
-        case UYU
-        /// Unidad previsional[15] currency code
-        case UYW
-        /// Uzbekistan som currency code
-        case UZS
-        /// Venezuelan bolívar soberano[13] currency code
-        case VES
-        /// Vietnamese đồng currency code
-        case VND
-        /// Vanuatu vatu currency code
-        case VUV
-        /// Samoan tala currency code
-        case WST
-        /// CFA franc BEAC currency code
-        case XAF
-        /// Silver (one troy ounce) currency code
-        case XAG
-        /// Gold (one troy ounce) currency code
-        case XAU
-        /// European Composite Unit (EURCO) (bond market unit) currency code
-        case XBA
-        /// European Monetary Unit (E.M.U.-6) (bond market unit) currency code
-        case XBB
-        /// European Unit of Account 9 (E.U.A.-9) (bond market unit) currency code
-        case XBC
-        /// European Unit of Account 17 (E.U.A.-17) (bond market unit) currency code
-        case XBD
-        /// East Caribbean dollar currency code
-        case XCD
-        /// Special drawing rights currency code
-        case XDR
-        /// CFA franc BCEAO currency code
-        case XOF
-        /// Palladium (one troy ounce) currency code
-        case XPD
-        /// CFP franc (franc Pacifique) currency code
-        case XPF
-        /// Platinum (one troy ounce) currency code
-        case XPT
-        /// SUCRE currency code
-        case XSU
-        /// Code reserved for testing currency code
-        case XTS
-        /// ADB Unit of Account currency code
-        case XUA
-        /// No currency currency code
-        case XXX
-        /// Yemeni rial currency code
-        case YER
-        /// South African rand currency code
-        case ZAR
-        /// Zambian kwacha currency code
-        case ZMW
-        /// Zimbabwean dollar currency code
-        case ZWL
-
+    case AED
+    /// Afghan afghani currency code
+    case AFN
+    /// Albanian lek currency code
+    case ALL
+    /// Armenian dram currency code
+    case AMD
+    /// Netherlands Antillean guilder currency code
+    case ANG
+    /// Angolan kwanza currency code
+    case AOA
+    /// Argentine peso currency code
+    case ARS
+    /// Australian dollar currency code
+    case AUD
+    /// Aruban florin currency code
+    case AWG
+    /// Azerbaijani manat currency code
+    case AZN
+    /// Bosnia and Herzegovina convertible mark currency code
+    case BAM
+    /// Barbados dollar currency code
+    case BBD
+    /// Bangladeshi taka currency code
+    case BDT
+    /// Bulgarian lev currency code
+    case BGN
+    /// Bahraini dinar currency code
+    case BHD
+    /// Burundian franc currency code
+    case BIF
+    /// Bermudian dollar currency code
+    case BMD
+    /// Brunei dollar currency code
+    case BND
+    /// Boliviano currency code
+    case BOB
+    /// Bolivian Mvdol (funds code) currency code
+    case BOV
+    /// Brazilian real currency code
+    case BRL
+    /// Bahamian dollar currency code
+    case BSD
+    /// Bhutanese ngultrum currency code
+    case BTN
+    /// Botswana pula currency code
+    case BWP
+    /// Belarusian ruble currency code
+    case BYN
+    /// Belize dollar currency code
+    case BZD
+    /// Canadian dollar currency code
+    case CAD
+    /// Congolese franc currency code
+    case CDF
+    /// WIR Euro (complementary currency) currency code
+    case CHE
+    /// Swiss franc currency code
+    case CHF
+    /// WIR Franc (complementary currency) currency code
+    case CHW
+    /// Unidad de Fomento (funds code) currency code
+    case CLF
+    /// Chilean peso currency code
+    case CLP
+    /// Renminbi (Chinese) yuan[7] currency code
+    case CNY
+    /// Colombian peso currency code
+    case COP
+    /// Unidad de Valor Real (UVR) (funds code)[8] currency code
+    case COU
+    /// Costa Rican colon currency code
+    case CRC
+    /// Cuban convertible peso currency code
+    case CUC
+    /// Cuban peso currency code
+    case CUP
+    /// Cape Verdean escudo currency code
+    case CVE
+    /// Czech koruna currency code
+    case CZK
+    /// Djiboutian franc currency code
+    case DJF
+    /// Danish krone currency code
+    case DKK
+    /// Dominican peso currency code
+    case DOP
+    /// Algerian dinar currency code
+    case DZD
+    /// Egyptian pound currency code
+    case EGP
+    /// Eritrean nakfa currency code
+    case ERN
+    /// Ethiopian birr currency code
+    case ETB
+    /// Euro currency code
+    case EUR
+    /// Fiji dollar currency code
+    case FJD
+    /// Falkland Islands pound currency code
+    case FKP
+    /// Pound sterling currency code
+    case GBP
+    /// Georgian lari currency code
+    case GEL
+    /// Ghanaian cedi currency code
+    case GHS
+    /// Gibraltar pound currency code
+    case GIP
+    /// Gambian dalasi currency code
+    case GMD
+    /// Guinean franc currency code
+    case GNF
+    /// Guatemalan quetzal currency code
+    case GTQ
+    /// Guyanese dollar currency code
+    case GYD
+    /// Hong Kong dollar currency code
+    case HKD
+    /// Honduran lempira currency code
+    case HNL
+    /// Croatian kuna currency code
+    case HRK
+    /// Haitian gourde currency code
+    case HTG
+    /// Hungarian forint currency code
+    case HUF
+    /// Indonesian rupiah currency code
+    case IDR
+    /// Israeli new shekel currency code
+    case ILS
+    /// Indian rupee currency code
+    case INR
+    /// Iraqi dinar currency code
+    case IQD
+    /// Iranian rial currency code
+    case IRR
+    /// Icelandic króna currency code
+    case ISK
+    /// Jamaican dollar currency code
+    case JMD
+    /// Jordanian dinar currency code
+    case JOD
+    /// Japanese yen currency code
+    case JPY
+    /// Kenyan shilling currency code
+    case KES
+    /// Kyrgyzstani som currency code
+    case KGS
+    /// Cambodian riel currency code
+    case KHR
+    /// Comoro franc currency code
+    case KMF
+    /// North Korean won currency code
+    case KPW
+    /// South Korean won currency code
+    case KRW
+    /// Kuwaiti dinar currency code
+    case KWD
+    /// Cayman Islands dollar currency code
+    case KYD
+    /// Kazakhstani tenge currency code
+    case KZT
+    /// Lao kip currency code
+    case LAK
+    /// Lebanese pound currency code
+    case LBP
+    /// Sri Lankan rupee currency code
+    case LKR
+    /// Liberian dollar currency code
+    case LRD
+    /// Lesotho loti currency code
+    case LSL
+    /// Libyan dinar currency code
+    case LYD
+    /// Moroccan dirham currency code
+    case MAD
+    /// Moldovan leu currency code
+    case MDL
+    /// Malagasy ariary currency code
+    case MGA
+    /// Macedonian denar currency code
+    case MKD
+    /// Myanmar kyat currency code
+    case MMK
+    /// Mongolian tögrög currency code
+    case MNT
+    /// Macanese pataca currency code
+    case MOP
+    /// Mauritian rupee currency code
+    case MUR
+    /// Maldivian rufiyaa currency code
+    case MVR
+    /// Malawian kwacha currency code
+    case MWK
+    /// Mexican peso currency code
+    case MXN
+    /// Mexican Unidad de Inversion (UDI) (funds code) currency code
+    case MXV
+    /// Malaysian ringgit currency code
+    case MYR
+    /// Mozambican metical currency code
+    case MZN
+    /// Namibian dollar currency code
+    case NAD
+    /// Nigerian naira currency code
+    case NGN
+    /// Nicaraguan córdoba currency code
+    case NIO
+    /// Norwegian krone currency code
+    case NOK
+    /// Nepalese rupee currency code
+    case NPR
+    /// New Zealand dollar currency code
+    case NZD
+    /// Omani rial currency code
+    case OMR
+    /// Panamanian balboa currency code
+    case PAB
+    /// Peruvian sol currency code
+    case PEN
+    /// Papua New Guinean kina currency code
+    case PGK
+    /// Philippine peso[13] currency code
+    case PHP
+    /// Pakistani rupee currency code
+    case PKR
+    /// Polish złoty currency code
+    case PLN
+    /// Paraguayan guaraní currency code
+    case PYG
+    /// Qatari riyal currency code
+    case QAR
+    /// Romanian leu currency code
+    case RON
+    /// Serbian dinar currency code
+    case RSD
+    /// Russian ruble currency code
+    case RUB
+    /// Rwandan franc currency code
+    case RWF
+    /// Saudi riyal currency code
+    case SAR
+    /// Solomon Islands dollar currency code
+    case SBD
+    /// Seychelles rupee currency code
+    case SCR
+    /// Sudanese pound currency code
+    case SDG
+    /// Swedish krona/kronor currency code
+    case SEK
+    /// Singapore dollar currency code
+    case SGD
+    /// Saint Helena pound currency code
+    case SHP
+    /// Sierra Leonean leone currency code
+    case SLL
+    /// Somali shilling currency code
+    case SOS
+    /// Surinamese dollar currency code
+    case SRD
+    /// South Sudanese pound currency code
+    case SSP
+    /// Salvadoran colón currency code
+    case SVC
+    /// Syrian pound currency code
+    case SYP
+    /// Swazi lilangeni currency code
+    case SZL
+    /// Thai baht currency code
+    case THB
+    /// Tajikistani somoni currency code
+    case TJS
+    /// Turkmenistan manat currency code
+    case TMT
+    /// Tunisian dinar currency code
+    case TND
+    /// Tongan paʻanga currency code
+    case TOP
+    /// Turkish lira currency code
+    case TRY
+    /// Trinidad and Tobago dollar currency code
+    case TTD
+    /// New Taiwan dollar currency code
+    case TWD
+    /// Tanzanian shilling currency code
+    case TZS
+    /// Ukrainian hryvnia currency code
+    case UAH
+    /// Ugandan shilling currency code
+    case UGX
+    /// United States dollar currency code
+    case USD
+    /// United States dollar (next day) (funds code) currency code
+    case USN
+    /// Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code) currency code
+    case UYI
+    /// Uruguayan peso currency code
+    case UYU
+    /// Unidad previsional[15] currency code
+    case UYW
+    /// Uzbekistan som currency code
+    case UZS
+    /// Venezuelan bolívar soberano[13] currency code
+    case VES
+    /// Vietnamese đồng currency code
+    case VND
+    /// Vanuatu vatu currency code
+    case VUV
+    /// Samoan tala currency code
+    case WST
+    /// CFA franc BEAC currency code
+    case XAF
+    /// Silver (one troy ounce) currency code
+    case XAG
+    /// Gold (one troy ounce) currency code
+    case XAU
+    /// European Composite Unit (EURCO) (bond market unit) currency code
+    case XBA
+    /// European Monetary Unit (E.M.U.-6) (bond market unit) currency code
+    case XBB
+    /// European Unit of Account 9 (E.U.A.-9) (bond market unit) currency code
+    case XBC
+    /// European Unit of Account 17 (E.U.A.-17) (bond market unit) currency code
+    case XBD
+    /// East Caribbean dollar currency code
+    case XCD
+    /// Special drawing rights currency code
+    case XDR
+    /// CFA franc BCEAO currency code
+    case XOF
+    /// Palladium (one troy ounce) currency code
+    case XPD
+    /// CFP franc (franc Pacifique) currency code
+    case XPF
+    /// Platinum (one troy ounce) currency code
+    case XPT
+    /// SUCRE currency code
+    case XSU
+    /// Code reserved for testing currency code
+    case XTS
+    /// ADB Unit of Account currency code
+    case XUA
+    /// No currency currency code
+    case XXX
+    /// Yemeni rial currency code
+    case YER
+    /// South African rand currency code
+    case ZAR
+    /// Zambian kwacha currency code
+    case ZMW
+    /// Zimbabwean dollar currency code
+    case ZWL
+    
     public typealias EmvcoRawValue = String
-
+    
     public var emvcoRawValue: EmvcoRawValue {
         switch self {
-           case .AED:
-                return"784"
-            case .AFN:
-                return"971"
-            case .ALL:
-                return"008"
-            case .AMD:
-                return"051"
-            case .ANG:
-                return"532"
-            case .AOA:
-                return"973"
-            case .ARS:
-                return"032"
-            case .AUD:
-                return"036"
-            case .AWG:
-                return"533"
-            case .AZN:
-                return"944"
-            case .BAM:
-                return"977"
-            case .BBD:
-                return"052"
-            case .BDT:
-                return"050"
-            case .BGN:
-                return"975"
-            case .BHD:
-                return"048"
-            case .BMD:
-                return"060"
-            case .BND:
-                return"096"
-            case .BOB:
-                return"068"
-            case .BOV:
-                return"984"
-            case .BRL:
-                return"986"
-            case .BSD:
-                return"044"
-            case .BTN:
-                return"064"
-            case .BWP:
-                return"072"
-            case .BYN:
-                return"933"
-            case .BZD:
-                return"084"
-            case .CAD:
-                return"124"
-            case .CDF:
-                return"976"
-            case .CHE:
-                return"947"
-            case .CHF:
-                return"756"
-            case .CHW:
-                return"948"
-            case .CLF:
-                return"990"
-            case .CNY:
-                return"156"
-            case .COP:
-                return"170"
-            case .CRC:
-                return"188"
-            case .CUC:
-                return"931"
-            case .CUP:
-                return"192"
-            case .CVE:
-                return"132"
-            case .CZK:
-                return"203"
-            case .DKK:
-                return"208"
-            case .DOP:
-                return"214"
-            case .DZD:
-                return"012"
-            case .EGP:
-                return"818"
-            case .ERN:
-                return"232"
-            case .ETB:
-                return"230"
-            case .EUR:
-                return"978"
-            case .FJD:
-                return"242"
-            case .FKP:
-                return"238"
-            case .GBP:
-                return"826"
-            case .GEL:
-                return"981"
-            case .GHS:
-                return"936"
-            case .GIP:
-                return"292"
-            case .GMD:
-                return"270"
-            case .GTQ:
-                return"320"
-            case .GYD:
-                return"328"
-            case .HKD:
-                return"344"
-            case .HNL:
-                return"340"
-            case .HRK:
-                return"191"
-            case .HTG:
-                return"332"
-            case .HUF:
-                return"348"
-            case .IDR:
-                return"360"
-            case .ILS:
-                return"376"
-            case .INR:
-                return"356"
-            case .IQD:
-                return"368"
-            case .IRR:
-                return"364"
-            case .JMD:
-                return"388"
-            case .JOD:
-                return"400"
-            case .KES:
-                return"404"
-            case .KGS:
-                return"417"
-            case .KHR:
-                return"116"
-            case .KPW:
-                return"408"
-            case .KWD:
-                return"414"
-            case .KYD:
-                return"136"
-            case .KZT:
-                return"398"
-            case .LAK:
-                return"418"
-            case .LBP:
-                return"422"
-            case .LKR:
-                return"144"
-            case .LRD:
-                return"430"
-            case .LSL:
-                return"426"
-            case .LYD:
-                return"434"
-            case .MAD:
-                return"504"
-            case .MDL:
-                return"498"
-            case .MKD:
-                return"807"
-            case .MMK:
-                return"104"
-            case .MNT:
-                return"496"
-            case .MOP:
-                return"446"
-            case .MUR:
-                return"480"
-            case .MVR:
-                return"462"
-            case .MWK:
-                return"454"
-            case .MXN:
-                return"484"
-            case .MXV:
-                return"979"
-            case .MYR:
-                return"458"
-            case .MZN:
-                return"943"
-            case .NAD:
-                return"516"
-            case .NGN:
-                return"566"
-            case .NIO:
-                return"558"
-            case .NOK:
-                return"578"
-            case .NPR:
-                return"524"
-            case .NZD:
-                return"554"
-            case .OMR:
-                return"512"
-            case .PAB:
-                return"590"
-            case .PEN:
-                return"604"
-            case .PGK:
-                return"598"
-            case .PHP:
-                return"608"
-            case .PKR:
-                return"586"
-            case .PLN:
-                return"985"
-            case .QAR:
-                return"634"
-            case .RON:
-                return"946"
-            case .RSD:
-                return"941"
-            case .RUB:
-                return"643"
-            case .SAR:
-                return"682"
-            case .SBD:
-                return"090"
-            case .SCR:
-                return"690"
-            case .SDG:
-                return"938"
-            case .SEK:
-                return"752"
-            case .SGD:
-                return"702"
-            case .SHP:
-                return"654"
-            case .SLL:
-                return"694"
-            case .SOS:
-                return"706"
-            case .SRD:
-                return"968"
-            case .SSP:
-                return"728"
-            case .SVC:
-                return"222"
-            case .SYP:
-                return"760"
-            case .SZL:
-                return"748"
-            case .THB:
-                return"764"
-            case .TJS:
-                return"972"
-            case .TMT:
-                return"934"
-            case .TND:
-                return"788"
-            case .TOP:
-                return"776"
-            case .TRY:
-                return"949"
-            case .TTD:
-                return"780"
-            case .TWD:
-                return"901"
-            case .TZS:
-                return"834"
-            case .UAH:
-                return"980"
-            case .USD:
-                return"840"
-            case .USN:
-                return"997"
-            case .UYU:
-                return"858"
-            case .UYW:
-                return"927"
-            case .UZS:
-                return"860"
-            case .VES:
-                return"928"
-            case .WST:
-                return"882"
-            case .XCD:
-                return"951"
-            case .YER:
-                return"886"
-            case .ZAR:
-                return"710"
-            case .ZMW:
-                return"967"
-            case .ZWL:
-                return"932"
-            default:
-                return"840"
+        case .AED:
+            return"784"
+        case .AFN:
+            return"971"
+        case .ALL:
+            return"008"
+        case .AMD:
+            return"051"
+        case .ANG:
+            return"532"
+        case .AOA:
+            return"973"
+        case .ARS:
+            return"032"
+        case .AUD:
+            return"036"
+        case .AWG:
+            return"533"
+        case .AZN:
+            return"944"
+        case .BAM:
+            return"977"
+        case .BBD:
+            return"052"
+        case .BDT:
+            return"050"
+        case .BGN:
+            return"975"
+        case .BHD:
+            return"048"
+        case .BMD:
+            return"060"
+        case .BND:
+            return"096"
+        case .BOB:
+            return"068"
+        case .BOV:
+            return"984"
+        case .BRL:
+            return"986"
+        case .BSD:
+            return"044"
+        case .BTN:
+            return"064"
+        case .BWP:
+            return"072"
+        case .BYN:
+            return"933"
+        case .BZD:
+            return"084"
+        case .CAD:
+            return"124"
+        case .CDF:
+            return"976"
+        case .CHE:
+            return"947"
+        case .CHF:
+            return"756"
+        case .CHW:
+            return"948"
+        case .CLF:
+            return"990"
+        case .CNY:
+            return"156"
+        case .COP:
+            return"170"
+        case .CRC:
+            return"188"
+        case .CUC:
+            return"931"
+        case .CUP:
+            return"192"
+        case .CVE:
+            return"132"
+        case .CZK:
+            return"203"
+        case .DKK:
+            return"208"
+        case .DOP:
+            return"214"
+        case .DZD:
+            return"012"
+        case .EGP:
+            return"818"
+        case .ERN:
+            return"232"
+        case .ETB:
+            return"230"
+        case .EUR:
+            return"978"
+        case .FJD:
+            return"242"
+        case .FKP:
+            return"238"
+        case .GBP:
+            return"826"
+        case .GEL:
+            return"981"
+        case .GHS:
+            return"936"
+        case .GIP:
+            return"292"
+        case .GMD:
+            return"270"
+        case .GTQ:
+            return"320"
+        case .GYD:
+            return"328"
+        case .HKD:
+            return"344"
+        case .HNL:
+            return"340"
+        case .HRK:
+            return"191"
+        case .HTG:
+            return"332"
+        case .HUF:
+            return"348"
+        case .IDR:
+            return"360"
+        case .ILS:
+            return"376"
+        case .INR:
+            return"356"
+        case .IQD:
+            return"368"
+        case .IRR:
+            return"364"
+        case .JMD:
+            return"388"
+        case .JOD:
+            return"400"
+        case .KES:
+            return"404"
+        case .KGS:
+            return"417"
+        case .KHR:
+            return"116"
+        case .KPW:
+            return"408"
+        case .KWD:
+            return"414"
+        case .KYD:
+            return"136"
+        case .KZT:
+            return"398"
+        case .LAK:
+            return"418"
+        case .LBP:
+            return"422"
+        case .LKR:
+            return"144"
+        case .LRD:
+            return"430"
+        case .LSL:
+            return"426"
+        case .LYD:
+            return"434"
+        case .MAD:
+            return"504"
+        case .MDL:
+            return"498"
+        case .MKD:
+            return"807"
+        case .MMK:
+            return"104"
+        case .MNT:
+            return"496"
+        case .MOP:
+            return"446"
+        case .MUR:
+            return"480"
+        case .MVR:
+            return"462"
+        case .MWK:
+            return"454"
+        case .MXN:
+            return"484"
+        case .MXV:
+            return"979"
+        case .MYR:
+            return"458"
+        case .MZN:
+            return"943"
+        case .NAD:
+            return"516"
+        case .NGN:
+            return"566"
+        case .NIO:
+            return"558"
+        case .NOK:
+            return"578"
+        case .NPR:
+            return"524"
+        case .NZD:
+            return"554"
+        case .OMR:
+            return"512"
+        case .PAB:
+            return"590"
+        case .PEN:
+            return"604"
+        case .PGK:
+            return"598"
+        case .PHP:
+            return"608"
+        case .PKR:
+            return"586"
+        case .PLN:
+            return"985"
+        case .QAR:
+            return"634"
+        case .RON:
+            return"946"
+        case .RSD:
+            return"941"
+        case .RUB:
+            return"643"
+        case .SAR:
+            return"682"
+        case .SBD:
+            return"090"
+        case .SCR:
+            return"690"
+        case .SDG:
+            return"938"
+        case .SEK:
+            return"752"
+        case .SGD:
+            return"702"
+        case .SHP:
+            return"654"
+        case .SLL:
+            return"694"
+        case .SOS:
+            return"706"
+        case .SRD:
+            return"968"
+        case .SSP:
+            return"728"
+        case .SVC:
+            return"222"
+        case .SYP:
+            return"760"
+        case .SZL:
+            return"748"
+        case .THB:
+            return"764"
+        case .TJS:
+            return"972"
+        case .TMT:
+            return"934"
+        case .TND:
+            return"788"
+        case .TOP:
+            return"776"
+        case .TRY:
+            return"949"
+        case .TTD:
+            return"780"
+        case .TWD:
+            return"901"
+        case .TZS:
+            return"834"
+        case .UAH:
+            return"980"
+        case .USD:
+            return"840"
+        case .USN:
+            return"997"
+        case .UYU:
+            return"858"
+        case .UYW:
+            return"927"
+        case .UZS:
+            return"860"
+        case .VES:
+            return"928"
+        case .WST:
+            return"882"
+        case .XCD:
+            return"951"
+        case .YER:
+            return"886"
+        case .ZAR:
+            return"710"
+        case .ZMW:
+            return"967"
+        case .ZWL:
+            return"932"
+        default:
+            return"840"
         }
     }
     
     public init?(emvcoRawValue: EmvcoRawValue) {
         switch emvcoRawValue.lowercased() {
-            case "784":
-                self = .AED
-            case "971":
-                self = .AFN
-            case "008":
-                self = .ALL
-            case "051":
-                self = .AMD
-            case "532":
-                self = .ANG
-            case "973":
-                self = .AOA
-            case "032":
-                self = .ARS
-            case "036":
-                self = .AUD
-            case "533":
-                self = .AWG
-            case "944":
-                self = .AZN
-            case "977":
-                self = .BAM
-            case "052":
-                self = .BBD
-            case "050":
-                self = .BDT
-            case "975":
-                self = .BGN
-            case "048":
-                self = .BHD
-            case "060":
-                self = .BMD
-            case "096":
-                self = .BND
-            case "068":
-                self = .BOB
-            case "984":
-                self = .BOV
-            case "986":
-                self = .BRL
-            case "044":
-                self = .BSD
-            case "064":
-                self = .BTN
-            case "072":
-                self = .BWP
-            case "933":
-                self = .BYN
-            case "084":
-                self = .BZD
-            case "124":
-                self = .CAD
-            case "976":
-                self = .CDF
-            case "947":
-                self = .CHE
-            case "756":
-                self = .CHF
-            case "948":
-                self = .CHW
-            case "990":
-                self = .CLF
-            case "156":
-                self = .CNY
-            case "170":
-                self = .COP
-            case "188":
-                self = .CRC
-            case "931":
-                self = .CUC
-            case "192":
-                self = .CUP
-            case "132":
-                self = .CVE
-            case "203":
-                self = .CZK
-            case "208":
-                self = .DKK
-            case "214":
-                self = .DOP
-            case "012":
-                self = .DZD
-            case "818":
-                self = .EGP
-            case "232":
-                self = .ERN
-            case "230":
-                self = .ETB
-            case "978":
-                self = .EUR
-            case "242":
-                self = .FJD
-            case "238":
-                self = .FKP
-            case "826":
-                self = .GBP
-            case "981":
-                self = .GEL
-            case "936":
-                self = .GHS
-            case "292":
-                self = .GIP
-            case "270":
-                self = .GMD
-            case "320":
-                self = .GTQ
-            case "328":
-                self = .GYD
-            case "344":
-                self = .HKD
-            case "340":
-                self = .HNL
-            case "191":
-                self = .HRK
-            case "332":
-                self = .HTG
-            case "348":
-                self = .HUF
-            case "360":
-                self = .IDR
-            case "376":
-                self = .ILS
-            case "356":
-                self = .INR
-            case "368":
-                self = .IQD
-            case "364":
-                self = .IRR
-            case "388":
-                self = .JMD
-            case "400":
-                self = .JOD
-            case "404":
-                self = .KES
-            case "417":
-                self = .KGS
-            case "116":
-                self = .KHR
-            case "408":
-                self = .KPW
-            case "414":
-                self = .KWD
-            case "136":
-                self = .KYD
-            case "398":
-                self = .KZT
-            case "418":
-                self = .LAK
-            case "422":
-                self = .LBP
-            case "144":
-                self = .LKR
-            case "430":
-                self = .LRD
-            case "426":
-                self = .LSL
-            case "434":
-                self = .LYD
-            case "504":
-                self = .MAD
-            case "498":
-                self = .MDL
-            case "807":
-                self = .MKD
-            case "104":
-                self = .MMK
-            case "496":
-                self = .MNT
-            case "446":
-                self = .MOP
-            case "480":
-                self = .MUR
-            case "462":
-                self = .MVR
-            case "454":
-                self = .MWK
-            case "484":
-                self = .MXN
-            case "979":
-                self = .MXV
-            case "458":
-                self = .MYR
-            case "943":
-                self = .MZN
-            case "516":
-                self = .NAD
-            case "566":
-                self = .NGN
-            case "558":
-                self = .NIO
-            case "578":
-                self = .NOK
-            case "524":
-                self = .NPR
-            case "554":
-                self = .NZD
-            case "512":
-                self = .OMR
-            case "590":
-                self = .PAB
-            case "604":
-                self = .PEN
-            case "598":
-                self = .PGK
-            case "608":
-                self = .PHP
-            case "586":
-                self = .PKR
-            case "985":
-                self = .PLN
-            case "634":
-                self = .QAR
-            case "946":
-                self = .RON
-            case "941":
-                self = .RSD
-            case "643":
-                self = .RUB
-            case "682":
-                self = .SAR
-            case "090":
-                self = .SBD
-            case "690":
-                self = .SCR
-            case "938":
-                self = .SDG
-            case "752":
-                self = .SEK
-            case "702":
-                self = .SGD
-            case "654":
-                self = .SHP
-            case "694":
-                self = .SLL
-            case "706":
-                self = .SOS
-            case "968":
-                self = .SRD
-            case "728":
-                self = .SSP
-            case "222":
-                self = .SVC
-            case "760":
-                self = .SYP
-            case "748":
-                self = .SZL
-            case "764":
-                self = .THB
-            case "972":
-                self = .TJS
-            case "934":
-                self = .TMT
-            case "788":
-                self = .TND
-            case "776":
-                self = .TOP
-            case "949":
-                self = .TRY
-            case "780":
-                self = .TTD
-            case "901":
-                self = .TWD
-            case "834":
-                self = .TZS
-            case "980":
-                self = .UAH
-            case "840":
-                self = .USD
-            case "997":
-                self = .USN
-            case "858":
-                self = .UYU
-            case "927":
-                self = .UYW
-            case "860":
-                self = .UZS
-            case "928":
-                self = .VES
-            case "882":
-                self = .WST
-            case "951":
-                self = .XCD
-            case "886":
-                self = .YER
-            case "710":
-                self = .ZAR
-            case "967":
-                self = .ZMW
-            case "932":
-                self = .ZWL
-            default:
-                return nil
+        case "784":
+            self = .AED
+        case "971":
+            self = .AFN
+        case "008":
+            self = .ALL
+        case "051":
+            self = .AMD
+        case "532":
+            self = .ANG
+        case "973":
+            self = .AOA
+        case "032":
+            self = .ARS
+        case "036":
+            self = .AUD
+        case "533":
+            self = .AWG
+        case "944":
+            self = .AZN
+        case "977":
+            self = .BAM
+        case "052":
+            self = .BBD
+        case "050":
+            self = .BDT
+        case "975":
+            self = .BGN
+        case "048":
+            self = .BHD
+        case "060":
+            self = .BMD
+        case "096":
+            self = .BND
+        case "068":
+            self = .BOB
+        case "984":
+            self = .BOV
+        case "986":
+            self = .BRL
+        case "044":
+            self = .BSD
+        case "064":
+            self = .BTN
+        case "072":
+            self = .BWP
+        case "933":
+            self = .BYN
+        case "084":
+            self = .BZD
+        case "124":
+            self = .CAD
+        case "976":
+            self = .CDF
+        case "947":
+            self = .CHE
+        case "756":
+            self = .CHF
+        case "948":
+            self = .CHW
+        case "990":
+            self = .CLF
+        case "156":
+            self = .CNY
+        case "170":
+            self = .COP
+        case "188":
+            self = .CRC
+        case "931":
+            self = .CUC
+        case "192":
+            self = .CUP
+        case "132":
+            self = .CVE
+        case "203":
+            self = .CZK
+        case "208":
+            self = .DKK
+        case "214":
+            self = .DOP
+        case "012":
+            self = .DZD
+        case "818":
+            self = .EGP
+        case "232":
+            self = .ERN
+        case "230":
+            self = .ETB
+        case "978":
+            self = .EUR
+        case "242":
+            self = .FJD
+        case "238":
+            self = .FKP
+        case "826":
+            self = .GBP
+        case "981":
+            self = .GEL
+        case "936":
+            self = .GHS
+        case "292":
+            self = .GIP
+        case "270":
+            self = .GMD
+        case "320":
+            self = .GTQ
+        case "328":
+            self = .GYD
+        case "344":
+            self = .HKD
+        case "340":
+            self = .HNL
+        case "191":
+            self = .HRK
+        case "332":
+            self = .HTG
+        case "348":
+            self = .HUF
+        case "360":
+            self = .IDR
+        case "376":
+            self = .ILS
+        case "356":
+            self = .INR
+        case "368":
+            self = .IQD
+        case "364":
+            self = .IRR
+        case "388":
+            self = .JMD
+        case "400":
+            self = .JOD
+        case "404":
+            self = .KES
+        case "417":
+            self = .KGS
+        case "116":
+            self = .KHR
+        case "408":
+            self = .KPW
+        case "414":
+            self = .KWD
+        case "136":
+            self = .KYD
+        case "398":
+            self = .KZT
+        case "418":
+            self = .LAK
+        case "422":
+            self = .LBP
+        case "144":
+            self = .LKR
+        case "430":
+            self = .LRD
+        case "426":
+            self = .LSL
+        case "434":
+            self = .LYD
+        case "504":
+            self = .MAD
+        case "498":
+            self = .MDL
+        case "807":
+            self = .MKD
+        case "104":
+            self = .MMK
+        case "496":
+            self = .MNT
+        case "446":
+            self = .MOP
+        case "480":
+            self = .MUR
+        case "462":
+            self = .MVR
+        case "454":
+            self = .MWK
+        case "484":
+            self = .MXN
+        case "979":
+            self = .MXV
+        case "458":
+            self = .MYR
+        case "943":
+            self = .MZN
+        case "516":
+            self = .NAD
+        case "566":
+            self = .NGN
+        case "558":
+            self = .NIO
+        case "578":
+            self = .NOK
+        case "524":
+            self = .NPR
+        case "554":
+            self = .NZD
+        case "512":
+            self = .OMR
+        case "590":
+            self = .PAB
+        case "604":
+            self = .PEN
+        case "598":
+            self = .PGK
+        case "608":
+            self = .PHP
+        case "586":
+            self = .PKR
+        case "985":
+            self = .PLN
+        case "634":
+            self = .QAR
+        case "946":
+            self = .RON
+        case "941":
+            self = .RSD
+        case "643":
+            self = .RUB
+        case "682":
+            self = .SAR
+        case "090":
+            self = .SBD
+        case "690":
+            self = .SCR
+        case "938":
+            self = .SDG
+        case "752":
+            self = .SEK
+        case "702":
+            self = .SGD
+        case "654":
+            self = .SHP
+        case "694":
+            self = .SLL
+        case "706":
+            self = .SOS
+        case "968":
+            self = .SRD
+        case "728":
+            self = .SSP
+        case "222":
+            self = .SVC
+        case "760":
+            self = .SYP
+        case "748":
+            self = .SZL
+        case "764":
+            self = .THB
+        case "972":
+            self = .TJS
+        case "934":
+            self = .TMT
+        case "788":
+            self = .TND
+        case "776":
+            self = .TOP
+        case "949":
+            self = .TRY
+        case "780":
+            self = .TTD
+        case "901":
+            self = .TWD
+        case "834":
+            self = .TZS
+        case "980":
+            self = .UAH
+        case "840":
+            self = .USD
+        case "997":
+            self = .USN
+        case "858":
+            self = .UYU
+        case "927":
+            self = .UYW
+        case "860":
+            self = .UZS
+        case "928":
+            self = .VES
+        case "882":
+            self = .WST
+        case "951":
+            self = .XCD
+        case "886":
+            self = .YER
+        case "710":
+            self = .ZAR
+        case "967":
+            self = .ZMW
+        case "932":
+            self = .ZWL
+        default:
+            return nil
         }
     }
     
@@ -1684,6 +1684,285 @@ import Foundation
         }
     }
     
+    public typealias SymbolStringRawValue = String
+    
+    public var symbolRawValue: SymbolStringRawValue {
+        switch self {
+            case .AFN:
+                return "؋"
+            case .AMD:
+                return "դր"
+            case .AZN:
+                return "₼"
+            case .BHD:
+                return ".د.ب"
+            case .BDT:
+                return "৳"
+            case .BTN:
+                return "Nu."
+            case .BND:
+                return "$"
+            case .KHR:
+                return "៛"
+            case .CNY:
+                return "¥"
+            case .GEL:
+                return "ლ"
+            case .INR:
+                return "₹"
+            case .IDR:
+                return "Rp"
+            case .IRR:
+                return "﷼"
+            case .IQD:
+                return "ع.د"
+            case .ILS:
+                return "₪"
+            case .JPY:
+                return "¥"
+            case .JOD:
+                return "د.ا"
+            case .KZT:
+                return "лв"
+            case .KWD:
+                return "د.ك"
+            case .KGS:
+                return "лв"
+            case .LAK:
+                return "₭"
+            case .LBP:
+                return "£"
+            case .MYR:
+                return "RM"
+            case .MVR:
+                return "Rf"
+            case .MNT:
+                return "₮"
+            case .MMK:
+                return "K"
+            case .NPR:
+                return "₨"
+            case .KPW:
+                return "₩"
+            case .OMR:
+                return "﷼"
+            case .PKR:
+                return "₨"
+            case .PHP:
+                return "₱"
+            case .QAR:
+                return "﷼"
+            case .RUB:
+                return "₽"
+            case .SAR:
+                return "﷼"
+            case .SGD:
+                return "$"
+            case .KRW:
+                return "₩"
+            case .LKR:
+                return "₨"
+            case .SYP:
+                return "£"
+            case .TWD:
+                return "NT$"
+            case .TJS:
+                return "ЅM"
+            case .THB:
+                return "฿"
+            case .USD:
+                return "$"
+            case .TRY:
+                return "₺"
+            case .AED:
+                return "د.إ"
+            case .UZS:
+                return "лв"
+            case .VND:
+                return "₫"
+            case .YER:
+                return "﷼"
+            case .DZD:
+                return "دج"
+            case .AOA:
+                return "Kz"
+            case .XOF:
+                return "CFA"
+            case .BWP:
+                return "P"
+            case .BIF:
+                return "FBu"
+            case .CVE:
+                return "$"
+            case .XAF:
+                return "FCFA"
+            case .KMF:
+                return "CF"
+            case .CDF:
+                return "FC"
+            case .DJF:
+                return "Fdj"
+            case .EGP:
+                return "£"
+            case .ERN:
+                return "ናቕፋ"
+            case .ETB:
+                return "ብር"
+            case .GMD:
+                return "D"
+            case .GNF:
+                return "FG"
+            case .KES:
+                return "KSh,"
+            case .LSL:
+                return "L"
+            case .LRD:
+                return "$"
+            case .LYD:
+                return "ل.د"
+            case .MGA:
+                return "Ar"
+            case .MWK:
+                return "MK"
+            case .MUR:
+                return "₨"
+            case .MAD:
+                return "DH"
+            case .MZN:
+                return "MT"
+            case .NAD:
+                return "$"
+            case .NGN:
+                return "₦"
+            case .RWF:
+                return "FRw"
+            case .SCR:
+                return "₨"
+            case .SLL:
+                return "Le"
+            case .SOS:
+                return "S"
+            case .ZAR:
+                return "R"
+            case .SSP:
+                return "£"
+            case .SDG:
+                return "SD"
+            case .SZL:
+                return "E"
+            case .TZS:
+                return "TSh"
+            case .TND:
+                return "د.ت"
+            case .UGX:
+                return "USh"
+            case .ALL:
+                return "Lek"
+            case .EUR:
+                return "€"
+            case .BAM:
+                return "KM"
+            case .BGN:
+                return "лв"
+            case .HRK:
+                return "kn"
+            case .CZK:
+                return "Kč"
+            case .DKK:
+                return "kr."
+            case .HUF:
+                return "Ft"
+            case .ISK:
+                return "kr"
+            case .CHF:
+                return "CHF"
+            case .MKD:
+                return "ден"
+            case .MDL:
+                return "L"
+            case .NOK:
+                return "kr"
+            case .PLN:
+                return "zł"
+            case .RON:
+                return "lei"
+            case .RSD:
+                return "Дин."
+            case .SEK:
+                return "kr"
+            case .UAH:
+                return "₴"
+            case .GBP:
+                return "£"
+        case .XCD:
+            return "$"
+        case .BSD:
+            return "$"
+        case .BBD:
+            return "$"
+        case .BZD:
+            return "BZ$"
+        case .CAD:
+            return "$"
+        case .CRC:
+            return "₡"
+        case .CUC:
+            return "$"
+        case .DOP:
+            return "RD$"
+        case .GTQ:
+            return "Q"
+        case .HTG:
+            return "G"
+        case .HNL:
+            return "L"
+        case .JMD:
+            return "J$"
+        case .MXN:
+            return "$"
+        case .NIO:
+            return "C$"
+        case .PAB:
+            return "B/."
+        case .TTD:
+            return "TT$"
+        case .ARS:
+            return "$"
+        case .BRL:
+            return "R$"
+        case .CLP:
+            return "$"
+        case .COP:
+            return "$"
+        case .GYD:
+            return "$"
+        case .PYG:
+            return "Gs"
+        case .PEN:
+            return "S/."
+        case .SRD:
+            return "$"
+        case .AUD:
+            return "$"
+        case .FJD:
+            return "$"
+        case .NZD:
+            return "$"
+        case .PGK:
+            return "K"
+        case .WST:
+            return "WS$"
+        case .SBD:
+            return "$"
+        case .TOP:
+            return "T$"
+        case .VUV:
+            return "VT"
+        default:
+            return "\(self)"
+        }
+    }
+    
     /**
      Computes the formal number of decimal digits for a specific currency
      - Returns: The numnber of official dominator digits as per the ISO 4217 currency codes list
@@ -1985,4 +2264,8 @@ import Foundation
             return 2
         }
     }
+    
+    
+    
+    
 }

@@ -18,6 +18,7 @@ public protocol TapAmountedCurrencyFormatterProtocol {
     var initialText: String { get }
     var currencySymbol: String { get set }
     var currencyCodeSpace: Bool { get set }
+    var localizeCurrencySymbol: Bool { get set }
     
     func string(from double: Double?) -> String?
     func unformatted(string: String) -> String?
@@ -27,6 +28,9 @@ public protocol TapAmountedCurrencyFormatterProtocol {
 /// Tap Currency formatter responsible for formatting a given number to its correct market representation of the selected currency with many options
 
 public class TapAmountedCurrencyFormatter: TapAmountedCurrencyFormatterProtocol {
+    
+    public var localizeCurrencySymbol: Bool = false
+    
     
     /// Indicates a space between currency code and amount or not. $ 100 or $100
     public var currencyCodeSpace: Bool = false
@@ -258,7 +262,21 @@ extension TapAmountedCurrencyFormatter {
     /// - Returns: formatted currency string.
     public func string(from double: Double?) -> String? {
         let validValue = getAdjustedForDefinedInterval(value: double)
-        let formattedValue = numberFormatter.string(from: validValue)
+        var formattedValue:String? = ""
+        // Let us check if the caller asked to localize the currency code + value string, to make sure even non English characters for currency symbols will come in the lead
+        if localizeCurrencySymbol {
+            // Then we need to make sure the generated string is localized to make sure the symbol comes always as a prefix
+            let currentSymbol =  numberFormatter.currencySymbol
+            // ask the formatter not to the put the code as per his native development
+            numberFormatter.currencySymbol = ""
+            // Localize the result to make sure it is always prefixed with the currency symbol
+            formattedValue = String.localizedStringWithFormat("%@%@", (currentSymbol ?? ""),(numberFormatter.string(from: validValue) ?? ""))
+            // Set the currency symbol back
+            numberFormatter.currencySymbol = currentSymbol
+        }else {
+            // Not forced by the caller, hence we leave it to the default formatting for this currency as per Apple development
+            formattedValue = numberFormatter.string(from: validValue)
+        }
         
         return currencyCodeSpace ? formattedValue : formattedValue?.replacingOccurrences(of: " ", with: "")
     }
