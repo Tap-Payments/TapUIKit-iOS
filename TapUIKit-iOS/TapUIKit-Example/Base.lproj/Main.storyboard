@@ -408,6 +408,7 @@
                         <outlet property="blurEffectSegment" destination="jvd-fH-OfN" id="fJj-2M-5oJ"/>
                         <outlet property="conerRadiusLabel" destination="Vd4-qU-Rps" id="f0q-GB-eub"/>
                         <outlet property="eventsTextView" destination="pvY-fV-lTA" id="8M0-Oy-osT"/>
+                        <outlet property="heightSlider" destination="40c-7W-6cL" id="D3d-k2-iOD"/>
                         <outlet property="initialHeightLabel" destination="s9b-67-4N1" id="GVE-XU-aPU"/>
                     </connections>
                 </viewController>
@@ -667,17 +668,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVq-mQ-vQh" customClass="TapVerticalView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVq-mQ-vQh" customClass="TapVerticalView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" id="Ny9-NW-eAE"/>
                             <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="oVq-mQ-vQh" secondAttribute="trailing" id="WSa-74-mkh"/>
-                            <constraint firstItem="DGq-3B-tfj" firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" id="eiJ-07-jR6"/>
+                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="top" secondItem="wN4-ZW-HOD" secondAttribute="top" id="eH6-e1-MRf"/>
                             <constraint firstItem="oVq-mQ-vQh" firstAttribute="leading" secondItem="DGq-3B-tfj" secondAttribute="leading" id="ut2-NP-mel"/>
-                            <constraint firstItem="oVq-mQ-vQh" firstAttribute="top" secondItem="DGq-3B-tfj" secondAttribute="top" id="vpn-O8-fYr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DGq-3B-tfj"/>
                     </view>
@@ -687,7 +688,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jei-to-QDS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3490" y="2890"/>
+            <point key="canvasLocation" x="3489.8550724637685" y="2889.5089285714284"/>
         </scene>
         <!--Tap Amount Section View Controller-->
         <scene sceneID="RDb-ao-xMg">

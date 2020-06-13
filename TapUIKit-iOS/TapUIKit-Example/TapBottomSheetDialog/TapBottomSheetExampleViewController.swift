@@ -17,6 +17,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     @IBOutlet weak var initialHeightLabel: UILabel!
     @IBOutlet weak var conerRadiusLabel: UILabel!
     @IBOutlet weak var eventsTextView: UITextView!
+    @IBOutlet weak var heightSlider: UISlider!
     
     var showWallOfGlory:Bool = false
     var bottomSheetBackgroundColor:UIColor? = .init(white: 0, alpha: 0.5)
@@ -33,11 +34,17 @@ class TapBottomSheetExampleViewController: UIViewController {
     var gloryPresentController:ExampleWallOfGloryViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ExampleWallOfGloryViewController") as! ExampleWallOfGloryViewController
         vc.delegate = self
+        
         return vc
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if showWallOfGlory {
+            initialHeight = 138 + 5
+            initialHeightLabel.text = "Computed Initial Height \(Int(initialHeight)) PX"
+            heightSlider.isEnabled = false
+            heightSlider.isUserInteractionEnabled = false
+        }
         // Do any additional setup after loading the view.
     }
     

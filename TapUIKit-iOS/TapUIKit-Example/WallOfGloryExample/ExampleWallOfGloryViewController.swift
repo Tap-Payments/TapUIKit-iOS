@@ -8,12 +8,14 @@
 
 import UIKit
 import TapUIKit_iOS
+import CommonDataModelsKit_iOS
 
 class ExampleWallOfGloryViewController: UIViewController {
     
     var delegate:ToPresentAsPopupViewControllerDelegate?
     @IBOutlet weak var tapVerticalView: TapVerticalView!
     var tapMerchantHeaderViewModel:TapMerchantHeaderViewModel = .init()
+    var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createDefaultViewModels() {
         tapMerchantHeaderViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
+        tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, convertedTransactionAmount: 3333.333, convertedTransactionCurrency: .KWD, numberOfItems: 10)
     }
     
     func addGloryViews() {
@@ -47,6 +50,13 @@ class ExampleWallOfGloryViewController: UIViewController {
         merchantHeaderView.heightAnchor.constraint(equalToConstant: 55).isActive = true
         views.append(merchantHeaderView)
         merchantHeaderView.changeViewModel(with: tapMerchantHeaderViewModel)
+        
+        // The TapAmountSectionView
+        let amountSectionView:TapAmountSectionView = .init()
+        amountSectionView.translatesAutoresizingMaskIntoConstraints = false
+        amountSectionView.heightAnchor.constraint(equalToConstant: 59).isActive = true
+        views.append(amountSectionView)
+        amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
         
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
@@ -70,7 +80,7 @@ extension ExampleWallOfGloryViewController: TapVerticalViewDelegate {
     func innerSizeChanged(to newSize: CGSize, with frame: CGRect) {
         print("DELEGATE CALL BACK WITH SIZE \(newSize) and Frame of :\(frame)")
         guard let delegate = delegate else { return }
-        delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaInsets.bottom + 30)
+        delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaInsets.bottom + 5)
     }
     
 }
