@@ -132,7 +132,16 @@ public class TapMerchantHeaderView: UIView {
         }
         
     }
-
+    
+    /// Inform the viewmodel that the user clicked view
+    @IBAction private func headerViewClicked(_ sender: Any) {
+        viewModel?.merchantHeaderClickedBlock()
+    }
+    
+    /// Inform the viewmodel that the user clicked the icon view
+    @IBAction func iconClicked(_ sender: Any) {
+        viewModel?.iconClickedBlock()
+    }
 }
 
 

@@ -33,6 +33,8 @@ class ExampleWallOfGloryViewController: UIViewController {
     func createDefaultViewModels() {
         tapMerchantHeaderViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
         tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, convertedTransactionAmount: 3333.333, convertedTransactionCurrency: .KWD, numberOfItems: 10)
+        
+        tapMerchantHeaderViewModel.delegate = self
     }
     
     func addGloryViews() {
@@ -62,6 +64,14 @@ class ExampleWallOfGloryViewController: UIViewController {
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
     
+    
+    func showAlert(title:String,message:String) {
+        let alertController:UIAlertController = .init(title: title, message: message, preferredStyle: .alert)
+        let okAction:UIAlertAction = .init(title: "OK", style: .destructive, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -83,4 +93,14 @@ extension ExampleWallOfGloryViewController: TapVerticalViewDelegate {
         delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaInsets.bottom + 5)
     }
     
+}
+
+
+extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
+    func iconClickedBlock() {
+        showAlert(title: "Merchant Header", message: "You can make any action needed based on clicking the Profile Logo ;)")
+    }
+    func merchantHeaderClickedBlock() {
+        showAlert(title: "Merchant Header", message: "The user clicked on the header section, do you want me to do anything?")
+    }
 }

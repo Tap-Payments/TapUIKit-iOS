@@ -10,8 +10,17 @@ import class LocalisationManagerKit_iOS.TapLocalisationManager
 import class CommonDataModelsKit_iOS.TapCommonConstants
 import RxCocoa
 
+/// The protocl that informs the subscriber of any events happened/fired from the HeaderView
+@objc public protocol TapMerchantHeaderViewDelegate {
+    /// The icon in the view is clicked by the user
+    @objc optional func iconClickedBlock()
+    /// The section view in the view is clixked by the user
+    @objc optional func merchantHeaderClickedBlock()
+}
+
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
 public struct TapMerchantHeaderViewModel {
+    
     // MARK:- RX Internal Observables
     /// The text to be displayed in the title label
     internal var titleObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
@@ -47,6 +56,9 @@ public struct TapMerchantHeaderViewModel {
         }
     }
     
+    
+    public var delegate:TapMerchantHeaderViewDelegate?
+    
     /// Localisation kit keypath
     internal var localizationPath = "TapMerchantSection"
     /// Configure the localisation Manager
@@ -64,6 +76,17 @@ public struct TapMerchantHeaderViewModel {
             self.iconURL = iconURL
         }
         
+    }
+    
+    
+    // MARK:- Internal methods to let the view talks with the delegate
+    /// A block to execute logic in view model when the icon in the view is clicked by the user
+    internal func iconClickedBlock() {
+        delegate?.iconClickedBlock?()
+    }
+    /// A block to execute logic in view model when the section view in the view is clixked by the user
+    internal func merchantHeaderClickedBlock() {
+        delegate?.merchantHeaderClickedBlock?()
     }
     
     /**
