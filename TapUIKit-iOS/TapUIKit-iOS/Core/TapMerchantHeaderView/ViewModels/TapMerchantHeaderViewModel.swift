@@ -13,9 +13,9 @@ import RxCocoa
 /// The protocl that informs the subscriber of any events happened/fired from the HeaderView
 @objc public protocol TapMerchantHeaderViewDelegate {
     /// The icon in the view is clicked by the user
-    @objc optional func iconClickedBlock()
+    @objc optional func iconClicked()
     /// The section view in the view is clixked by the user
-    @objc optional func merchantHeaderClickedBlock()
+    @objc optional func merchantHeaderClicked()
 }
 
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
@@ -81,12 +81,12 @@ public struct TapMerchantHeaderViewModel {
     
     // MARK:- Internal methods to let the view talks with the delegate
     /// A block to execute logic in view model when the icon in the view is clicked by the user
-    internal func iconClickedBlock() {
-        delegate?.iconClickedBlock?()
+    internal func iconClicked() {
+        delegate?.iconClicked?()
     }
     /// A block to execute logic in view model when the section view in the view is clixked by the user
-    internal func merchantHeaderClickedBlock() {
-        delegate?.merchantHeaderClickedBlock?()
+    internal func merchantHeaderClicked() {
+        delegate?.merchantHeaderClicked?()
     }
     
     /**

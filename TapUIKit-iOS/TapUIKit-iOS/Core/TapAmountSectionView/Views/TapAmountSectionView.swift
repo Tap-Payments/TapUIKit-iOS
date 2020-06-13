@@ -125,6 +125,16 @@ public class TapAmountSectionView: UIView {
     public func changeViewModel(with viewModel:TapAmountSectionViewModel) {
         self.viewModel = viewModel
     }
+    
+    /// Tell the view model when the amount section view in the view is clixked by the user
+    
+    @IBAction func amountSectionClicked(_ sender: Any) {
+        viewModel?.amountSectionClicked()
+    }
+    ///Tell the view model when the items in the view is clicked by the user
+    @IBAction func itemsClicked(_ sender: Any) {
+        viewModel?.itemsClicked()
+    }
 }
 
 

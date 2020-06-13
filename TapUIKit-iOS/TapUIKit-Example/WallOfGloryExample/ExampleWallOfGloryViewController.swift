@@ -35,6 +35,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, convertedTransactionAmount: 3333.333, convertedTransactionCurrency: .KWD, numberOfItems: 10)
         
         tapMerchantHeaderViewModel.delegate = self
+        tapAmountSectionViewModel.delegate = self
     }
     
     func addGloryViews() {
@@ -97,10 +98,20 @@ extension ExampleWallOfGloryViewController: TapVerticalViewDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
-    func iconClickedBlock() {
+    func iconClicked() {
         showAlert(title: "Merchant Header", message: "You can make any action needed based on clicking the Profile Logo ;)")
     }
-    func merchantHeaderClickedBlock() {
+    func merchantHeaderClicked() {
         showAlert(title: "Merchant Header", message: "The user clicked on the header section, do you want me to do anything?")
+    }
+}
+
+
+extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
+    func itemsClicked() {
+        showAlert(title: "Amount Section", message: "The items had been clicked.. I promise logic will be implemented in the next sprint :)")
+    }
+    func amountSectionClicked() {
+        showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")
     }
 }

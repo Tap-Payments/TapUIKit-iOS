@@ -11,6 +11,15 @@ import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 import RxCocoa
+
+/// The protocl that informs the subscriber of any events happened/fired from the Amount Section View
+@objc public protocol TapAmountSectionViewModelDelegate {
+    /// A block to execute logic in view model when the items in the view is clicked by the user
+    @objc optional func itemsClicked()
+    /// A block to execute logic in view model when the amount section view in the view is clixked by the user
+    @objc optional func amountSectionClicked()
+}
+
 /// The view model that controlls the data shown inside a TapAmountSectionView
 public struct TapAmountSectionViewModel {
     // MARK:- RX Internal Observables
@@ -28,6 +37,9 @@ public struct TapAmountSectionViewModel {
     
     
     // MARK:- Public normal swift variables
+    
+    public var delegate:TapAmountSectionViewModelDelegate?
+    
     /// Represent the original transaction total amount
     public var originalTransactionAmount:Double = 0 {
         didSet {
@@ -125,6 +137,16 @@ public struct TapAmountSectionViewModel {
             }
         }
         observer.accept(formatter.string(from: amount) ?? "KD0.000")
+    }
+    
+    // MARK:- Internal methods to let the view talks with the delegate
+    /// A block to execute logic in view model when the items in the view is clicked by the user
+    internal func itemsClicked() {
+        delegate?.itemsClicked?()
+    }
+    /// A block to execute logic in view model when the amount section view in the view is clixked by the user
+    internal func amountSectionClicked() {
+        delegate?.amountSectionClicked?()
     }
 }
 
