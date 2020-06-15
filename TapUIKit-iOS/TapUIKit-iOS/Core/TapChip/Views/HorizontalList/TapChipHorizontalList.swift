@@ -54,11 +54,22 @@ public class TapChipHorizontalList: UIView {
         viewModel.registerAllXibs(for: collectionView)
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
         
-        if let flowLayout:UICollectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+        /*if let flowLayout:UICollectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
             flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
             flowLayout.minimumInteritemSpacing = itemSpacing
-        }
+            
+        }*/
+        
+        
+        let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.minimumInteritemSpacing = itemSpacing
+        flowLayout.scrollDirection = .horizontal
+        
+        collectionView.collectionViewLayout = flowLayout
+        
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -106,7 +117,6 @@ extension TapChipHorizontalList {
     private func matchThemeAttributes() {
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         let sectionMargin:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
-        
         collectionView.contentInset = .init(top: 0, left: sectionMargin, bottom: 0, right: sectionMargin)
     }
     
