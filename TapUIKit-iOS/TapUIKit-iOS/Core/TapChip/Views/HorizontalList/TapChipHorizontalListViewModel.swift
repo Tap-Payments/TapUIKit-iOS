@@ -35,7 +35,7 @@ public class TapChipHorizontalListViewModel {
     }
     
     internal func registerAllXibs(for collectionView:UICollectionView) {
-        let chipCellsNames:[String] = ["GatewayImageCollectionViewCell"]
+        let chipCellsNames:[String] = TapChipType.allCases.map{ $0.nibName() }
         chipCellsNames.forEach { chipName in
             let bundle = Bundle(for: TapChipHorizontalListViewModel.self)
             collectionView.register(UINib(nibName: chipName, bundle: bundle), forCellWithReuseIdentifier: chipName)

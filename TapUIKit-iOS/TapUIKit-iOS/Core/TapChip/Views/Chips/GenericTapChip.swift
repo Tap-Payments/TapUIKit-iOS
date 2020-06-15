@@ -30,7 +30,7 @@ public class GenericTapChip:UICollectionViewCell {
 }
 
 
-public enum TapChipType {
+public enum TapChipType:CaseIterable {
     case GatewayChip
     case ApplePayChip
     case GoPayChip
@@ -49,6 +49,21 @@ public enum TapChipType {
             return "horizontalList.chips.currencyChip"
         case .SavedCardChip:
             return "horizontalList.chips.savedCardChip"
+        }
+    }
+    
+    func nibName() -> String {
+        switch self {
+        case .GatewayChip:
+            return "GatewayImageCollectionViewCell"
+        case .ApplePayChip:
+            return "GatewayImageCollectionViewCell"
+        case .GoPayChip:
+            return "GatewayImageCollectionViewCell"
+        case .CurrencyChip:
+            return "GatewayImageCollectionViewCell"
+        case .SavedCardChip:
+            return "GatewayImageCollectionViewCell"
         }
     }
 }
