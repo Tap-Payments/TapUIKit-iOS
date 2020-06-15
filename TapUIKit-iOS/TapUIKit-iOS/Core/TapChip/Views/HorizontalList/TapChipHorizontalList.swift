@@ -82,6 +82,15 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
         cell.configureCell(with: model)
         return cell
     }
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath.row)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        viewModel.didDeselectItem(at: indexPath.row)
+    }
 }
 
 

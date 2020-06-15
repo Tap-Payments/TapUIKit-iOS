@@ -9,6 +9,10 @@
 import Foundation
 import RxCocoa
 
+public protocol TapChipHorizontalListViewModelDelegate {
+    func didSelect(item viewModel:GenericTapChipViewModel)
+}
+
 public class TapChipHorizontalListViewModel {
     
     // MARK:- RX Internal Observables
@@ -20,6 +24,8 @@ public class TapChipHorizontalListViewModel {
         }
     }
     
+    
+    public var delegate:TapChipHorizontalListViewModelDelegate?
     
     public init(dataSource:[GenericTapChipViewModel]) {
         self.dataSource = dataSource
@@ -48,6 +54,15 @@ public class TapChipHorizontalListViewModel {
         return dataSource[index]
     }
     
+    func didSelectItem(at index:Int) {
+        viewModel(at: index).didSelectItem()
+        delegate?.didSelect(item: viewModel(at: index))
+    }
+    
+    
+    func didDeselectItem(at index:Int) {
+        viewModel(at: index).didDeselectItem()
+    }
     
     
     func dequeuCell(in collectionView:UICollectionView, at indexPath:IndexPath) -> GenericTapChip {

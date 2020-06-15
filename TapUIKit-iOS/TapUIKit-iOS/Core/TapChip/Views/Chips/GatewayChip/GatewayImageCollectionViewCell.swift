@@ -17,6 +17,7 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
     
     public var viewModel:GatewayChipViewModel = .init() {
         didSet{
+            viewModel.cellDelegate = self
             reload()
         }
     }
@@ -29,6 +30,12 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         // Defensive coding it is the correct view model type
         guard let correctTypeModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel else { return }
         self.viewModel = correctTypeModel
+    }
+    
+    public override func selectStatusChaned(with status:Bool) {
+        
+        // No theming required for ayment gatewy chip cell
+        return
     }
     
     public override func tapChipType() -> TapChipType {
@@ -90,6 +97,7 @@ extension GatewayImageCollectionViewCell {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
+
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
         
@@ -113,3 +121,8 @@ extension GatewayImageCollectionViewCell {
 
 
 
+extension GatewayImageCollectionViewCell:GateWayChipViewModelDelegate{
+    func changeSelection(with status: Bool) {
+        selectStatusChaned(with: status)
+    }
+}

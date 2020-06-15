@@ -23,4 +23,13 @@ public class GenericTapChipViewModel {
         return ""
     }
     
+    
+    func didSelectItem() {
+        return
+    }
+    
+    func didDeselectItem() {
+        return
+    }
+    
 }
