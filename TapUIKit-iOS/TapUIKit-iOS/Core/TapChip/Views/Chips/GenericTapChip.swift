@@ -45,15 +45,15 @@ public enum TapChipType {
     func themePath() -> String {
         switch self {
         case .GatewayChip:
-            return "gatewayChip"
+            return "horizontalList.chips.gatewayChip"
         case .ApplePayChip:
-            return "applePayChip"
+            return "horizontalList.chips.applePayChip"
         case .GoPayChip:
-            return "goPayChip"
+            return "horizontalList.chips.goPayChip"
         case .CurrencyChip:
-            return "currencyChip"
+            return "horizontalList.chips.currencyChip"
         case .SavedCardChip:
-            return "savedCardChip"
+            return "horizontalList.chips.savedCardChip"
         }
     }
 }

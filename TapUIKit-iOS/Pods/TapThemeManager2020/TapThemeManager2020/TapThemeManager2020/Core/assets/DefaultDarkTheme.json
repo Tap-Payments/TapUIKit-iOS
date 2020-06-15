@@ -213,7 +213,14 @@
                 }
             },
             "gatewayChip": {
-                "backgroundColor" : "white80"
+                "backgroundColor" : "white80",
+                "shadow": {
+                    "color" : "lightPeriwinkle",
+                    "radius" : 5,
+                    "offsetWidth": 0,
+                    "offsetHeight": 0,
+                    "opacity": 1
+                }
             },
             "goPayChip": {
                 "backgroundColor" : "vibrantGreen",
