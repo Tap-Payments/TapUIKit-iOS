@@ -13,6 +13,8 @@ import class UIKit.UITapGestureRecognizer
 import class UIKit.UIView
 import struct UIKit.CGFloat
 import struct UIKit.CACornerMask
+import class UIKit.UIApplication
+
 // MARK:- UIImageView extensions
 
 internal typealias SimpleClosure = (() -> ())
@@ -138,5 +140,19 @@ extension Decodable {
         let data = try JSONSerialization.data(withJSONObject: from, options: .prettyPrinted)
         let decoder = JSONDecoder()
         self = try decoder.decode(Self.self, from: data)
+    }
+}
+
+
+// MARK:- String extensions
+
+extension String {
+    // MARK:- Check if a string is a valid URL
+    ///Check if a string is a valid URL
+    func isValidURL () -> Bool {
+        if let url = NSURL(string: self) {
+            return UIApplication.shared.canOpenURL(url as URL)
+        }
+        return false
     }
 }

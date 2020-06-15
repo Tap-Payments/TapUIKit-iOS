@@ -8,14 +8,20 @@
 
 import UIKit
 import TapThemeManager2020
+import MapleBacon
 
-class GatewayImageCollectionViewCell: GenericTapChip {
+public class GatewayImageCollectionViewCell: GenericTapChip {
     
-    /// The container view that holds everything from the XIB
-    @IBOutlet var containerView: UIView!
-    public var viewModel:GatewayChipViewModel = .init()
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var gatewayIconImageView: UIImageView!
     
-    override func identefier() -> String {
+    public var viewModel:GatewayChipViewModel = .init() {
+        didSet{
+            reload()
+        }
+    }
+    
+    public override func identefier() -> String {
         "GatewayImageCollectionViewCell"
     }
     
@@ -23,7 +29,7 @@ class GatewayImageCollectionViewCell: GenericTapChip {
         applyTheme()
     }
     
-    override func tapChipType() -> TapChipType {
+    public override func tapChipType() -> TapChipType {
         return .GatewayChip
     }
     
@@ -49,20 +55,27 @@ class GatewayImageCollectionViewCell: GenericTapChip {
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
-        self.containerView = setupXIB()
         applyTheme()
     }
     
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        self.containerView.frame = bounds
+    public func reload() {
+        commonInit()
+        guard let iconURLString:String = viewModel.icon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
+            return
+        }
+        
+        
+        gatewayIconImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
+            // Check the downloaded image is a proper image
+            guard let downloadedImage = downloadedImage else { return }
+            
+            // Set the image and show it
+            DispatchQueue.main.async { [weak self] in
+                self?.gatewayIconImageView.image = downloadedImage
+            }
+        }
     }
-    
-
-    @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var gatewayIconImageView: UIImageView!
-
 }
 
 
