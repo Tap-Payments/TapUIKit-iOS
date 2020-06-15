@@ -2266,6 +2266,39 @@ import Foundation
     }
     
     
-    
+    public func imageName() -> String {
+        
+        switch self {
+        case .AED:
+            return "AE.png"
+        case .BHD:
+            return "BH.png"
+        case .OMR:
+            return "OM.png"
+        case .KWD:
+            return "KW.png"
+        case .SAR:
+            return "SA.png"
+        case .QAR:
+            return "QA.png"
+        case .EGP:
+            return "EG.png"
+        case .JOD:
+            return "JO.png"
+        case .LBP:
+            return "LB.png"
+        case .USD:
+            return "US.png"
+        case .EUR:
+            return "EU.png"
+        case .GBP:
+            return "GB.png"
+        default:
+            break
+        }
+        
+        return "UNations.png"
+        
+    }
     
 }
