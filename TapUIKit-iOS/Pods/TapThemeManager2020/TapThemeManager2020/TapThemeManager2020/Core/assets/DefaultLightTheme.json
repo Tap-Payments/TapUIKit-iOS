@@ -11,7 +11,8 @@
             "whiteTwo": "#f4f4f4",
             "deepSkyBlue": "#007aff",
             "white30":"#ffffff4D",
-            "lightPeriwinkle": "d9d9da"
+            "lightPeriwinkle": "d9d9da",
+            "white80":"#ffffffcc"
         }
     },
     "inlineCard": {
@@ -213,10 +214,10 @@
                 }
             },
             "gatewayChip": {
-                "backgroundColor" : "white80",
+                "backgroundColor" : "white",
                 "shadow": {
                     "color" : "lightPeriwinkle",
-                    "radius" : 5,
+                    "radius" : 2,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
                     "opacity": 1

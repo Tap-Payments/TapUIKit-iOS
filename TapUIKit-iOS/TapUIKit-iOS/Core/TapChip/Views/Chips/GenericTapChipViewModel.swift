@@ -14,7 +14,7 @@ public class GenericTapChipViewModel {
     public var icon:String?
     
     
-    init(title:String? = nil, icon:String? = nil) {
+    public init(title:String? = nil, icon:String? = nil) {
         self.title = title
         self.icon = icon
     }

@@ -21,11 +21,9 @@ public class GenericTapChip:UICollectionViewCell {
         return .GatewayChip
     }
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        self.rx.isSelected.subscribe(onNext: { [weak self] (selected) in
-            self?.updateTheme(for: selected)
-        }).disposed(by: disposeBag)
+    
+    func configureCell(with viewModel:GenericTapChipViewModel) {
+        return
     }
     
     

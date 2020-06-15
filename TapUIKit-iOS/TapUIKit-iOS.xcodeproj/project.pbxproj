@@ -17,6 +17,7 @@
 		E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */; };
 		E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */; };
 		E80EA58F24974B4900C5C5E1 /* ChipsTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */; };
+		E80EA5932497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80EA5922497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADB924597B0500E55A68 /* TapCellViewModel.swift */; };
 		E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */; };
@@ -128,6 +129,7 @@
 		E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToPresentAsPopupViewController.swift; sourceTree = "<group>"; };
 		E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapPullUpWrapperViewController.xib; sourceTree = "<group>"; };
 		E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsTestingViewController.swift; sourceTree = "<group>"; };
+		E80EA5922497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipHorizontalListViewModel.swift; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADB924597B0500E55A68 /* TapCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellViewModel.swift; sourceTree = "<group>"; };
 		E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardRecentCardCellViewModel.swift; sourceTree = "<group>"; };
@@ -257,6 +259,23 @@
 				E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */,
 			);
 			path = TapBottomSheetDialog;
+			sourceTree = "<group>";
+		};
+		E80EA5902497507D00C5C5E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8CD42832495F9130013AEE7 /* TapChipHorizontalList.swift */,
+				E8CD42852495F91B0013AEE7 /* TapChipHorizontalList.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E80EA5912497508800C5C5E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E80EA5922497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		E835ADB524585A7600E55A68 /* TapCollectionCell */ = {
@@ -522,8 +541,8 @@
 		E8CD42822495F8D50013AEE7 /* HorizontalList */ = {
 			isa = PBXGroup;
 			children = (
-				E8CD42832495F9130013AEE7 /* TapChipHorizontalList.swift */,
-				E8CD42852495F91B0013AEE7 /* TapChipHorizontalList.xib */,
+				E80EA5912497508800C5C5E1 /* ViewModel */,
+				E80EA5902497507D00C5C5E1 /* Views */,
 			);
 			path = HorizontalList;
 			sourceTree = "<group>";
@@ -866,6 +885,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */,
+				E80EA5932497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift in Sources */,
 				E80E8AA52487C053009AF18F /* Constants.swift in Sources */,
 				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
 				E835ADC02459808700E55A68 /* TapGoPayCellViewModel.swift in Sources */,

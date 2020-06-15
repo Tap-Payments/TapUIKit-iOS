@@ -12,7 +12,7 @@ import MapleBacon
 
 public class GatewayImageCollectionViewCell: GenericTapChip {
     
-    @IBOutlet weak var mainView: UIView!
+    //@IBOutlet weak var mainView: UIView!
     @IBOutlet weak var gatewayIconImageView: UIImageView!
     
     public var viewModel:GatewayChipViewModel = .init() {
@@ -25,8 +25,10 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         return viewModel.identefier()
     }
     
-    override func updateTheme(for state: Bool) {
-        applyTheme()
+    override func configureCell(with viewModel: GenericTapChipViewModel) {
+        // Defensive coding it is the correct view model type
+        guard let correctTypeModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel else { return }
+        self.viewModel = correctTypeModel
     }
     
     public override func tapChipType() -> TapChipType {
@@ -93,8 +95,11 @@ extension GatewayImageCollectionViewCell {
         
         layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).shadow.color")
         layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetHeight")?.floatValue ?? 0))
-        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).shadow.opacity")?.floatValue ?? 0)
+        layer.shadowOpacity = 0.2//Float(TapThemeManager.numberValue(for: "\(themePath).shadow.opacity")?.floatValue ?? 0)
         layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.radius")?.floatValue ?? 0)
+        
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
         
     }
     
