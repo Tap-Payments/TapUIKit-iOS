@@ -14,9 +14,6 @@ public class GenericTapChip:UICollectionViewCell {
     
     let disposeBag:DisposeBag = .init()
     
-    func identefier() -> String {
-        return ""
-    }
     func updateTheme(for state:Bool) {
         return
     }

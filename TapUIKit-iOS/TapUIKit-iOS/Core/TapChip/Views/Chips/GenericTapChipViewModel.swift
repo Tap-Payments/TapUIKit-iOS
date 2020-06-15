@@ -19,5 +19,8 @@ public class GenericTapChipViewModel {
         self.icon = icon
     }
     
+    func identefier() -> String {
+        return ""
+    }
     
 }

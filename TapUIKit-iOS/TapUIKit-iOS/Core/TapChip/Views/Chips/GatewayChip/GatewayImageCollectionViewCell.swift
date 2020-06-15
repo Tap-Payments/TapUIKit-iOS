@@ -21,8 +21,8 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         }
     }
     
-    public override func identefier() -> String {
-        "GatewayImageCollectionViewCell"
+    public func identefier() -> String {
+        return viewModel.identefier()
     }
     
     override func updateTheme(for state: Bool) {

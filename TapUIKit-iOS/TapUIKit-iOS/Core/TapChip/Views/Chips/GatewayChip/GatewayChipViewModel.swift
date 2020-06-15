@@ -10,4 +10,12 @@ import Foundation
 
 
 
-public class GatewayChipViewModel: GenericTapChipViewModel {}
+public class GatewayChipViewModel: GenericTapChipViewModel {
+    
+    
+    
+    public override func identefier() -> String {
+        return "GatewayImageCollectionViewCell"
+    }
+    
+}

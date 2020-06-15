@@ -16,6 +16,7 @@
 		E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */; };
 		E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */; };
 		E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */; };
+		E80EA58F24974B4900C5C5E1 /* ChipsTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADBA24597B0500E55A68 /* TapCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADB924597B0500E55A68 /* TapCellViewModel.swift */; };
 		E835ADBC24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */; };
@@ -126,6 +127,7 @@
 		E80E8AA92487CF8D009AF18F /* TapPresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPresentableViewController.swift; sourceTree = "<group>"; };
 		E80E8AAB2487D1BD009AF18F /* ToPresentAsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToPresentAsPopupViewController.swift; sourceTree = "<group>"; };
 		E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapPullUpWrapperViewController.xib; sourceTree = "<group>"; };
+		E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsTestingViewController.swift; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADB924597B0500E55A68 /* TapCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCellViewModel.swift; sourceTree = "<group>"; };
 		E835ADBB24597B6300E55A68 /* TapCardRecentCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardRecentCardCellViewModel.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				E8428DFC2456DB3200D5A45A /* Assets.xcassets */,
 				E8428DFE2456DB3200D5A45A /* LaunchScreen.storyboard */,
 				E8428E012456DB3200D5A45A /* Info.plist */,
+				E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */,
 			);
 			path = "TapUIKit-Example";
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				E8C590932490A27000E03424 /* ExampleWallOfGloryViewController.swift in Sources */,
 				E879885F245EA92000D643A2 /* TapRecentCardsViewExampleViewController.swift in Sources */,
 				E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */,
+				E80EA58F24974B4900C5C5E1 /* ChipsTestingViewController.swift in Sources */,
 				E8C5910424936C6E00E03424 /* TapAmountSectionViewController.swift in Sources */,
 				E8AE0DEA245AEC79007AAE1F /* TapRecentCardsExampleViewController.swift in Sources */,
 				E87CEA48248FBFBC002F2332 /* TapMerchantHeaderViewController.swift in Sources */,
