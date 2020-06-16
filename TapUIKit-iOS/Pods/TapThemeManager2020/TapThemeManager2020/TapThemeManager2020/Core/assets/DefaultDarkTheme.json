@@ -224,9 +224,16 @@
                 }
             },
             "goPayChip": {
-                "backgroundColor" : "vibrantGreen",
-                "labelTextFont": "Roboto-Regular,12",
-                "labelTextColor": "white"
+                "logIn": {
+                    "backgroundColor" : "vibrantGreen",
+                    "labelTextFont": "Roboto-Regular,12",
+                    "labelTextColor": "white"
+                },
+                "loggedIn": {
+                    "backgroundColor" : "deepSkyBlue",
+                    "labelTextFont": "Roboto-Regular,12",
+                    "labelTextColor": "white"
+                }
             },
             "applePayChip": {
                 "backgroundColor" : "black"
