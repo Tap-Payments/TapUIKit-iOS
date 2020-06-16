@@ -251,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				E8CD4288249610240013AEE7 /* GatewayImageCollectionViewCell.swift */,
-				E8CD4289249610240013AEE7 /* GatewayImageCollectionViewCell.xib */,
 				E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */,
 			);
 			path = GatewayChip;
@@ -279,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				E8CD42832495F9130013AEE7 /* TapChipHorizontalList.swift */,
-				E8CD42852495F91B0013AEE7 /* TapChipHorizontalList.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -441,6 +439,14 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */,
+				E8CD4289249610240013AEE7 /* GatewayImageCollectionViewCell.xib */,
+				E8CD42852495F91B0013AEE7 /* TapChipHorizontalList.xib */,
+				E8C59100249293EA00E03424 /* TapAmountSectionView.xib */,
+				E8E92B4D248FA4E900DD7DBB /* TapMerchantHeaderView.xib */,
+				E8E92B43248F7ACA00DD7DBB /* TapDragHandlerView.xib */,
+				E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */,
+				E8F779B0248CD7D300215403 /* TapVerticalView.xib */,
 				E8670CC22498B000003F87D8 /* tap.png */,
 				E8670CC32498B000003F87D8 /* tap@2x.png */,
 				E8670CC42498B000003F87D8 /* tap@3x.png */,
@@ -469,7 +475,6 @@
 			isa = PBXGroup;
 			children = (
 				E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */,
-				E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */,
 				E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */,
 			);
 			path = GoPayyChip;
@@ -528,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				E8C590FE249293E200E03424 /* TapAmountSectionView.swift */,
-				E8C59100249293EA00E03424 /* TapAmountSectionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -590,7 +594,6 @@
 			isa = PBXGroup;
 			children = (
 				E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */,
-				E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */,
 			);
 			path = TapSeparatorView;
 			sourceTree = "<group>";
@@ -607,7 +610,6 @@
 			isa = PBXGroup;
 			children = (
 				E8E92B41248F7AC200DD7DBB /* TapDragHandlerView.swift */,
-				E8E92B43248F7ACA00DD7DBB /* TapDragHandlerView.xib */,
 			);
 			path = TapDragHandlerView;
 			sourceTree = "<group>";
@@ -633,7 +635,6 @@
 			isa = PBXGroup;
 			children = (
 				E8E92B4B248FA4DF00DD7DBB /* TapMerchantHeaderView.swift */,
-				E8E92B4D248FA4E900DD7DBB /* TapMerchantHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -710,7 +711,6 @@
 			isa = PBXGroup;
 			children = (
 				E8F779AE248CD7C600215403 /* TapVerticalView.swift */,
-				E8F779B0248CD7D300215403 /* TapVerticalView.xib */,
 			);
 			path = TapVerticalViewController;
 			sourceTree = "<group>";
