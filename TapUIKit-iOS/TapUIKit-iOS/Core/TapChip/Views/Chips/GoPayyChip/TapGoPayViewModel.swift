@@ -15,7 +15,6 @@ internal protocol TapGoPayViewModelDelegate {
 
 public class TapGoPayViewModel: GenericTapChipViewModel {
     
-    
     internal var cellDelegate:TapGoPayViewModelDelegate?
     
     public var tapGoPayStatus:TapGoPayStatus = .logIn {
@@ -24,8 +23,13 @@ public class TapGoPayViewModel: GenericTapChipViewModel {
         }
     }
     
+    public init(title: String? = nil, icon: String? = nil,tapGoPayStatus:TapGoPayStatus = .logIn) {
+        super.init(title: title, icon: icon)
+        self.tapGoPayStatus = tapGoPayStatus
+    }
+    
     public override func identefier() -> String {
-        return "GoPayCollectionViewCell"
+        return "TapGoPayChipCollectionViewCell"
     }
     
     

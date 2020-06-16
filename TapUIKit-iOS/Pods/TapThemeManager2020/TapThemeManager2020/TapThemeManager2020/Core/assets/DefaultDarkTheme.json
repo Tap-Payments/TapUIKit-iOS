@@ -12,7 +12,8 @@
             "deepSkyBlue": "#007aff",
             "white30":"#ffffff4D",
             "lightPeriwinkle": "d9d9da",
-            "white80":"#ffffffcc"
+            "white80":"#ffffffcc",
+            "vibrantGreen" : "#2ace00"
         }
     },
     "inlineCard": {
@@ -220,10 +221,17 @@
                     "radius" : 2,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
-                    "opacity": 1
+                    "opacity": 0.2
                 }
             },
             "goPayChip": {
+                "shadow": {
+                    "color" : "lightPeriwinkle",
+                    "radius" : 2,
+                    "offsetWidth": 0,
+                    "offsetHeight": 0,
+                    "opacity": 0.2
+                },
                 "logIn": {
                     "backgroundColor" : "vibrantGreen",
                     "labelTextFont": "Roboto-Regular,12",

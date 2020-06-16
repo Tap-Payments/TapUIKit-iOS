@@ -32,6 +32,9 @@ class ChipsTestingViewController: UIViewController {
         allChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
         allChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
         
+        
+        allChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked", tapGoPayStatus: .logIn))
+        
         filteredChipsViewModel.append(contentsOf: allChipsViewModel)
         
         viewModel = .init(dataSource: allChipsViewModel)

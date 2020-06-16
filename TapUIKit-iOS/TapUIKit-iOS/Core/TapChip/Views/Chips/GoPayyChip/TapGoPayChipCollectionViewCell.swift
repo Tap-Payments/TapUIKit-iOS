@@ -16,6 +16,7 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        reload()
     }
     
     
@@ -89,11 +90,21 @@ extension TapGoPayChipCollectionViewCell {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath).\(viewModel.tapGoPayStatus.themePath()).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
+        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).shadow.color")
+        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetHeight")?.floatValue ?? 0))
+        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).shadow.opacity")?.floatValue ?? 0)
+        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.radius")?.floatValue ?? 0)
+        
+        guard let _ = goPayLabel else { return }
         
         goPayLabel.tap_theme_font = .init(stringLiteral: "\(themePath).\(viewModel.tapGoPayStatus.themePath()).labelTextFont",shouldLocalise:false)
         goPayLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).\(viewModel.tapGoPayStatus.themePath()).labelTextColor")
+        
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
+        
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
