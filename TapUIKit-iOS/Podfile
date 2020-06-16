@@ -23,7 +23,6 @@ target 'TapUIKit-iOS' do
   pod 'LocalisationManagerKit-iOS'
   pod 'CommonDataModelsKit-iOS'
   pod 'PullUpController'
-  pod 'GestureRecognizerClosures'
   pod "SimpleAnimation"
   pod "MapleBacon"
   pod 'RxSwift'
