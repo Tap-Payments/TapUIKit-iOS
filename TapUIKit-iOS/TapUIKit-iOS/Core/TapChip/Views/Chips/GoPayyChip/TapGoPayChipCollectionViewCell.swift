@@ -14,12 +14,7 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
 
     @IBOutlet weak var goPayLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        reload()
-    }
-    
+    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
     public var viewModel:TapGoPayViewModel = .init() {
         didSet{
@@ -40,8 +35,8 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
     
     public override func selectStatusChaned(with status:Bool) {
         
-        // No theming required for ayment gatewy chip cell
-        return
+        // update the shadow for GoPayCell
+        applyTheme()
     }
     
     public override func tapChipType() -> TapChipType {
@@ -57,16 +52,11 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
     }
     
     // Mark:- Init methods
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         commonInit()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
@@ -75,7 +65,7 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
     
     
     public func reload() {
-        commonInit()
+       // commonInit()
     }
 
 }
@@ -91,27 +81,37 @@ extension TapGoPayChipCollectionViewCell {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).\(viewModel.tapGoPayStatus.themePath()).backgroundColor")
+        let shadowPath:String = isSelected ? "selected" : "unSelected"
+        
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
-        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).shadow.color")
-        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetHeight")?.floatValue ?? 0))
-        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).shadow.opacity")?.floatValue ?? 0)
-        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.radius")?.floatValue ?? 0)
+        //layer.shadowColor = try! UIColor(tap_hex: "#FF0000").cgColor
+        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).\(shadowPath).shadow.color")
+        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetHeight")?.floatValue ?? 0))
+        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.opacity")?.floatValue ?? 0)
+        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
         
         guard let _ = goPayLabel else { return }
         
-        goPayLabel.tap_theme_font = .init(stringLiteral: "\(themePath).\(viewModel.tapGoPayStatus.themePath()).labelTextFont",shouldLocalise:false)
-        goPayLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).\(viewModel.tapGoPayStatus.themePath()).labelTextColor")
+        goPayLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
+        goPayLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
         
-        self.clipsToBounds = false
-        self.layer.masksToBounds = false
+        
         
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        
+        guard lastUserInterfaceStyle != self.traitCollection.userInterfaceStyle else {
+            return
+        }
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         applyTheme()
     }
 }
@@ -119,11 +119,6 @@ extension TapGoPayChipCollectionViewCell {
 
 
 extension TapGoPayChipCollectionViewCell:TapGoPayViewModelDelegate {
-    
-    func changeGoPayStatus(with status: TapGoPayStatus) {
-        fadeIn()
-        reload()
-    }
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)

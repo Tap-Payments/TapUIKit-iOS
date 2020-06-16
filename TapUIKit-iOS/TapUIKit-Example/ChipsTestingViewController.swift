@@ -34,7 +34,7 @@ class ChipsTestingViewController: UIViewController {
         allChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
         
         
-        allChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked", tapGoPayStatus: .logIn))
+        allChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked"))
         
         
         viewModel = .init(dataSource: filteredChipsViewModel)
@@ -85,17 +85,6 @@ class ChipsTestingViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func goPayStatusChanged(_ sender: Any) {
-        guard let segment:UISegmentedControl = sender as? UISegmentedControl else { return }
-        
-        
-        filteredChipsViewModel.forEach { (viewModel) in
-            if let viewModel:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
-                viewModel.tapGoPayStatus = segment.selectedSegmentIndex == 0 ? .logIn : .loggedIn
-            }
-        }
-    }
-    
 
     /*
     // MARK: - Navigation
@@ -114,8 +103,8 @@ extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
         
         if let viewModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel {
             showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
-        }else if let viewModel:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
-            showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay. Which has the current status of \(viewModel.tapGoPayStatus)")
+        }else if let _:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
+            showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
         }
     }
 }

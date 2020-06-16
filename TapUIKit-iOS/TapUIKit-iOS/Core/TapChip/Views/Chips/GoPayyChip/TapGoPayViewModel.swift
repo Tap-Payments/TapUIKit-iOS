@@ -10,23 +10,11 @@ import Foundation
 
 internal protocol TapGoPayViewModelDelegate {
     func changeSelection(with status:Bool)
-    func changeGoPayStatus(with status:TapGoPayStatus)
 }
 
 public class TapGoPayViewModel: GenericTapChipViewModel {
     
     internal var cellDelegate:TapGoPayViewModelDelegate?
-    
-    public var tapGoPayStatus:TapGoPayStatus = .logIn {
-        didSet{
-            cellDelegate?.changeGoPayStatus(with: tapGoPayStatus)
-        }
-    }
-    
-    public init(title: String? = nil, icon: String? = nil,tapGoPayStatus:TapGoPayStatus = .logIn) {
-        super.init(title: title, icon: icon)
-        self.tapGoPayStatus = tapGoPayStatus
-    }
     
     public override func identefier() -> String {
         return "TapGoPayChipCollectionViewCell"
@@ -39,20 +27,5 @@ public class TapGoPayViewModel: GenericTapChipViewModel {
     
     public override func didDeselectItem() {
         cellDelegate?.changeSelection(with: false)
-    }
-}
-
-
-public enum TapGoPayStatus {
-    case logIn
-    case loggedIn
-    
-    func themePath() -> String {
-        switch self {
-        case .logIn:
-            return "logIn"
-        case .loggedIn:
-            return "loggedIn"
-        }
     }
 }

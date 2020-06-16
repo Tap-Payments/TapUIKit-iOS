@@ -14,6 +14,7 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
     
     //@IBOutlet weak var mainView: UIView!
     @IBOutlet weak var gatewayIconImageView: UIImageView!
+    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
     public var viewModel:GatewayChipViewModel = .init() {
         didSet{
@@ -50,14 +51,9 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         }
     }
     
-    // Mark:- Init methods
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         commonInit()
     }
     
@@ -69,7 +65,7 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
     
     
     public func reload() {
-        commonInit()
+        
         guard let iconURLString:String = viewModel.icon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
             return
         }
@@ -115,6 +111,11 @@ extension GatewayImageCollectionViewCell {
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        
+        guard lastUserInterfaceStyle != self.traitCollection.userInterfaceStyle else {
+            return
+        }
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         applyTheme()
     }
 }

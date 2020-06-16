@@ -11,9 +11,10 @@
             "whiteTwo": "#f4f4f4",
             "deepSkyBlue": "#007aff",
             "white30":"#ffffff4D",
-            "lightPeriwinkle": "d9d9da",
+            "lightPeriwinkle": "#d9d9da",
             "white80":"#ffffffcc",
-            "vibrantGreen" : "#2ace00"
+            "vibrantGreen" : "#2ace00",
+            "vibrantGreenTwo" : "#00d300"
         }
     },
     "inlineCard": {
@@ -218,29 +219,33 @@
                 "backgroundColor" : "white",
                 "shadow": {
                     "color" : "lightPeriwinkle",
-                    "radius" : 2,
+                    "radius" : 5,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
-                    "opacity": 0.2
+                    "opacity": 1
                 }
             },
             "goPayChip": {
-                "shadow": {
-                    "color" : "lightPeriwinkle",
-                    "radius" : 2,
-                    "offsetWidth": 0,
-                    "offsetHeight": 0,
-                    "opacity": 0.2
+                "backgroundColor" : "vibrantGreen",
+                "labelTextFont": "Roboto-Regular,12",
+                "labelTextColor": "white",
+                "selected": {
+                    "shadow": {
+                        "color" : "vibrantGreenTwo",
+                        "radius" : 5,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
                 },
-                "logIn": {
-                    "backgroundColor" : "vibrantGreen",
-                    "labelTextFont": "Roboto-Regular,12",
-                    "labelTextColor": "white"
-                },
-                "loggedIn": {
-                    "backgroundColor" : "deepSkyBlue",
-                    "labelTextFont": "Roboto-Regular,12",
-                    "labelTextColor": "white"
+                "unSelected": {
+                    "shadow": {
+                        "color" : "lightPeriwinkle",
+                        "radius" : 20,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
                 }
             },
             "applePayChip": {
