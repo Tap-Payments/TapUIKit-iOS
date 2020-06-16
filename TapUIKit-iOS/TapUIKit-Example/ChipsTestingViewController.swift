@@ -85,6 +85,16 @@ class ChipsTestingViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func goPayStatusChanged(_ sender: Any) {
+        guard let segment:UISegmentedControl = sender as? UISegmentedControl else { return }
+        
+        
+        filteredChipsViewModel.forEach { (viewModel) in
+            if let viewModel:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
+                viewModel.tapGoPayStatus = segment.selectedSegmentIndex == 0 ? .logIn : .loggedIn
+            }
+        }
+    }
     
 
     /*

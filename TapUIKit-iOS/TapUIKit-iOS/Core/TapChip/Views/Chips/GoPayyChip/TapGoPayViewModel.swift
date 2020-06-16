@@ -19,7 +19,7 @@ public class TapGoPayViewModel: GenericTapChipViewModel {
     
     public var tapGoPayStatus:TapGoPayStatus = .logIn {
         didSet{
-            
+            cellDelegate?.changeGoPayStatus(with: tapGoPayStatus)
         }
     }
     

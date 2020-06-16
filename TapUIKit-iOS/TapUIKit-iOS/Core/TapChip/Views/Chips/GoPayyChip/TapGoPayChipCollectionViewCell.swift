@@ -8,6 +8,7 @@
 
 import UIKit
 import TapThemeManager2020
+import SimpleAnimation
 
 class TapGoPayChipCollectionViewCell: GenericTapChip {
 
@@ -120,6 +121,7 @@ extension TapGoPayChipCollectionViewCell {
 extension TapGoPayChipCollectionViewCell:TapGoPayViewModelDelegate {
     
     func changeGoPayStatus(with status: TapGoPayStatus) {
+        fadeIn()
         reload()
     }
     
