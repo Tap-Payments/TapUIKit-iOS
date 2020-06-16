@@ -8,133 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tap Chip Example View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="TapChipExampleViewController" id="BYZ-38-t0r" customClass="TapChipExampleViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-6h-05P">
-                                <rect key="frame" x="20" y="88" width="50" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="40" id="Vet-Of-B66"/>
-                                    <constraint firstAttribute="width" constant="50" id="t2g-h1-D9R"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left accessory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-Pr-2vH">
-                                <rect key="frame" x="20" y="136" width="112.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yax-gd-dH9">
-                                <rect key="frame" x="345" y="131" width="51" height="31"/>
-                                <connections>
-                                    <action selector="leftAccessoryChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="MXJ-2d-LRe"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right accessory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7d-cw-WS5">
-                                <rect key="frame" x="20" y="175" width="122.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-Q5-L5j">
-                                <rect key="frame" x="345" y="170" width="51" height="31"/>
-                                <connections>
-                                    <action selector="rightAccessoryChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7f9-Mn-QN3"/>
-                                </connections>
-                            </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAq-rp-Vke">
-                                <rect key="frame" x="20" y="214" width="86" height="30"/>
-                                <state key="normal" title="Change Text"/>
-                                <connections>
-                                    <action selector="changeTextClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pk6-5s-Vg0"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f0h-Q5-L5j" secondAttribute="trailing" constant="20" id="0ZB-hB-rk3"/>
-                            <constraint firstItem="f0h-Q5-L5j" firstAttribute="centerY" secondItem="R7d-cw-WS5" secondAttribute="centerY" id="2Hp-Ng-ZWk"/>
-                            <constraint firstItem="f0h-Q5-L5j" firstAttribute="centerY" secondItem="R7d-cw-WS5" secondAttribute="centerY" id="5c4-oO-PyR"/>
-                            <constraint firstItem="JhO-6h-05P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LQl-P8-pYS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yax-gd-dH9" secondAttribute="trailing" constant="20" id="YsI-EP-Baf"/>
-                            <constraint firstItem="Pdi-Pr-2vH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hji-be-VCp"/>
-                            <constraint firstItem="Pdi-Pr-2vH" firstAttribute="top" secondItem="JhO-6h-05P" secondAttribute="bottom" constant="8" id="jBA-2P-eXx"/>
-                            <constraint firstItem="lAq-rp-Vke" firstAttribute="top" secondItem="R7d-cw-WS5" secondAttribute="bottom" constant="18" id="nPK-u1-Kof"/>
-                            <constraint firstItem="lAq-rp-Vke" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nYa-Ft-1vY"/>
-                            <constraint firstItem="R7d-cw-WS5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oeg-ve-dPu"/>
-                            <constraint firstItem="yax-gd-dH9" firstAttribute="centerY" secondItem="Pdi-Pr-2vH" secondAttribute="centerY" id="sow-cW-PJj"/>
-                            <constraint firstItem="R7d-cw-WS5" firstAttribute="top" secondItem="Pdi-Pr-2vH" secondAttribute="bottom" constant="18" id="yLP-gS-h6v"/>
-                            <constraint firstItem="JhO-6h-05P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="zZb-ZI-AiN"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <connections>
-                        <outlet property="tapChipHolder" destination="JhO-6h-05P" id="3cu-am-kUi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2444.9275362318845" y="16.741071428571427"/>
-        </scene>
-        <!--Tap Recent Cards Example View Controller-->
-        <scene sceneID="Ngf-Vn-7R7">
-            <objects>
-                <viewController storyboardIdentifier="TapRecentCardsExampleViewController" id="sfU-JF-0G4" customClass="TapRecentCardsExampleViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fLJ-Nz-62K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-RF-xUi" customClass="TapRecentCollectionView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="70"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="sV8-bt-MiF"/>
-                                </constraints>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m8O-uw-xAH">
-                                <rect key="frame" x="20" y="195" width="374" height="647"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delegates callbacks from the view above ☝ will be noted down 👇" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLB-Fy-Rnd">
-                                <rect key="frame" x="20" y="134" width="374" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="m8O-uw-xAH" secondAttribute="trailing" constant="20" id="3yX-Kh-EPy"/>
-                            <constraint firstItem="m8O-uw-xAH" firstAttribute="top" secondItem="fLB-Fy-Rnd" secondAttribute="bottom" constant="20" id="LMg-Zu-rgC"/>
-                            <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="ghg-RF-xUi" secondAttribute="trailing" id="Wrg-Id-mFJ"/>
-                            <constraint firstItem="fLB-Fy-Rnd" firstAttribute="top" secondItem="ghg-RF-xUi" secondAttribute="bottom" constant="20" id="cXF-5s-0zv"/>
-                            <constraint firstItem="ghg-RF-xUi" firstAttribute="top" secondItem="WNc-rx-v9k" secondAttribute="top" id="hUk-C8-Lbo"/>
-                            <constraint firstItem="ghg-RF-xUi" firstAttribute="leading" secondItem="WNc-rx-v9k" secondAttribute="leading" id="iDM-5g-GEB"/>
-                            <constraint firstItem="WNc-rx-v9k" firstAttribute="bottom" secondItem="m8O-uw-xAH" secondAttribute="bottom" constant="20" id="k5b-hR-1qn"/>
-                            <constraint firstItem="WNc-rx-v9k" firstAttribute="trailing" secondItem="fLB-Fy-Rnd" secondAttribute="trailing" constant="20" id="q0H-Lj-tNR"/>
-                            <constraint firstItem="fLB-Fy-Rnd" firstAttribute="leading" secondItem="WNc-rx-v9k" secondAttribute="leading" constant="20" id="tkB-RP-e9n"/>
-                            <constraint firstItem="m8O-uw-xAH" firstAttribute="leading" secondItem="fLJ-Nz-62K" secondAttribute="leading" constant="20" id="xJk-cT-Cli"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="WNc-rx-v9k"/>
-                    </view>
-                    <connections>
-                        <outlet property="callBackTextView" destination="m8O-uw-xAH" id="E3N-OS-iad"/>
-                        <outlet property="tapRecentCardsView" destination="ghg-RF-xUi" id="7Ay-np-Ig4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xd3-rl-toj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2444.9275362318845" y="713.83928571428567"/>
-        </scene>
         <!--TapUIKit-->
         <scene sceneID="5A8-Cy-aD2">
             <objects>
@@ -211,59 +84,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C15-EL-FKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666.66666666666674" y="16.741071428571427"/>
-        </scene>
-        <!--Tap Recent Cards View Example View Controller-->
-        <scene sceneID="Ilm-pg-jA2">
-            <objects>
-                <viewController storyboardIdentifier="TapRecentCardsViewExampleViewController" id="fDm-Oi-vWh" customClass="TapRecentCardsViewExampleViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wjI-aS-N8r">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-zC-iGr" customClass="TapRecentCardsView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="106"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="106" id="l5R-Yn-rs6"/>
-                                </constraints>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EUx-jK-Z2J">
-                                <rect key="frame" x="20" y="231" width="374" height="645"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delegates callbacks from the view above ☝ will be noted down 👇" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfF-n1-qnh">
-                                <rect key="frame" x="20" y="170" width="374" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Jpx-zC-iGr" firstAttribute="top" secondItem="sIe-86-UOH" secondAttribute="top" id="3lO-pM-pw9"/>
-                            <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="bfF-n1-qnh" secondAttribute="trailing" constant="20" id="7nc-pT-xqZ"/>
-                            <constraint firstItem="EUx-jK-Z2J" firstAttribute="top" secondItem="bfF-n1-qnh" secondAttribute="bottom" constant="20" id="IAT-rV-uaN"/>
-                            <constraint firstItem="bfF-n1-qnh" firstAttribute="top" secondItem="Jpx-zC-iGr" secondAttribute="bottom" constant="20" id="TlN-Uc-loM"/>
-                            <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="EUx-jK-Z2J" secondAttribute="trailing" constant="20" id="TrX-V7-j9o"/>
-                            <constraint firstItem="sIe-86-UOH" firstAttribute="trailing" secondItem="Jpx-zC-iGr" secondAttribute="trailing" id="hPp-Ds-DEf"/>
-                            <constraint firstItem="bfF-n1-qnh" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" constant="20" id="huM-ju-dVJ"/>
-                            <constraint firstItem="Jpx-zC-iGr" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" id="u6v-YR-Nzi"/>
-                            <constraint firstAttribute="bottom" secondItem="EUx-jK-Z2J" secondAttribute="bottom" constant="20" id="v4b-gV-J46"/>
-                            <constraint firstItem="EUx-jK-Z2J" firstAttribute="leading" secondItem="sIe-86-UOH" secondAttribute="leading" constant="20" id="y8v-rb-uOW"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="sIe-86-UOH"/>
-                    </view>
-                    <connections>
-                        <outlet property="callBackTextView" destination="EUx-jK-Z2J" id="Maq-yu-WMs"/>
-                        <outlet property="tapRecentCardsView" destination="Jpx-zC-iGr" id="7Iu-S2-yPl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pXI-E3-h51" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2445" y="1450"/>
         </scene>
         <!--Tap Bottom Sheet Example View Controller-->
         <scene sceneID="yev-RG-8LS">
@@ -414,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJG-FZ-kks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437.68115942029" y="2181.6964285714284"/>
+            <point key="canvasLocation" x="2567" y="17"/>
         </scene>
         <!--To Present As Popup View Controller-->
         <scene sceneID="2Rf-f6-uLL">
@@ -477,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BCT-PD-BHs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3490" y="2182"/>
+            <point key="canvasLocation" x="3619" y="17"/>
         </scene>
         <!--Tap Separator View Controller-->
         <scene sceneID="yXx-JC-hmB">
@@ -533,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLX-Qw-Emq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="2890"/>
+            <point key="canvasLocation" x="2567" y="725"/>
         </scene>
         <!--Tap Drag Handler View Controller-->
         <scene sceneID="1HW-A6-xca">
@@ -590,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoW-4d-Xyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437.68115942029" y="3630.8035714285711"/>
+            <point key="canvasLocation" x="2567" y="1466"/>
         </scene>
         <!--Tap Merchant Header View Controller-->
         <scene sceneID="9Tu-Zg-Gyb">
@@ -658,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTM-2p-yUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2438" y="4364"/>
+            <point key="canvasLocation" x="2567" y="2198"/>
         </scene>
         <!--Example Wall Of Glory View Controller-->
         <scene sceneID="DDu-ts-Dm4">
@@ -688,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jei-to-QDS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3489.8550724637685" y="2889.5089285714284"/>
+            <point key="canvasLocation" x="3619" y="725"/>
         </scene>
         <!--Tap Amount Section View Controller-->
         <scene sceneID="RDb-ao-xMg">
@@ -823,7 +643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYa-a0-2dh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437.68115942029" y="5055.8035714285716"/>
+            <point key="canvasLocation" x="2567" y="2891"/>
         </scene>
         <!--Chips Testing View Controller-->
         <scene sceneID="RUz-dk-vgI">
@@ -936,7 +756,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3e-9u-3BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666.66666666666674" y="768.75"/>
+            <point key="canvasLocation" x="2567" y="3640"/>
         </scene>
     </scenes>
     <resources>

@@ -14,7 +14,8 @@ import class UIKit.UIView
 import struct UIKit.CGFloat
 import struct UIKit.CACornerMask
 import class UIKit.UIApplication
-
+import class UIKit.UICollectionViewFlowLayout
+import  LocalisationManagerKit_iOS
 // MARK:- UIImageView extensions
 
 internal typealias SimpleClosure = (() -> ())
@@ -154,5 +155,19 @@ extension String {
             return UIApplication.shared.canOpenURL(url as URL)
         }
         return false
+    }
+}
+
+/// A subclass for the uicollecrionviewflow layout to control RTL or LTR scrolling
+internal class flippableCollectionLayout:UICollectionViewFlowLayout{
+    /**
+     Override the given attribute to decide what is the scrolling direction based on the currently selected language direction
+     */
+    override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+        let localisationManager = TapLocalisationManager.shared
+        
+        guard let locale:String = localisationManager.localisationLocale, locale == "ar" else { return false }
+        
+        return true
     }
 }

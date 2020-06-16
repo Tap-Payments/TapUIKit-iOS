@@ -19,9 +19,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        dataSource.append(["title":"Tap Chip","subtitle":"Shows a custom view for a dynamic chip view","navigationID":"TapChipExampleViewController","lang":"0","push":"1"])
-        dataSource.append(["title":"Tap Recent Cards","subtitle":"Shows a custom view for recent cards collection view","navigationID":"TapRecentCardsExampleViewController","lang":"1","push":"1"])
-        dataSource.append(["title":"Full Tap Recent Cards","subtitle":"Shows a the full view with action buttons and scrolling cards","navigationID":"TapRecentCardsViewExampleViewController","lang":"1","push":"1"])
         dataSource.append(["title":"Tap Bottom Sheet Dialog","subtitle":"Displays the Tap bottom popup modal contoller","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         dataSource.append(["title":"Tap Separator View","subtitle":"Displays the separator view used in the UX","navigationID":"TapSeparatorViewController","lang":"0","push":"0"])
         dataSource.append(["title":"Tap Drag Handler View","subtitle":"Displays the drag handler view used in the UX","navigationID":"TapDragHandlerViewController","lang":"0","push":"0"])
