@@ -19,6 +19,7 @@ class ChipsTestingViewController: UIViewController {
     @IBOutlet weak var knetSwitch:UISwitch!
     @IBOutlet weak var benefitSwitch:UISwitch!
     @IBOutlet weak var sadadSwitch:UISwitch!
+    @IBOutlet weak var goPaySwitch:UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +36,14 @@ class ChipsTestingViewController: UIViewController {
         
         allChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked", tapGoPayStatus: .logIn))
         
-        filteredChipsViewModel.append(contentsOf: allChipsViewModel)
         
-        viewModel = .init(dataSource: allChipsViewModel)
+        viewModel = .init(dataSource: filteredChipsViewModel)
         
         horizontalList.changeViewMode(with: viewModel)
         
         viewModel.delegate = self
+        
+        filter()
         
         // Do any additional setup after loading the view.
     }
@@ -67,6 +69,10 @@ class ChipsTestingViewController: UIViewController {
         if sadadSwitch.isOn {
             filteredChipsViewModel.append(allChipsViewModel[4])
             filteredChipsViewModel.append(allChipsViewModel[5])
+        }
+        
+        if goPaySwitch.isOn {
+            filteredChipsViewModel.append(allChipsViewModel[6])
         }
         
         viewModel.dataSource = filteredChipsViewModel
@@ -98,6 +104,8 @@ extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
         
         if let viewModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel {
             showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
+        }else if let viewModel:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
+            showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay. Which has the current status of \(viewModel.tapGoPayStatus)")
         }
     }
 }

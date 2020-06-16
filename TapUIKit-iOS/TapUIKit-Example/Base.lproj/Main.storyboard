@@ -876,6 +876,18 @@
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="vPr-eG-HP2"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoPay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qne-jh-gcl">
+                                <rect key="frame" x="8" y="262" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKl-Hh-mnr">
+                                <rect key="frame" x="357" y="257" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="Wyr-Hm-Q9g"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -889,16 +901,21 @@
                             <constraint firstItem="qXS-g1-IQQ" firstAttribute="top" secondItem="KRY-3L-cFj" secondAttribute="bottom" constant="8" id="POc-kI-XZ0"/>
                             <constraint firstItem="qXS-g1-IQQ" firstAttribute="centerY" secondItem="Wzo-r0-WJa" secondAttribute="centerY" id="QUk-6E-xkk"/>
                             <constraint firstItem="8zc-r0-LnW" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" id="T2H-rT-0Wl"/>
+                            <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="PKl-Hh-mnr" secondAttribute="trailing" constant="8" id="TOp-2n-Aha"/>
+                            <constraint firstItem="qne-jh-gcl" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="cLC-M0-1ka"/>
                             <constraint firstItem="Wzo-r0-WJa" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="ecY-yA-ZCc"/>
+                            <constraint firstItem="PKl-Hh-mnr" firstAttribute="top" secondItem="qXS-g1-IQQ" secondAttribute="bottom" constant="8" id="fAx-bC-8bp"/>
                             <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="8zc-r0-LnW" secondAttribute="trailing" id="mLs-CE-ZVA"/>
                             <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="Byp-y1-6Km" secondAttribute="trailing" constant="8" id="ntM-Hf-7LC"/>
                             <constraint firstItem="KRY-3L-cFj" firstAttribute="top" secondItem="Byp-y1-6Km" secondAttribute="bottom" constant="8" id="qWU-TB-fP8"/>
+                            <constraint firstItem="PKl-Hh-mnr" firstAttribute="centerY" secondItem="qne-jh-gcl" secondAttribute="centerY" id="qoW-bu-aoe"/>
                             <constraint firstItem="zl1-1Z-O0F" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="wtU-bO-K3k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VO1-7G-DzB"/>
                     </view>
                     <connections>
                         <outlet property="benefitSwitch" destination="KRY-3L-cFj" id="83a-YD-FUv"/>
+                        <outlet property="goPaySwitch" destination="PKl-Hh-mnr" id="jTv-NS-ook"/>
                         <outlet property="horizontalList" destination="8zc-r0-LnW" id="YQ1-SX-iJR"/>
                         <outlet property="knetSwitch" destination="Byp-y1-6Km" id="z0C-L1-YjB"/>
                         <outlet property="sadadSwitch" destination="qXS-g1-IQQ" id="hWV-cI-avs"/>

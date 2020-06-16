@@ -19,7 +19,7 @@ public class TapChipHorizontalList: UIView {
     var viewModel:TapChipHorizontalListViewModel = .init() {
         didSet{
             viewModel.dataSourceObserver.subscribe(onNext: { [weak self] (_) in
-                self?.collectionView.reloadData()
+                self?.collectionView.reloadSections([0])
             }).disposed(by: disposeBag)
         }
     }
