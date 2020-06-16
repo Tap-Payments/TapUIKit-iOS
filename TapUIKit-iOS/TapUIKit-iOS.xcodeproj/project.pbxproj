@@ -37,9 +37,9 @@
 		E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */; };
 		E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */ = {isa = PBXBuildFile; fileRef = E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */; };
 		E8428E1C2458209400D5A45A /* TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; };
-		E8428E1D2458209400D5A45A /* TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E8428E1D2458209400D5A45A /* TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
-		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8428E2524583B0900D5A45A /* TapChipExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428E2424583B0900D5A45A /* TapChipExampleViewController.swift */; };
 		E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */; };
 		E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */; };
@@ -777,7 +777,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Tap Payments";
 				TargetAttributes = {
 					E8428DE12456DAF300D5A45A = {
