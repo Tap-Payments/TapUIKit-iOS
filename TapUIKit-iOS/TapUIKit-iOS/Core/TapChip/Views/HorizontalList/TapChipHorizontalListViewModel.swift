@@ -38,7 +38,7 @@ public class TapChipHorizontalListViewModel {
         let chipCellsNames:[String] = TapChipType.allCases.map{ $0.nibName() }
         chipCellsNames.forEach { chipName in
             let bundle = Bundle(for: TapChipHorizontalListViewModel.self)
-            collectionView.register(UINib(nibName: chipName, bundle: bundle), forCellWithReuseIdentifier: chipName)
+            collectionView.register(UINib(nibName: chipName, bundle: bundle), forCellWithReuseIdentifier: "ChipCell")
         }
     }
     
@@ -67,7 +67,7 @@ public class TapChipHorizontalListViewModel {
     
     func dequeuCell(in collectionView:UICollectionView, at indexPath:IndexPath) -> GenericTapChip {
         
-        let cell:GenericTapChip = collectionView.dequeueReusableCell(withReuseIdentifier: "GatewayImageCollectionViewCell", for: indexPath) as! GenericTapChip
+        let cell:GenericTapChip = collectionView.dequeueReusableCell(withReuseIdentifier: "ChipCell", for: indexPath) as! GenericTapChip
         let currentViewModel = viewModel(at: indexPath.row)
         
         switch currentViewModel.identefier() {

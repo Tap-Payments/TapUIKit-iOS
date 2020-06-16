@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChipCell" id="gTV-IL-0wX" customClass="TapGoPayChipCollectionViewCell" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="109" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="109" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MB-HB-UIf">
+                        <rect key="frame" x="0.0" y="0.0" width="109" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tapLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="q4B-On-rLe">
+                                <rect key="frame" x="25" y="10.5" width="20" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q4B-On-rLe" secondAttribute="height" multiplier="1:1" constant="1" id="1qN-vJ-JWv"/>
+                                    <constraint firstAttribute="width" constant="20" id="EmD-bH-KhK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="goPay" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cD7-2A-cth">
+                                <rect key="frame" x="47" y="13" width="33" height="14.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="q4B-On-rLe" firstAttribute="leading" secondItem="9MB-HB-UIf" secondAttribute="leading" constant="25" id="ADz-9C-BK2"/>
+                            <constraint firstAttribute="height" priority="750" constant="40" id="GXv-fI-V6c"/>
+                            <constraint firstItem="cD7-2A-cth" firstAttribute="leading" secondItem="q4B-On-rLe" secondAttribute="trailing" constant="2" id="bvD-eu-eZV"/>
+                            <constraint firstAttribute="width" priority="750" constant="109" id="gMd-4h-caw"/>
+                            <constraint firstItem="cD7-2A-cth" firstAttribute="centerY" secondItem="q4B-On-rLe" secondAttribute="centerY" id="hxT-Og-oGu"/>
+                            <constraint firstItem="q4B-On-rLe" firstAttribute="centerY" secondItem="9MB-HB-UIf" secondAttribute="centerY" id="juD-qS-J0m"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="9MB-HB-UIf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2SH-Bp-IA6"/>
+                <constraint firstAttribute="trailing" secondItem="9MB-HB-UIf" secondAttribute="trailing" id="Sjr-nr-oMM"/>
+                <constraint firstAttribute="bottom" secondItem="9MB-HB-UIf" secondAttribute="bottom" id="gqe-gz-3tz"/>
+                <constraint firstItem="9MB-HB-UIf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jXj-lS-zJt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="goPayLabel" destination="cD7-2A-cth" id="Erw-3j-UBq"/>
+                <outlet property="mainView" destination="9MB-HB-UIf" id="5Yg-DJ-UOp"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="99"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="tapLogo.png" width="109" height="112"/>
+    </resources>
+</document>
