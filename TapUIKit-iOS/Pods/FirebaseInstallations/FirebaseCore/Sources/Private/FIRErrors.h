@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,11 @@
  * limitations under the License.
  */
 
-#import <FirebaseCore/FIRConfiguration.h>
+#import <Foundation/Foundation.h>
 
-@class FIRAnalyticsConfiguration;
+#include "FIRErrorCode.h"
 
-@interface FIRConfiguration ()
-
-/**
- * The configuration class for Firebase Analytics. This should be removed once the logic for
- * enabling and disabling Analytics is moved to Analytics.
- */
-@property(nonatomic, readwrite) FIRAnalyticsConfiguration *analyticsConfiguration;
-
-@end
+extern NSString *const kFirebaseErrorDomain;
+extern NSString *const kFirebaseConfigErrorDomain;
+extern NSString *const kFirebaseCoreErrorDomain;
+extern NSString *const kFirebasePerfErrorDomain;

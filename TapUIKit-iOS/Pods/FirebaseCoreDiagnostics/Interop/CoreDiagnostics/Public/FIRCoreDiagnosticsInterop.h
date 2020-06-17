@@ -16,19 +16,18 @@
 
 #import <Foundation/Foundation.h>
 
-#import <FirebaseCoreDiagnosticsInterop/FIRCoreDiagnosticsData.h>
+#import "FIRCoreDiagnosticsData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** Implements the FIRCoreDiagnosticsData protocol to log diagnostics data. */
-@interface FIRDiagnosticsData : NSObject <FIRCoreDiagnosticsData>
+/** Allows the interoperation of FirebaseCore and FirebaseCoreDiagnostics. */
+@protocol FIRCoreDiagnosticsInterop <NSObject>
 
-/** Inserts values into the diagnosticObjects dictionary if the value isn't nil.
+/** Sends the given diagnostics data.
  *
- * @param value The value to insert if it's not nil.
- * @param key The key to associate it with.
+ * @param diagnosticsData The diagnostics data object to send.
  */
-- (void)insertValue:(nullable id)value forKey:(NSString *)key;
++ (void)sendDiagnosticsData:(id<FIRCoreDiagnosticsData>)diagnosticsData;
 
 @end
 
