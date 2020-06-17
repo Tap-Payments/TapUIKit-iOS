@@ -252,23 +252,26 @@
                 "backgroundColor" : "black"
             },
             "savedCardChip": {
+                "backgroundColor" : "lightPeriwinkle",
+                "labelTextFont": "Roboto-Regular,12",
+                "labelTextColor": "greyishBrown",
                 "selected": {
-                    "backgroundColor" : "white",
-                    "shadow": {
-                        "color" : "deepSkyBlue",
-                        "radius" : 5
-                    },
-                    "labelTextFont": "Roboto-Regular,12",
-                    "labelTextColor": "greyishBrown"
-                },
-                "unSelected": {
-                    "backgroundColor" : "white80",
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 5
-                    },
-                    "labelTextFont": "Roboto-Regular,12",
-                    "labelTextColor": "greyishBrown"
+                        "radius" : 5,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                },
+                "unSelected": {
+                    "shadow": {
+                        "color" : "vibrantGreenTwo",
+                        "radius" : 5,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
                 }
             }
         }

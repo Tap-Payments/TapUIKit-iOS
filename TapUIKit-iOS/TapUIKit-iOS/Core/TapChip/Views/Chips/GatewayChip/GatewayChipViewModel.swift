@@ -8,14 +8,14 @@
 
 import Foundation
 
-internal protocol GateWayChipViewModelDelegate {
+internal protocol GenericChipViewModelDelegate {
     func changeSelection(with status:Bool)
 }
 
 public class GatewayChipViewModel: GenericTapChipViewModel {
     
     
-    internal var cellDelegate:GateWayChipViewModelDelegate?
+    internal var cellDelegate:GenericChipViewModelDelegate?
     
     public override func identefier() -> String {
         return "GatewayImageCollectionViewCell"

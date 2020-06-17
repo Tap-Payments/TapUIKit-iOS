@@ -63,7 +63,7 @@ public enum TapChipType:CaseIterable {
         case .CurrencyChip:
             return "GatewayImageCollectionViewCell"
         case .SavedCardChip:
-            return "GatewayImageCollectionViewCell"
+            return "SavedCardCollectionViewCell"
         }
     }
 }

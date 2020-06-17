@@ -1,22 +1,23 @@
 //
-//  GatewayImageCollectionViewCell.swift
+//  SavedCardCollectionViewCell.swift
 //  TapUIKit-iOS
 //
-//  Created by Osama Rabie on 6/14/20.
+//  Created by Osama Rabie on 6/17/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
-import TapThemeManager2020
-import MapleBacon
 
-public class GatewayImageCollectionViewCell: GenericTapChip {
-    
-    //@IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var gatewayIconImageView: UIImageView!
+import TapThemeManager2020
+import SimpleAnimation
+
+
+class SavedCardCollectionViewCell: GenericTapChip {
+
+    @IBOutlet weak var cardBrandIconImageView: UIImageView!
+    @IBOutlet weak var cardSchemeLabel: UILabel!
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
-    public var viewModel:GatewayChipViewModel = .init() {
+    public var viewModel:SavedCardCollectionViewCellModel = .init() {
         didSet{
             viewModel.cellDelegate = self
             reload()
@@ -29,18 +30,18 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
     
     override func configureCell(with viewModel: GenericTapChipViewModel) {
         // Defensive coding it is the correct view model type
-        guard let correctTypeModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel else { return }
+        guard let correctTypeModel:SavedCardCollectionViewCellModel = viewModel as? SavedCardCollectionViewCellModel else { return }
         self.viewModel = correctTypeModel
     }
     
     public override func selectStatusChaned(with status:Bool) {
         
-        // No theming required for ayment gatewy chip cell
-        return
+        // update the shadow for GoPayCell
+        applyTheme()
     }
     
     public override func tapChipType() -> TapChipType {
-        return .GatewayChip
+        return .GoPayChip
     }
     
     
@@ -51,12 +52,12 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         }
     }
     
-    public override func awakeFromNib() {
+    // Mark:- Init methods
+    override func awakeFromNib() {
         super.awakeFromNib()
         lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         commonInit()
     }
-    
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
@@ -65,27 +66,14 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
     
     
     public func reload() {
-        
-        guard let iconURLString:String = viewModel.icon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
-            return
-        }
-        
-        
-        gatewayIconImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
-            // Check the downloaded image is a proper image
-            guard let downloadedImage = downloadedImage else { return }
-            
-            // Set the image and show it
-            DispatchQueue.main.async { [weak self] in
-                self?.gatewayIconImageView.image = downloadedImage
-            }
-        }
+        // commonInit()
     }
+    
 }
 
 
 // Mark:- Theme methods
-extension GatewayImageCollectionViewCell {
+extension SavedCardCollectionViewCell {
     /// Consolidated one point to apply all needed theme methods
     public func applyTheme() {
         matchThemeAttributes()
@@ -93,23 +81,32 @@ extension GatewayImageCollectionViewCell {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
-
+        
+        let shadowPath:String = isSelected ? "selected" : "unSelected"
+        
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
-        
-        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).shadow.color")
-        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetHeight")?.floatValue ?? 0))
-        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).shadow.opacity")?.floatValue ?? 0)
-        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.radius")?.floatValue ?? 0)
-        
+        //layer.shadowColor = try! UIColor(tap_hex: "#FF0000").cgColor
+        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).\(shadowPath).shadow.color")
+        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetHeight")?.floatValue ?? 0))
+        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.opacity")?.floatValue ?? 0)
+        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
         self.clipsToBounds = false
         self.layer.masksToBounds = false
+        
+        guard let _ = goPayLabel else { return }
+        
+        goPayLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
+        goPayLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
+        
+        
         
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         
         guard lastUserInterfaceStyle != self.traitCollection.userInterfaceStyle else {
@@ -122,8 +119,12 @@ extension GatewayImageCollectionViewCell {
 
 
 
-extension GatewayImageCollectionViewCell:GenericChipViewModelDelegate{
+extension SavedCardCollectionViewCell:GenericChipViewModelDelegate {
+    
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
     }
+    
+    
 }
+

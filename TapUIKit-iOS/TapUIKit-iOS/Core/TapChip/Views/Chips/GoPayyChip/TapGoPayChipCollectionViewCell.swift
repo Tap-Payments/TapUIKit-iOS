@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+
 import TapThemeManager2020
 import SimpleAnimation
 
@@ -118,7 +118,7 @@ extension TapGoPayChipCollectionViewCell {
 
 
 
-extension TapGoPayChipCollectionViewCell:TapGoPayViewModelDelegate {
+extension TapGoPayChipCollectionViewCell:GenericChipViewModelDelegate {
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
