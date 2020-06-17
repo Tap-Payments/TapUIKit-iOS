@@ -10,17 +10,34 @@ import TapThemeManager2020
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 import class CommonDataModelsKit_iOS.TapCommonConstants
 
+/// The protocol to listen to events fired from the header left and right accessories
 protocol TapHorizontalHeaderDelegate {
+    /**
+     Will be fired once the right accessory is clicked
+     - Parameter type: The header view which fired the event
+     */
     func rightAccessoryClicked(with type:TapHorizontalHeaderView)
+    
+    /**
+     Will be fired once the left accessory is clicked
+     - Parameter type: The header view which fired the event
+     */
     func leftAccessoryClicked(with type:TapHorizontalHeaderView)
 }
 
+/// Represents a generic header view to be attached to the genetic horizontal chips list
 class TapHorizontalHeaderView: UIView {
     
+    /// Reference to the left accessory view
     @IBOutlet weak var leftButton: UIButton!
+    /// Reference to the right accessory view
     @IBOutlet weak var rightButton: UIButton!
+    /// Reference to the main XIB view
     @IBOutlet var contentView: UIView!
+    /// Subscribe to this to get notified upon fired events
     var delegate:TapHorizontalHeaderDelegate?
+    
+    /// Defines which header view should be loaded
     var headerType:TapHorizontalHeaderType = .GatewayListHeader {
         didSet{
             commonInit()
@@ -28,6 +45,7 @@ class TapHorizontalHeaderView: UIView {
     }
     /// Keeps track of the last applied theme value
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    
     
     @IBAction func leftButtonClicked(_ sender: Any) {
         delegate?.leftAccessoryClicked(with: self)
@@ -69,6 +87,7 @@ class TapHorizontalHeaderView: UIView {
         self.contentView.frame = bounds
     }
     
+    /// Handles all required localisations for the different views insude the header
     private func localize() {
         let (leftTitle,rightTitle) = headerType.localizedTitles()
         leftButton.setTitle(leftTitle, for: .normal)
@@ -76,6 +95,10 @@ class TapHorizontalHeaderView: UIView {
     }
     
     
+    /**
+     Handles updating the theme and the localisations based ont the new header type
+     - Parameter headerViewType: The new header type to be used
+     */
     func showHeader(with headerViewType:TapHorizontalHeaderType?) {
         guard let nonNullHeader = headerViewType else {
             return
@@ -87,10 +110,12 @@ class TapHorizontalHeaderView: UIView {
     
 }
 
-
+/// Represents the enum of different implemented horizontal chip list header views
 public enum TapHorizontalHeaderType {
+    /// The SELECT - EDIT header view for the list of payment gatewas and saved cards
     case GatewayListHeader
     
+    /// Defines the theme entry based on the type
     func themePath() -> String {
         switch self {
             case .GatewayListHeader:
@@ -98,6 +123,10 @@ public enum TapHorizontalHeaderType {
         }
     }
     
+    /**
+     Defines the localizations of left and tight accessoty based on the type
+     - Returns: (Localized Left title, Localized Right title)
+     */
     func localizedTitles() -> (String,String) {
         
         let sharedLocalisationManager = TapLocalisationManager.shared
@@ -109,8 +138,6 @@ public enum TapHorizontalHeaderType {
             (leftTitleKey,rightTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle")
         }
         
-        //sharedLocalisationManager.localisedValue(for: "\(localizationPath).paymentFor", with: TapCommonConstants.pathForDefaultLocalisation())
-            
         return (sharedLocalisationManager.localisedValue(for: leftTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()),sharedLocalisationManager.localisedValue(for: rightTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()))
         
     }

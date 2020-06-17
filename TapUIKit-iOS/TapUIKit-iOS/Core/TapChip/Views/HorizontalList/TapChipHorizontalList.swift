@@ -18,11 +18,13 @@ public class TapChipHorizontalList: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     /// The content view that holds all inner views inside the view
     @IBOutlet weak var contentView:UIView!
+    /// Reference to the header view if we need to show it
     @IBOutlet weak var headerView: TapHorizontalHeaderView! {
         didSet{
             headerView.delegate = self
         }
     }
+    /// Refernce to the header height, to animate it in hide and showing if needed
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     
     /// Keeps track of the last applied theme value
@@ -104,6 +106,44 @@ public class TapChipHorizontalList: UIView {
          collectionView.reloadSections([0])
     }
     
+    /**
+     Handles the logic for showing/hiding the header view for the given type
+     - Parameter type: The header type to be shown
+     */
+    internal func handleHeaderView(with type: TapHorizontalHeaderType?) {
+        // Instruct the header view to render itself based on the type
+        headerView.showHeader(with: type)
+        
+        // Determin and animate showing or hiding the header based on the given type
+        guard let _ = type else {
+            hideHeaderView()
+            return
+        }
+        showHeaderView()
+    }
+    
+    
+    /// Animate hiding the header view
+    internal func hideHeaderView() {
+        headerView.fadeOut{ (_) in
+            DispatchQueue.main.async { [weak self] in
+                UIView.animate(withDuration: 0.2, animations: {
+                    self?.headerViewHeightConstraint.constant = 0
+                    self?.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    /// Animate showing the header view
+    internal func showHeaderView() {
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.headerViewHeightConstraint.constant = 30
+            self?.layoutIfNeeded()
+            },completion: { [weak self] _ in
+                self?.headerView.fadeIn()
+        })
+    }
     
 }
 
@@ -128,31 +168,6 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
     
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         viewModel.didDeselectItem(at: indexPath.row)
-    }
-    
-    internal func handleHeaderView(with type: TapHorizontalHeaderType?) {
-        headerView.showHeader(with: type)
-        guard let _ = type else {
-            
-            headerView.fadeOut{ (_) in
-                DispatchQueue.main.async { [weak self] in
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self?.headerViewHeightConstraint.constant = 0
-                        self?.layoutIfNeeded()
-                    })
-                }
-            }
-            return }
-        
-        
-        UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.headerViewHeightConstraint.constant = 30
-            self?.layoutIfNeeded()
-        },completion: { [weak self] _ in
-            self?.headerView.fadeIn()
-        })
-        
-        
     }
 }
 
