@@ -27,7 +27,7 @@ public class TapGoPayViewModel: GenericTapChipViewModel {
     }
     
     
-    public override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
+    internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! TapGoPayChipCollectionViewCell
     }
 }

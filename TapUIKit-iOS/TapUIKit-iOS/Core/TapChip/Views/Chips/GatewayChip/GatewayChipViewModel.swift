@@ -31,7 +31,7 @@ public class GatewayChipViewModel: GenericTapChipViewModel {
         cellDelegate?.changeSelection(with: false)
     }
     
-    public override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
+    internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! GatewayImageCollectionViewCell
     }
     
