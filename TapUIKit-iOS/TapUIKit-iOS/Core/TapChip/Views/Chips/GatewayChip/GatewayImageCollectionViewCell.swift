@@ -6,49 +6,33 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
 import TapThemeManager2020
 import MapleBacon
 
+/// Represents the Gateway payment chip cell
 public class GatewayImageCollectionViewCell: GenericTapChip {
     
-    //@IBOutlet weak var mainView: UIView!
+    // MARK:- Variables
+    
+    /// Reference to the icon image view
     @IBOutlet weak var gatewayIconImageView: UIImageView!
+    /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
+    /// view model that will control the cell view
     public var viewModel:GatewayChipViewModel = .init() {
         didSet{
+            // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
+            // We reload the cell data from the view model
             reload()
         }
     }
     
+    // MARK:- Public methods
+    
     public func identefier() -> String {
         return viewModel.identefier()
-    }
-    
-    override func configureCell(with viewModel: GenericTapChipViewModel) {
-        // Defensive coding it is the correct view model type
-        guard let correctTypeModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel else { return }
-        self.viewModel = correctTypeModel
-    }
-    
-    public override func selectStatusChaned(with status:Bool) {
-        
-        // No theming required for ayment gatewy chip cell
-        return
-    }
-    
-    public override func tapChipType() -> TapChipType {
-        return .GatewayChip
-    }
-    
-    
-    /// The path to look for theme entry in
-    private var themePath:String {
-        get{
-            return tapChipType().themePath()
-        }
     }
     
     public override func awakeFromNib() {
@@ -57,20 +41,14 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         commonInit()
     }
     
-    
-    /// Used as a consolidated method to do all the needed steps upon creating the view
-    private func commonInit() {
-        applyTheme()
-    }
-    
-    
+    /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
     public func reload() {
-        
+        // Check if the view model has a valid icon URL
         guard let iconURLString:String = viewModel.icon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
             return
         }
         
-        
+        // Load the image from the URL or from the cache if availble
         gatewayIconImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
             // Check the downloaded image is a proper image
             guard let downloadedImage = downloadedImage else { return }
@@ -80,6 +58,31 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
                 self?.gatewayIconImageView.image = downloadedImage
             }
         }
+    }
+    
+    public override func tapChipType() -> TapChipType {
+        return .GatewayChip
+    }
+    
+    internal override func configureCell(with viewModel: GenericTapChipViewModel) {
+        // Defensive coding it is the correct view model type
+        guard let correctTypeModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel else { return }
+        self.viewModel = correctTypeModel
+    }
+    
+    /// The path to look for theme entry in
+    private var themePath:String {
+        get{
+            return tapChipType().themePath()
+        }
+    }
+    
+    
+    
+    
+    /// Used as a consolidated method to do all the needed steps upon creating the view
+    private func commonInit() {
+        applyTheme()
     }
 }
 

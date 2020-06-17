@@ -43,10 +43,15 @@ public class GenericTapChip:UICollectionViewCell {
 
 /// An enum to identify all the created chips tupes, to be used to pvoide a singleton place to knwo all about each type
 public enum TapChipType:CaseIterable {
+    /// Gateway chip which has only centered payment gateway logo
     case GatewayChip
+    /// Apple pay chip which has Pay with Apple pay logo
     case ApplePayChip
+    /// Gopay chip which has the TAP logo and goPay title
     case GoPayChip
+    /// Currency chip which has the flag and teh ISO code of the currency
     case CurrencyChip
+    /// Saved card chip has the card icon and the crypted card number
     case SavedCardChip
     
     /**
