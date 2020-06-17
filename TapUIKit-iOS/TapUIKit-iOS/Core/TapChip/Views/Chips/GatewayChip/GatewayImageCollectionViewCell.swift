@@ -10,7 +10,7 @@ import TapThemeManager2020
 import MapleBacon
 
 /// Represents the Gateway payment chip cell
-public class GatewayImageCollectionViewCell: GenericTapChip {
+class GatewayImageCollectionViewCell: GenericTapChip {
     
     // MARK:- Variables
     
@@ -20,7 +20,7 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
     /// view model that will control the cell view
-    public var viewModel:GatewayChipViewModel = .init() {
+    var viewModel:GatewayChipViewModel = .init() {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
@@ -29,20 +29,20 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         }
     }
     
-    // MARK:- Public methods
+    // MARK:- Internal methods
     
-    public func identefier() -> String {
+    func identefier() -> String {
         return viewModel.identefier()
     }
     
-    public override func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
         lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         commonInit()
     }
     
     /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
-    public func reload() {
+    func reload() {
         // Check if the view model has a valid icon URL
         guard let iconURLString:String = viewModel.icon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
             return
@@ -60,7 +60,7 @@ public class GatewayImageCollectionViewCell: GenericTapChip {
         }
     }
     
-    public override func tapChipType() -> TapChipType {
+    override func tapChipType() -> TapChipType {
         return .GatewayChip
     }
     

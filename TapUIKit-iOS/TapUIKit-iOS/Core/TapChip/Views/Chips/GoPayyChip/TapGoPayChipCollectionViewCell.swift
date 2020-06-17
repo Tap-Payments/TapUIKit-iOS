@@ -10,20 +10,28 @@
 import TapThemeManager2020
 import SimpleAnimation
 
+/// Represents the GoPay chip cell
 class TapGoPayChipCollectionViewCell: GenericTapChip {
-
+    // MARK:- Variables
+    
+    /// Reference to GoPay title label
     @IBOutlet weak var goPayLabel: UILabel!
+    /// Holds the main view, used to control the size of the cell at run time
     @IBOutlet weak var mainView: UIView!
+    /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
-    public var viewModel:TapGoPayViewModel = .init() {
+    /// view model that will control the cell view
+    var viewModel:TapGoPayViewModel = .init() {
         didSet{
+            // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
-            reload()
         }
     }
     
-    public func identefier() -> String {
+    // MARK:- Internal methods
+    
+    func identefier() -> String {
         return viewModel.identefier()
     }
     
@@ -33,13 +41,13 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
         self.viewModel = correctTypeModel
     }
     
-    public override func selectStatusChaned(with status:Bool) {
+    override func selectStatusChaned(with status:Bool) {
         
         // update the shadow for GoPayCell
         applyTheme()
     }
     
-    public override func tapChipType() -> TapChipType {
+    override func tapChipType() -> TapChipType {
         return .GoPayChip
     }
     
@@ -61,11 +69,6 @@ class TapGoPayChipCollectionViewCell: GenericTapChip {
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         applyTheme()
-    }
-    
-    
-    public func reload() {
-       // commonInit()
     }
 
 }

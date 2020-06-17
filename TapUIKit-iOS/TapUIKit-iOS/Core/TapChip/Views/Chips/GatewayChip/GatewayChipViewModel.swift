@@ -7,7 +7,7 @@
 //
 
 import class UIKit.UICollectionViewCell
-
+/// The view model that controlls the GatewayChip cell
 public class GatewayChipViewModel: GenericTapChipViewModel {
     
     // MARK:- Variables
