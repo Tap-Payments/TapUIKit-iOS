@@ -11,11 +11,14 @@ import class UIKit.UICollectionViewCell
 /// This is a superclass for all the chips views created, this will make sure all have the same interface/output and ease the parametery type in methods
 public class GenericTapChip:UICollectionViewCell {
     
+    
+    // MARK:- Internal methods
+    
     /**
      All created chips views should have an interface to know about their selection status
      - Parameter state: True if it was just selected and false otherwise
      */
-    func selectStatusChaned(with state:Bool) {
+    internal func selectStatusChaned(with state:Bool) {
         return
     }
     
@@ -23,7 +26,7 @@ public class GenericTapChip:UICollectionViewCell {
      Each cell generated must have an interface to tell its type
      - Returns: The corresponding cell type
      */
-    func tapChipType() -> TapChipType {
+    internal func tapChipType() -> TapChipType {
         return .GatewayChip
     }
     
@@ -31,7 +34,7 @@ public class GenericTapChip:UICollectionViewCell {
      All created chips views should have an interface to cnfigure itself with a given view model
      - Parameter viewModel: The view model the cell will attach itself to
      */
-    func configureCell(with viewModel:GenericTapChipViewModel) {
+    internal func configureCell(with viewModel:GenericTapChipViewModel) {
         return
     }
     

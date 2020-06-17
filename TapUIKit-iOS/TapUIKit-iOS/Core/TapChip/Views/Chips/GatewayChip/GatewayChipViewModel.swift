@@ -6,17 +6,16 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import Foundation
 import class UIKit.UICollectionViewCell
-
-internal protocol GenericChipViewModelDelegate {
-    func changeSelection(with status:Bool)
-}
 
 public class GatewayChipViewModel: GenericTapChipViewModel {
     
+    // MARK:- Variables
     
+    /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:GenericChipViewModelDelegate?
+    
+    // MARK:- Public methods
     
     public override func identefier() -> String {
         return "GatewayImageCollectionViewCell"
@@ -24,12 +23,16 @@ public class GatewayChipViewModel: GenericTapChipViewModel {
     
     
     public override func didSelectItem() {
+        // When the view model get notified it's selected, the view model needs to inform the attached view so it re displays itself
         cellDelegate?.changeSelection(with: true)
     }
     
     public override func didDeselectItem() {
+        // When the view model get notified it's deselected, the view model needs to inform the attached view so it re displays itself
         cellDelegate?.changeSelection(with: false)
     }
+    
+    // MARK:- Internal methods
     
     internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! GatewayImageCollectionViewCell

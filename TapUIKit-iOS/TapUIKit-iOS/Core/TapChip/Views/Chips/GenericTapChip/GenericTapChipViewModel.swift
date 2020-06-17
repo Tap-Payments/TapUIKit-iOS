@@ -8,6 +8,15 @@
 
 import class UIKit.UICollectionViewCell
 
+/// A protocl of methods to be applied to all generated chip cell
+internal protocol GenericChipViewModelDelegate {
+    /**
+        Each view model should have an interface to know his cell is selected or nt
+     - parameter status: tTrue if it was just selected and false otherwise
+     */
+    func changeSelection(with status:Bool)
+}
+
 /// This is a superclass for all the chips view models created, this will make sure all have the same interface/output and ease the parametery type in methods
 public class GenericTapChipViewModel {
     
