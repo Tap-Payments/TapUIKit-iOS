@@ -10,21 +10,30 @@
 import TapThemeManager2020
 import SimpleAnimation
 
+/// Represents the Saved card chip cell
 
 class SavedCardCollectionViewCell: GenericTapChip {
-
-    @IBOutlet weak var cardBrandIconImageView: UIImageView!
-    @IBOutlet weak var cardSchemeLabel: UILabel!
-    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    // MARK:- Variables
     
+    /// Reference to the saved card icon image view
+    @IBOutlet weak var cardBrandIconImageView: UIImageView!
+    /// Reference to the saved card secured number
+    @IBOutlet weak var cardSchemeLabel: UILabel!
+    /// Holds the last style theme applied
+    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// view model that will control the cell view
     public var viewModel:SavedCardCollectionViewCellModel = .init() {
         didSet{
+            // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
+            // We reload the cell data from the view model
             reload()
         }
     }
     
-    public func identefier() -> String {
+    // MARK:- Internal methods
+    
+    func identefier() -> String {
         return viewModel.identefier()
     }
     
@@ -34,13 +43,13 @@ class SavedCardCollectionViewCell: GenericTapChip {
         self.viewModel = correctTypeModel
     }
     
-    public override func selectStatusChaned(with status:Bool) {
+     override func selectStatusChaned(with status:Bool) {
         
         // update the shadow for GoPayCell
         applyTheme()
     }
     
-    public override func tapChipType() -> TapChipType {
+    override func tapChipType() -> TapChipType {
         return .SavedCardChip
     }
     
@@ -64,14 +73,14 @@ class SavedCardCollectionViewCell: GenericTapChip {
         applyTheme()
     }
     
-    
-    public func reload() {
-        // commonInit()
+    /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
+    func reload() {
         loadImages()
         assignLabels()
     }
     
     
+    /// Responsible for all logic needed to load all images in the cell
     private func loadImages() {
         cardBrandIconImageView.fadeOut()
         
@@ -90,6 +99,7 @@ class SavedCardCollectionViewCell: GenericTapChip {
         }
     }
     
+    /// Responsible for all logic needed to assign the textual info into the corresponding labels
     private func assignLabels() {
         cardSchemeLabel.text = viewModel.title
     }
