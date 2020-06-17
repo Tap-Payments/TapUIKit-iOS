@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import class UIKit.UICollectionViewCell
 
 public class GenericTapChipViewModel {
     
@@ -30,6 +31,10 @@ public class GenericTapChipViewModel {
     
     func didDeselectItem() {
         return
+    }
+    
+    func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
+        return cell
     }
     
 }

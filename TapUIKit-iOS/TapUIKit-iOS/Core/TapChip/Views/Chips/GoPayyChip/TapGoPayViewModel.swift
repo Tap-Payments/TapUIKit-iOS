@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import class UIKit.UICollectionViewCell
 
 public class TapGoPayViewModel: GenericTapChipViewModel {
     
@@ -23,5 +24,10 @@ public class TapGoPayViewModel: GenericTapChipViewModel {
     
     public override func didDeselectItem() {
         cellDelegate?.changeSelection(with: false)
+    }
+    
+    
+    public override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
+        return cell as! TapGoPayChipCollectionViewCell
     }
 }

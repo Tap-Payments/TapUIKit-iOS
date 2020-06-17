@@ -252,7 +252,7 @@
                 "backgroundColor" : "black"
             },
             "savedCardChip": {
-                "backgroundColor" : "lightPeriwinkle",
+                "backgroundColor" : "white",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
                 "selected": {

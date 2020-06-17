@@ -7,20 +7,16 @@
 //
 
 import TapThemeManager2020
-import RxSwift
 
 public class TapChipHorizontalList: UIView {
 
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var contentView:UIView!
-    let disposeBag:DisposeBag = .init()
     
     var viewModel:TapChipHorizontalListViewModel = .init() {
         didSet{
-            viewModel.dataSourceObserver.subscribe(onNext: { [weak self] (_) in
-                self?.collectionView.reloadSections([0])
-            }).disposed(by: disposeBag)
+            viewModel.cellDelegate = self
         }
     }
     
@@ -74,6 +70,10 @@ public class TapChipHorizontalList: UIView {
         collectionView.delegate = self
     }
     
+    private func reloadData() {
+         collectionView.reloadSections([0])
+    }
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.frame = bounds
@@ -102,6 +102,14 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         viewModel.didDeselectItem(at: indexPath.row)
     }
+}
+
+extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
+    func reload(new dataSource: [GenericTapChipViewModel]) {
+        reloadData()
+    }
+    
+    
 }
 
 
