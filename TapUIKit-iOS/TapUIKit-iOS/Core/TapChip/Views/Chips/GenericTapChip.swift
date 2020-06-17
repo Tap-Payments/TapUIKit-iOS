@@ -6,13 +6,9 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
-import RxSwift
+import class UIKit.UICollectionViewCell
 
 public class GenericTapChip:UICollectionViewCell {
-    
-    
-    let disposeBag:DisposeBag = .init()
     
     func selectStatusChaned(with state:Bool) {
         return
@@ -65,13 +61,5 @@ public enum TapChipType:CaseIterable {
         case .SavedCardChip:
             return "SavedCardCollectionViewCell"
         }
-    }
-}
-
-
-extension Reactive where Base: UICollectionViewCell {
-    
-    public var isSelected: Observable< Bool > {
-        return self.observeWeakly(Bool.self, #keyPath(UICollectionViewCell.isSelected)).map { $0 ?? false }
     }
 }
