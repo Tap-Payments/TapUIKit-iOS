@@ -271,6 +271,15 @@
 			path = SavedCardChip;
 			sourceTree = "<group>";
 		};
+		E82A56B6249A1E2000E3F00D /* GenericTapChip */ = {
+			isa = PBXGroup;
+			children = (
+				E8CD428C24961B050013AEE7 /* GenericTapChip.swift */,
+				E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */,
+			);
+			path = GenericTapChip;
+			sourceTree = "<group>";
+		};
 		E8428DD82456DAF300D5A45A = {
 			isa = PBXGroup;
 			children = (
@@ -474,8 +483,7 @@
 				E82A56AF2499ED4D00E3F00D /* SavedCardChip */,
 				E8670CB924988F85003F87D8 /* GoPayyChip */,
 				E809F65D24961F1400670A39 /* GatewayChip */,
-				E8CD428C24961B050013AEE7 /* GenericTapChip.swift */,
-				E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */,
+				E82A56B6249A1E2000E3F00D /* GenericTapChip */,
 			);
 			path = Chips;
 			sourceTree = "<group>";
