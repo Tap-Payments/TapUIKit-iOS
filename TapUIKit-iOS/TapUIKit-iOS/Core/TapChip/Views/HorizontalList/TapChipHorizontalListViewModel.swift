@@ -31,6 +31,8 @@ internal protocol TapChipHorizontalViewModelDelegate {
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
 public class TapChipHorizontalListViewModel {
     
+    // Mark:- Variables
+    
     /// The data source which represents the list of view models to be displayed inside the uicollectionview
     public var dataSource:[GenericTapChipViewModel] = [] {
         didSet{
@@ -45,6 +47,7 @@ public class TapChipHorizontalListViewModel {
     /// Attach yourself to this delegare if you are the associated view so you can be instructed by actions you have to do
     internal var cellDelegate:TapChipHorizontalViewModelDelegate?
     
+    // Mark:- Public methods
     /**
      Creates the ViewModel and makes it ready for work
      - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the collectionview
@@ -55,6 +58,8 @@ public class TapChipHorizontalListViewModel {
     
     /// Creates empty view model, added for convience
     public init() {}
+    
+    // Mark:- Internal methods
     
     /**
      Logic to attach and register all created custom XIB files and classes to a provided collection view. Helps in automating the process and no need to do a custom code for each created XIB custom cell.
@@ -75,7 +80,7 @@ public class TapChipHorizontalListViewModel {
      Calclates teh number of sections to be displayed inside the attached collecionvoew
       - Returns: The number of sections (ROWS) to be displayed
      */
-    func numberOfSections() -> Int {
+    internal func numberOfSections() -> Int {
         1
     }
     
@@ -84,7 +89,7 @@ public class TapChipHorizontalListViewModel {
      - Parameter section: The section you want to know the number of items in, default is 0
      - Returns: The number of items (COLUMNS) to be displayed in the provided row
      */
-    func numberOfRows(for section:Int = 0) -> Int {
+    internal func numberOfRows(for section:Int = 0) -> Int {
         switch section {
             case 0:
                 return dataSource.count
@@ -98,7 +103,7 @@ public class TapChipHorizontalListViewModel {
      - Parameter index: The position of the cell you want the view model of it
      - Returns: The view model that is associated to the given cell index
      */
-    func viewModel(at index:Int) -> GenericTapChipViewModel {
+    internal func viewModel(at index:Int) -> GenericTapChipViewModel {
         return dataSource[index]
     }
     
@@ -106,7 +111,7 @@ public class TapChipHorizontalListViewModel {
      Fire the event and handle the logic of selecting a certain cell
      - Parameter index: The position of the cell the user selected
      */
-    func didSelectItem(at index:Int) {
+    internal func didSelectItem(at index:Int) {
         let selectedViewModel = viewModel(at: index)
         // Inform the view model of the selected cell that he is selected, hence, he will pass this value to his attached UIView
         selectedViewModel.didSelectItem()
@@ -118,7 +123,7 @@ public class TapChipHorizontalListViewModel {
      Fire the event and handle the logic of deselecting a certain cell
      - Parameter index: The position of the cell the user deselected
      */
-    func didDeselectItem(at index:Int) {
+    internal func didDeselectItem(at index:Int) {
         // Inform the view model of the deselected cell that he is selected, hence, he will pass this value to his attached UIView
         viewModel(at: index).didDeselectItem()
     }
@@ -129,7 +134,7 @@ public class TapChipHorizontalListViewModel {
      - Parameter indexPath: The posotion of the required cell to be loaded
      - Returns: A subclass of the GenericTapChip based on the type of its view model
      */
-    func dequeuCell(in collectionView:UICollectionView, at indexPath:IndexPath) -> GenericTapChip {
+    internal func dequeuCell(in collectionView:UICollectionView, at indexPath:IndexPath) -> GenericTapChip {
         
         // Get the associated view model at the given index
         let currentViewModel = viewModel(at: indexPath.row)

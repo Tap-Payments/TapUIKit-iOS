@@ -8,19 +8,30 @@
 
 import TapThemeManager2020
 
+/// Represents Tap representation of Chip horizontal list view
 public class TapChipHorizontalList: UIView {
 
+    // Mark:- Variables
     
+    /// The reference to the backbone uicollectionview used to display the horizontal items
     @IBOutlet weak var collectionView: UICollectionView!
+    /// The content view that holds all inner views inside the view
     @IBOutlet weak var contentView:UIView!
     
+    /// Keeps track of the last applied theme value
+    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    
+    /// The view model that controls the data to be displayed and the events to be fired
     var viewModel:TapChipHorizontalListViewModel = .init() {
         didSet{
+            // Whenever the view model is assigned, we delcare ourself as the cell delegate to start getting orders
             viewModel.cellDelegate = self
         }
     }
     
+    /// Represents the theme path to look for to UI this list
     private let themePath:String = "horizontalList"
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,32 +43,40 @@ public class TapChipHorizontalList: UIView {
         commonInit()
     }
     
+    // Mark:- Public methods
     
+    /**
+     This instructs the view that we need to assign a new view model
+     - Parameter viewModel: The view model you want to attach to the vie
+     */
     public func changeViewMode(with viewModel:TapChipHorizontalListViewModel) {
         self.viewModel = viewModel
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
+    // Mark:- Private methods
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
+        // First thing we load the XIB file and attach it to the curren view
         self.contentView = setupXIB()
-        //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
+        // Second, theme it please!
         applyTheme()
+        // Third, we do all the configurations needed as one time setup to our collection view
         configureCollectionView()
     }
     
+    /// All the configurations needed as one time setup to our collection view
     private func configureCollectionView() {
         
+        // Attach and register all created generic chip cells to the collection view
         viewModel.registerAllXibs(for: collectionView)
+        
+        // Define theming attributes for the collection view
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
-        
-        /*if let flowLayout:UICollectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
-            flowLayout.minimumInteritemSpacing = itemSpacing
-            
-        }*/
-        
-        
         let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
@@ -66,21 +85,20 @@ public class TapChipHorizontalList: UIView {
         
         collectionView.collectionViewLayout = flowLayout
         
+        // Declare ourself as the data source and delegae for the collection view
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
+    /// The method handles the logic needed to update the displayed items and their statuses upon request
     private func reloadData() {
          collectionView.reloadSections([0])
     }
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        self.contentView.frame = bounds
-    }
+    
 }
 
-
+/// Here we map the collection view methods to read from the view model data
 extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -108,8 +126,6 @@ extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
     func reload(new dataSource: [GenericTapChipViewModel]) {
         reloadData()
     }
-    
-    
 }
 
 
@@ -132,6 +148,11 @@ extension TapChipHorizontalList {
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        
+        guard lastUserInterfaceStyle != self.traitCollection.userInterfaceStyle else {
+            return
+        }
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         applyTheme()
     }
 }
