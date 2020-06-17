@@ -94,13 +94,10 @@ extension SavedCardCollectionViewCell {
         self.clipsToBounds = false
         self.layer.masksToBounds = false
         
-        guard let _ = goPayLabel else { return }
+        guard let _ = cardSchemeLabel else { return }
         
-        goPayLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
-        goPayLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
-        
-        
-        
+        cardSchemeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
+        cardSchemeLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
