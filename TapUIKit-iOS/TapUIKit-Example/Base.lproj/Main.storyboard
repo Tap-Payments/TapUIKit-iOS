@@ -720,12 +720,26 @@
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="9M2-YJ-202"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ShowHeader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjA-S9-78o">
+                                <rect key="frame" x="8" y="340" width="98.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUu-nY-nYB">
+                                <rect key="frame" x="357" y="335" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="2mY-vk-7X3"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="qXS-g1-IQQ" secondAttribute="trailing" constant="8" id="1sd-7b-ebb"/>
                             <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="KRY-3L-cFj" secondAttribute="trailing" constant="8" id="65C-ul-1MJ"/>
+                            <constraint firstItem="nUu-nY-nYB" firstAttribute="centerY" secondItem="UjA-S9-78o" secondAttribute="centerY" id="7xT-5q-aS7"/>
                             <constraint firstItem="KRY-3L-cFj" firstAttribute="centerY" secondItem="kSa-2S-lc8" secondAttribute="centerY" id="Ae3-5W-fcl"/>
+                            <constraint firstItem="UjA-S9-78o" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="DkT-j6-PlG"/>
                             <constraint firstItem="8zc-r0-LnW" firstAttribute="top" secondItem="VO1-7G-DzB" secondAttribute="top" constant="8" id="Fix-4E-k7B"/>
                             <constraint firstItem="kSa-2S-lc8" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="Imu-GD-qG2"/>
                             <constraint firstItem="Byp-y1-6Km" firstAttribute="centerY" secondItem="zl1-1Z-O0F" secondAttribute="centerY" id="JGJ-iL-XJ6"/>
@@ -736,6 +750,8 @@
                             <constraint firstItem="qXS-g1-IQQ" firstAttribute="centerY" secondItem="Wzo-r0-WJa" secondAttribute="centerY" id="QUk-6E-xkk"/>
                             <constraint firstItem="8zc-r0-LnW" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" id="T2H-rT-0Wl"/>
                             <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="PKl-Hh-mnr" secondAttribute="trailing" constant="8" id="TOp-2n-Aha"/>
+                            <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="nUu-nY-nYB" secondAttribute="trailing" constant="8" id="XQM-eP-si4"/>
+                            <constraint firstItem="nUu-nY-nYB" firstAttribute="top" secondItem="DR4-B6-crP" secondAttribute="bottom" constant="8" id="bu0-Yv-qD6"/>
                             <constraint firstItem="qne-jh-gcl" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="cLC-M0-1ka"/>
                             <constraint firstItem="Wzo-r0-WJa" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="ecY-yA-ZCc"/>
                             <constraint firstItem="PKl-Hh-mnr" firstAttribute="top" secondItem="qXS-g1-IQQ" secondAttribute="bottom" constant="8" id="fAx-bC-8bp"/>
@@ -752,6 +768,7 @@
                     <connections>
                         <outlet property="benefitSwitch" destination="KRY-3L-cFj" id="83a-YD-FUv"/>
                         <outlet property="goPaySwitch" destination="PKl-Hh-mnr" id="jTv-NS-ook"/>
+                        <outlet property="headerSwitch" destination="nUu-nY-nYB" id="cN2-GF-Unv"/>
                         <outlet property="horizontalList" destination="8zc-r0-LnW" id="YQ1-SX-iJR"/>
                         <outlet property="knetSwitch" destination="Byp-y1-6Km" id="z0C-L1-YjB"/>
                         <outlet property="sadadSwitch" destination="qXS-g1-IQQ" id="hWV-cI-avs"/>

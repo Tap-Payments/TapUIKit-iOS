@@ -193,6 +193,19 @@
         "backgroundColor" : "whiteTwo",
         "itemSpacing" : 10,
         "margin" : 18,
+        "headers": {
+            "gatewayHeader": {
+                "backgroundColor" : "whiteTwo",
+                "leftButton": {
+                    "labelTextFont": "Roboto-Regular,10",
+                    "labelTextColor": "greyishBrown"
+                },
+                "rightButton": {
+                    "labelTextFont": "Roboto-Regular,10",
+                    "labelTextColor": "greyishBrown"
+                }
+            }
+        },
         "chips": {
             "radius" : 8,
             "currencyChip": {

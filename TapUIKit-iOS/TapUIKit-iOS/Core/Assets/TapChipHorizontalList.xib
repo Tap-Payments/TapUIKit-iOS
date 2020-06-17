@@ -12,15 +12,24 @@
             <connections>
                 <outlet property="collectionView" destination="dJF-Mr-pF9" id="Khj-cA-sGz"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="agn-xd-ojR"/>
+                <outlet property="headerView" destination="e3d-wB-6KC" id="hST-nj-zOg"/>
+                <outlet property="headerViewHeightConstraint" destination="ESY-cA-NJi" id="o2a-nz-M2l"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3d-wB-6KC" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ESY-cA-NJi"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-Mr-pF9">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="30" width="414" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mzM-68-7q9">
                         <size key="itemSize" width="128" height="128"/>
@@ -35,11 +44,15 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dJF-Mr-pF9" secondAttribute="trailing" id="2rs-3f-fpq"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Dgz-nv-amz"/>
                 <constraint firstAttribute="bottom" secondItem="dJF-Mr-pF9" secondAttribute="bottom" id="OKD-yC-hcO"/>
-                <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sa8-hr-WfE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e3d-wB-6KC" secondAttribute="trailing" id="S6o-qY-4E0"/>
+                <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="e3d-wB-6KC" secondAttribute="bottom" id="Y51-UL-AFJ"/>
+                <constraint firstItem="e3d-wB-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aFZ-ut-m4b"/>
+                <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" priority="750" id="kFe-fC-DoZ"/>
+                <constraint firstItem="e3d-wB-6KC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rpM-Kb-qPx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="153"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.44565217391306"/>
         </view>
     </objects>
 </document>

@@ -21,6 +21,8 @@
 		E82A56B22499ED7A00E3F00D /* SavedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56B02499ED7A00E3F00D /* SavedCardCollectionViewCell.swift */; };
 		E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */; };
 		E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56B42499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift */; };
+		E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56B7249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift */; };
+		E82A56BB249A401400E3F00D /* TapHorizontalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56BA249A401400E3F00D /* TapHorizontalHeaderView.xib */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADC22459815D00E55A68 /* tapLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E835ADC12459815D00E55A68 /* tapLogo.png */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -126,6 +128,8 @@
 		E82A56B02499ED7A00E3F00D /* SavedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		E82A56B42499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardCollectionViewCellModel.swift; sourceTree = "<group>"; };
+		E82A56B7249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGatewyHorizontalHeaderView.swift; sourceTree = "<group>"; };
+		E82A56BA249A401400E3F00D /* TapHorizontalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapHorizontalHeaderView.xib; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADC12459815D00E55A68 /* tapLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapLogo.png; sourceTree = "<group>"; };
 		E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				E8CD42832495F9130013AEE7 /* TapChipHorizontalList.swift */,
+				E82A56B7249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */,
 				E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */,
 				E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */,
+				E82A56BA249A401400E3F00D /* TapHorizontalHeaderView.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -660,6 +666,7 @@
 				E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */,
 				E8670CC12498AFCB003F87D8 /* goPayIcon.pdf in Resources */,
 				E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */,
+				E82A56BB249A401400E3F00D /* TapHorizontalHeaderView.xib in Resources */,
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8670CC72498B001003F87D8 /* tap@3x.png in Resources */,
 				E8E92B4E248FA4E900DD7DBB /* TapMerchantHeaderView.xib in Resources */,
@@ -774,6 +781,7 @@
 				E8E92B4C248FA4DF00DD7DBB /* TapMerchantHeaderView.swift in Sources */,
 				E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */,
 				E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */,
+				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
 				E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,

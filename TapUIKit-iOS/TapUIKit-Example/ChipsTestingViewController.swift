@@ -21,6 +21,7 @@ class ChipsTestingViewController: UIViewController {
     @IBOutlet weak var sadadSwitch:UISwitch!
     @IBOutlet weak var goPaySwitch:UISwitch!
     @IBOutlet weak var savedCardSwitch:UISwitch!
+    @IBOutlet weak var headerSwitch:UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class ChipsTestingViewController: UIViewController {
         allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
         
         
-        viewModel = .init(dataSource: filteredChipsViewModel)
+        viewModel = .init(dataSource: filteredChipsViewModel, headerType: .GatewayListHeader)
         
         horizontalList.changeViewMode(with: viewModel)
         
@@ -55,7 +56,11 @@ class ChipsTestingViewController: UIViewController {
     
     
     @IBAction func switchChanged(_ sender: Any) {
-        filter()
+        if sender as? UISwitch == headerSwitch {
+            viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : nil
+        }else {
+            filter()
+        }
     }
     
     func filter() {
@@ -86,6 +91,9 @@ class ChipsTestingViewController: UIViewController {
             filteredChipsViewModel.append(allChipsViewModel[9])
         }
         
+        
+        viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : nil
+        
         viewModel.dataSource = filteredChipsViewModel
     }
     
@@ -109,6 +117,18 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    func headerLeftButtonClicked(in headerType: TapHorizontalHeaderType) {
+        if headerType == .GatewayListHeader {
+            return
+        }
+    }
+    
+    func headerRightButtonClicked(in headerType: TapHorizontalHeaderType) {
+        if headerType == .GatewayListHeader {
+            showAlert(title: "Right button for Gateway Header", message: "I promise you will be able to edit these list afterwards :)")
+        }
+    }
+    
     
     func didSelect(item viewModel: GenericTapChipViewModel) {
         

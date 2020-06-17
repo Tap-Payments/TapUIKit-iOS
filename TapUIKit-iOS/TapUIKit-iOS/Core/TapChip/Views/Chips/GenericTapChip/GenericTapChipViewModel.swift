@@ -18,7 +18,7 @@ internal protocol GenericChipViewModelDelegate {
 }
 
 /// This is a superclass for all the chips view models created, this will make sure all have the same interface/output and ease the parametery type in methods
-public class GenericTapChipViewModel {
+@objc public class GenericTapChipViewModel:NSObject {
     
     /// The title to be displayed if any in the Chip cell
     public var title:String?

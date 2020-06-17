@@ -7,6 +7,7 @@
 //
 
 import TapThemeManager2020
+import SimpleAnimation
 
 /// Represents Tap representation of Chip horizontal list view
 public class TapChipHorizontalList: UIView {
@@ -17,6 +18,12 @@ public class TapChipHorizontalList: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     /// The content view that holds all inner views inside the view
     @IBOutlet weak var contentView:UIView!
+    @IBOutlet weak var headerView: TapHorizontalHeaderView! {
+        didSet{
+            headerView.delegate = self
+        }
+    }
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     
     /// Keeps track of the last applied theme value
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
@@ -67,6 +74,8 @@ public class TapChipHorizontalList: UIView {
         applyTheme()
         // Third, we do all the configurations needed as one time setup to our collection view
         configureCollectionView()
+        
+        headerView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     /// All the configurations needed as one time setup to our collection view
@@ -120,9 +129,39 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         viewModel.didDeselectItem(at: indexPath.row)
     }
+    
+    internal func handleHeaderView(with type: TapHorizontalHeaderType?) {
+        headerView.showHeader(with: type)
+        guard let _ = type else {
+            
+            headerView.fadeOut{ (_) in
+                DispatchQueue.main.async { [weak self] in
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self?.headerViewHeightConstraint.constant = 0
+                        self?.layoutIfNeeded()
+                    })
+                }
+            }
+            return }
+        
+        
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.headerViewHeightConstraint.constant = 30
+            self?.layoutIfNeeded()
+        },completion: { [weak self] _ in
+            self?.headerView.fadeIn()
+        })
+        
+        
+    }
 }
 
 extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
+    func showHeader(with type: TapHorizontalHeaderType?) {
+        handleHeaderView(with: type)
+        headerView.showHeader(with: type)
+    }
+    
     func reload(new dataSource: [GenericTapChipViewModel]) {
         reloadData()
     }
@@ -139,7 +178,7 @@ extension TapChipHorizontalList {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        self.tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         let sectionMargin:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
         collectionView.contentInset = .init(top: 0, left: sectionMargin, bottom: 0, right: sectionMargin)
     }
@@ -155,4 +194,19 @@ extension TapChipHorizontalList {
         lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         applyTheme()
     }
+}
+
+
+extension TapChipHorizontalList: TapHorizontalHeaderDelegate {
+    func rightAccessoryClicked(with type: TapHorizontalHeaderView) {
+        viewModel.rightButtonClicked(for: type)
+    }
+    
+    func leftAccessoryClicked(with type: TapHorizontalHeaderView) {
+        viewModel.leftButtonClicked(for: type)
+    }
+    
+   
+    
+    
 }

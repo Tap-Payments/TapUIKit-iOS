@@ -10,6 +10,12 @@
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
         },
+        "HorizontalHeaders": {
+            "GatewayHeader":{
+                "leftTitle": "SELECT",
+                "rightTitle": "EDIT"
+            }
+        },
         "Common": {
             "next": "Next",
             "previous": "Previous",
@@ -31,6 +37,12 @@
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"
+        },
+        "HorizontalHeaders": {
+            "GatewayHeader":{
+                "leftTitle": "إختر",
+                "rightTitle": "تعديل"
+            }
         },
         "Common": {
             "next": "التالي",

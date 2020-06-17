@@ -17,6 +17,9 @@ public protocol TapChipHorizontalListViewModelDelegate {
      - Parameter viewModel: Represents the attached view model of the selectec cell view
      */
     func didSelect(item viewModel:GenericTapChipViewModel)
+    func headerLeftButtonClicked(in headerType:TapHorizontalHeaderType)
+    func headerRightButtonClicked(in headerType:TapHorizontalHeaderType)
+    
 }
 
 /// This is the internal protocol for communication between the view model and its attached UIView
@@ -26,6 +29,7 @@ internal protocol TapChipHorizontalViewModelDelegate {
      - Parameter dataSource: Represents the new datasource if needed
      */
     func reload(new dataSource:[GenericTapChipViewModel])
+    func showHeader(with type:TapHorizontalHeaderType?)
 }
 
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
@@ -41,19 +45,32 @@ public class TapChipHorizontalListViewModel {
         }
     }
     
+    public var headerType:TapHorizontalHeaderType? {
+        didSet{
+            cellDelegate?.showHeader(with: headerType)
+        }
+    }
+    
     /// Attach yourself to this delegate to start getting events fired from this view model and its attached uicollectionview
     public var delegate:TapChipHorizontalListViewModelDelegate?
     
     /// Attach yourself to this delegare if you are the associated view so you can be instructed by actions you have to do
-    internal var cellDelegate:TapChipHorizontalViewModelDelegate?
+    internal var cellDelegate:TapChipHorizontalViewModelDelegate? {
+        didSet{
+            cellDelegate?.showHeader(with: headerType)
+        }
+    }
     
     // Mark:- Public methods
     /**
      Creates the ViewModel and makes it ready for work
      - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the collectionview
      */
-    public init(dataSource:[GenericTapChipViewModel]) {
-        self.dataSource = dataSource
+    public init(dataSource:[GenericTapChipViewModel], headerType:TapHorizontalHeaderType? = nil) {
+        defer {
+            self.dataSource = dataSource
+            self.headerType = headerType
+        }
     }
     
     /// Creates empty view model, added for convience
@@ -96,6 +113,14 @@ public class TapChipHorizontalListViewModel {
             default:
                 return 0
         }
+    }
+    
+    internal func leftButtonClicked(for header:TapHorizontalHeaderView) {
+        delegate?.headerLeftButtonClicked(in: header.headerType)
+    }
+    
+    internal func rightButtonClicked(for header:TapHorizontalHeaderView) {
+        delegate?.headerRightButtonClicked(in: header.headerType)
     }
     
     /**
