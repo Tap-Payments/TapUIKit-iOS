@@ -708,6 +708,18 @@
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="Wyr-Hm-Q9g"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SavedCard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GO-g2-Vy5">
+                                <rect key="frame" x="8" y="301" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-B6-crP">
+                                <rect key="frame" x="357" y="296" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="9M2-YJ-202"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -718,6 +730,8 @@
                             <constraint firstItem="kSa-2S-lc8" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="Imu-GD-qG2"/>
                             <constraint firstItem="Byp-y1-6Km" firstAttribute="centerY" secondItem="zl1-1Z-O0F" secondAttribute="centerY" id="JGJ-iL-XJ6"/>
                             <constraint firstItem="Byp-y1-6Km" firstAttribute="top" secondItem="8zc-r0-LnW" secondAttribute="bottom" constant="8" id="NrT-de-Bsu"/>
+                            <constraint firstItem="DR4-B6-crP" firstAttribute="centerY" secondItem="9GO-g2-Vy5" secondAttribute="centerY" id="OmV-6G-udh"/>
+                            <constraint firstItem="DR4-B6-crP" firstAttribute="top" secondItem="PKl-Hh-mnr" secondAttribute="bottom" constant="8" id="Ozp-AB-z8w"/>
                             <constraint firstItem="qXS-g1-IQQ" firstAttribute="top" secondItem="KRY-3L-cFj" secondAttribute="bottom" constant="8" id="POc-kI-XZ0"/>
                             <constraint firstItem="qXS-g1-IQQ" firstAttribute="centerY" secondItem="Wzo-r0-WJa" secondAttribute="centerY" id="QUk-6E-xkk"/>
                             <constraint firstItem="8zc-r0-LnW" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" id="T2H-rT-0Wl"/>
@@ -729,6 +743,8 @@
                             <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="Byp-y1-6Km" secondAttribute="trailing" constant="8" id="ntM-Hf-7LC"/>
                             <constraint firstItem="KRY-3L-cFj" firstAttribute="top" secondItem="Byp-y1-6Km" secondAttribute="bottom" constant="8" id="qWU-TB-fP8"/>
                             <constraint firstItem="PKl-Hh-mnr" firstAttribute="centerY" secondItem="qne-jh-gcl" secondAttribute="centerY" id="qoW-bu-aoe"/>
+                            <constraint firstItem="VO1-7G-DzB" firstAttribute="trailing" secondItem="DR4-B6-crP" secondAttribute="trailing" constant="8" id="vhu-Fm-IsF"/>
+                            <constraint firstItem="9GO-g2-Vy5" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="w2z-v9-buW"/>
                             <constraint firstItem="zl1-1Z-O0F" firstAttribute="leading" secondItem="VO1-7G-DzB" secondAttribute="leading" constant="8" id="wtU-bO-K3k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VO1-7G-DzB"/>
@@ -739,6 +755,7 @@
                         <outlet property="horizontalList" destination="8zc-r0-LnW" id="YQ1-SX-iJR"/>
                         <outlet property="knetSwitch" destination="Byp-y1-6Km" id="z0C-L1-YjB"/>
                         <outlet property="sadadSwitch" destination="qXS-g1-IQQ" id="hWV-cI-avs"/>
+                        <outlet property="savedCardSwitch" destination="DR4-B6-crP" id="Qyc-uh-n4F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3e-9u-3BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -41,7 +41,7 @@ class SavedCardCollectionViewCell: GenericTapChip {
     }
     
     public override func tapChipType() -> TapChipType {
-        return .GoPayChip
+        return .SavedCardChip
     }
     
     
@@ -67,8 +67,32 @@ class SavedCardCollectionViewCell: GenericTapChip {
     
     public func reload() {
         // commonInit()
+        loadImages()
+        assignLabels()
     }
     
+    
+    private func loadImages() {
+        cardBrandIconImageView.fadeOut()
+        
+        // Make sure we have a valid URL
+        guard let iconURL:URL = URL(string: viewModel.icon ?? "") else { return }
+        // load the image from the URL
+        cardBrandIconImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
+            // Check the downloaded image is a proper image
+            guard let downloadedImage = downloadedImage else { return }
+            
+            // Set the image and show it
+            DispatchQueue.main.async { [weak self] in
+                self?.cardBrandIconImageView.image = downloadedImage
+                self?.cardBrandIconImageView.fadeIn()
+            }
+        }
+    }
+    
+    private func assignLabels() {
+        cardSchemeLabel.text = viewModel.title
+    }
 }
 
 

@@ -20,6 +20,7 @@ class ChipsTestingViewController: UIViewController {
     @IBOutlet weak var benefitSwitch:UISwitch!
     @IBOutlet weak var sadadSwitch:UISwitch!
     @IBOutlet weak var goPaySwitch:UISwitch!
+    @IBOutlet weak var savedCardSwitch:UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,10 @@ class ChipsTestingViewController: UIViewController {
         
         
         allChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked"))
+        
+        allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 1234", icon:"https://img.icons8.com/color/2x/amex.png"))
+        allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
+        allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
         
         
         viewModel = .init(dataSource: filteredChipsViewModel)
@@ -75,6 +80,12 @@ class ChipsTestingViewController: UIViewController {
             filteredChipsViewModel.append(allChipsViewModel[6])
         }
         
+        if savedCardSwitch.isOn {
+            filteredChipsViewModel.append(allChipsViewModel[7])
+            filteredChipsViewModel.append(allChipsViewModel[8])
+            filteredChipsViewModel.append(allChipsViewModel[9])
+        }
+        
         viewModel.dataSource = filteredChipsViewModel
     }
     
@@ -105,6 +116,8 @@ extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
             showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
         }else if let _:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
             showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
+        }else if let _:SavedCardCollectionViewCellModel = viewModel as? SavedCardCollectionViewCellModel {
+            showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
         }
     }
 }

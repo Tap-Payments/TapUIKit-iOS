@@ -257,7 +257,7 @@
                 "labelTextColor": "greyishBrown",
                 "selected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
+                        "color" : "vibrantGreenTwo",
                         "radius" : 5,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
@@ -266,7 +266,7 @@
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "vibrantGreenTwo",
+                        "color" : "lightPeriwinkle",
                         "radius" : 5,
                         "offsetWidth": 0,
                         "offsetHeight": 0,

@@ -18,10 +18,10 @@ public class SavedCardCollectionViewCellModel: GenericTapChipViewModel {
     
     
     public override func didSelectItem() {
-       // cellDelegate?.changeSelection(with: true)
+       cellDelegate?.changeSelection(with: true)
     }
     
     public override func didDeselectItem() {
-       // cellDelegate?.changeSelection(with: false)
+       cellDelegate?.changeSelection(with: false)
     }
 }
