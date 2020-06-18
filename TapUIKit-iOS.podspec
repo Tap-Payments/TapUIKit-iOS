@@ -142,4 +142,5 @@ Pod::Spec.new do |spec|
   spec.dependency "RxSwift"
   spec.dependency "RxCocoa"
   spec.dependency "TapApplePayKit-iOS"
+  spec.dependency "Nuke"
 end
