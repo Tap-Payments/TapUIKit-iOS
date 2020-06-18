@@ -69,7 +69,11 @@ class ExampleWallOfGloryViewController: UIViewController {
         views.append(amountSectionView)
         amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
         
-        
+        let vv:UIView = .init()
+        vv.translatesAutoresizingMaskIntoConstraints = false
+        vv.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        vv.backgroundColor = .clear
+        //views.append(vv)
         
         // The GatwayListSection
         addGatewyList()
@@ -120,7 +124,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     func addGatewyList() -> UIView {
         let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
         tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
-        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 95).isActive = true
+        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 100).isActive = true
         views.append(tapgatewayChipHorizontalList)
         tapgatewayChipHorizontalList.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
         return tapgatewayChipHorizontalList
@@ -154,7 +158,8 @@ extension ExampleWallOfGloryViewController: TapVerticalViewDelegate {
     func innerSizeChanged(to newSize: CGSize, with frame: CGRect) {
         print("DELEGATE CALL BACK WITH SIZE \(newSize) and Frame of :\(frame)")
         guard let delegate = delegate else { return }
-        delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaInsets.bottom + 5)
+        
+        delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaBottom)
     }
     
 }
@@ -237,5 +242,33 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func didSelect(item viewModel: GenericTapChipViewModel) {
         
         
+    }
+}
+
+
+extension UIView {
+    
+    var safeAreaBottom: CGFloat {
+        if #available(iOS 11, *) {
+            if let window = UIApplication.shared.keyWindowInConnectedScenes {
+                return window.safeAreaInsets.bottom
+            }
+        }
+        return 0
+    }
+    
+    var safeAreaTop: CGFloat {
+        if #available(iOS 11, *) {
+            if let window = UIApplication.shared.keyWindowInConnectedScenes {
+                return window.safeAreaInsets.top
+            }
+        }
+        return 0
+    }
+}
+
+extension UIApplication {
+    var keyWindowInConnectedScenes: UIWindow? {
+        return windows.first(where: { $0.isKeyWindow })
     }
 }

@@ -26,7 +26,7 @@ public class TapChipHorizontalList: UIView {
     }
     /// Refernce to the header height, to animate it in hide and showing if needed
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
-    //@IBOutlet weak var collectionViewToHederConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewToHederConstraint: NSLayoutConstraint!
     //@IBOutlet weak var collectionViewCenterConstraint: NSLayoutConstraint!
     
     /// Keeps track of the last applied theme value
@@ -106,7 +106,7 @@ public class TapChipHorizontalList: UIView {
         flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumLineSpacing = itemSpacing
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = .init(top: shouldShowHeader ? 0 : 10, left: 0, bottom: 10, right: 0)
+        flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
     
@@ -141,6 +141,7 @@ public class TapChipHorizontalList: UIView {
             DispatchQueue.main.async { [weak self] in
                 UIView.animate(withDuration: 0.2, animations: {
                     self?.headerViewHeightConstraint.constant = 0
+                    self?.collectionViewToHederConstraint.priority = .defaultLow
                     self?.layoutIfNeeded()
                 },completion: { [weak self] _ in
                     //self?.assignFlowLaout()
@@ -153,7 +154,7 @@ public class TapChipHorizontalList: UIView {
     internal func showHeaderView() {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.headerViewHeightConstraint.constant = 30
-            //self?.collectionViewToHederConstraint.priority = .required
+            self?.collectionViewToHederConstraint.priority = .required
             self?.layoutIfNeeded()
             },completion: { [weak self] _ in
                 if self?.shouldShowHeader ?? false {

@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapChipHorizontalList" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="dJF-Mr-pF9" id="Khj-cA-sGz"/>
+                <outlet property="collectionViewToHederConstraint" destination="Y51-UL-AFJ" id="5y7-Xe-vS7"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="agn-xd-ojR"/>
                 <outlet property="headerView" destination="e3d-wB-6KC" id="hST-nj-zOg"/>
                 <outlet property="headerViewHeightConstraint" destination="ESY-cA-NJi" id="o2a-nz-M2l"/>
@@ -29,8 +30,11 @@
                     </constraints>
                 </view>
                 <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-Mr-pF9">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="aWl-oL-Qkl"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="mzM-68-7q9">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -46,8 +50,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e3d-wB-6KC" secondAttribute="trailing" id="S6o-qY-4E0"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="e3d-wB-6KC" secondAttribute="bottom" id="Y51-UL-AFJ"/>
                 <constraint firstItem="e3d-wB-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aFZ-ut-m4b"/>
+                <constraint firstItem="dJF-Mr-pF9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="750" id="aph-Ul-z9G"/>
                 <constraint firstItem="e3d-wB-6KC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rpM-Kb-qPx"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dJF-Mr-pF9" secondAttribute="bottom" id="y9j-ou-fsw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

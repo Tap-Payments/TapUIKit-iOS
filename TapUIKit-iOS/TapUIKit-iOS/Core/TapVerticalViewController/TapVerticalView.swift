@@ -75,7 +75,7 @@ public class TapVerticalView: UIView {
             bottomPadding = window.safeAreaInsets.bottom
         }
         var newSize = scrollView.contentSize
-        newSize.height += bottomPadding
+        //newSize.height += bottomPadding
         delegate.innerSizeChanged?(to: newSize, with: self.frame)
         
     }
