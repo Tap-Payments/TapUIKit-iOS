@@ -25,6 +25,7 @@
 		E82A56BB249A401400E3F00D /* TapHorizontalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56BA249A401400E3F00D /* TapHorizontalHeaderView.xib */; };
 		E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56BD249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift */; };
 		E82A56C0249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */; };
+		E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56C1249B2B3800E3F00D /* ApplePayChipViewCellModel.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADC22459815D00E55A68 /* tapLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E835ADC12459815D00E55A68 /* tapLogo.png */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -134,6 +135,8 @@
 		E82A56BA249A401400E3F00D /* TapHorizontalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapHorizontalHeaderView.xib; sourceTree = "<group>"; };
 		E82A56BD249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplePayChipCollectionViewCell.xib; sourceTree = "<group>"; };
+		E82A56C1249B2B3800E3F00D /* ApplePayChipViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayChipViewCellModel.swift; sourceTree = "<group>"; };
+		E82A56C3249B2EE300E3F00D /* TapUIKit-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TapUIKit-Example.entitlements"; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADC12459815D00E55A68 /* tapLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapLogo.png; sourceTree = "<group>"; };
 		E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				E82A56BD249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift */,
+				E82A56C1249B2B3800E3F00D /* ApplePayChipViewCellModel.swift */,
 			);
 			path = ApplePayChip;
 			sourceTree = "<group>";
@@ -330,6 +334,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E82A56C3249B2EE300E3F00D /* TapUIKit-Example.entitlements */,
 				E8C5910224936C4F00E03424 /* TapAmountSectionView */,
 				E8C5908F2490A21A00E03424 /* WallOfGloryExample */,
 				E87CEA46248FBFA3002F2332 /* TapMerchantHeaderView */,
@@ -789,6 +794,7 @@
 				E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */,
 				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
 				E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */,
+				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
 				E8CD42842495F9130013AEE7 /* TapChipHorizontalList.swift in Sources */,
 				E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */,
 				E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */,
@@ -1035,6 +1041,7 @@
 			baseConfigurationReference = DC9E6344249A1CA65DA9FC2F /* Pods-TapUIKit-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TapUIKit-Example/TapUIKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = G46S76PUH4;
@@ -1056,6 +1063,7 @@
 			baseConfigurationReference = F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TapUIKit-Example/TapUIKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = G46S76PUH4;
