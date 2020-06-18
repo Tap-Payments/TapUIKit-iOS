@@ -8,6 +8,7 @@ target 'TapUIKit-Example' do
   pod 'MOLH'
   pod 'TapThemeManager2020'
   pod 'SheetyColors'
+  pod 'TapApplePayKit-iOS'
   # Pods for TapUIKit-Example
 
 end

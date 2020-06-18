@@ -82,7 +82,7 @@ PODS:
   - SimpleAnimation (0.4.2)
   - SnapKit (5.0.1)
   - SwiftLint (0.39.2)
-  - TapApplePayKit-iOS (1.0.3):
+  - TapApplePayKit-iOS (1.0.4):
     - CommonDataModelsKit-iOS (~> 1.0.1)
     - Flurry-iOS-SDK/FlurrySDK
   - TapFontKit-iOS (0.0.3):
@@ -172,11 +172,11 @@ SPEC CHECKSUMS:
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
-  TapApplePayKit-iOS: 5a397b6911aac0d7e8f7161841b6a1b8f92f640f
+  TapApplePayKit-iOS: 65ce3416d617a28a0d70726810e6b49402ed192c
   TapFontKit-iOS: 2810f6f66ad8a1fa9a2afc0e3cbaf6ecd5dc9d1f
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: 3838007a5a500f6e1e7dec1473a0c7b9cf077a1a
 
-PODFILE CHECKSUM: 947cd885e2a1731b3d0fd1666817fef81753f06a
+PODFILE CHECKSUM: 762f44083fa5c28a48d43193405d7fe87aa9ecb9
 
 COCOAPODS: 1.9.3

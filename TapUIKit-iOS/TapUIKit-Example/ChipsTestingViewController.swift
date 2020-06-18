@@ -8,6 +8,7 @@
 
 import UIKit
 import TapUIKit_iOS
+import TapApplePayKit_iOS
 
 class ChipsTestingViewController: UIViewController {
 
@@ -42,6 +43,11 @@ class ChipsTestingViewController: UIViewController {
         allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
         allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
         
+        let applePayChipViewModel:ApplePayChipViewCellModel = ApplePayChipViewCellModel.init()
+        applePayChipViewModel.configureApplePayRequest()
+        
+        allChipsViewModel.append(applePayChipViewModel)
+    
         
         viewModel = .init(dataSource: filteredChipsViewModel, headerType: .GatewayListHeader)
         
@@ -65,6 +71,9 @@ class ChipsTestingViewController: UIViewController {
     
     func filter() {
         filteredChipsViewModel = []
+        
+        filteredChipsViewModel.append(allChipsViewModel[10])
+        
         
         if knetSwitch.isOn {
             filteredChipsViewModel.append(allChipsViewModel[0])
@@ -90,6 +99,9 @@ class ChipsTestingViewController: UIViewController {
             filteredChipsViewModel.append(allChipsViewModel[8])
             filteredChipsViewModel.append(allChipsViewModel[9])
         }
+        
+        
+        
         
         
         viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : nil

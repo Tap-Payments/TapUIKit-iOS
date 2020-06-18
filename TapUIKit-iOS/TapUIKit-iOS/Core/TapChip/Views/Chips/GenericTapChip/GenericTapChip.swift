@@ -31,7 +31,7 @@ public class GenericTapChip:UICollectionViewCell {
     }
     
     /**
-     All created chips views should have an interface to cnfigure itself with a given view model
+     All created chips views should have an integhtrface to cnfigure itself with a given view model
      - Parameter viewModel: The view model the cell will attach itself to
      */
     internal func configureCell(with viewModel:GenericTapChipViewModel) {

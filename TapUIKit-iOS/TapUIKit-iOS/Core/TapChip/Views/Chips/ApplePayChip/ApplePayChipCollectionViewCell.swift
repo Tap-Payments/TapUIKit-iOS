@@ -50,7 +50,7 @@ class ApplePayChipCollectionViewCell: GenericTapChip {
     }
     
     override func tapChipType() -> TapChipType {
-        return .SavedCardChip
+        return .ApplePayChip
     }
     
     
@@ -71,6 +71,7 @@ class ApplePayChipCollectionViewCell: GenericTapChip {
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         applyTheme()
+        configureApplePayButton()
     }
     
     /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
@@ -78,16 +79,22 @@ class ApplePayChipCollectionViewCell: GenericTapChip {
         configureApplePayButton()
     }
     
-    
     private func configureApplePayButton() {
+        guard let _ = applePayContainerView else { return }
         
         tapApplePayButton = TapApplePayButton.init(frame: applePayContainerView.bounds)
         tapApplePayButton?.setup()
-        tapApplePayButton?.removeFromSuperview()
-        applePayContainerView.addSubview(tapApplePayButton!)
+        //tapApplePayButton?.removeFromSuperview()
+        reloadApplePayButtonStyle()
+        //applePayContainerView.addSubview(tapApplePayButton!)
         
         tapApplePayButton?.dataSource = self
         tapApplePayButton?.delegate = self
+    }
+    
+    private func reloadApplePayButtonStyle() {
+        tapApplePayButton?.buttonStyle = viewModel.applePayButtonStyle
+        tapApplePayButton?.buttonType = viewModel.applePayButtonType
     }
 }
 
@@ -131,7 +138,12 @@ extension ApplePayChipCollectionViewCell {
 
 
 
-extension ApplePayChipCollectionViewCell:GenericChipViewModelDelegate {
+extension ApplePayChipCollectionViewCell:ApplePayChipViewModelDelegate {
+    
+    func reloadApplePayButton() {
+        reloadApplePayButtonStyle()
+    }
+    
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 import class UIKit.UICollectionViewCell
+import class PassKit.PKPaymentSummaryItem
 import enum TapApplePayKit_iOS.TapApplePayButtonType
 import enum TapApplePayKit_iOS.TapApplePayButtonStyleOutline
 import enum TapApplePayKit_iOS.TapApplePayPaymentNetwork
@@ -13,14 +14,22 @@ import class TapApplePayKit_iOS.TapApplePayRequest
 import enum CommonDataModelsKit_iOS.TapCountryCode
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
+
+protocol ApplePayChipViewModelDelegate:GenericChipViewModelDelegate {
+    
+    func reloadApplePayButton()
+    
+}
+
 /// The view model that controlls the SavedCard cell
 public class ApplePayChipViewCellModel: GenericTapChipViewModel {
     
     // MARK:- Variables
     
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
-    internal var cellDelegate:GenericChipViewModelDelegate?
-    internal var applePayButtonStyle:TapApplePayButtonType = .PayWithApplePay
+    internal var cellDelegate:ApplePayChipViewModelDelegate?
+    internal var applePayButtonType:TapApplePayButtonType = .PayWithApplePay
+    internal var applePayButtonStyle:TapApplePayButtonStyleOutline = .Black
     internal var tapApplePayRequest:TapApplePayRequest = .init()
     
     // MARK:- Public methods
@@ -33,9 +42,12 @@ public class ApplePayChipViewCellModel: GenericTapChipViewModel {
         self.tapApplePayRequest = tapApplePayRequest
     }
     
-    public func configureApplePayRequest(with countryCode:TapCountryCode = .KW , currencyCode:TapCurrencyCode = .KWD, paymentNetworks:[TapApplePayPaymentNetwork] = [TapApplePayPaymentNetwork.Amex,TapApplePayPaymentNetwork.MasterCard,TapApplePayPaymentNetwork.Visa], applePayButtonType:TapApplePayButtonType = .BuyWithApplePay, applePayButtonStyle:TapApplePayButtonStyleOutline = .Black ) {
+    public func configureApplePayRequest(with countryCode:TapCountryCode = .KW , currencyCode:TapCurrencyCode = .KWD, paymentNetworks:[TapApplePayPaymentNetwork] = [TapApplePayPaymentNetwork.Amex,TapApplePayPaymentNetwork.MasterCard,TapApplePayPaymentNetwork.Visa], applePayButtonType:TapApplePayButtonType = .AppleLogoOnly, applePayButtonStyle:TapApplePayButtonStyleOutline = .Black, paymentItems:[PKPaymentSummaryItem] = [], amount:Double = 10, merchantID:String = "merchant.tap.gosell" ) {
         
+        tapApplePayRequest.build(with: countryCode, paymentNetworks: paymentNetworks, paymentItems: paymentItems, paymentAmount: amount, currencyCode: currencyCode, merchantID: merchantID)
         
+        self.applePayButtonType = applePayButtonType
+        self.applePayButtonStyle = applePayButtonStyle
         
     }
     

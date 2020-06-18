@@ -262,7 +262,25 @@
                 }
             },
             "applePayChip": {
-                "backgroundColor" : "black"
+                "backgroundColor" : "black",
+                "selected": {
+                    "shadow": {
+                        "color" : "vibrantGreenTwo",
+                        "radius" : 5,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                },
+                "unSelected": {
+                    "shadow": {
+                        "color" : "lightPeriwinkle",
+                        "radius" : 20,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                }
             },
             "savedCardChip": {
                 "backgroundColor" : "white",

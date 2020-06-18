@@ -191,7 +191,7 @@
     },
     "horizontalList": {
         "backgroundColor" : "whiteTwo",
-        "itemSpacing" : 10,
+        "itemSpacing" : 15,
         "margin" : 18,
         "headers": {
             "gatewayHeader": {
@@ -213,7 +213,7 @@
                     "backgroundColor" : "white",
                     "shadow": {
                         "color" : "deepSkyBlue",
-                        "radius" : 5
+                        "radius" : 3
                     },
                     "labelTextFont": "Roboto-Regular,12",
                     "labelTextColor": "greyishBrown"
@@ -222,7 +222,7 @@
                     "backgroundColor" : "white30",
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 5
+                        "radius" : 3
                     },
                     "labelTextFont": "Roboto-Regular,12",
                     "labelTextColor": "greyishBrown"
@@ -232,7 +232,7 @@
                 "backgroundColor" : "white",
                 "shadow": {
                     "color" : "lightPeriwinkle",
-                    "radius" : 5,
+                    "radius" : 3,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
                     "opacity": 1
@@ -245,7 +245,7 @@
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",
-                        "radius" : 5,
+                        "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1
@@ -254,7 +254,7 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 20,
+                        "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1
@@ -262,7 +262,25 @@
                 }
             },
             "applePayChip": {
-                "backgroundColor" : "black"
+                "backgroundColor" : "black",
+                "selected": {
+                    "shadow": {
+                        "color" : "vibrantGreenTwo",
+                        "radius" : 3,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                },
+                "unSelected": {
+                    "shadow": {
+                        "color" : "lightPeriwinkle",
+                        "radius" : 3,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                }
             },
             "savedCardChip": {
                 "backgroundColor" : "white",
@@ -271,7 +289,7 @@
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",
-                        "radius" : 5,
+                        "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1
@@ -280,7 +298,7 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 5,
+                        "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1
