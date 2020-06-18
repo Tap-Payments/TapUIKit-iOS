@@ -133,7 +133,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 80).isActive = true
         views.append(tapgatewayChipHorizontalList)
         tapgatewayChipHorizontalList.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
-        self.tapVerticalView.add(view: tapgatewayChipHorizontalList)
         return tapgatewayChipHorizontalList
     }
     
@@ -178,16 +177,19 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         var replace = false
         
         for (index, element) in views.enumerated() {
+            
             if let elem:TapChipHorizontalList = element as? TapChipHorizontalList {
                 replace = true
                 views.remove(at: index)
-                self.tapVerticalView.remove(view: element,with: .popOut(duration: nil, delay: nil))
-                self.tapVerticalView.add(view: (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList(),with: .popIn(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: elem,with: .popOut(duration: nil, delay: nil))
+                //self.tapVerticalView.add(view: (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList(),with: .slideIn(TapVerticalViewAnimationDirection.bottom,duration: nil, delay: nil))
+                //views.append((elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList())
+                (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList()
                 break
             }
         }
         
-        self.tapVerticalView.updateSubViews(with: views,and: .none)
+        self.tapVerticalView.updateSubViews(with: views,and: .removeAllFirst)
     }
     func amountSectionClicked() {
         showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")

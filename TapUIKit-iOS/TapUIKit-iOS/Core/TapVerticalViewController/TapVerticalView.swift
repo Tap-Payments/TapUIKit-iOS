@@ -213,7 +213,7 @@ public class TapVerticalView: UIView {
         // Delete and add the calculated views
         remove(subViews: toBeRemovedViews, animationSequence: animationSequence)
         
-        let delay:Double =  500
+        let delay:Double =  250 * Double((toBeAddedViews.count ))
         
         // Add and sort the new views to be added
         add(subViews: toBeAddedViews, animationSequence: animationSequence, delay: Int((animationSequence == .none || animationSequence == .parallel) ? 0 : delay))
@@ -237,15 +237,17 @@ public class TapVerticalView: UIView {
             subViews.forEach{self?.stackView.addArrangedSubview($0)}
             // Make sure they are of the same order now!
             for (newIndex, newView) in subViews.enumerated() {
-                
-                let oldIndex = self?.stackView.arrangedSubviews.firstIndex(of: newView)
+                if animationSequence != .none {
+                    newView.slideIn(from: .bottom)
+                }
+                /*let oldIndex = self?.stackView.arrangedSubviews.firstIndex(of: newView)
                 if oldIndex != newIndex {
                     self?.stackView.removeArrangedSubview(newView)
                     self?.stackView.insertArrangedSubview(newView, at: newIndex)
                     if animationSequence != .none {
                         newView.bounceIn(from: .bottom)
                     }
-                }
+                }*/
             }
         }
     }
