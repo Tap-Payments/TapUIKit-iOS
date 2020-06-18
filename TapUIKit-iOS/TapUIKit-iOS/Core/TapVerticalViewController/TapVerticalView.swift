@@ -69,7 +69,14 @@ public class TapVerticalView: UIView {
         // Make sure the new heigt is not 0
         guard scrollView.contentSize.height > 0 else { return }
         // Inform the delegate if any, that the view has new size
-        delegate.innerSizeChanged?(to: scrollView.contentSize, with: self.frame)
+        // Take in consideration the safe margins :)
+        var bottomPadding:CGFloat = 0.0
+        if let window = UIApplication.shared.keyWindow {
+            bottomPadding = window.safeAreaInsets.bottom
+        }
+        var newSize = scrollView.contentSize
+        newSize.height += bottomPadding
+        delegate.innerSizeChanged?(to: newSize, with: self.frame)
         
     }
     

@@ -96,7 +96,7 @@ public class TapChipHorizontalList: UIView {
         flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumLineSpacing = itemSpacing
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = .init(top: 0, left: sectionMargins, bottom: 0, right: sectionMargins)
+        flowLayout.sectionInset = .init(top: 0, left: 18, bottom: 0, right: 18)
         collectionView.collectionViewLayout = flowLayout
         
         // Declare ourself as the data source and delegae for the collection view

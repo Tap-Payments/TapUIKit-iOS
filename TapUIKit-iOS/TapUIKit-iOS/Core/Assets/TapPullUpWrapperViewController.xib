@@ -20,14 +20,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cP6-hy-vp6">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="3Gn-Ic-AZV"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cP6-hy-vp6" secondAttribute="bottom" id="6cL-KG-Kca"/>
+                <constraint firstAttribute="bottom" secondItem="cP6-hy-vp6" secondAttribute="bottom" id="6cL-KG-Kca"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cP6-hy-vp6" secondAttribute="trailing" id="SSh-0c-gcG"/>
                 <constraint firstItem="cP6-hy-vp6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dfc-DH-N2S"/>
                 <constraint firstItem="cP6-hy-vp6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uuE-jR-ZKm"/>

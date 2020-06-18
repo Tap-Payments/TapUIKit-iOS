@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-M1-LDk">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUe-LR-wIk">
                                 <rect key="frame" x="145.5" y="44" width="123" height="30"/>
@@ -185,12 +185,12 @@
                             <constraint firstItem="40c-7W-6cL" firstAttribute="top" secondItem="s9b-67-4N1" secondAttribute="bottom" constant="8" id="3nx-Ij-h4m"/>
                             <constraint firstItem="HuT-M1-LDk" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" id="4Ss-t2-zXv"/>
                             <constraint firstItem="MqH-uz-b5W" firstAttribute="centerY" secondItem="RWd-o8-bvN" secondAttribute="centerY" id="5oE-DE-4zp"/>
-                            <constraint firstItem="CIg-lk-hFD" firstAttribute="bottom" secondItem="HuT-M1-LDk" secondAttribute="bottom" id="6C4-Nv-IYe"/>
                             <constraint firstItem="c0K-wD-vlL" firstAttribute="top" secondItem="rlz-bv-ODV" secondAttribute="bottom" constant="20" id="7ws-jS-dN5"/>
                             <constraint firstItem="s9b-67-4N1" firstAttribute="top" secondItem="MqH-uz-b5W" secondAttribute="bottom" constant="8" id="8yh-yY-1DV"/>
                             <constraint firstItem="MqH-uz-b5W" firstAttribute="leading" secondItem="A0b-8N-P5X" secondAttribute="leading" constant="20" id="9MA-uT-npW"/>
                             <constraint firstItem="jvd-fH-OfN" firstAttribute="top" secondItem="en3-l8-6tG" secondAttribute="bottom" constant="8" id="9zc-sN-zs3"/>
                             <constraint firstItem="Vd4-qU-Rps" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="AEd-hY-YD6"/>
+                            <constraint firstAttribute="bottom" secondItem="HuT-M1-LDk" secondAttribute="bottom" id="FgO-cc-LoY"/>
                             <constraint firstItem="UeT-av-eEG" firstAttribute="leading" secondItem="CIg-lk-hFD" secondAttribute="leading" constant="20" id="Fqw-vc-x7y"/>
                             <constraint firstItem="HuT-M1-LDk" firstAttribute="top" secondItem="CIg-lk-hFD" secondAttribute="top" id="GNP-Xi-njK"/>
                             <constraint firstItem="LUe-LR-wIk" firstAttribute="centerX" secondItem="A0b-8N-P5X" secondAttribute="centerX" id="J2X-Iu-uKG"/>
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJG-FZ-kks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="17"/>
+            <point key="canvasLocation" x="2566.666666666667" y="16.741071428571427"/>
         </scene>
         <!--To Present As Popup View Controller-->
         <scene sceneID="2Rf-f6-uLL">
@@ -493,7 +493,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" id="Ny9-NW-eAE"/>
                             <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="oVq-mQ-vQh" secondAttribute="trailing" id="WSa-74-mkh"/>
