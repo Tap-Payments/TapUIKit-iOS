@@ -23,7 +23,7 @@ internal protocol TapPresentableViewControllerDelegate {
 /// Inheric this class for any view controller you want to show as bottom dialog modal popup
 internal class TapPresentableViewController: PullUpController {
     
-    
+    internal var changedBefore:Bool = false
     @IBOutlet weak var containerView: UIView!
     internal var tapBottomSheetStickingPoints:[CGFloat]?
     internal var minimumHeight:CGFloat = ConstantManager.TapBottomSheetMinimumHeight
@@ -70,14 +70,11 @@ internal class TapPresentableViewController: PullUpController {
     override func pullUpControllerWillMove(to point: CGFloat) {
        // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
         // Check if the new point is lower than the dismiss Y threshold
-        if point <= ConstantManager.TapBottomSheetMinimumYPoint {
+        if changedBefore && point <= ConstantManager.TapBottomSheetMinimumYPoint {
             dismissView()
         }
-    }
-    
-    /// Will use this override method to always make sure the view is not dragged up beyond a certain Y limit
-    override func pullUpControllerDidMove(to point: CGFloat) {
-         // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
+        
+        // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
         if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
             // If yes, then we need to move it back to the minimum allowed Y point
             self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
@@ -86,6 +83,12 @@ internal class TapPresentableViewController: PullUpController {
         // check if we need to inform the delegate about the new position we are in now
         guard let delegate = delegate else { return }
         delegate.tapBottomSheetHeightChanged(with: point)
+        changedBefore = true
+    }
+    
+    /// Will use this override method to always make sure the view is not dragged up beyond a certain Y limit
+    override func pullUpControllerDidMove(to point: CGFloat) {
+        
     }
     
     

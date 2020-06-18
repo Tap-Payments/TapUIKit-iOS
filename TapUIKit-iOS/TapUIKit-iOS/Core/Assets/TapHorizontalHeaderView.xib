@@ -21,14 +21,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDi-Fw-fnO">
-                    <rect key="frame" x="16" y="0.0" width="46" height="30"/>
+                    <rect key="frame" x="18" y="0.0" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="leftButtonClicked:" destination="-1" eventType="touchUpInside" id="Eex-DX-alh"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ho1-Bg-UIV">
-                    <rect key="frame" x="352" y="0.0" width="46" height="30"/>
+                    <rect key="frame" x="350" y="0.0" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="rightButtonClicked:" destination="-1" eventType="touchUpInside" id="9xt-nv-fCI"/>
@@ -37,11 +37,11 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="jDi-Fw-fnO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="CfJ-QV-cWn"/>
+                <constraint firstItem="jDi-Fw-fnO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="CfJ-QV-cWn"/>
                 <constraint firstItem="ho1-Bg-UIV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HEz-8i-gSc"/>
                 <constraint firstAttribute="bottom" secondItem="ho1-Bg-UIV" secondAttribute="bottom" id="LJy-aN-HPG"/>
                 <constraint firstItem="jDi-Fw-fnO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Uk3-Ut-eXJ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ho1-Bg-UIV" secondAttribute="trailing" constant="16" id="bS2-bB-MAT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ho1-Bg-UIV" secondAttribute="trailing" constant="18" id="bS2-bB-MAT"/>
                 <constraint firstItem="jDi-Fw-fnO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fMu-WN-Wtf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

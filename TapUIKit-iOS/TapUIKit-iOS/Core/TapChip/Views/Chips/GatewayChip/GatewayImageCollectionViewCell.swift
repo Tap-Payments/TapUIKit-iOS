@@ -24,8 +24,10 @@ class GatewayImageCollectionViewCell: GenericTapChip {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
-            // We reload the cell data from the view model
-            reload()
+            if oldValue != viewModel {
+                // We reload the cell data from the view model
+                reload()
+            }
         }
     }
     
@@ -125,7 +127,7 @@ extension GatewayImageCollectionViewCell {
 
 
 
-extension GatewayImageCollectionViewCell:GenericChipViewModelDelegate{
+extension GatewayImageCollectionViewCell:GenericCellChipViewModelDelegate{
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
     }

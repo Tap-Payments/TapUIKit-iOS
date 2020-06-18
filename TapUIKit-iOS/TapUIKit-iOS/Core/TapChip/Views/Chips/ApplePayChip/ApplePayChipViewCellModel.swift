@@ -8,18 +8,16 @@
 import class UIKit.UICollectionViewCell
 import class PassKit.PKPaymentSummaryItem
 import enum TapApplePayKit_iOS.TapApplePayButtonType
+import class TapApplePayKit_iOS.TapApplePayToken
 import enum TapApplePayKit_iOS.TapApplePayButtonStyleOutline
 import enum TapApplePayKit_iOS.TapApplePayPaymentNetwork
 import class TapApplePayKit_iOS.TapApplePayRequest
+import class TapApplePayKit_iOS.TapApplePay
 import enum CommonDataModelsKit_iOS.TapCountryCode
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
 
-protocol ApplePayChipViewModelDelegate:GenericChipViewModelDelegate {
-    
-    func reloadApplePayButton()
-    
-}
+
 
 /// The view model that controlls the SavedCard cell
 public class ApplePayChipViewCellModel: GenericTapChipViewModel {
@@ -27,10 +25,11 @@ public class ApplePayChipViewCellModel: GenericTapChipViewModel {
     // MARK:- Variables
     
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
-    internal var cellDelegate:ApplePayChipViewModelDelegate?
+    internal var cellDelegate:GenericCellChipViewModelDelegate?
     internal var applePayButtonType:TapApplePayButtonType = .PayWithApplePay
     internal var applePayButtonStyle:TapApplePayButtonStyleOutline = .Black
     internal var tapApplePayRequest:TapApplePayRequest = .init()
+    let tapApplePay:TapApplePay = .init()
     
     // MARK:- Public methods
     public override func identefier() -> String {
@@ -54,6 +53,15 @@ public class ApplePayChipViewCellModel: GenericTapChipViewModel {
     
     public override func didSelectItem() {
         cellDelegate?.changeSelection(with: true)
+        startPayment()
+    }
+    
+    
+    internal func startPayment() {
+        tapApplePay.authorizePayment(in: .init(), for: tapApplePayRequest) { [weak self] (token) in
+            guard let nonNullSelf = self else { return }
+            nonNullSelf.viewModelDelegate?.applePayAuthoized(for: nonNullSelf, with: token)
+        }
     }
     
     public override func didDeselectItem() {

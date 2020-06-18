@@ -8,7 +8,6 @@
 
 
 import TapThemeManager2020
-import SimpleAnimation
 
 /// Represents the Saved card chip cell
 
@@ -26,8 +25,10 @@ class SavedCardCollectionViewCell: GenericTapChip {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
-            // We reload the cell data from the view model
-            reload()
+            if oldValue != viewModel {
+                // We reload the cell data from the view model
+                reload()
+            }
         }
     }
     
@@ -82,7 +83,7 @@ class SavedCardCollectionViewCell: GenericTapChip {
     
     /// Responsible for all logic needed to load all images in the cell
     private func loadImages() {
-        cardBrandIconImageView.fadeOut()
+        //cardBrandIconImageView.fadeOut()
         
         // Make sure we have a valid URL
         guard let iconURL:URL = URL(string: viewModel.icon ?? "") else { return }
@@ -94,7 +95,7 @@ class SavedCardCollectionViewCell: GenericTapChip {
             // Set the image and show it
             DispatchQueue.main.async { [weak self] in
                 self?.cardBrandIconImageView.image = downloadedImage
-                self?.cardBrandIconImageView.fadeIn()
+                //self?.cardBrandIconImageView.fadeIn()
             }
         }
     }
@@ -150,7 +151,7 @@ extension SavedCardCollectionViewCell {
 
 
 
-extension SavedCardCollectionViewCell:GenericChipViewModelDelegate {
+extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)

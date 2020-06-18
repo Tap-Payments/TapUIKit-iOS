@@ -7,11 +7,39 @@
 //
 
 import class UIKit.UICollectionViewCell
+import class TapApplePayKit_iOS.TapApplePayToken
 
-/// A protocl of methods to be applied to all generated chip cell
+/// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
 internal protocol GenericChipViewModelDelegate {
+    
     /**
-        Each view model should have an interface to know his cell is selected or nt
+     The event will be fired when a successful apple pay authorization happened
+     - Parameter viewModel: Represents The attached view model
+     - Parameter token: Represents Tap wrapper for the generated token
+     */
+    func applePayAuthoized(for viewModel:ApplePayChipViewCellModel, with token:TapApplePayToken)
+    /**
+     The event will be fired when the user cliks on a saved card chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func savedCard(for viewModel:SavedCardCollectionViewCellModel)
+    /**
+     The event will be fired when the user cliks on a gateway chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func gateway(for viewModel:GatewayChipViewModel)
+    /**
+     The event will be fired when the user cliks on a goPay chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func goPay(for viewModel:TapGoPayViewModel)
+}
+
+
+/// A protocl of methods to be applied to all generated chip cells to infom the view model with needed events
+internal protocol GenericCellChipViewModelDelegate {
+    /**
+        Each view model should have an interface to know his cell is selected or nt. Fired from the cell itself
      - parameter status: tTrue if it was just selected and false otherwise
      */
     func changeSelection(with status:Bool)
@@ -24,6 +52,9 @@ internal protocol GenericChipViewModelDelegate {
     public var title:String?
     /// The icon if any to be displayed in the Chip cell
     public var icon:String?
+    
+    /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
+    internal var viewModelDelegate:GenericChipViewModelDelegate?
     
     /**
      Creates a view model with the provided data

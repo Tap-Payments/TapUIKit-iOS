@@ -14,7 +14,7 @@ public class SavedCardCollectionViewCellModel: GenericTapChipViewModel {
     // MARK:- Variables
     
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
-    internal var cellDelegate:GenericChipViewModelDelegate?
+    internal var cellDelegate:GenericCellChipViewModelDelegate?
     
     // MARK:- Public methods
     public override func identefier() -> String {
@@ -23,7 +23,8 @@ public class SavedCardCollectionViewCellModel: GenericTapChipViewModel {
     
     
     public override func didSelectItem() {
-       cellDelegate?.changeSelection(with: true)
+        cellDelegate?.changeSelection(with: true)
+        viewModelDelegate?.savedCard(for: self)
     }
     
     public override func didDeselectItem() {

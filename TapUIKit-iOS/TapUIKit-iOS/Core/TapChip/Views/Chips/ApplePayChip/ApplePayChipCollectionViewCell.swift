@@ -7,10 +7,6 @@
 //
 
 import TapThemeManager2020
-import TapApplePayKit_iOS
-import enum CommonDataModelsKit_iOS.TapCountryCode
-import enum CommonDataModelsKit_iOS.TapCurrencyCode
-
 
 class ApplePayChipCollectionViewCell: GenericTapChip {
 
@@ -18,7 +14,9 @@ class ApplePayChipCollectionViewCell: GenericTapChip {
     
     /// Reference to the saved card icon image view
     @IBOutlet weak var applePayContainerView: UIView!
-    private var tapApplePayButton:TapApplePayButton?
+    /// Reference to the saved card icon image view
+    @IBOutlet weak var applePayTitle: UILabel!
+//    private var tapApplePayButton:TapApplePayButton?
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
@@ -71,30 +69,11 @@ class ApplePayChipCollectionViewCell: GenericTapChip {
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         applyTheme()
-        configureApplePayButton()
     }
     
     /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
     func reload() {
-        configureApplePayButton()
-    }
-    
-    private func configureApplePayButton() {
-        guard let _ = applePayContainerView else { return }
         
-        tapApplePayButton = TapApplePayButton.init(frame: applePayContainerView.bounds)
-        tapApplePayButton?.setup()
-        //tapApplePayButton?.removeFromSuperview()
-        reloadApplePayButtonStyle()
-        //applePayContainerView.addSubview(tapApplePayButton!)
-        
-        tapApplePayButton?.dataSource = self
-        tapApplePayButton?.delegate = self
-    }
-    
-    private func reloadApplePayButtonStyle() {
-        tapApplePayButton?.buttonStyle = viewModel.applePayButtonStyle
-        tapApplePayButton?.buttonType = viewModel.applePayButtonType
     }
 }
 
@@ -120,6 +99,17 @@ extension ApplePayChipCollectionViewCell {
         layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
         self.clipsToBounds = false
         self.layer.masksToBounds = false
+        
+        let applePayLogo = NSAttributedString(string: "", attributes: [ NSAttributedString.Key.foregroundColor: TapThemeManager.colorValue(for: "\(themePath).appleLogoTitleColor") ?? .white, NSAttributedString.Key.font: TapThemeManager.fontValue(for: "\(themePath).appleLogoTitleFont",shouldLocalise: false)!])
+        
+        
+        let applePayTitle = NSAttributedString(string: "Pay", attributes: [ NSAttributedString.Key.foregroundColor: TapThemeManager.colorValue(for: "\(themePath).applePayTitleColor") ?? .white, NSAttributedString.Key.font: TapThemeManager.fontValue(for: "\(themePath).applePayTitleFont",shouldLocalise: false)!])
+        
+        let combination = NSMutableAttributedString()
+        combination.append(applePayLogo)
+        combination.append(applePayTitle)
+        
+        self.applePayTitle.attributedText = combination
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -138,26 +128,11 @@ extension ApplePayChipCollectionViewCell {
 
 
 
-extension ApplePayChipCollectionViewCell:ApplePayChipViewModelDelegate {
-    
-    func reloadApplePayButton() {
-        reloadApplePayButtonStyle()
-    }
-    
+extension ApplePayChipCollectionViewCell:GenericCellChipViewModelDelegate {
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
     }
     
     
-}
-
-extension ApplePayChipCollectionViewCell:TapApplePayButtonDataSource,TapApplePayButtonDelegate {
-    var tapApplePayRequest: TapApplePayRequest {
-        return viewModel.applePayRequest()
-    }
-    
-    func tapApplePayFinished(with tapAppleToken: TapApplePayToken) {
-        //showTokenizedData(with: tapAppleToken)
-    }
 }

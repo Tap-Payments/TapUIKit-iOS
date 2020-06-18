@@ -13,7 +13,7 @@ public class GatewayChipViewModel: GenericTapChipViewModel {
     // MARK:- Variables
     
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
-    internal var cellDelegate:GenericChipViewModelDelegate?
+    internal var cellDelegate:GenericCellChipViewModelDelegate?
     
     // MARK:- Public methods
     
@@ -25,11 +25,13 @@ public class GatewayChipViewModel: GenericTapChipViewModel {
     public override func didSelectItem() {
         // When the view model get notified it's selected, the view model needs to inform the attached view so it re displays itself
         cellDelegate?.changeSelection(with: true)
+        viewModelDelegate?.gateway(for: self)
     }
     
     public override func didDeselectItem() {
         // When the view model get notified it's deselected, the view model needs to inform the attached view so it re displays itself
         cellDelegate?.changeSelection(with: false)
+        
     }
     
     // MARK:- Internal methods

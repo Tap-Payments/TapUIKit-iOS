@@ -89,9 +89,10 @@ public class TapChipHorizontalList: UIView {
         // Define theming attributes for the collection view
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
         let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
-        flowLayout.estimatedItemSize = .init(width: 1, height: 1)
-        
-        flowLayout.minimumLineSpacing = 10
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.minimumLineSpacing = itemSpacing
+        flowLayout.minimumInteritemSpacing = itemSpacing
         flowLayout.scrollDirection = .horizontal
         
         collectionView.collectionViewLayout = flowLayout

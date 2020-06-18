@@ -129,6 +129,22 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
+        showAlert(title: " Pay", message: "Token:\n\(token.stringAppleToken ?? "")")
+    }
+    
+    func savedCard(for viewModel: SavedCardCollectionViewCellModel) {
+        showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
+    }
+    
+    func gateway(for viewModel: GatewayChipViewModel) {
+        showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
+    }
+    
+    func goPay(for viewModel: TapGoPayViewModel) {
+        showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
+    }
+    
     func headerLeftButtonClicked(in headerType: TapHorizontalHeaderType) {
         if headerType == .GatewayListHeader {
             return
@@ -141,16 +157,9 @@ extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
         }
     }
     
-    
     func didSelect(item viewModel: GenericTapChipViewModel) {
         
-        if let viewModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel {
-            showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
-        }else if let _:TapGoPayViewModel = viewModel as? TapGoPayViewModel {
-            showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
-        }else if let _:SavedCardCollectionViewCellModel = viewModel as? SavedCardCollectionViewCellModel {
-            showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
-        }
+        
     }
 }
 

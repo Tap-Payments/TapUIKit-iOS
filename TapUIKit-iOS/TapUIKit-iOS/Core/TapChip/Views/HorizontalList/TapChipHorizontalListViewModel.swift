@@ -9,6 +9,7 @@
 
 import class UIKit.UICollectionView
 import class UIKit.UINib
+import class TapApplePayKit_iOS.TapApplePayToken
 
 /// This is the public protocol for outer components to listen to events and data fired from this view model and its attached view
 public protocol TapChipHorizontalListViewModelDelegate {
@@ -17,9 +18,37 @@ public protocol TapChipHorizontalListViewModelDelegate {
      - Parameter viewModel: Represents the attached view model of the selectec cell view
      */
     func didSelect(item viewModel:GenericTapChipViewModel)
+    /**
+     The event will be fired when left button in the header if any is clicked
+     - Parameter headerType: Represents which header was clicked
+     */
     func headerLeftButtonClicked(in headerType:TapHorizontalHeaderType)
+    /**
+     The event will be fired when right button in the header if any is clicked
+     - Parameter headerType: Represents which header was clicked
+     */
     func headerRightButtonClicked(in headerType:TapHorizontalHeaderType)
-    
+    /**
+     The event will be fired when a successful apple pay authorization happened
+     - Parameter viewModel: Represents The attached view model
+     - Parameter token: Represents Tap wrapper for the generated token
+     */
+    func applePayAuthoized(for viewModel:ApplePayChipViewCellModel, with token:TapApplePayToken)
+    /**
+     The event will be fired when the user cliks on a saved card chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func savedCard(for viewModel:SavedCardCollectionViewCellModel)
+    /**
+     The event will be fired when the user cliks on a gateway chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func gateway(for viewModel:GatewayChipViewModel)
+    /**
+     The event will be fired when the user cliks on a goPay chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func goPay(for viewModel:TapGoPayViewModel)
 }
 
 /// This is the internal protocol for communication between the view model and its attached UIView
@@ -42,9 +71,11 @@ public class TapChipHorizontalListViewModel {
         didSet{
             // When it is changed, we need to inform the attached view that he needs to reload itself now
             cellDelegate?.reload(new: dataSource)
+            assignModelsDelegate()
         }
     }
     
+    /// Defines what type of header shall we show in the list if any
     public var headerType:TapHorizontalHeaderType? {
         didSet{
             cellDelegate?.showHeader(with: headerType)
@@ -115,10 +146,18 @@ public class TapChipHorizontalListViewModel {
         }
     }
     
+    /**
+     The event will be fired when left button in the header if any is clicked
+     - Parameter header: Represents which header was clicked
+     */
     internal func leftButtonClicked(for header:TapHorizontalHeaderView) {
         delegate?.headerLeftButtonClicked(in: header.headerType)
     }
     
+    /**
+     The event will be fired when right button in the header if any is clicked
+     - Parameter header: Represents which header was clicked
+     */
     internal func rightButtonClicked(for header:TapHorizontalHeaderView) {
         delegate?.headerRightButtonClicked(in: header.headerType)
     }
@@ -170,4 +209,26 @@ public class TapChipHorizontalListViewModel {
         return currentViewModel.correctCellType(for: cell)
     }
     
+    private func assignModelsDelegate() {
+        dataSource.forEach{ $0.viewModelDelegate = self }
+    }
+}
+
+
+extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
+    func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
+        delegate?.applePayAuthoized(for: viewModel, with: token)
+    }
+    
+    func savedCard(for viewModel: SavedCardCollectionViewCellModel) {
+        delegate?.savedCard(for: viewModel)
+    }
+    
+    func gateway(for viewModel: GatewayChipViewModel) {
+        delegate?.gateway(for: viewModel)
+    }
+    
+    func goPay(for viewModel: TapGoPayViewModel) {
+        delegate?.goPay(for: viewModel)
+    }
 }

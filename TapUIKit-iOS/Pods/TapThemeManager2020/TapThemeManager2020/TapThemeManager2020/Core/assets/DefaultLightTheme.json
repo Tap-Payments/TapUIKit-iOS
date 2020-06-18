@@ -161,7 +161,7 @@
         "image" : "tapHandlerImage",
         "width" : 75,
         "height" : 2,
-        "corder" : 2
+        "corner" : 2
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
@@ -263,6 +263,10 @@
             },
             "applePayChip": {
                 "backgroundColor" : "black",
+                "applePayTitleFont": "Roboto-Regular,14",
+                "applePayTitleColor": "white",
+                "appleLogoTitleFont": "Roboto-Regular,16",
+                "appleLogoTitleColor": "white",
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",

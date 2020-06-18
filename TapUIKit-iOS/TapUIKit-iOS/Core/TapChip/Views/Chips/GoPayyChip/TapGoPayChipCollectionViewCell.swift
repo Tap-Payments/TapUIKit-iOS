@@ -121,7 +121,7 @@ extension TapGoPayChipCollectionViewCell {
 
 
 
-extension TapGoPayChipCollectionViewCell:GenericChipViewModelDelegate {
+extension TapGoPayChipCollectionViewCell:GenericCellChipViewModelDelegate {
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
