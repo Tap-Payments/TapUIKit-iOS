@@ -62,13 +62,13 @@ PODS:
   - GoogleUtilities/UserDefaults (6.6.0):
     - GoogleUtilities/Logger
   - LocalisationManagerKit-iOS (1.0.0)
-  - MapleBacon (6.1.0)
   - MOLH (1.4.1)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - Nuke (9.1.0)
   - PromisesObjC (1.2.9)
   - PullUpController (0.8.0)
   - RxCocoa (5.1.1):
@@ -103,8 +103,8 @@ DEPENDENCIES:
   - CommonDataModelsKit-iOS
   - Firebase/Analytics
   - LocalisationManagerKit-iOS
-  - MapleBacon
   - MOLH
+  - Nuke
   - PullUpController
   - RxCocoa
   - RxSwift
@@ -129,9 +129,9 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - LocalisationManagerKit-iOS
-    - MapleBacon
     - MOLH
     - nanopb
+    - Nuke
     - PromisesObjC
     - PullUpController
     - RxCocoa
@@ -160,9 +160,9 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   LocalisationManagerKit-iOS: fe6a1f2e07d7bf73335675517d2f261f33124274
-  MapleBacon: 695c9c2fd4df2147841e963570b9fb6941d03a36
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  Nuke: c97bf6006d31687cfa7c28507305143de27a4aa1
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -177,6 +177,6 @@ SPEC CHECKSUMS:
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: 3838007a5a500f6e1e7dec1473a0c7b9cf077a1a
 
-PODFILE CHECKSUM: 762f44083fa5c28a48d43193405d7fe87aa9ecb9
+PODFILE CHECKSUM: ca9de4a85e0dcdcd9f1ea3f01e9a082cb839283d
 
 COCOAPODS: 1.9.3

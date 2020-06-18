@@ -25,7 +25,7 @@ target 'TapUIKit-iOS' do
   pod 'CommonDataModelsKit-iOS'
   pod 'PullUpController'
   pod "SimpleAnimation"
-  pod "MapleBacon"
+  pod 'Nuke'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'TapApplePayKit-iOS'

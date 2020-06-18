@@ -26,6 +26,8 @@ public class TapChipHorizontalList: UIView {
     }
     /// Refernce to the header height, to animate it in hide and showing if needed
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewToHederConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewCenterConstraint: NSLayoutConstraint!
     
     /// Keeps track of the last applied theme value
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
@@ -88,13 +90,13 @@ public class TapChipHorizontalList: UIView {
         
         // Define theming attributes for the collection view
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
+        let sectionMargins:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
         let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumLineSpacing = itemSpacing
-        flowLayout.minimumInteritemSpacing = itemSpacing
         flowLayout.scrollDirection = .horizontal
-        
+        flowLayout.sectionInset = .init(top: 0, left: sectionMargins, bottom: 0, right: sectionMargins)
         collectionView.collectionViewLayout = flowLayout
         
         // Declare ourself as the data source and delegae for the collection view
@@ -130,6 +132,7 @@ public class TapChipHorizontalList: UIView {
             DispatchQueue.main.async { [weak self] in
                 UIView.animate(withDuration: 0.2, animations: {
                     self?.headerViewHeightConstraint.constant = 0
+                    self?.collectionViewToHederConstraint.priority = .defaultLow
                     self?.layoutIfNeeded()
                 })
             }
@@ -140,6 +143,7 @@ public class TapChipHorizontalList: UIView {
     internal func showHeaderView() {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.headerViewHeightConstraint.constant = 30
+            self?.collectionViewToHederConstraint.priority = .required
             self?.layoutIfNeeded()
             },completion: { [weak self] _ in
                 self?.headerView.fadeIn()

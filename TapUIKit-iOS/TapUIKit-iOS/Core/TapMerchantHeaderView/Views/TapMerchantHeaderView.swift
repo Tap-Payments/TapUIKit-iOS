@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 import struct UIKit.CGFloat
-import MapleBacon
+import Nuke
 import SimpleAnimation
 import RxSwift
 
@@ -117,20 +117,12 @@ public class TapMerchantHeaderView: UIView {
         
         // Make sure we have a valid URL
         guard let iconURL:URL = URL(string: remoteIconUrl) else { return }
-        // load the image from the URL
-        merchantLogoImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
-            // Check the downloaded image is a proper image
-            guard let downloadedImage = downloadedImage else { return }
-            
-            // Set the image and show it
-            DispatchQueue.main.async { [weak self] in
-                self?.merchantLogoImageView.image = downloadedImage
-                self?.merchantLogoPlaceHolderView.fadeOut(completion:{ _ in
-                    self?.merchantLogoImageView.fadeIn()
-                })
-            }
-        }
         
+        // load the image from the URL
+        let options = ImageLoadingOptions(
+            transition: .fadeIn(duration: 0.25)
+        )
+        Nuke.loadImage(with: iconURL,options:options, into: merchantLogoImageView)
     }
     
     /// Inform the viewmodel that the user clicked view

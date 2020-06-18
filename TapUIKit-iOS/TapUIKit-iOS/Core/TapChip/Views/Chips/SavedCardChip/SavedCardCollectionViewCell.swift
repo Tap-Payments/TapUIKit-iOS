@@ -8,7 +8,7 @@
 
 
 import TapThemeManager2020
-
+import Nuke
 /// Represents the Saved card chip cell
 
 class SavedCardCollectionViewCell: GenericTapChip {
@@ -88,16 +88,7 @@ class SavedCardCollectionViewCell: GenericTapChip {
         // Make sure we have a valid URL
         guard let iconURL:URL = URL(string: viewModel.icon ?? "") else { return }
         // load the image from the URL
-        cardBrandIconImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
-            // Check the downloaded image is a proper image
-            guard let downloadedImage = downloadedImage else { return }
-            
-            // Set the image and show it
-            DispatchQueue.main.async { [weak self] in
-                self?.cardBrandIconImageView.image = downloadedImage
-                //self?.cardBrandIconImageView.fadeIn()
-            }
-        }
+        Nuke.loadImage(with: iconURL, into: cardBrandIconImageView)
     }
     
     /// Responsible for all logic needed to assign the textual info into the corresponding labels

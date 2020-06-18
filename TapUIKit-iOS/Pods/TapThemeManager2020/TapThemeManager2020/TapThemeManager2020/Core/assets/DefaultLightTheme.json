@@ -191,8 +191,8 @@
     },
     "horizontalList": {
         "backgroundColor" : "whiteTwo",
-        "itemSpacing" : 15,
-        "margin" : 18,
+        "itemSpacing" : 10,
+        "margin" : 0,
         "headers": {
             "gatewayHeader": {
                 "backgroundColor" : "whiteTwo",

@@ -7,7 +7,7 @@
 //
 
 import TapThemeManager2020
-import MapleBacon
+import Nuke
 
 /// Represents the Gateway payment chip cell
 class GatewayImageCollectionViewCell: GenericTapChip {
@@ -50,16 +50,7 @@ class GatewayImageCollectionViewCell: GenericTapChip {
             return
         }
         
-        // Load the image from the URL or from the cache if availble
-        gatewayIconImageView.setImage(with: iconURL, displayOptions: []) { downloadedImage in
-            // Check the downloaded image is a proper image
-            guard let downloadedImage = downloadedImage else { return }
-            
-            // Set the image and show it
-            DispatchQueue.main.async { [weak self] in
-                self?.gatewayIconImageView.image = downloadedImage
-            }
-        }
+        Nuke.loadImage(with: iconURL, into: gatewayIconImageView)
     }
     
     override func tapChipType() -> TapChipType {

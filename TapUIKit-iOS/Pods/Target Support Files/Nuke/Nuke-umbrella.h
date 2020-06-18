@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double MapleBaconVersionNumber;
-FOUNDATION_EXPORT const unsigned char MapleBaconVersionString[];
+FOUNDATION_EXPORT double NukeVersionNumber;
+FOUNDATION_EXPORT const unsigned char NukeVersionString[];
 
