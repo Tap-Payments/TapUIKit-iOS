@@ -31,6 +31,7 @@ PODS:
     - GoogleUtilities/Environment (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
+  - Flurry-iOS-SDK/FlurrySDK (10.3.2)
   - GoogleAppMeasurement (6.6.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -81,6 +82,9 @@ PODS:
   - SimpleAnimation (0.4.2)
   - SnapKit (5.0.1)
   - SwiftLint (0.39.2)
+  - TapApplePayKit-iOS (1.0.3):
+    - CommonDataModelsKit-iOS (~> 1.0.1)
+    - Flurry-iOS-SDK/FlurrySDK
   - TapFontKit-iOS (0.0.3):
     - SwiftLint
     - TapSwiftFixes
@@ -107,6 +111,7 @@ DEPENDENCIES:
   - SheetyColors
   - SimpleAnimation
   - SnapKit
+  - TapApplePayKit-iOS
   - TapThemeManager2020
 
 SPEC REPOS:
@@ -118,6 +123,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
+    - Flurry-iOS-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -135,6 +141,7 @@ SPEC REPOS:
     - SimpleAnimation
     - SnapKit
     - SwiftLint
+    - TapApplePayKit-iOS
     - TapFontKit-iOS
     - TapSwiftFixes
     - TapThemeManager2020
@@ -147,6 +154,7 @@ SPEC CHECKSUMS:
   FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
   FirebaseCoreDiagnostics: 4505e4d4009b1d93f605088ee7d7764d5f0d1c84
   FirebaseInstallations: 293f567159b6d66d1c990f13bb868066096c94ec
+  Flurry-iOS-SDK: 28376e8b5215cf054ef6d95451ff05f0b0633b95
   GoogleAppMeasurement: 2fd5c5a56c069db635c8e7b92d4809a9591d0a69
   GoogleDataTransport: 9a8a16f79feffc7f42096743de2a7c4815e84020
   GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
@@ -164,10 +172,11 @@ SPEC CHECKSUMS:
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
+  TapApplePayKit-iOS: 5a397b6911aac0d7e8f7161841b6a1b8f92f640f
   TapFontKit-iOS: 2810f6f66ad8a1fa9a2afc0e3cbaf6ecd5dc9d1f
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: 3838007a5a500f6e1e7dec1473a0c7b9cf077a1a
 
-PODFILE CHECKSUM: 86cad2e2d1b3404cc48b19e7e2abbabba5b7a442
+PODFILE CHECKSUM: 947cd885e2a1731b3d0fd1666817fef81753f06a
 
 COCOAPODS: 1.9.3

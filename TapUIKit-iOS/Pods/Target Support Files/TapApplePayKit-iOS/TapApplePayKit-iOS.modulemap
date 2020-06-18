@@ -1,0 +1,6 @@
+framework module TapApplePayKit_iOS {
+  umbrella header "TapApplePayKit-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

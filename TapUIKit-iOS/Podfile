@@ -27,4 +27,5 @@ target 'TapUIKit-iOS' do
   pod "MapleBacon"
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'TapApplePayKit-iOS'
 end
