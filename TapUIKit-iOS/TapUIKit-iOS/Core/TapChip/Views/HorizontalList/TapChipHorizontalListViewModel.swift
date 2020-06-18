@@ -49,6 +49,12 @@ public protocol TapChipHorizontalListViewModelDelegate {
      - Parameter viewModel: Represents The attached view model
      */
     func goPay(for viewModel:TapGoPayViewModel)
+    
+    /**
+     The event will be fired when the user cliks on a currency chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func currencyChip(for viewModel:CurrencyChipViewModel)
 }
 
 /// This is the internal protocol for communication between the view model and its attached UIView
@@ -216,6 +222,10 @@ public class TapChipHorizontalListViewModel {
 
 
 extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
+    func currencyChip(for viewModel: CurrencyChipViewModel) {
+        delegate?.currencyChip(for: viewModel)
+    }
+    
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
         delegate?.applePayAuthoized(for: viewModel, with: token)
     }

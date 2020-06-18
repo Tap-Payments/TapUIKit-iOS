@@ -33,6 +33,11 @@ internal protocol GenericChipViewModelDelegate {
      - Parameter viewModel: Represents The attached view model
      */
     func goPay(for viewModel:TapGoPayViewModel)
+    /**
+     The event will be fired when the user cliks on a currency chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func currencyChip(for viewModel:CurrencyChipViewModel)
 }
 
 

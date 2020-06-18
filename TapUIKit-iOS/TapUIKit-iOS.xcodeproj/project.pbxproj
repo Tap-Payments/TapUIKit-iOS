@@ -26,6 +26,9 @@
 		E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56BD249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift */; };
 		E82A56C0249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */; };
 		E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56C1249B2B3800E3F00D /* ApplePayChipViewCellModel.swift */; };
+		E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56C5249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift */; };
+		E82A56C8249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */; };
+		E82A56CA249B8A3C00E3F00D /* CurrencyChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56C9249B8A3C00E3F00D /* CurrencyChipViewModel.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADC22459815D00E55A68 /* tapLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E835ADC12459815D00E55A68 /* tapLogo.png */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,6 +140,9 @@
 		E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplePayChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E82A56C1249B2B3800E3F00D /* ApplePayChipViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayChipViewCellModel.swift; sourceTree = "<group>"; };
 		E82A56C3249B2EE300E3F00D /* TapUIKit-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TapUIKit-Example.entitlements"; sourceTree = "<group>"; };
+		E82A56C5249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyChipCollectionViewCell.xib; sourceTree = "<group>"; };
+		E82A56C9249B8A3C00E3F00D /* CurrencyChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChipViewModel.swift; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADC12459815D00E55A68 /* tapLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapLogo.png; sourceTree = "<group>"; };
 		E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +307,15 @@
 			path = ApplePayChip;
 			sourceTree = "<group>";
 		};
+		E82A56C4249B8A0500E3F00D /* CurrencyChip */ = {
+			isa = PBXGroup;
+			children = (
+				E82A56C5249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift */,
+				E82A56C9249B8A3C00E3F00D /* CurrencyChipViewModel.swift */,
+			);
+			path = CurrencyChip;
+			sourceTree = "<group>";
+		};
 		E8428DD82456DAF300D5A45A = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +397,7 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */,
 				E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */,
 				E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */,
 				E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */,
@@ -504,6 +520,7 @@
 		E8CD4287249610020013AEE7 /* Chips */ = {
 			isa = PBXGroup;
 			children = (
+				E82A56C4249B8A0500E3F00D /* CurrencyChip */,
 				E82A56BC249B293600E3F00D /* ApplePayChip */,
 				E82A56AF2499ED4D00E3F00D /* SavedCardChip */,
 				E8670CB924988F85003F87D8 /* GoPayyChip */,
@@ -681,6 +698,7 @@
 				E8CD42862495F91B0013AEE7 /* TapChipHorizontalList.xib in Resources */,
 				E8670CC52498B001003F87D8 /* tap.png in Resources */,
 				E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */,
+				E82A56C8249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib in Resources */,
 				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
 				E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */,
 				E8670CC12498AFCB003F87D8 /* goPayIcon.pdf in Resources */,
@@ -785,6 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E80EA5932497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift in Sources */,
+				E82A56CA249B8A3C00E3F00D /* CurrencyChipViewModel.swift in Sources */,
 				E80E8AA52487C053009AF18F /* Constants.swift in Sources */,
 				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
 				E8E92B52248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift in Sources */,
@@ -800,6 +819,7 @@
 				E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */,
 				E8428E102457F8D900D5A45A /* TapUIExtensions.swift in Sources */,
 				E82A56B22499ED7A00E3F00D /* SavedCardCollectionViewCell.swift in Sources */,
+				E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */,
 				E8E92B4C248FA4DF00DD7DBB /* TapMerchantHeaderView.swift in Sources */,
 				E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */,
 				E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */,

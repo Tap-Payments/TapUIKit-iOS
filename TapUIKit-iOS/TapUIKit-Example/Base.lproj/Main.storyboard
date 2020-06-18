@@ -654,80 +654,80 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zc-r0-LnW" customClass="TapChipHorizontalList" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="52" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="95"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="0QQ-e7-Efx"/>
+                                    <constraint firstAttribute="height" constant="95" id="0QQ-e7-Efx"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KNET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl1-1Z-O0F">
-                                <rect key="frame" x="8" y="145" width="44" height="21"/>
+                                <rect key="frame" x="8" y="160" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-y1-6Km">
-                                <rect key="frame" x="357" y="140" width="51" height="31"/>
+                                <rect key="frame" x="357" y="155" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="h09-gh-O68"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENEFIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSa-2S-lc8">
-                                <rect key="frame" x="8" y="184" width="67" height="21"/>
+                                <rect key="frame" x="8" y="199" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRY-3L-cFj">
-                                <rect key="frame" x="357" y="179" width="51" height="31"/>
+                                <rect key="frame" x="357" y="194" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="KHn-i6-lTK"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SADAD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-r0-WJa">
-                                <rect key="frame" x="8" y="223" width="56" height="21"/>
+                                <rect key="frame" x="8" y="238" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXS-g1-IQQ">
-                                <rect key="frame" x="357" y="218" width="51" height="31"/>
+                                <rect key="frame" x="357" y="233" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="vPr-eG-HP2"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoPay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qne-jh-gcl">
-                                <rect key="frame" x="8" y="262" width="50" height="21"/>
+                                <rect key="frame" x="8" y="277" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKl-Hh-mnr">
-                                <rect key="frame" x="357" y="257" width="51" height="31"/>
+                                <rect key="frame" x="357" y="272" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="Wyr-Hm-Q9g"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SavedCard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GO-g2-Vy5">
-                                <rect key="frame" x="8" y="301" width="84" height="21"/>
+                                <rect key="frame" x="8" y="316" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-B6-crP">
-                                <rect key="frame" x="357" y="296" width="51" height="31"/>
+                                <rect key="frame" x="357" y="311" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="9M2-YJ-202"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ShowHeader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjA-S9-78o">
-                                <rect key="frame" x="8" y="340" width="98.5" height="21"/>
+                                <rect key="frame" x="8" y="355" width="98.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUu-nY-nYB">
-                                <rect key="frame" x="357" y="335" width="51" height="31"/>
+                                <rect key="frame" x="357" y="350" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="2mY-vk-7X3"/>
                                 </connections>

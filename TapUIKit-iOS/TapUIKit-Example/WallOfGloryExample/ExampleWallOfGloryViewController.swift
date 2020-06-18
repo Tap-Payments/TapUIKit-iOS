@@ -96,7 +96,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         // The GatwayListSection
         let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
         tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
-        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 95).isActive = true
         views.append(tapgatewayChipHorizontalList)
         tapgatewayChipHorizontalList.changeViewMode(with: tapChipHorizontalListViewModel)
         
@@ -156,6 +156,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
+    func currencyChip(for viewModel: CurrencyChipViewModel) {
+        
+    }
+    
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
         showAlert(title: " Pay", message: "Token:\n\(token.stringAppleToken ?? "")")
     }

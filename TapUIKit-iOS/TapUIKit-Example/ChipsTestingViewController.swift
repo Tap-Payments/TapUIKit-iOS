@@ -9,6 +9,7 @@
 import UIKit
 import TapUIKit_iOS
 import TapApplePayKit_iOS
+import CommonDataModelsKit_iOS
 
 class ChipsTestingViewController: UIViewController {
 
@@ -100,12 +101,10 @@ class ChipsTestingViewController: UIViewController {
             filteredChipsViewModel.append(allChipsViewModel[9])
         }
         
-        
-        
-        
-        
         viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : nil
         
+        /*filteredChipsViewModel = [CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
+        viewModel.headerType = nil*/
         viewModel.dataSource = filteredChipsViewModel
     }
     
@@ -129,6 +128,10 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    func currencyChip(for viewModel: CurrencyChipViewModel) {
+        
+    }
+    
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
         showAlert(title: " Pay", message: "Token:\n\(token.stringAppleToken ?? "")")
     }

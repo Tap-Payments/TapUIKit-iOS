@@ -31,6 +31,7 @@ public class TapChipHorizontalList: UIView {
     
     /// Keeps track of the last applied theme value
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    private var shouldShowHeader:Bool = true
     
     /// The view model that controls the data to be displayed and the events to be fired
     var viewModel:TapChipHorizontalListViewModel = .init() {
@@ -128,6 +129,7 @@ public class TapChipHorizontalList: UIView {
     
     /// Animate hiding the header view
     internal func hideHeaderView() {
+        shouldShowHeader = false
         headerView.fadeOut{ (_) in
             DispatchQueue.main.async { [weak self] in
                 UIView.animate(withDuration: 0.2, animations: {
@@ -146,7 +148,9 @@ public class TapChipHorizontalList: UIView {
             self?.collectionViewToHederConstraint.priority = .required
             self?.layoutIfNeeded()
             },completion: { [weak self] _ in
-                self?.headerView.fadeIn()
+                if self?.shouldShowHeader ?? false {
+                    self?.headerView.fadeIn()
+                }
         })
     }
     
