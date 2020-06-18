@@ -21,8 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="109" height="40"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="109" id="94I-dp-q1w"/>
-                            <constraint firstAttribute="height" constant="40" id="HpU-lL-Ufk"/>
+                            <constraint firstAttribute="width" priority="750" constant="109" id="94I-dp-q1w"/>
+                            <constraint firstAttribute="height" priority="750" constant="40" id="HpU-lL-Ufk"/>
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcW-ae-F7U">

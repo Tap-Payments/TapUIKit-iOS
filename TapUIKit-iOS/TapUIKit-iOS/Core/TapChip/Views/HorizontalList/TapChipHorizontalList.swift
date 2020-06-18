@@ -26,15 +26,15 @@ public class TapChipHorizontalList: UIView {
     }
     /// Refernce to the header height, to animate it in hide and showing if needed
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var collectionViewToHederConstraint: NSLayoutConstraint!
-    @IBOutlet weak var collectionViewCenterConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var collectionViewToHederConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var collectionViewCenterConstraint: NSLayoutConstraint!
     
     /// Keeps track of the last applied theme value
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     private var shouldShowHeader:Bool = true
     
     /// The view model that controls the data to be displayed and the events to be fired
-    var viewModel:TapChipHorizontalListViewModel = .init() {
+    public var viewModel:TapChipHorizontalListViewModel = .init() {
         didSet{
             // Whenever the view model is assigned, we delcare ourself as the cell delegate to start getting orders
             viewModel.cellDelegate = self
@@ -90,6 +90,15 @@ public class TapChipHorizontalList: UIView {
         viewModel.registerAllXibs(for: collectionView)
         
         // Define theming attributes for the collection view
+        assignFlowLaout()
+        
+        // Declare ourself as the data source and delegae for the collection view
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+    
+    
+    private func assignFlowLaout() {
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
         let sectionMargins:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
         let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
@@ -97,12 +106,8 @@ public class TapChipHorizontalList: UIView {
         flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumLineSpacing = itemSpacing
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = .init(top: 0, left: 18, bottom: 0, right: 18)
-        collectionView.collectionViewLayout = flowLayout
-        
-        // Declare ourself as the data source and delegae for the collection view
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        flowLayout.sectionInset = .init(top: shouldShowHeader ? 0 : 10, left: 0, bottom: 10, right: 0)
+        collectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
     
     /// The method handles the logic needed to update the displayed items and their statuses upon request
@@ -120,22 +125,25 @@ public class TapChipHorizontalList: UIView {
         
         // Determin and animate showing or hiding the header based on the given type
         guard let _ = type else {
+            shouldShowHeader = false
             hideHeaderView()
             return
         }
+        shouldShowHeader = true
         showHeaderView()
     }
     
     
     /// Animate hiding the header view
     internal func hideHeaderView() {
-        shouldShowHeader = false
+        
         headerView.fadeOut{ (_) in
             DispatchQueue.main.async { [weak self] in
                 UIView.animate(withDuration: 0.2, animations: {
                     self?.headerViewHeightConstraint.constant = 0
-                    self?.collectionViewToHederConstraint.priority = .defaultLow
                     self?.layoutIfNeeded()
+                },completion: { [weak self] _ in
+                    //self?.assignFlowLaout()
                 })
             }
         }
@@ -145,11 +153,12 @@ public class TapChipHorizontalList: UIView {
     internal func showHeaderView() {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.headerViewHeightConstraint.constant = 30
-            self?.collectionViewToHederConstraint.priority = .required
+            //self?.collectionViewToHederConstraint.priority = .required
             self?.layoutIfNeeded()
             },completion: { [weak self] _ in
                 if self?.shouldShowHeader ?? false {
                     self?.headerView.fadeIn()
+                    //self?.assignFlowLaout()
                 }
         })
     }

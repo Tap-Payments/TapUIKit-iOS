@@ -38,7 +38,7 @@ class TapHorizontalHeaderView: UIView {
     var delegate:TapHorizontalHeaderDelegate?
     
     /// Defines which header view should be loaded
-    var headerType:TapHorizontalHeaderType = .GatewayListHeader {
+    var headerType:TapHorizontalHeaderType? = nil {
         didSet{
             commonInit()
         }
@@ -59,7 +59,7 @@ class TapHorizontalHeaderView: UIView {
     /// The path to look for theme entry in
     private var themePath:String {
         get{
-            headerType.themePath()
+            headerType?.themePath() ?? ""
         }
     }
     
@@ -89,7 +89,7 @@ class TapHorizontalHeaderView: UIView {
     
     /// Handles all required localisations for the different views insude the header
     private func localize() {
-        let (leftTitle,rightTitle) = headerType.localizedTitles()
+        let (leftTitle,rightTitle) = headerType?.localizedTitles() ?? ("","")
         leftButton.setTitle(leftTitle, for: .normal)
         rightButton.setTitle(rightTitle, for: .normal)
     }
@@ -149,6 +149,7 @@ public enum TapHorizontalHeaderType {
 extension TapHorizontalHeaderView {
     /// Consolidated one point to apply all needed theme methods
     public func applyTheme() {
+        guard themePath != "" else { return }
         matchThemeAttributes()
     }
     

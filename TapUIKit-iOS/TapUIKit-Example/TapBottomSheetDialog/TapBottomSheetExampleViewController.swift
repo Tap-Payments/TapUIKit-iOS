@@ -40,7 +40,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if showWallOfGlory {
-            initialHeight =  5
+            initialHeight =  65
             initialHeightLabel.text = "Computed Initial Height \(Int(initialHeight)) PX"
             heightSlider.isEnabled = false
             heightSlider.isUserInteractionEnabled = false

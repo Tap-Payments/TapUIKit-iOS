@@ -17,7 +17,11 @@ class ExampleWallOfGloryViewController: UIViewController {
     @IBOutlet weak var tapVerticalView: TapVerticalView!
     var tapMerchantHeaderViewModel:TapMerchantHeaderViewModel = .init()
     var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
-    var tapChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
+    var tapGatewayChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
+    var tapCurrienciesChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
+    var gatewayChipsViewModel:[GenericTapChipViewModel] = []
+    var currenciesChipsViewModel:[CurrencyChipViewModel] = []
+    var views:[UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,37 +43,11 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapMerchantHeaderViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
         
-        
-        var allChipsViewModel:[GenericTapChipViewModel] = []
-        
-        
-        let applePayChipViewModel:ApplePayChipViewCellModel = ApplePayChipViewCellModel.init()
-        applePayChipViewModel.configureApplePayRequest()
-        allChipsViewModel.append(applePayChipViewModel)
-        
-        allChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://meetanshi.com/media/catalog/product/cache/1/image/925f46717e92fbc24a8e2d03b22927e1/m/a/magento-knet-payment-354x.png"))
-        allChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://meetanshi.com/media/catalog/product/cache/1/image/925f46717e92fbc24a8e2d03b22927e1/m/a/magento-knet-payment-354x.png"))
-        
-        allChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://media-exp1.licdn.com/dms/image/C510BAQG0Pwkl3gsm2w/company-logo_200_200/0?e=2159024400&v=beta&t=ragD_Mg4TUCAiVGiYOmjT2orY1IKEOOe_JEokwkzvaY"))
-        allChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://media-exp1.licdn.com/dms/image/C510BAQG0Pwkl3gsm2w/company-logo_200_200/0?e=2159024400&v=beta&t=ragD_Mg4TUCAiVGiYOmjT2orY1IKEOOe_JEokwkzvaY"))
-        
-        allChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
-        allChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
-        
-        
-        allChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked"))
-        
-        allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 1234", icon:"https://img.icons8.com/color/2x/amex.png"))
-        allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
-        allChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
-        
-        tapChipHorizontalListViewModel = .init(dataSource: allChipsViewModel, headerType: .GatewayListHeader)
-        
-        tapChipHorizontalListViewModel.delegate = self
+        createGatewaysViews()
     }
     
     func addGloryViews() {
-        var views:[UIView] = []
+        
         
         // The drag handler
         let dragView:TapDragHandlerView = .init()
@@ -94,11 +72,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         
         // The GatwayListSection
-        let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
-        tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
-        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 95).isActive = true
-        views.append(tapgatewayChipHorizontalList)
-        tapgatewayChipHorizontalList.changeViewMode(with: tapChipHorizontalListViewModel)
+        addGatewyList()
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
@@ -109,6 +83,58 @@ class ExampleWallOfGloryViewController: UIViewController {
         let okAction:UIAlertAction = .init(title: "OK", style: .destructive, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func createGatewaysViews() {
+        currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
+        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: nil)
+        tapCurrienciesChipHorizontalListViewModel.delegate = self
+        
+        
+        let applePayChipViewModel:ApplePayChipViewCellModel = ApplePayChipViewCellModel.init()
+        applePayChipViewModel.configureApplePayRequest()
+        gatewayChipsViewModel.append(applePayChipViewModel)
+        
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://meetanshi.com/media/catalog/product/cache/1/image/925f46717e92fbc24a8e2d03b22927e1/m/a/magento-knet-payment-354x.png"))
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://meetanshi.com/media/catalog/product/cache/1/image/925f46717e92fbc24a8e2d03b22927e1/m/a/magento-knet-payment-354x.png"))
+        
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://media-exp1.licdn.com/dms/image/C510BAQG0Pwkl3gsm2w/company-logo_200_200/0?e=2159024400&v=beta&t=ragD_Mg4TUCAiVGiYOmjT2orY1IKEOOe_JEokwkzvaY"))
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://media-exp1.licdn.com/dms/image/C510BAQG0Pwkl3gsm2w/company-logo_200_200/0?e=2159024400&v=beta&t=ragD_Mg4TUCAiVGiYOmjT2orY1IKEOOe_JEokwkzvaY"))
+        
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "SADAD", icon: "https://www.payfort.com/wp-content/uploads/2017/09/go_glocal_mada_logo_en.png"))
+        
+        
+        gatewayChipsViewModel.append(TapGoPayViewModel.init(title: "GoPay Clicked"))
+        
+        gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 1234", icon:"https://img.icons8.com/color/2x/amex.png"))
+        gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
+        gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
+        
+        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GatewayListHeader)
+        tapGatewayChipHorizontalListViewModel.delegate = self
+    }
+    
+    
+    func addGatewyList() -> UIView {
+        let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
+        tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
+        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 95).isActive = true
+        views.append(tapgatewayChipHorizontalList)
+        tapgatewayChipHorizontalList.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
+        return tapgatewayChipHorizontalList
+    }
+    
+    
+    func addCurrencyList()  -> UIView {
+        let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
+        tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
+        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        views.append(tapgatewayChipHorizontalList)
+        tapgatewayChipHorizontalList.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
+        self.tapVerticalView.add(view: tapgatewayChipHorizontalList)
+        return tapgatewayChipHorizontalList
     }
     
     /*
@@ -147,12 +173,30 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
 
 extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func itemsClicked() {
-        showAlert(title: "Amount Section", message: "The items had been clicked.. I promise logic will be implemented in the next sprint :)")
+        //showAlert(title: "Amount Section", message: "The items had been clicked.. I promise logic will be implemented in the next sprint :)")
+        
+        var replace = false
+        
+        for (index, element) in views.enumerated() {
+            if let elem:TapChipHorizontalList = element as? TapChipHorizontalList {
+                replace = true
+                views.remove(at: index)
+                self.tapVerticalView.remove(view: element,with: .popOut(duration: nil, delay: nil))
+                self.tapVerticalView.add(view: (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList(),with: .popIn(duration: nil, delay: nil))
+                break
+            }
+        }
+        
+        self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
     func amountSectionClicked() {
         showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")
     }
 }
+
+
+
+
 
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {

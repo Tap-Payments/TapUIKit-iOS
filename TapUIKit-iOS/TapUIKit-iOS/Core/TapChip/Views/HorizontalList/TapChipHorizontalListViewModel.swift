@@ -157,7 +157,7 @@ public class TapChipHorizontalListViewModel {
      - Parameter header: Represents which header was clicked
      */
     internal func leftButtonClicked(for header:TapHorizontalHeaderView) {
-        delegate?.headerLeftButtonClicked(in: header.headerType)
+        delegate?.headerLeftButtonClicked(in: header.headerType!)
     }
     
     /**
@@ -165,7 +165,7 @@ public class TapChipHorizontalListViewModel {
      - Parameter header: Represents which header was clicked
      */
     internal func rightButtonClicked(for header:TapHorizontalHeaderView) {
-        delegate?.headerRightButtonClicked(in: header.headerType)
+        delegate?.headerRightButtonClicked(in: header.headerType!)
     }
     
     /**

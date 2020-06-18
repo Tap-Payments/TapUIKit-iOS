@@ -192,7 +192,7 @@
     "horizontalList": {
         "backgroundColor" : "whiteTwo",
         "itemSpacing" : 10,
-        "margin" : 0,
+        "margin" : 18,
         "headers": {
             "gatewayHeader": {
                 "backgroundColor" : "whiteTwo",
