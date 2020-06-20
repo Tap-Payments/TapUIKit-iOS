@@ -121,7 +121,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     }
     
     
-    func addGatewyList() -> UIView {
+    func addGatewyList(addIt:Bool = true) -> UIView {
         let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
         tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
         tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -131,7 +131,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     }
     
     
-    func addCurrencyList()  -> UIView {
+    func addCurrencyList(addIt:Bool = true)  -> UIView {
         let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
         tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
         tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -177,24 +177,22 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
 
 extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func itemsClicked() {
-        //showAlert(title: "Amount Section", message: "The items had been clicked.. I promise logic will be implemented in the next sprint :)")
-        
-        var replace = false
-        
+       
         for (index, element) in views.enumerated() {
             
             if let elem:TapChipHorizontalList = element as? TapChipHorizontalList {
-                replace = true
+                self.tapVerticalView.remove(view: elem, with: .fadeOut(duration: nil, delay: nil))
                 views.remove(at: index)
-                //self.tapVerticalView.remove(view: elem,with: .popOut(duration: nil, delay: nil))
-                //self.tapVerticalView.add(view: (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList(),with: .slideIn(TapVerticalViewAnimationDirection.bottom,duration: nil, delay: nil))
-                //views.append((elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList())
-                (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList()
+                let newListView = (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList()
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.add(view: newListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
+                }
+                
                 break
             }
         }
         
-        self.tapVerticalView.updateSubViews(with: views,and: .removeAllFirst)
+       // self.tapVerticalView.updateSubViews(with: views,and: .removeAllFirst)
     }
     func amountSectionClicked() {
         showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")

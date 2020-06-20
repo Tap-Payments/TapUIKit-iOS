@@ -27,6 +27,8 @@ public class TapVerticalView: UIView {
     @IBOutlet internal weak var scrollView: UIScrollView!
     /// The main view loaded from the Xib
     @IBOutlet internal weak var containerView: UIView!
+    /// Used to determine if we need to delay any coming view addition requests to wait until the items being removed to finish the animation first:)
+    internal var itemsBeingRemoved:Bool = false
     
     /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
     public var delegate:TapVerticalViewDelegate?
@@ -70,11 +72,11 @@ public class TapVerticalView: UIView {
         guard scrollView.contentSize.height > 0 else { return }
         // Inform the delegate if any, that the view has new size
         // Take in consideration the safe margins :)
-        var bottomPadding:CGFloat = 0.0
+        /*var bottomPadding:CGFloat = 0.0
         if let window = UIApplication.shared.keyWindow {
             bottomPadding = window.safeAreaInsets.bottom
-        }
-        var newSize = scrollView.contentSize
+        }*/
+        let newSize = scrollView.contentSize
         //newSize.height += bottomPadding
         delegate.innerSizeChanged?(to: newSize, with: self.frame)
         
@@ -112,32 +114,39 @@ public class TapVerticalView: UIView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
     private func handleDeletion(for view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
-        
+        itemsBeingRemoved = true
         // Check if there is an animation we need to do
         guard let animation = animation else {
+            itemsBeingRemoved = false
             stackView.removeArrangedSubview(view)
             return
         }
         
         switch animation {
         case .bounceIn(let direction,_,_):
-            view.bounceIn(from: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+            view.bounceIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
         case .bounceOut(let direction,_,_):
-            view.bounceOut(to: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+            view.bounceOut(to: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
         case .fadeIn:
-            view.fadeIn(completion: {_ in self.stackView.removeArrangedSubview(view)})
+            view.fadeIn(completion: {_ in self.removeFromStackView(view:view)})
         case .fadeOut:
-            view.fadeOut(completion: {_ in self.stackView.removeArrangedSubview(view)})
+            view.fadeOut(completion: {_ in self.removeFromStackView(view:view)})
         case .slideIn(let direction,_,_):
-            view.slideIn(from: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+            view.slideIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
         case .slideOut(let direction,_,_):
-            view.slideOut(to: direction.animationKitDirection(),completion: {_ in self.stackView.removeArrangedSubview(view)})
+            view.slideOut(to: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
         case .popIn:
             view.popIn()
         case .popOut:
             view.popOut()
         }
         
+    }
+    
+    
+    private func removeFromStackView(view:UIView) {
+        stackView.removeArrangedSubview(view)
+        itemsBeingRemoved = false
     }
     
     /**
@@ -156,17 +165,24 @@ public class TapVerticalView: UIView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
     private func handleAddition(of view:UIView, at index:Int? = nil, with animation:TapVerticalViewAnimationType? = nil) {
-        // If the index is not defined, then we just add it to the end
-        if let index = index {
-            stackView.insertArrangedSubview(view, at: index)
-        }else{
-            stackView.addArrangedSubview(view)
-        }
         
-        // Check if there is an animation we need to do
-        guard let animation = animation else { return }
+//        while(itemsBeingRemoved) {}
         
-        switch animation {
+        let delay:Int = itemsBeingRemoved ? 300 : 5
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) { [weak self] in
+            // If the index is not defined, then we just add it to the end
+            if let index = index {
+                self?.stackView.insertArrangedSubview(view, at: index)
+            }else{
+                self?.stackView.addArrangedSubview(view)
+            }
+            
+            // Check if there is an animation we need to do
+            guard let animation = animation else { return }
+            
+            switch animation {
             case .bounceIn(let direction,_,_):
                 view.bounceIn(from: direction.animationKitDirection())
             case .bounceOut(let direction,_,_):
@@ -183,6 +199,7 @@ public class TapVerticalView: UIView {
                 view.popIn()
             case .popOut:
                 view.popOut()
+            }
         }
     }
     
@@ -236,7 +253,7 @@ public class TapVerticalView: UIView {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) { [weak self] in
             subViews.forEach{self?.stackView.addArrangedSubview($0)}
             // Make sure they are of the same order now!
-            for (newIndex, newView) in subViews.enumerated() {
+            for (_, newView) in subViews.enumerated() {
                 if animationSequence != .none {
                     newView.slideIn(from: .bottom)
                 }

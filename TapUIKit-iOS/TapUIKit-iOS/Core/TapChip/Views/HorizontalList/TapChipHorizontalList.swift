@@ -100,7 +100,7 @@ public class TapChipHorizontalList: UIView {
     
     private func assignFlowLaout() {
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
-        let sectionMargins:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
+        //let sectionMargins:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
         let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
@@ -143,7 +143,7 @@ public class TapChipHorizontalList: UIView {
                     self?.headerViewHeightConstraint.constant = 0
                     self?.collectionViewToHederConstraint.priority = .defaultLow
                     self?.layoutIfNeeded()
-                },completion: { [weak self] _ in
+                },completion: { _ in
                     //self?.assignFlowLaout()
                 })
             }
