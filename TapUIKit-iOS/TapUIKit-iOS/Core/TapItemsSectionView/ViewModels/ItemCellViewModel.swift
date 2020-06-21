@@ -69,7 +69,7 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     internal func itemPriceLabel() -> String {
         guard let itemModel = itemModel, let itemPrice = itemModel.price else { return "" }
-        
+        return ""
     }
     
     
