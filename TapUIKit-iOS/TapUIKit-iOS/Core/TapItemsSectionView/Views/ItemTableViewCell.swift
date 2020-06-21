@@ -6,10 +6,17 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import TapThemeManager2020
 
 class ItemTableViewCell: TapGenericTableCell {
-
+    @IBOutlet weak var itemTitleLabel: UILabel!
+    @IBOutlet weak var itemDescriptionLabel: UILabel!
+    @IBOutlet weak var itemPriceLabel: UILabel!
+    @IBOutlet weak var itemDiscountPriceLabel: UILabel!
+    @IBOutlet weak var itemQuantityView: UIView!
+    @IBOutlet weak var itemQuantityLabel: UILabel!
+    @IBOutlet weak var separatorView: TapSeparatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
