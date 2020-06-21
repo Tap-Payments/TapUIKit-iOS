@@ -239,8 +239,4 @@ extension TapChipHorizontalList: TapHorizontalHeaderDelegate {
     func leftAccessoryClicked(with type: TapHorizontalHeaderView) {
         viewModel.leftButtonClicked(for: type)
     }
-    
-   
-    
-    
 }

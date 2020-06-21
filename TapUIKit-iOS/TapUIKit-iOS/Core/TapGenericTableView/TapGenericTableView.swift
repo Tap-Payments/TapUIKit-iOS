@@ -8,11 +8,12 @@
 
 import TapThemeManager2020
 
+/// Represents Tap representation of a Table view
 class TapGenericTableView: UIView {
 
     // Mark:- Variables
     
-    /// The reference to the backbone uicollectionview used to display the horizontal items
+    /// The reference to the backbone tableview used
     @IBOutlet weak var tableView: UITableView!
     /// The content view that holds all inner views inside the view
     @IBOutlet weak var contentView:UIView!
@@ -74,13 +75,13 @@ class TapGenericTableView: UIView {
         configureTableView()
     }
     
-    /// All the configurations needed as one time setup to our collection view
+    /// All the configurations needed as one time setup to our table view
     private func configureTableView() {
         
-        // Attach and register all created generic chip cells to the collection view
+        // Attach and register all created generic cells to the table view
         viewModel.registerAllXibs(for: tableView)
         
-        // Declare ourself as the data source and delegae for the collection view
+        // Declare ourself as the data source and delegae for the table view
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -133,6 +134,4 @@ extension TapGenericTableView:UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(with: model)
         return cell
     }
-    
-    
 }
