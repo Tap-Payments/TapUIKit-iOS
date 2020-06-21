@@ -13,6 +13,8 @@ import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
 
+
+
 public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     // MARK:- Variables
@@ -20,10 +22,8 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     private var itemModel:ItemModel?
     /// The original currency, the item is created with
     private var originalCurrency:TapCurrencyCode?
-    /// The item model to be represented by this view model
-    private var newCurrency:TapCurrencyCode?
-    
-    
+    /// The new currency the user wants to convert to
+    private var convertCurrency:TapCurrencyCode?
     
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:TapCellViewModelDelegate?
@@ -34,8 +34,15 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return "ItemTableViewCell"
     }
     
-    public init(itemModel:ItemModel) {
+    /**
+     Creates a new ItemCellView model
+     - Parameter itemModel: The item model to be represented by this view model
+     - Parameter originalCurrency: The original currency, the item is created with
+     */
+    public init(itemModel:ItemModel, originalCurrency:TapCurrencyCode) {
         self.itemModel = itemModel
+        self.originalCurrency = originalCurrency
+        self.convertCurrency = originalCurrency
     }
     
     
