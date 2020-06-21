@@ -38,7 +38,7 @@ public class TapGenericTableViewModel {
     
     // Mark:- Variables
     
-    /// The data source which represents the list of view models to be displayed inside the uicollectionview
+    /// The data source which represents the list of view models to be displayed inside the UITableView
     public var dataSource:[TapGenericTableCellViewModel] = [] {
         didSet{
             // When it is changed, we need to inform the attached view that he needs to reload itself now
@@ -47,7 +47,7 @@ public class TapGenericTableViewModel {
         }
     }
     
-    /// Attach yourself to this delegate to start getting events fired from this view model and its attached uicollectionview
+    /// Attach yourself to this delegate to start getting events fired from this view model and its attached UITableView
     public var delegate:TapGenericTableViewModelDelegate?
     
     /// Attach yourself to this delegare if you are the associated view so you can be instructed by actions you have to do
@@ -56,7 +56,7 @@ public class TapGenericTableViewModel {
     // Mark:- Public methods
     /**
      Creates the ViewModel and makes it ready for work
-     - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the collectionview
+     - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the UITableView
      */
     public init(dataSource:[TapGenericTableCellViewModel]) {
         defer {
@@ -70,13 +70,13 @@ public class TapGenericTableViewModel {
     // Mark:- Internal methods
     
     /**
-     Logic to attach and register all created custom XIB files and classes to a provided collection view. Helps in automating the process and no need to do a custom code for each created XIB custom cell.
-     - Parameter collectionView: The UICollectionView you want to register all created custom Tap Chip Cells to it
+     Logic to attach and register all created custom XIB files and classes to a provided table view. Helps in automating the process and no need to do a custom code for each created XIB custom cell.
+     - Parameter tableView: The UITableView you want to register all created custom Tap Cells to it
      */
     internal func registerAllXibs(for tableView:UITableView) {
         // Fetch all availble chip cells views
         let tableCellsNames:[String] = TapGenericCellType.allCases.map{ $0.nibName() }
-        // For each one of them, register its XIB and class to the provided collection view
+        // For each one of them, register its XIB and class to the provided table view
         tableCellsNames.forEach { cellName in
             // We need to load teh XIB from the correct bundle which  is this bundle
             let bundle = Bundle(for: TapGenericTableCellViewModel.self)
@@ -85,17 +85,17 @@ public class TapGenericTableViewModel {
     }
     
     /**
-     Calclates teh number of sections to be displayed inside the attached collecionvoew
-     - Returns: The number of sections (ROWS) to be displayed
+     Calclates teh number of sections to be displayed inside the attached tableview
+     - Returns: The number of sections  to be displayed
      */
     internal func numberOfSections() -> Int {
         1
     }
     
     /**
-     Calclates teh number of items to be displayed for a given row
+     Calclates teh number of items to be displayed for a section
      - Parameter section: The section you want to know the number of items in, default is 0
-     - Returns: The number of items (COLUMNS) to be displayed in the provided row
+     - Returns: The number of items  to be displayed in the provided section
      */
     internal func numberOfRows(for section:Int = 0) -> Int {
         switch section {
@@ -138,9 +138,9 @@ public class TapGenericTableViewModel {
     
     /**
      To isolate the view totally about any logic, this method gives back the cell that needds to be displayed inside the list at a certain position
-     - Parameter collectionView: Which collection view we need to display the cell in
+     - Parameter tableView: Which collection view we need to display the cell in
      - Parameter indexPath: The posotion of the required cell to be loaded
-     - Returns: A subclass of the GenericTapChip based on the type of its view model
+     - Returns: A subclass of the TapGenericTableCell based on the type of its view model
      */
     internal func dequeuCell(in tableView:UITableView, at indexPath:IndexPath) -> TapGenericTableCell {
         
