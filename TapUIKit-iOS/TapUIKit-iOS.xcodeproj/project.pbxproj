@@ -67,6 +67,8 @@
 		E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD4288249610240013AEE7 /* GatewayImageCollectionViewCell.swift */; };
 		E8CD428B249610240013AEE7 /* GatewayImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CD4289249610240013AEE7 /* GatewayImageCollectionViewCell.xib */; };
 		E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD428C24961B050013AEE7 /* GenericTapChip.swift */; };
+		E8E69944249F3F4A007A32FA /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69942249F3F4A007A32FA /* ItemModel.swift */; };
+		E8E69945249F3F4A007A32FA /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69943249F3F4A007A32FA /* DiscountModel.swift */; };
 		E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */; };
 		E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */; };
 		E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */; };
@@ -181,6 +183,8 @@
 		E8CD4288249610240013AEE7 /* GatewayImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8CD4289249610240013AEE7 /* GatewayImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatewayImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8CD428C24961B050013AEE7 /* GenericTapChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTapChip.swift; sourceTree = "<group>"; };
+		E8E69942249F3F4A007A32FA /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		E8E69943249F3F4A007A32FA /* DiscountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
 		E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorView.swift; sourceTree = "<group>"; };
 		E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorView.xib; sourceTree = "<group>"; };
 		E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8E6993E249F3F20007A32FA /* TapItemsSectionView */,
 				E8CD427F2495F7650013AEE7 /* TapChip */,
 				E8C590F724921AEB00E03424 /* TapAmountSectionView */,
 				E8E92B4A248FA4BE00DD7DBB /* TapMerchantHeaderView */,
@@ -528,6 +533,39 @@
 				E82A56B6249A1E2000E3F00D /* GenericTapChip */,
 			);
 			path = Chips;
+			sourceTree = "<group>";
+		};
+		E8E6993E249F3F20007A32FA /* TapItemsSectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E8E69941249F3F39007A32FA /* Views */,
+				E8E69940249F3F34007A32FA /* ViewModels */,
+				E8E6993F249F3F2B007A32FA /* Models */,
+			);
+			path = TapItemsSectionView;
+			sourceTree = "<group>";
+		};
+		E8E6993F249F3F2B007A32FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E8E69943249F3F4A007A32FA /* DiscountModel.swift */,
+				E8E69942249F3F4A007A32FA /* ItemModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E8E69940249F3F34007A32FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E8E69941249F3F39007A32FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E8E92B38248F5C7800DD7DBB /* TapSeparatorView */ = {
@@ -822,7 +860,9 @@
 				E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */,
 				E8E92B4C248FA4DF00DD7DBB /* TapMerchantHeaderView.swift in Sources */,
 				E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */,
+				E8E69944249F3F4A007A32FA /* ItemModel.swift in Sources */,
 				E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */,
+				E8E69945249F3F4A007A32FA /* DiscountModel.swift in Sources */,
 				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
 				E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
