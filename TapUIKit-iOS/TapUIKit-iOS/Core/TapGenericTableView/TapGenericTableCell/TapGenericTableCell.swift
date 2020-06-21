@@ -6,7 +6,8 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import class UIKit.UITableViewCell
+/// This is a superclass for all the table cells views created, this will make sure all have the same interface/output and ease the parametery type in methods
 
 class TapGenericTableCell: UITableViewCell {
 
@@ -30,7 +31,7 @@ class TapGenericTableCell: UITableViewCell {
     }
     
     /**
-     All created chips views should have an integhtrface to cnfigure itself with a given view model
+     All created cells should have an integhtrface to cnfigure itself with a given view model
      - Parameter viewModel: The view model the cell will attach itself to
      */
     internal func configureCell(with viewModel:TapGenericTableCellViewModel) {
