@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
+/// A protocl of methods to be applied to all table cells viewmodel to infom the view model with needed events
 internal protocol TapGenericCellViewModelDelegate {
     
     /**
@@ -19,12 +19,13 @@ internal protocol TapGenericCellViewModelDelegate {
 }
 
 
+/// This is a superclass for all the table cells view models created, this will make sure all have the same interface/output and ease the parametery type in methods
 public class TapGenericTableCellViewModel {
     
     // MARK:- Internal methods
     
     /**
-     All created chips views should have an interface to know about their selection status
+     All created table cells should have an interface to know about their selection status
      - Parameter state: True if it was just selected and false otherwise
      */
     internal func selectStatusChaned(with state:Bool) {
@@ -40,7 +41,7 @@ public class TapGenericTableCellViewModel {
     }
     
     /**
-     All created chips views should have an integhtrface to cnfigure itself with a given view model
+     All created tabe cells should have an integhtrface to cnfigure itself with a given view model
      - Parameter viewModel: The view model the cell will attach itself to
      */
     internal func configureCell(with viewModel:TapGenericTableCellViewModel) {
@@ -48,29 +49,29 @@ public class TapGenericTableCellViewModel {
     }
     
     
-    /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
+    /// A protocl of methods to be applied to all table cells viewmodel to infom the view model with needed events
     internal var viewModelDelegate:TapGenericCellViewModelDelegate?
     
     /**
-     Each Chip View Model will be responsible to create a unique identifir for himself and for the collectionviewcell attached to it
-     - Returns: The identefier to be used in declaring the type and to dequeue the cells from the collectionview
+     Each Cell ViewModel will be responsible to create a unique identifir for himself and for the collectionviewcell attached to it
+     - Returns: The identefier to be used in declaring the type and to dequeue the cells from the table vew
      */
     func identefier() -> String {
         return ""
     }
     
-    ///Each Chip View Model must have an interface to know that his assocated cell is selected to do the needed logic
+    ///Each Cell View Model must have an interface to know that his assocated cell is selected to do the needed logic
     func didSelectItem() {
         return
     }
     
-    ///Each Chip View Model must have an interface to know that his assocated cell is deselected to do the needed logic
+    ///Each Cell View Model must have an interface to know that his assocated cell is deselected to do the needed logic
     func didDeselectItem() {
         return
     }
     
     /**
-     To consolidate the code as much as possible, each view model is reponsible for casting in a generic uicollectionviewcell into his associated type. This will keep the view unaware of the inner classes
+     To consolidate the code as much as possible, each view model is reponsible for casting in a generic uitableviewcell into his associated type. This will keep the view unaware of the inner classes
      - Returns: The correctly typed cell based on the type of the view model
      */
     func correctCellType(for cell:TapGenericTableCell) -> TapGenericTableCell {

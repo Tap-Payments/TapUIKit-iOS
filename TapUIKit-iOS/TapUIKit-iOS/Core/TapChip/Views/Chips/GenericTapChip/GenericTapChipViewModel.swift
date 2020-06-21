@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UICollectionViewCell
 import class TapApplePayKit_iOS.TapApplePayToken
 
 /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
