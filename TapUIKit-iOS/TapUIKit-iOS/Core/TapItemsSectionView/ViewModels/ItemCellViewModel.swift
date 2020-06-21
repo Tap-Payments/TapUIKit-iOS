@@ -37,6 +37,10 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return "ItemTableViewCell"
     }
     
+    override init() {
+        
+    }
+    
     /**
      Creates a new ItemCellView model
      - Parameter itemModel: The item model to be represented by this view model

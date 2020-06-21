@@ -34,7 +34,7 @@ internal protocol TapCellViewModelDelegate {
 
 
 /// This is a superclass for all the table cells view models created, this will make sure all have the same interface/output and ease the parametery type in methods
-public class TapGenericTableCellViewModel {
+@objc public class TapGenericTableCellViewModel:NSObject {
     
     // MARK:- Internal methods
     
