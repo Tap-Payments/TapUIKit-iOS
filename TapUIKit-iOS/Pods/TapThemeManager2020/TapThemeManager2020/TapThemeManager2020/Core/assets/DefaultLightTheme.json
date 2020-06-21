@@ -14,7 +14,8 @@
             "lightPeriwinkle": "#d9d9da",
             "white80":"#ffffffcc",
             "vibrantGreen" : "#2ace00",
-            "vibrantGreenTwo" : "#00d300"
+            "vibrantGreenTwo" : "#00d300",
+            "paleLilac":"#e4e4e5"
         }
     },
     "inlineCard": {
@@ -311,6 +312,26 @@
                         "opacity": 1
                     }
                 }
+            }
+        }
+    },
+    "itemsList":
+    {
+        "backgroundColor": "white",
+        "separatorColor": "veryLightPinkTwo",
+        "item":{
+            "titleLabelFont" : "Roboto-Regular,14",
+            "titleLabelColor" : "greyishBrown",
+            "descLabelFont" : "Roboto-Light,12",
+            "descLabelColor" : "brownGrey",
+            "priceLabelFont" : "Roboto-Regular,14",
+            "priceLabelColor" : "greyishBrown",
+            "calculatedPriceLabelFont" : "Roboto-Light,12",
+            "calculatedPriceLabelColor" : "brownGrey",
+            "count": {
+                "backgroundColor": "paleLilac",
+                "countLabelFont" : "Roboto-Regular,9",
+                "countLabelColor" : "greyishBrown",
             }
         }
     }

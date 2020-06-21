@@ -22,6 +22,8 @@ class ExampleWallOfGloryViewController: UIViewController {
     var gatewayChipsViewModel:[GenericTapChipViewModel] = []
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
     var views:[UIView] = []
+    var gatewaysListView:TapChipHorizontalList = .init()
+    var currencyListView:TapChipHorizontalList = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +78,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         //views.append(vv)
         
         // The GatwayListSection
-        addGatewyList()
+        views.append(gatewaysListView)
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
@@ -118,28 +120,18 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GatewayListHeader)
         tapGatewayChipHorizontalListViewModel.delegate = self
+        
+        
+        gatewaysListView.translatesAutoresizingMaskIntoConstraints = false
+        gatewaysListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        gatewaysListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
+        
+        
+        
+        currencyListView.translatesAutoresizingMaskIntoConstraints = false
+        currencyListView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        currencyListView.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
     }
-    
-    
-    func addGatewyList(addIt:Bool = true) -> UIView {
-        let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
-        tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
-        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        views.append(tapgatewayChipHorizontalList)
-        tapgatewayChipHorizontalList.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
-        return tapgatewayChipHorizontalList
-    }
-    
-    
-    func addCurrencyList(addIt:Bool = true)  -> UIView {
-        let tapgatewayChipHorizontalList:TapChipHorizontalList = .init()
-        tapgatewayChipHorizontalList.translatesAutoresizingMaskIntoConstraints = false
-        tapgatewayChipHorizontalList.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        views.append(tapgatewayChipHorizontalList)
-        tapgatewayChipHorizontalList.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
-        return tapgatewayChipHorizontalList
-    }
-    
     /*
      // MARK: - Navigation
      
@@ -176,23 +168,33 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
-    func itemsClicked() {
-       
+    func showItemsClicked() {
         for (index, element) in views.enumerated() {
-            
-            if let elem:TapChipHorizontalList = element as? TapChipHorizontalList {
-                self.tapVerticalView.remove(view: elem, with: .fadeOut(duration: nil, delay: nil))
+            if element == gatewaysListView {
+                self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 views.remove(at: index)
-                let newListView = (elem.viewModel.headerType == TapHorizontalHeaderType.GatewayListHeader) ? addCurrencyList() : addGatewyList()
+                views.append(currencyListView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: newListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
+                    self?.tapVerticalView.add(view: self!.currencyListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
                 }
-                
                 break
             }
         }
-        
-       // self.tapVerticalView.updateSubViews(with: views,and: .removeAllFirst)
+    }
+    
+    
+    func closeItemsClicked() {
+        for (index, element) in views.enumerated() {
+            if element == currencyListView {
+                self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                views.remove(at: index)
+                views.append(gatewaysListView)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
+                }
+                break
+            }
+        }
     }
     func amountSectionClicked() {
         showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")

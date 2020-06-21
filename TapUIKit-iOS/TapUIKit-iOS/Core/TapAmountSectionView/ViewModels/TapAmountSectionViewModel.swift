@@ -15,13 +15,15 @@ import RxCocoa
 /// The protocl that informs the subscriber of any events happened/fired from the Amount Section View
 @objc public protocol TapAmountSectionViewModelDelegate {
     /// A block to execute logic in view model when the items in the view is clicked by the user
-    @objc optional func itemsClicked()
+    @objc optional func showItemsClicked()
+    /// A block to execute logic in view model when the close items had been clicked
+    @objc optional func closeItemsClicked()
     /// A block to execute logic in view model when the amount section view in the view is clixked by the user
     @objc optional func amountSectionClicked()
 }
 
 /// The view model that controlls the data shown inside a TapAmountSectionView
-public struct TapAmountSectionViewModel {
+public class TapAmountSectionViewModel {
     // MARK:- RX Internal Observables
     
     /// Represent the original transaction total amount
@@ -39,11 +41,20 @@ public struct TapAmountSectionViewModel {
     // MARK:- Public normal swift variables
     
     public var delegate:TapAmountSectionViewModelDelegate?
+    /// Enum to determine the current state of the amount view, whether we are shoing the default view or the items list is currencly visible
+    var currentStateView:AmountSectionCurrentState = .DefaultView
     
     /// Represent the original transaction total amount
     public var originalTransactionAmount:Double = 0 {
         didSet {
             updateAmountObserver(for: originalTransactionAmount, with: originalTransactionCurrency, on: originalAmountLabelObserver)
+        }
+    }
+    
+    /// Represent the title that should be displayed inside the SHOW ITEMS/CLOSE button
+    public var itemsLabel:String = "" {
+        didSet {
+            itemsLabelObserver.accept(itemsLabel)
         }
     }
     
@@ -68,7 +79,7 @@ public struct TapAmountSectionViewModel {
     /// Represent the number of items in the current transaction
     public var numberOfItems:Int = 0 {
         didSet {
-            itemsLabelObserver.accept("\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))")
+            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
         }
     }
     /// Indicates if the number of items should be shown
@@ -142,8 +153,37 @@ public struct TapAmountSectionViewModel {
     // MARK:- Internal methods to let the view talks with the delegate
     /// A block to execute logic in view model when the items in the view is clicked by the user
     internal func itemsClicked() {
-        delegate?.itemsClicked?()
+        // Determine which method should we execute
+        switch currentStateView {
+            // Meaning, currently we are showing the normal view and we need to show the items list
+            case .DefaultView:
+                showItems()
+                break
+            // Meaning currently we are showing the list items and we need to go back to the normal view
+            case .ItemsView:
+                closeItems()
+                break
+        }
     }
+    
+    /// Handles the logic for transitioning between the normal view and show the items view
+    private func showItems() {
+        // Adjust inner details to represent the new state
+        currentStateView = .ItemsView
+        itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
+        // Inform the delegate that we need to take an action to show the items
+        delegate?.showItemsClicked?()
+    }
+    
+    /// Handles the logic for transitioning between the items view and default view
+    private func closeItems() {
+        // Adjust inner details to represent the new state
+        currentStateView = .DefaultView
+        numberOfItems = numberOfItems + 0
+        // Inform the delegate that we need to take an action to show the items
+        delegate?.closeItemsClicked?()
+    }
+    
     /// A block to execute logic in view model when the amount section view in the view is clixked by the user
     internal func amountSectionClicked() {
         delegate?.amountSectionClicked?()
@@ -153,4 +193,12 @@ public struct TapAmountSectionViewModel {
 public enum TapCurrencyFormatterSymbol {
     case ISO
     case LocalSymbol
+}
+
+/// Enum to determine the current state of the amount view, whether we are shoing the default view or the items list is currencly visiblt
+internal enum AmountSectionCurrentState {
+    /// Default view, which has the normal payment screen + title is "ITEMS"
+    case DefaultView
+    /// Means, the current screen displays the items list
+    case ItemsView
 }
