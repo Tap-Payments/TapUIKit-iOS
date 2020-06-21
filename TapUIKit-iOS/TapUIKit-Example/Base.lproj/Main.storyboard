@@ -787,29 +787,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KNET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QX-7v-smS">
-                                <rect key="frame" x="8" y="152" width="44" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Show description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QX-7v-smS">
+                                <rect key="frame" x="8" y="142" width="199" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9p1-t5-lHu">
-                                <rect key="frame" x="357" y="147" width="51" height="31"/>
+                                <rect key="frame" x="357" y="137" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENEFIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-w2-VWw">
-                                <rect key="frame" x="8" y="191" width="67" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-w2-VWw">
+                                <rect key="frame" x="8" y="181" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="szx-rx-YGs">
-                                <rect key="frame" x="357" y="186" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="szx-rx-YGs">
+                                <rect key="frame" x="357" y="176" width="51" height="31"/>
                             </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0C-iT-Yzj" customClass="TapGenericTableView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="8xb-jG-Oan"/>
+                                    <constraint firstAttribute="height" constant="60" id="8xb-jG-Oan"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -825,7 +825,7 @@
                             <constraint firstItem="1QX-7v-smS" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="8" id="tNk-aM-Qld"/>
                             <constraint firstItem="szx-rx-YGs" firstAttribute="top" secondItem="9p1-t5-lHu" secondAttribute="bottom" constant="8" id="tgR-1W-2gJ"/>
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="9p1-t5-lHu" secondAttribute="trailing" constant="8" id="vY2-nd-epu"/>
-                            <constraint firstItem="t0C-iT-Yzj" firstAttribute="top" secondItem="BiU-4M-GtD" secondAttribute="top" id="zBW-uQ-DEZ"/>
+                            <constraint firstItem="t0C-iT-Yzj" firstAttribute="top" secondItem="BiU-4M-GtD" secondAttribute="top" constant="30" id="zBW-uQ-DEZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BiU-4M-GtD"/>
                     </view>

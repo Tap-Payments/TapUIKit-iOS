@@ -54,7 +54,8 @@ public class ItemTableViewCell: TapGenericTableCell {
         itemTitleLabel.text = viewModel.itemTitle()
         itemDescriptionLabel.text = viewModel.itemDesctiption()
         itemQuantityLabel.text = viewModel.itemQuantity()
-        itemDiscountPriceLabel.text = viewModel.itemPrice()
+        itemDiscountPriceLabel.text = viewModel.itemDiscount()
+        itemPriceLabel.text = viewModel.itemPrice()
     }
     
     override func tapCellType() -> TapGenericCellType {
@@ -108,6 +109,7 @@ extension ItemTableViewCell {
         itemDiscountPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).calculatedPriceLabelColor")
         
         itemQuantityView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).count.backgroundColor")
+        itemQuantityView.layer.cornerRadius = itemQuantityView.frame.width / 2
         itemQuantityLabel.tap_theme_font = .init(stringLiteral: "\(themePath).count.countLabelFont",shouldLocalise:false)
         itemQuantityLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).count.countLabelColor")
     }

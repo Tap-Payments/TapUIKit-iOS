@@ -21,7 +21,7 @@ public struct ItemModel : Codable {
     /// The raw original price in the original currency
 	let price : Double?
     /// The quantity added to this item
-	let quantity : Double?
+	let quantity : Int?
     /// The discount applied to the item's price
 	let discount : DiscountModel?
 
@@ -39,7 +39,7 @@ public struct ItemModel : Codable {
 		title = try values.decodeIfPresent(String.self, forKey: .title)
 		description = try values.decodeIfPresent(String.self, forKey: .description)
 		price = try values.decodeIfPresent(Double.self, forKey: .price)
-		quantity = try values.decodeIfPresent(Double.self, forKey: .quantity)
+		quantity = try values.decodeIfPresent(Int.self, forKey: .quantity)
 		discount = try values.decodeIfPresent(DiscountModel.self, forKey: .discount)
 	}
 }
