@@ -52,10 +52,9 @@ public class ItemTableViewCell: TapGenericTableCell {
     
     internal func reload() {
         itemTitleLabel.text = viewModel.itemTitle()
-        itemDescriptionLabel.text = viewModel.itemTitle()
-        itemQuantityLabel.text = viewModel.itemTitle()
-        itemTitleLabel.text = viewModel.itemTitle()
-        itemTitleLabel.text = viewModel.itemTitle()
+        itemDescriptionLabel.text = viewModel.itemDesctiption()
+        itemQuantityLabel.text = viewModel.itemQuantity()
+        itemDiscountPriceLabel.text = viewModel.itemPrice()
     }
     
     override func tapCellType() -> TapGenericCellType {

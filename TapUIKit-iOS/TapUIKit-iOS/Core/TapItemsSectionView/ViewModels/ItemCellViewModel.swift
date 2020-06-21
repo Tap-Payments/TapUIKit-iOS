@@ -76,6 +76,12 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return itemModel?.title ?? ""
     }
     
+    
+    /// Returns the formatted Item quantity to be displayed
+    internal func itemQuantity() -> String {
+        return "\(itemModel?.quantity ?? 1)"
+    }
+    
     /// Returns the formatted Item description to be displayed
     internal func itemDesctiption() -> String {
         return itemModel?.description ?? ""
@@ -83,7 +89,7 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     
     /// Returns the formatted Item price to be displayed
-    internal func itemPriceLabel() -> String {
+    internal func itemPrice() -> String {
         // Check if we have a valid price, then format it based on the currency
         guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency else { return "" }
         let formatter = TapAmountedCurrencyFormatter {
@@ -95,7 +101,7 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     
     /// Returns the formatted Item discount to be displayed
-    internal func itemDiscountLabel() -> String {
+    internal func itemDiscount() -> String {
         // Check if we have a valid discount, then format it based on the currency
         guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency, let discount = itemModel.discount, let discountValue = discount.value, discountValue > 0 else { return "" }
         
