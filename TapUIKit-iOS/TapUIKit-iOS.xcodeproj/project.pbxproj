@@ -53,6 +53,10 @@
 		E8670CC62498B001003F87D8 /* tap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E8670CC32498B000003F87D8 /* tap@2x.png */; };
 		E8670CC72498B001003F87D8 /* tap@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E8670CC42498B000003F87D8 /* tap@3x.png */; };
 		E87CEA48248FBFBC002F2332 /* TapMerchantHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CEA47248FBFBC002F2332 /* TapMerchantHeaderViewController.swift */; };
+		E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D34249F6CC30002FEDE /* TapGenericTableView.swift */; };
+		E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */; };
+		E8861D39249F74C20002FEDE /* TapGenericTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */; };
+		E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D3A249F75D60002FEDE /* ItemCellViewModel.swift */; };
 		E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */; };
 		E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */; };
 		E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */; };
@@ -69,6 +73,11 @@
 		E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD428C24961B050013AEE7 /* GenericTapChip.swift */; };
 		E8E69944249F3F4A007A32FA /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69942249F3F4A007A32FA /* ItemModel.swift */; };
 		E8E69945249F3F4A007A32FA /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69943249F3F4A007A32FA /* DiscountModel.swift */; };
+		E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69946249F49BE007A32FA /* ItemTableViewCell.swift */; };
+		E8E69949249F49BE007A32FA /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E69947249F49BE007A32FA /* ItemTableViewCell.xib */; };
+		E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69993249F6446007A32FA /* TapGenericTableCell.swift */; };
+		E8E69996249F6446007A32FA /* TapGenericTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E69994249F6446007A32FA /* TapGenericTableCell.xib */; };
+		E8E69998249F645A007A32FA /* TapGenericTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69997249F645A007A32FA /* TapGenericTableCellViewModel.swift */; };
 		E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */; };
 		E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */; };
 		E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */; };
@@ -169,6 +178,10 @@
 		E8670CC32498B000003F87D8 /* tap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tap@2x.png"; sourceTree = "<group>"; };
 		E8670CC42498B000003F87D8 /* tap@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tap@3x.png"; sourceTree = "<group>"; };
 		E87CEA47248FBFBC002F2332 /* TapMerchantHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapMerchantHeaderViewController.swift; sourceTree = "<group>"; };
+		E8861D34249F6CC30002FEDE /* TapGenericTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableView.swift; sourceTree = "<group>"; };
+		E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGenericTableView.xib; sourceTree = "<group>"; };
+		E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableViewModel.swift; sourceTree = "<group>"; };
+		E8861D3A249F75D60002FEDE /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapRecentCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +198,11 @@
 		E8CD428C24961B050013AEE7 /* GenericTapChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTapChip.swift; sourceTree = "<group>"; };
 		E8E69942249F3F4A007A32FA /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		E8E69943249F3F4A007A32FA /* DiscountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
+		E8E69946249F49BE007A32FA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		E8E69947249F49BE007A32FA /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		E8E69993249F6446007A32FA /* TapGenericTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableCell.swift; sourceTree = "<group>"; };
+		E8E69994249F6446007A32FA /* TapGenericTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGenericTableCell.xib; sourceTree = "<group>"; };
+		E8E69997249F645A007A32FA /* TapGenericTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableCellViewModel.swift; sourceTree = "<group>"; };
 		E8E92B39248F5C9000DD7DBB /* TapSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorView.swift; sourceTree = "<group>"; };
 		E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorView.xib; sourceTree = "<group>"; };
 		E8E92B3E248F70AA00DD7DBB /* TapSeparatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSeparatorViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +394,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8E69999249F6761007A32FA /* TapGenericTableView */,
 				E8E6993E249F3F20007A32FA /* TapItemsSectionView */,
 				E8CD427F2495F7650013AEE7 /* TapChip */,
 				E8C590F724921AEB00E03424 /* TapAmountSectionView */,
@@ -402,6 +421,9 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E8E69994249F6446007A32FA /* TapGenericTableCell.xib */,
+				E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */,
+				E8E69947249F49BE007A32FA /* ItemTableViewCell.xib */,
 				E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */,
 				E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */,
 				E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */,
@@ -557,6 +579,7 @@
 		E8E69940249F3F34007A32FA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E8861D3A249F75D60002FEDE /* ItemCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -564,8 +587,28 @@
 		E8E69941249F3F39007A32FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8E69946249F49BE007A32FA /* ItemTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E8E69992249F6430007A32FA /* TapGenericTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				E8E69993249F6446007A32FA /* TapGenericTableCell.swift */,
+				E8E69997249F645A007A32FA /* TapGenericTableCellViewModel.swift */,
+			);
+			path = TapGenericTableCell;
+			sourceTree = "<group>";
+		};
+		E8E69999249F6761007A32FA /* TapGenericTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E8E69992249F6430007A32FA /* TapGenericTableCell */,
+				E8861D34249F6CC30002FEDE /* TapGenericTableView.swift */,
+				E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */,
+			);
+			path = TapGenericTableView;
 			sourceTree = "<group>";
 		};
 		E8E92B38248F5C7800DD7DBB /* TapSeparatorView */ = {
@@ -743,6 +786,7 @@
 				E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */,
 				E82A56BB249A401400E3F00D /* TapHorizontalHeaderView.xib in Resources */,
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
+				E8E69996249F6446007A32FA /* TapGenericTableCell.xib in Resources */,
 				E8670CC72498B001003F87D8 /* tap@3x.png in Resources */,
 				E8E92B4E248FA4E900DD7DBB /* TapMerchantHeaderView.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
@@ -751,9 +795,11 @@
 				E82A56C0249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib in Resources */,
 				E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
+				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
 				E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */,
 				E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */,
+				E8E69949249F49BE007A32FA /* ItemTableViewCell.xib in Resources */,
 				E8670CC62498B001003F87D8 /* tap@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,6 +887,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E80EA5932497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift in Sources */,
+				E8861D39249F74C20002FEDE /* TapGenericTableViewModel.swift in Sources */,
 				E82A56CA249B8A3C00E3F00D /* CurrencyChipViewModel.swift in Sources */,
 				E80E8AA52487C053009AF18F /* Constants.swift in Sources */,
 				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
@@ -852,6 +899,7 @@
 				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
 				E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */,
 				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
+				E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */,
 				E8CD42842495F9130013AEE7 /* TapChipHorizontalList.swift in Sources */,
 				E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */,
 				E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */,
@@ -864,10 +912,14 @@
 				E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */,
 				E8E69945249F3F4A007A32FA /* DiscountModel.swift in Sources */,
 				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
+				E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */,
 				E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
+				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
+				E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */,
+				E8E69998249F645A007A32FA /* TapGenericTableCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
