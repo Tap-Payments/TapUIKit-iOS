@@ -12,24 +12,28 @@ import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
-
-
+/// A protocol used to intstuct the cell with actions needed to be done
+internal protocol ItemCellViewModelDelegate {
+    func reloadPriceLabels()
+}
 
 public class ItemCellViewModel: TapGenericTableCellViewModel {
     
-    // MARK:- Variables
+    // MARK:- inner Variables
     /// The item model to be represented by this view model
     private var itemModel:ItemModel?
     /// The original currency, the item is created with
     private var originalCurrency:TapCurrencyCode?
     /// The new currency the user wants to convert to
-    private var convertCurrency:TapCurrencyCode?
-    
+    internal var convertCurrency:TapCurrencyCode?
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
-    internal var cellDelegate:TapCellViewModelDelegate?
+    internal var cellDelegate:TapCellViewModelDelegate? {
+        didSet{
+            cellDelegate?.reloadData()
+        }
+    }
     
     // MARK:- Public methods
-    
     public override func identefier() -> String {
         return "ItemTableViewCell"
     }
@@ -64,7 +68,6 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return cell as! ItemTableViewCell
     }
     
-    
     internal func itemTitle() -> String {
         return itemModel?.title ?? ""
     }
@@ -73,10 +76,25 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return itemModel?.description ?? ""
     }
     
-    
     internal func itemPriceLabel() -> String {
-        guard let itemModel = itemModel, let itemPrice = itemModel.price else { return "" }
-        return ""
+        guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency else { return "" }
+        let formatter = TapAmountedCurrencyFormatter {
+            $0.currency = currency
+            $0.locale = CurrencyLocale.englishUnitedStates
+        }
+        return formatter.string(from: itemPrice) ?? "KD0.000"
+    }
+    
+    internal func itemDiscountLabel() -> String {
+        guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency, let discount = itemModel.discount, let discountValue = discount.value, discountValue > 0 else { return "" }
+        
+        let finalValue = discount.caluclateActualDiscountedValue(with: itemPrice)
+        
+        let formatter = TapAmountedCurrencyFormatter {
+            $0.currency = currency
+            $0.locale = CurrencyLocale.englishUnitedStates
+        }
+        return formatter.string(from: finalValue) ?? "KD0.000"
     }
     
     

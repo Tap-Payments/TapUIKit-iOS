@@ -26,6 +26,10 @@ internal protocol TapCellViewModelDelegate {
      - parameter status: tTrue if it was just selected and false otherwise
      */
     func changeSelection(with status:Bool)
+    /**
+     Instruc the cell to reload itself
+     */
+    func reloadData()
 }
 
 
