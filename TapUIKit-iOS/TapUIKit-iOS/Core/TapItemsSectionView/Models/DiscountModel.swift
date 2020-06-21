@@ -56,11 +56,20 @@ public struct DiscountModel : Codable {
         return discountedValue
     }
     
+    /**
+     Calculates and apply the correct discount scheme in case of a fixed discount is applied
+     - Returns: The discount value as is or 0 if the discount value is negative
+     */
     private func calculateFixedDiscount() -> Double {
         // Check if the passed discount is a correct one, and return the correct value
         guard let nonNullValue = value, nonNullValue >= 0.0 else { return 0 }
         return nonNullValue
     }
+    
+    /**
+     Calculates and apply the correct discount scheme in case of a percentage discount is applied
+     - Returns: The percentage value of the discount value or 0 if the discount value is outside the range of 0..100
+     */
     private func calculatePercentageDiscount() -> Double {
         // Check if the passed discount is a correct one, and return the correct value
         guard let nonNullValue = value, nonNullValue >= 0.0, nonNullValue <= 100 else { return 0 }
