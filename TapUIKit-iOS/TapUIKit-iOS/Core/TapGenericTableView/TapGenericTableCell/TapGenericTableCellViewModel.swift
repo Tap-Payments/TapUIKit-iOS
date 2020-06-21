@@ -117,7 +117,7 @@ public enum TapGenericCellType:CaseIterable {
     func nibName() -> String {
         switch self {
         case .ItemTableCell:
-            return "GatewayImageCollectionViewCell"
+            return "ItemTableViewCell"
         }
     }
 }

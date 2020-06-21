@@ -57,6 +57,7 @@
 		E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */; };
 		E8861D39249F74C20002FEDE /* TapGenericTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */; };
 		E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D3A249F75D60002FEDE /* ItemCellViewModel.swift */; };
+		E8861D40249FA8C20002FEDE /* ItemCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D3F249FA8C20002FEDE /* ItemCellViewController.swift */; };
 		E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */; };
 		E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */; };
 		E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */; };
@@ -182,6 +183,7 @@
 		E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGenericTableView.xib; sourceTree = "<group>"; };
 		E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableViewModel.swift; sourceTree = "<group>"; };
 		E8861D3A249F75D60002FEDE /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
+		E8861D3F249FA8C20002FEDE /* ItemCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewController.swift; sourceTree = "<group>"; };
 		E8AE0DF0245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8AE0DF4245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapRecentCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8AE0DFA245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSeparatorCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E8861D3E249FA8A40002FEDE /* CellsTesting */,
 				E82A56C3249B2EE300E3F00D /* TapUIKit-Example.entitlements */,
 				E8C5910224936C4F00E03424 /* TapAmountSectionView */,
 				E8C5908F2490A21A00E03424 /* WallOfGloryExample */,
@@ -378,6 +381,7 @@
 				E8E92B47248F976300DD7DBB /* TapHandlerView */,
 				E8E92B3D248F708700DD7DBB /* TapSeparatorView */,
 				E80E8AA62487C1FF009AF18F /* TapBottomSheetDialog */,
+				E8861D3D249FA8950002FEDE /* ChipsTesting */,
 				E835ADB3245850E700E55A68 /* GoogleService-Info.plist */,
 				E8428DF32456DB3200D5A45A /* AppDelegate.swift */,
 				E8428DF52456DB3200D5A45A /* SceneDelegate.swift */,
@@ -386,7 +390,6 @@
 				E8428DFC2456DB3200D5A45A /* Assets.xcassets */,
 				E8428DFE2456DB3200D5A45A /* LaunchScreen.storyboard */,
 				E8428E012456DB3200D5A45A /* Info.plist */,
-				E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */,
 			);
 			path = "TapUIKit-Example";
 			sourceTree = "<group>";
@@ -474,6 +477,22 @@
 			children = (
 			);
 			path = TapItemCell;
+			sourceTree = "<group>";
+		};
+		E8861D3D249FA8950002FEDE /* ChipsTesting */ = {
+			isa = PBXGroup;
+			children = (
+				E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */,
+			);
+			path = ChipsTesting;
+			sourceTree = "<group>";
+		};
+		E8861D3E249FA8A40002FEDE /* CellsTesting */ = {
+			isa = PBXGroup;
+			children = (
+				E8861D3F249FA8C20002FEDE /* ItemCellViewController.swift */,
+			);
+			path = CellsTesting;
 			sourceTree = "<group>";
 		};
 		E8C5908F2490A21A00E03424 /* WallOfGloryExample */ = {
@@ -936,6 +955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8428DF82456DB3200D5A45A /* ViewController.swift in Sources */,
+				E8861D40249FA8C20002FEDE /* ItemCellViewController.swift in Sources */,
 				E8E92B49248F977A00DD7DBB /* TapDragHandlerViewController.swift in Sources */,
 				E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */,
 				E80E8AAC2487D1BD009AF18F /* ToPresentAsPopupViewController.swift in Sources */,

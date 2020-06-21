@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 
-class ItemTableViewCell: TapGenericTableCell {
+public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!
@@ -38,15 +38,14 @@ class ItemTableViewCell: TapGenericTableCell {
         return viewModel.identefier()
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         commonInit()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -131,12 +130,11 @@ extension ItemTableViewCell {
 extension ItemTableViewCell:TapCellViewModelDelegate {
    
     func changeSelection(with status: Bool) {
-        
+        // In items case, no specific UI upon selection
+        return
     }
     
     func reloadData() {
-        
+        reload()
     }
-    
-    
 }

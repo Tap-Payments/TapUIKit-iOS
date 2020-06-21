@@ -9,7 +9,7 @@
 import TapThemeManager2020
 
 /// Represents Tap representation of a Table view
-class TapGenericTableView: UIView {
+public class TapGenericTableView: UIView {
 
     // Mark:- Variables
     
@@ -124,11 +124,11 @@ extension TapGenericTableView {
 
 
 extension TapGenericTableView:UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows(for: section)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = viewModel.viewModel(at: indexPath.row)
         let cell:TapGenericTableCell = viewModel.dequeuCell(in: tableView, at: indexPath)
         cell.configureCell(with: model)

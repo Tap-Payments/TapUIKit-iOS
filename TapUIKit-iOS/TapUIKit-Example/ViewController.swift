@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         dataSource.append(["title":"Tap Merchant Header View","subtitle":"Displays the Tap Merchant head section view","navigationID":"TapMerchantHeaderViewController","lang":"1","push":"0"])
         dataSource.append(["title":"Tap Amount Section View","subtitle":"Displays the Tap Amount section view","navigationID":"TapAmountSectionViewController","lang":"1","push":"0"])
         dataSource.append(["title":"Chips","subtitle":"Displays the Tap Amount section view","navigationID":"ChipsTestingViewController","lang":"1","push":"0"])
+        dataSource.append(["title":"Item Cell","subtitle":"Displays the Tap Item Cell view","navigationID":"ItemCellViewController","lang":"0","push":"0"])
         
         dataSource.append(["title":"Wall Of Glory","subtitle":"Shows all ui components from Checkout SDK done in action. NOTE: TRY CLICKING ANYWHERE TO SEE THE FIRED EVENTS","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         

@@ -9,7 +9,7 @@
 import class UIKit.UITableViewCell
 /// This is a superclass for all the table cells views created, this will make sure all have the same interface/output and ease the parametery type in methods
 
-class TapGenericTableCell: UITableViewCell {
+public class TapGenericTableCell: UITableViewCell {
 
     
     // MARK:- Internal methods
@@ -39,7 +39,7 @@ class TapGenericTableCell: UITableViewCell {
     }
     
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
