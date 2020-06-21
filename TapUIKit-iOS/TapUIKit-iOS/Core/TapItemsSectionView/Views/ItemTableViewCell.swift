@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
+class ItemTableViewCell: TapGenericTableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

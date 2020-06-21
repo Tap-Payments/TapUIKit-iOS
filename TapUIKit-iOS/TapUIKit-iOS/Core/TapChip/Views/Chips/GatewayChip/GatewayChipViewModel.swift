@@ -5,8 +5,6 @@
 //  Created by Osama Rabie on 6/14/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
-import class UIKit.UICollectionViewCell
 /// The view model that controlls the GatewayChip cell
 public class GatewayChipViewModel: GenericTapChipViewModel {
     

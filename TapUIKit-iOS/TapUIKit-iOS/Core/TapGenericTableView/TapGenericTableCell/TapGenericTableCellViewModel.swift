@@ -19,6 +19,16 @@ internal protocol TapGenericCellViewModelDelegate {
 }
 
 
+/// A protocl of methods to be applied to all generated  cells to infom the view model with needed events
+internal protocol TapCellViewModelDelegate {
+    /**
+     Each view model should have an interface to know his cell is selected or nt. Fired from the cell itself
+     - parameter status: tTrue if it was just selected and false otherwise
+     */
+    func changeSelection(with status:Bool)
+}
+
+
 /// This is a superclass for all the table cells view models created, this will make sure all have the same interface/output and ease the parametery type in methods
 public class TapGenericTableCellViewModel {
     
