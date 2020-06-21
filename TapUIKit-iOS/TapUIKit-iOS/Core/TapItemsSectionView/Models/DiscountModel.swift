@@ -30,6 +30,42 @@ public struct DiscountModel : Codable {
 		type = try values.decodeIfPresent(DiscountType.self, forKey: .type)
 		value = try values.decodeIfPresent(Double.self, forKey: .value)
 	}
+    
+    /**
+     Calculates and apply the correct discount scheme for a given a price
+     - Parameter originalPrice: The original price the discount will be applied to
+     - Returns: The discounted price after applying the correct discount value. NOTE, if the discounted value is less than 0, the original price is returned.
+     */
+    internal func caluclateActualDiscountedValue(with originalPrice:Double) -> Double {
+        
+        var discountValue:Double = 0
+        
+        // We first need to know the type of the discount
+        switch type {
+            case .Fixed:
+                discountValue = calculateFixedDiscount()
+            case .Percentage:
+                discountValue = ( calculatePercentageDiscount() * originalPrice )
+            default:
+                discountValue = 0
+        }
+        
+        // Make sure now that the discounted value is bigger than 0 otherwise return the original value
+        let discountedValue = originalPrice - discountValue
+        guard discountedValue >= 0 else { return originalPrice }
+        return discountedValue
+    }
+    
+    private func calculateFixedDiscount() -> Double {
+        // Check if the passed discount is a correct one, and return the correct value
+        guard let nonNullValue = value, nonNullValue >= 0.0 else { return 0 }
+        return nonNullValue
+    }
+    private func calculatePercentageDiscount() -> Double {
+        // Check if the passed discount is a correct one, and return the correct value
+        guard let nonNullValue = value, nonNullValue >= 0.0, nonNullValue <= 100 else { return 0 }
+        return (nonNullValue/100)
+    }
 }
 
 
