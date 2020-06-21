@@ -121,6 +121,7 @@
             <connections>
                 <outlet property="itemDescriptionLabel" destination="1j1-yY-zNh" id="s6k-KJ-Aa2"/>
                 <outlet property="itemDiscountPriceLabel" destination="aVU-gr-jRS" id="rd1-Lr-CgS"/>
+                <outlet property="itemInfoStackView" destination="Nas-Zz-kbg" id="47Z-fJ-wdp"/>
                 <outlet property="itemPriceLabel" destination="0Wj-bQ-DVV" id="ZCB-Wg-nCM"/>
                 <outlet property="itemQuantityLabel" destination="ItO-lM-c0e" id="VaA-vi-fNJ"/>
                 <outlet property="itemQuantityView" destination="8as-zD-kS6" id="XCw-q1-uzP"/>

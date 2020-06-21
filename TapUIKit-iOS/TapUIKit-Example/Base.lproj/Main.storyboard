@@ -795,6 +795,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9p1-t5-lHu">
                                 <rect key="frame" x="357" y="137" width="51" height="31"/>
+                                <connections>
+                                    <action selector="showDescriptionChanged:" destination="4Av-o4-QVf" eventType="valueChanged" id="SxY-kk-rrE"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-w2-VWw">
                                 <rect key="frame" x="8" y="181" width="115" height="21"/>
@@ -804,6 +807,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="szx-rx-YGs">
                                 <rect key="frame" x="357" y="176" width="51" height="31"/>
+                                <connections>
+                                    <action selector="showDiscountChanged:" destination="4Av-o4-QVf" eventType="valueChanged" id="9Qk-Ys-VsB"/>
+                                </connections>
                             </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0C-iT-Yzj" customClass="TapGenericTableView" customModule="TapUIKit_iOS">
                                 <rect key="frame" x="0.0" y="74" width="414" height="60"/>
