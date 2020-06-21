@@ -5,9 +5,7 @@
 //  Created by Osama Rabie on 6/21/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-/// The view model that controlls the Items table cell
-import class LocalisationManagerKit_iOS.TapLocalisationManager
-import class CommonDataModelsKit_iOS.TapCommonConstants
+
 import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
@@ -17,6 +15,7 @@ internal protocol ItemCellViewModelDelegate {
     func reloadPriceLabels()
 }
 
+/// The view model that controlls the Items table cell
 public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     // MARK:- inner Variables
@@ -68,15 +67,20 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return cell as! ItemTableViewCell
     }
     
+    /// Returns the formatted Item title to be displayed
     internal func itemTitle() -> String {
         return itemModel?.title ?? ""
     }
     
+    /// Returns the formatted Item description to be displayed
     internal func itemDesctiption() -> String {
         return itemModel?.description ?? ""
     }
     
+    
+    /// Returns the formatted Item price to be displayed
     internal func itemPriceLabel() -> String {
+        // Check if we have a valid price, then format it based on the currency
         guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency else { return "" }
         let formatter = TapAmountedCurrencyFormatter {
             $0.currency = currency
@@ -85,7 +89,10 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return formatter.string(from: itemPrice) ?? "KD0.000"
     }
     
+    
+    /// Returns the formatted Item discount to be displayed
     internal func itemDiscountLabel() -> String {
+        // Check if we have a valid discount, then format it based on the currency
         guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency, let discount = itemModel.discount, let discountValue = discount.value, discountValue > 0 else { return "" }
         
         let finalValue = discount.caluclateActualDiscountedValue(with: itemPrice)
