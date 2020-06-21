@@ -12,8 +12,11 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
+/// Represent the model of a dicount object for an item
 public struct DiscountModel : Codable {
+    /// The type of the applied discount whether fixed or percentage
 	let type : DiscountType?
+    /// The value of the discount itself
 	let value : Double?
 
 	enum CodingKeys: String, CodingKey {
@@ -31,14 +34,12 @@ public struct DiscountModel : Codable {
 
 
 
-
-public enum DiscountType {
+/// Represent an enum to decide all the possible discount types
+public enum DiscountType: Codable {
+    /// Meaning, the discount will be a percentage of the item's price
     case Percentage
+    /// Meaning, the discount will be a fixed value to be deducted as is
     case Fixed
-}
-
-
-extension DiscountType: Codable {
     
     enum Key: CodingKey {
         case rawValue
@@ -70,6 +71,5 @@ extension DiscountType: Codable {
             try container.encode("Fixed", forKey: .rawValue)
         }
     }
-    
 }
 

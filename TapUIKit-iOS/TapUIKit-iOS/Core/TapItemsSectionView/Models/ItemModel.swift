@@ -12,11 +12,17 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
+/// Represent the model of an ITEM inside an order/transaction
 public struct ItemModel : Codable {
+    /// The title of the item
 	let title : String?
+    /// A description of the item
 	let description : String?
+    /// The raw original price in the original currency
 	let price : Double?
+    /// The quantity added to this item
 	let quantity : Double?
+    /// The discount applied to the item's price
 	let discount : DiscountModel?
 
 	enum CodingKeys: String, CodingKey {
