@@ -91,7 +91,8 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     /// Returns the formatted Item price to be displayed
     internal func itemPrice() -> String {
         // Check if we have a valid price, then format it based on the currency
-        guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency else { return "" }
+        guard let itemModel = itemModel, let currency = convertCurrency else { return "" }
+        let itemPrice = itemModel.itemFinalPrice()
         let formatter = TapAmountedCurrencyFormatter {
             $0.currency = currency
             $0.locale = CurrencyLocale.englishUnitedStates
