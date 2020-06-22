@@ -56,7 +56,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createItemsViewModel() {
         var itemsModels:[ItemCellViewModel] = []
-        for i in 1...Int.random(in: 1..<30) {
+        for i in 1...Int.random(in: 1..<5) {
             let itemTitle:String = "Item Title # \(i)"
             let itemDescriptio:String = "Item Description # \(i)"
             let itemPrice:Double = Double.random(in: 10..<4000)

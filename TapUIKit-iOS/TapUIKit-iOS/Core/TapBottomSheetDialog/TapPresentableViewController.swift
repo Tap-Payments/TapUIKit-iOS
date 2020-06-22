@@ -74,10 +74,12 @@ internal class TapPresentableViewController: PullUpController {
             dismissView()
         }
         
+        
+        
         // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
         if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
             // If yes, then we need to move it back to the minimum allowed Y point
-            self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
+            //self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
         }
         
         // check if we need to inform the delegate about the new position we are in now
@@ -89,6 +91,28 @@ internal class TapPresentableViewController: PullUpController {
     /// Will use this override method to always make sure the view is not dragged up beyond a certain Y limit
     override func pullUpControllerDidMove(to point: CGFloat) {
         
+        // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
+        if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
+            // If yes, then we need to move it back to the minimum allowed Y point
+            self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
+            return
+        }
+        
+        guard let tapVertical:TapVerticalView = childVC?.view.subviews[0] as? TapVerticalView else { return }
+        
+        
+        if tapVertical.neededSize().height > containerView.frame.height {
+            
+            var height = tapVertical.neededSize().height
+            var offset = height - containerView.frame.height
+            if self.view.frame.origin.y - offset  < ConstantManager.TapBottomSheetMinimumYPoint {
+                //height = containerView.frame.height
+            }else {
+                self.pullUpControllerMoveToVisiblePoint(height, animated: true, completion: nil)
+            }
+        }
+        
+        print("NEW \(containerView.frame) -- \(tapVertical.neededSize())")
     }
     
     

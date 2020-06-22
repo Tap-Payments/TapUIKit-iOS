@@ -14,6 +14,6 @@ class ConstantManager {
     
     static let TapBottomSheetContainerTag:Int = 100
     static let TapBottomSheetMinimumHeight:CGFloat = 50
-    static let TapBottomSheetMinimumYPoint:CGFloat = 20
+    static let TapBottomSheetMinimumYPoint:CGFloat = 40
     
 }

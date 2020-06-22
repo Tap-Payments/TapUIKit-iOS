@@ -64,6 +64,11 @@ public class TapVerticalView: UIView {
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
+    
+    internal func neededSize() -> CGSize {
+        return scrollView.contentSize
+    }
+    
     /// It is overriden to listen to the change in size of the scroll view
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Make sure this is the notfication we want to listen to which is the contentSize of the scroll view
