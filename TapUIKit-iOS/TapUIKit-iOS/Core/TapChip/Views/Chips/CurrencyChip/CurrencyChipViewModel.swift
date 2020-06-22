@@ -15,7 +15,7 @@ import class UIKit.UICollectionViewCell
 public class CurrencyChipViewModel: GenericTapChipViewModel {
     
     // MARK:- Variables
-    internal var currency:TapCurrencyCode = .KWD
+    public var currency:TapCurrencyCode = .KWD
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:GenericCellChipViewModelDelegate?
     

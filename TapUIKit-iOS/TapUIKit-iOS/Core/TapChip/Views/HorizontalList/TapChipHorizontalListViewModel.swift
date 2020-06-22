@@ -71,6 +71,7 @@ internal protocol TapChipHorizontalViewModelDelegate {
 public class TapChipHorizontalListViewModel {
     
     // Mark:- Variables
+    public var selectedChip:GenericTapChipViewModel?
     
     /// The data source which represents the list of view models to be displayed inside the uicollectionview
     public var dataSource:[GenericTapChipViewModel] = [] {
@@ -103,10 +104,11 @@ public class TapChipHorizontalListViewModel {
      Creates the ViewModel and makes it ready for work
      - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the collectionview
      */
-    public init(dataSource:[GenericTapChipViewModel], headerType:TapHorizontalHeaderType? = nil) {
+    public init(dataSource:[GenericTapChipViewModel], headerType:TapHorizontalHeaderType? = nil, selectedChip:GenericTapChipViewModel? = nil ) {
         defer {
             self.dataSource = dataSource
             self.headerType = headerType
+            self.selectedChip = selectedChip
         }
     }
     
@@ -187,6 +189,7 @@ public class TapChipHorizontalListViewModel {
         selectedViewModel.didSelectItem()
         // Inform the main (outer) delegate, that an item had been selected
         delegate?.didSelect(item: selectedViewModel)
+        selectedChip = selectedViewModel
     }
     
     /**

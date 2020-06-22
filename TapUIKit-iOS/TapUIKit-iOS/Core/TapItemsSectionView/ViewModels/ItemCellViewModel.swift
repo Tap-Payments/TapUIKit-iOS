@@ -27,7 +27,11 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     /// The original currency, the item is created with
     private var originalCurrency:TapCurrencyCode?
     /// The new currency the user wants to convert to
-    internal var convertCurrency:TapCurrencyCode?
+    public var convertCurrency:TapCurrencyCode? {
+        didSet{
+            cellDelegate?.reloadData()
+        }
+    }
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:TapCellViewModelDelegate? {
         didSet{

@@ -30,6 +30,7 @@ class CurrencyChipCollectionViewCell: GenericTapChip {
         }
     }
     
+    
     // MARK:- Internal methods
     
     func identefier() -> String {
@@ -45,6 +46,7 @@ class CurrencyChipCollectionViewCell: GenericTapChip {
     override func selectStatusChaned(with status:Bool) {
         
         // update the shadow for GoPayCell
+        
         applyTheme()
     }
     

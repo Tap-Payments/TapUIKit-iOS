@@ -48,8 +48,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapMerchantHeaderViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
         
-        createItemsViewModel()
         createGatewaysViews()
+        createItemsViewModel()
     }
     
     
@@ -63,7 +63,7 @@ class ExampleWallOfGloryViewController: UIViewController {
             let itemDiscountValue:Double = Double.random(in: 0..<itemPrice)
             let itemDiscount:DiscountModel = .init(type: .Fixed, value: itemDiscountValue)
             let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount)
-            itemsModels.append(.init(itemModel: itemModel, originalCurrency: .KWD))
+            itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency ))
         }
         
         tapItemsTableViewModel.dataSource = itemsModels
@@ -119,7 +119,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createGatewaysViews() {
         currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
-        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: nil)
+        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: nil,selectedChip: currenciesChipsViewModel[2])
         tapCurrienciesChipHorizontalListViewModel.delegate = self
         
         
@@ -238,6 +238,11 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
     func currencyChip(for viewModel: CurrencyChipViewModel) {
         
+        tapItemsTableViewModel.dataSource.forEach { (genericCellModel) in
+            if let itemViewModel:ItemCellViewModel = genericCellModel as? ItemCellViewModel {
+                itemViewModel.convertCurrency = viewModel.currency
+            }
+        }
     }
     
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {

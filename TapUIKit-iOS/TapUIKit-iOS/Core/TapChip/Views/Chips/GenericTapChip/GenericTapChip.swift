@@ -13,7 +13,6 @@ public class GenericTapChip:UICollectionViewCell {
     
     
     // MARK:- Internal methods
-    
     /**
      All created chips views should have an interface to know about their selection status
      - Parameter state: True if it was just selected and false otherwise
@@ -38,7 +37,11 @@ public class GenericTapChip:UICollectionViewCell {
         return
     }
     
-    
+    public override var isSelected: Bool {
+        didSet{
+            selectStatusChaned(with: isSelected)
+        }
+    }
 }
 
 /// An enum to identify all the created chips tupes, to be used to pvoide a singleton place to knwo all about each type

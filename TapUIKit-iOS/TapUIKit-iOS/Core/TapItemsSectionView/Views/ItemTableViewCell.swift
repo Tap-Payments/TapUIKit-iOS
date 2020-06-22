@@ -7,6 +7,7 @@
 //
 
 import TapThemeManager2020
+import SimpleAnimation
 
 public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
@@ -57,11 +58,20 @@ public class ItemTableViewCell: TapGenericTableCell {
     
     
     internal func reload() {
+        
+        itemPriceLabel.fadeOut()
+        itemDiscountPriceLabel.fadeOut{ [weak self] (_) in
+            self?.itemPriceLabel.fadeIn()
+            self?.itemDiscountPriceLabel.fadeIn()
+        }
+        
         itemTitleLabel.text = viewModel.itemTitle()
         itemDescriptionLabel.text = viewModel.itemDesctiption()
         itemQuantityLabel.text = viewModel.itemQuantity()
         itemDiscountPriceLabel.attributedText = viewModel.itemDiscount(with: itemDiscountPriceLabel.font, and: itemDiscountPriceLabel.textColor)
         itemPriceLabel.text = viewModel.itemPrice()
+        
+        
         
         adjustViews()
     }
