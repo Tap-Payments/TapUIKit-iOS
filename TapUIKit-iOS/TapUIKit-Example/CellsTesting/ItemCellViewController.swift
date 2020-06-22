@@ -14,11 +14,16 @@ class ItemCellViewController: UIViewController {
     
     var itemTitle:String = "Item Title"
     var itemDescriptio:String = "Item Description"
-    var itemPrice:Double = 1500.5
+    var itemPrice:Double = 1500
     var itemQuantity:Int = 1
+    var itemDiscountValue:Double = 0
     var itemDiscount:DiscountModel? = nil
     
     var tapTableViewModel:TapGenericTableViewModel = .init()
+    
+    @IBOutlet weak var discountTypeSegmern: UISegmentedControl!
+    @IBOutlet weak var discountValueSlider: UISlider!
+    @IBOutlet weak var discountAmountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +48,35 @@ class ItemCellViewController: UIViewController {
         
         itemDiscount = nil
         
-        if uiswitch.isOn {
-            itemDiscount = .init(type:DiscountType.Fixed,value:100.200)
-        }
-        
+        discountTypeSegmern.isUserInteractionEnabled = uiswitch.isOn
+        discountValueSlider.isUserInteractionEnabled = uiswitch.isOn
         
         configureTheViewModel()
         
         
     }
+    @IBAction func discountTypeChanged(_ sender: Any) {
+        guard let segment:UISegmentedControl = sender as? UISegmentedControl else { return }
+        if segment == discountTypeSegmern {
+            discountValueSlider.setValue(0, animated: true)
+            discountValueSlider.maximumValue = segment.selectedSegmentIndex == 0 ? 1000 : 99
+            configureTheViewModel()
+        }
+    }
+    @IBAction func discountSliderChanged(_ sender: Any) {
+        guard let slider:UISlider = sender as? UISlider else { return }
+        if slider == discountValueSlider {
+            discountAmountLabel.text = "Discount amount : \(slider.value) \(discountTypeSegmern.selectedSegmentIndex == 0 ? "" : "%")"
+            configureTheViewModel()
+        }
+    }
     private func configureTheViewModel() {
+        if discountValueSlider.isUserInteractionEnabled {
+            let discountType:DiscountType = discountTypeSegmern.selectedSegmentIndex == 0 ? .Fixed : .Percentage
+            itemDiscount = .init(type: discountType, value: Double(discountValueSlider.value))
+        }else{
+            itemDiscount = nil
+        }
         let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount)
         //try! .init(from: ["title":itemTitle,"description":itemDescriptio
             //,"price":itemPrice,"quantity":itemQuantity])
