@@ -73,6 +73,9 @@ public class TapAmountSectionViewModel {
     /// Represent the converted transaction currenc code if any
     public var convertedTransactionCurrency:TapCurrencyCode? {
         didSet {
+            if convertedTransactionCurrency?.appleRawValue == originalTransactionCurrency?.appleRawValue {
+                convertedTransactionCurrency = nil
+            }
             updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
         }
     }

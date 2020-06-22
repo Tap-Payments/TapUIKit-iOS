@@ -43,7 +43,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createDefaultViewModels() {
         tapMerchantHeaderViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
-        tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, convertedTransactionAmount: 3333.333, convertedTransactionCurrency: .KWD, numberOfItems: 10)
+        tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, numberOfItems: 10)
         
         tapMerchantHeaderViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
@@ -118,8 +118,8 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     
     func createGatewaysViews() {
-        currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
-        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: nil,selectedChip: currenciesChipsViewModel[2])
+        currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .USD),CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
+        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: nil,selectedChip: currenciesChipsViewModel[0])
         tapCurrienciesChipHorizontalListViewModel.delegate = self
         
         
@@ -243,6 +243,8 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
                 itemViewModel.convertCurrency = viewModel.currency
             }
         }
+        
+        tapAmountSectionViewModel.convertedTransactionCurrency = viewModel.currency
     }
     
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
