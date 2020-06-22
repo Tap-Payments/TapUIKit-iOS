@@ -818,14 +818,30 @@
                                     <constraint firstAttribute="height" constant="60" id="8xb-jG-Oan"/>
                                 </constraints>
                             </view>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="S7G-Oj-LRU">
+                                <rect key="frame" x="312" y="215" width="94" height="32"/>
+                                <connections>
+                                    <action selector="quantityStepper:" destination="4Av-o4-QVf" eventType="valueChanged" id="KAh-uW-HUY"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owa-fu-rXz">
+                                <rect key="frame" x="8" y="220.5" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9p1-t5-lHu" firstAttribute="top" secondItem="t0C-iT-Yzj" secondAttribute="bottom" constant="3" id="24u-ym-aqq"/>
                             <constraint firstItem="szx-rx-YGs" firstAttribute="centerY" secondItem="e4M-w2-VWw" secondAttribute="centerY" id="7pr-lx-zCu"/>
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="t0C-iT-Yzj" secondAttribute="trailing" id="NUF-Pq-SvO"/>
+                            <constraint firstItem="S7G-Oj-LRU" firstAttribute="top" secondItem="szx-rx-YGs" secondAttribute="bottom" constant="8" id="PeD-ZZ-mYb"/>
+                            <constraint firstItem="owa-fu-rXz" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="8" id="aRZ-0h-deb"/>
                             <constraint firstItem="e4M-w2-VWw" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="8" id="cFF-RY-gkN"/>
+                            <constraint firstItem="owa-fu-rXz" firstAttribute="centerY" secondItem="S7G-Oj-LRU" secondAttribute="centerY" id="cNt-PI-TU0"/>
                             <constraint firstItem="9p1-t5-lHu" firstAttribute="centerY" secondItem="1QX-7v-smS" secondAttribute="centerY" id="dFP-UB-tmP"/>
+                            <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="S7G-Oj-LRU" secondAttribute="trailing" constant="8" id="euo-Fu-jiC"/>
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="szx-rx-YGs" secondAttribute="trailing" constant="8" id="gqE-Xo-nYD"/>
                             <constraint firstItem="t0C-iT-Yzj" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" id="q7X-zi-bQa"/>
                             <constraint firstItem="1QX-7v-smS" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="8" id="tNk-aM-Qld"/>

@@ -33,6 +33,11 @@ class ItemCellViewController: UIViewController {
         configureTheViewModel()
         
     }
+    @IBAction func quantityStepper(_ sender: Any) {
+        guard let stepper:UIStepper = sender as? UIStepper else { return }
+        itemQuantity = Int(stepper.value)
+        configureTheViewModel()
+    }
     @IBAction func showDiscountChanged(_ sender: Any) {
         guard let uiswitch:UISwitch = sender as? UISwitch else { return }
         
