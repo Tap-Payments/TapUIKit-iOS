@@ -15,15 +15,18 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     var delegate:ToPresentAsPopupViewControllerDelegate?
     @IBOutlet weak var tapVerticalView: TapVerticalView!
+    var tapItemsTableViewModel:TapGenericTableViewModel = .init()
     var tapMerchantHeaderViewModel:TapMerchantHeaderViewModel = .init()
     var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
     var tapGatewayChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var tapCurrienciesChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var gatewayChipsViewModel:[GenericTapChipViewModel] = []
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
+    
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
     var currencyListView:TapChipHorizontalList = .init()
+    var tabItemsTableView: TapGenericTableView = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +48,29 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapMerchantHeaderViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
         
+        createItemsViewModel()
         createGatewaysViews()
+    }
+    
+    
+    func createItemsViewModel() {
+        var itemsModels:[ItemCellViewModel] = []
+        for i in 1...30 {
+            let itemTitle:String = "Item Title # \(i)"
+            let itemDescriptio:String = "Item Description # \(i)"
+            let itemPrice:Double = Double.random(in: 10..<4000)
+            let itemQuantity:Int = Int.random(in: 1..<10)
+            let itemDiscountValue:Double = Double.random(in: 0..<itemPrice)
+            let itemDiscount:DiscountModel = .init(type: .Fixed, value: itemDiscountValue)
+            let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount)
+            itemsModels.append(.init(itemModel: itemModel, originalCurrency: .KWD))
+        }
+        
+        tapItemsTableViewModel.dataSource = itemsModels
+        tapItemsTableViewModel.delegate = self
+        tabItemsTableView.changeViewMode(with: tapItemsTableViewModel)
+        tabItemsTableView.translatesAutoresizingMaskIntoConstraints = false
+        tabItemsTableView.heightAnchor.constraint(equalToConstant: CGFloat(itemsModels.count * 60)).isActive = true
     }
     
     func addGloryViews() {
@@ -174,8 +199,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 views.remove(at: index)
                 views.append(currencyListView)
+                views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.currencyListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
+                    self?.tapVerticalView.add(view: self!.tabItemsTableView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
                 }
                 break
             }
@@ -187,6 +214,8 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         for (index, element) in views.enumerated() {
             if element == currencyListView {
                 self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                views.remove(at: index)
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 DispatchQueue.main.async{ [weak self] in
@@ -246,6 +275,19 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
 }
 
 
+extension ExampleWallOfGloryViewController:TapGenericTableViewModelDelegate {
+    func didSelect(item viewModel: TapGenericTableCellViewModel) {
+        return
+    }
+    
+    func itemClicked(for viewModel: ItemCellViewModel) {
+        showAlert(title: viewModel.itemTitle(), message: "You clicked on the item.. Look until now, clicking an item is worthless we are just showcasing 🙂")
+    }
+    
+    
+}
+
+
 extension UIView {
     
     var safeAreaBottom: CGFloat {
@@ -272,3 +314,6 @@ extension UIApplication {
         return windows.first(where: { $0.isKeyWindow })
     }
 }
+
+
+
