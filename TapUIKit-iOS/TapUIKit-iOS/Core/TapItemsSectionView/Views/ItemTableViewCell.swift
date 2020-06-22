@@ -47,6 +47,11 @@ public class ItemTableViewCell: TapGenericTableCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if selected {
+            viewModel.didSelectItem()
+        }else{
+            viewModel.didDeselectItem()
+        }
         // Configure the view for the selected state
     }
     

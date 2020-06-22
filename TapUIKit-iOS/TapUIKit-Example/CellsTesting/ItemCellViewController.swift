@@ -12,8 +12,8 @@ import TapUIKit_iOS
 class ItemCellViewController: UIViewController {
     @IBOutlet weak var tabGenericTable: TapGenericTableView!
     
-    var itemTitle:String = "Item Title"
-    var itemDescriptio:String = "Item Description"
+    var itemTitle:String = "Item Title # 1"
+    var itemDescriptio:String = "Item Description # 1"
     var itemPrice:Double = 1500
     var itemQuantity:Int = 1
     var itemDiscountValue:Double = 0
@@ -28,6 +28,7 @@ class ItemCellViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTheViewModel()
+        tapTableViewModel.delegate = self
     }
     
     
@@ -84,6 +85,13 @@ class ItemCellViewController: UIViewController {
         tapTableViewModel.dataSource = [itemCellViewModel]
         tabGenericTable.changeViewMode(with: tapTableViewModel)
     }
+    
+    func showAlert(title:String,message:String) {
+        let alertController:UIAlertController = .init(title: title, message: message, preferredStyle: .alert)
+        let okAction:UIAlertAction = .init(title: "OK", style: .destructive, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 
@@ -96,4 +104,17 @@ extension Decodable {
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         self = try decoder.decode(Self.self, from: data)
     }
+}
+
+
+extension ItemCellViewController:TapGenericTableViewModelDelegate {
+    func didSelect(item viewModel: TapGenericTableCellViewModel) {
+        return
+    }
+    
+    func itemClicked(for viewModel: ItemCellViewModel) {
+        showAlert(title: viewModel.itemTitle(), message: "You clicked on the item.. Look until now, clicking an item is worthless we are just showcasing 🙂")
+    }
+    
+    
 }

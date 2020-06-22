@@ -75,24 +75,24 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     }
     
     /// Returns the formatted Item title to be displayed
-    internal func itemTitle() -> String {
+    public func itemTitle() -> String {
         return itemModel?.title ?? ""
     }
     
     
     /// Returns the formatted Item quantity to be displayed
-    internal func itemQuantity() -> String {
+    public func itemQuantity() -> String {
         return "\(itemModel?.quantity ?? 1)"
     }
     
     /// Returns the formatted Item description to be displayed
-    internal func itemDesctiption() -> String {
+    public func itemDesctiption() -> String {
         return itemModel?.description ?? ""
     }
     
     
     /// Returns the formatted Item price to be displayed
-    internal func itemPrice() -> String {
+    public func itemPrice() -> String {
         // Check if we have a valid price, then format it based on the currency
         guard let itemModel = itemModel, let currency = convertCurrency else { return "" }
         let itemPrice = itemModel.itemFinalPrice()
@@ -110,7 +110,7 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
      - Parameter fontColornt: A font color to apply to the generated string
      - Returns: Attributed string as follows : If no discount and no quantity, returns nothing. If only quantity returns the single item price, if discount returns the original price with a strike through
      */
-    internal func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
+    public func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
         // Check if we have a valid discount OR the quantity is more than 1, then format it based on the currency
         guard let itemModel = itemModel,  let price = itemModel.price, let currency = convertCurrency else { return NSAttributedString.init(string: "") }
         guard itemModel.quantity ?? 0 > 1  || itemModel.discount?.value ?? 0 > 0 else { return NSAttributedString.init(string: "") }
