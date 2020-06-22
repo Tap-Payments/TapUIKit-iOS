@@ -55,7 +55,7 @@ public class ItemTableViewCell: TapGenericTableCell {
         itemTitleLabel.text = viewModel.itemTitle()
         itemDescriptionLabel.text = viewModel.itemDesctiption()
         itemQuantityLabel.text = viewModel.itemQuantity()
-        itemDiscountPriceLabel.text = viewModel.itemDiscount()
+        itemDiscountPriceLabel.attributedText = viewModel.itemDiscount(with: itemDiscountPriceLabel.font, and: itemDiscountPriceLabel.textColor)
         itemPriceLabel.text = viewModel.itemPrice()
         
         adjustViews()

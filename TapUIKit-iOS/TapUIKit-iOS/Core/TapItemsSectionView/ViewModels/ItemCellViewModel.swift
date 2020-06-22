@@ -9,6 +9,9 @@
 import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
+import class UIKit.UIColor
+import class UIKit.UIFont
+import struct UIKit.NSUnderlineStyle
 
 /// A protocol used to intstuct the cell with actions needed to be done
 internal protocol ItemCellViewModelDelegate {
@@ -101,18 +104,42 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     }
     
     
-    /// Returns the formatted Item discount to be displayed
-    internal func itemDiscount() -> String {
-        // Check if we have a valid discount, then format it based on the currency
-        guard let itemModel = itemModel, let itemPrice = itemModel.price, let currency = convertCurrency, let discount = itemModel.discount, let discountValue = discount.value, discountValue > 0 else { return "" }
+    /**
+     Returns the formatted Item discount to be displayed, will show text ONLY if the quantity is more than 1 or there is a discount applied
+     - Parameter font: A font to apply to the generated string
+     - Parameter fontColornt: A font color to apply to the generated string
+     - Returns: Attributed string as follows : If no discount and no quantity, returns nothing. If only quantity returns the single item price, if discount returns the original price with a strike through
+     */
+    internal func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
+        // Check if we have a valid discount OR the quantity is more than 1, then format it based on the currency
+        guard let itemModel = itemModel,  let price = itemModel.price, let currency = convertCurrency else { return NSAttributedString.init(string: "") }
+        guard itemModel.quantity ?? 0 > 1  || itemModel.discount?.value ?? 0 > 0 else { return NSAttributedString.init(string: "") }
         
-        let finalValue = discount.caluclateActualDiscountedValue(with: itemPrice)
-        
+        // In this case, then we will show a discount/single amount string
         let formatter = TapAmountedCurrencyFormatter {
             $0.currency = currency
             $0.locale = CurrencyLocale.englishUnitedStates
         }
-        return formatter.string(from: finalValue) ?? "KD0.000"
+        // Create the default value which will be the case of having only quantity, hence displaying the single item price
+        let toBeDisplayedPrice:Double = price
+        let attributedText : NSMutableAttributedString =  NSMutableAttributedString(string: formatter.string(from: toBeDisplayedPrice) ?? "KD0.000")
+        attributedText.addAttributes([
+            NSAttributedString.Key.font : font,
+            NSAttributedString.Key.foregroundColor : fontColor
+        ], range: NSMakeRange(0, attributedText.length))
+        
+        // If there is no discount, then we only return the single item price
+        guard let _ = itemModel.discount else { return attributedText }
+        
+        // In this case, there is a discount, hence, we need to show the original price, but we have to apply some more design attributes
+        attributedText.addAttributes([
+            NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+            NSAttributedString.Key.strikethroughColor: fontColor,
+        ], range: NSMakeRange(0, attributedText.length))
+        
+        
+        return attributedText
+        
     }
     
     
