@@ -16,7 +16,7 @@ class ItemCellViewController: UIViewController {
     var itemDescriptio:String = "Item Description"
     var itemPrice:Double = 1500.5
     var itemQuantity:Int = 1
-    
+    var itemDiscount:DiscountModel? = nil
     
     var tapTableViewModel:TapGenericTableViewModel = .init()
     
@@ -36,14 +36,26 @@ class ItemCellViewController: UIViewController {
         guard let uiswitch:UISwitch = sender as? UISwitch else { return }
         
         itemDescriptio = uiswitch.isOn ? "Item Description" : ""
-        
         configureTheViewModel()
         
     }
     @IBAction func showDiscountChanged(_ sender: Any) {
+        guard let uiswitch:UISwitch = sender as? UISwitch else { return }
+        
+        itemDiscount = nil
+        
+        if uiswitch.isOn {
+            itemDiscount = .init(type:DiscountType.Fixed,value:100.200)
+        }
+        
+        
+        configureTheViewModel()
+        
+        
     }
     private func configureTheViewModel() {
-        let itemModel:ItemModel = try! .init(from: ["title":itemTitle,"description":itemDescriptio,"price":itemPrice,"quantity":itemQuantity])
+        let itemModel:ItemModel = try! .init(from: ["title":itemTitle,"description":itemDescriptio
+            ,"price":itemPrice,"quantity":itemQuantity])
         let itemCellViewModel:ItemCellViewModel = .init(itemModel: itemModel, originalCurrency: .KWD)
         tapTableViewModel.dataSource = [itemCellViewModel]
         tabGenericTable.changeViewMode(with: tapTableViewModel)

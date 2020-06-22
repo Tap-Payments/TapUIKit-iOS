@@ -14,6 +14,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 /// Represent the model of an ITEM inside an order/transaction
 public struct ItemModel : Codable {
+    
     /// The title of the item
 	let title : String?
     /// A description of the item
@@ -25,6 +26,23 @@ public struct ItemModel : Codable {
     /// The discount applied to the item's price
 	let discount : DiscountModel?
 
+    
+    /**
+     - Parameter title: The title of the item
+     - Parameter description: A description of the item
+     - Parameter price: The raw original price in the original currency
+     - Parameter quantity: The quantity added to this item
+     - Parameter discount: The discount applied to the item's price
+     
+     */
+    public init(title: String?, description: String?, price: Double?, quantity: Int?, discount: DiscountModel?) {
+        self.title = title
+        self.description = description
+        self.price = price
+        self.quantity = quantity
+        self.discount = discount
+    }
+    
 	enum CodingKeys: String, CodingKey {
 
 		case title = "title"

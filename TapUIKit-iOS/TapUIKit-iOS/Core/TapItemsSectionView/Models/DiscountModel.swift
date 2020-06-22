@@ -14,16 +14,27 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 /// Represent the model of a dicount object for an item
 public struct DiscountModel : Codable {
+    
     /// The type of the applied discount whether fixed or percentage
 	let type : DiscountType?
     /// The value of the discount itself
 	let value : Double?
 
+    /**
+     - Parameter type: The type of the applied discount whether fixed or percentage
+     - Parameter value: The value of the discount itself
+     */
+    public init(type: DiscountType?, value: Double?) {
+        self.type = type
+        self.value = value
+    }
+    
 	enum CodingKeys: String, CodingKey {
 
 		case type = "type"
 		case value = "value"
 	}
+    
 
 	public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -80,11 +91,11 @@ public struct DiscountModel : Codable {
 
 
 /// Represent an enum to decide all the possible discount types
-public enum DiscountType: Codable {
+public enum DiscountType: String,Codable {
     /// Meaning, the discount will be a percentage of the item's price
-    case Percentage
+    case Percentage = "Percentage"
     /// Meaning, the discount will be a fixed value to be deducted as is
-    case Fixed
+    case Fixed = "Fixed"
     
     enum Key: CodingKey {
         case rawValue
@@ -93,6 +104,7 @@ public enum DiscountType: Codable {
     enum CodingError: Error {
         case unknownValue
     }
+    
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Key.self)
