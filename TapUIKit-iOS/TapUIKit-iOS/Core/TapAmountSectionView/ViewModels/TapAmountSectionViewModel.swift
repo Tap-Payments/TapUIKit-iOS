@@ -75,8 +75,11 @@ public class TapAmountSectionViewModel {
         didSet {
             if convertedTransactionCurrency?.appleRawValue == originalTransactionCurrency?.appleRawValue {
                 convertedTransactionCurrency = nil
+                convertedTransactionAmount = 0
+            }else {
+                convertedTransactionAmount = (convertedTransactionCurrency?.convert(from: originalTransactionCurrency, for: originalTransactionAmount)) ?? 0
             }
-            updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
+            //updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
         }
     }
     /// Represent the number of items in the current transaction

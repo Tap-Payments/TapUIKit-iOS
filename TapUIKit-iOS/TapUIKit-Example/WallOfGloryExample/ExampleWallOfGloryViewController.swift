@@ -28,6 +28,8 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     
+    var rates:[String:Double] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tapVerticalView.delegate = self
@@ -36,7 +38,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         // Setting up the number of lines and doing a word wrapping
         UILabel.appearance(whenContainedInInstancesOf:[UIAlertController.self]).numberOfLines = 2
         UILabel.appearance(whenContainedInInstancesOf:[UIAlertController.self]).lineBreakMode = .byWordWrapping
-        
         addGloryViews()
     }
     
