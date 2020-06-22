@@ -107,6 +107,15 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         return formatter.string(from: itemPrice) ?? "KD0.000"
     }
     
+    /// Returns the raw item price
+    public func itemPrice() -> Double {
+        // Check if we have a valid price, then format it based on the currency
+        guard let itemModel = itemModel  else { return 0 }
+        let itemPrice = itemModel.itemFinalPrice()
+        
+        return itemPrice
+    }
+    
     
     /**
      Returns the formatted Item discount to be displayed, will show text ONLY if the quantity is more than 1 or there is a discount applied
