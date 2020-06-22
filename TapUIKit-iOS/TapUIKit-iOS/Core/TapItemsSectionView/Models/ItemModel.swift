@@ -60,4 +60,24 @@ public struct ItemModel : Codable {
 		quantity = try values.decodeIfPresent(Int.self, forKey: .quantity)
 		discount = try values.decodeIfPresent(DiscountModel.self, forKey: .discount)
 	}
+    
+    /**
+     Holds the logic to calculate the final price of the item based on price, quantity and discount
+     - Returns: The total price of the item as follows : (itemPrice-discount) * quantity
+     */
+    internal func itemFinalPrice() -> Double {
+        
+        // Defensive coding, make sure all values are set
+        guard let price = price else { return 0 }
+        
+        // First apply the discount if any
+        var discountedItemPrice:Double = discount?.caluclateActualDiscountedValue(with: price) ?? price
+        
+        // Put in the quantity in action
+        discountedItemPrice = discountedItemPrice * Double(quantity ?? 1)
+        
+        return discountedItemPrice
+        
+    }
+    
 }
