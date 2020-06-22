@@ -22,13 +22,7 @@ class ItemCellViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureTheViewModel()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
-            self?.itemDescriptio = ""
-            self?.configureTheViewModel()
-        }
     }
     
     
@@ -54,8 +48,9 @@ class ItemCellViewController: UIViewController {
         
     }
     private func configureTheViewModel() {
-        let itemModel:ItemModel = try! .init(from: ["title":itemTitle,"description":itemDescriptio
-            ,"price":itemPrice,"quantity":itemQuantity])
+        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount)
+        //try! .init(from: ["title":itemTitle,"description":itemDescriptio
+            //,"price":itemPrice,"quantity":itemQuantity])
         let itemCellViewModel:ItemCellViewModel = .init(itemModel: itemModel, originalCurrency: .KWD)
         tapTableViewModel.dataSource = [itemCellViewModel]
         tabGenericTable.changeViewMode(with: tapTableViewModel)
