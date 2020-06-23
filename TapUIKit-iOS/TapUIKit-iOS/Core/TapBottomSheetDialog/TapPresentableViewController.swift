@@ -103,8 +103,8 @@ internal class TapPresentableViewController: PullUpController {
         
         if tapVertical.neededSize().height > containerView.frame.height {
             
-            var height = tapVertical.neededSize().height
-            var offset = height - containerView.frame.height
+            let height = tapVertical.neededSize().height
+            let offset = height - containerView.frame.height
             if self.view.frame.origin.y - offset  < ConstantManager.TapBottomSheetMinimumYPoint {
                 //height = containerView.frame.height
             }else {
@@ -112,7 +112,7 @@ internal class TapPresentableViewController: PullUpController {
             }
         }
         
-        print("NEW \(containerView.frame) -- \(tapVertical.neededSize())")
+       // print("NEW \(containerView.frame) -- \(tapVertical.neededSize())")
     }
     
     
