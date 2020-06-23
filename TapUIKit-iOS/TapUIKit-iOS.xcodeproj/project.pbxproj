@@ -539,7 +539,6 @@
 		E8CD427F2495F7650013AEE7 /* TapChip */ = {
 			isa = PBXGroup;
 			children = (
-				E8CD42812495F7780013AEE7 /* ViewModels */,
 				E8CD42802495F7710013AEE7 /* Views */,
 			);
 			path = TapChip;
@@ -552,13 +551,6 @@
 				E8CD42822495F8D50013AEE7 /* HorizontalList */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E8CD42812495F7780013AEE7 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E8CD42822495F8D50013AEE7 /* HorizontalList */ = {
