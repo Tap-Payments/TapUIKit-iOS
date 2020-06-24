@@ -200,13 +200,9 @@ public class TapVerticalView: UIView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
     private func handleAddition(of view:UIView, at index:Int? = nil, with animation:TapVerticalViewAnimationType? = nil) {
-        
-//        while(itemsBeingRemoved) {}
-        
-        let delay:Int = itemsBeingRemoved ? 300 : 5
-        
+  
         itemsBeingAdded += 1
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             
             
             // If the index is not defined, then we just add it to the end
@@ -228,12 +224,12 @@ public class TapVerticalView: UIView {
                 view.bounceOut(to: direction.animationKitDirection(),completion: { _ in
                     self?.itemsBeingAdded -= 1
                 })
-            case .fadeIn:
-                view.fadeIn(duration:1,completion: { _ in
+            case .fadeIn(let duration,_):
+                view.fadeIn(duration:duration ?? 0.25,completion: { _ in
                     self?.itemsBeingAdded -= 1
                 })
-            case .fadeOut:
-                view.fadeOut(duration:1,completion: { _ in
+            case .fadeOut(let duration,_):
+                view.fadeOut(duration:duration ?? 0.25,completion: { _ in
                     self?.itemsBeingAdded -= 1
                 })
             case .slideIn(let direction,_,_):

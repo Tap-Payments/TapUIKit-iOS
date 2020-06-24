@@ -210,8 +210,8 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: self!.currencyListView, with: TapVerticalViewAnimationType.fadeIn(duration: 1000, delay: nil))
-                    self?.tapVerticalView.add(view: self!.tabItemsTableView, with: TapVerticalViewAnimationType.fadeIn( duration: 1000, delay: nil))
+                    self?.tapVerticalView.add(view: self!.currencyListView, with: TapVerticalViewAnimationType.fadeIn(duration: 0.5, delay: nil))
+                    self?.tapVerticalView.add(view: self!.tabItemsTableView, with: TapVerticalViewAnimationType.fadeIn( duration: 0.5, delay: nil))
                 }
                 break
             }
@@ -230,7 +230,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: TapVerticalViewAnimationType.fadeIn( duration: 1000, delay: nil))
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: TapVerticalViewAnimationType.fadeIn( duration: 0.5, delay: nil))
                 }
                 break
             }
