@@ -107,7 +107,8 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     
     public func itemDescription() -> String {
-        return (descriptionState == .shown) ? itemModel?.description ?? "" : ""
+        guard let description = itemModel?.description else { return "" }
+        return (descriptionState == .shown) ? "\n\(description)\n" : ""
     }
     
     /// Returns the formatted Item price to be displayed

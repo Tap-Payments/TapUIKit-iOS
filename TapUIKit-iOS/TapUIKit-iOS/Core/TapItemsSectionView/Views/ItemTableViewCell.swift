@@ -16,6 +16,7 @@ public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemDiscountPriceLabel: UILabel!
     @IBOutlet weak var itemQuantityView: UIView!
     @IBOutlet weak var itemQuantityLabel: UILabel!
+    @IBOutlet weak var itemDescrriptionView: UIView!
     @IBOutlet weak var itemDescLabel: UILabel!
     @IBOutlet weak var separatorView: TapSeparatorView!
     
@@ -134,11 +135,12 @@ extension ItemTableViewCell {
         itemTitleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont",shouldLocalise:false)
         itemTitleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).titleLabelColor")
         
-        itemDescriptionLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont",shouldLocalise:false)
+        itemDescriptionLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont")
         itemDescriptionLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
         
-        itemDescLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont",shouldLocalise:false)
+        itemDescLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont")
         itemDescLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
+        itemDescrriptionView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).descriptionBackgroundColor")
         
         itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont",shouldLocalise:false)
         itemPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).priceLabelColor")
