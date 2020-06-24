@@ -73,7 +73,7 @@ public class TapVerticalView: UIView {
     /// It is overriden to listen to the change in size of the scroll view
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Make sure this is the notfication we want to listen to which is the contentSize of the scroll view
-        guard let keyPath = keyPath, keyPath == "contentSize", object as? UIScrollView == scrollView, let delegate = delegate else { return }
+        guard let keyPath = keyPath, keyPath == "contentSize", object as? UIScrollView == scrollView, let _ = delegate else { return }
         // Make sure the new heigt is not 0
         guard scrollView.contentSize.height > 0 else { return }
         // Inform the delegate if any, that the view has new size
@@ -227,26 +227,38 @@ public class TapVerticalView: UIView {
             }
             
             // Second case, we have more than 1 animation, hence we need to consider the sequence type
-            
+            self?.adjustAnimationList(view: view, for: animations, with: animationSequence,then: {
+                self?.itemsBeingAdded -= 1
+            })
         }
     }
     
     
     
-    private func adjustAnimationList(for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
+    private func adjustAnimationList(view:UIView, for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
         // Create mutable instance of the animation list to be able to change the required values
-        var adjustedAnimationsList:[TapVerticalViewAnimationType] = animations
         var delayUpToCurrentAnimation:Double = 0
         
-        // We start from 1 as first animation will be executed at first regarldess the sequence type
-        for i in 1..<adjustedAnimationsList.count {
-            var animation = adjustedAnimationsList[i]
-            delayUpToCurrentAnimation += adjustedAnimationsList[i-1]
+        // We start from 1 as first animation will be executed at first regarldess the sequence type. Also, last one will be called separatly as it is the one that will fire the completion block whether in parallel or in serial
+        for i in 1..<animations.count {
+            let animation = animations[i]
+            let (_,previousDuration,previousDelay) = animations[i-1].animationDetails()
+            // Update the delayed value for this current animation (will use it in case of sequence animation required)
+            delayUpToCurrentAnimation += (previousDuration + previousDelay)
+            // Determine we will pass the delay or not, we will only use the delaf IFF the sequence is serial, hence, the delay will make the current animation waits for the previous ones to finish first.
+            let toBeUsedDelay = (sequence == .serial) ? delayUpToCurrentAnimation : 0
+            // Only the last animation should fire the completion block, hence we need to check whether will fire it or not for this animation
+            let completionBlock:() -> () = (animation == animations.last) ? completion : { }
+            animate(view: view, with: animation,after: toBeUsedDelay, and: completionBlock)
         }
+        
+        
+        // Now we will fire the last animation in the sequence and pass the completion block
+        
     }
     
-    private func animate(view:UIView,with animation:TapVerticalViewAnimationType,and completion:@escaping () -> () = {  }) {
-        DispatchQueue.main.async {
+    private func animate(view:UIView,with animation:TapVerticalViewAnimationType,after delay:TimeInterval = 0, and completion:@escaping () -> () = {  }) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(delay * 1000))) {
             switch animation {
             case .bounceIn(let direction,let duration,let delay):
                 view.bounceIn(from: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
@@ -366,7 +378,6 @@ public enum TapVerticalViewAnimationType: Equatable {
     case popOut(duration:Double?,delay:Double?)
     case none
     
-    
     internal func animationDetails() -> (TapVerticalViewAnimationDirection?,Double,Double) {
         var detectedDirection:TapVerticalViewAnimationDirection? = nil
         var detectedDuration:Double = 0.25
@@ -389,6 +400,8 @@ public enum TapVerticalViewAnimationType: Equatable {
         return(detectedDirection,detectedDuration,detectedDelay)
     }
 }
+
+
 
 /// Defines the direction the animation will be applied to
 public enum TapVerticalViewAnimationDirection {

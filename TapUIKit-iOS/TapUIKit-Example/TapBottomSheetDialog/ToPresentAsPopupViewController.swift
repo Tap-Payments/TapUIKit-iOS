@@ -73,7 +73,7 @@ class ToPresentAsPopupViewController: UIViewController {
                 newView.translatesAutoresizingMaskIntoConstraints = false
                 newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
                 self.tapVerticalView.remove(at: 2, with: .fadeOut(duration: nil, delay: nil))
-                self.tapVerticalView.add(view: newView,at: 2, with: .bounceIn(.bottom, duration: nil, delay: nil))
+                self.tapVerticalView.add(view: newView,at: 2, with: [.bounceIn(.bottom, duration: nil, delay: nil)])
             }
         }
         
@@ -88,7 +88,7 @@ class ToPresentAsPopupViewController: UIViewController {
                 newView.translatesAutoresizingMaskIntoConstraints = false
                 newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
                 self.tapVerticalView.remove(at: 2, with: .fadeOut(duration: nil, delay: nil))
-                self.tapVerticalView.add(view: newView,at: 2, with: .fadeIn(duration: nil, delay: nil))
+                self.tapVerticalView.add(view: newView,at: 2, with: [.fadeIn(duration: nil, delay: nil)])
             }
         }
         
@@ -102,7 +102,7 @@ class ToPresentAsPopupViewController: UIViewController {
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
-                self.tapVerticalView.add(view: newView, at: 0, with: .bounceIn(.bottom, duration: nil, delay: nil))
+                self.tapVerticalView.add(view: newView, at: 0, with: [.bounceIn(.bottom, duration: nil, delay: nil)])
             }
         }
         
@@ -116,7 +116,7 @@ class ToPresentAsPopupViewController: UIViewController {
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
-                self.tapVerticalView.add(view: newView, at: 0, with: .fadeIn(duration: nil, delay: nil))
+                self.tapVerticalView.add(view: newView, at: 0, with: [.fadeIn(duration: nil, delay: nil)])
             }
         }
         
