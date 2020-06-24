@@ -148,6 +148,7 @@ public class TapVerticalView: UIView {
         // Check if there is an animation we need to do
         guard let animation:TapVerticalViewAnimationType = animation, animation != .none  else {
             itemsBeingRemoved = false
+            view.isHidden = true
             stackView.removeArrangedSubview(view)
             return
         }
@@ -217,7 +218,7 @@ public class TapVerticalView: UIView {
                 return
             }
             // We need to apply the animations passed to the passed view with the required sequence
-            
+            view.alpha = 0
             // First case, we have only 1 animation then the sequence will not differ whether serial or parallel
             guard animations.count > 1 else {
                 self?.animate(view: view, with: animations[0],and:{
@@ -240,6 +241,7 @@ public class TapVerticalView: UIView {
         var delayUpToCurrentAnimation:Double = 0
         
         // We start from 1 as first animation will be executed at first regarldess the sequence type. Also, last one will be called separatly as it is the one that will fire the completion block whether in parallel or in serial
+        animate(view: view, with: animations[0],after: 0)
         for i in 1..<animations.count {
             let animation = animations[i]
             let (_,previousDuration,previousDelay) = animations[i-1].animationDetails()

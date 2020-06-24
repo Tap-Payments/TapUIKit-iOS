@@ -210,7 +210,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: self!.currencyListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.currencyListView, with: [TapVerticalViewAnimationType.slideIn(.left, duration:1),TapVerticalViewAnimationType.fadeIn(duration:1)],and: .parallel)
                     self?.tapVerticalView.add(view: self!.tabItemsTableView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
