@@ -72,8 +72,8 @@ class ToPresentAsPopupViewController: UIViewController {
                                                    alpha: 1.0)
                 newView.translatesAutoresizingMaskIntoConstraints = false
                 newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-                self.tapVerticalView.remove(at: 2, with: .fadeOut())
-                self.tapVerticalView.add(view: newView,at: 2, with: [.bounceIn(.bottom)])
+                self.tapVerticalView.remove(at: 2, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.add(view: newView,at: 2, with: [.bounceIn(.bottom, duration: nil, delay: nil)])
             }
         }
         
@@ -87,8 +87,8 @@ class ToPresentAsPopupViewController: UIViewController {
                                                    alpha: 1.0)
                 newView.translatesAutoresizingMaskIntoConstraints = false
                 newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
-                self.tapVerticalView.remove(at: 2, with: .fadeOut())
-                self.tapVerticalView.add(view: newView,at: 2, with: [.fadeIn()])
+                self.tapVerticalView.remove(at: 2, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.add(view: newView,at: 2, with: [.fadeIn(duration: nil, delay: nil)])
             }
         }
         
@@ -102,7 +102,7 @@ class ToPresentAsPopupViewController: UIViewController {
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
-                self.tapVerticalView.add(view: newView, at: 0, with: [.bounceIn(.bottom)])
+                self.tapVerticalView.add(view: newView, at: 0, with: [.bounceIn(.bottom, duration: nil, delay: nil)])
             }
         }
         
@@ -116,7 +116,7 @@ class ToPresentAsPopupViewController: UIViewController {
             newView.translatesAutoresizingMaskIntoConstraints = false
             newView.heightAnchor.constraint(equalToConstant: CGFloat.random(in: 50 ..< 100)).isActive = true
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
-                self.tapVerticalView.add(view: newView, at: 0, with: [.fadeIn()])
+                self.tapVerticalView.add(view: newView, at: 0, with: [.fadeIn(duration: nil, delay: nil)])
             }
         }
         
