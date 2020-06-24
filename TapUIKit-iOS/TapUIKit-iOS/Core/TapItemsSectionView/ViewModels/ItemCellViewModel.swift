@@ -35,6 +35,8 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
             cellDelegate?.reloadData()
         }
     }
+    private let sharedLocalisationManager = TapLocalisationManager.shared
+    
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:TapCellViewModelDelegate? {
         didSet{
@@ -95,7 +97,6 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     /// Returns the formatted Item description to be displayed
     public func itemDesctiption() -> String {
         //return itemModel?.description ?? ""
-        let sharedLocalisationManager = TapLocalisationManager.shared
         return sharedLocalisationManager.localisedValue(for: "ItemList.showDesc", with: TapCommonConstants.pathForDefaultLocalisation())
     }
     
@@ -149,15 +150,24 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         // If there is no discount, then we only return the single item price
         guard let _ = itemModel.discount else { return attributedText }
         
+        
+        let discountAttributedText : NSMutableAttributedString =  NSMutableAttributedString(string: "\(sharedLocalisationManager.localisedValue(for: "ItemList.Discount", with: TapCommonConstants.pathForDefaultLocalisation())) ")
+        discountAttributedText.addAttributes([
+            NSAttributedString.Key.font : font,
+            NSAttributedString.Key.foregroundColor : fontColor
+        ], range: NSMakeRange(0, discountAttributedText.length))
+        
+        
+        
         // In this case, there is a discount, hence, we need to show the original price, but we have to apply some more design attributes
         attributedText.addAttributes([
             NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
             NSAttributedString.Key.strikethroughColor: fontColor,
         ], range: NSMakeRange(0, attributedText.length))
         
+        discountAttributedText.append(attributedText)
         
-        return attributedText
-        
+        return discountAttributedText
     }
     
     
