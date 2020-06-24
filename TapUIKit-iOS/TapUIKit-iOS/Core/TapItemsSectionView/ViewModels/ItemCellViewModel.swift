@@ -80,7 +80,7 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     /// Returns the formatted Item title to be displayed
     public func itemTitle() -> String {
-        return itemModel?.title ?? ""
+        return (itemModel?.title ?? "").uppercased()
     }
     
     
