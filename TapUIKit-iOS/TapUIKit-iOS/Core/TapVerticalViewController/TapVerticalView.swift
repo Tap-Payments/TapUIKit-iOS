@@ -190,8 +190,8 @@ public class TapVerticalView: UIView {
      - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
      - Parameter animation: The animation to be applied while doing the view addition. Default is nil
      */
-    public func add(view:UIView, at index:Int? = nil, with animation:TapVerticalViewAnimationType? = nil) {
-        handleAddition(of: view, at: index,with: animation)
+    public func add(view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
+        handleAddition(of: view, at: index,with: animations,and: animationSequence)
     }
     /**
      Handles all the logic needed to add an arranged subview to the vertical hierarchy
@@ -199,12 +199,11 @@ public class TapVerticalView: UIView {
      - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    private func handleAddition(of view:UIView, at index:Int? = nil, with animation:TapVerticalViewAnimationType? = nil) {
+    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
   
         itemsBeingAdded += 1
+        
         DispatchQueue.main.async { [weak self] in
-            
-            
             // If the index is not defined, then we just add it to the end
             if let index = index {
                 self?.stackView.insertArrangedSubview(view, at: index)
@@ -212,44 +211,64 @@ public class TapVerticalView: UIView {
                 self?.stackView.addArrangedSubview(view)
             }
             
-            // Check if there is an animation we need to do
-            guard let animation = animation else { return }
-            
-            switch animation {
-            case .bounceIn(let direction,_,_):
-                view.bounceIn(from: direction.animationKitDirection(),completion: { _ in
-                    self?.itemsBeingAdded -= 1
-                })
-            case .bounceOut(let direction,_,_):
-                view.bounceOut(to: direction.animationKitDirection(),completion: { _ in
-                    self?.itemsBeingAdded -= 1
-                })
-            case .fadeIn(let duration,_):
-                view.fadeIn(duration:duration ?? 0.25,completion: { _ in
-                    self?.itemsBeingAdded -= 1
-                })
-            case .fadeOut(let duration,_):
-                view.fadeOut(duration:duration ?? 0.25,completion: { _ in
-                    self?.itemsBeingAdded -= 1
-                })
-            case .slideIn(let direction,_,_):
-                view.slideIn(from: direction.animationKitDirection(),completion: { _ in
-                    self?.itemsBeingAdded -= 1
-                })
-            case .slideOut(let direction,_,_):
-                view.slideOut(to: direction.animationKitDirection(),completion: { _ in
-                    self?.itemsBeingAdded -= 1
-                })
-            case .popIn:
-                view.popIn(){ _ in
-                    self?.itemsBeingAdded -= 1
-                }
-            case .popOut:
-                view.popOut(){ _ in
-                    self?.itemsBeingAdded -= 1
-                }
-            case .none:
+            // Make sure there are some animations passed
+            guard animations.count > 0 else {
                 self?.itemsBeingAdded -= 1
+                return
+            }
+            // We need to apply the animations passed to the passed view with the required sequence
+            
+            // First case, we have only 1 animation then the sequence will not differ whether serial or parallel
+            guard animations.count > 1 else {
+                self?.animate(view: view, with: animations[0],and:{
+                    self?.itemsBeingAdded -= 1
+                })
+                return
+            }
+            
+            // Second case, we have more than 1 animation, hence we need to consider the sequence type
+            
+        }
+    }
+    
+    
+    private func animate(view:UIView,with animation:TapVerticalViewAnimationType,and completion:@escaping () -> () = {  }) {
+        DispatchQueue.main.async {
+            switch animation {
+            case .bounceIn(let direction,let duration,let delay):
+                view.bounceIn(from: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .bounceOut(let direction,let duration,let delay):
+                view.bounceOut(to: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .fadeIn(let duration,let delay):
+                view.fadeIn(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .fadeOut(let duration,let delay):
+                view.fadeOut(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .slideIn(let direction,let duration,let delay):
+                view.slideIn(from: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .slideOut(let direction,let duration,let delay):
+                view.slideOut(to: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .popIn(let duration,let delay):
+                view.popIn(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .popOut(let duration,let delay):
+                view.popOut(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                    completion()
+                })
+            case .none:
+                completion()
                 break
             }
         }
@@ -365,6 +384,16 @@ public enum TapVerticalUpdatesAnimationSequence {
     case parallel
     /// Animate removals first, then animate the additions
     case removeAllFirst
+}
+
+
+
+/// Defines what sequence to apply when removing and adding set of views to the vertical hierarchy
+public enum TapAnimationSequence {
+    /// Perform the animations one after another
+    case serial
+    /// Perofm the animations all togethe
+    case parallel
 }
 
 
