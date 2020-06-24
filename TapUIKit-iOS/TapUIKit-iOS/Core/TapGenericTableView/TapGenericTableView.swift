@@ -90,6 +90,13 @@ public class TapGenericTableView: UIView {
 
 extension TapGenericTableView:TapCellGenericTableViewModelDelegate {
     
+    func reloadRows(at indexPaths: [IndexPath]) {
+        tableView.beginUpdates()
+        tableView.reloadRows(at: indexPaths, with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    
     func reload(new dataSource: [TapGenericTableCellViewModel]) {
         reloadData()
     }

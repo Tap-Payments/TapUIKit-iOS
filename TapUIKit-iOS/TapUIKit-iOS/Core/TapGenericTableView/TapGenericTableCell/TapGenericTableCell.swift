@@ -7,6 +7,8 @@
 //
 
 import class UIKit.UITableViewCell
+import class UIKit.UITableView
+import class UIKit.NSIndexPath
 /// This is a superclass for all the table cells views created, this will make sure all have the same interface/output and ease the parametery type in methods
 
 public class TapGenericTableCell: UITableViewCell {
@@ -45,4 +47,16 @@ public class TapGenericTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    internal func getIndexPath() -> IndexPath? {
+        guard let superView = self.superview as? UITableView else {
+            print("superview is not a UITableView - getIndexPath")
+            return nil
+        }
+        let indexPath:IndexPath? = superView.indexPath(for: self)
+        return indexPath
+    }
 }
+
+
+

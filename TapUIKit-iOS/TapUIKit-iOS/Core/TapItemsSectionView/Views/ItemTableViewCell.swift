@@ -16,6 +16,7 @@ public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemDiscountPriceLabel: UILabel!
     @IBOutlet weak var itemQuantityView: UIView!
     @IBOutlet weak var itemQuantityLabel: UILabel!
+    @IBOutlet weak var itemDescLabel: UILabel!
     @IBOutlet weak var separatorView: TapSeparatorView!
     
     /// Holds the last style theme applied
@@ -26,6 +27,7 @@ public class ItemTableViewCell: TapGenericTableCell {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
+            viewModel.delegate = self
             if oldValue != viewModel {
                 // We reload the cell data from the view model
                 reload()
@@ -39,6 +41,7 @@ public class ItemTableViewCell: TapGenericTableCell {
         return viewModel.identefier()
     }
     @IBAction func showDescriptionClicked(_ sender: Any) {
+        viewModel.toggleDiscriptionStatus()
     }
     
     public override func awakeFromNib() {
@@ -70,9 +73,9 @@ public class ItemTableViewCell: TapGenericTableCell {
         }
         
         itemTitleLabel.text = viewModel.itemTitle()
-        itemDescriptionLabel.text = viewModel.itemDesctiption()
+        itemDescriptionLabel.text = viewModel.itemDesctiptionButtonTitle()
         itemQuantityLabel.text = viewModel.itemQuantity()
-        
+        itemDescLabel.text = viewModel.itemDescription()
         self.layoutIfNeeded()
         
         adjustViews()
@@ -134,6 +137,9 @@ extension ItemTableViewCell {
         itemDescriptionLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont",shouldLocalise:false)
         itemDescriptionLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
         
+        itemDescLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont",shouldLocalise:false)
+        itemDescLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
+        
         itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont",shouldLocalise:false)
         itemPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).priceLabelColor")
         
@@ -169,5 +175,20 @@ extension ItemTableViewCell:TapCellViewModelDelegate {
     
     func reloadData() {
         reload()
+    }
+}
+
+
+extension ItemTableViewCell:ItemCellViewModelDelegate {
+    func reloadDescription(with state: DescriptionState) {
+        itemDescLabel.text = viewModel.itemDescription()
+        //itemDescLabel.sizeToFit()
+        layoutIfNeeded()
+        guard let tableView:UITableView = self.superview as? UITableView,
+            let indexPath:IndexPath = tableView.indexPath(for: self) else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
+            tableView.reloadRows(at: [indexPath], with: .bottom)
+        }
     }
 }

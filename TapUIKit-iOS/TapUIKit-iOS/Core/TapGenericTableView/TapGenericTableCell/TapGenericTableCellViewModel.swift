@@ -16,6 +16,7 @@ internal protocol TapGenericCellViewModelDelegate {
      - Parameter viewModel: Represents The attached view model
      */
     func itemClicked(for viewModel:ItemCellViewModel)
+    func reloadRows(at indexPaths:[IndexPath])
 }
 
 

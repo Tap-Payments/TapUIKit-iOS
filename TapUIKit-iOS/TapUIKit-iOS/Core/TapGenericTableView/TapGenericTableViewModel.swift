@@ -31,6 +31,7 @@ internal protocol TapCellGenericTableViewModelDelegate {
      - Parameter dataSource: Represents the new datasource if needed
      */
     func reload(new dataSource:[TapGenericTableCellViewModel])
+    func reloadRows(at indexPaths:[IndexPath])
 }
 
 /// This is the view model that adjusts and adapts the info shown in any Tap Generic TableView. It accepts and arranges different cells view models through one place
@@ -159,6 +160,10 @@ public class TapGenericTableViewModel {
 
 
 extension TapGenericTableViewModel:TapGenericCellViewModelDelegate {
+    func reloadRows(at indexPaths: [IndexPath]) {
+        cellDelegate?.reloadRows(at: indexPaths)
+    }
+    
     func itemClicked(for viewModel: ItemCellViewModel) {
         delegate?.itemClicked(for: viewModel)
     }

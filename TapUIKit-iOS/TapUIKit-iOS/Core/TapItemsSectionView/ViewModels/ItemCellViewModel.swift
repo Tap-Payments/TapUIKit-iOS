@@ -18,7 +18,8 @@ import struct UIKit.NSUnderlineStyle
 
 /// A protocol used to intstuct the cell with actions needed to be done
 internal protocol ItemCellViewModelDelegate {
-    func reloadPriceLabels()
+    //func reloadPriceLabels()
+    func reloadDescription(with state:DescriptionState)
 }
 
 /// The view model that controlls the Items table cell
@@ -27,19 +28,27 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     // MARK:- inner Variables
     /// The item model to be represented by this view model
     private var itemModel:ItemModel?
+    internal var delegate:ItemCellViewModelDelegate?
+    
     /// The original currency, the item is created with
     private var originalCurrency:TapCurrencyCode?
-    /// The new currency the user wants to convert to
-    public var convertCurrency:TapCurrencyCode? {
+    private let sharedLocalisationManager = TapLocalisationManager.shared
+    internal var descriptionState:DescriptionState = .hidden {
+        didSet {
+            delegate?.reloadDescription(with: descriptionState)
+        }
+    }
+    
+    /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
+    internal var cellDelegate:TapCellViewModelDelegate? {
         didSet{
             cellDelegate?.reloadData()
         }
     }
-    private let sharedLocalisationManager = TapLocalisationManager.shared
-    internal descriptionState:DescriptionState = .hidden
     
-    /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
-    internal var cellDelegate:TapCellViewModelDelegate? {
+    // MARK:- Public Variables
+    /// The new currency the user wants to convert to
+    public var convertCurrency:TapCurrencyCode? {
         didSet{
             cellDelegate?.reloadData()
         }
@@ -78,12 +87,6 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         
     }
     
-    // MARK:- Internal methods
-    
-    internal override  func correctCellType(for cell:TapGenericTableCell) -> TapGenericTableCell {
-        return cell as! ItemTableViewCell
-    }
-    
     /// Returns the formatted Item title to be displayed
     public func itemTitle() -> String {
         return (itemModel?.title ?? "").uppercased()
@@ -96,12 +99,16 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     }
     
     /// Returns the formatted Item description to be displayed
-    public func itemDesctiption() -> String {
+    public func itemDesctiptionButtonTitle() -> String {
         // Nothing ig there is no description
         guard let _ = itemModel?.description else { return "" }
         return sharedLocalisationManager.localisedValue(for: (descriptionState == .hidden) ? "ItemList.showDesc" : "ItemList.hideDesc", with: TapCommonConstants.pathForDefaultLocalisation())
     }
     
+    
+    public func itemDescription() -> String {
+        return (descriptionState == .shown) ? itemModel?.description ?? "" : ""
+    }
     
     /// Returns the formatted Item price to be displayed
     public func itemPrice() -> String {
@@ -170,6 +177,17 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         discountAttributedText.append(attributedText)
         
         return discountAttributedText
+    }
+    
+    // MARK:- Internal methods
+    
+    internal override  func correctCellType(for cell:TapGenericTableCell) -> TapGenericTableCell {
+        return cell as! ItemTableViewCell
+    }
+    
+    
+    internal func toggleDiscriptionStatus() {
+        descriptionState = (descriptionState == .shown) ? .hidden : .shown
     }
 }
 
