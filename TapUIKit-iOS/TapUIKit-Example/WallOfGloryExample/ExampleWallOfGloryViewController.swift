@@ -56,8 +56,11 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createItemsViewModel() {
         var itemsModels:[ItemCellViewModel] = []
-        for i in 1...Int.random(in: 1..<10) {
-            let itemTitle:String = "Item Title # \(i)"
+        for i in 1...Int.random(in: 1..<20) {
+            var itemTitle:String = "Item Title # \(i)"
+            if i % 5 == 4 {
+                itemTitle = "VERY LOOOOOOOOOOOOOONG ITEM TITLE Item Title # \(i)"
+            }
             let itemDescriptio:String = "Item Description # \(i)"
             let itemPrice:Double = Double.random(in: 10..<4000)
             let itemQuantity:Int = Int.random(in: 1..<10)
@@ -210,7 +213,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: self!.currencyListView, with: [TapVerticalViewAnimationType.slideIn(.left, duration:1),TapVerticalViewAnimationType.fadeIn(duration:1)],and: .parallel)
+                    self?.tapVerticalView.add(view: self!.currencyListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tabItemsTableView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
