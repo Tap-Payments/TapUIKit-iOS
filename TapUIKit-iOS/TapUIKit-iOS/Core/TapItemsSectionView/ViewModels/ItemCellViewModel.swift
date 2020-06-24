@@ -36,6 +36,7 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         }
     }
     private let sharedLocalisationManager = TapLocalisationManager.shared
+    internal descriptionState:DescriptionState = .hidden
     
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:TapCellViewModelDelegate? {
@@ -96,8 +97,9 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     /// Returns the formatted Item description to be displayed
     public func itemDesctiption() -> String {
-        //return itemModel?.description ?? ""
-        return sharedLocalisationManager.localisedValue(for: "ItemList.showDesc", with: TapCommonConstants.pathForDefaultLocalisation())
+        // Nothing ig there is no description
+        guard let _ = itemModel?.description else { return "" }
+        return sharedLocalisationManager.localisedValue(for: (descriptionState == .hidden) ? "ItemList.showDesc" : "ItemList.hideDesc", with: TapCommonConstants.pathForDefaultLocalisation())
     }
     
     
@@ -169,6 +171,10 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
         
         return discountAttributedText
     }
-    
-    
+}
+
+
+internal enum DescriptionState {
+    case shown
+    case hidden
 }

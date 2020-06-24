@@ -38,6 +38,8 @@ public class ItemTableViewCell: TapGenericTableCell {
     func identefier() -> String {
         return viewModel.identefier()
     }
+    @IBAction func showDescriptionClicked(_ sender: Any) {
+    }
     
     public override func awakeFromNib() {
         super.awakeFromNib()
