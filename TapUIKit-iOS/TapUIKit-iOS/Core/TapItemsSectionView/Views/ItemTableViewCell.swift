@@ -16,7 +16,6 @@ public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemDiscountPriceLabel: UILabel!
     @IBOutlet weak var itemQuantityView: UIView!
     @IBOutlet weak var itemQuantityLabel: UILabel!
-    @IBOutlet weak var itemInfoStackView: UIStackView!
     @IBOutlet weak var separatorView: TapSeparatorView!
     
     /// Holds the last style theme applied
@@ -72,20 +71,20 @@ public class ItemTableViewCell: TapGenericTableCell {
         itemDescriptionLabel.text = viewModel.itemDesctiption()
         itemQuantityLabel.text = viewModel.itemQuantity()
         
-        
+        self.layoutIfNeeded()
         
         adjustViews()
     }
     
     
     private func adjustViews() {
-        if itemDescriptionLabel.text != "" {
+        /*if itemDescriptionLabel.text != "" {
             if !itemInfoStackView.arrangedSubviews.contains(itemDescriptionLabel) {
                 itemInfoStackView.addArrangedSubview(itemDescriptionLabel)
             }
         }else {
             itemInfoStackView.removeArrangedSubview(itemDescriptionLabel)
-        }
+        }*/
     }
     
     
