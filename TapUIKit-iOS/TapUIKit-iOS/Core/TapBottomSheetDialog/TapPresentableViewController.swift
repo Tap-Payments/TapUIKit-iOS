@@ -26,7 +26,7 @@ internal class TapPresentableViewController: PullUpController {
     internal var changedBefore:Bool = false
     @IBOutlet weak var containerView: UIView!
     internal var tapBottomSheetStickingPoints:[CGFloat]?
-    internal var minimumHeight:CGFloat = ConstantManager.TapBottomSheetMinimumHeight
+    internal var minimumHeight:CGFloat = TapConstantManager.TapBottomSheetMinimumHeight
     internal var initialHeight:CGFloat = 100
     internal var maxHeight:CGFloat = 500
     internal var delegate:TapPresentableViewControllerDelegate?
@@ -57,7 +57,7 @@ internal class TapPresentableViewController: PullUpController {
     private func generateDefaultStickyPoints() -> [CGFloat] {
         
         var minStickyPoint = minimumHeight
-        var stickyPoints:[CGFloat] = [ConstantManager.TapBottomSheetMinimumYPoint,initialHeight]
+        var stickyPoints:[CGFloat] = [TapConstantManager.TapBottomSheetMinimumYPoint,initialHeight]
         while minStickyPoint < maxHeight {
             stickyPoints.append(minStickyPoint)
             minStickyPoint += 50
@@ -70,14 +70,14 @@ internal class TapPresentableViewController: PullUpController {
     override func pullUpControllerWillMove(to point: CGFloat) {
        // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
         // Check if the new point is lower than the dismiss Y threshold
-        if changedBefore && point <= ConstantManager.TapBottomSheetMinimumYPoint {
+        if changedBefore && point <= TapConstantManager.TapBottomSheetMinimumYPoint {
             dismissView()
         }
         
         
         
         // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
-        if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
+        if self.view.frame.origin.y < TapConstantManager.TapBottomSheetMinimumYPoint {
             // If yes, then we need to move it back to the minimum allowed Y point
             //self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
         }
@@ -92,9 +92,9 @@ internal class TapPresentableViewController: PullUpController {
     override func pullUpControllerDidMove(to point: CGFloat) {
         
         // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
-        if self.view.frame.origin.y < ConstantManager.TapBottomSheetMinimumYPoint {
+        if self.view.frame.origin.y < TapConstantManager.TapBottomSheetMinimumYPoint {
             // If yes, then we need to move it back to the minimum allowed Y point
-            self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
+            self.pullUpControllerMoveToVisiblePoint(point-TapConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
             return
         }
         
@@ -105,7 +105,7 @@ internal class TapPresentableViewController: PullUpController {
             
             let height = tapVertical.neededSize().height
             let offset = height - containerView.frame.height
-            if self.view.frame.origin.y - offset  < ConstantManager.TapBottomSheetMinimumYPoint {
+            if self.view.frame.origin.y - offset  < TapConstantManager.TapBottomSheetMinimumYPoint {
                 //height = containerView.frame.height
             }else {
                 self.pullUpControllerMoveToVisiblePoint(height, animated: true, completion: nil)

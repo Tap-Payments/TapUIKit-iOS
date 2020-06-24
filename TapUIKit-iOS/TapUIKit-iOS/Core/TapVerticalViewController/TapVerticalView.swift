@@ -261,35 +261,35 @@ public class TapVerticalView: UIView {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(delay * 1000))) {
             switch animation {
             case .bounceIn(let direction,let duration,let delay):
-                view.bounceIn(from: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.bounceIn(from: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .bounceOut(let direction,let duration,let delay):
-                view.bounceOut(to: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.bounceOut(to: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .fadeIn(let duration,let delay):
-                view.fadeIn(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.fadeIn(duration:duration, delay:delay , completion: { _ in
                     completion()
                 })
             case .fadeOut(let duration,let delay):
-                view.fadeOut(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.fadeOut(duration:duration, delay:delay , completion: { _ in
                     completion()
                 })
             case .slideIn(let direction,let duration,let delay):
-                view.slideIn(from: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.slideIn(from: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .slideOut(let direction,let duration,let delay):
-                view.slideOut(to: direction.animationKitDirection(), duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.slideOut(to: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .popIn(let duration,let delay):
-                view.popIn(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.popIn(duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .popOut(let duration,let delay):
-                view.popOut(duration:duration ?? 0.25, delay:delay ?? 0, completion: { _ in
+                view.popOut(duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .none:
@@ -368,29 +368,29 @@ public class TapVerticalView: UIView {
 
 /// Defines the type and the configuration of the needed animations
 public enum TapVerticalViewAnimationType: Equatable {
-    case bounceIn(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
-    case bounceOut(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
-    case slideIn(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
-    case slideOut(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
-    case fadeIn(duration:Double?,delay:Double?)
-    case fadeOut(duration:Double?,delay:Double?)
-    case popIn(duration:Double?,delay:Double?)
-    case popOut(duration:Double?,delay:Double?)
+    case bounceIn(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case bounceOut(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case slideIn(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case slideOut(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case fadeIn(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case fadeOut(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case popIn(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
+    case popOut(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
     case none
     
     internal func animationDetails() -> (TapVerticalViewAnimationDirection?,Double,Double) {
         var detectedDirection:TapVerticalViewAnimationDirection? = nil
-        var detectedDuration:Double = 0.25
+        var detectedDuration:Double = TapConstantManager.TapAnimationDuration
         var detectedDelay:Double = 0
         switch self {
         case .bounceIn(let direction,let duration,let delay), .bounceOut(let direction,let duration,let delay), .slideIn(let direction,let duration,let delay), .slideOut(let direction,let duration,let delay):
             detectedDirection = direction
-            detectedDuration = duration ?? 0.025
-            detectedDelay = delay ?? 0
+            detectedDuration = duration
+            detectedDelay = delay
         case .fadeIn(let duration,let delay), .fadeOut(let duration,let delay), .popIn(let duration,let delay), .popOut(let duration,let delay):
             detectedDirection = nil
-            detectedDuration = duration ?? 0.025
-            detectedDelay = delay ?? 0
+            detectedDuration = duration
+            detectedDelay = delay
         case .none:
             detectedDirection = nil
             detectedDuration = 0

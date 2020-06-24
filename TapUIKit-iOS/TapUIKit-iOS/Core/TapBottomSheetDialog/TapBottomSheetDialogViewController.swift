@@ -132,7 +132,7 @@ import TapThemeManager2020
     
     ///Defines the point when the view is dragged and reached a height threshold, should be lower than 20
     private var tapBottomSheetDismissBelowHeight:CGFloat {
-        guard let dataSource = dataSource, let tapBottomSheetDismissBelowHeight = dataSource.tapBottomSheetDismissBelowHeight?(), tapBottomSheetDismissBelowHeight < ConstantManager.TapBottomSheetMinimumYPoint else { return ConstantManager.TapBottomSheetMinimumYPoint }
+        guard let dataSource = dataSource, let tapBottomSheetDismissBelowHeight = dataSource.tapBottomSheetDismissBelowHeight?(), tapBottomSheetDismissBelowHeight < TapConstantManager.TapBottomSheetMinimumYPoint else { return TapConstantManager.TapBottomSheetMinimumYPoint }
         return tapBottomSheetDismissBelowHeight
     }
     
@@ -169,7 +169,7 @@ import TapThemeManager2020
     private var tapBottomSheetStickingPoints:[CGFloat]? {
         guard let dataSource = dataSource, let sitckingPoints = dataSource.tapBottomSheetStickingPoints?() else { return nil }
         
-        return [ConstantManager.TapBottomSheetMinimumYPoint] + sitckingPoints
+        return [TapConstantManager.TapBottomSheetMinimumYPoint] + sitckingPoints
     }
     
     // MARK: Override methods
@@ -228,7 +228,7 @@ import TapThemeManager2020
         }
         
         // Make sure we remove the old blur effect if any first
-        if let oldBlurView = view.viewWithTag(ConstantManager.TapBottomSheetContainerTag) {
+        if let oldBlurView = view.viewWithTag(TapConstantManager.TapBottomSheetContainerTag) {
             oldBlurView.removeFromSuperview()
         }
         
@@ -251,7 +251,7 @@ import TapThemeManager2020
         
         // If the caller provided a blur effect, we create a blur effect and vibrancy views and we add them to the view
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.tag = ConstantManager.TapBottomSheetContainerTag
+        blurredEffectView.tag = TapConstantManager.TapBottomSheetContainerTag
         blurredEffectView.frame = view.bounds
         
         //let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
@@ -304,7 +304,7 @@ import TapThemeManager2020
         // Tell it the initial height, as this is a sticky point
         pullUpController.initialHeight = tapBottomSheetInitialHeight
         // Tell it the max height, will use it in case the caller didn't define stcky points and we will create our own
-        pullUpController.maxHeight = self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint
+        pullUpController.maxHeight = self.view.frame.height - TapConstantManager.TapBottomSheetMinimumYPoint
         // Tell it the points the caller passed if any
         pullUpController.tapBottomSheetStickingPoints = tapBottomSheetStickingPoints
     }
@@ -371,11 +371,11 @@ import TapThemeManager2020
         guard let nonNullPullUpController = addedPullUpController else { return }
         
         // Make sure the new height lies between the maximum and minimum allowed heights provided from the data source
-        if lastRequestedHeight < ConstantManager.TapBottomSheetMinimumHeight {
-            lastRequestedHeight = ConstantManager.TapBottomSheetMinimumHeight + 10
+        if lastRequestedHeight < TapConstantManager.TapBottomSheetMinimumHeight {
+            lastRequestedHeight = TapConstantManager.TapBottomSheetMinimumHeight + 10
         }
         
-        let maxHeight = (nonNullPullUpController.pullUpControllerAllStickyPoints.last ?? self.view.frame.height - ConstantManager.TapBottomSheetMinimumYPoint)
+        let maxHeight = (nonNullPullUpController.pullUpControllerAllStickyPoints.last ?? self.view.frame.height - TapConstantManager.TapBottomSheetMinimumYPoint)
         
         if lastRequestedHeight > maxHeight {
             lastRequestedHeight = maxHeight - 10

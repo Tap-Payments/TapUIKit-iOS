@@ -10,10 +10,11 @@ import Foundation
 import struct UIKit.CGFloat
 
 
-class ConstantManager {
+public class TapConstantManager {
     
     static let TapBottomSheetContainerTag:Int = 100
     static let TapBottomSheetMinimumHeight:CGFloat = 50
     static let TapBottomSheetMinimumYPoint:CGFloat = 40
+    public static let TapAnimationDuration:Double = 300
     
 }
