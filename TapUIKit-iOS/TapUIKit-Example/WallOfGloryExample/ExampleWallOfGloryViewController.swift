@@ -204,13 +204,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showItemsClicked() {
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
-                self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: self!.currencyListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
-                    self?.tapVerticalView.add(view: self!.tabItemsTableView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
+                    self?.tapVerticalView.add(view: self!.currencyListView, with: TapVerticalViewAnimationType.fadeIn(duration: 1000, delay: nil))
+                    self?.tapVerticalView.add(view: self!.tabItemsTableView, with: TapVerticalViewAnimationType.fadeIn( duration: 1000, delay: nil))
                 }
                 break
             }
@@ -221,13 +222,15 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func closeItemsClicked() {
         for (index, element) in views.enumerated() {
             if element == currencyListView {
-                self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
-                self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: tabItemsTableView, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: TapVerticalViewAnimationType.slideIn(.bottom, duration: nil, delay: nil))
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: TapVerticalViewAnimationType.fadeIn( duration: 1000, delay: nil))
                 }
                 break
             }

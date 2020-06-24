@@ -29,9 +29,10 @@ public class TapVerticalView: UIView {
     @IBOutlet internal weak var containerView: UIView!
     /// Used to determine if we need to delay any coming view addition requests to wait until the items being removed to finish the animation first:)
     internal var itemsBeingRemoved:Bool = false
-    
+    internal var itemsBeingAdded:Int = 0
     /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
     public var delegate:TapVerticalViewDelegate?
+    private var newSizeTimer:Timer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,8 +84,32 @@ public class TapVerticalView: UIView {
         }*/
         let newSize = scrollView.contentSize
         //newSize.height += bottomPadding
-        delegate.innerSizeChanged?(to: newSize, with: self.frame)
+        //delegate.innerSizeChanged?(to: newSize, with: self.frame)
+        if let timer = newSizeTimer {
+            timer.invalidate()
+        }
+        // All good, time to animate the height :)
+        newSizeTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: ["newSize":newSize,"newFrame":self.frame], repeats: false)
         
+        //publishNewContentSize(to: newSize, with: self.frame)
+    }
+    
+    
+    @objc private func publishNewContentSize(timer: Timer) {//to newSize:CGSize, with frame:CGRect) {
+        
+        guard itemsBeingAdded == 0 else {
+            
+            // All good, time to animate the height :)
+            newSizeTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: timer.userInfo, repeats: false)
+            return
+            
+        }
+        
+        guard let info:[String:Any] = timer.userInfo as? [String:Any],
+              let newSize:CGSize = info["newSize"] as? CGSize,
+              let frame:CGRect = info["newFrame"] as? CGRect else { return }
+        
+        delegate?.innerSizeChanged?(to: newSize, with: frame)
     }
     
     public override func layoutSubviews() {
@@ -119,13 +144,16 @@ public class TapVerticalView: UIView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
     private func handleDeletion(for view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
-        itemsBeingRemoved = true
+        
         // Check if there is an animation we need to do
-        guard let animation = animation else {
+        guard let animation:TapVerticalViewAnimationType = animation, animation != .none  else {
             itemsBeingRemoved = false
             stackView.removeArrangedSubview(view)
             return
         }
+        
+        
+        itemsBeingRemoved = true
         
         switch animation {
         case .bounceIn(let direction,_,_):
@@ -144,6 +172,8 @@ public class TapVerticalView: UIView {
             view.popIn()
         case .popOut:
             view.popOut()
+        case .none:
+            break
         }
         
     }
@@ -175,8 +205,10 @@ public class TapVerticalView: UIView {
         
         let delay:Int = itemsBeingRemoved ? 300 : 5
         
-        
+        itemsBeingAdded += 1
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) { [weak self] in
+            
+            
             // If the index is not defined, then we just add it to the end
             if let index = index {
                 self?.stackView.insertArrangedSubview(view, at: index)
@@ -189,21 +221,40 @@ public class TapVerticalView: UIView {
             
             switch animation {
             case .bounceIn(let direction,_,_):
-                view.bounceIn(from: direction.animationKitDirection())
+                view.bounceIn(from: direction.animationKitDirection(),completion: { _ in
+                    self?.itemsBeingAdded -= 1
+                })
             case .bounceOut(let direction,_,_):
-                view.bounceOut(to: direction.animationKitDirection())
+                view.bounceOut(to: direction.animationKitDirection(),completion: { _ in
+                    self?.itemsBeingAdded -= 1
+                })
             case .fadeIn:
-                view.fadeIn()
+                view.fadeIn(duration:1,completion: { _ in
+                    self?.itemsBeingAdded -= 1
+                })
             case .fadeOut:
-                view.fadeOut()
+                view.fadeOut(duration:1,completion: { _ in
+                    self?.itemsBeingAdded -= 1
+                })
             case .slideIn(let direction,_,_):
-                view.slideIn(from: direction.animationKitDirection())
+                view.slideIn(from: direction.animationKitDirection(),completion: { _ in
+                    self?.itemsBeingAdded -= 1
+                })
             case .slideOut(let direction,_,_):
-                view.slideOut(to: direction.animationKitDirection())
+                view.slideOut(to: direction.animationKitDirection(),completion: { _ in
+                    self?.itemsBeingAdded -= 1
+                })
             case .popIn:
-                view.popIn()
+                view.popIn(){ _ in
+                    self?.itemsBeingAdded -= 1
+                }
             case .popOut:
-                view.popOut()
+                view.popOut(){ _ in
+                    self?.itemsBeingAdded -= 1
+                }
+            case .none:
+                self?.itemsBeingAdded -= 1
+                break
             }
         }
     }
@@ -276,7 +327,7 @@ public class TapVerticalView: UIView {
 }
 
 /// Defines the type and the configuration of the needed animations
-public enum TapVerticalViewAnimationType {
+public enum TapVerticalViewAnimationType: Equatable {
     case bounceIn(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
     case bounceOut(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
     case slideIn(TapVerticalViewAnimationDirection,duration:Double?,delay:Double?)
@@ -285,6 +336,7 @@ public enum TapVerticalViewAnimationType {
     case fadeOut(duration:Double?,delay:Double?)
     case popIn(duration:Double?,delay:Double?)
     case popOut(duration:Double?,delay:Double?)
+    case none
 }
 
 /// Defines the direction the animation will be applied to
