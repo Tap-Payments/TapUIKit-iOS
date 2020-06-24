@@ -9,6 +9,9 @@
 import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
+import class CommonDataModelsKit_iOS.TapCommonConstants
+import class LocalisationManagerKit_iOS.TapLocalisationManager
+
 import class UIKit.UIColor
 import class UIKit.UIFont
 import struct UIKit.NSUnderlineStyle
@@ -91,7 +94,9 @@ public class ItemCellViewModel: TapGenericTableCellViewModel {
     
     /// Returns the formatted Item description to be displayed
     public func itemDesctiption() -> String {
-        return itemModel?.description ?? ""
+        //return itemModel?.description ?? ""
+        let sharedLocalisationManager = TapLocalisationManager.shared
+        return sharedLocalisationManager.localisedValue(for: "ItemList.showDesc", with: TapCommonConstants.pathForDefaultLocalisation())
     }
     
     
