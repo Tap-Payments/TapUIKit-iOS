@@ -183,9 +183,9 @@ extension ItemTableViewCell:TapCellViewModelDelegate {
 
 extension ItemTableViewCell:ItemCellViewModelDelegate {
     func reloadDescription(with state: DescriptionState) {
-        itemDescLabel.text = viewModel.itemDescription()
+        //itemDescLabel.text = viewModel.itemDescription()
         //itemDescLabel.sizeToFit()
-        layoutIfNeeded()
+        //layoutIfNeeded()
         guard let tableView:UITableView = self.superview as? UITableView,
             let indexPath:IndexPath = tableView.indexPath(for: self) else { return }
         
