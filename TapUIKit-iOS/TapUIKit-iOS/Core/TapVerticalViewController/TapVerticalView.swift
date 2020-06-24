@@ -232,6 +232,19 @@ public class TapVerticalView: UIView {
     }
     
     
+    
+    private func adjustAnimationList(for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
+        // Create mutable instance of the animation list to be able to change the required values
+        var adjustedAnimationsList:[TapVerticalViewAnimationType] = animations
+        var delayUpToCurrentAnimation:Double = 0
+        
+        // We start from 1 as first animation will be executed at first regarldess the sequence type
+        for i in 1..<adjustedAnimationsList.count {
+            var animation = adjustedAnimationsList[i]
+            delayUpToCurrentAnimation += adjustedAnimationsList[i-1]
+        }
+    }
+    
     private func animate(view:UIView,with animation:TapVerticalViewAnimationType,and completion:@escaping () -> () = {  }) {
         DispatchQueue.main.async {
             switch animation {
@@ -352,6 +365,29 @@ public enum TapVerticalViewAnimationType: Equatable {
     case popIn(duration:Double?,delay:Double?)
     case popOut(duration:Double?,delay:Double?)
     case none
+    
+    
+    internal func animationDetails() -> (TapVerticalViewAnimationDirection?,Double,Double) {
+        var detectedDirection:TapVerticalViewAnimationDirection? = nil
+        var detectedDuration:Double = 0.25
+        var detectedDelay:Double = 0
+        switch self {
+        case .bounceIn(let direction,let duration,let delay), .bounceOut(let direction,let duration,let delay), .slideIn(let direction,let duration,let delay), .slideOut(let direction,let duration,let delay):
+            detectedDirection = direction
+            detectedDuration = duration ?? 0.025
+            detectedDelay = delay ?? 0
+        case .fadeIn(let duration,let delay), .fadeOut(let duration,let delay), .popIn(let duration,let delay), .popOut(let duration,let delay):
+            detectedDirection = nil
+            detectedDuration = duration ?? 0.025
+            detectedDelay = delay ?? 0
+        case .none:
+            detectedDirection = nil
+            detectedDuration = 0
+            detectedDelay = 0
+            break
+        }
+        return(detectedDirection,detectedDuration,detectedDelay)
+    }
 }
 
 /// Defines the direction the animation will be applied to
