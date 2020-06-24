@@ -65,7 +65,6 @@ public class ItemTableViewCell: TapGenericTableCell {
     internal func reload() {
         
         itemPriceLabel.fadeOut()
-       
         itemDiscountPriceLabel.fadeOut(duration: 0.2){ [weak self] (_) in
             self?.itemPriceLabel.fadeIn()
             self?.itemDiscountPriceLabel.fadeIn()
@@ -190,7 +189,7 @@ extension ItemTableViewCell:ItemCellViewModelDelegate {
             let indexPath:IndexPath = tableView.indexPath(for: self) else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
-            tableView.reloadRows(at: [indexPath], with: .bottom)
+            tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
 }
