@@ -135,7 +135,7 @@
                             <constraint firstItem="Y7w-Xp-Wmc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VBo-xJ-RLL" secondAttribute="trailing" constant="8" id="OTx-TS-dum"/>
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="centerY" secondItem="nP3-lz-60X" secondAttribute="centerY" id="RLK-J9-gkQ"/>
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nP3-lz-60X" secondAttribute="top" constant="11" id="Vo4-VN-gdb"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="Zik-jL-n3t"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Zik-jL-n3t"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VBo-xJ-RLL" secondAttribute="bottom" constant="11" id="hLm-mG-CAI"/>
                             <constraint firstAttribute="trailing" secondItem="RMm-Hy-33v" secondAttribute="trailing" constant="3.7999999999999998" id="hgg-8f-mzF"/>
                             <constraint firstAttribute="trailing" secondItem="Y7w-Xp-Wmc" secondAttribute="trailing" constant="16" id="lbm-5a-g16"/>
@@ -151,6 +151,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cN-OB-6ES">
                                         <rect key="frame" x="16" y="0.0" width="288" height="199"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
