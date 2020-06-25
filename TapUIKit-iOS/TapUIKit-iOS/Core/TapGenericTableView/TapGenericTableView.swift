@@ -14,7 +14,7 @@ public class TapGenericTableView: UIView {
     // Mark:- Variables
     
     /// The reference to the backbone tableview used
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: TapContentSizedTableView!
     /// The content view that holds all inner views inside the view
     @IBOutlet weak var contentView:UIView!
     
@@ -73,6 +73,23 @@ public class TapGenericTableView: UIView {
         applyTheme()
         // Third, we do all the configurations needed as one time setup to our collection view
         configureTableView()
+        
+        tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    
+    /// It is overriden to listen to the change in size of the scroll view
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        // Make sure this is the notfication we want to listen to which is the contentSize of the scroll view
+        guard let keyPath = keyPath, keyPath == "contentSize", object as? UITableView == tableView else { return }
+        guard let constraint = viewModel.heightConstraint else { return }
+        DispatchQueue.main.async{ [weak self] in
+            guard let tableView = self?.tableView else { return }
+            constraint.constant = tableView.contentSize.height+5
+            tableView.updateConstraints()
+            self?.updateConstraints()
+        }
+        print("TABLE : \(tableView.contentSize)   \(tableView.frame)")
     }
     
     /// All the configurations needed as one time setup to our table view
@@ -141,4 +158,10 @@ extension TapGenericTableView:UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(with: model)
         return cell
     }
+}
+
+
+internal class TapContentSizedTableView: UITableView {
+    
+    
 }

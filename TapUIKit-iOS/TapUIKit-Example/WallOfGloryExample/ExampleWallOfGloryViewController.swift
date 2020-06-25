@@ -56,7 +56,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createItemsViewModel() {
         var itemsModels:[ItemCellViewModel] = []
-        for i in 1...Int.random(in: 1..<20) {
+        for i in 1...Int.random(in: 3..<20) {
             var itemTitle:String = "Item Title # \(i)"
             if i % 5 == 4 {
                 itemTitle = "VERY LOOOOOOOOOOOOOONG ITEM TITLE Item Title # \(i)"
@@ -75,10 +75,11 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapItemsTableViewModel.dataSource = itemsModels
         tapItemsTableViewModel.delegate = self
+        let heightConstraint = tabItemsTableView.heightAnchor.constraint(equalToConstant: CGFloat((itemsModels.count+1) * 70))
+        heightConstraint.isActive = true
+        tapItemsTableViewModel.heightConstraint = heightConstraint
         tabItemsTableView.changeViewMode(with: tapItemsTableViewModel)
         tabItemsTableView.translatesAutoresizingMaskIntoConstraints = false
-        tabItemsTableView.heightAnchor.constraint(equalToConstant: CGFloat(itemsModels.count * 60)).isActive = true
-        
         
         tapAmountSectionViewModel.numberOfItems = itemsModels.count
         tapAmountSectionViewModel.originalTransactionAmount = itemsModels.reduce(0.0) { (accumlator, viewModel) -> Double in

@@ -9,6 +9,8 @@
 import Foundation
 import class UIKit.UITableView
 import class UIKit.UINib
+import struct UIKit.CGSize
+import class UIKit.NSLayoutConstraint
 /// This is the public protocol for outer components to listen to events and data fired from this view model and its attached view
 public protocol TapGenericTableViewModelDelegate {
     /**
@@ -22,6 +24,8 @@ public protocol TapGenericTableViewModelDelegate {
      - Parameter viewModel: Represents The attached view model
      */
     func itemClicked(for viewModel:ItemCellViewModel)
+    
+    //func contentSizeChanged(to newSize:CGSize)
 }
 
 /// This is the internal protocol for communication between the view model and its attached UIView
@@ -47,6 +51,8 @@ public class TapGenericTableViewModel {
             assignModelsDelegate()
         }
     }
+    
+    public var heightConstraint:NSLayoutConstraint?
     
     /// Attach yourself to this delegate to start getting events fired from this view model and its attached UITableView
     public var delegate:TapGenericTableViewModelDelegate?
