@@ -76,6 +76,7 @@ public class ItemTableViewCell: TapGenericTableCell {
         itemDescriptionLabel.text = viewModel.itemDesctiptionButtonTitle()
         itemQuantityLabel.text = viewModel.itemQuantity()
         itemDescLabel.text = viewModel.itemDescription()
+        itemDescLabel.sizeToFit()
         self.layoutIfNeeded()
         
         adjustViews()

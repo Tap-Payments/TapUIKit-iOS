@@ -26,32 +26,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nP3-lz-60X">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMm-Hy-33v" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                                <rect key="frame" x="10" y="69" width="306" height="1"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="UQP-dG-i7T"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBo-xJ-RLL">
-                                <rect key="frame" x="16" y="11.5" width="160" height="47.5"/>
+                                <rect key="frame" x="16" y="11" width="160" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ITEM TITLE ITEM TITLE ITEM TITLEjhg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d9-8F-fYR">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHOW DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl4-Mg-Xuq">
-                                        <rect key="frame" x="0.0" y="33" width="112.5" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="31.5" width="112.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6Y-3v-sy2">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="46"/>
                                         <connections>
                                             <action selector="showDescriptionClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KcX-BG-Pa1"/>
                                         </connections>
@@ -72,7 +65,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7w-Xp-Wmc">
-                                <rect key="frame" x="206.5" y="19.5" width="97.5" height="31"/>
+                                <rect key="frame" x="206.5" y="18.5" width="97.5" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item TItle" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDD-87-L51">
                                         <rect key="frame" x="0.0" y="0.0" width="97.5" height="17"/>
@@ -127,7 +120,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="centerY" secondItem="nP3-lz-60X" secondAttribute="centerY" id="07H-Ae-h9J"/>
-                            <constraint firstAttribute="bottom" secondItem="RMm-Hy-33v" secondAttribute="bottom" id="6Eh-jW-Wkn"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Y7w-Xp-Wmc" secondAttribute="bottom" id="8zm-7n-Dbe"/>
                             <constraint firstItem="Y7w-Xp-Wmc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nP3-lz-60X" secondAttribute="top" id="CUu-dv-exh"/>
                             <constraint firstItem="h6Y-3v-sy2" firstAttribute="width" secondItem="nP3-lz-60X" secondAttribute="width" multiplier="0.5" id="Cny-ik-ANn"/>
@@ -137,20 +129,18 @@
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nP3-lz-60X" secondAttribute="top" constant="11" id="Vo4-VN-gdb"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Zik-jL-n3t"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VBo-xJ-RLL" secondAttribute="bottom" constant="11" id="hLm-mG-CAI"/>
-                            <constraint firstAttribute="trailing" secondItem="RMm-Hy-33v" secondAttribute="trailing" constant="3.7999999999999998" id="hgg-8f-mzF"/>
                             <constraint firstAttribute="trailing" secondItem="Y7w-Xp-Wmc" secondAttribute="trailing" constant="16" id="lbm-5a-g16"/>
-                            <constraint firstItem="RMm-Hy-33v" firstAttribute="leading" secondItem="nP3-lz-60X" secondAttribute="leading" constant="9.8000000000000007" id="mTr-Fv-c9S"/>
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="leading" secondItem="nP3-lz-60X" secondAttribute="leading" constant="16" id="zdt-Le-TVh"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ioR-i0-gR8">
-                        <rect key="frame" x="0.0" y="70" width="320" height="199"/>
+                        <rect key="frame" x="0.0" y="68" width="320" height="201"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdm-my-YpN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cN-OB-6ES">
-                                        <rect key="frame" x="16" y="0.0" width="288" height="199"/>
+                                        <rect key="frame" x="16" y="0.0" width="288" height="191"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -164,12 +154,20 @@
                                     <constraint firstAttribute="trailing" secondItem="9cN-OB-6ES" secondAttribute="trailing" constant="16" id="M26-S2-Ebd"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMm-Hy-33v" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                                <rect key="frame" x="7" y="191" width="306" height="10"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="UQP-dG-i7T"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RMm-Hy-33v" secondAttribute="trailing" constant="7" id="6GP-s5-qoL"/>
                             <constraint firstAttribute="trailing" secondItem="mdm-my-YpN" secondAttribute="trailing" id="A7F-m3-ZKJ"/>
                             <constraint firstItem="mdm-my-YpN" firstAttribute="leading" secondItem="ioR-i0-gR8" secondAttribute="leading" id="RJR-Mw-M9p"/>
-                            <constraint firstAttribute="bottom" secondItem="mdm-my-YpN" secondAttribute="bottom" id="Thd-01-Xl6"/>
+                            <constraint firstItem="RMm-Hy-33v" firstAttribute="leading" secondItem="ioR-i0-gR8" secondAttribute="leading" constant="7" id="f1N-SD-sR7"/>
                         </constraints>
                     </stackView>
                 </subviews>

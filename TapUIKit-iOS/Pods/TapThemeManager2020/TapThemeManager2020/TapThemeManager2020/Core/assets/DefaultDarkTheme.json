@@ -320,7 +320,7 @@
         "backgroundColor": "white",
         "separatorColor": "veryLightPinkTwo",
         "item":{
-            "descriptionBackgroundColor" : "whiteTwo",
+            "descriptionBackgroundColor" : "white",
             "backgroundColor": "white",
             "titleLabelFont" : "Roboto-Regular,14",
             "titleLabelColor" : "greyishBrown",
