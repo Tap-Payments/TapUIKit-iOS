@@ -68,3 +68,13 @@ extension TapCardPhoneIconView {
     }
 }
 
+/// Represent the status of the card/phone icon in the bar
+enum TapCardPhoneIconStatus {
+    /// Means, this is selected ot the whole segment is selected  or itself is the selected icon (shows in full opacity)
+    case selected
+    /// Means, another icon is selected (shows black & white)
+    case otherIconIsSelected
+    /// Means, another segment is generally selected (shows opacity 50%)
+    case otherSegmentSelected
+}
+
