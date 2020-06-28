@@ -7,6 +7,9 @@
 //
 
 import TapThemeManager2020
+import RxSwift
+import Nuke
+import SimpleAnimation
 
 /// Represent the icon cell inside the horizontal bar of cards and telecom operators
 class TapCardPhoneIconView: UIView {
@@ -19,11 +22,17 @@ class TapCardPhoneIconView: UIView {
     internal var iconImage:UIImage? = nil
     /// Represnts the status of the current icon
     internal var iconStatus:TapCardPhoneIconStatus = .selected
+    internal var viewModel:TapCardPhoneIconViewModel? {
+        didSet{
+            bindObservables()
+        }
+    }
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// The path to look for theme entry in
     private let themePath = "cardPhoneList.icon"
-    
+    /// The disposing bag for all reactive observables
+    private var disposeBag:DisposeBag = .init()
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,6 +48,32 @@ class TapCardPhoneIconView: UIView {
     private func commonInit() {
         self.contentView = setupXIB()
         applyTheme()
+    }
+    
+    private func bindObservables() {
+        // Defensive coding to make sure there is a view model
+        guard let viewModel = viewModel else { return }
+        // Icon url change callback
+        Observable.combineLatest(viewModel.tapCardPhoneIconUrlObserver, viewModel.tapCardPhoneIconStatusObserver)
+            .subscribe(onNext: { [weak self] (iconURL, iconStatus) in
+                self?.loadIcon(from: iconURL, with: iconStatus)
+                self?.applyTheme()
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    private func loadIcon(from url:String, with status:TapCardPhoneIconStatus) {
+        // defensive coding to make sure it is a correct URL
+        guard let url = URL(string: url) else { return }
+        iconImageView.fadeOut(duration:0.1)
+        Nuke.loadImage(with: url, into: iconImageView) { [weak self] _ in
+            // Then based on the status we see, we will use teh icon as is or we will convert to black and white version
+            if status == .otherIconIsSelected {
+                // Another icon is specifically chosen, hence we need to show all others as grayscale
+                self?.iconImageView.image = self?.iconImageView.image?.toGrayScale()
+            }
+            self?.iconImageView.fadeIn(duration:0.1)
+        }
     }
     
     public override func layoutSubviews() {
