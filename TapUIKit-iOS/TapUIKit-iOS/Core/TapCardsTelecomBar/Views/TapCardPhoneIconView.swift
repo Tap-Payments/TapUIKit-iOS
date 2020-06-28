@@ -15,6 +15,8 @@ class TapCardPhoneIconView: UIView {
     /// Represents the icon of the card/telecom operator image view
     @IBOutlet weak var iconImageView: UIImageView!
     
+    /// Rerpesents the loaded full colored image for the icon, will be used to show colored and grayscale version
+    internal var iconImage:UIImage? = nil
     /// Represnts the status of the current icon
     internal var iconStatus:TapCardPhoneIconStatus = .selected
     /// Holds the last style theme applied

@@ -55,6 +55,7 @@
 		E87CEA48248FBFBC002F2332 /* TapMerchantHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CEA47248FBFBC002F2332 /* TapMerchantHeaderViewController.swift */; };
 		E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87E09DF24A878BC004A7A46 /* TapCardPhoneIconView.swift */; };
 		E87E09E224A878C6004A7A46 /* TapCardPhoneIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87E09E124A878C6004A7A46 /* TapCardPhoneIconView.xib */; };
+		E87E09E424A8840E004A7A46 /* TapCardPhoneIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87E09E324A8840E004A7A46 /* TapCardPhoneIconViewModel.swift */; };
 		E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D34249F6CC30002FEDE /* TapGenericTableView.swift */; };
 		E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */; };
 		E8861D39249F74C20002FEDE /* TapGenericTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */; };
@@ -183,6 +184,7 @@
 		E87CEA47248FBFBC002F2332 /* TapMerchantHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapMerchantHeaderViewController.swift; sourceTree = "<group>"; };
 		E87E09DF24A878BC004A7A46 /* TapCardPhoneIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardPhoneIconView.swift; sourceTree = "<group>"; };
 		E87E09E124A878C6004A7A46 /* TapCardPhoneIconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCardPhoneIconView.xib; sourceTree = "<group>"; };
+		E87E09E324A8840E004A7A46 /* TapCardPhoneIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardPhoneIconViewModel.swift; sourceTree = "<group>"; };
 		E8861D34249F6CC30002FEDE /* TapGenericTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableView.swift; sourceTree = "<group>"; };
 		E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGenericTableView.xib; sourceTree = "<group>"; };
 		E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableViewModel.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 		E87E09DE24A87779004A7A46 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E87E09E324A8840E004A7A46 /* TapCardPhoneIconViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -952,6 +955,7 @@
 				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
 				E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */,
 				E8CD42842495F9130013AEE7 /* TapChipHorizontalList.swift in Sources */,
+				E87E09E424A8840E004A7A46 /* TapCardPhoneIconViewModel.swift in Sources */,
 				E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */,
 				E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */,
 				E8428E102457F8D900D5A45A /* TapUIExtensions.swift in Sources */,
