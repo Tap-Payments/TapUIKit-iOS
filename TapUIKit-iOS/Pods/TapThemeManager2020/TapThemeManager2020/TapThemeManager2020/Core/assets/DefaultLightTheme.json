@@ -15,7 +15,8 @@
             "white80":"#ffffffcc",
             "vibrantGreen" : "#2ace00",
             "vibrantGreenTwo" : "#00d300",
-            "paleLilac":"#e4e4e5"
+            "paleLilac":"#e4e4e5",
+            "clear":"#00000000"
         }
     },
     "inlineCard": {
@@ -334,6 +335,28 @@
                 "backgroundColor": "paleLilac",
                 "countLabelFont" : "Roboto-Regular,9",
                 "countLabelColor" : "greyishBrown",
+            }
+        }
+    },
+    "cardPhoneList":
+    {
+        "backgroundColor": "whiteTwo",
+        "underline":{
+            "selected": {
+                "backgroundColor" : "brownGrey"
+            },
+            "unselected": {
+                "backgroundColor" : "vibrantGreen"
+            }
+        },
+        "icon":{
+            "selected": {
+                "backgroundColor" : "clear",
+                "alpha": 1
+            },
+            "unselected": {
+                "backgroundColor" : "clear",
+                "alpha": 0.5
             }
         }
     }

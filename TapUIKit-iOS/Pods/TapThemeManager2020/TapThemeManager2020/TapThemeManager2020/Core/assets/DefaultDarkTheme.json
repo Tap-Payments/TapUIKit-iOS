@@ -336,5 +336,27 @@
                 "countLabelColor" : "greyishBrown",
             }
         }
+    },
+    "cardPhoneList":
+    {
+        "backgroundColor": "whiteTwo",
+        "underline":{
+            "selected": {
+                "backgroundColor" : "brownGrey"
+            },
+            "unselected": {
+                "backgroundColor" : "vibrantGreen"
+            }
+        },
+        "icon":{
+            "selected": {
+                "backgroundColor" : "clear",
+                "alpha": 1
+            },
+            "unselected": {
+                "backgroundColor" : "clear",
+                "alpha": 0.5
+            }
+        }
     }
 }
