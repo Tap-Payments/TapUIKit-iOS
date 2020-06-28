@@ -8,8 +8,11 @@
 
 import TapThemeManager2020
 
+/// Represent the icon cell inside the horizontal bar of cards and telecom operators
 class TapCardPhoneIconView: UIView {
+    /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
+    /// Represents the icon of the card/telecom operator image view
     @IBOutlet weak var iconImageView: UIImageView!
     
     
