@@ -63,17 +63,17 @@ public class TapCardPhoneIconView: UIView {
     private func loadIcon(from url:String, with status:TapCardPhoneIconStatus) {
         // defensive coding to make sure it is a correct URL
         guard let iconURL = URL(string: url) else { return }
-        //iconImageView.fadeOut(duration:0.1)
+        
         let options = ImageLoadingOptions(
             transition: .fadeIn(duration: 0.2)
         )
+        // Time to load the image iconf rom the given URL
         Nuke.loadImage(with: iconURL,options:options, into: iconImageView) { [weak self] _ in
             // Then based on the status we see, we will use teh icon as is or we will convert to black and white version
             if status == .otherIconIsSelected {
                 // Another icon is specifically chosen, hence we need to show all others as grayscale
                 self?.iconImageView.image = self?.iconImageView.image?.toGrayScale()
             }
-            //self?.iconImageView.fadeIn(duration:0.1)
         }
     }
     
@@ -82,6 +82,10 @@ public class TapCardPhoneIconView: UIView {
         self.contentView.frame = bounds
     }
     
+    /**
+     Apply the needed setup and attach the passed view model
+     - Parameter viewModel: The TapCardPhoneIconViewModel responsible for controlling this icon view
+     */
     public func setupView(with viewModel:TapCardPhoneIconViewModel) {
         self.viewModel = viewModel
     }
