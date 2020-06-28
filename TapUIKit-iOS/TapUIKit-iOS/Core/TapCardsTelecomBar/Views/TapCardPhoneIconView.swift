@@ -75,25 +75,3 @@ extension TapCardPhoneIconView {
     }
 }
 
-/// Represent the status of the card/phone icon in the bar
-enum TapCardPhoneIconStatus {
-    /// Means, this is selected ot the whole segment is selected  or itself is the selected icon (shows in full opacity)
-    case selected
-    /// Means, another icon is selected (shows black & white)
-    case otherIconIsSelected
-    /// Means, another segment is generally selected (shows opacity 50%)
-    case otherSegmentSelected
-    
-    /// Returns the corrent theme path related to the current state
-    func themePath() -> String {
-        switch self {
-        case .selected:
-            return "selected"
-        case .otherSegmentSelected:
-            return "otherSegmentSelected"
-        case .otherIconIsSelected:
-            return "unselected"
-        }
-    }
-}
-
