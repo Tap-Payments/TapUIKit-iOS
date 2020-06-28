@@ -57,6 +57,7 @@ extension TapCardPhoneIconView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        iconImageView.tap_theme_alpha = .init(keyPath: "\(themePath).\(iconStatus.themePath())")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
