@@ -3,4 +3,70 @@
    uuid = "9B3AD00B-D67C-41F2-8156-7090CE32E62D"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B029FF51-05CE-487C-AA30-47A692DE6BBB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapUIKit-iOS/Core/TapCardsTelecomBar/Views/TapCardPhoneIconView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "loadIcon(from:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B029FF51-05CE-487C-AA30-47A692DE6BBB - bfc1ac6639fb4a14"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TapUIKit_iOS.TapCardPhoneIconView.(loadIcon in _8DCA3C6CE0C51B00D39DFBA8D09A72F5)(from: Swift.String, with: TapUIKit_iOS.TapCardPhoneIconStatus) -&gt; ()"
+                  moduleName = "TapUIKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/Desktop/Tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCardsTelecomBar/Views/TapCardPhoneIconView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "768">
+               </Location>
+               <Location
+                  uuid = "B029FF51-05CE-487C-AA30-47A692DE6BBB - 6918182ef35188c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Nuke.ImageResponse, Nuke.ImagePipeline.Error&gt;) -&gt; () in TapUIKit_iOS.TapCardPhoneIconView.(loadIcon in _8DCA3C6CE0C51B00D39DFBA8D09A72F5)(from: Swift.String, with: TapUIKit_iOS.TapCardPhoneIconStatus) -&gt; ()"
+                  moduleName = "TapUIKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/Desktop/Tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCardsTelecomBar/Views/TapCardPhoneIconView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "81">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59CA8949-E31F-40D9-B931-66667EE6FB6E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapUIKit-Example/TapCardPhone bar/TapCardPhoneIconViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "statusChanged(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

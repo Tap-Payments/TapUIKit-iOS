@@ -30,7 +30,7 @@ public class TapCardPhoneIconViewModel {
     /// Represent the url for the image to be loaded inside this icon
     public var tapCardPhoneIconUrl:String = "" {
         didSet{
-            tapCardPhoneIconUrlObserver.accept("")
+            tapCardPhoneIconUrlObserver.accept(tapCardPhoneIconUrl)
         }
     }
     

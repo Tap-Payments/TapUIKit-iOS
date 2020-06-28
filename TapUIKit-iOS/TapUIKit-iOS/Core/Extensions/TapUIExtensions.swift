@@ -75,7 +75,7 @@ internal extension UIImage {
     
     
     // MARK:- Black and White
-    ///Convert the image into a grayscale one
+     ///Convert the image into a grayscale one
     func toGrayScale() -> UIImage {
         guard let ciImage = CIImage(image: self) else { return self }
         let blackAndWhiteImage = ciImage.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])

@@ -12,7 +12,7 @@ import Nuke
 import SimpleAnimation
 
 /// Represent the icon cell inside the horizontal bar of cards and telecom operators
-class TapCardPhoneIconView: UIView {
+public class TapCardPhoneIconView: UIView {
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
     /// Represents the icon of the card/telecom operator image view
@@ -20,8 +20,6 @@ class TapCardPhoneIconView: UIView {
     
     /// Rerpesents the loaded full colored image for the icon, will be used to show colored and grayscale version
     internal var iconImage:UIImage? = nil
-    /// Represnts the status of the current icon
-    internal var iconStatus:TapCardPhoneIconStatus = .selected
     internal var viewModel:TapCardPhoneIconViewModel? {
         didSet{
             bindObservables()
@@ -64,21 +62,28 @@ class TapCardPhoneIconView: UIView {
     
     private func loadIcon(from url:String, with status:TapCardPhoneIconStatus) {
         // defensive coding to make sure it is a correct URL
-        guard let url = URL(string: url) else { return }
-        iconImageView.fadeOut(duration:0.1)
-        Nuke.loadImage(with: url, into: iconImageView) { [weak self] _ in
+        guard let iconURL = URL(string: url) else { return }
+        //iconImageView.fadeOut(duration:0.1)
+        let options = ImageLoadingOptions(
+            transition: .fadeIn(duration: 0.2)
+        )
+        Nuke.loadImage(with: iconURL,options:options, into: iconImageView) { [weak self] _ in
             // Then based on the status we see, we will use teh icon as is or we will convert to black and white version
             if status == .otherIconIsSelected {
                 // Another icon is specifically chosen, hence we need to show all others as grayscale
                 self?.iconImageView.image = self?.iconImageView.image?.toGrayScale()
             }
-            self?.iconImageView.fadeIn(duration:0.1)
+            //self?.iconImageView.fadeIn(duration:0.1)
         }
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.frame = bounds
+    }
+    
+    public func setupView(with viewModel:TapCardPhoneIconViewModel) {
+        self.viewModel = viewModel
     }
 }
 
@@ -93,8 +98,10 @@ extension TapCardPhoneIconView {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
-        iconImageView.tap_theme_alpha = .init(keyPath: "\(themePath).\(iconStatus.themePath())")
+        let status:TapCardPhoneIconStatus = viewModel?.tapCardPhoneIconStatus ?? .selected
+        
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath).\(status.themePath()).backgroundColor")
+        iconImageView.tap_theme_alpha = .init(keyPath: "\(themePath).\(status.themePath()).alpha")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

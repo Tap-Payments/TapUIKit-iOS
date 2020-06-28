@@ -891,6 +891,54 @@
             </objects>
             <point key="canvasLocation" x="2566.666666666667" y="4396.875"/>
         </scene>
+        <!--Tap Card Phone Icon View Controller-->
+        <scene sceneID="4Cn-LL-tim">
+            <objects>
+                <viewController storyboardIdentifier="TapCardPhoneIconViewController" id="6LQ-WI-shW" customClass="TapCardPhoneIconViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Up4-RT-Aly">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmW-nq-LSW" customClass="TapCardPhoneIconView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="169.5" y="74" width="75" height="49"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="Hxm-aC-pft"/>
+                                    <constraint firstAttribute="height" constant="49" id="bxW-r7-BLP"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dZL-iV-F38">
+                                <rect key="frame" x="8" y="143" width="398" height="32"/>
+                                <segments>
+                                    <segment title="Selected"/>
+                                    <segment title="Segment Selected"/>
+                                    <segment title="Unselected"/>
+                                </segments>
+                                <connections>
+                                    <action selector="statusChanged:" destination="6LQ-WI-shW" eventType="valueChanged" id="A4z-cv-Gxr"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dZL-iV-F38" firstAttribute="centerX" secondItem="Up4-RT-Aly" secondAttribute="centerX" id="6as-P0-Hjb"/>
+                            <constraint firstItem="KmW-nq-LSW" firstAttribute="top" secondItem="FCf-qe-5b3" secondAttribute="top" constant="30" id="KDR-9F-Wen"/>
+                            <constraint firstItem="KmW-nq-LSW" firstAttribute="centerX" secondItem="Up4-RT-Aly" secondAttribute="centerX" id="XGD-WO-1au"/>
+                            <constraint firstItem="dZL-iV-F38" firstAttribute="top" secondItem="KmW-nq-LSW" secondAttribute="bottom" constant="20" id="XpQ-bC-EfV"/>
+                            <constraint firstItem="dZL-iV-F38" firstAttribute="top" secondItem="KmW-nq-LSW" secondAttribute="bottom" constant="20" id="bVW-1Q-WBo"/>
+                            <constraint firstAttribute="trailing" secondItem="dZL-iV-F38" secondAttribute="trailing" constant="8" id="gPk-5L-p2t"/>
+                            <constraint firstItem="dZL-iV-F38" firstAttribute="leading" secondItem="Up4-RT-Aly" secondAttribute="leading" constant="8" id="gib-af-2Oi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FCf-qe-5b3"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapCardPhoneIconVie" destination="KmW-nq-LSW" id="7Ow-Y4-wOb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SYR-MF-Hxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="5153"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>
