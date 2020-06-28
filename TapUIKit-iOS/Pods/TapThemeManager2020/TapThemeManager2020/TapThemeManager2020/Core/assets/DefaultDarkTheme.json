@@ -353,9 +353,13 @@
                 "backgroundColor" : "clear",
                 "alpha": 1
             },
-            "unselected": {
+            "otherSegmentSelected": {
                 "backgroundColor" : "clear",
                 "alpha": 0.5
+            },
+            "unselected": {
+                "backgroundColor" : "clear",
+                "alpha": 1
             }
         }
     }

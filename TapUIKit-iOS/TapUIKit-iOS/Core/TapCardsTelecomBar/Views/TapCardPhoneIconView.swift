@@ -15,7 +15,8 @@ class TapCardPhoneIconView: UIView {
     /// Represents the icon of the card/telecom operator image view
     @IBOutlet weak var iconImageView: UIImageView!
     
-    
+    /// Represnts the status of the current icon
+    internal var iconStatus:TapCardPhoneIconStatus = .selected
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// The path to look for theme entry in
@@ -79,5 +80,17 @@ enum TapCardPhoneIconStatus {
     case otherIconIsSelected
     /// Means, another segment is generally selected (shows opacity 50%)
     case otherSegmentSelected
+    
+    /// Returns the corrent theme path related to the current state
+    func themePath() -> String {
+        switch self {
+        case .selected:
+            return "selected"
+        case .otherSegmentSelected:
+            return "otherSegmentSelected"
+        case .otherIconIsSelected:
+            return "unselected"
+        }
+    }
 }
 
