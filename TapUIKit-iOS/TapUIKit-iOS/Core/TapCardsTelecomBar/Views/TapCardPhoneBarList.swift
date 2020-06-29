@@ -9,6 +9,7 @@
 import TapThemeManager2020
 import RxSwift
 import SimpleAnimation
+import EasyAnimation
 
 public class TapCardPhoneBarList: UIView {
 
@@ -16,12 +17,19 @@ public class TapCardPhoneBarList: UIView {
     @IBOutlet var contentView: UIView!
     /// Represents the holder layout for our icons horizontal bar views
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var underLineBar: UIProgressView!
+    @IBOutlet weak var underLineLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var underLineWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var underLineBar: UIProgressView! {
+        didSet{
+            underLineBar.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
     
     internal var maxWidth:CGFloat = 50
     
     internal var viewModel:TapCardPhoneBarListViewModel? {
         didSet{
+            viewModel?.viewDelegate = self
             bindObservables()
         }
     }
@@ -128,3 +136,28 @@ extension TapCardPhoneBarList {
     }
 }
 
+
+
+extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
+    
+    func animateBar(to x: CGFloat, with width: CGFloat) {
+        
+        underLineBar.layoutIfNeeded()
+        underLineBar.updateConstraints()
+        self.underLineLeadingConstraint.constant = x
+        self.underLineWidthConstraint.constant = width
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0,
+                       usingSpringWithDamping: 0.25,
+                       initialSpringVelocity: 0.0,
+                       options: [],
+                       animations: {
+                        self.underLineBar.alpha = 1
+                        self.underLineBar.layoutIfNeeded()
+                        self.underLineBar.updateConstraints()
+                        self.layoutIfNeeded()
+        }, completion: {_ in
+            print(self.underLineBar.frame)
+        })
+    }
+}

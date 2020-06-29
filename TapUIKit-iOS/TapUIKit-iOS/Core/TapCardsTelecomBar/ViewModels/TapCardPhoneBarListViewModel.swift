@@ -11,12 +11,16 @@ import RxCocoa
 import SnapKit
 
 
+internal protocol TapCardPhoneBarListViewModelDelegate {
+    func animateBar(to x:CGFloat,with width:CGFloat)
+}
 
 
 public class TapCardPhoneBarListViewModel {
     
     
     internal var dataSourceObserver:BehaviorRelay<[TapCardPhoneIconViewModel]> = .init(value: [])
+    internal var viewDelegate:TapCardPhoneBarListViewModelDelegate?
     
     public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
@@ -59,6 +63,8 @@ public class TapCardPhoneBarListViewModel {
 extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         print(viewModel.tapCardPhoneIconUrl)
-        print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
+        //print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
+        let segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
+        viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
     }
 }

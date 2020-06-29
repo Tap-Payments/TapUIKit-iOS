@@ -1,6 +1,7 @@
 PODS:
   - Capable/Colors (1.1.4)
   - CommonDataModelsKit-iOS (1.0.16)
+  - EasyAnimation (2.2.1)
   - Firebase/Analytics (6.27.0):
     - Firebase/Core
   - Firebase/Core (6.27.0):
@@ -102,6 +103,7 @@ PODS:
 
 DEPENDENCIES:
   - CommonDataModelsKit-iOS
+  - EasyAnimation
   - Firebase/Analytics
   - LocalisationManagerKit-iOS
   - MOLH
@@ -120,6 +122,7 @@ SPEC REPOS:
   trunk:
     - Capable
     - CommonDataModelsKit-iOS
+    - EasyAnimation
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -152,6 +155,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   CommonDataModelsKit-iOS: db179a18d63b200358e49cb3598090f9b19231df
+  EasyAnimation: 226d133d23ef0ef99ddfb8928ff2a9a4a77d1cfd
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
   FirebaseAnalytics: 0ea640473474f036cabbc2576e20c2d63671c92f
   FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
@@ -181,6 +185,6 @@ SPEC CHECKSUMS:
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: 56fd0aa2a884f8392ef0f326a9a37362e5564735
 
-PODFILE CHECKSUM: 619bcfb0c8fb8be9d5276d02c5d261e586255002
+PODFILE CHECKSUM: 4b1f264e5a5ca1604d965a3f915c6f2ded1e37b8
 
 COCOAPODS: 1.9.3

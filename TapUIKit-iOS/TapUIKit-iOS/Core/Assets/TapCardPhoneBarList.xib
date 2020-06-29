@@ -13,6 +13,8 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="IQC-RN-Vn7"/>
                 <outlet property="stackView" destination="VtN-8F-QZV" id="VPC-PI-6xM"/>
                 <outlet property="underLineBar" destination="kY4-Wy-WNR" id="eSl-I1-NKY"/>
+                <outlet property="underLineLeadingConstraint" destination="3Nx-N8-eVF" id="kT2-fV-wog"/>
+                <outlet property="underLineWidthConstraint" destination="tvw-JE-Zem" id="dML-xU-KRd"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,19 +35,21 @@
                     </subviews>
                     <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="28" bottom="0.0" trailing="28"/>
                 </stackView>
-                <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-Wy-WNR">
-                    <rect key="frame" x="0.0" y="47.333333333333336" width="414" height="2.6666666666666643"/>
+                <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-Wy-WNR">
+                    <rect key="frame" x="0.0" y="47.333333333333336" width="1" height="2.6666666666666643"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="tvw-JE-Zem"/>
+                    </constraints>
                 </progressView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="kY4-Wy-WNR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" id="3Nx-N8-eVF"/>
+                <constraint firstItem="kY4-Wy-WNR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Nx-N8-eVF"/>
                 <constraint firstItem="VtN-8F-QZV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AZe-aT-LeE"/>
                 <constraint firstItem="VtN-8F-QZV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CEX-yv-284"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VtN-8F-QZV" secondAttribute="bottom" id="lOk-m4-R08"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VtN-8F-QZV" secondAttribute="trailing" id="n26-1C-ih6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kY4-Wy-WNR" secondAttribute="bottom" id="oI1-QI-JpM"/>
-                <constraint firstAttribute="trailing" secondItem="kY4-Wy-WNR" secondAttribute="trailing" priority="750" id="qMn-Zc-Csl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
