@@ -55,27 +55,27 @@ public class TapCardPhoneBarList: UIView {
             .distinctUntilChanged()
             .filter{ $0.count > 0 }
             .subscribe(onNext: { [weak self] (dataSource) in
-                self?.relodData(with: viewModel.generateViews(with: 60))
+                self?.relodData(with: viewModel.generateViews(with: self?.maxWidth ?? 60))
         }).disposed(by: disposeBag)
     }
     
     
     internal func relodData(with views:[TapCardPhoneIconView] = []) {
         // Hide it
-        stackView.fadeOut(duration: 0.2) {[weak self] _ in
+        stackView.popOut(duration: 0.1) {[weak self] _ in
             guard let nonNullSelf = self else { return }
             
             // Remove all subviews first
             let arrangedSubviews = nonNullSelf.stackView.arrangedSubviews
-            
+            arrangedSubviews.forEach({
+                nonNullSelf.stackView.removeArrangedSubview($0)
+                $0.removeFromSuperview()
+            })
             // Update it with the latest views
             views.forEach({ nonNullSelf.stackView.addArrangedSubview($0) })
-            nonNullSelf.stackView.layoutIfNeeded()
-            
-            arrangedSubviews.forEach({ nonNullSelf.stackView.removeArrangedSubview($0) })
-            nonNullSelf.stackView.layoutIfNeeded()
+            //nonNullSelf.stackView.layoutIfNeeded()
             // Show it
-            nonNullSelf.stackView.fadeIn(duration:0.2)
+            nonNullSelf.stackView.popIn(duration:0.1)
         }
     }
     

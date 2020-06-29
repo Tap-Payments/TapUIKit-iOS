@@ -12,6 +12,8 @@ import TapUIKit_iOS
 class TapCardPhoneBarListViewController: UIViewController {
 
     
+    @IBOutlet weak var iconsNumberLabel: UILabel!
+    @IBOutlet weak var iconsStepper: UIStepper!
     @IBOutlet weak var tapCardPhoneListView: TapCardPhoneBarList!
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var dataSource:[TapCardPhoneIconViewModel] = []
@@ -20,10 +22,15 @@ class TapCardPhoneBarListViewController: UIViewController {
         dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/visa.png"))
         dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/mastercard.png"))
         dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/amex.png"))
+        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/officel/2x/nfc-sign.png"))
+        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/officel/2x/bluetooth.png"))
+        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/mac-os.png"))
+        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/cotton/2x/apple-pay.png"))
+        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/icloud.png"))
         
         tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
         
-        tapCardPhoneListViewModel.dataSource = dataSource
+        tapCardPhoneListViewModel.dataSource = Array(dataSource.prefix(upTo: 3))
         // Do any additional setup after loading the view.
     }
     
@@ -35,7 +42,13 @@ class TapCardPhoneBarListViewController: UIViewController {
         
     }
     
-
+    @IBAction func iconsStepperChanged(_ sender: Any) {
+        guard sender as? UIStepper == iconsStepper else { return }
+        
+        iconsNumberLabel.text = "# icons : \(iconsStepper.value)"
+        tapCardPhoneListViewModel.dataSource = Array(dataSource.prefix(upTo: Int(iconsStepper.value)))
+    }
+    
     /*
     // MARK: - Navigation
 

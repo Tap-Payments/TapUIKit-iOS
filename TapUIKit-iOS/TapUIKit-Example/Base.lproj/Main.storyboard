@@ -958,10 +958,26 @@
                                     <constraint firstAttribute="height" constant="49" id="qEm-1P-TXH"/>
                                 </constraints>
                             </view>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" value="3" minimumValue="2" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="AOO-Xd-SGx">
+                                <rect key="frame" x="300" y="143" width="94" height="32"/>
+                                <connections>
+                                    <action selector="iconsStepperChanged:" destination="yOg-UP-d0U" eventType="valueChanged" id="BIn-RE-q5V"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# icons : 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj1-rW-JQn">
+                                <rect key="frame" x="20" y="148.5" width="79.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bj1-rW-JQn" firstAttribute="centerY" secondItem="AOO-Xd-SGx" secondAttribute="centerY" id="59p-ln-mo1"/>
+                            <constraint firstItem="AOO-Xd-SGx" firstAttribute="top" secondItem="eCY-aZ-lJ3" secondAttribute="bottom" constant="20" id="6X9-oN-ecj"/>
+                            <constraint firstItem="bj1-rW-JQn" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" constant="20" id="OQN-tT-ujy"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="centerX" secondItem="ceJ-MJ-84K" secondAttribute="centerX" id="TVZ-nB-bjD"/>
+                            <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="AOO-Xd-SGx" secondAttribute="trailing" constant="20" id="cRs-Eb-OGl"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" id="ikg-iH-a4k"/>
                             <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="eCY-aZ-lJ3" secondAttribute="trailing" id="qho-Nr-Q8L"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="top" secondItem="TGF-AL-WVr" secondAttribute="top" constant="30" id="zbD-8W-0ds"/>
@@ -969,6 +985,8 @@
                         <viewLayoutGuide key="safeArea" id="TGF-AL-WVr"/>
                     </view>
                     <connections>
+                        <outlet property="iconsNumberLabel" destination="bj1-rW-JQn" id="boZ-M3-Lva"/>
+                        <outlet property="iconsStepper" destination="AOO-Xd-SGx" id="K9y-5n-y7g"/>
                         <outlet property="tapCardPhoneListView" destination="eCY-aZ-lJ3" id="JnH-mB-a0f"/>
                     </connections>
                 </viewController>
