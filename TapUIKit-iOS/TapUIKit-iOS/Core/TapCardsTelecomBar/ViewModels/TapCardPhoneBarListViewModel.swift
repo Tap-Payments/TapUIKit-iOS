@@ -25,8 +25,6 @@ public class TapCardPhoneBarListViewModel {
         self.dataSource = dataSource
     }
     
-    
-    
     internal func generateViews(with maxWidth:CGFloat = 50) -> [TapCardPhoneIconView] {
         
         return dataSource.map {

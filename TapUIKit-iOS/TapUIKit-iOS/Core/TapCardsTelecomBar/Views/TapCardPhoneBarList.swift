@@ -8,6 +8,7 @@
 
 import TapThemeManager2020
 import RxSwift
+import SimpleAnimation
 
 public class TapCardPhoneBarList: UIView {
 
@@ -57,7 +58,21 @@ public class TapCardPhoneBarList: UIView {
     
     
     internal func relodData() {
-        
+        // Hide it
+        stackView.fadeOut(duration: 0.1) {[weak self] _ in
+            guard let nonNullSelf = self, let viewModel = nonNullSelf.viewModel else { return }
+            
+            // Remove all subviews first
+            nonNullSelf.stackView.arrangedSubviews
+                .forEach({ $0.removeFromSuperview() })
+            
+            // Update it with the latest views
+            viewModel.generateViews()
+                .forEach({ nonNullSelf.stackView.addArrangedSubview($0) })
+            
+            // Show it
+            nonNullSelf.stackView.fadeIn(duration:0.1)
+        }
     }
     
     public override func layoutSubviews() {
