@@ -29,4 +29,5 @@ target 'TapUIKit-iOS' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'TapApplePayKit-iOS'
+  pod 'TapCardVlidatorKit-iOS' 
 end

@@ -15,7 +15,8 @@
             "white80":"#ffffffcc",
             "vibrantGreen" : "#2ace00",
             "vibrantGreenTwo" : "#00d300",
-            "paleLilac":"#e4e4e5"
+            "paleLilac":"#e4e4e5",
+            "clear":"#00000000"
         }
     },
     "inlineCard": {
