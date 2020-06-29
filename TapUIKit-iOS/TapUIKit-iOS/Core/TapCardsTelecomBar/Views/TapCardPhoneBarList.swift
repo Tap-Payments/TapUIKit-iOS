@@ -51,28 +51,43 @@ public class TapCardPhoneBarList: UIView {
     private func bindObservables() {
         // Defensive coding to make sure there is a view model
         guard let viewModel = viewModel else { return }
-        viewModel.dataSourceObserver.subscribe(onNext: { [weak self] (dataSource) in
-            self?.relodData()
+        viewModel.dataSourceObserver
+            .distinctUntilChanged()
+            .filter{ $0.count > 0 }
+            .subscribe(onNext: { [weak self] (dataSource) in
+                self?.relodData(with: viewModel.generateViews(with: 60))
         }).disposed(by: disposeBag)
     }
     
     
-    internal func relodData() {
+    internal func relodData(with views:[TapCardPhoneIconView] = []) {
+        // Remove all subviews first
+        let arrangedSubviews = stackView.arrangedSubviews
+        
+        // Update it with the latest views
+        views.forEach({ stackView.addArrangedSubview($0) })
+        stackView.layoutIfNeeded()
+        
+        arrangedSubviews.forEach({ stackView.removeArrangedSubview($0) })
+        stackView.layoutIfNeeded()
+        layoutIfNeeded()
+        
         // Hide it
-        stackView.fadeOut(duration: 0.1) {[weak self] _ in
-            guard let nonNullSelf = self, let viewModel = nonNullSelf.viewModel else { return }
+        /*stackView.fadeOut(duration: 0.1) {[weak self] _ in
+            guard let nonNullSelf = self else { return }
             
             // Remove all subviews first
-            nonNullSelf.stackView.arrangedSubviews
-                .forEach({ $0.removeFromSuperview() })
+            let arrangedSubviews = nonNullSelf.stackView.arrangedSubviews
             
             // Update it with the latest views
-            viewModel.generateViews()
-                .forEach({ nonNullSelf.stackView.addArrangedSubview($0) })
+            views.forEach({ nonNullSelf.stackView.addArrangedSubview($0) })
+            nonNullSelf.stackView.layoutIfNeeded()
             
+            arrangedSubviews.forEach({ nonNullSelf.stackView.removeArrangedSubview($0) })
+            nonNullSelf.stackView.layoutIfNeeded()
             // Show it
             nonNullSelf.stackView.fadeIn(duration:0.1)
-        }
+        }*/
     }
     
     public override func layoutSubviews() {

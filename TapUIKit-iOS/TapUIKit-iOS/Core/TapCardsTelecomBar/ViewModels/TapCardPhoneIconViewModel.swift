@@ -10,7 +10,12 @@ import Foundation
 import RxCocoa
 
 /// View model that controls the actions and the ui of the card/phone bar inner icon
-public class TapCardPhoneIconViewModel {
+public class TapCardPhoneIconViewModel:Equatable {
+   
+    public static func == (lhs: TapCardPhoneIconViewModel, rhs: TapCardPhoneIconViewModel) -> Bool {
+        return lhs.tapCardPhoneIconUrl == rhs.tapCardPhoneIconUrl
+    }
+    
     
     // MARK:- RX Internal Observables
     

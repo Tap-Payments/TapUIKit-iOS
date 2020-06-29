@@ -340,7 +340,7 @@
     "cardPhoneList":
     {
         "backgroundColor": "whiteTwo",
-        "maxWidth":50,
+        "maxWidth":60,
         "insets":28,
         "underline":{
             "selected": {

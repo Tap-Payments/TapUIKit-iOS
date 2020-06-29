@@ -787,8 +787,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Show description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QX-7v-smS">
-                                <rect key="frame" x="8" y="142" width="199" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QX-7v-smS">
+                                <rect key="frame" x="8" y="142" width="132.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -858,10 +858,13 @@
                             <constraint firstItem="9p1-t5-lHu" firstAttribute="top" secondItem="t0C-iT-Yzj" secondAttribute="bottom" constant="3" id="24u-ym-aqq"/>
                             <constraint firstItem="oNs-aZ-sXI" firstAttribute="top" secondItem="FYd-sJ-7wZ" secondAttribute="bottom" constant="8" id="6bg-D8-03B"/>
                             <constraint firstItem="szx-rx-YGs" firstAttribute="centerY" secondItem="e4M-w2-VWw" secondAttribute="centerY" id="7pr-lx-zCu"/>
+                            <constraint firstItem="S7G-Oj-LRU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="owa-fu-rXz" secondAttribute="trailing" constant="8" symbolic="YES" id="DS0-5C-AbW"/>
                             <constraint firstItem="oNs-aZ-sXI" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="20" id="E4d-SR-oxN"/>
+                            <constraint firstItem="szx-rx-YGs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e4M-w2-VWw" secondAttribute="trailing" constant="8" symbolic="YES" id="MBH-A8-14d"/>
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="t0C-iT-Yzj" secondAttribute="trailing" id="NUF-Pq-SvO"/>
                             <constraint firstItem="FYd-sJ-7wZ" firstAttribute="centerX" secondItem="F57-4c-jVR" secondAttribute="centerX" id="PnX-Pd-KSF"/>
                             <constraint firstItem="S7G-Oj-LRU" firstAttribute="top" secondItem="oNs-aZ-sXI" secondAttribute="bottom" constant="60" id="SSp-Ej-NKr"/>
+                            <constraint firstItem="9p1-t5-lHu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1QX-7v-smS" secondAttribute="trailing" constant="8" symbolic="YES" id="VLe-2e-y1T"/>
                             <constraint firstItem="FYd-sJ-7wZ" firstAttribute="top" secondItem="e4M-w2-VWw" secondAttribute="bottom" constant="8" id="XNK-ea-nL8"/>
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="oNs-aZ-sXI" secondAttribute="trailing" constant="20" id="Yg2-y4-paC"/>
                             <constraint firstItem="owa-fu-rXz" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="8" id="aRZ-0h-deb"/>
@@ -871,6 +874,7 @@
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="S7G-Oj-LRU" secondAttribute="trailing" constant="8" id="euo-Fu-jiC"/>
                             <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" secondItem="szx-rx-YGs" secondAttribute="trailing" constant="8" id="gqE-Xo-nYD"/>
                             <constraint firstItem="OMz-XT-Ai1" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="29" id="kTl-Jl-8m1"/>
+                            <constraint firstItem="BiU-4M-GtD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OMz-XT-Ai1" secondAttribute="trailing" symbolic="YES" id="nNt-Vf-Jrq"/>
                             <constraint firstItem="t0C-iT-Yzj" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" id="q7X-zi-bQa"/>
                             <constraint firstItem="1QX-7v-smS" firstAttribute="leading" secondItem="BiU-4M-GtD" secondAttribute="leading" constant="8" id="tNk-aM-Qld"/>
                             <constraint firstItem="szx-rx-YGs" firstAttribute="top" secondItem="9p1-t5-lHu" secondAttribute="bottom" constant="8" id="tgR-1W-2gJ"/>
@@ -938,6 +942,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYR-MF-Hxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2567" y="5153"/>
+        </scene>
+        <!--Tap Card Phone Bar List View Controller-->
+        <scene sceneID="IUo-eQ-W8v">
+            <objects>
+                <viewController storyboardIdentifier="TapCardPhoneBarListViewController" id="yOg-UP-d0U" customClass="TapCardPhoneBarListViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ceJ-MJ-84K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCY-aZ-lJ3" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="49"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="qEm-1P-TXH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eCY-aZ-lJ3" firstAttribute="centerX" secondItem="ceJ-MJ-84K" secondAttribute="centerX" id="TVZ-nB-bjD"/>
+                            <constraint firstItem="eCY-aZ-lJ3" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" id="ikg-iH-a4k"/>
+                            <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="eCY-aZ-lJ3" secondAttribute="trailing" id="qho-Nr-Q8L"/>
+                            <constraint firstItem="eCY-aZ-lJ3" firstAttribute="top" secondItem="TGF-AL-WVr" secondAttribute="top" constant="30" id="zbD-8W-0ds"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TGF-AL-WVr"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapCardPhoneListView" destination="eCY-aZ-lJ3" id="JnH-mB-a0f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UL8-t3-Tmj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="5862"/>
         </scene>
     </scenes>
     <resources>

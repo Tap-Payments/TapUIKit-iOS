@@ -30,7 +30,7 @@ public class TapCardPhoneBarListViewModel {
         return dataSource.map {
             let tapCardPhoneIconView:TapCardPhoneIconView = .init()
             tapCardPhoneIconView.setupView(with: $0)
-            tapCardPhoneIconView.snp.remakeConstraints { $0.height.equalTo(maxWidth).priority(.medium) }
+            tapCardPhoneIconView.snp.remakeConstraints { $0.width.equalTo(maxWidth).priority(.medium) }
             return tapCardPhoneIconView
         }
     }
