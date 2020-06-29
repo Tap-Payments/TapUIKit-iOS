@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtN-8F-QZV">
+                    <rect key="frame" x="0.0" y="0.0" width="206" height="49"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoV-BJ-Qfx">
+                            <rect key="frame" x="28" y="0.0" width="50" height="49"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.and.outline" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HKL-6y-CpK">
+                                    <rect key="frame" x="14.333333333333337" y="13.333333333333336" width="21.666666666666671" height="22.000000000000014"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="22" id="A4N-9a-gof"/>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="22" id="Fde-B2-l41"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="HKL-6y-CpK" firstAttribute="centerY" secondItem="YoV-BJ-Qfx" secondAttribute="centerY" id="8ZS-mT-E0d"/>
+                                <constraint firstAttribute="width" priority="750" constant="50" id="ezw-E7-cTA"/>
+                                <constraint firstItem="HKL-6y-CpK" firstAttribute="centerX" secondItem="YoV-BJ-Qfx" secondAttribute="centerX" id="y24-Z4-940"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVB-TU-ZNG">
+                            <rect key="frame" x="78" y="0.0" width="50" height="49"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.and.outline" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-xo-6H7">
+                                    <rect key="frame" x="14.33333333333333" y="13.333333333333336" width="21.666666666666671" height="22.000000000000014"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="22" id="D3K-ds-cwj"/>
+                                        <constraint firstAttribute="height" constant="22" id="H2M-4v-Ura"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="V2s-xo-6H7" firstAttribute="centerY" secondItem="yVB-TU-ZNG" secondAttribute="centerY" id="YMv-nw-avN"/>
+                                <constraint firstItem="V2s-xo-6H7" firstAttribute="centerX" secondItem="yVB-TU-ZNG" secondAttribute="centerX" id="eVE-1U-ELd"/>
+                                <constraint firstAttribute="width" priority="750" constant="50" id="wSl-7R-Arg"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lw-cH-wd5">
+                            <rect key="frame" x="128" y="0.0" width="50" height="49"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.and.outline" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UUf-6D-UGa">
+                                    <rect key="frame" x="14.333333333333345" y="13.333333333333336" width="21.666666666666671" height="22.000000000000014"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="22" id="bc4-r9-Xhx"/>
+                                        <constraint firstAttribute="height" constant="22" id="rJ9-qG-hhf"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="UUf-6D-UGa" firstAttribute="centerX" secondItem="3Lw-cH-wd5" secondAttribute="centerX" id="QxX-Xw-yZ2"/>
+                                <constraint firstItem="UUf-6D-UGa" firstAttribute="centerY" secondItem="3Lw-cH-wd5" secondAttribute="centerY" id="T0f-4O-05q"/>
+                                <constraint firstAttribute="width" priority="750" constant="50" id="XEH-dd-vPS"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="28" bottom="0.0" trailing="28"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="VtN-8F-QZV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AZe-aT-LeE"/>
+                <constraint firstItem="VtN-8F-QZV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CEX-yv-284"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VtN-8F-QZV" secondAttribute="bottom" id="lOk-m4-R08"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VtN-8F-QZV" secondAttribute="trailing" id="n26-1C-ih6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="139" y="88"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pencil.and.outline" catalog="system" width="128" height="119"/>
+    </resources>
+</document>
