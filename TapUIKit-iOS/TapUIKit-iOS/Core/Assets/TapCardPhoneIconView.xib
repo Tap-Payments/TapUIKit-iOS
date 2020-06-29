@@ -26,11 +26,21 @@
                         <constraint firstAttribute="width" constant="32" id="yWf-eQ-apb"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyO-30-4i2">
+                    <rect key="frame" x="0.0" y="0.0" width="75" height="49"/>
+                    <connections>
+                        <action selector="iconClicked:" destination="-1" eventType="touchUpInside" id="Yz6-th-bVa"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="UyO-30-4i2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="E9w-qg-u86"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UyO-30-4i2" secondAttribute="trailing" id="bgd-ME-5lp"/>
+                <constraint firstItem="UyO-30-4i2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cZE-Kc-B8J"/>
                 <constraint firstItem="v2g-dy-q3O" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pAX-Vw-XCv"/>
                 <constraint firstItem="v2g-dy-q3O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rPG-Ch-C9h"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UyO-30-4i2" secondAttribute="bottom" id="sOE-92-Nhd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

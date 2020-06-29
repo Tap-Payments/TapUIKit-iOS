@@ -17,6 +17,7 @@ public class TapCardPhoneBarListViewModel {
     
     public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
+            dataSource.forEach{ $0.delegate = self }
             dataSourceObserver.accept(dataSource)
         }
     }
@@ -33,5 +34,11 @@ public class TapCardPhoneBarListViewModel {
             tapCardPhoneIconView.snp.remakeConstraints { $0.width.equalTo(maxWidth).priority(.medium) }
             return tapCardPhoneIconView
         }
+    }
+}
+
+extension TapCardPhoneBarListViewModel:TapCardPhoneIconViewDelegate {
+    func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
+        print(viewModel.tapCardPhoneIconUrl)
     }
 }

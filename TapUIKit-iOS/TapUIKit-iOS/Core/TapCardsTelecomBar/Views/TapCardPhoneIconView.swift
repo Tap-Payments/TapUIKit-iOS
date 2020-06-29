@@ -89,6 +89,11 @@ public class TapCardPhoneIconView: UIView {
     public func setupView(with viewModel:TapCardPhoneIconViewModel) {
         self.viewModel = viewModel
     }
+    
+    @IBAction private func iconClicked(_ sender: Any) {
+        guard let viewModel = viewModel else { return }
+        viewModel.iconIsSelected()
+    }
 }
 
 

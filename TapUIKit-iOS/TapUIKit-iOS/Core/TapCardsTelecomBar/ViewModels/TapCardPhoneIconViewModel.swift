@@ -10,6 +10,10 @@ import Foundation
 import RxCocoa
 import enum TapCardVlidatorKit_iOS.CardBrand
 
+internal protocol TapCardPhoneIconViewDelegate {
+    func iconIsSelected(with viewModel:TapCardPhoneIconViewModel)
+}
+
 /// View model that controls the actions and the ui of the card/phone bar inner icon
 public class TapCardPhoneIconViewModel:Equatable {
    
@@ -40,9 +44,6 @@ public class TapCardPhoneIconViewModel:Equatable {
         }
     }
     
-    /// Represent the id of the segment this icon is related to if any
-    public var tapCardPhoneIconSegmentID:String = ""
-    
     /// Represent the associated payment brand this cell is linked to
     public var associatedCardBrand:CardBrand = .visa
     
@@ -53,13 +54,18 @@ public class TapCardPhoneIconViewModel:Equatable {
      this icon
      - Parameter tapCardPhoneIconSegmentID: Represent the id of the segment this icon is related to if any
      */
-    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "",tapCardPhoneIconSegmentID:String = "") {
+    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "") {
         defer{
             self.tapCardPhoneIconStatus = tapCardPhoneIconStatus
             self.tapCardPhoneIconUrl = tapCardPhoneIconUrl
-            self.tapCardPhoneIconSegmentID = tapCardPhoneIconSegmentID
             self.associatedCardBrand = associatedCardBrand
         }
+    }
+    
+    internal var delegate:TapCardPhoneIconViewDelegate?
+    
+    internal func iconIsSelected() {
+        delegate?.iconIsSelected(with: self)
     }
 }
 

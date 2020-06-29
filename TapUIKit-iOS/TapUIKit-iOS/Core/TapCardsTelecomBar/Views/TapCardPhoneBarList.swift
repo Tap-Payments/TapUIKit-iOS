@@ -16,6 +16,8 @@ public class TapCardPhoneBarList: UIView {
     @IBOutlet var contentView: UIView!
     /// Represents the holder layout for our icons horizontal bar views
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var underLineBar: UIProgressView!
+    
     internal var maxWidth:CGFloat = 50
     
     internal var viewModel:TapCardPhoneBarListViewModel? {

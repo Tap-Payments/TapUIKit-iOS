@@ -958,7 +958,7 @@
                                     <constraint firstAttribute="height" constant="49" id="qEm-1P-TXH"/>
                                 </constraints>
                             </view>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" value="3" minimumValue="2" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="AOO-Xd-SGx">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" value="3" minimumValue="2" maximumValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="AOO-Xd-SGx">
                                 <rect key="frame" x="300" y="143" width="94" height="32"/>
                                 <connections>
                                     <action selector="iconsStepperChanged:" destination="yOg-UP-d0U" eventType="valueChanged" id="BIn-RE-q5V"/>

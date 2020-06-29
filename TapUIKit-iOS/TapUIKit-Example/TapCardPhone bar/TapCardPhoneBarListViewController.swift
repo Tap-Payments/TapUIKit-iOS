@@ -8,6 +8,7 @@
 
 import UIKit
 import TapUIKit_iOS
+import enum TapCardVlidatorKit_iOS.CardBrand
 
 class TapCardPhoneBarListViewController: UIViewController {
 
@@ -19,14 +20,13 @@ class TapCardPhoneBarListViewController: UIViewController {
     var dataSource:[TapCardPhoneIconViewModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/visa.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/mastercard.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/amex.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/officel/2x/nfc-sign.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/officel/2x/bluetooth.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/mac-os.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/cotton/2x/apple-pay.png"))
-        dataSource.append(.init(tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/icloud.png"))
+        dataSource.append(.init(associatedCardBrand: .visa, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/visa.png"))
+        dataSource.append(.init(associatedCardBrand: .masterCard, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/mastercard.png"))
+        dataSource.append(.init(associatedCardBrand: .americanExpress, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/amex.png"))
+        dataSource.append(.init(associatedCardBrand: .mada, tapCardPhoneIconUrl: "https://i.ibb.co/S3VhxmR/796px-Mada-Logo-svg.png"))
+        dataSource.append(.init(associatedCardBrand: .viva, tapCardPhoneIconUrl: "https://i.ibb.co/cw5y89V/unnamed.png"))
+        dataSource.append(.init(associatedCardBrand: .wataniya, tapCardPhoneIconUrl: "https://i.ibb.co/PCYd8Xm/ooredoo-3x.png"))
+        dataSource.append(.init(associatedCardBrand: .zain, tapCardPhoneIconUrl: "https://i.ibb.co/mvkJXwF/zain-3x.png"))
         
         tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
         

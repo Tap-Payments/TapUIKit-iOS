@@ -12,7 +12,7 @@ import TapUIKit_iOS
 class TapCardPhoneIconViewController: UIViewController {
 
     @IBOutlet weak var tapCardPhoneIconVie: TapCardPhoneIconView!
-    let tapCardPhoneViewModel:TapCardPhoneIconViewModel = .init()
+    let tapCardPhoneViewModel:TapCardPhoneIconViewModel = .init(associatedCardBrand: .visa)
     
     override func viewDidLoad() {
         super.viewDidLoad()
