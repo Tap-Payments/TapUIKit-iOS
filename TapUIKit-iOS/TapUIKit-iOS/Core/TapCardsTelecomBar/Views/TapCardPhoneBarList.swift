@@ -61,19 +61,8 @@ public class TapCardPhoneBarList: UIView {
     
     
     internal func relodData(with views:[TapCardPhoneIconView] = []) {
-        // Remove all subviews first
-        let arrangedSubviews = stackView.arrangedSubviews
-        
-        // Update it with the latest views
-        views.forEach({ stackView.addArrangedSubview($0) })
-        stackView.layoutIfNeeded()
-        
-        arrangedSubviews.forEach({ stackView.removeArrangedSubview($0) })
-        stackView.layoutIfNeeded()
-        layoutIfNeeded()
-        
         // Hide it
-        /*stackView.fadeOut(duration: 0.1) {[weak self] _ in
+        stackView.fadeOut(duration: 0.2) {[weak self] _ in
             guard let nonNullSelf = self else { return }
             
             // Remove all subviews first
@@ -86,8 +75,8 @@ public class TapCardPhoneBarList: UIView {
             arrangedSubviews.forEach({ nonNullSelf.stackView.removeArrangedSubview($0) })
             nonNullSelf.stackView.layoutIfNeeded()
             // Show it
-            nonNullSelf.stackView.fadeIn(duration:0.1)
-        }*/
+            nonNullSelf.stackView.fadeIn(duration:0.2)
+        }
     }
     
     public override func layoutSubviews() {
