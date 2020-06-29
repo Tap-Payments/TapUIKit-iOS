@@ -340,6 +340,8 @@
     "cardPhoneList":
     {
         "backgroundColor": "whiteTwo",
+        "maxWidth":50,
+        "insets":28,
         "underline":{
             "selected": {
                 "backgroundColor" : "brownGrey"

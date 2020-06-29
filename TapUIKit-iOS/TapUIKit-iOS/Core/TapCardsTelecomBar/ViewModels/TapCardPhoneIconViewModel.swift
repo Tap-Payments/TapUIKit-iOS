@@ -34,14 +34,20 @@ public class TapCardPhoneIconViewModel {
         }
     }
     
+    /// Represent the id of the segment this icon is related to if any
+    public var tapCardPhoneIconSegmentID:String = ""
+    
     /**
      - Parameter tapCardPhoneIconStatus: Represent the icon state
-     - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside this icon
+     - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
+     this icon
+     - Parameter tapCardPhoneIconSegmentID: Represent the id of the segment this icon is related to if any
      */
-    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, tapCardPhoneIconUrl: String = "") {
+    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, tapCardPhoneIconUrl: String = "",tapCardPhoneIconSegmentID:String = "") {
         defer{
             self.tapCardPhoneIconStatus = tapCardPhoneIconStatus
             self.tapCardPhoneIconUrl = tapCardPhoneIconUrl
+            self.tapCardPhoneIconSegmentID = tapCardPhoneIconSegmentID
         }
     }
 }
