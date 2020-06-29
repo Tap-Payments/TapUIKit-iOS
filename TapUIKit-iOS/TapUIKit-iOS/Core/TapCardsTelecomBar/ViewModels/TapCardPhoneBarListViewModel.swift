@@ -10,6 +10,9 @@ import Foundation
 import RxCocoa
 import SnapKit
 
+
+
+
 public class TapCardPhoneBarListViewModel {
     
     
@@ -35,10 +38,27 @@ public class TapCardPhoneBarListViewModel {
             return tapCardPhoneIconView
         }
     }
+    
+    internal func frame(for segment:String) -> CGRect {
+        
+        // we need to filter out only the icons with this specific segment
+        let filteredViewModel:[TapCardPhoneIconViewModel] = dataSource.filter{ return $0.associatedCardBrand.brandSegmentIdentifier == segment }
+        guard filteredViewModel.count > 0 else { return .zero }
+        
+        
+        guard filteredViewModel.count > 1 else { return filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero }
+        
+        var resultRect:CGRect = filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero
+        resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+        
+        return resultRect
+        
+    }
 }
 
-extension TapCardPhoneBarListViewModel:TapCardPhoneIconViewDelegate {
+extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         print(viewModel.tapCardPhoneIconUrl)
+        print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
     }
 }

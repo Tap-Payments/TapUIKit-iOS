@@ -22,6 +22,7 @@ public class TapCardPhoneIconView: UIView {
     internal var iconImage:UIImage? = nil
     internal var viewModel:TapCardPhoneIconViewModel? {
         didSet{
+            viewModel?.viewDelegate = self
             bindObservables()
         }
     }
@@ -124,5 +125,15 @@ extension TapCardPhoneIconView {
         lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
         applyTheme()
     }
+}
+
+
+extension TapCardPhoneIconView:TapCardPhoneIconViewDelegate {
+    
+    func viewFrame() -> CGRect {
+        return self.frame
+    }
+    
+    
 }
 

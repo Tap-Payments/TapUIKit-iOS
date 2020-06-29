@@ -10,9 +10,14 @@ import Foundation
 import RxCocoa
 import enum TapCardVlidatorKit_iOS.CardBrand
 
-internal protocol TapCardPhoneIconViewDelegate {
+internal protocol TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel:TapCardPhoneIconViewModel)
 }
+
+internal protocol TapCardPhoneIconViewDelegate {
+    func viewFrame() -> CGRect
+}
+
 
 /// View model that controls the actions and the ui of the card/phone bar inner icon
 public class TapCardPhoneIconViewModel:Equatable {
@@ -62,7 +67,8 @@ public class TapCardPhoneIconViewModel:Equatable {
         }
     }
     
-    internal var delegate:TapCardPhoneIconViewDelegate?
+    internal var delegate:TapCardPhoneIconDelegate?
+    internal var viewDelegate:TapCardPhoneIconViewDelegate?
     
     internal func iconIsSelected() {
         delegate?.iconIsSelected(with: self)
