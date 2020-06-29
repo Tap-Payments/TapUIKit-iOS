@@ -121,6 +121,8 @@ extension TapCardPhoneBarList {
         let stackMargin:CGFloat = (TapThemeManager.numberValue(for: "\(themePath).insets") as? CGFloat) ?? 28
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: stackMargin, bottom: 0, trailing: stackMargin)
+        
+        underLineBar.tap_theme_progressTintColor = .init(keyPath: "\(themePath).underline.unselected.backgroundColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -147,7 +149,7 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
         self.underLineLeadingConstraint.constant = x
         self.underLineWidthConstraint.constant = width
         
-        UIView.animate(withDuration: 0.5, delay: 0.0,
+        UIView.animate(withDuration: 1, delay: 0.0,
                        usingSpringWithDamping: 0.25,
                        initialSpringVelocity: 0.0,
                        options: [],

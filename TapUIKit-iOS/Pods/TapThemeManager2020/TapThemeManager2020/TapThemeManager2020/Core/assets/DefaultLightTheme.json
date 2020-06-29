@@ -344,10 +344,10 @@
         "maxWidth":60,
         "insets":28,
         "underline":{
-            "selected": {
+            "unselected": {
                 "backgroundColor" : "brownGrey"
             },
-            "unselected": {
+            "selected": {
                 "backgroundColor" : "vibrantGreen"
             }
         },
