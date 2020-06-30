@@ -9,7 +9,7 @@
 import Foundation
 import RxCocoa
 import SnapKit
-
+import enum TapCardVlidatorKit_iOS.CardBrand
 
 internal protocol TapCardPhoneBarListViewModelDelegate {
     func animateBar(to x:CGFloat,with width:CGFloat)
@@ -21,10 +21,12 @@ public class TapCardPhoneBarListViewModel {
     
     internal var dataSourceObserver:BehaviorRelay<[TapCardPhoneIconViewModel]> = .init(value: [])
     internal var viewDelegate:TapCardPhoneBarListViewModelDelegate?
+    internal var segmentSelectionObserver:BehaviorRelay<[String:CardBrand?]> = .init(value: [:])
+    internal var selectedSegmentObserver:BehaviorRelay<String> = .init(value:"")
     
     public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
-            dataSource.forEach{ $0.delegate = self }
+            configureDataSource()
             dataSourceObserver.accept(dataSource)
         }
     }
@@ -58,6 +60,20 @@ public class TapCardPhoneBarListViewModel {
         return resultRect
         
     }
+    
+    
+    internal func configureDataSource() {
+        // Assign each viewmodel delegate to self
+        dataSource.forEach{ $0.delegate = self }
+        
+        // Create an empty segment selection state
+        var segmentSelection:[String:CardBrand?] = [:]
+        dataSource.forEach{ segmentSelection[$0.associatedCardBrand.brandSegmentIdentifier] = nil }
+        segmentSelectionObserver.accept(segmentSelection)
+        
+        // With new dataSource, we will not keep a segment selected
+        selectedSegmentObserver.accept("")
+    }
 }
 
 extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
@@ -66,5 +82,6 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
         //print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
         let segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
         viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
+        selectedSegmentObserver.accept(viewModel.associatedCardBrand.brandSegmentIdentifier)
     }
 }
