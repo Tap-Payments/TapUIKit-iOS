@@ -342,7 +342,7 @@
     {
         "backgroundColor": "whiteTwo",
         "maxWidth":60,
-        "insets":28,
+        "insets":16,
         "underline":{
             "unselected": {
                 "backgroundColor" : "brownGrey"

@@ -155,6 +155,12 @@ extension TapCardPhoneBarList {
 
 extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
     
+    func calculatedSpacing() -> CGFloat {
+        
+        guard stackView.arrangedSubviews.count > 0 else { return 0 }
+        return stackView.arrangedSubviews[0].frame.width
+        
+    }
     func animateBar(to x: CGFloat, with width: CGFloat) {
         
         underLineBar.layoutIfNeeded()

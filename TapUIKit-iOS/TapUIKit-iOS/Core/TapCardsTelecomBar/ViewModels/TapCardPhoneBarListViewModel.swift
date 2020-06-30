@@ -14,6 +14,7 @@ import enum TapCardVlidatorKit_iOS.CardBrand
 
 internal protocol TapCardPhoneBarListViewModelDelegate {
     func animateBar(to x:CGFloat,with width:CGFloat)
+    func calculatedSpacing() -> CGFloat
 }
 
 
@@ -95,7 +96,9 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         print(viewModel.tapCardPhoneIconUrl)
         //print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
-        let segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
+        var segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
+        segmentFrame.origin.x -= (viewDelegate?.calculatedSpacing() ?? 0) / 2
+        segmentFrame.size.width += viewDelegate?.calculatedSpacing() ?? 0
         viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
         selectedSegmentObserver.accept(viewModel.associatedCardBrand.brandSegmentIdentifier)
     }
