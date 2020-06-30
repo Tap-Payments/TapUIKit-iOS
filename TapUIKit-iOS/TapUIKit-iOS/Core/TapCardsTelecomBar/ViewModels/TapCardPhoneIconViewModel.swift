@@ -13,7 +13,7 @@ import enum TapCardVlidatorKit_iOS.CardBrand
 
 internal protocol TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel:TapCardPhoneIconViewModel)
-    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>)
+    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>, Observable<Bool>)
 }
 
 internal protocol TapCardPhoneIconViewDelegate {
@@ -84,17 +84,17 @@ public class TapCardPhoneIconViewModel:Equatable {
     
     internal func bindObservables() {
         guard let delegate = delegate else { return }
-        let (segmentSelection , selectedSegment) = delegate.selectionObservers()
+        let (segmentSelection , selectedSegment, selectedValidated) = delegate.selectionObservers()
         
         
         // Listen to inner segment selection status coupled with selected segment value
-        Observable.combineLatest(segmentSelection, selectedSegment)
-            .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String) in
-                self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment )
+        Observable.combineLatest(segmentSelection, selectedSegment, selectedValidated)
+            .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String, selectedValidated:Bool) in
+                self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment, with: selectedValidated )
             }).disposed(by: disposeBag)
     }
     
-    internal func computeSelectionLogic(for segmentsSelections:[String:CardBrand?], and selectedSegment:String ) {
+    internal func computeSelectionLogic(for segmentsSelections:[String:CardBrand?], and selectedSegment:String, with selectedValidated:Bool ) {
         // First we check if there is any segment selected
         guard selectedSegment != "" else {
             // No segment is selected, then all icons should be shown normally
@@ -110,8 +110,8 @@ public class TapCardPhoneIconViewModel:Equatable {
             return
         }
         
-        // This means there is a segment selected and there is an inner icon inside is selected, hence the current icon will colored or blackwhite based if it is the same icon selected
-        tapCardPhoneIconStatus = ((associatedCardBrand == selectedCardBrand) ? .selected : .otherIconIsSelectedVerified )
+        // This means there is a segment selected and there is an inner icon inside is selected, hence the current icon will colored or blackwhite based if it is the same icon selected and then see it is validated or not
+        tapCardPhoneIconStatus = ((associatedCardBrand == selectedCardBrand) ? .selected : (selectedValidated) ? .otherIconIsSelectedVerified : .otherIconIsSelectedUnVerified )
     }
 }
 

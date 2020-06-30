@@ -24,6 +24,7 @@ public class TapCardPhoneBarListViewModel {
     internal var viewDelegate:TapCardPhoneBarListViewModelDelegate?
     internal var segmentSelectionObserver:BehaviorRelay<[String:CardBrand?]> = .init(value: [:])
     internal var selectedSegmentObserver:BehaviorRelay<String> = .init(value:"")
+    internal var selectedIconValidatedObserver:BehaviorRelay<Bool> = .init(value:false)
     
     public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
@@ -76,8 +77,8 @@ public class TapCardPhoneBarListViewModel {
 }
 
 extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
-    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>) {
-        return (segmentSelectionObserver.share(),selectedSegmentObserver.share())
+    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>, Observable<Bool>) {
+        return (segmentSelectionObserver.share(),selectedSegmentObserver.share(), selectedIconValidatedObserver.share())
     }
     
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
