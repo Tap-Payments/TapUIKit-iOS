@@ -71,6 +71,8 @@ public class TapCardPhoneBarList: UIView {
     
     
     internal func relodData(with views:[TapCardPhoneIconView] = []) {
+        // Hide the bar
+        underLineBar.alpha = 0
         // Hide it
         stackView.popOut(duration: 0.1) {[weak self] _ in
             guard let nonNullSelf = self else { return }
