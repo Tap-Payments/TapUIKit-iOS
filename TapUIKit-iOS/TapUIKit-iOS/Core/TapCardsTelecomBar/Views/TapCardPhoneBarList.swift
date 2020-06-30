@@ -67,6 +67,12 @@ public class TapCardPhoneBarList: UIView {
             .subscribe(onNext: { [weak self] (dataSource) in
                 self?.relodData(with: viewModel.generateViews(with: self?.maxWidth ?? 60))
         }).disposed(by: disposeBag)
+        
+        
+        viewModel.selectedIconValidatedObserver.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] (validated) in
+                self?.themeBar(selectionValid: validated)
+            }).disposed(by: disposeBag)
     }
     
     
@@ -124,7 +130,12 @@ extension TapCardPhoneBarList {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: stackMargin, bottom: 0, trailing: stackMargin)
         
-        underLineBar.tap_theme_progressTintColor = .init(keyPath: "\(themePath).underline.unselected.backgroundColor")
+        themeBar()
+    }
+    
+    private func themeBar(selectionValid:Bool = false) {
+        let selectionThemePath:String = selectionValid ? "selected" : "unselected"
+        underLineBar.tap_theme_progressTintColor = .init(keyPath: "\(themePath).underline.\(selectionThemePath).backgroundColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
