@@ -149,11 +149,7 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
         self.underLineLeadingConstraint.constant = x
         self.underLineWidthConstraint.constant = width
         
-        UIView.animate(withDuration: 1, delay: 0.0,
-                       usingSpringWithDamping: 0.25,
-                       initialSpringVelocity: 0.0,
-                       options: [],
-                       animations: {
+        UIView.animate(withDuration: 0.3, animations: {
                         self.underLineBar.alpha = 1
                         self.underLineBar.layoutIfNeeded()
                         self.underLineBar.updateConstraints()
