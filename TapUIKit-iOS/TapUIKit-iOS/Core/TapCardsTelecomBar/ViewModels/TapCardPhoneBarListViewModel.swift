@@ -54,15 +54,26 @@ public class TapCardPhoneBarListViewModel {
         let filteredViewModel:[TapCardPhoneIconViewModel] = dataSource.filter{ return $0.associatedCardBrand.brandSegmentIdentifier == segment }
         guard filteredViewModel.count > 0 else { return .zero }
         
-        
-        guard filteredViewModel.count > 1 else { return filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero }
-        
         var resultRect:CGRect = filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero
+        
+        
         
         // Now we need to decide shall we highlight the whole segment or there is an already selected tab within this segment
         guard let selectedBrand:CardBrand = segmentSelectionObserver.value[segment] as? CardBrand else {
             // Meaning, there is no selected icon inside this segment, hence we highlight the whole segment
-            resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+            
+            // If the first item, we need to start from X = 0
+            if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                resultRect.origin.x = 0
+                resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+            }else {
+                // If the second segment, hence we need the width to cover the whole screen till the end
+                if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
+                    resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+                }
+            }
+            
+            
             return resultRect
         }
         
@@ -97,8 +108,8 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
         print(viewModel.tapCardPhoneIconUrl)
         //print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
         var segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
-        segmentFrame.origin.x -= (viewDelegate?.calculatedSpacing() ?? 0) / 2
-        segmentFrame.size.width += viewDelegate?.calculatedSpacing() ?? 0
+        //segmentFrame.origin.x -= (viewDelegate?.calculatedSpacing() ?? 0) / 2
+        segmentFrame.size.width += (viewDelegate?.calculatedSpacing() ?? 0)
         viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
         selectedSegmentObserver.accept(viewModel.associatedCardBrand.brandSegmentIdentifier)
     }

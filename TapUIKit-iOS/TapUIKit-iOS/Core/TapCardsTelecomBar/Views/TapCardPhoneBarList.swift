@@ -79,6 +79,9 @@ public class TapCardPhoneBarList: UIView {
     internal func relodData(with views:[TapCardPhoneIconView] = []) {
         // Hide the bar
         underLineBar.alpha = 0
+        underLineLeadingConstraint.constant = 0
+        underLineBar.updateConstraints()
+        underLineBar.layoutIfNeeded()
         // Hide it
         stackView.popOut(duration: 0.1) {[weak self] _ in
             guard let nonNullSelf = self else { return }
@@ -157,8 +160,8 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
     
     func calculatedSpacing() -> CGFloat {
         
-        guard stackView.arrangedSubviews.count > 0 else { return 0 }
-        return stackView.arrangedSubviews[0].frame.width
+        guard stackView.arrangedSubviews.count > 1 else { return 0 }
+        return ((stackView.arrangedSubviews[1].frame.minX - stackView.arrangedSubviews[0].frame.maxX) / 2) + 2
         
     }
     func animateBar(to x: CGFloat, with width: CGFloat) {
