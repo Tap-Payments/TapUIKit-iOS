@@ -33,7 +33,7 @@ class TapCardPhoneIconViewController: UIViewController {
         case 1:
             tapCardPhoneViewModel.tapCardPhoneIconStatus = .otherSegmentSelected
         case 2:
-            tapCardPhoneViewModel.tapCardPhoneIconStatus = .otherIconIsSelected
+            tapCardPhoneViewModel.tapCardPhoneIconStatus = .otherIconIsSelectedVerified
         default:
             return
         }

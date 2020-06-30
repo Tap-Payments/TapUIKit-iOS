@@ -111,7 +111,7 @@ public class TapCardPhoneIconViewModel:Equatable {
         }
         
         // This means there is a segment selected and there is an inner icon inside is selected, hence the current icon will colored or blackwhite based if it is the same icon selected
-        tapCardPhoneIconStatus = ((associatedCardBrand == selectedCardBrand) ? .selected : .otherIconIsSelected )
+        tapCardPhoneIconStatus = ((associatedCardBrand == selectedCardBrand) ? .selected : .otherIconIsSelectedVerified )
     }
 }
 
@@ -121,8 +121,10 @@ public class TapCardPhoneIconViewModel:Equatable {
 public enum TapCardPhoneIconStatus {
     /// Means, this is selected ot the whole segment is selected  or itself is the selected icon (shows in full opacity)
     case selected
-    /// Means, another icon is selected (shows black & white)
-    case otherIconIsSelected
+    /// Means, another icon is selected and verified (shows black & white)
+    case otherIconIsSelectedVerified
+    /// Means, another icon is selected  but yet unverified(shows opacity 50%)
+    case otherIconIsSelectedUnVerified
     /// Means, another segment is generally selected (shows opacity 50%)
     case otherSegmentSelected
     
@@ -131,9 +133,9 @@ public enum TapCardPhoneIconStatus {
         switch self {
         case .selected:
             return "selected"
-        case .otherSegmentSelected:
+        case .otherSegmentSelected,.otherIconIsSelectedUnVerified:
             return "otherSegmentSelected"
-        case .otherIconIsSelected:
+        case .otherIconIsSelectedVerified:
             return "unselected"
         }
     }
