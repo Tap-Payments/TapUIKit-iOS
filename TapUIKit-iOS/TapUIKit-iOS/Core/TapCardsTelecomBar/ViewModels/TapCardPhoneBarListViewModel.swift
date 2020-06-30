@@ -49,7 +49,7 @@ public class TapCardPhoneBarListViewModel {
     
     internal func frame(for segment:String) -> CGRect {
         
-        // we need to filter out only the icons with this specific segment
+        // now we need to move the segment to the selected segment, but first we need to know if we will move it to cover the whole segment or the previously selected icon inside this segment
         let filteredViewModel:[TapCardPhoneIconViewModel] = dataSource.filter{ return $0.associatedCardBrand.brandSegmentIdentifier == segment }
         guard filteredViewModel.count > 0 else { return .zero }
         
@@ -57,10 +57,18 @@ public class TapCardPhoneBarListViewModel {
         guard filteredViewModel.count > 1 else { return filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero }
         
         var resultRect:CGRect = filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero
-        resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
         
+        // Now we need to decide shall we highlight the whole segment or there is an already selected tab within this segment
+        guard let selectedBrand:CardBrand = segmentSelectionObserver.value[segment] as? CardBrand else {
+            // Meaning, there is no selected icon inside this segment, hence we highlight the whole segment
+            resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+            return resultRect
+        }
+        
+        // Meaning there is a sepcic icon selected in this segment, we need to highlight it alone
+        let selectedViewModel:TapCardPhoneIconViewModel = filteredViewModel.filter{ return $0.associatedCardBrand == selectedBrand }[0]
+        resultRect = selectedViewModel.viewDelegate?.viewFrame() ?? .zero
         return resultRect
-        
     }
     
     
@@ -73,6 +81,9 @@ public class TapCardPhoneBarListViewModel {
         
         // With new dataSource, we will not keep a segment selected
         selectedSegmentObserver.accept("")
+        
+        // No valid selection now
+        selectedIconValidatedObserver.accept(false)
     }
 }
 
