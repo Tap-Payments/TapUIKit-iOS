@@ -8,10 +8,12 @@
 
 import Foundation
 import RxCocoa
+import RxSwift
 import enum TapCardVlidatorKit_iOS.CardBrand
 
 internal protocol TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel:TapCardPhoneIconViewModel)
+    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>)
 }
 
 internal protocol TapCardPhoneIconViewDelegate {
@@ -33,6 +35,7 @@ public class TapCardPhoneIconViewModel:Equatable {
     internal var tapCardPhoneIconStatusObserver:BehaviorRelay<TapCardPhoneIconStatus> = .init(value: .selected)
     /// Represent the url for the image to be loaded inside this icon
     internal var tapCardPhoneIconUrlObserver:BehaviorRelay<String> = .init(value: "")
+    internal let disposeBag:DisposeBag = .init()
     
     // MARK:- Public normal swift variables
     /// Represent the icon state
@@ -67,11 +70,48 @@ public class TapCardPhoneIconViewModel:Equatable {
         }
     }
     
-    internal var delegate:TapCardPhoneIconDelegate?
+    internal var delegate:TapCardPhoneIconDelegate?{
+        didSet{
+            bindObservables()
+        }
+    }
     internal var viewDelegate:TapCardPhoneIconViewDelegate?
     
     internal func iconIsSelected() {
         delegate?.iconIsSelected(with: self)
+    }
+    
+    
+    internal func bindObservables() {
+        guard let delegate = delegate else { return }
+        let (segmentSelection , selectedSegment) = delegate.selectionObservers()
+        
+        
+        // Listen to inner segment selection status coupled with selected segment value
+        Observable.combineLatest(segmentSelection, selectedSegment)
+            .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String) in
+                self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment )
+            }).disposed(by: disposeBag)
+    }
+    
+    internal func computeSelectionLogic(for segmentsSelections:[String:CardBrand?], and selectedSegment:String ) {
+        // First we check if there is any segment selected
+        guard selectedSegment != "" else {
+            // No segment is selected, then all icons should be shown normally
+            tapCardPhoneIconStatus = .selected
+            return
+        }
+        
+        // Now there is a segment selected, then we need to know if there is a specific icon is selected inside this segment or the whole segment is selected in general
+        guard let selectedCardBrand:CardBrand = segmentsSelections[selectedSegment] as? CardBrand else {
+            // The segment has no specific icon selected, hence the segment is generally selected.
+            // Then this icon will whether be clear if in segment or opacity if in another
+            tapCardPhoneIconStatus = ((associatedCardBrand.brandSegmentIdentifier == selectedSegment) ? .selected : .otherSegmentSelected )
+            return
+        }
+        
+        // This means there is a segment selected and there is an inner icon inside is selected, hence the current icon will colored or blackwhite based if it is the same icon selected
+        tapCardPhoneIconStatus = ((associatedCardBrand == selectedCardBrand) ? .selected : .otherIconIsSelected )
     }
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxCocoa
+import RxSwift
 import SnapKit
 import enum TapCardVlidatorKit_iOS.CardBrand
 
@@ -67,9 +68,7 @@ public class TapCardPhoneBarListViewModel {
         dataSource.forEach{ $0.delegate = self }
         
         // Create an empty segment selection state
-        var segmentSelection:[String:CardBrand?] = [:]
-        dataSource.forEach{ segmentSelection[$0.associatedCardBrand.brandSegmentIdentifier] = nil }
-        segmentSelectionObserver.accept(segmentSelection)
+        segmentSelectionObserver.accept([:])
         
         // With new dataSource, we will not keep a segment selected
         selectedSegmentObserver.accept("")
@@ -77,6 +76,10 @@ public class TapCardPhoneBarListViewModel {
 }
 
 extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
+    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>) {
+        return (segmentSelectionObserver.share(),selectedSegmentObserver.share())
+    }
+    
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         print(viewModel.tapCardPhoneIconUrl)
         //print(frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier))
