@@ -50,7 +50,7 @@ class TapCardPhoneBarListViewController: UIViewController {
         tapCardPhoneListViewModel.dataSource = Array(dataSource.prefix(upTo: Int(iconsStepper.value)))
     }
     @IBAction func selectionSwitchChanged(_ sender: Any) {
-        tapCardPhoneListViewModel.select(brand: .visa, with: true)
+        tapCardPhoneListViewModel.select(brand: .viva, with: true)
     }
     
     /*

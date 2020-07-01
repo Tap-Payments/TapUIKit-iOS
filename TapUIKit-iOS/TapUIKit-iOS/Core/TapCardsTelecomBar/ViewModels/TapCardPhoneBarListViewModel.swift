@@ -80,6 +80,10 @@ public class TapCardPhoneBarListViewModel {
         // Meaning there is a sepcic icon selected in this segment, we need to highlight it alone
         let selectedViewModel:TapCardPhoneIconViewModel = filteredViewModel.filter{ return $0.associatedCardBrand == selectedBrand }[0]
         resultRect = selectedViewModel.viewDelegate?.viewFrame() ?? .zero
+        if dataSource.firstIndex(of: selectedViewModel) == 0 {
+            resultRect.size.width += resultRect.origin.x
+            resultRect.origin.x = 0
+        }
         return resultRect
     }
     
