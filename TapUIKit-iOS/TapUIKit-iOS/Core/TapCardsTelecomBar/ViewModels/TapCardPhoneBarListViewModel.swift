@@ -97,6 +97,16 @@ public class TapCardPhoneBarListViewModel {
         // No valid selection now
         selectedIconValidatedObserver.accept(false)
     }
+    
+    
+    
+    public func select(brand cardBrand:CardBrand, with validity:Bool) {
+        selectedSegmentObserver.accept(cardBrand.brandSegmentIdentifier)
+        selectedIconValidatedObserver.accept(validity)
+        var currentSelection = segmentSelectionObserver.value
+        currentSelection[cardBrand.brandSegmentIdentifier] = cardBrand
+        segmentSelectionObserver.accept(currentSelection)
+    }
 }
 
 extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
