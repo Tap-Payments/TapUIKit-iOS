@@ -11,12 +11,26 @@ import RxCocoa
 import RxSwift
 import enum TapCardVlidatorKit_iOS.CardBrand
 
+/// Protocol to communicate between the parenr viewmodel (The bar list view model) and this view model
 internal protocol TapCardPhoneIconDelegate {
+    /**
+     Inform the bar list view model that there is an icon had been selected
+     - Parameter viewModel: The TapCardPhoneIconViewModel related to the selected icon
+     */
     func iconIsSelected(with viewModel:TapCardPhoneIconViewModel)
+    /**
+     Interface to access the reactive observables thaare used to fire events from the BarListViewModel so this view model updates itself accordingly
+     - Returns: (Observable of current selected brands in each segment, Observable of the name of the current selected segment, Observable indicates whether the selected tab is validated or not)
+     */
     func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>, Observable<Bool>)
 }
 
+/// Protocol to communicate between the view controlled by this view model ad the view model itself
 internal protocol TapCardPhoneIconViewDelegate {
+    /**
+     Asks the view to calclate its view bounds relative to its superview
+     - Returns: A rect represents the boundries of the associated view
+     */
     func viewFrame() -> CGRect
 }
 
@@ -24,23 +38,20 @@ internal protocol TapCardPhoneIconViewDelegate {
 /// View model that controls the actions and the ui of the card/phone bar inner icon
 public class TapCardPhoneIconViewModel:Equatable {
    
-    public static func == (lhs: TapCardPhoneIconViewModel, rhs: TapCardPhoneIconViewModel) -> Bool {
-        return lhs.tapCardPhoneIconUrl == rhs.tapCardPhoneIconUrl
-    }
-    
-    
     // MARK:- RX Internal Observables
     
     /// Represent the icon state
     internal var tapCardPhoneIconStatusObserver:BehaviorRelay<TapCardPhoneIconStatus> = .init(value: .selected)
     /// Represent the url for the image to be loaded inside this icon
     internal var tapCardPhoneIconUrlObserver:BehaviorRelay<String> = .init(value: "")
+    /// A dispose bag used to garbage collect all registered observables subscriptions
     internal let disposeBag:DisposeBag = .init()
     
     // MARK:- Public normal swift variables
     /// Represent the icon state
     public var tapCardPhoneIconStatus:TapCardPhoneIconStatus = .selected {
         didSet{
+            // Update the observabe with the new state
             tapCardPhoneIconStatusObserver.accept(tapCardPhoneIconStatus)
         }
     }
@@ -48,6 +59,7 @@ public class TapCardPhoneIconViewModel:Equatable {
     /// Represent the url for the image to be loaded inside this icon
     public var tapCardPhoneIconUrl:String = "" {
         didSet{
+            // Update the observabe with the new url
             tapCardPhoneIconUrlObserver.accept(tapCardPhoneIconUrl)
         }
     }
@@ -55,44 +67,46 @@ public class TapCardPhoneIconViewModel:Equatable {
     /// Represent the associated payment brand this cell is linked to
     public var associatedCardBrand:CardBrand = .visa
     
-    /**
-     - Parameter tapCardPhoneIconStatus: Represent the icon state
-     - Parameter associatedCardBrand: Represent the associated payment brand this cell is linked to
-     - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
-     this icon
-     - Parameter tapCardPhoneIconSegmentID: Represent the id of the segment this icon is related to if any
-     */
-    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "") {
-        defer{
-            self.tapCardPhoneIconStatus = tapCardPhoneIconStatus
-            self.tapCardPhoneIconUrl = tapCardPhoneIconUrl
-            self.associatedCardBrand = associatedCardBrand
-        }
-    }
+    // MARK:- Private methods
     
+    ///Delegate to communicate between the parenr viewmodel (The bar list view model) and this view model
     internal var delegate:TapCardPhoneIconDelegate?{
         didSet{
+            // Once assigned, we need to register for the delegate provided observables
             bindObservables()
         }
     }
+    
+    /// Delegae to communicate between the view controlled by this view model ad the view model itself
     internal var viewDelegate:TapCardPhoneIconViewDelegate?
     
+    /// The attached view will call this method once it had been clicked by the user
     internal func iconIsSelected() {
+        // We need to inform our view model delegate that a selection happened, so it can execute the needed logic
         delegate?.iconIsSelected(with: self)
     }
     
-    
+    /// Used to bind all the needed reactive observables to its matching logic and functions
     internal func bindObservables() {
+        // Defensive coding to check we have a proper delegate first
         guard let delegate = delegate else { return }
+        // Fetch the observables from the delegate
         let (segmentSelection , selectedSegment, selectedValidated) = delegate.selectionObservers()
         
-        // Listen to inner segment selection status coupled with selected segment value
+        // Listen to inner segment selection status coupled with selected segment value and the validty of the selection
         Observable.combineLatest(segmentSelection.distinctUntilChanged(), selectedSegment.distinctUntilChanged(), selectedValidated.distinctUntilChanged())
             .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String, selectedValidated:Bool) in
+                // Everytime any of the observables changes, we need to recompite our selection lofic for this specific view model and its attached view
                 self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment, with: selectedValidated )
             }).disposed(by: disposeBag)
     }
     
+    /**
+     Decides the theme should be applied to the associated view based on the rules of tabs selections and the provided inputs
+     - Parameter segmentsSelections: Provides which tab is selected inside each segment if any
+     - Parameter selectedSegment: Provides the segment identifier of the last selected segment
+     - Parameter selectedValidated: Provides the validity of the selected tab if any
+     */
     internal func computeSelectionLogic(for segmentsSelections:[String:CardBrand?], and selectedSegment:String, with selectedValidated:Bool ) {
         // First we check if there is any segment selected
         guard selectedSegment != "" else {
@@ -104,13 +118,36 @@ public class TapCardPhoneIconViewModel:Equatable {
         // Now there is a segment selected, then we need to know if there is a specific icon is selected inside this segment or the whole segment is selected in general
         guard let selectedCardBrand:CardBrand = segmentsSelections[selectedSegment] as? CardBrand else {
             // The segment has no specific icon selected, hence the segment is generally selected.
-            // Then this icon will whether be clear if in segment or opacity if in another
+            // Then this icon will whether be full colored if in segment or opacity if it is in another segment
             tapCardPhoneIconStatus = ((associatedCardBrand.brandSegmentIdentifier == selectedSegment) ? .selected : .otherSegmentSelected )
             return
         }
         
-        // This means there is a segment selected and there is an inner icon inside is selected, hence the current icon will colored or blackwhite based if it is the same icon selected and then see it is validated or not
+        /* This means there is a segment selected and there is an inner icon inside is selected, then we follow these rules:
+         1- If the selection is validated, then all icons will be black and white except the selected icon will be colored
+         2- If the selection is invalid, then all icons will be opacity and the selected icon will be colored
+         */
         tapCardPhoneIconStatus = ((associatedCardBrand == selectedCardBrand) ? .selected : (selectedValidated) ? .otherIconIsSelectedVerified : .otherIconIsSelectedUnVerified )
+    }
+    // MARK:- Public methods
+    
+    public static func == (lhs: TapCardPhoneIconViewModel, rhs: TapCardPhoneIconViewModel) -> Bool {
+        return lhs.tapCardPhoneIconUrl == rhs.tapCardPhoneIconUrl
+    }
+    
+    
+    /**
+     - Parameter tapCardPhoneIconStatus: Represent the icon state
+     - Parameter associatedCardBrand: Represent the associated payment brand this cell is linked to
+     - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
+     this icon
+     */
+    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "") {
+        defer{
+            self.tapCardPhoneIconStatus = tapCardPhoneIconStatus
+            self.tapCardPhoneIconUrl = tapCardPhoneIconUrl
+            self.associatedCardBrand = associatedCardBrand
+        }
     }
 }
 
@@ -127,7 +164,9 @@ public enum TapCardPhoneIconStatus {
     /// Means, another segment is generally selected (shows opacity 50%)
     case otherSegmentSelected
     
-    /// Returns the corrent theme path related to the current state
+    /** Returns the corrent theme path related to the current state
+     - Returns: The correct theme path based on the icon state
+     */
     func themePath() -> String {
         switch self {
         case .selected:
