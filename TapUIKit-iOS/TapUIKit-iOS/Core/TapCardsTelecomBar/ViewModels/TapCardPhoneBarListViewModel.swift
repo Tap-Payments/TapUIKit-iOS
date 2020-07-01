@@ -83,6 +83,8 @@ public class TapCardPhoneBarListViewModel {
         if dataSource.firstIndex(of: selectedViewModel) == 0 {
             resultRect.size.width += resultRect.origin.x
             resultRect.origin.x = 0
+        }else if dataSource.firstIndex(of: selectedViewModel) == dataSource.count - 1 {
+            resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
         }
         return resultRect
     }
