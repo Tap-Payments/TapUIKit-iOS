@@ -970,14 +970,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="HZy-w0-BbQ">
+                                <rect key="frame" x="20" y="195" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Visa invalid"/>
+                                    <segment title="Visa valid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectionSwitchChanged:" destination="yOg-UP-d0U" eventType="valueChanged" id="Bp3-If-dP5"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bj1-rW-JQn" firstAttribute="centerY" secondItem="AOO-Xd-SGx" secondAttribute="centerY" id="59p-ln-mo1"/>
                             <constraint firstItem="AOO-Xd-SGx" firstAttribute="top" secondItem="eCY-aZ-lJ3" secondAttribute="bottom" constant="20" id="6X9-oN-ecj"/>
                             <constraint firstItem="bj1-rW-JQn" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" constant="20" id="OQN-tT-ujy"/>
+                            <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="HZy-w0-BbQ" secondAttribute="trailing" constant="20" id="PK4-2n-SW7"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="centerX" secondItem="ceJ-MJ-84K" secondAttribute="centerX" id="TVZ-nB-bjD"/>
                             <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="AOO-Xd-SGx" secondAttribute="trailing" constant="20" id="cRs-Eb-OGl"/>
+                            <constraint firstItem="HZy-w0-BbQ" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" constant="20" id="dEc-Vz-eWK"/>
+                            <constraint firstItem="HZy-w0-BbQ" firstAttribute="top" secondItem="AOO-Xd-SGx" secondAttribute="bottom" constant="20" id="eCC-2M-lez"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" id="ikg-iH-a4k"/>
                             <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="eCY-aZ-lJ3" secondAttribute="trailing" id="qho-Nr-Q8L"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="top" secondItem="TGF-AL-WVr" secondAttribute="top" constant="30" id="zbD-8W-0ds"/>
@@ -987,6 +1000,7 @@
                     <connections>
                         <outlet property="iconsNumberLabel" destination="bj1-rW-JQn" id="boZ-M3-Lva"/>
                         <outlet property="iconsStepper" destination="AOO-Xd-SGx" id="K9y-5n-y7g"/>
+                        <outlet property="selectionSwitch" destination="HZy-w0-BbQ" id="egW-3e-9qR"/>
                         <outlet property="tapCardPhoneListView" destination="eCY-aZ-lJ3" id="JnH-mB-a0f"/>
                     </connections>
                 </viewController>

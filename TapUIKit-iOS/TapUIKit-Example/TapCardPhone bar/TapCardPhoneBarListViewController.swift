@@ -16,6 +16,7 @@ class TapCardPhoneBarListViewController: UIViewController {
     @IBOutlet weak var iconsNumberLabel: UILabel!
     @IBOutlet weak var iconsStepper: UIStepper!
     @IBOutlet weak var tapCardPhoneListView: TapCardPhoneBarList!
+    @IBOutlet weak var selectionSwitch: UISegmentedControl!
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var dataSource:[TapCardPhoneIconViewModel] = []
     override func viewDidLoad() {
@@ -47,6 +48,9 @@ class TapCardPhoneBarListViewController: UIViewController {
         
         iconsNumberLabel.text = "# icons : \(iconsStepper.value)"
         tapCardPhoneListViewModel.dataSource = Array(dataSource.prefix(upTo: Int(iconsStepper.value)))
+    }
+    @IBAction func selectionSwitchChanged(_ sender: Any) {
+        
     }
     
     /*
