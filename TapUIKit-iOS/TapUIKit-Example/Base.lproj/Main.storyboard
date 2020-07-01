@@ -970,11 +970,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="HZy-w0-BbQ">
-                                <rect key="frame" x="20" y="195" width="374" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="HZy-w0-BbQ">
+                                <rect key="frame" x="0.0" y="195" width="414" height="32"/>
                                 <segments>
                                     <segment title="Visa invalid"/>
                                     <segment title="Visa valid"/>
+                                    <segment title="Master Invalid"/>
+                                    <segment title="Matser valid"/>
+                                    <segment title="Reset"/>
                                 </segments>
                                 <connections>
                                     <action selector="selectionSwitchChanged:" destination="yOg-UP-d0U" eventType="valueChanged" id="Bp3-If-dP5"/>
@@ -986,10 +989,10 @@
                             <constraint firstItem="bj1-rW-JQn" firstAttribute="centerY" secondItem="AOO-Xd-SGx" secondAttribute="centerY" id="59p-ln-mo1"/>
                             <constraint firstItem="AOO-Xd-SGx" firstAttribute="top" secondItem="eCY-aZ-lJ3" secondAttribute="bottom" constant="20" id="6X9-oN-ecj"/>
                             <constraint firstItem="bj1-rW-JQn" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" constant="20" id="OQN-tT-ujy"/>
-                            <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="HZy-w0-BbQ" secondAttribute="trailing" constant="20" id="PK4-2n-SW7"/>
+                            <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="HZy-w0-BbQ" secondAttribute="trailing" id="PK4-2n-SW7"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="centerX" secondItem="ceJ-MJ-84K" secondAttribute="centerX" id="TVZ-nB-bjD"/>
                             <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="AOO-Xd-SGx" secondAttribute="trailing" constant="20" id="cRs-Eb-OGl"/>
-                            <constraint firstItem="HZy-w0-BbQ" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" constant="20" id="dEc-Vz-eWK"/>
+                            <constraint firstItem="HZy-w0-BbQ" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" id="dEc-Vz-eWK"/>
                             <constraint firstItem="HZy-w0-BbQ" firstAttribute="top" secondItem="AOO-Xd-SGx" secondAttribute="bottom" constant="20" id="eCC-2M-lez"/>
                             <constraint firstItem="eCY-aZ-lJ3" firstAttribute="leading" secondItem="TGF-AL-WVr" secondAttribute="leading" id="ikg-iH-a4k"/>
                             <constraint firstItem="TGF-AL-WVr" firstAttribute="trailing" secondItem="eCY-aZ-lJ3" secondAttribute="trailing" id="qho-Nr-Q8L"/>

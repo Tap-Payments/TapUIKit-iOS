@@ -48,9 +48,20 @@ class TapCardPhoneBarListViewController: UIViewController {
         
         iconsNumberLabel.text = "# icons : \(iconsStepper.value)"
         tapCardPhoneListViewModel.dataSource = Array(dataSource.prefix(upTo: Int(iconsStepper.value)))
+        selectionSwitch.selectedSegmentIndex = UISegmentedControl.noSegment
     }
     @IBAction func selectionSwitchChanged(_ sender: Any) {
-        tapCardPhoneListViewModel.select(brand: .viva, with: true)
+        guard let segmet:UISegmentedControl = sender as? UISegmentedControl else { return }
+        
+        
+        tapCardPhoneListView.isUserInteractionEnabled = (segmet.selectedSegmentIndex == 0 || segmet.selectedSegmentIndex == 2 || segmet.selectedSegmentIndex == 4)
+        
+        if segmet.selectedSegmentIndex == 4 {
+            iconsStepper.value = 2
+            iconsStepperChanged(iconsStepper!)
+        }else{
+            tapCardPhoneListViewModel.select(brand: (segmet.selectedSegmentIndex < 2) ? .visa : .masterCard , with: (segmet.selectedSegmentIndex == 1 || segmet.selectedSegmentIndex == 3))
+        }
     }
     
     /*
