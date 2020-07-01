@@ -13,16 +13,22 @@ import SimpleAnimation
 
 /// Represent the icon cell inside the horizontal bar of cards and telecom operators
 public class TapCardPhoneIconView: UIView {
+    
+    // MARK:- Outlets
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
     /// Represents the icon of the card/telecom operator image view
     @IBOutlet weak var iconImageView: UIImageView!
     
+    // MARK:- Private variables
     /// Rerpesents the loaded full colored image for the icon, will be used to show colored and grayscale version
     internal var iconImage:UIImage? = nil
+    /// Rerpesents the View model that controls the actions and the ui of the card/phone bar inner icon
     internal var viewModel:TapCardPhoneIconViewModel? {
         didSet{
+            // Once assigned we declare ourself as the view delegate
             viewModel?.viewDelegate = self
+            // We wire up the view model notifications
             bindObservables()
         }
     }
@@ -32,6 +38,7 @@ public class TapCardPhoneIconView: UIView {
     private let themePath = "cardPhoneList.icon"
     /// The disposing bag for all reactive observables
     private var disposeBag:DisposeBag = .init()
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,6 +49,7 @@ public class TapCardPhoneIconView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+    // MARK:- Private methods
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
@@ -49,18 +57,25 @@ public class TapCardPhoneIconView: UIView {
         applyTheme()
     }
     
+    /// Used to bind all the needed reactive observables to its matching logic and functions
     private func bindObservables() {
         // Defensive coding to make sure there is a view model
         guard let viewModel = viewModel else { return }
-        // Icon url change callback
+        // Icon url change and Tab status change callbacks
         Observable.combineLatest(viewModel.tapCardPhoneIconUrlObserver, viewModel.tapCardPhoneIconStatusObserver)
             .subscribe(onNext: { [weak self] (iconURL, iconStatus) in
+                // once the icon is changed, we need to load the icon
                 self?.loadIcon(from: iconURL, with: iconStatus)
+                // once the status is changed we need to update the theme
                 self?.applyTheme()
             }).disposed(by: disposeBag)
     }
     
-    
+    /**
+     Handles the logic for loading the icon from the URL with animation
+     - Parameter url: The url to load the icon from
+     - Parameter status: The current status that will affect the final look and feel for the loded icon
+     */
     private func loadIcon(from url:String, with status:TapCardPhoneIconStatus) {
         // defensive coding to make sure it is a correct URL
         guard let iconURL = URL(string: url) else { return }
@@ -78,6 +93,8 @@ public class TapCardPhoneIconView: UIView {
         }
     }
     
+    
+    // MARK:- Public methods
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.frame = bounds
@@ -91,8 +108,11 @@ public class TapCardPhoneIconView: UIView {
         self.viewModel = viewModel
     }
     
+    /// Fired when the user clicks on the tab
     @IBAction private func iconClicked(_ sender: Any) {
+        // Defensive coding to make sure there is a valid view model attached to the current view
         guard let viewModel = viewModel else { return }
+        // Inform the viewmodel that this icon is selected
         viewModel.iconIsSelected()
     }
 }
