@@ -86,9 +86,8 @@ public class TapCardPhoneIconViewModel:Equatable {
         guard let delegate = delegate else { return }
         let (segmentSelection , selectedSegment, selectedValidated) = delegate.selectionObservers()
         
-        
         // Listen to inner segment selection status coupled with selected segment value
-        Observable.combineLatest(segmentSelection, selectedSegment, selectedValidated)
+        Observable.combineLatest(segmentSelection.distinctUntilChanged(), selectedSegment.distinctUntilChanged(), selectedValidated.distinctUntilChanged())
             .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String, selectedValidated:Bool) in
                 self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment, with: selectedValidated )
             }).disposed(by: disposeBag)

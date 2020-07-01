@@ -106,6 +106,10 @@ public class TapCardPhoneBarListViewModel {
         var currentSelection = segmentSelectionObserver.value
         currentSelection[cardBrand.brandSegmentIdentifier] = cardBrand
         segmentSelectionObserver.accept(currentSelection)
+        
+        let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand == cardBrand}
+        guard relatedModels.count > 0 else { return }
+        iconIsSelected(with: relatedModels[0])
     }
 }
 
