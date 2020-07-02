@@ -22,11 +22,14 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapCurrienciesChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var gatewayChipsViewModel:[GenericTapChipViewModel] = []
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
+    let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
+    var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
+    var tapCardPhoneListView: TapCardPhoneBarList = .init()
     
     var rates:[String:Double] = [:]
     
@@ -49,10 +52,23 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapMerchantHeaderViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
         
+        
+        createTabBarViewModel()
         createGatewaysViews()
         createItemsViewModel()
     }
     
+    func createTabBarViewModel() {
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .visa, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/visa.png"))
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .masterCard, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/mastercard.png"))
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .americanExpress, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/amex.png"))
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .mada, tapCardPhoneIconUrl: "https://i.ibb.co/S3VhxmR/796px-Mada-Logo-svg.png"))
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .viva, tapCardPhoneIconUrl: "https://i.ibb.co/cw5y89V/unnamed.png"))
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .wataniya, tapCardPhoneIconUrl: "https://i.ibb.co/PCYd8Xm/ooredoo-3x.png"))
+        tapCardPhoneListDataSource.append(.init(associatedCardBrand: .zain, tapCardPhoneIconUrl: "https://i.ibb.co/mvkJXwF/zain-3x.png"))
+        
+        tapCardPhoneListViewModel.dataSource = tapCardPhoneListDataSource
+    }
     
     func createItemsViewModel() {
         var itemsModels:[ItemCellViewModel] = []
@@ -119,6 +135,12 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         // The GatwayListSection
         views.append(gatewaysListView)
+        
+        // The tab bar section
+        tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
+        tapCardPhoneListView.heightAnchor.constraint(equalToConstant: 51).isActive = true
+        tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
+        views.append(tapCardPhoneListView)
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
@@ -213,6 +235,8 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == gatewaysListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
                 views.remove(at: index)
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
@@ -236,8 +260,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(gatewaysListView)
+                views.append(tapCardPhoneListView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardPhoneListView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }

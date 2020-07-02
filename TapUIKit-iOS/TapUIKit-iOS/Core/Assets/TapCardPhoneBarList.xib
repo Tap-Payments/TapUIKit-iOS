@@ -35,6 +35,13 @@
                     </subviews>
                     <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="28" bottom="0.0" trailing="28"/>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LD-Ma-eyB" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="48" width="414" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Dsq-mx-8Pb"/>
+                    </constraints>
+                </view>
                 <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-Wy-WNR">
                     <rect key="frame" x="0.0" y="47.333333333333336" width="1" height="2.6666666666666643"/>
                     <constraints>
@@ -46,7 +53,10 @@
             <constraints>
                 <constraint firstItem="kY4-Wy-WNR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Nx-N8-eVF"/>
                 <constraint firstItem="VtN-8F-QZV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AZe-aT-LeE"/>
+                <constraint firstItem="1LD-Ma-eyB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="B80-wf-Amg"/>
                 <constraint firstItem="VtN-8F-QZV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CEX-yv-284"/>
+                <constraint firstAttribute="trailing" secondItem="1LD-Ma-eyB" secondAttribute="trailing" id="d9q-tF-Hds"/>
+                <constraint firstItem="1LD-Ma-eyB" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jle-Aj-fHb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VtN-8F-QZV" secondAttribute="bottom" id="lOk-m4-R08"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VtN-8F-QZV" secondAttribute="trailing" id="n26-1C-ih6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kY4-Wy-WNR" secondAttribute="bottom" id="oI1-QI-JpM"/>
