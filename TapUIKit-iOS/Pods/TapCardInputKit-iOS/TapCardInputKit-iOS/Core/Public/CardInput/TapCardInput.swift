@@ -35,7 +35,7 @@ internal protocol TapCardInputCommonProtocol {
      - Parameter tapCard: The TapCard model that hold sthe data the currently enetred by the user till now
      */
     func cardDataChanged(tapCard:TapCard)
-    func brandDetected(for cardBrand:CardBrand,with validation:CardValidationState)
+    func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
     /// This method will be called once the user clicks on Scan button
     func scanCardClicked()
     /**
@@ -425,7 +425,7 @@ internal protocol TapCardInputCommonProtocol {
             // If there is a delegate then we call the related method
             nonNullDelegate.cardDataChanged(tapCard: tapCard)
             let (detectedBrand, detectionValidation) = cardNumber.cardBrand(for: tapCard.tapCardNumber ?? "")
-            nonNullDelegate.brandDetected(for: detectedBrand ?? .zain, with: detectionValidation)
+            nonNullDelegate.brandDetected(for: detectedBrand ?? .zain, with: cardNumber.textFieldStatus(cardNumber: tapCard.tapCardNumber))
         }
         FlurryLogger.logEvent(with: "Tap_Card_Input_Data_Changed", timed:false , params:["card_number":tapCard.tapCardNumber ?? "","card_name":tapCard.tapCardName ?? "","card_month":tapCard.tapCardExpiryMonth ?? "","card_year":tapCard.tapCardExpiryYear ?? ""])
         adjustExpiryCvv()

@@ -16,6 +16,7 @@ import TapCardVlidatorKit_iOS
 class TapCardInputViewController: UIViewController {
     @IBOutlet weak var cardInput: TapCardInput!
     
+    @IBOutlet weak var delegateTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,24 +55,38 @@ class TapCardInputViewController: UIViewController {
 
 extension TapCardInputViewController: TapCardInputProtocol {
     
-    func brandDetected(for cardBrand: CardBrand, with validation: CardValidationState) {
-        //resultTextView.text = "Brand detected for : \(cardBrand) with status of : \(validation)\n\(resultTextView.text ?? "")\n";
+    func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+        delegateTextView.text = "Validation status : \(validation.toString())\n\(delegateTextView.text ?? "")\n";
     }
     
     
     func saveCardChanged(enabled: Bool) {
-        //resultTextView.text = "SAVE CARD isENABLED : \(enabled)\n\(resultTextView.text ?? "")\n";
+        delegateTextView.text = "SAVE CARD isENABLED : \(enabled)\n\(delegateTextView.text ?? "")\n";
     }
     
     
     func cardDataChanged(tapCard: TapCard) {
-       // resultTextView.text = "Card Number : \(tapCard.tapCardNumber ?? "")\nCard Name : \(tapCard.tapCardName ?? "")\nCard Expiry : \(tapCard.tapCardExpiryMonth ?? "")/\(tapCard.tapCardExpiryYear ?? "")\nCard CVV : \(tapCard.tapCardCVV ?? "")\n\(resultTextView.text ?? "")\n"
+       delegateTextView.text = "Card Number : \(tapCard.tapCardNumber ?? "")\nCard Name : \(tapCard.tapCardName ?? "")\nCard Expiry : \(tapCard.tapCardExpiryMonth ?? "")/\(tapCard.tapCardExpiryYear ?? "")\nCard CVV : \(tapCard.tapCardCVV ?? "")\n\(delegateTextView.text ?? "")\n"
     }
     
     func scanCardClicked() {
-        //resultTextView.text = "SCAN CLICKED\n\(resultTextView.text ?? "")\n";
+        delegateTextView.text = "SCAN CLICKED\n\(delegateTextView.text ?? "")\n";
     }
     
     
 }
 
+extension CrardInputTextFieldStatusEnum {
+    func toString() -> String {
+        switch self {
+            case .Invalid:
+                return "Invalid"
+            case .Incomplete:
+                return "Incomplete"
+            case .Valid:
+                return "Valid"
+            case .isEditing:
+                return "Incomplete"
+        }
+    }
+}

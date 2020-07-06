@@ -1038,22 +1038,34 @@
                                     <action selector="oneBrandSwitchChanged:" destination="vbd-Ib-n7G" eventType="valueChanged" id="XJy-oc-Dnp"/>
                                 </connections>
                             </switch>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bof-9m-apU">
+                                <rect key="frame" x="0.0" y="189" width="414" height="653"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79856057359999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="u2o-No-reh" firstAttribute="leading" secondItem="8Zb-jb-OPB" secondAttribute="leading" constant="20" id="1qe-1p-QYv"/>
                             <constraint firstItem="nyA-AH-h9k" firstAttribute="top" secondItem="VoO-KH-th9" secondAttribute="bottom" constant="20" id="5Xz-aw-Hbe"/>
                             <constraint firstItem="VoO-KH-th9" firstAttribute="top" secondItem="8Zb-jb-OPB" secondAttribute="top" constant="30" id="87I-wJ-q8G"/>
+                            <constraint firstItem="8Zb-jb-OPB" firstAttribute="trailing" secondItem="bof-9m-apU" secondAttribute="trailing" id="8gb-Op-eQf"/>
                             <constraint firstItem="8Zb-jb-OPB" firstAttribute="trailing" secondItem="VoO-KH-th9" secondAttribute="trailing" id="BKa-8e-fS6"/>
+                            <constraint firstItem="8Zb-jb-OPB" firstAttribute="bottom" secondItem="bof-9m-apU" secondAttribute="bottom" constant="20" id="ELa-0T-wMH"/>
                             <constraint firstItem="VoO-KH-th9" firstAttribute="leading" secondItem="8Zb-jb-OPB" secondAttribute="leading" id="LW8-eN-myY"/>
                             <constraint firstItem="nyA-AH-h9k" firstAttribute="centerY" secondItem="u2o-No-reh" secondAttribute="centerY" id="VCk-xx-CX7"/>
                             <constraint firstItem="8Zb-jb-OPB" firstAttribute="trailing" secondItem="nyA-AH-h9k" secondAttribute="trailing" constant="20" id="YgS-hA-8nI"/>
+                            <constraint firstItem="bof-9m-apU" firstAttribute="leading" secondItem="8Zb-jb-OPB" secondAttribute="leading" id="glX-Oa-aoK"/>
                             <constraint firstItem="VoO-KH-th9" firstAttribute="centerX" secondItem="ou1-lk-MiW" secondAttribute="centerX" id="l6G-hg-a6Q"/>
+                            <constraint firstItem="bof-9m-apU" firstAttribute="top" secondItem="u2o-No-reh" secondAttribute="bottom" constant="20" id="zGR-Ds-VmP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Zb-jb-OPB"/>
                     </view>
                     <connections>
                         <outlet property="cardInput" destination="VoO-KH-th9" id="i2g-Ak-2PI"/>
+                        <outlet property="delegateTextView" destination="bof-9m-apU" id="7gf-ip-eaj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NjY-Km-Log" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
