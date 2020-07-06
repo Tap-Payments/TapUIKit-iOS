@@ -15,8 +15,7 @@
             "white80":"#ffffffcc",
             "vibrantGreen" : "#2ace00",
             "vibrantGreenTwo" : "#00d300",
-            "paleLilac":"#e4e4e5",
-            "clear":"#00000000"
+            "paleLilac":"#e4e4e5"
         }
     },
     "inlineCard": {
@@ -36,7 +35,7 @@
             "widthMargin": 7
         },
         "iconImage": {
-            "image": "bank",
+            "image": "card",
             "width": 32
         },
         "scanImage": {
@@ -46,8 +45,8 @@
         "textFields": {
             "textColor": "white",
             "errorTextColor": "#FF0000",
-            "font": "15",
-            "placeHolderColor" : "whiteAA"
+            "font" : "Roboto-Light,17",
+            "placeHolderColor" : "white"
         },
         "saveCardOption": {
             "labelTextColor": "white",
@@ -321,7 +320,6 @@
         "backgroundColor": "white",
         "separatorColor": "veryLightPinkTwo",
         "item":{
-            "descriptionBackgroundColor" : "white",
             "backgroundColor": "white",
             "titleLabelFont" : "Roboto-Regular,14",
             "titleLabelColor" : "greyishBrown",
@@ -335,34 +333,6 @@
                 "backgroundColor": "paleLilac",
                 "countLabelFont" : "Roboto-Regular,9",
                 "countLabelColor" : "greyishBrown",
-            }
-        }
-    },
-    "cardPhoneList":
-    {
-        "backgroundColor": "whiteTwo",
-        "maxWidth":60,
-        "insets":28,
-        "underline":{
-            "unselected": {
-                "backgroundColor" : "brownGrey"
-            },
-            "selected": {
-                "backgroundColor" : "vibrantGreen"
-            }
-        },
-        "icon":{
-            "selected": {
-                "backgroundColor" : "clear",
-                "alpha": 1
-            },
-            "otherSegmentSelected": {
-                "backgroundColor" : "clear",
-                "alpha": 0.5
-            },
-            "unselected": {
-                "backgroundColor" : "clear",
-                "alpha": 1
             }
         }
     }

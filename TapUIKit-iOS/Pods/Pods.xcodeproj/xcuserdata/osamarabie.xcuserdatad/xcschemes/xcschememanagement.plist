@@ -200,33 +200,40 @@
 			<key>orderHint</key>
 			<integer>28</integer>
 		</dict>
-		<key>TapCardVlidatorKit-iOS.xcscheme</key>
+		<key>TapCardInputKit-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>29</integer>
 		</dict>
-		<key>TapFontKit-iOS.xcscheme</key>
+		<key>TapCardVlidatorKit-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>30</integer>
 		</dict>
-		<key>TapSwiftFixes.xcscheme</key>
+		<key>TapFontKit-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>31</integer>
 		</dict>
-		<key>TapThemeManager2020.xcscheme</key>
+		<key>TapSwiftFixes.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>32</integer>
+		</dict>
+		<key>TapThemeManager2020.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>33</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>

@@ -1,7 +1,7 @@
 {
     "en": {
         "TapCardInputKit": {
-            "cardNumberPlaceHolder": "Card number",
+            "cardNumberPlaceHolder": "0000 0000 0000 0000",
             "cardNamePlaceHolder": "Holder name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
@@ -34,7 +34,7 @@
     },
     "ar": {
         "TapCardInputKit": {
-            "cardNumberPlaceHolder": "رقم البطاقة",
+            "cardNumberPlaceHolder": "0000 0000 0000 0000",
             "cardNamePlaceHolder": "صاحب البطاقة",
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",

@@ -1,0 +1,6 @@
+framework module TapCardInputKit_iOS {
+  umbrella header "TapCardInputKit-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

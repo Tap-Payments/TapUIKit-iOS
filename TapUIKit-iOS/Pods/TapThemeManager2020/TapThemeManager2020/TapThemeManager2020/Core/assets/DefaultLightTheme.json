@@ -16,15 +16,16 @@
             "vibrantGreen" : "#2ace00",
             "vibrantGreenTwo" : "#00d300",
             "paleLilac":"#e4e4e5",
-            "clear":"#00000000"
+            "clear":"#00000000",
+            "brownGreyTwo":"#b2b2b2"
         }
     },
     "inlineCard": {
         "commonAttributes": {
             "backgroundColor": "white",
-            "borderColor": "#0066FF",
+            "borderColor": "clear",
             "cornerRadius": 0,
-            "borderWidth": 1,
+            "borderWidth": 0,
             "itemSpacing": 5,
             "shadow":{
                 "color": "#2ACE00",
@@ -36,7 +37,7 @@
             "widthMargin": 7
         },
         "iconImage": {
-            "image": "bank",
+            "image": "card",
             "width": 32
         },
         "scanImage": {
@@ -44,10 +45,10 @@
             "width": 32
         },
         "textFields": {
-            "textColor": "black",
+            "textColor": "greyishBrown",
             "errorTextColor": "#FF0000",
-            "font": "15",
-            "placeHolderColor" : "#00000055"
+            "font" : "Roboto-Light,17",
+            "placeHolderColor" : "brownGreyTwo"
         },
         "saveCardOption": {
             "labelTextColor": "black",

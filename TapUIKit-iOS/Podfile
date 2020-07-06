@@ -32,4 +32,5 @@ target 'TapUIKit-iOS' do
   pod 'TapApplePayKit-iOS'
   pod 'TapCardVlidatorKit-iOS'
   pod 'EasyAnimation'
+  pod 'TapCardInputKit-iOS'
 end

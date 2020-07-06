@@ -109,7 +109,7 @@
 
         @available(*, unavailable) private init() {}
     }
-
+    
     /// Represents which type of brands is this cards or telecom or apple pay
     public var brandSegmentIdentifier:String {
         get {

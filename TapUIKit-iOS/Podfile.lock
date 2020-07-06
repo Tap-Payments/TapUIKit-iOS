@@ -1,6 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.16)
+  - CommonDataModelsKit-iOS (1.0.18)
   - EasyAnimation (2.2.1)
   - Firebase/Analytics (6.27.0):
     - Firebase/Core
@@ -32,7 +32,7 @@ PODS:
     - GoogleUtilities/Environment (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
-  - Flurry-iOS-SDK/FlurrySDK (10.3.2)
+  - Flurry-iOS-SDK/FlurrySDK (10.3.3)
   - GoogleAppMeasurement (6.6.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -86,7 +86,16 @@ PODS:
   - TapApplePayKit-iOS (1.0.4):
     - CommonDataModelsKit-iOS (~> 1.0.1)
     - Flurry-iOS-SDK/FlurrySDK
-  - TapCardVlidatorKit-iOS (1.0.0)
+  - TapCardInputKit-iOS (1.0.4):
+    - CommonDataModelsKit-iOS
+    - Flurry-iOS-SDK/FlurrySDK
+    - LocalisationManagerKit-iOS
+    - MOLH
+    - Nuke
+    - SnapKit
+    - TapCardVlidatorKit-iOS
+    - TapThemeManager2020
+  - TapCardVlidatorKit-iOS (1.0.1)
   - TapFontKit-iOS (0.0.3):
     - SwiftLint
     - TapSwiftFixes
@@ -97,7 +106,7 @@ PODS:
   - TapSwiftFixes/CoreGraphics (1.0.9)
   - TapSwiftFixes/Exceptions (1.0.9)
   - TapSwiftFixes/Threading (1.0.9)
-  - TapThemeManager2020 (1.0.22):
+  - TapThemeManager2020 (1.0.25):
     - LocalisationManagerKit-iOS
     - TapFontKit-iOS
 
@@ -115,6 +124,7 @@ DEPENDENCIES:
   - SimpleAnimation
   - SnapKit
   - TapApplePayKit-iOS
+  - TapCardInputKit-iOS
   - TapCardVlidatorKit-iOS
   - TapThemeManager2020
 
@@ -147,6 +157,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftLint
     - TapApplePayKit-iOS
+    - TapCardInputKit-iOS
     - TapCardVlidatorKit-iOS
     - TapFontKit-iOS
     - TapSwiftFixes
@@ -154,14 +165,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: db179a18d63b200358e49cb3598090f9b19231df
+  CommonDataModelsKit-iOS: 1f7a206074129800354c96b34f9f5e5e6d93048d
   EasyAnimation: 226d133d23ef0ef99ddfb8928ff2a9a4a77d1cfd
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
   FirebaseAnalytics: 0ea640473474f036cabbc2576e20c2d63671c92f
   FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
   FirebaseCoreDiagnostics: 4505e4d4009b1d93f605088ee7d7764d5f0d1c84
   FirebaseInstallations: 293f567159b6d66d1c990f13bb868066096c94ec
-  Flurry-iOS-SDK: 28376e8b5215cf054ef6d95451ff05f0b0633b95
+  Flurry-iOS-SDK: 74038865f22ab9f587877b6a01b79e1b3bd86e01
   GoogleAppMeasurement: 2fd5c5a56c069db635c8e7b92d4809a9591d0a69
   GoogleDataTransport: 9a8a16f79feffc7f42096743de2a7c4815e84020
   GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
@@ -180,11 +191,12 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   TapApplePayKit-iOS: 65ce3416d617a28a0d70726810e6b49402ed192c
-  TapCardVlidatorKit-iOS: f39ea75d70b9a0d59b219e5a7fe2d1925070e907
+  TapCardInputKit-iOS: e09fb66eecaca3d76e00c5940db12331343d4ce6
+  TapCardVlidatorKit-iOS: 4165d2d1e020b94ff2ab28903ba30ee4ed39679b
   TapFontKit-iOS: 2810f6f66ad8a1fa9a2afc0e3cbaf6ecd5dc9d1f
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
-  TapThemeManager2020: 56fd0aa2a884f8392ef0f326a9a37362e5564735
+  TapThemeManager2020: 1de741916fb15589c1f479c41745b2181725336f
 
-PODFILE CHECKSUM: 4b1f264e5a5ca1604d965a3f915c6f2ded1e37b8
+PODFILE CHECKSUM: 30d266c9f2631bcf0d2745c99f6a156772370fd5
 
 COCOAPODS: 1.9.3
