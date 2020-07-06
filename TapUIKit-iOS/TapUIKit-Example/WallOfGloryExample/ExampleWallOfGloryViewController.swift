@@ -8,8 +8,11 @@
 
 import UIKit
 import TapUIKit_iOS
-import CommonDataModelsKit_iOS
 import TapApplePayKit_iOS
+import TapCardInputKit_iOS
+import CommonDataModelsKit_iOS
+import LocalisationManagerKit_iOS
+import TapCardVlidatorKit_iOS
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -30,6 +33,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardPhoneListView: TapCardPhoneBarList = .init()
+    var cardInputView: TapCardInput = .init()
     
     var rates:[String:Double] = [:]
     
@@ -141,6 +145,12 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardPhoneListView.heightAnchor.constraint(equalToConstant: 51).isActive = true
         tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
         views.append(tapCardPhoneListView)
+        
+        cardInputView.translatesAutoresizingMaskIntoConstraints = false
+        cardInputView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        views.append(cardInputView)
+        cardInputView.delegate = self
+        cardInputView.setup(for: .InlineCardInput,allowedCardBrands: [CardBrand.visa.rawValue,CardBrand.americanExpress.rawValue,CardBrand.masterCard.rawValue,CardBrand.mada.rawValue])
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
@@ -368,3 +378,33 @@ extension UIApplication {
 
 
 
+
+extension ExampleWallOfGloryViewController:TapCardInputProtocol {
+    func cardDataChanged(tapCard: TapCard) {
+        
+    }
+    
+    func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+        
+        //tapCardPhoneListViewModel.select(segment: cardBrand.brandSegmentIdentifier)
+        
+        
+        if validation == .Invalid || cardBrand == .unknown {
+            tapCardPhoneListViewModel.resetCurrentSegment()
+        }else if validation == .Incomplete {
+            tapCardPhoneListViewModel.select(brand: cardBrand, with: false)
+        }else if validation == .Valid {
+            tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
+        }
+    }
+    
+    func scanCardClicked() {
+        
+    }
+    
+    func saveCardChanged(enabled: Bool) {
+        
+    }
+    
+    
+}

@@ -32,14 +32,15 @@ class TapCardPhoneBarListViewController: UIViewController {
         tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
         
         tapCardPhoneListViewModel.dataSource = Array(dataSource.prefix(upTo: 3))
+        
         // Do any additional setup after loading the view.
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-       
+        tapCardPhoneListViewModel.select(segment: "cards")
         
     }
     

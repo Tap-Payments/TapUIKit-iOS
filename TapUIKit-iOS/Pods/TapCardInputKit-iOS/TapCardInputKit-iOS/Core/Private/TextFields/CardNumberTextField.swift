@@ -9,15 +9,15 @@
 import TapCardVlidatorKit_iOS
 /// Represnts the card number text field
 class CardNumberTextField:TapCardTextField {
-   
+    
     /**
      This is the block that will fire an event when a card brand is detected
      - Parameter CardBrand: The detected card brand
      */
     var cardBrandDetected: ((CardBrand?) -> ())? =  nil
     /**
-    This is the block that will fire an event when a the card number has changed
-    */
+     This is the block that will fire an event when a the card number has changed
+     */
     var cardNumberChanged: ((String) -> ())? =  nil
     
     var allowedBrands:[Int] = []
@@ -41,13 +41,13 @@ class CardNumberTextField:TapCardTextField {
         
         // Set the place holder with the theme color
         self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: placeHolderTextColor])
- 
+        
         // Card number should have a numeric pad
         self.keyboardType = .phonePad
         
         // Listen to the event of text change
         self.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
-
+        
         // Assign the observers and the blocks
         self.editingStatusChanged = editingStatusChanged
         self.cardBrandDetected = cardBrandDetected
@@ -89,14 +89,18 @@ extension CardNumberTextField:CardInputTextFieldProtocol {
             return .Invalid
         }
         
+        if nonNullCardNumber == "" {
+            return .Invalid
+        }
+        
         let validationState = definedCard.validationState
         switch validationState {
-            case .incomplete:
-                return .Incomplete
-            case .invalid:
-                return .Invalid
-            case .valid:
-                return .Valid
+        case .incomplete:
+            return .Incomplete
+        case .invalid:
+            return .Invalid
+        case .valid:
+            return .Valid
         }
     }
     
@@ -123,7 +127,7 @@ extension CardNumberTextField:UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       // get the current text, or use an empty string if that failed
+        // get the current text, or use an empty string if that failed
         let currentText = textField.text ?? ""
         // attempt to read the range they are trying to change, or exit if we can't
         guard let stringRange = Range(range, in: currentText) else { return false }

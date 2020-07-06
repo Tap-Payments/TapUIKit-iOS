@@ -10,6 +10,7 @@ target 'TapUIKit-Example' do
   pod 'SheetyColors'
   pod 'TapApplePayKit-iOS'
   pod 'TapCardVlidatorKit-iOS'
+  pod 'IQKeyboardManagerSwift'
   # Pods for TapUIKit-Example
 
 end

@@ -85,6 +85,7 @@ public class TapCardPhoneBarList: UIView {
             .subscribe(onNext: { [weak self] (validated) in
                 // When the validation of the selection changes, we need to re theme our underline view
                 self?.themeBar(selectionValid: validated)
+                self?.isUserInteractionEnabled = !validated
             }).disposed(by: disposeBag)
     }
     

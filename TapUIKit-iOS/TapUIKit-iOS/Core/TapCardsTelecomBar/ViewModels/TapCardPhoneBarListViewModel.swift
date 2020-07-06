@@ -172,6 +172,42 @@ public class TapCardPhoneBarListViewModel {
         let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand == cardBrand}
         guard relatedModels.count > 0 else { return }
         iconIsSelected(with: relatedModels[0])
+        
+        
+    }
+    
+    
+    public func select(segment segmentID:String) {
+        // Fire a notification of a new selected segment
+        selectedSegmentObserver.accept(segmentID)
+        // Fire a notification of a new selection validation
+        selectedIconValidatedObserver.accept(false)
+      
+        var currentSelection = segmentSelectionObserver.value
+        currentSelection[segmentID] = nil
+        segmentSelectionObserver.accept(currentSelection)
+        
+        // After firing the required events, we need to move the bar to the selected tab associated to the brand
+        let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand.brandSegmentIdentifier == segmentID}
+        guard relatedModels.count > 0 else { return }
+        iconIsSelected(with: relatedModels[0])
+    }
+    
+    
+    public func resetCurrentSegment() {
+        let currentSelectedSegment:String = selectedSegmentObserver.value
+        guard currentSelectedSegment != "" else { return }
+        
+        selectedIconValidatedObserver.accept(false)
+        
+        var currentSelection = segmentSelectionObserver.value
+        currentSelection[currentSelectedSegment] = nil
+        segmentSelectionObserver.accept(currentSelection)
+        
+        // After firing the required events, we need to move the bar to the selected tab associated to the brand
+        let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand.brandSegmentIdentifier == currentSelectedSegment}
+        guard relatedModels.count > 0 else { return }
+        iconIsSelected(with: relatedModels[0])
     }
 }
 
