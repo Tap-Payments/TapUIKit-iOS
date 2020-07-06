@@ -29,6 +29,7 @@
 		E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56C5249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift */; };
 		E82A56C8249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */; };
 		E82A56CA249B8A3C00E3F00D /* CurrencyChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56C9249B8A3C00E3F00D /* CurrencyChipViewModel.swift */; };
+		E832E63B24B3320800E2241B /* TapCardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E832E63A24B3320800E2241B /* TapCardInputViewController.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADC22459815D00E55A68 /* tapLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E835ADC12459815D00E55A68 /* tapLogo.png */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -165,6 +166,7 @@
 		E82A56C5249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E82A56C9249B8A3C00E3F00D /* CurrencyChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChipViewModel.swift; sourceTree = "<group>"; };
+		E832E63A24B3320800E2241B /* TapCardInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardInputViewController.swift; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADC12459815D00E55A68 /* tapLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapLogo.png; sourceTree = "<group>"; };
 		E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,6 +361,14 @@
 			path = CurrencyChip;
 			sourceTree = "<group>";
 		};
+		E832E63924B331F200E2241B /* TapCardInput */ = {
+			isa = PBXGroup;
+			children = (
+				E832E63A24B3320800E2241B /* TapCardInputViewController.swift */,
+			);
+			path = TapCardInput;
+			sourceTree = "<group>";
+		};
 		E8428DD82456DAF300D5A45A = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +402,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				E832E63924B331F200E2241B /* TapCardInput */,
 				E87E09E524A89D2B004A7A46 /* TapCardPhone bar */,
 				E8861D3E249FA8A40002FEDE /* CellsTesting */,
 				E82A56C3249B2EE300E3F00D /* TapUIKit-Example.entitlements */,
@@ -1025,6 +1036,7 @@
 				E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */,
 				E87E09E724A89D9E004A7A46 /* TapCardPhoneIconViewController.swift in Sources */,
 				E80EA58F24974B4900C5C5E1 /* ChipsTestingViewController.swift in Sources */,
+				E832E63B24B3320800E2241B /* TapCardInputViewController.swift in Sources */,
 				E8C5910424936C6E00E03424 /* TapAmountSectionViewController.swift in Sources */,
 				E87CEA48248FBFBC002F2332 /* TapMerchantHeaderViewController.swift in Sources */,
 				E8A57AA924A9CCE200C1B6CD /* TapCardPhoneBarListViewController.swift in Sources */,

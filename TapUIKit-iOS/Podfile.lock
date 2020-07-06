@@ -86,7 +86,7 @@ PODS:
   - TapApplePayKit-iOS (1.0.4):
     - CommonDataModelsKit-iOS (~> 1.0.1)
     - Flurry-iOS-SDK/FlurrySDK
-  - TapCardInputKit-iOS (1.0.4):
+  - TapCardInputKit-iOS (1.0.5):
     - CommonDataModelsKit-iOS
     - Flurry-iOS-SDK/FlurrySDK
     - LocalisationManagerKit-iOS
@@ -106,7 +106,7 @@ PODS:
   - TapSwiftFixes/CoreGraphics (1.0.9)
   - TapSwiftFixes/Exceptions (1.0.9)
   - TapSwiftFixes/Threading (1.0.9)
-  - TapThemeManager2020 (1.0.25):
+  - TapThemeManager2020 (1.0.26):
     - LocalisationManagerKit-iOS
     - TapFontKit-iOS
 
@@ -191,11 +191,11 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   TapApplePayKit-iOS: 65ce3416d617a28a0d70726810e6b49402ed192c
-  TapCardInputKit-iOS: e09fb66eecaca3d76e00c5940db12331343d4ce6
+  TapCardInputKit-iOS: 75159ffe1fd7e4986137cd2dea7be5f46094f8ec
   TapCardVlidatorKit-iOS: 4165d2d1e020b94ff2ab28903ba30ee4ed39679b
   TapFontKit-iOS: 2810f6f66ad8a1fa9a2afc0e3cbaf6ecd5dc9d1f
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
-  TapThemeManager2020: 1de741916fb15589c1f479c41745b2181725336f
+  TapThemeManager2020: 77f3dfccd108e14300d52f62de250975399ab012
 
 PODFILE CHECKSUM: 30d266c9f2631bcf0d2745c99f6a156772370fd5
 

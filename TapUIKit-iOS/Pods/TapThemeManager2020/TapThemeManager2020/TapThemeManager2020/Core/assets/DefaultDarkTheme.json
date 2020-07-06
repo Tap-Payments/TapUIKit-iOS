@@ -42,6 +42,10 @@
             "image": "scanIcon",
             "width": 32
         },
+        "clearImage": {
+            "image": "clearFormIcon",
+            "width": 32
+        },
         "textFields": {
             "textColor": "white",
             "errorTextColor": "#FF0000",
