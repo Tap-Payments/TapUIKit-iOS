@@ -200,8 +200,7 @@ extension TapCardInput {
         guard cardInputMode == .InlineCardInput else {return}
         if let nonNullView:TapCardTextField = subView as? TapCardTextField {
             //scrollView.layoutIfNeeded()
-            layoutIfNeeded()
-            
+            layoutIfNeeded()     
             guard nonNullView == cardNumber else { return }
             
             nonNullView.snp.updateConstraints( { [weak self] make in
@@ -216,8 +215,8 @@ extension TapCardInput {
             nonNullView.text = correctNumberText.cardFormat(with: spacing)
             
             UIView.animate(withDuration: 0.2, animations: { [weak self] in
-                self?.cardExpiry.alpha = nonNullView.isEditing ? 0 : 1
-                self?.cardCVV.alpha = nonNullView.isEditing ? 0 : 1
+                self?.cardExpiry.alpha = (nonNullView.isEditing || !self!.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber)) ? 0 : 1
+                self?.cardCVV.alpha = (nonNullView.isEditing || !self!.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber)) ? 0 : 1
                 self?.layoutIfNeeded()
             })
         }

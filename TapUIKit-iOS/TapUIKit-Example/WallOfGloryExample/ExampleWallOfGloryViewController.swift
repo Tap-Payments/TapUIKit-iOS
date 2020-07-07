@@ -241,11 +241,14 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
 
 extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showItemsClicked() {
+        self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(currencyListView)
@@ -261,6 +264,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     
     func closeItemsClicked() {
+        self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if element == currencyListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
@@ -271,9 +275,11 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 views.append(tapCardPhoneListView)
+                views.append(cardInputView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardPhoneListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.cardInputView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
