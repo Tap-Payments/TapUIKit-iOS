@@ -6,14 +6,8 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UIStackView
-import class UIKit.UIView
-import struct UIKit.UIEdgeInsets
-import struct UIKit.CGFloat
-import struct UIKit.CGPoint
-import struct UIKit.CGRect
 import TapCardVlidatorKit_iOS
-
+import TapThemeManager2020
 /// This extension provides the methods needed to setupu the views in the case of inline card input mode
 extension TapCardInput {
     
@@ -200,7 +194,10 @@ extension TapCardInput {
         guard cardInputMode == .InlineCardInput else {return}
         if let nonNullView:TapCardTextField = subView as? TapCardTextField {
             //scrollView.layoutIfNeeded()
-            layoutIfNeeded()     
+            layoutIfNeeded()
+            
+            performCvvAnimation()
+            
             guard nonNullView == cardNumber else { return }
             
             nonNullView.snp.updateConstraints( { [weak self] make in
@@ -220,6 +217,31 @@ extension TapCardInput {
                 self?.layoutIfNeeded()
             })
         }
+    }
+    
+    
+    internal func performCvvAnimation() {
+        
+        let cvvPlaceHolder:UIImage =  TapThemeManager.imageValue(for: "\(themePath).commonAttributes.cvvPlaceHolder",from: Bundle(for: type(of: self)))!
+        var newImage:UIImage? = nil
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) { [weak self] in
+            
+            guard let nonNullSelf = self else { return }
+            if !(nonNullSelf.cardExpiry.isEditing || nonNullSelf.cardNumber.isEditing) && nonNullSelf.cardCVV.isEditing {
+                nonNullSelf.lastShownIcon = (nonNullSelf.icon.image != cvvPlaceHolder) ? nonNullSelf.icon.image : nonNullSelf.lastShownIcon
+                newImage = cvvPlaceHolder
+            }else if let nonNullImage = nonNullSelf.lastShownIcon, nonNullSelf.lastShownIcon != nonNullSelf.icon.image {
+                newImage = nonNullImage
+            }
+            
+            guard let nonNullNewImage:UIImage = newImage, nonNullNewImage != self?.icon.image else { return }
+            nonNullSelf.icon.layer.removeAllAnimations()
+            UIView.transition(with: nonNullSelf.icon, duration: 0.2, options: .transitionFlipFromLeft, animations: { [weak self] in
+                self?.icon.image = nonNullNewImage
+            })
+        }
+        
     }
     
 }
