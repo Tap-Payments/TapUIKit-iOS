@@ -32,8 +32,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var gatewaysListView:TapChipHorizontalList = .init()
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
-    var tapCardPhoneListView: TapCardPhoneBarList = .init()
-    var cardInputView: TapCardInput = .init()
+    var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
     
     var rates:[String:Double] = [:]
     
@@ -141,16 +140,10 @@ class ExampleWallOfGloryViewController: UIViewController {
         views.append(gatewaysListView)
         
         // The tab bar section
-        tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
-        tapCardPhoneListView.heightAnchor.constraint(equalToConstant: 51).isActive = true
-        tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
-        views.append(tapCardPhoneListView)
-        
-        cardInputView.translatesAutoresizingMaskIntoConstraints = false
-        cardInputView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        views.append(cardInputView)
-        cardInputView.delegate = self
-        cardInputView.setup(for: .InlineCardInput,allowedCardBrands: [CardBrand.visa.rawValue,CardBrand.americanExpress.rawValue,CardBrand.masterCard.rawValue,CardBrand.mada.rawValue])
+        tapCardTelecomPaymentView.translatesAutoresizingMaskIntoConstraints = false
+        tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: 95).isActive = true
+        tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        views.append(tapCardTelecomPaymentView)
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
@@ -247,8 +240,6 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(currencyListView)
@@ -274,12 +265,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(gatewaysListView)
-                views.append(tapCardPhoneListView)
-                views.append(cardInputView)
+                views.append(tapCardTelecomPaymentView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapCardPhoneListView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.cardInputView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
