@@ -74,7 +74,13 @@ public class TapCardTelecomPaymentView: UIView {
     
     
     private func showInputFor(for  segment:String) {
-        
+        if segment == "telecom" {
+            cardInputView.fadeOut()
+            phoneInputView.fadeIn()
+        }else if segment == "telecom" {
+            cardInputView.fadeIn()
+            phoneInputView.fadeOut()
+        }
     }
     
     private func clearViews() {
