@@ -17,7 +17,8 @@
             "vibrantGreenTwo" : "#00d300",
             "paleLilac":"#e4e4e5",
             "clear":"#00000000",
-            "brownGreyTwo":"#b2b2b2"
+            "brownGreyTwo":"#b2b2b2",
+            "brownGreyThree":"#ababab"
         }
     },
     "inlineCard": {
@@ -61,6 +62,37 @@
             "switchTintColor": "white",
             "switchThumbColor": "white",
             "switchOnThumbColor": "#2ACE00"
+        }
+    },
+    "phoneCard": {
+        "commonAttributes": {
+            "backgroundColor": "white",
+            "borderColor": "clear",
+            "cornerRadius": 0,
+            "borderWidth": 0,
+            "itemSpacing": 5,
+            "shadow":{
+                "color": "clear",
+                "radius": 0,
+                "offsetWidth": 0,
+                "offsetHeight": 0,
+                "opacity": 0
+            },
+            "widthMargin": 7
+        },
+        "iconImage": {
+            "image": "mobileFormIcon",
+            "width": 32
+        },
+        "clearImage": {
+            "image": "clearFormIcon",
+            "width": 32
+        },
+        "textFields": {
+            "textColor": "greyishBrown",
+            "errorTextColor": "#FF0000",
+            "font" : "Roboto-Light,17",
+            "placeHolderColor" : "brownGreyThree"
         }
     },
     "fullCard": {
