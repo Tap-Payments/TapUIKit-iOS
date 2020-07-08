@@ -141,6 +141,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardTelecomPaymentView.translatesAutoresizingMaskIntoConstraints = false
         tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: 95).isActive = true
         tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
         views.append(tapCardTelecomPaymentView)
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)

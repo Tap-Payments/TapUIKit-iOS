@@ -42,6 +42,12 @@ public class TapCardTelecomPaymentView: UIView {
         }
     }
     
+    public var tapCountry:TapCountry? {
+        didSet {
+            phoneInputView.setup(with: tapCountry)
+        }
+    }
+    
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -77,7 +83,7 @@ public class TapCardTelecomPaymentView: UIView {
         if segment == "telecom" {
             cardInputView.fadeOut()
             phoneInputView.fadeIn()
-        }else if segment == "telecom" {
+        }else if segment == "cards" {
             cardInputView.fadeIn()
             phoneInputView.fadeOut()
         }
