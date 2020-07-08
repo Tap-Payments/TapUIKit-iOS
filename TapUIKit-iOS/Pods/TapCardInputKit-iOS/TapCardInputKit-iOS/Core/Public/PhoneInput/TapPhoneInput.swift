@@ -150,6 +150,7 @@ import TapCardVlidatorKit_iOS
     @objc public func clearPhoneInput() {
         
         fields.forEach { $0.text = "" }
+        didChangeText(textField: phoneNumberTextField)
         
     }
     
