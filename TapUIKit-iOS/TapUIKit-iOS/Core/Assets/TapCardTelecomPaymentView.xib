@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCardTelecomPaymentView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="cardInputView" destination="4iO-6k-uJn" id="Rga-1f-pwq"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
+                <outlet property="phoneInputView" destination="m1l-HA-Sjs" id="nRu-gJ-15c"/>
                 <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
             </connections>
         </placeholder>
@@ -25,6 +27,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="A9m-vN-q3L"/>
                     </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1l-HA-Sjs" customClass="TapPhoneInput" customModule="TapCardInputKit_iOS">
+                    <rect key="frame" x="0.0" y="50" width="414" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iO-6k-uJn" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
                     <rect key="frame" x="0.0" y="50" width="414" height="45"/>
@@ -42,11 +48,15 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4iO-6k-uJn" secondAttribute="trailing" id="0gS-yy-emr"/>
                 <constraint firstItem="or1-yo-2AD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0kr-te-KwP"/>
+                <constraint firstItem="m1l-HA-Sjs" firstAttribute="leading" secondItem="4iO-6k-uJn" secondAttribute="leading" id="BYd-UH-ZjJ"/>
+                <constraint firstItem="m1l-HA-Sjs" firstAttribute="bottom" secondItem="4iO-6k-uJn" secondAttribute="bottom" id="IYP-qC-mW5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" id="Lo4-0C-Jxa"/>
                 <constraint firstItem="4iO-6k-uJn" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="bottom" id="NcE-B9-R5n"/>
+                <constraint firstItem="m1l-HA-Sjs" firstAttribute="trailing" secondItem="4iO-6k-uJn" secondAttribute="trailing" id="fbW-BJ-FUH"/>
                 <constraint firstItem="lCg-68-EoW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hFC-oV-9o7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lCg-68-EoW" secondAttribute="trailing" id="hWG-Kb-fYh"/>
                 <constraint firstAttribute="bottom" secondItem="4iO-6k-uJn" secondAttribute="bottom" id="mbu-8a-4c4"/>
+                <constraint firstItem="m1l-HA-Sjs" firstAttribute="top" secondItem="4iO-6k-uJn" secondAttribute="top" id="qzf-iG-7ht"/>
                 <constraint firstAttribute="bottom" secondItem="lCg-68-EoW" secondAttribute="bottom" id="wAz-4E-pTb"/>
                 <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xyV-UW-vhT"/>
                 <constraint firstItem="4iO-6k-uJn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yAu-pZ-vAl"/>

@@ -10,6 +10,8 @@ import UIKit
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
+import SimpleAnimation
+import RxSwift
 
 public class TapCardTelecomPaymentView: UIView {
 
@@ -24,11 +26,18 @@ public class TapCardTelecomPaymentView: UIView {
             cardInputView.delegate = self
         }
     }
-
+    @IBOutlet weak var phoneInputView: TapPhoneInput! {
+        didSet {
+            phoneInputView.delegate = self
+        }
+    }
+    internal let disposeBag:DisposeBag = .init()
+    
     
     public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
             tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
+            bindObserverbales()
             clearViews()
         }
     }
@@ -55,6 +64,18 @@ public class TapCardTelecomPaymentView: UIView {
         self.contentView.frame = bounds
     }
     
+    private func bindObserverbales() {
+        tapCardPhoneListViewModel.selectedSegmentObserver
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] (newSegmentID) in
+                self?.showInputFor(for: newSegmentID)
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    private func showInputFor(for  segment:String) {
+        
+    }
     
     private func clearViews() {
         cardInputView.reset()
@@ -90,3 +111,19 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
         
     }
 }
+
+extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
+    
+    public func phoneBrandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+        
+        if validation == .Invalid || cardBrand == .unknown {
+            tapCardPhoneListViewModel.resetCurrentSegment()
+        }else if validation == .Incomplete {
+            tapCardPhoneListViewModel.select(brand: cardBrand, with: false)
+        }else if validation == .Valid {
+            tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
+        }
+    }
+    
+}
+
