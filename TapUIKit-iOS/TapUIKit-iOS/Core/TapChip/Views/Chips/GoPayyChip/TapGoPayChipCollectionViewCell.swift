@@ -11,7 +11,7 @@ import TapThemeManager2020
 import SimpleAnimation
 
 /// Represents the GoPay chip cell
-class TapGoPayChipCollectionViewCell: GenericTapChip {
+@objc class TapGoPayChipCollectionViewCell: GenericTapChip {
     // MARK:- Variables
     
     /// Reference to GoPay title label

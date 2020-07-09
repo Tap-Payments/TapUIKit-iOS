@@ -9,7 +9,7 @@
 import TapThemeManager2020
 import Nuke
 
-class CurrencyChipCollectionViewCell: GenericTapChip {
+@objc class CurrencyChipCollectionViewCell: GenericTapChip {
     // MARK:- Variables
     
     /// Reference to the saved card icon image view
@@ -19,7 +19,7 @@ class CurrencyChipCollectionViewCell: GenericTapChip {
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
-    public var viewModel:CurrencyChipViewModel = .init() {
+    @objc public var viewModel:CurrencyChipViewModel = .init() {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self

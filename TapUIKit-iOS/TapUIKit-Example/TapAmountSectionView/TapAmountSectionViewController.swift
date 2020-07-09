@@ -38,7 +38,7 @@ class TapAmountSectionViewController: UIViewController {
             viewModel.convertedTransactionAmount = convertedAmount
         }
     }
-    var convertedCurrency:TapCurrencyCode? = .KWD {
+    var convertedCurrency:TapCurrencyCode = .KWD {
         didSet {
             viewModel.convertedTransactionCurrency = convertedCurrency
         }
@@ -104,7 +104,7 @@ class TapAmountSectionViewController: UIViewController {
         }else if swtch == itemsSwitch {
             viewModel.shouldShowItems = swtch.isOn
         }else if swtch == convertSwitch {
-            convertedCurrency = swtch.isOn ? (convertedCurrency ?? .KWD) : nil
+            convertedCurrency = swtch.isOn ? convertedCurrency : .undefined
             convertedAmount = swtch.isOn ? ( convertedAmount > 0 ? convertedAmount : 3333.333) : 0
             convertedTextField.isUserInteractionEnabled = swtch.isOn
             convertedCurrencyButton.isUserInteractionEnabled = swtch.isOn

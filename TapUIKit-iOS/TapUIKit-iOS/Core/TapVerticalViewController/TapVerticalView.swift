@@ -19,7 +19,7 @@ import SimpleAnimation
 }
 
 /// The Tap wrapper view for having a dynamic height sizing scrollable vertical subview
-public class TapVerticalView: UIView {
+@objc public class TapVerticalView: UIView {
     
     /// The stackview which is used as the backbone for laying out the views in a vertical fashion
     @IBOutlet internal var stackView: UIStackView!
@@ -31,7 +31,7 @@ public class TapVerticalView: UIView {
     internal var itemsBeingRemoved:Bool = false
     internal var itemsBeingAdded:Int = 0
     /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
-    public var delegate:TapVerticalViewDelegate?
+    @objc public var delegate:TapVerticalViewDelegate?
     private var newSizeTimer:Timer?
     
     override init(frame: CGRect) {
@@ -306,7 +306,7 @@ public class TapVerticalView: UIView {
      - Parameter newView: The list of the new views to be shown in the vertical hierarchy
      - Parameter animationSequence: Determine what animation's sequence to apply for views removals and additions. Default is performing both in parallel
      */
-    public func updateSubViews(with newViews:[UIView],and animationSequence:TapVerticalUpdatesAnimationSequence = .parallel) {
+    @objc public func updateSubViews(with newViews:[UIView],and animationSequence:TapVerticalUpdatesAnimationSequence = .parallel) {
         
         var toBeRemovedViews:[UIView] = []
         var toBeAddedViews:[UIView] = []
@@ -406,7 +406,7 @@ public enum TapVerticalViewAnimationType: Equatable {
 
 
 /// Defines the direction the animation will be applied to
-public enum TapVerticalViewAnimationDirection {
+@objc public enum TapVerticalViewAnimationDirection:Int {
     case left
     case right
     case bottom
@@ -428,7 +428,7 @@ public enum TapVerticalViewAnimationDirection {
 }
 
 /// Defines what sequence to apply when removing and adding set of views to the vertical hierarchy
-public enum TapVerticalUpdatesAnimationSequence {
+@objc public enum TapVerticalUpdatesAnimationSequence:Int {
     /// Do nothing
     case none
     /// Animate removals and additions in parallel
@@ -440,7 +440,7 @@ public enum TapVerticalUpdatesAnimationSequence {
 
 
 /// Defines what sequence to apply when removing and adding set of views to the vertical hierarchy
-public enum TapAnimationSequence {
+@objc public enum TapAnimationSequence:Int {
     /// Perform the animations one after another
     case serial
     /// Perofm the animations all togethe

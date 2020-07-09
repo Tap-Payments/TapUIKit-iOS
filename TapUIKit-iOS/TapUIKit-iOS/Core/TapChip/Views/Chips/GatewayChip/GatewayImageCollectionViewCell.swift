@@ -10,7 +10,7 @@ import TapThemeManager2020
 import Nuke
 
 /// Represents the Gateway payment chip cell
-class GatewayImageCollectionViewCell: GenericTapChip {
+@objc class GatewayImageCollectionViewCell: GenericTapChip {
     
     // MARK:- Variables
     

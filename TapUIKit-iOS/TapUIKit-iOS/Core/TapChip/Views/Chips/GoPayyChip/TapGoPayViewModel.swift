@@ -10,7 +10,7 @@ import Foundation
 import class UIKit.UICollectionViewCell
 
 /// The view model that controlls the GoPay cell
-public class TapGoPayViewModel: GenericTapChipViewModel {
+@objc public class TapGoPayViewModel: GenericTapChipViewModel {
     
     // MARK:- Variables
     

@@ -64,7 +64,7 @@ class ChipsTestingViewController: UIViewController {
     
     @IBAction func switchChanged(_ sender: Any) {
         if sender as? UISwitch == headerSwitch {
-            viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : nil
+            viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : .NoHeader
         }else {
             filter()
         }
@@ -101,7 +101,7 @@ class ChipsTestingViewController: UIViewController {
             filteredChipsViewModel.append(allChipsViewModel[9])
         }
         
-        viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : nil
+        viewModel.headerType = headerSwitch.isOn ?  .GatewayListHeader : .NoHeader
         
         /*filteredChipsViewModel = [CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
         viewModel.headerType = nil*/

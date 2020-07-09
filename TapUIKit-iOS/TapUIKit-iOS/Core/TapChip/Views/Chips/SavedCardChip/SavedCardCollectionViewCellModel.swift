@@ -9,7 +9,7 @@
 import class UIKit.UICollectionViewCell
 
 /// The view model that controlls the SavedCard cell
-public class SavedCardCollectionViewCellModel: GenericTapChipViewModel {
+@objc public class SavedCardCollectionViewCellModel: GenericTapChipViewModel {
     
     // MARK:- Variables
     

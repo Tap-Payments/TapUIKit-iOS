@@ -13,10 +13,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 /// Represent the model of a dicount object for an item
-public struct DiscountModel : Codable {
+@objc public class DiscountModel : NSObject, Codable {
     
     /// The type of the applied discount whether fixed or percentage
-	let type : DiscountType?
+    let type : DiscountType?
     /// The value of the discount itself
 	let value : Double?
 
@@ -24,7 +24,7 @@ public struct DiscountModel : Codable {
      - Parameter type: The type of the applied discount whether fixed or percentage
      - Parameter value: The value of the discount itself
      */
-    public init(type: DiscountType?, value: Double?) {
+    @objc public init(type: DiscountType = .Fixed, value: Double = 0) {
         self.type = type
         self.value = value
     }
@@ -36,9 +36,9 @@ public struct DiscountModel : Codable {
 	}
     
 
-	public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		type = try values.decodeIfPresent(DiscountType.self, forKey: .type)
+        type = DiscountType.init(rawValue:(try values.decodeIfPresent(String.self, forKey: .type)) ?? "Fixed")
 		value = try values.decodeIfPresent(Double.self, forKey: .value)
 	}
     
@@ -91,41 +91,31 @@ public struct DiscountModel : Codable {
 
 
 /// Represent an enum to decide all the possible discount types
-public enum DiscountType: String,Codable {
+@objc public enum DiscountType: Int,RawRepresentable,Encodable {
     /// Meaning, the discount will be a percentage of the item's price
-    case Percentage = "Percentage"
+    case Percentage = 1
     /// Meaning, the discount will be a fixed value to be deducted as is
-    case Fixed = "Fixed"
+    case Fixed = 2
     
-    enum Key: CodingKey {
-        case rawValue
+    public typealias RawValue = String
+    
+    public var rawValue: RawValue {
+        switch self {
+        case .Percentage:
+            return "percentage"
+        case .Fixed:
+            return "fixed"
+        }
     }
     
-    enum CodingError: Error {
-        case unknownValue
-    }
-    
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Key.self)
-        let rawValue = try container.decode(String.self, forKey: .rawValue)
-        switch rawValue.lowercased() {
+    public init?(rawValue: RawValue) {
+        switch rawValue {
         case "percentage":
             self = .Percentage
         case "fixed":
             self = .Fixed
         default:
-            throw CodingError.unknownValue
-        }
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: Key.self)
-        switch self {
-        case .Percentage:
-            try container.encode("Percentage", forKey: .rawValue)
-        case .Fixed:
-            try container.encode("Fixed", forKey: .rawValue)
+            return nil
         }
     }
 }

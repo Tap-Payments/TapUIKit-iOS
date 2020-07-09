@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 /// The view model that controlls the GatewayChip cell
-public class GatewayChipViewModel: GenericTapChipViewModel {
+@objc public class GatewayChipViewModel: GenericTapChipViewModel {
     
     // MARK:- Variables
     

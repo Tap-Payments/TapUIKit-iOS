@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 /// A custom UIView that shows a separator between different cells/lines/sections, Theme path : "tapSeparationLine"
-public class TapSeparatorView: UIView {
+@objc public class TapSeparatorView: UIView {
     
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
@@ -53,7 +53,7 @@ public class TapSeparatorView: UIView {
      - Parameter widthValue : The new width value you want to apply for the separator
      - Parameter animated : Indicates whether the width change should be animated or not, default is true
      */
-    public func changeWidth(to widthValue:CGFloat, animated:Bool = true) {
+    @objc public func changeWidth(to widthValue:CGFloat, animated:Bool = true) {
         // As all width values are controlled by leading and trailing constrains, we need to first calculate the needed leading and trailing to apply the new given width value
         let differenceInWidth = frame.width - widthValue
         // Distrubte the width difference equally between the leading and trailing constraints
@@ -66,7 +66,7 @@ public class TapSeparatorView: UIView {
      - Parameter leadingTrailingValue : The new leading and trailing value. The passed value will be applied for both constraints
      - Parameter animated : Indicates whether the width change should be animated or not, default is true
      */
-    public func changeWidth(with leadingTrailingValue:CGFloat, animated:Bool = true) {
+    @objc public func changeWidth(with leadingTrailingValue:CGFloat, animated:Bool = true) {
         separationLineLeadingConstraint.constant = leadingTrailingValue
         separationLineTrailingConstraint.constant = leadingTrailingValue
         

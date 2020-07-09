@@ -20,7 +20,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
 
 /// The view model that controlls the SavedCard cell
-public class ApplePayChipViewCellModel: GenericTapChipViewModel {
+@objc public class ApplePayChipViewCellModel: GenericTapChipViewModel {
     
     // MARK:- Variables
     
@@ -36,14 +36,14 @@ public class ApplePayChipViewCellModel: GenericTapChipViewModel {
         return "ApplePayChipCollectionViewCell"
     }
     
-    public init(title: String? = nil, icon: String? = nil, tapApplePayRequest:TapApplePayRequest = .init()) {
+    @objc public init(title: String? = nil, icon: String? = nil, tapApplePayRequest:TapApplePayRequest = .init()) {
         super.init(title: title, icon: icon)
         self.tapApplePayRequest = tapApplePayRequest
     }
     
-    public func configureApplePayRequest(with countryCode:TapCountryCode = .KW , currencyCode:TapCurrencyCode = .KWD, paymentNetworks:[TapApplePayPaymentNetwork] = [TapApplePayPaymentNetwork.Amex,TapApplePayPaymentNetwork.MasterCard,TapApplePayPaymentNetwork.Visa], applePayButtonType:TapApplePayButtonType = .AppleLogoOnly, applePayButtonStyle:TapApplePayButtonStyleOutline = .Black, paymentItems:[PKPaymentSummaryItem] = [], amount:Double = 10, merchantID:String = "merchant.tap.gosell" ) {
+    @objc public func configureApplePayRequest(with countryCode:TapCountryCode = .KW , currencyCode:TapCurrencyCode = .KWD, paymentNetworks:[TapApplePayPaymentNetwork.RawValue] = [TapApplePayPaymentNetwork.Amex.rawValue,TapApplePayPaymentNetwork.MasterCard.rawValue,TapApplePayPaymentNetwork.Visa.rawValue], applePayButtonType:TapApplePayButtonType = .AppleLogoOnly, applePayButtonStyle:TapApplePayButtonStyleOutline = .Black, paymentItems:[PKPaymentSummaryItem] = [], amount:Double = 10, merchantID:String = "merchant.tap.gosell" ) {
         
-        tapApplePayRequest.build(with: countryCode, paymentNetworks: paymentNetworks, paymentItems: paymentItems, paymentAmount: amount, currencyCode: currencyCode, merchantID: merchantID)
+        tapApplePayRequest.build(with: countryCode, paymentNetworks: paymentNetworks.map{ TapApplePayPaymentNetwork.init(rawValue: $0)! }, paymentItems: paymentItems, paymentAmount: amount, currencyCode: currencyCode, merchantID: merchantID)
         
         self.applePayButtonType = applePayButtonType
         self.applePayButtonStyle = applePayButtonStyle

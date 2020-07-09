@@ -11,7 +11,7 @@ import TapThemeManager2020
 import RxSwift
 import SimpleAnimation
 
-public class TapAmountSectionView: UIView {
+@objc public class TapAmountSectionView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
@@ -28,7 +28,7 @@ public class TapAmountSectionView: UIView {
     
     private let disposeBag:DisposeBag = .init()
     
-    public var viewModel:TapAmountSectionViewModel? {
+    @objc public var viewModel:TapAmountSectionViewModel? {
         didSet{
             createObservables()
         }
@@ -122,7 +122,7 @@ public class TapAmountSectionView: UIView {
         self.containerView.frame = bounds
     }
     
-    public func changeViewModel(with viewModel:TapAmountSectionViewModel) {
+    @objc public func changeViewModel(with viewModel:TapAmountSectionViewModel) {
         self.viewModel = viewModel
     }
     

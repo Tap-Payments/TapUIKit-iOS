@@ -13,7 +13,7 @@ import SimpleAnimation
 import RxSwift
 
 /// A view represents the merchant header section in the checkout UI
-public class TapMerchantHeaderView: UIView {
+@objc public class TapMerchantHeaderView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
@@ -32,7 +32,7 @@ public class TapMerchantHeaderView: UIView {
     
     private let disposeBag:DisposeBag = .init()
     
-    public var viewModel:TapMerchantHeaderViewModel? {
+    @objc public var viewModel:TapMerchantHeaderViewModel? {
         didSet{
             createObservables()
         }
@@ -101,7 +101,7 @@ public class TapMerchantHeaderView: UIView {
         self.containerView.frame = bounds
     }
     
-    public func changeViewModel(with viewModel:TapMerchantHeaderViewModel) {
+    @objc public func changeViewModel(with viewModel:TapMerchantHeaderViewModel) {
         self.viewModel = viewModel
     }
     

@@ -10,7 +10,7 @@ import TapThemeManager2020
 import SimpleAnimation
 
 /// Represents Tap representation of Chip horizontal list view
-public class TapChipHorizontalList: UIView {
+@objc public class TapChipHorizontalList: UIView {
 
     // Mark:- Variables
     
@@ -34,7 +34,7 @@ public class TapChipHorizontalList: UIView {
     private var shouldShowHeader:Bool = true
     
     /// The view model that controls the data to be displayed and the events to be fired
-    public var viewModel:TapChipHorizontalListViewModel = .init() {
+    @objc public var viewModel:TapChipHorizontalListViewModel = .init() {
         didSet{
             // Whenever the view model is assigned, we delcare ourself as the cell delegate to start getting orders
             viewModel.cellDelegate = self
@@ -61,7 +61,7 @@ public class TapChipHorizontalList: UIView {
      This instructs the view that we need to assign a new view model
      - Parameter viewModel: The view model you want to attach to the vie
      */
-    public func changeViewMode(with viewModel:TapChipHorizontalListViewModel) {
+    @objc public func changeViewMode(with viewModel:TapChipHorizontalListViewModel) {
         self.viewModel = viewModel
     }
     
@@ -119,12 +119,12 @@ public class TapChipHorizontalList: UIView {
      Handles the logic for showing/hiding the header view for the given type
      - Parameter type: The header type to be shown
      */
-    internal func handleHeaderView(with type: TapHorizontalHeaderType?) {
+    internal func handleHeaderView(with type: TapHorizontalHeaderType) {
         // Instruct the header view to render itself based on the type
         headerView.showHeader(with: type)
         
         // Determin and animate showing or hiding the header based on the given type
-        guard let _ = type else {
+        guard type != .NoHeader else {
             shouldShowHeader = false
             hideHeaderView()
             return
@@ -191,7 +191,7 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
 }
 
 extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
-    func showHeader(with type: TapHorizontalHeaderType?) {
+    func showHeader(with type: TapHorizontalHeaderType) {
         handleHeaderView(with: type)
         headerView.showHeader(with: type)
     }

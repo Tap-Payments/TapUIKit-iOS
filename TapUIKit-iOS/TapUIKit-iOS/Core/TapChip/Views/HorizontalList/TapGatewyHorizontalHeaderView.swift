@@ -99,27 +99,29 @@ class TapHorizontalHeaderView: UIView {
      Handles updating the theme and the localisations based ont the new header type
      - Parameter headerViewType: The new header type to be used
      */
-    func showHeader(with headerViewType:TapHorizontalHeaderType?) {
-        guard let nonNullHeader = headerViewType else {
+    func showHeader(with headerViewType:TapHorizontalHeaderType) {
+        guard headerViewType != .NoHeader else {
             return
         }
         
-        self.headerType = nonNullHeader
+        self.headerType = headerViewType
     }
     
     
 }
 
 /// Represents the enum of different implemented horizontal chip list header views
-public enum TapHorizontalHeaderType {
+@objc public enum TapHorizontalHeaderType:Int {
     /// The SELECT - EDIT header view for the list of payment gatewas and saved cards
     case GatewayListHeader
-    
+    case NoHeader
     /// Defines the theme entry based on the type
     func themePath() -> String {
         switch self {
             case .GatewayListHeader:
                 return "horizontalList.headers.gatewayHeader"
+        case .NoHeader:
+            return ""
         }
     }
     
@@ -136,6 +138,8 @@ public enum TapHorizontalHeaderType {
         switch self {
         case .GatewayListHeader:
             (leftTitleKey,rightTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle")
+        case .NoHeader:
+            (leftTitleKey,rightTitleKey) = ("","")
         }
         
         return (sharedLocalisationManager.localisedValue(for: leftTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()),sharedLocalisationManager.localisedValue(for: rightTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()))

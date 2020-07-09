@@ -53,9 +53,9 @@ internal protocol GenericCellChipViewModelDelegate {
 @objc public class GenericTapChipViewModel:NSObject {
     
     /// The title to be displayed if any in the Chip cell
-    public var title:String?
+    @objc public var title:String?
     /// The icon if any to be displayed in the Chip cell
-    public var icon:String?
+    @objc public var icon:String?
     
     /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
     internal var viewModelDelegate:GenericChipViewModelDelegate?
@@ -65,7 +65,7 @@ internal protocol GenericCellChipViewModelDelegate {
       - Parameter title: The title to be displayed if any in the Chip cell default is nil
      - Parameter icon:The icon if any to be displayed in the Chip cell default is nil
      */
-    public init(title:String? = nil, icon:String? = nil) {
+    @objc public init(title:String? = nil, icon:String? = nil) {
         self.title = title
         self.icon = icon
     }
