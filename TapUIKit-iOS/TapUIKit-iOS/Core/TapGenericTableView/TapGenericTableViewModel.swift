@@ -12,7 +12,7 @@ import class UIKit.UINib
 import struct UIKit.CGSize
 import class UIKit.NSLayoutConstraint
 /// This is the public protocol for outer components to listen to events and data fired from this view model and its attached view
-public protocol TapGenericTableViewModelDelegate {
+@objc public protocol TapGenericTableViewModelDelegate {
     /**
      The event will be fired when a cell is selected in the attacjed UITableView
      - Parameter viewModel: Represents the attached view model of the selectec cell view
@@ -39,12 +39,12 @@ internal protocol TapCellGenericTableViewModelDelegate {
 }
 
 /// This is the view model that adjusts and adapts the info shown in any Tap Generic TableView. It accepts and arranges different cells view models through one place
-public class TapGenericTableViewModel {
+@objc public class TapGenericTableViewModel:NSObject {
     
     // Mark:- Variables
     
     /// The data source which represents the list of view models to be displayed inside the UITableView
-    public var dataSource:[TapGenericTableCellViewModel] = [] {
+    @objc public var dataSource:[TapGenericTableCellViewModel] = [] {
         didSet{
             // When it is changed, we need to inform the attached view that he needs to reload itself now
             cellDelegate?.reload(new: dataSource)
@@ -52,10 +52,10 @@ public class TapGenericTableViewModel {
         }
     }
     
-    public var heightConstraint:NSLayoutConstraint?
+    @objc public var heightConstraint:NSLayoutConstraint?
     
     /// Attach yourself to this delegate to start getting events fired from this view model and its attached UITableView
-    public var delegate:TapGenericTableViewModelDelegate?
+    @objc public var delegate:TapGenericTableViewModelDelegate?
     
     /// Attach yourself to this delegare if you are the associated view so you can be instructed by actions you have to do
     internal var cellDelegate:TapCellGenericTableViewModelDelegate?
@@ -65,14 +65,15 @@ public class TapGenericTableViewModel {
      Creates the ViewModel and makes it ready for work
      - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the UITableView
      */
-    public init(dataSource:[TapGenericTableCellViewModel]) {
+    @objc public init(dataSource:[TapGenericTableCellViewModel]) {
+        super.init()
         defer {
             self.dataSource = dataSource
         }
     }
     
     /// Creates empty view model, added for convience
-    public init() {}
+    @objc public override init() {super.init()}
     
     // Mark:- Internal methods
     

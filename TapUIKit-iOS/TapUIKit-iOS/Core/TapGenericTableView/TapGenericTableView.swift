@@ -9,7 +9,7 @@
 import TapThemeManager2020
 
 /// Represents Tap representation of a Table view
-public class TapGenericTableView: UIView {
+@objc public class TapGenericTableView: UIView {
 
     // Mark:- Variables
     
@@ -22,7 +22,7 @@ public class TapGenericTableView: UIView {
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
     /// The view model that controls the data to be displayed and the events to be fired
-    public var viewModel:TapGenericTableViewModel = .init() {
+    @objc public var viewModel:TapGenericTableViewModel = .init() {
         didSet{
             // Whenever the view model is assigned, we delcare ourself as the cell delegate to start getting orders
             viewModel.cellDelegate = self

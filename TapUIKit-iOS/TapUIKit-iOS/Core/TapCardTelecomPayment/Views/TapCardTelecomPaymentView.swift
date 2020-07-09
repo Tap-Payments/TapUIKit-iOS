@@ -14,7 +14,7 @@ import SimpleAnimation
 import RxSwift
 
 /// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
-public class TapCardTelecomPaymentView: UIView {
+@objc public class TapCardTelecomPaymentView: UIView {
 
     // MARK:- Outlets
     /// Represents the content view that holds all the subviews
@@ -37,7 +37,7 @@ public class TapCardTelecomPaymentView: UIView {
     internal let disposeBag:DisposeBag = .init()
     
     /// The view model that has the needed payment options and data source to display the payment view
-    public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
+    @objc public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
             // On init, we need to:
             
@@ -51,7 +51,7 @@ public class TapCardTelecomPaymentView: UIView {
     }
     
     /// Represents the country that telecom options are being shown for, used to handle country code and correct phone length
-    public var tapCountry:TapCountry? {
+    @objc public var tapCountry:TapCountry? {
         didSet {
             // Ons et, we need to setup the phont input view witht the new country details
             phoneInputView.setup(with: tapCountry)

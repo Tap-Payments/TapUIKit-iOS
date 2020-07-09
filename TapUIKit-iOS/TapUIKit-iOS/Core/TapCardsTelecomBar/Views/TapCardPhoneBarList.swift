@@ -12,7 +12,7 @@ import SimpleAnimation
 import EasyAnimation
 
 /// Represent the view of tab bar list
-public class TapCardPhoneBarList: UIView {
+@objc public class TapCardPhoneBarList: UIView {
 
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
@@ -126,7 +126,7 @@ public class TapCardPhoneBarList: UIView {
      Apply the needed setup and attach the passed view model
      - Parameter viewModel: The TapCardPhoneIconViewModel responsible for controlling this icon view
      */
-    public func setupView(with viewModel:TapCardPhoneBarListViewModel) {
+    @objc public func setupView(with viewModel:TapCardPhoneBarListViewModel) {
         self.viewModel = viewModel
     }
     

@@ -36,7 +36,7 @@ internal protocol TapCardPhoneIconViewDelegate {
 
 
 /// View model that controls the actions and the ui of the card/phone bar inner icon
-public class TapCardPhoneIconViewModel:Equatable {
+@objc public class TapCardPhoneIconViewModel:NSObject {
    
     // MARK:- RX Internal Observables
     
@@ -49,7 +49,7 @@ public class TapCardPhoneIconViewModel:Equatable {
     
     // MARK:- Public normal swift variables
     /// Represent the icon state
-    public var tapCardPhoneIconStatus:TapCardPhoneIconStatus = .selected {
+    @objc public var tapCardPhoneIconStatus:TapCardPhoneIconStatus = .selected {
         didSet{
             // Update the observabe with the new state
             tapCardPhoneIconStatusObserver.accept(tapCardPhoneIconStatus)
@@ -57,7 +57,7 @@ public class TapCardPhoneIconViewModel:Equatable {
     }
     
     /// Represent the url for the image to be loaded inside this icon
-    public var tapCardPhoneIconUrl:String = "" {
+    @objc public var tapCardPhoneIconUrl:String = "" {
         didSet{
             // Update the observabe with the new url
             tapCardPhoneIconUrlObserver.accept(tapCardPhoneIconUrl)
@@ -65,7 +65,7 @@ public class TapCardPhoneIconViewModel:Equatable {
     }
     
     /// Represent the associated payment brand this cell is linked to
-    public var associatedCardBrand:CardBrand = .visa
+    @objc public var associatedCardBrand:CardBrand = .visa
     
     // MARK:- Private methods
     
@@ -142,7 +142,8 @@ public class TapCardPhoneIconViewModel:Equatable {
      - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
      this icon
      */
-    public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "") {
+    @objc public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "") {
+        super.init()
         defer{
             self.tapCardPhoneIconStatus = tapCardPhoneIconStatus
             self.tapCardPhoneIconUrl = tapCardPhoneIconUrl
@@ -154,15 +155,15 @@ public class TapCardPhoneIconViewModel:Equatable {
 
 
 /// Represent the status of the card/phone icon in the bar
-public enum TapCardPhoneIconStatus {
+@objc public enum TapCardPhoneIconStatus:Int {
     /// Means, this is selected ot the whole segment is selected  or itself is the selected icon (shows in full opacity)
-    case selected
+    case selected = 0
     /// Means, another icon is selected and verified (shows black & white)
-    case otherIconIsSelectedVerified
+    case otherIconIsSelectedVerified = 1
     /// Means, another icon is selected  but yet unverified(shows opacity 50%)
-    case otherIconIsSelectedUnVerified
+    case otherIconIsSelectedUnVerified = 2
     /// Means, another segment is generally selected (shows opacity 50%)
-    case otherSegmentSelected
+    case otherSegmentSelected = 3
     
     /** Returns the corrent theme path related to the current state
      - Returns: The correct theme path based on the icon state

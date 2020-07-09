@@ -549,13 +549,6 @@
 			path = "TapCardPhone bar";
 			sourceTree = "<group>";
 		};
-		E8861D3C249F87530002FEDE /* TapItemCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TapItemCell;
-			sourceTree = "<group>";
-		};
 		E8861D3D249FA8950002FEDE /* ChipsTesting */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,7 +708,6 @@
 		E8E69999249F6761007A32FA /* TapGenericTableView */ = {
 			isa = PBXGroup;
 			children = (
-				E8861D3C249F87530002FEDE /* TapItemCell */,
 				E8E69992249F6430007A32FA /* TapGenericTableCell */,
 				E8861D34249F6CC30002FEDE /* TapGenericTableView.swift */,
 				E8861D38249F74C20002FEDE /* TapGenericTableViewModel.swift */,

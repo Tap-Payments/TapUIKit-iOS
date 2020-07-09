@@ -96,9 +96,9 @@ internal protocol TapCellViewModelDelegate {
 
 
 /// An enum to identify all the created cells types, to be used to pvoide a singleton place to know all about each type
-public enum TapGenericCellType:CaseIterable {
+@objc public enum TapGenericCellType:Int,CaseIterable {
     /// The cell that represents the items inside order/transaction
-    case ItemTableCell
+    case ItemTableCell = 0
     
     /**
      Defines what is the theme path to look for to customise a cell based on its type

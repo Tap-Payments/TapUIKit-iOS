@@ -12,7 +12,7 @@ import Nuke
 import SimpleAnimation
 
 /// Represent the icon cell inside the horizontal bar of cards and telecom operators
-public class TapCardPhoneIconView: UIView {
+@objc public class TapCardPhoneIconView: UIView {
     
     // MARK:- Outlets
     /// Represents the content view that holds all the subviews
@@ -104,7 +104,7 @@ public class TapCardPhoneIconView: UIView {
      Apply the needed setup and attach the passed view model
      - Parameter viewModel: The TapCardPhoneIconViewModel responsible for controlling this icon view
      */
-    public func setupView(with viewModel:TapCardPhoneIconViewModel) {
+    @objc public func setupView(with viewModel:TapCardPhoneIconViewModel) {
         self.viewModel = viewModel
     }
     

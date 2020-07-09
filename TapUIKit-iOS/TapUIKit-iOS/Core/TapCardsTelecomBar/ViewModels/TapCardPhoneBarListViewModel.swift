@@ -28,7 +28,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
 }
 
 /// View model that controls the actions and the ui of the card/phone tab bar
-public class TapCardPhoneBarListViewModel {
+@objc public class TapCardPhoneBarListViewModel: NSObject {
     
     // MARK:- Private RX observables
     /// An observable to fire an event once the list of icon vire models to be rendered changed
@@ -45,7 +45,7 @@ public class TapCardPhoneBarListViewModel {
     
     // MARK:- Public normal swift variables
     /// The data source which is the list if tab view models that we need to render
-    public var dataSource:[TapCardPhoneIconViewModel] = [] {
+    @objc public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
             // Once set, we need to wire up the observables with their subscribers
             configureDataSource()
@@ -58,7 +58,7 @@ public class TapCardPhoneBarListViewModel {
      Creates a new instance of the TapCardPhoneBarListViewModel
      - Parameter dataSource: The data source which is the list if tab view models that we need to render
      */
-    public init(dataSource:[TapCardPhoneIconViewModel] = []) {
+    @objc public init(dataSource:[TapCardPhoneIconViewModel] = []) {
         self.dataSource = dataSource
     }
     
@@ -158,7 +158,7 @@ public class TapCardPhoneBarListViewModel {
      - Parameter cardBrand: The payment card brand associated the tab we need to select
      - Parameter validity: Indicates whether th selection is validated or not
      */
-    public func select(brand cardBrand:CardBrand, with validity:Bool) {
+    @objc public func select(brand cardBrand:CardBrand, with validity:Bool) {
         // Fire a notification of a new selected segment
         selectedSegmentObserver.accept(cardBrand.brandSegmentIdentifier)
         // Fire a notification of a new selection validation
@@ -177,7 +177,7 @@ public class TapCardPhoneBarListViewModel {
     }
     
     
-    public func select(segment segmentID:String) {
+    @objc public func select(segment segmentID:String) {
         // Fire a notification of a new selected segment
         selectedSegmentObserver.accept(segmentID)
         // Fire a notification of a new selection validation
@@ -194,7 +194,7 @@ public class TapCardPhoneBarListViewModel {
     }
     
     
-    public func resetCurrentSegment() {
+    @objc public func resetCurrentSegment() {
         let currentSelectedSegment:String = selectedSegmentObserver.value
         guard currentSelectedSegment != "" else { return }
         

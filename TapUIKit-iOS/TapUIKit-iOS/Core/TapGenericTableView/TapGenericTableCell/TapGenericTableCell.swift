@@ -11,7 +11,7 @@ import class UIKit.UITableView
 import class UIKit.NSIndexPath
 /// This is a superclass for all the table cells views created, this will make sure all have the same interface/output and ease the parametery type in methods
 
-public class TapGenericTableCell: UITableViewCell {
+@objc public class TapGenericTableCell: UITableViewCell {
 
     
     // MARK:- Internal methods
