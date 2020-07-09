@@ -40,7 +40,15 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         MOLH.setLanguageTo("en")
         MOLH.reset()
+//        applyTheme()
     }
+    
+//    /// Apply  the theme values from the theme file to the matching outlets
+//    private func applyTheme()
+//    {
+//        TapThemeManager.setTapTheme()
+//        self.setNeedsStatusBarAppearanceUpdate()
+//    }
 }
 
 extension ViewController:UITableViewDataSource,UITableViewDelegate {
@@ -68,7 +76,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
                     self.showController(contoller: destnationVC, push: self.dataSource[indexPath.row]["push"] == "1")
                 }
             }else {
-                TapThemeManager.setDefaultTapTheme()
+//                TapThemeManager.setDefaultTapTheme()
+                TapThemeManager.setTapTheme()
                 if let gloryExample:TapBottomSheetExampleViewController = destnationVC as? TapBottomSheetExampleViewController, indexPath.row == (dataSource.count - 1) {
                     MOLH.setLanguageTo("en")
                     gloryExample.showWallOfGlory = true
