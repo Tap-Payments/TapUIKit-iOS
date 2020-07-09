@@ -139,8 +139,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         // The tab bar section
         tapCardTelecomPaymentView.translatesAutoresizingMaskIntoConstraints = false
-        tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: 95).isActive = true
         tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: tapCardTelecomPaymentView.requiredHeight()).isActive = true
         tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
         views.append(tapCardTelecomPaymentView)
         

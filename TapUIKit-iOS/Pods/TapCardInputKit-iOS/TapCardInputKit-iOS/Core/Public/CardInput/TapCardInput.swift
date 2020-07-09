@@ -354,7 +354,7 @@ internal protocol TapCardInputCommonProtocol {
         if let iconString:String = cardIconUrl, let iconURL:URL = URL(string: iconString) {
             // Meaning, we have an icon to set, we check if it is not invalid we show the icon otherwise, the palceholder icon
             let validationStatus = self.cardNumber.textFieldStatus(cardNumber: cardNumber)
-            if validationStatus == .Invalid {
+            if validationStatus == .Invalid && cardNumber != "" {
                 icon.image = TapThemeManager.imageValue(for: "\(themePath).iconImage.image",from: Bundle(for: type(of: self)))
             }else {
                 let options = ImageLoadingOptions(

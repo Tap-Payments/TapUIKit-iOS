@@ -13,6 +13,7 @@
                 <outlet property="cardInputView" destination="4iO-6k-uJn" id="Rga-1f-pwq"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
                 <outlet property="phoneInputView" destination="m1l-HA-Sjs" id="nRu-gJ-15c"/>
+                <outlet property="tabBarHeightConstraint" destination="A9m-vN-q3L" id="FVa-Hc-f2f"/>
                 <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
             </connections>
         </placeholder>
