@@ -13,37 +13,47 @@ import TapCardVlidatorKit_iOS
 import SimpleAnimation
 import RxSwift
 
+/// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
 public class TapCardTelecomPaymentView: UIView {
 
     // MARK:- Outlets
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
-    /// Represents the content view that holds all the subviews
+    /// Represents the tab bar that holds the list of segmented availble payment options
     @IBOutlet weak var tapCardPhoneListView: TapCardPhoneBarList!
-    /// Represents the content view that holds all the subviews
+    /// Represents the card input view
     @IBOutlet weak var cardInputView: TapCardInput! {
         didSet {
             cardInputView.delegate = self
         }
     }
+    /// Represents the phone input view
     @IBOutlet weak var phoneInputView: TapPhoneInput! {
         didSet {
             phoneInputView.delegate = self
         }
     }
+    /// Used to collect any reactive garbage
     internal let disposeBag:DisposeBag = .init()
     
-    
+    /// The view model that has the needed payment options and data source to display the payment view
     public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
+            // On init, we need to:
+            
+            // Setup the bar view with the passed payment options list
             tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
+            // Listen to changes in the view model
             bindObserverbales()
+            // Reset all the selections and the input fields
             clearViews()
         }
     }
     
+    /// Represents the country that telecom options are being shown for, used to handle country code and correct phone length
     public var tapCountry:TapCountry? {
         didSet {
+            // Ons et, we need to setup the phont input view witht the new country details
             phoneInputView.setup(with: tapCountry)
         }
     }
@@ -70,7 +80,9 @@ public class TapCardTelecomPaymentView: UIView {
         self.contentView.frame = bounds
     }
     
+    /// Creates connections and listen to events and data changes reactivly from the tab bar view model
     private func bindObserverbales() {
+        // We need to know when a new segment is selected in the tab bar payment list, then we need to decide which input field should be shown
         tapCardPhoneListViewModel.selectedSegmentObserver
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] (newSegmentID) in
@@ -79,6 +91,10 @@ public class TapCardTelecomPaymentView: UIView {
     }
     
     
+    /**
+     Decides which input field should be shown based on the selected segment id
+     - Parameter segment: The id of the segment of payment options we need to show the associated input
+     */
     private func showInputFor(for  segment:String) {
         if segment == "telecom" {
             cardInputView.fadeOut()
@@ -89,9 +105,13 @@ public class TapCardTelecomPaymentView: UIView {
         }
     }
     
+    /// Used to reset all segment selections and input fields upon changing the data source
     private func clearViews() {
+        // Reset the card input
         cardInputView.reset()
+        // Re init the card input
         cardInputView.setup(for: .InlineCardInput,allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand.rawValue })
+        // Reset any selection done on the bar layout
         tapCardPhoneListViewModel.resetCurrentSegment()
     }
 }
@@ -102,9 +122,6 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
-        
-        //tapCardPhoneListViewModel.select(segment: cardBrand.brandSegmentIdentifier)
-        
         
         if validation == .Invalid || cardBrand == .unknown {
             tapCardPhoneListViewModel.resetCurrentSegment()
