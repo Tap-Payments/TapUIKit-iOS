@@ -145,9 +145,9 @@ import RxCocoa
     }
     
     /// Call this method to informthe amount section that scanner is visible, hence it changes the items button title and action handler
-    @objc public func scannerIsVisible() {
+    @objc public func scannerVisibility(changed withVisbile:Bool) {
         // Adjust inner details to represent the new state
-        currentStateView = .ScannerView
+        currentStateView = withVisbile ? .ScannerView : .DefaultView
     }
     
     private func updateAmountObserver(for amount:Double, with currencyCode:TapCurrencyCode?, on observer:BehaviorRelay<String>) {

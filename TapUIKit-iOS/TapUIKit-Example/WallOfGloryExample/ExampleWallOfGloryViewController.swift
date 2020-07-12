@@ -293,6 +293,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
+                tapAmountSectionViewModel.scannerVisibility(changed: false)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
@@ -314,16 +315,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
                 //print("MAX HEIGHT : \(tapVerticalView.getMaxAvailableHeight())")
                 let tapCardScannerView:TapCardScannerView = .init()
-                tapCardScannerView.translatesAutoresizingMaskIntoConstraints = false
                 tapCardScannerView.delegate = self
-                tapCardScannerView.heightAnchor.constraint(equalToConstant: tapVerticalView.getMaxAvailableHeight()).isActive = true
                 tapCardScannerView.configureScanner()
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(tapCardScannerView)
-                tapAmountSectionViewModel.scannerIsVisible()
+                tapAmountSectionViewModel.scannerVisibility(changed: true)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
                 }
                 break
             }
@@ -421,7 +420,9 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
     }
     
     func tapCardScannerDidFinish(with tapCard: TapCard) {
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
+            self?.closeScannerClicked()
+        }
     }
     
     func tapInlineCardScannerTimedOut(for inlineScanner: TapInlineCardScanner) {
