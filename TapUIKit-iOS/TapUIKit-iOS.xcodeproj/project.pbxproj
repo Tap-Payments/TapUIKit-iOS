@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6267E45124B7313F00844225 /* TapOtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6267E45024B7313F00844225 /* TapOtpView.swift */; };
+		6267E45324B7314900844225 /* TapOtpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6267E45224B7314900844225 /* TapOtpView.xib */; };
+		6267E45524B74E8100844225 /* TapOtpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6267E45424B74E8100844225 /* TapOtpViewModel.swift */; };
+		6267E45724B7588000844225 /* TapOtpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6267E45624B7588000844225 /* TapOtpController.swift */; };
+		6267E45924B758C400844225 /* TapOtpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6267E45824B758C400844225 /* TapOtpController.xib */; };
+		6267E45C24B7617200844225 /* TapOtpExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6267E45B24B7617200844225 /* TapOtpExampleViewController.swift */; };
+		6278370924BB5328005692D3 /* BottomLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6278370824BB5328005692D3 /* BottomLineTextField.swift */; };
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
@@ -141,6 +148,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6267E45024B7313F00844225 /* TapOtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapOtpView.swift; sourceTree = "<group>"; };
+		6267E45224B7314900844225 /* TapOtpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapOtpView.xib; sourceTree = "<group>"; };
+		6267E45424B74E8100844225 /* TapOtpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapOtpViewModel.swift; sourceTree = "<group>"; };
+		6267E45624B7588000844225 /* TapOtpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapOtpController.swift; sourceTree = "<group>"; };
+		6267E45824B758C400844225 /* TapOtpController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapOtpController.xib; sourceTree = "<group>"; };
+		6267E45B24B7617200844225 /* TapOtpExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapOtpExampleViewController.swift; sourceTree = "<group>"; };
+		6278370824BB5328005692D3 /* BottomLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineTextField.swift; sourceTree = "<group>"; };
 		6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +279,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6267E44D24B7310700844225 /* TapOtpView */ = {
+			isa = PBXGroup;
+			children = (
+				6267E44F24B7312100844225 /* ViewModels */,
+				6267E44E24B7311600844225 /* Views */,
+			);
+			path = TapOtpView;
+			sourceTree = "<group>";
+		};
+		6267E44E24B7311600844225 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6267E45024B7313F00844225 /* TapOtpView.swift */,
+				6267E45624B7588000844225 /* TapOtpController.swift */,
+				6278370824BB5328005692D3 /* BottomLineTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6267E44F24B7312100844225 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6267E45424B74E8100844225 /* TapOtpViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6267E45A24B7614D00844225 /* TapOtpExampleView */ = {
+			isa = PBXGroup;
+			children = (
+				6267E45B24B7617200844225 /* TapOtpExampleViewController.swift */,
+			);
+			path = TapOtpExampleView;
+			sourceTree = "<group>";
+		};
 		A1057834EC965C7C3A18355D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +455,7 @@
 		E8428DF22456DB3200D5A45A /* TapUIKit-Example */ = {
 			isa = PBXGroup;
 			children = (
+				6267E45A24B7614D00844225 /* TapOtpExampleView */,
 				E832E63924B331F200E2241B /* TapCardInput */,
 				E87E09E524A89D2B004A7A46 /* TapCardPhone bar */,
 				E8861D3E249FA8A40002FEDE /* CellsTesting */,
@@ -432,6 +482,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6267E44D24B7310700844225 /* TapOtpView */,
 				E8BE3FAD24B60F6D00F15C41 /* TapCardTelecomPayment */,
 				E87E09DC24A87762004A7A46 /* TapCardsTelecomBar */,
 				E8E69999249F6761007A32FA /* TapGenericTableView */,
@@ -491,6 +542,8 @@
 				E82A56BA249A401400E3F00D /* TapHorizontalHeaderView.xib */,
 				E87E09E124A878C6004A7A46 /* TapCardPhoneIconView.xib */,
 				E8A57AA424A9B28900C1B6CD /* TapCardPhoneBarList.xib */,
+				6267E45224B7314900844225 /* TapOtpView.xib */,
+				6267E45824B758C400844225 /* TapOtpController.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -896,9 +949,11 @@
 				E8E92B4E248FA4E900DD7DBB /* TapMerchantHeaderView.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
 				E8C59101249293EA00E03424 /* TapAmountSectionView.xib in Resources */,
+				6267E45324B7314900844225 /* TapOtpView.xib in Resources */,
 				E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */,
 				E82A56C0249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib in Resources */,
 				E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */,
+				6267E45924B758C400844225 /* TapOtpController.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
 				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
@@ -1001,9 +1056,12 @@
 				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
 				E8E92B52248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift in Sources */,
 				E8C590FF249293E200E03424 /* TapAmountSectionView.swift in Sources */,
+				6267E45124B7313F00844225 /* TapOtpView.swift in Sources */,
 				E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */,
 				E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */,
+				6278370924BB5328005692D3 /* BottomLineTextField.swift in Sources */,
 				E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */,
+				6267E45724B7588000844225 /* TapOtpController.swift in Sources */,
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
 				E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */,
 				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
@@ -1029,6 +1087,7 @@
 				E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */,
 				E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
+				6267E45524B74E8100844225 /* TapOtpViewModel.swift in Sources */,
 				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
@@ -1054,6 +1113,7 @@
 				E80EA58F24974B4900C5C5E1 /* ChipsTestingViewController.swift in Sources */,
 				E832E63B24B3320800E2241B /* TapCardInputViewController.swift in Sources */,
 				E8C5910424936C6E00E03424 /* TapAmountSectionViewController.swift in Sources */,
+				6267E45C24B7617200844225 /* TapOtpExampleViewController.swift in Sources */,
 				E87CEA48248FBFBC002F2332 /* TapMerchantHeaderViewController.swift in Sources */,
 				E8A57AA924A9CCE200C1B6CD /* TapCardPhoneBarListViewController.swift in Sources */,
 			);

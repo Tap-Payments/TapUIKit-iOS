@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         
         dataSource.append(["title":"Wall Of Glory","subtitle":"Shows all ui components from Checkout SDK done in action. NOTE: TRY CLICKING ANYWHERE TO SEE THE FIRED EVENTS","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         
+        dataSource.append(["title":"OTP View","subtitle":"Shows all ui components from OTP View done in action. NOTE: TRY CLICKING ANYWHERE TO SEE THE FIRED EVENTS","navigationID":"TapOtpExampleViewController","lang":"0","push":"0"])
+        
         tableView.dataSource = self
         tableView.delegate = self
     }
