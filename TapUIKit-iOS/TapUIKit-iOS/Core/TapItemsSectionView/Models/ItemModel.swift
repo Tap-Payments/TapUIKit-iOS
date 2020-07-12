@@ -13,12 +13,12 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 /// Represent the model of an ITEM inside an order/transaction
-public struct ItemModel : Codable {
+@objc public class ItemModel : NSObject, Codable {
     
     /// The title of the item
 	let title : String?
     /// A description of the item
-	let description : String?
+	let itemDescription : String?
     /// The raw original price in the original currency
 	let price : Double?
     /// The quantity added to this item
@@ -35,9 +35,9 @@ public struct ItemModel : Codable {
      - Parameter discount: The discount applied to the item's price
      
      */
-    public init(title: String?, description: String?, price: Double?, quantity: Int?, discount: DiscountModel?) {
+    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Int = 0, discount: DiscountModel?) {
         self.title = title
-        self.description = description
+        self.itemDescription = description
         self.price = price
         self.quantity = quantity
         self.discount = discount
@@ -46,16 +46,16 @@ public struct ItemModel : Codable {
 	enum CodingKeys: String, CodingKey {
 
 		case title = "title"
-		case description = "description"
+		case itemDescription = "description"
 		case price = "price"
 		case quantity = "quantity"
 		case discount = "discount"
 	}
 
-	public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		title = try values.decodeIfPresent(String.self, forKey: .title)
-		description = try values.decodeIfPresent(String.self, forKey: .description)
+		itemDescription = try values.decodeIfPresent(String.self, forKey: .itemDescription)
 		price = try values.decodeIfPresent(Double.self, forKey: .price)
 		quantity = try values.decodeIfPresent(Int.self, forKey: .quantity)
 		discount = try values.decodeIfPresent(DiscountModel.self, forKey: .discount)

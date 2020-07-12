@@ -23,7 +23,7 @@ import RxCocoa
 }
 
 /// The view model that controlls the data shown inside a TapAmountSectionView
-public class TapAmountSectionViewModel {
+@objc public class TapAmountSectionViewModel:NSObject {
     // MARK:- RX Internal Observables
     
     /// Represent the original transaction total amount
@@ -40,68 +40,68 @@ public class TapAmountSectionViewModel {
     
     // MARK:- Public normal swift variables
     
-    public var delegate:TapAmountSectionViewModelDelegate?
+    @objc public var delegate:TapAmountSectionViewModelDelegate?
     /// Enum to determine the current state of the amount view, whether we are shoing the default view or the items list is currencly visible
     var currentStateView:AmountSectionCurrentState = .DefaultView
     
     /// Represent the original transaction total amount
-    public var originalTransactionAmount:Double = 0 {
+    @objc public var originalTransactionAmount:Double = 0 {
         didSet {
             updateAmountObserver(for: originalTransactionAmount, with: originalTransactionCurrency, on: originalAmountLabelObserver)
         }
     }
     
     /// Represent the title that should be displayed inside the SHOW ITEMS/CLOSE button
-    public var itemsLabel:String = "" {
+    @objc public var itemsLabel:String = "" {
         didSet {
             itemsLabelObserver.accept(itemsLabel)
         }
     }
     
     /// Represent the original transaction currenc code
-    public var originalTransactionCurrency:TapCurrencyCode? {
+    @objc public var originalTransactionCurrency:TapCurrencyCode = .undefined {
         didSet {
             updateAmountObserver(for: originalTransactionAmount, with: originalTransactionCurrency, on: originalAmountLabelObserver)
         }
     }
     /// Represent the converted transaction total amount if any
-    public var convertedTransactionAmount:Double = 0 {
+    @objc public var convertedTransactionAmount:Double = 0 {
         didSet {
             updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
         }
     }
     /// Represent the converted transaction currenc code if any
-    public var convertedTransactionCurrency:TapCurrencyCode? {
+    @objc public var convertedTransactionCurrency:TapCurrencyCode = .undefined {
         didSet {
-            if convertedTransactionCurrency?.appleRawValue == originalTransactionCurrency?.appleRawValue {
-                convertedTransactionCurrency = nil
+            if convertedTransactionCurrency.appleRawValue == originalTransactionCurrency.appleRawValue || convertedTransactionCurrency == .undefined {
+                convertedTransactionCurrency = .undefined
                 convertedTransactionAmount = 0
             }else {
-                convertedTransactionAmount = (convertedTransactionCurrency?.convert(from: originalTransactionCurrency, for: originalTransactionAmount)) ?? 0
+                convertedTransactionAmount = (convertedTransactionCurrency.convert(from: originalTransactionCurrency, for: originalTransactionAmount))
             }
             //updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
         }
     }
     /// Represent the number of items in the current transaction
-    public var numberOfItems:Int = 0 {
+    @objc public var numberOfItems:Int = 0 {
         didSet {
             itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
         }
     }
     /// Indicates if the number of items should be shown
-    public var shouldShowItems:Bool = true {
+    @objc public var shouldShowItems:Bool = true {
         didSet {
             showItemsObserver.accept(shouldShowItems)
         }
     }
     /// Indicates if the amount labels should be shown
-    public var shouldShowAmount:Bool = true {
+    @objc public var shouldShowAmount:Bool = true {
         didSet {
             showAmount.accept(shouldShowAmount)
         }
     }
     /// Indicates to show the currency symbol or the currency code
-    public var tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO {
+    @objc public var tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO {
         didSet {
             originalTransactionAmount = originalTransactionAmount + 0
             convertedTransactionAmount = convertedTransactionAmount + 0
@@ -124,7 +124,8 @@ public class TapAmountSectionViewModel {
      - Parameter shouldShowAmount:Represent the original transaction total amount
      - Parameter tapCurrencyFormatterSymbol:Indicates to show the currency symbol or the currency code
      */
-    public init(originalTransactionAmount: Double = 0, originalTransactionCurrency: TapCurrencyCode? = nil, convertedTransactionAmount: Double = 0, convertedTransactionCurrency: TapCurrencyCode? = nil, numberOfItems: Int = 0, shouldShowItems: Bool = true, shouldShowAmount: Bool = true,tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO) {
+    @objc public init(originalTransactionAmount: Double = 0, originalTransactionCurrency: TapCurrencyCode = .undefined, convertedTransactionAmount: Double = 0, convertedTransactionCurrency: TapCurrencyCode = .undefined, numberOfItems: Int = 0, shouldShowItems: Bool = true, shouldShowAmount: Bool = true,tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO) {
+        super.init()
         defer {
             self.originalTransactionAmount = originalTransactionAmount
             self.originalTransactionCurrency = originalTransactionCurrency
@@ -138,7 +139,7 @@ public class TapAmountSectionViewModel {
     }
     
     private func updateAmountObserver(for amount:Double, with currencyCode:TapCurrencyCode?, on observer:BehaviorRelay<String>) {
-        guard let currencyCode = currencyCode  else {
+        guard let currencyCode = currencyCode, currencyCode != .undefined  else {
             observer.accept("")
             return
         }
@@ -196,7 +197,7 @@ public class TapAmountSectionViewModel {
     }
 }
 
-public enum TapCurrencyFormatterSymbol {
+@objc public enum TapCurrencyFormatterSymbol:Int {
     case ISO
     case LocalSymbol
 }

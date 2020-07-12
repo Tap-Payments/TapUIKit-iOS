@@ -17,13 +17,13 @@ import class UIKit.NSLayoutConstraint
      The event will be fired when a cell is selected in the attacjed UITableView
      - Parameter viewModel: Represents the attached view model of the selectec cell view
      */
-    func didSelect(item viewModel:TapGenericTableCellViewModel)
+    @objc func didSelectTable(item viewModel:TapGenericTableCellViewModel)
     
     /**
      The event will be fired when the user cliks on an Item cell
      - Parameter viewModel: Represents The attached view model
      */
-    func itemClicked(for viewModel:ItemCellViewModel)
+    @objc func itemClicked(for viewModel:ItemCellViewModel)
     
     //func contentSizeChanged(to newSize:CGSize)
 }
@@ -132,7 +132,7 @@ internal protocol TapCellGenericTableViewModelDelegate {
         // Inform the view model of the selected cell that he is selected, hence, he will pass this value to his attached UIView
         selectedViewModel.didSelectItem()
         // Inform the main (outer) delegate, that an item had been selected
-        delegate?.didSelect(item: selectedViewModel)
+        delegate?.didSelectTable(item: selectedViewModel)
     }
     
     /**

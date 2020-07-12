@@ -12,7 +12,7 @@ import CommonDataModelsKit_iOS
 import class UIKit.UICollectionViewCell
 
 /// The view model that controlls the SavedCard cell
-public class CurrencyChipViewModel: GenericTapChipViewModel {
+@objc public class CurrencyChipViewModel: GenericTapChipViewModel {
     
     // MARK:- Variables
     public var currency:TapCurrencyCode = .KWD
@@ -20,7 +20,7 @@ public class CurrencyChipViewModel: GenericTapChipViewModel {
     internal var cellDelegate:GenericCellChipViewModelDelegate?
     
     
-    public init(currency:TapCurrencyCode = .KWD) {
+    @objc public init(currency:TapCurrencyCode = .KWD) {
         super.init(title: currency.appleRawValue, icon: "https://www.countryflags.io/\(currency.imageName().components(separatedBy: ".")[0])/flat/24.png")
         self.currency = currency
     }

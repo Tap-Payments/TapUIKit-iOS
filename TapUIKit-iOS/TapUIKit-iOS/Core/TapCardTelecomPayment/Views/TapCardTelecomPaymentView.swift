@@ -33,14 +33,28 @@ import RxSwift
             phoneInputView.delegate = self
         }
     }
+    
+    /// Computed value based on data source, will be nil if we have more than 1 brand. and will be the URL if the icon of the brand in case ONLY 1 brand
+    var brandIconUrl:String? {
+        if tapCardPhoneListViewModel.dataSource.count != 1 {
+            return nil
+        }else {
+            return tapCardPhoneListViewModel.dataSource[0].tapCardPhoneIconUrl
+        }
+    }
+    
     /// Used to collect any reactive garbage
     internal let disposeBag:DisposeBag = .init()
+    
+    /// Used to remove the tab bar when there is only one payment option
+    @IBOutlet weak var tabBarHeightConstraint: NSLayoutConstraint!
     
     /// The view model that has the needed payment options and data source to display the payment view
     @objc public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
             // On init, we need to:
-            
+            // Check if we have one brand or more
+            configureTabBarHeight()
             // Setup the bar view with the passed payment options list
             tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
             // Listen to changes in the view model
@@ -80,6 +94,19 @@ import RxSwift
         self.contentView.frame = bounds
     }
     
+    /// Decides whether we show the tab bar or not depending on number of payment options == 1 or > 1
+    private func configureTabBarHeight() {
+        
+        if tapCardPhoneListViewModel.dataSource.count == 1 {
+            // Then we need to hide the tab bar in this case and tell the card input that we will show only one icon :)
+            tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
+            tabBarHeightConstraint.constant = 0
+            tapCardPhoneListView.isHidden = true
+            layoutIfNeeded()
+        }
+        
+    }
+    
     /// Creates connections and listen to events and data changes reactivly from the tab bar view model
     private func bindObserverbales() {
         // We need to know when a new segment is selected in the tab bar payment list, then we need to decide which input field should be shown
@@ -110,9 +137,17 @@ import RxSwift
         // Reset the card input
         cardInputView.reset()
         // Re init the card input
-        cardInputView.setup(for: .InlineCardInput,allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand.rawValue })
+        cardInputView.setup(for: .InlineCardInput, allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand }.filter{ $0.brandSegmentIdentifier == "cards" }.map{ $0.rawValue }, cardIconUrl: brandIconUrl)
         // Reset any selection done on the bar layout
         tapCardPhoneListViewModel.resetCurrentSegment()
+    }
+    
+    /**
+     tells the caller the required height of this view based on the number of payment options available
+     - Returns: 45 if one brand allowed and 95 otherwise
+     */
+    @objc public func requiredHeight() -> CGFloat {
+        return tapCardPhoneListViewModel.dataSource.count > 1 ? 95 : 45
     }
 }
 

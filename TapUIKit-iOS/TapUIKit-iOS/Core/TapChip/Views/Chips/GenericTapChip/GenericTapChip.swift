@@ -9,7 +9,7 @@
 import class UIKit.UICollectionViewCell
 
 /// This is a superclass for all the chips views created, this will make sure all have the same interface/output and ease the parametery type in methods
-public class GenericTapChip:UICollectionViewCell {
+@objc public class GenericTapChip:UICollectionViewCell {
     
     
     // MARK:- Internal methods
@@ -45,17 +45,17 @@ public class GenericTapChip:UICollectionViewCell {
 }
 
 /// An enum to identify all the created chips tupes, to be used to pvoide a singleton place to knwo all about each type
-public enum TapChipType:CaseIterable {
+@objc public enum TapChipType:Int,CaseIterable {
     /// Gateway chip which has only centered payment gateway logo
-    case GatewayChip
+    case GatewayChip = 1
     /// Apple pay chip which has Pay with Apple pay logo
-    case ApplePayChip
+    case ApplePayChip = 2
     /// Gopay chip which has the TAP logo and goPay title
-    case GoPayChip
+    case GoPayChip = 3
     /// Currency chip which has the flag and teh ISO code of the currency
-    case CurrencyChip
+    case CurrencyChip = 4
     /// Saved card chip has the card icon and the crypted card number
-    case SavedCardChip
+    case SavedCardChip = 5
     
     /**
      Defines what is the theme path to look for to customise a cell based on its type

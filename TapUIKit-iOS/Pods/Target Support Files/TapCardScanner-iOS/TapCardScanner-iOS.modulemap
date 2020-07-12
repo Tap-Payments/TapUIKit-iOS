@@ -1,0 +1,6 @@
+framework module TapCardScanner_iOS {
+  umbrella header "TapCardScanner-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

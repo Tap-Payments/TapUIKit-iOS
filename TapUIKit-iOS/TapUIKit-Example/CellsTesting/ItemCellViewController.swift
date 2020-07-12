@@ -108,7 +108,7 @@ extension Decodable {
 
 
 extension ItemCellViewController:TapGenericTableViewModelDelegate {
-    func didSelect(item viewModel: TapGenericTableCellViewModel) {
+    func didSelectTable(item viewModel: TapGenericTableCellViewModel) {
         return
     }
     

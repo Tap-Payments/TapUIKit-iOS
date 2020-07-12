@@ -12,49 +12,49 @@ import class UIKit.UINib
 import class TapApplePayKit_iOS.TapApplePayToken
 
 /// This is the public protocol for outer components to listen to events and data fired from this view model and its attached view
-public protocol TapChipHorizontalListViewModelDelegate {
+@objc public protocol TapChipHorizontalListViewModelDelegate {
     /**
         The event will be fired when a cell is selected in the attacjed uicollection voew
      - Parameter viewModel: Represents the attached view model of the selectec cell view
      */
-    func didSelect(item viewModel:GenericTapChipViewModel)
+    @objc func didSelect(item viewModel:GenericTapChipViewModel)
     /**
      The event will be fired when left button in the header if any is clicked
      - Parameter headerType: Represents which header was clicked
      */
-    func headerLeftButtonClicked(in headerType:TapHorizontalHeaderType)
+    @objc func headerLeftButtonClicked(in headerType:TapHorizontalHeaderType)
     /**
      The event will be fired when right button in the header if any is clicked
      - Parameter headerType: Represents which header was clicked
      */
-    func headerRightButtonClicked(in headerType:TapHorizontalHeaderType)
+    @objc func headerRightButtonClicked(in headerType:TapHorizontalHeaderType)
     /**
      The event will be fired when a successful apple pay authorization happened
      - Parameter viewModel: Represents The attached view model
      - Parameter token: Represents Tap wrapper for the generated token
      */
-    func applePayAuthoized(for viewModel:ApplePayChipViewCellModel, with token:TapApplePayToken)
+    @objc func applePayAuthoized(for viewModel:ApplePayChipViewCellModel, with token:TapApplePayToken)
     /**
      The event will be fired when the user cliks on a saved card chip
      - Parameter viewModel: Represents The attached view model
      */
-    func savedCard(for viewModel:SavedCardCollectionViewCellModel)
+    @objc func savedCard(for viewModel:SavedCardCollectionViewCellModel)
     /**
      The event will be fired when the user cliks on a gateway chip
      - Parameter viewModel: Represents The attached view model
      */
-    func gateway(for viewModel:GatewayChipViewModel)
+    @objc func gateway(for viewModel:GatewayChipViewModel)
     /**
      The event will be fired when the user cliks on a goPay chip
      - Parameter viewModel: Represents The attached view model
      */
-    func goPay(for viewModel:TapGoPayViewModel)
+    @objc func goPay(for viewModel:TapGoPayViewModel)
     
     /**
      The event will be fired when the user cliks on a currency chip
      - Parameter viewModel: Represents The attached view model
      */
-    func currencyChip(for viewModel:CurrencyChipViewModel)
+    @objc func currencyChip(for viewModel:CurrencyChipViewModel)
 }
 
 /// This is the internal protocol for communication between the view model and its attached UIView
@@ -64,17 +64,17 @@ internal protocol TapChipHorizontalViewModelDelegate {
      - Parameter dataSource: Represents the new datasource if needed
      */
     func reload(new dataSource:[GenericTapChipViewModel])
-    func showHeader(with type:TapHorizontalHeaderType?)
+    func showHeader(with type:TapHorizontalHeaderType)
 }
 
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
-public class TapChipHorizontalListViewModel {
+@objc public class TapChipHorizontalListViewModel:NSObject {
     
     // Mark:- Variables
-    public var selectedChip:GenericTapChipViewModel?
+    @objc public var selectedChip:GenericTapChipViewModel?
     
     /// The data source which represents the list of view models to be displayed inside the uicollectionview
-    public var dataSource:[GenericTapChipViewModel] = [] {
+    @objc public var dataSource:[GenericTapChipViewModel] = [] {
         didSet{
             // When it is changed, we need to inform the attached view that he needs to reload itself now
             cellDelegate?.reload(new: dataSource)
@@ -83,14 +83,14 @@ public class TapChipHorizontalListViewModel {
     }
     
     /// Defines what type of header shall we show in the list if any
-    public var headerType:TapHorizontalHeaderType? {
+    @objc public var headerType:TapHorizontalHeaderType = .GatewayListHeader {
         didSet{
             cellDelegate?.showHeader(with: headerType)
         }
     }
     
     /// Attach yourself to this delegate to start getting events fired from this view model and its attached uicollectionview
-    public var delegate:TapChipHorizontalListViewModelDelegate?
+    @objc public var delegate:TapChipHorizontalListViewModelDelegate?
     
     /// Attach yourself to this delegare if you are the associated view so you can be instructed by actions you have to do
     internal var cellDelegate:TapChipHorizontalViewModelDelegate? {
@@ -104,7 +104,8 @@ public class TapChipHorizontalListViewModel {
      Creates the ViewModel and makes it ready for work
      - Parameter dataSource: The list of viewmodels that will be rendered as list of UIViews in the collectionview
      */
-    public init(dataSource:[GenericTapChipViewModel], headerType:TapHorizontalHeaderType? = nil, selectedChip:GenericTapChipViewModel? = nil ) {
+    @objc public init(dataSource:[GenericTapChipViewModel], headerType:TapHorizontalHeaderType = .GatewayListHeader, selectedChip:GenericTapChipViewModel? = nil ) {
+        super.init()
         defer {
             self.dataSource = dataSource
             self.headerType = headerType
@@ -113,7 +114,7 @@ public class TapChipHorizontalListViewModel {
     }
     
     /// Creates empty view model, added for convience
-    public init() {}
+    public override init() {}
     
     // Mark:- Internal methods
     

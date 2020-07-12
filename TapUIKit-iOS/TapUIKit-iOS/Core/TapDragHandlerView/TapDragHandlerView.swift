@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 /// Represents a standalone configurable view to show a drag handler at the top of the bottom sheet
-public class TapDragHandlerView: UIView {
+@objc public class TapDragHandlerView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
@@ -50,7 +50,7 @@ public class TapDragHandlerView: UIView {
      - Parameter height: The new height to be applied
      - Parameter animated : Indicates whether the width change should be animated or not, default is true
      */
-    public func changeHandlerSize(with width:CGFloat, and height:CGFloat, animated:Bool = true) {
+    @objc public func changeHandlerSize(with width:CGFloat, and height:CGFloat, animated:Bool = true) {
         handlerImageViewWidthConstraint.constant = width
         handlerImageViewHeightConstraint.constant = height
         

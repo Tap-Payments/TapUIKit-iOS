@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 
-class ApplePayChipCollectionViewCell: GenericTapChip {
+@objc class ApplePayChipCollectionViewCell: GenericTapChip {
 
     // MARK:- Variables
     
@@ -20,7 +20,7 @@ class ApplePayChipCollectionViewCell: GenericTapChip {
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
-    public var viewModel:ApplePayChipViewCellModel = .init() {
+    @objc public var viewModel:ApplePayChipViewCellModel = .init() {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self

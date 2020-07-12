@@ -9,7 +9,7 @@
 import TapThemeManager2020
 import SimpleAnimation
 
-public class ItemTableViewCell: TapGenericTableCell {
+@objc public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!

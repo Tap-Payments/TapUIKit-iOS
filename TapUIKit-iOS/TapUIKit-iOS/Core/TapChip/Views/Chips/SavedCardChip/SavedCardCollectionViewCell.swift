@@ -11,7 +11,7 @@ import TapThemeManager2020
 import Nuke
 /// Represents the Saved card chip cell
 
-class SavedCardCollectionViewCell: GenericTapChip {
+@objc class SavedCardCollectionViewCell: GenericTapChip {
     // MARK:- Variables
     
     /// Reference to the saved card icon image view
@@ -21,7 +21,7 @@ class SavedCardCollectionViewCell: GenericTapChip {
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
-    public var viewModel:SavedCardCollectionViewCellModel = .init() {
+    @objc public var viewModel:SavedCardCollectionViewCellModel = .init() {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self

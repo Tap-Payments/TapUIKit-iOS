@@ -139,8 +139,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         // The tab bar section
         tapCardTelecomPaymentView.translatesAutoresizingMaskIntoConstraints = false
-        tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: 95).isActive = true
         tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: tapCardTelecomPaymentView.requiredHeight()).isActive = true
         tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
         views.append(tapCardTelecomPaymentView)
         
@@ -158,7 +158,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createGatewaysViews() {
         currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .USD),CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
-        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: nil,selectedChip: currenciesChipsViewModel[0])
+        tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: .NoHeader,selectedChip: currenciesChipsViewModel[0])
         tapCurrienciesChipHorizontalListViewModel.delegate = self
         
         
@@ -331,7 +331,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
 
 
 extension ExampleWallOfGloryViewController:TapGenericTableViewModelDelegate {
-    func didSelect(item viewModel: TapGenericTableCellViewModel) {
+    func didSelectTable(item viewModel: TapGenericTableCellViewModel) {
         return
     }
     
