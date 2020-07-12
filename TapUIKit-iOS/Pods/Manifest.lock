@@ -1,6 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.20)
+  - CommonDataModelsKit-iOS (1.0.21)
   - EasyAnimation (2.2.1)
   - Firebase/Analytics (6.27.1):
     - Firebase/Core
@@ -32,6 +32,8 @@ PODS:
     - GoogleUtilities/Environment (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
+  - Flurry-iOS-SDK/FlurryAds (10.3.3):
+    - Flurry-iOS-SDK/FlurrySDK (~> 10.3.3)
   - Flurry-iOS-SDK/FlurrySDK (10.3.3)
   - GoogleAppMeasurement (6.6.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
@@ -71,6 +73,7 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - Nuke (9.1.1)
+  - PayCardsRecognizer (1.1.7)
   - PromisesObjC (1.2.9)
   - PullUpController (0.8.0)
   - RxCocoa (5.1.1):
@@ -87,7 +90,7 @@ PODS:
   - TapApplePayKit-iOS (1.0.4):
     - CommonDataModelsKit-iOS (~> 1.0.1)
     - Flurry-iOS-SDK/FlurrySDK
-  - TapCardInputKit-iOS (1.0.10):
+  - TapCardInputKit-iOS (1.0.11):
     - CommonDataModelsKit-iOS
     - Flurry-iOS-SDK/FlurrySDK
     - LocalisationManagerKit-iOS
@@ -96,6 +99,11 @@ PODS:
     - SnapKit
     - TapCardVlidatorKit-iOS
     - TapThemeManager2020
+  - TapCardScanner-iOS (1.0.4):
+    - CommonDataModelsKit-iOS (~> 1.0.1)
+    - Flurry-iOS-SDK/FlurryAds
+    - Flurry-iOS-SDK/FlurrySDK
+    - PayCardsRecognizer (~> 1.1.7)
   - TapCardVlidatorKit-iOS (1.0.9)
   - TapFontKit-iOS (0.0.3):
     - SwiftLint
@@ -127,6 +135,7 @@ DEPENDENCIES:
   - SnapKit
   - TapApplePayKit-iOS
   - TapCardInputKit-iOS
+  - TapCardScanner-iOS
   - TapCardVlidatorKit-iOS
   - TapThemeManager2020
 
@@ -150,6 +159,7 @@ SPEC REPOS:
     - MOLH
     - nanopb
     - Nuke
+    - PayCardsRecognizer
     - PromisesObjC
     - PullUpController
     - RxCocoa
@@ -161,6 +171,7 @@ SPEC REPOS:
     - SwiftLint
     - TapApplePayKit-iOS
     - TapCardInputKit-iOS
+    - TapCardScanner-iOS
     - TapCardVlidatorKit-iOS
     - TapFontKit-iOS
     - TapSwiftFixes
@@ -168,7 +179,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: a55a5a76c4355df707ffdce4aa7c87dae2eea687
+  CommonDataModelsKit-iOS: 57bf78cef7e52c0a1b488be8de9038e235418e91
   EasyAnimation: 226d133d23ef0ef99ddfb8928ff2a9a4a77d1cfd
   Firebase: 919186c8e119dd9372a45fd1dd17a8a942bc1892
   FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
@@ -185,6 +196,7 @@ SPEC CHECKSUMS:
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   Nuke: af4301b154d3afd8a3b045a5194a9a773a00b7a8
+  PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -195,12 +207,13 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   TapApplePayKit-iOS: 65ce3416d617a28a0d70726810e6b49402ed192c
-  TapCardInputKit-iOS: 1750e2e8941cc3432d04bcb228c84f77194a9c61
+  TapCardInputKit-iOS: 95a1e9240ec0bad959dff6d701149aa26c6516ad
+  TapCardScanner-iOS: 2116d6005e475721b93685a7358649c3ae50e40f
   TapCardVlidatorKit-iOS: afb67329472bb99a89e33e23c9323be8c9adf23e
   TapFontKit-iOS: 2810f6f66ad8a1fa9a2afc0e3cbaf6ecd5dc9d1f
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: a5f09c98d290769d5f0d9eb78261a1a263a01bc5
 
-PODFILE CHECKSUM: b6e9515d0dd989015ae925d649ab5259d17bebb0
+PODFILE CHECKSUM: 20840151d2aba4fdb2e42a4d72895fea1c263828
 
 COCOAPODS: 1.9.3

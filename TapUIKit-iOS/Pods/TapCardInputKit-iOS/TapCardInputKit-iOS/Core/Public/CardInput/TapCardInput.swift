@@ -36,10 +36,10 @@ internal protocol TapCardInputCommonProtocol {
      */
     func cardDataChanged(tapCard:TapCard)
     /**
-    This method will be called whenever the a brand is detected based on the current data typed by the user in the card form.
-    - Parameter cardBrand: The detected card brand
-    - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
-    */
+     This method will be called whenever the a brand is detected based on the current data typed by the user in the card form.
+     - Parameter cardBrand: The detected card brand
+     - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
+     */
     func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
     /// This method will be called once the user clicks on Scan button
     func scanCardClicked()

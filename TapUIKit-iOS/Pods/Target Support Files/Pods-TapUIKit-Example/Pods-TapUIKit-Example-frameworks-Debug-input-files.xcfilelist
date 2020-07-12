@@ -1,7 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Capable/Capable.framework
 ${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework
-${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework
+${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurrySDK/Flurry_iOS_SDK.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/LocalisationManagerKit-iOS/LocalisationManagerKit_iOS.framework
@@ -14,8 +14,10 @@ ${BUILT_PRODUCTS_DIR}/TapFontKit-iOS/TapFontKit_iOS.framework
 ${BUILT_PRODUCTS_DIR}/TapSwiftFixes/TapSwiftFixes.framework
 ${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
+${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurryAds-FlurrySDK/Flurry_iOS_SDK.framework
 ${BUILT_PRODUCTS_DIR}/EasyAnimation/EasyAnimation.framework
 ${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
+${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework
 ${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
@@ -23,3 +25,4 @@ ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
 ${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/TapCardInputKit-iOS/TapCardInputKit_iOS.framework
+${BUILT_PRODUCTS_DIR}/TapCardScanner-iOS/TapCardScanner_iOS.framework

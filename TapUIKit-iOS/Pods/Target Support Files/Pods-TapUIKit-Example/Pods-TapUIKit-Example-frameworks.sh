@@ -199,7 +199,7 @@ fi
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Capable/Capable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LocalisationManagerKit-iOS/LocalisationManagerKit_iOS.framework"
@@ -212,8 +212,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixes/TapSwiftFixes.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurryAds-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EasyAnimation/EasyAnimation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework"
+  install_framework "${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework"
@@ -221,11 +223,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapCardInputKit-iOS/TapCardInputKit_iOS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapCardScanner-iOS/TapCardScanner_iOS.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Capable/Capable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK/Flurry_iOS_SDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LocalisationManagerKit-iOS/LocalisationManagerKit_iOS.framework"
@@ -238,8 +241,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixes/TapSwiftFixes.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurryAds-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EasyAnimation/EasyAnimation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework"
+  install_framework "${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework"
@@ -247,6 +252,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapCardInputKit-iOS/TapCardInputKit_iOS.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TapCardScanner-iOS/TapCardScanner_iOS.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
