@@ -99,7 +99,7 @@ PODS:
     - SnapKit
     - TapCardVlidatorKit-iOS
     - TapThemeManager2020
-  - TapCardScanner-iOS (1.0.4):
+  - TapCardScanner-iOS (1.0.5):
     - CommonDataModelsKit-iOS (~> 1.0.1)
     - Flurry-iOS-SDK/FlurryAds
     - Flurry-iOS-SDK/FlurrySDK
@@ -208,7 +208,7 @@ SPEC CHECKSUMS:
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   TapApplePayKit-iOS: 65ce3416d617a28a0d70726810e6b49402ed192c
   TapCardInputKit-iOS: 95a1e9240ec0bad959dff6d701149aa26c6516ad
-  TapCardScanner-iOS: 2116d6005e475721b93685a7358649c3ae50e40f
+  TapCardScanner-iOS: 37e72639288b48fba5c6130027be38c2576d342e
   TapCardVlidatorKit-iOS: afb67329472bb99a89e33e23c9323be8c9adf23e
   TapFontKit-iOS: 2810f6f66ad8a1fa9a2afc0e3cbaf6ecd5dc9d1f
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2

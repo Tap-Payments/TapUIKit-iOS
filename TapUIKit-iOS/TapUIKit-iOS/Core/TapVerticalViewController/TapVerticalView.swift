@@ -126,6 +126,12 @@ import SimpleAnimation
         handleDeletion(for: view, with: animation)
     }
     
+    @objc public func getMaxAvailableHeight() -> CGFloat {
+        var currentViewsHeight:CGFloat = 0
+        stackView.arrangedSubviews.forEach{ currentViewsHeight += $0.frame.height }
+        return TapConstantManager.maxAllowedHeight - currentViewsHeight
+    }
+    
     /**
      Removes an arranged subview from the vertical hierarchy
      - Parameter index: The index of the view to be deleted

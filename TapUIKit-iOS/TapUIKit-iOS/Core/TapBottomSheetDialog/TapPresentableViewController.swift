@@ -77,9 +77,10 @@ internal class TapPresentableViewController: PullUpController {
         
         
         // check if the new dragged to point passes the minimum Y, then assign it back to the minimum Y
-        if self.view.frame.origin.y < TapConstantManager.TapBottomSheetMinimumYPoint {
+        if point > TapConstantManager.maxAllowedHeight {
             // If yes, then we need to move it back to the minimum allowed Y point
-            //self.pullUpControllerMoveToVisiblePoint(point-ConstantManager.TapBottomSheetMinimumYPoint, animated: true, completion: nil)
+            self.pullUpControllerMoveToVisiblePoint(TapConstantManager.maxAllowedHeight-5, animated: true, completion: nil)
+            return
         }
         
         // check if we need to inform the delegate about the new position we are in now

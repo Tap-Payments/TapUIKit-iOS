@@ -13,6 +13,24 @@ import TapCardVlidatorKit_iOS
 import SimpleAnimation
 import RxSwift
 
+/// External protocol to allow the TapCardInput to pass back data and events to the parent UIViewController
+@objc public protocol TapCardTelecomPaymentProtocol {
+    /**
+     This method will be called whenever the card data in the form has changed. It is being called in a live manner
+     - Parameter tapCard: The TapCard model that hold sthe data the currently enetred by the user till now
+     */
+    @objc func cardDataChanged(tapCard:TapCard)
+    /**
+     This method will be called whenever the a brand is detected based on the current data typed by the user in the card form.
+     - Parameter cardBrand: The detected card brand
+     - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
+     */
+    @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
+    /// This method will be called once the user clicks on Scan button
+    @objc func scanCardClicked()
+}
+
+
 /// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
 @objc public class TapCardTelecomPaymentView: UIView {
 
@@ -33,6 +51,9 @@ import RxSwift
             phoneInputView.delegate = self
         }
     }
+    
+    /// The delegate that wants to hear from the view on new data and events
+    @objc public var delegate:TapCardTelecomPaymentProtocol?
     
     /// Computed value based on data source, will be nil if we have more than 1 brand. and will be the URL if the icon of the brand in case ONLY 1 brand
     var brandIconUrl:String? {
@@ -153,7 +174,7 @@ import RxSwift
 
 extension TapCardTelecomPaymentView: TapCardInputProtocol {
     public func cardDataChanged(tapCard: TapCard) {
-        
+        delegate?.cardDataChanged(tapCard: tapCard)
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -165,10 +186,12 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
         }else if validation == .Valid {
             tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
         }
+        
+        delegate?.brandDetected(for: cardBrand, with: validation)
     }
     
     public func scanCardClicked() {
-        
+        delegate?.scanCardClicked()
     }
     
     public func saveCardChanged(enabled: Bool) {
@@ -187,6 +210,8 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
         }else if validation == .Valid {
             tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
         }
+        
+        delegate?.brandDetected(for: cardBrand, with: validation)
     }
     
 }

@@ -18,6 +18,8 @@ import RxCocoa
     @objc optional func showItemsClicked()
     /// A block to execute logic in view model when the close items had been clicked
     @objc optional func closeItemsClicked()
+    /// A block to execute logic in view model when the close scanner had been clicked
+    @objc optional func closeScannerClicked()
     /// A block to execute logic in view model when the amount section view in the view is clixked by the user
     @objc optional func amountSectionClicked()
 }
@@ -42,7 +44,11 @@ import RxCocoa
     
     @objc public var delegate:TapAmountSectionViewModelDelegate?
     /// Enum to determine the current state of the amount view, whether we are shoing the default view or the items list is currencly visible
-    var currentStateView:AmountSectionCurrentState = .DefaultView
+    var currentStateView:AmountSectionCurrentState = .DefaultView {
+        didSet{
+            configureItemsLabel()
+        }
+    }
     
     /// Represent the original transaction total amount
     @objc public var originalTransactionAmount:Double = 0 {
@@ -85,7 +91,7 @@ import RxCocoa
     /// Represent the number of items in the current transaction
     @objc public var numberOfItems:Int = 0 {
         didSet {
-            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
+            configureItemsLabel()
         }
     }
     /// Indicates if the number of items should be shown
@@ -138,6 +144,12 @@ import RxCocoa
         }
     }
     
+    /// Call this method to informthe amount section that scanner is visible, hence it changes the items button title and action handler
+    @objc public func scannerIsVisible() {
+        // Adjust inner details to represent the new state
+        currentStateView = .ScannerView
+    }
+    
     private func updateAmountObserver(for amount:Double, with currencyCode:TapCurrencyCode?, on observer:BehaviorRelay<String>) {
         guard let currencyCode = currencyCode, currencyCode != .undefined  else {
             observer.accept("")
@@ -170,6 +182,19 @@ import RxCocoa
             case .ItemsView:
                 closeItems()
                 break
+        // Meaning currently we are showing the list items and we need to go back to the normal view
+        case .ScannerView:
+            closeScanner()
+            break
+        }
+    }
+    
+    internal func configureItemsLabel() {
+        switch currentStateView{
+        case .DefaultView:
+            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
+        case .ItemsView,.ScannerView:
+            itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
         }
     }
     
@@ -177,7 +202,6 @@ import RxCocoa
     private func showItems() {
         // Adjust inner details to represent the new state
         currentStateView = .ItemsView
-        itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
         // Inform the delegate that we need to take an action to show the items
         delegate?.showItemsClicked?()
     }
@@ -191,12 +215,23 @@ import RxCocoa
         delegate?.closeItemsClicked?()
     }
     
+    
+    /// Handles the logic for transitioning between the items view and default view
+    private func closeScanner() {
+        // Adjust inner details to represent the new state
+        currentStateView = .DefaultView
+        numberOfItems = numberOfItems + 0
+        // Inform the delegate that we need to take an action to show the items
+        delegate?.closeScannerClicked?()
+    }
+    
     /// A block to execute logic in view model when the amount section view in the view is clixked by the user
     internal func amountSectionClicked() {
         delegate?.amountSectionClicked?()
     }
 }
 
+/// Enum to state all different formatting to show the currency symbols
 @objc public enum TapCurrencyFormatterSymbol:Int {
     case ISO
     case LocalSymbol
@@ -208,4 +243,6 @@ internal enum AmountSectionCurrentState {
     case DefaultView
     /// Means, the current screen displays the items list
     case ItemsView
+    /// Means, the current screen displays the scannner
+    case ScannerView
 }
