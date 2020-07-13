@@ -46,6 +46,7 @@
 		E8428E1D2458209400D5A45A /* TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
 		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8437F5924BC7D260059F1B8 /* TapHintViewStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F5824BC7D260059F1B8 /* TapHintViewStatusEnum.swift */; };
 		E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */; };
 		E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */; };
 		E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */; };
@@ -187,6 +188,7 @@
 		E8428E0F2457F8D900D5A45A /* TapUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapUIExtensions.swift; sourceTree = "<group>"; };
 		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
 		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
+		E8437F5824BC7D260059F1B8 /* TapHintViewStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHintViewStatusEnum.swift; sourceTree = "<group>"; };
 		E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayViewModel.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8437F5724BC7D080059F1B8 /* TapHintView */,
 				E88F9E0E24BB3D3200A7B470 /* TapCardScanner */,
 				E8BE3FAD24B60F6D00F15C41 /* TapCardTelecomPayment */,
 				E87E09DC24A87762004A7A46 /* TapCardsTelecomBar */,
@@ -499,6 +502,14 @@
 				E8A57AA424A9B28900C1B6CD /* TapCardPhoneBarList.xib */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		E8437F5724BC7D080059F1B8 /* TapHintView */ = {
+			isa = PBXGroup;
+			children = (
+				E8437F5824BC7D260059F1B8 /* TapHintViewStatusEnum.swift */,
+			);
+			path = TapHintView;
 			sourceTree = "<group>";
 		};
 		E8670CB924988F85003F87D8 /* GoPayyChip */ = {
@@ -1049,6 +1060,7 @@
 				E87E09EA24A8C3BE004A7A46 /* TapBlackWhiteImage.swift in Sources */,
 				E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */,
 				E8E69945249F3F4A007A32FA /* DiscountModel.swift in Sources */,
+				E8437F5924BC7D260059F1B8 /* TapHintViewStatusEnum.swift in Sources */,
 				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
 				E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */,
 				E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */,
@@ -1297,7 +1309,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapUIKit-Example/TapUIKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1319,7 +1331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapUIKit-Example/TapUIKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
