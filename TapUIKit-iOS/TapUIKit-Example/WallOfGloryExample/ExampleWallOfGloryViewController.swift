@@ -11,6 +11,10 @@ import TapUIKit_iOS
 import TapApplePayKit_iOS
 import CommonDataModelsKit_iOS
 import LocalisationManagerKit_iOS
+import TapCardVlidatorKit_iOS
+import TapCardInputKit_iOS
+import TapCardScanner_iOS
+import AVFoundation
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -138,6 +142,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         views.append(gatewaysListView)
         
         // The tab bar section
+        tapCardTelecomPaymentView.delegate = self
         tapCardTelecomPaymentView.translatesAutoresizingMaskIntoConstraints = false
         tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: tapCardTelecomPaymentView.requiredHeight()).isActive = true
@@ -276,6 +281,48 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func amountSectionClicked() {
         showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")
     }
+    
+    func closeScannerClicked() {
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if let scannerElement:TapCardScannerView = element as? TapCardScannerView {
+                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                scannerElement.killScanner()
+                self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
+                views.append(gatewaysListView)
+                views.append(tapCardTelecomPaymentView)
+                tapAmountSectionViewModel.scannerVisibility(changed: false)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                }
+                break
+            }
+        }
+    }
+    
+    func showScanner() {
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if element == gatewaysListView {
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                let tapCardScannerView:TapCardScannerView = .init()
+                tapCardScannerView.delegate = self
+                tapCardScannerView.configureScanner()
+                views.remove(at: index)
+                views.remove(at: index)
+                views.append(tapCardScannerView)
+                tapAmountSectionViewModel.scannerVisibility(changed: true)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
+                }
+                break
+            }
+        }
+    }
 }
 
 
@@ -330,6 +377,28 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
 }
 
 
+extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    func cardDataChanged(tapCard: TapCard) {
+        
+    }
+    
+    func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+        
+    }
+    
+    func scanCardClicked() {
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] response in
+            if response {
+                //access granted
+                DispatchQueue.main.asyncAfter(deadline: .now()) {[weak self] in
+                    self?.showScanner()
+                }
+            }
+        }
+    }
+}
+
+
 extension ExampleWallOfGloryViewController:TapGenericTableViewModelDelegate {
     func didSelectTable(item viewModel: TapGenericTableCellViewModel) {
         return
@@ -337,6 +406,26 @@ extension ExampleWallOfGloryViewController:TapGenericTableViewModelDelegate {
     
     func itemClicked(for viewModel: ItemCellViewModel) {
         showAlert(title: viewModel.itemTitle(), message: "You clicked on the item.. Look until now, clicking an item is worthless we are just showcasing 🙂")
+    }
+}
+
+extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
+    func tapFullCardScannerDimissed() {
+        
+    }
+    
+    func tapCardScannerDidFinish(with tapCard: TapCard) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
+            self?.closeScannerClicked()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
+                self?.tapCardTelecomPaymentView.setCard(with: tapCard)
+            }
+        }
+    }
+    
+    func tapInlineCardScannerTimedOut(for inlineScanner: TapInlineCardScanner) {
+        
     }
     
     

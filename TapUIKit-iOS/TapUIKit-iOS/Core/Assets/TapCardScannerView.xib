@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCardScannerView" customModule="TapUIKit_iOS">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="TDU-KE-KmC"/>
+                <outlet property="previewView" destination="vbf-bt-Cad" id="WlQ-cu-YXf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbf-bt-Cad">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vbf-bt-Cad" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Onz-Q9-z6w"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vbf-bt-Cad" secondAttribute="trailing" id="YV5-Qi-2Qy"/>
+                <constraint firstItem="vbf-bt-Cad" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="c0V-xs-SCn"/>
+                <constraint firstAttribute="bottom" secondItem="vbf-bt-Cad" secondAttribute="bottom" id="fE4-cH-alC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="139" y="100"/>
+        </view>
+    </objects>
+</document>

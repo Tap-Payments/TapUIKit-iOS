@@ -126,6 +126,12 @@ import SimpleAnimation
         handleDeletion(for: view, with: animation)
     }
     
+    @objc public func getMaxAvailableHeight() -> CGFloat {
+        var currentViewsHeight:CGFloat = 0
+        stackView.arrangedSubviews.forEach{ currentViewsHeight += $0.frame.height }
+        return TapConstantManager.maxAllowedHeight - currentViewsHeight
+    }
+    
     /**
      Removes an arranged subview from the vertical hierarchy
      - Parameter index: The index of the view to be deleted
@@ -190,18 +196,27 @@ import SimpleAnimation
      - Parameter view: The view to be added
      - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
      - Parameter animation: The animation to be applied while doing the view addition. Default is nil
+     - Parameter shouldFillHeight: If true, then this view will expand the available height from the previous view to fill in the screen
      */
-    public func add(view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
-        handleAddition(of: view, at: index,with: animations,and: animationSequence)
+    public func add(view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial, shouldFillHeight:Bool = false) {
+        handleAddition(of: view, at: index,with: animations,and: animationSequence,shouldFillHeight: shouldFillHeight)
     }
     /**
      Handles all the logic needed to add an arranged subview to the vertical hierarchy
      - Parameter view: The view to be added
      - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
+     shouldFillHeight:Bool = false
      */
-    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
+    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial,shouldFillHeight:Bool = false) {
   
+        // Check if should fill in max height, then set its height to the maxium availble
+        if shouldFillHeight {
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.heightAnchor.constraint(equalToConstant: getMaxAvailableHeight()).isActive = true
+            view.layoutIfNeeded()
+        }
+        
         itemsBeingAdded += 1
         
         DispatchQueue.main.async { [weak self] in

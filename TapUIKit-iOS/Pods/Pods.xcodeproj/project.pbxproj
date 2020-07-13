@@ -87,6 +87,7 @@
 		04543980C4A7CE442330B0F1BC4A9A54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		04AF35901BD4FECE8D6243BFCBA4F890 /* FIRBundleUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AD8406181AB9E9CD55F2EDA643E75A8 /* FIRBundleUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		04F7862AAFA2B1ABA7249FB51A94FCFF /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E25E05E5676FCC131FF5485B27A69A /* visa.png */; };
+		0507592B6C35FB5594A0F50077453057 /* TapExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E55D2B55F090D9F7DAC5B5456EB59 /* TapExtensions.swift */; };
 		0518D09F8D0F198B5762E2EA8CF86A31 /* FBLPromise.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 23A25BC0ED1462E0F2A859AFB4A27EB5 /* FBLPromise.h */; };
 		052C46B238CB003854E40FC8718972E9 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF5F9576FA9AB96DF5B352020AAECE /* Signal.swift */; };
 		052C6452C9F9919E496F077C5D882140 /* GDTCORAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D293DAD110BF45985ED1046E7FC6CFA /* GDTCORAssert.m */; };
@@ -109,7 +110,6 @@
 		0AA3AA11533ABE5FCBB6DC1B0F6830E5 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D719F7F6AF308525255DD65F8D6B1A85 /* RxSwift.framework */; };
 		0ADDB880D3E38490B231EA9B101FF310 /* DispatchQueueConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DFBFBB6F08FF02549489C7576E325 /* DispatchQueueConfiguration.swift */; };
 		0B200A3F39B37DC231F8D69E777A0019 /* FlurrySessionBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE7E1B24C553710A212A065FA5CC0DD /* FlurrySessionBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BE1555B94DEB4F9FAD31ECA7465A607 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D3258696B9C330FFE07A8948F2338 /* VisualEffectView.swift */; };
 		0BF863B5E417C1776934893AAE8B9397 /* RxPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55735FE65B5F334089E6F23DDC16285C /* RxPickerViewAdapter.swift */; };
 		0C44567712E74C0317E4BE193ABA4B27 /* First.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32CDFB13ECA49FEA2EF97237B333458 /* First.swift */; };
 		0C701F0EA1246D87925F50409C1F0CDC /* CrardInputTextFieldStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424E81CE83CCF587E529DC6B4E327F0 /* CrardInputTextFieldStatusEnum.swift */; };
@@ -138,6 +138,7 @@
 		1157D0FB71099D50C1D86B22A46C2D85 /* RxWKNavigationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F7FD2209B902A52F753116BB88955B /* RxWKNavigationDelegateProxy.swift */; };
 		127FE7C16883F98B27F5962FB3F9432C /* ControlEvent+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C878D18FA96C4E119E7A540B721D56D /* ControlEvent+Signal.swift */; };
 		12BC0CD1AA0CA89ABBFDFCB3D3AB4C07 /* ThemeBlurEffectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B7BB1F76B7AC16F3377251EA1B186D /* ThemeBlurEffectSelector.swift */; };
+		13210D15FC011A774B229BFC163A73E1 /* TopRightCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F86B06BDCE945EB87B95A096ED82FA /* TopRightCorner.png */; };
 		133B08A68AA7F57B042F5798DC992520 /* FBLPromise+Always.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 00756634149DEE9864DA43E4A55FDCF6 /* FBLPromise+Always.h */; };
 		1362E83418C3EA0AB2CEDC22E5167CC1 /* ThemeDictionarySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5EEBD27854CA22FADE10BD13FA1CE3 /* ThemeDictionarySelector.swift */; };
 		136D621DE6F903694063ABD553425188 /* GULReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 041E0A29745617BC12EE89ECCBBF5F24 /* GULReachabilityChecker.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -145,6 +146,7 @@
 		13F117DF238B21F347E7589E00B97337 /* RGBAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B624A0C5DD6265D9C845EDC106832E /* RGBAColor.swift */; };
 		14D17AA712B9112347C9ACEE8F8192A8 /* ThemeStringAttributesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA81BE995ACA779AAB0C88DF5AC0E08 /* ThemeStringAttributesSelector.swift */; };
 		14D1FCEE551D7010E48FDCB7A961542D /* FBLPromisePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9EB4BEF556D77786EBF8821FDF4597 /* FBLPromisePrivate.h */; };
+		14FBBEBC6F8ADD18A714CCFD91D71D06 /* TapFullScreenCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECC1AA92F798B0454AB7DA58E51E1EA /* TapFullScreenCardScanner.swift */; };
 		14FE1E8CB3FF7F5B81F043DD2BB77FF9 /* FIRInstallationsIIDStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FD7DFA916057411E9291ED01B9FFFA4 /* FIRInstallationsIIDStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		151FD1FDB36F2BA12BFEC7F57E8191DA /* LocalisationManagerKit-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AD8A9B8CBDAFF17604174DE8972DC20 /* LocalisationManagerKit-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1578046795E51ADF624F9E6A5C60939A /* FIRInstallationsVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B26E7D22393DC42A3CC955316E591D /* FIRInstallationsVersion.m */; };
@@ -156,7 +158,6 @@
 		1956E392D500F3CD899D39A5F805736D /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB21008142EFAAEFBBF0D7F1066057E /* Typealiases.swift */; };
 		196ECC69DF946B7C4054EBA6F7889BAC /* GoogleUtilities-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DDEE99C9397024EF27568C2F224ED1 /* GoogleUtilities-dummy.m */; };
 		19772A56673C90F7A73792CFA2E0F419 /* HexTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A4193CE9C2529CE5D61AACB20F601 /* HexTextFieldDelegate.swift */; };
-		19A1FFD78959BFF2E1446F15E98F9AF2 /* TapFullScreenScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B81B96E210DBADB59EA2E569A477AA /* TapFullScreenScannerViewController.swift */; };
 		1A0D4E2AC775505553CD1B4A1C0DBB28 /* FIRCoreDiagnosticsConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B1350D11F93D3A02EDCE73F989099D /* FIRCoreDiagnosticsConnector.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1A438CD441E83C656F1BE6E9AD922C50 /* RxCollectionViewDataSourcePrefetchingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C96E3F0FE6B7C182B745FDE71E86D6 /* RxCollectionViewDataSourcePrefetchingProxy.swift */; };
 		1A676857D85724230537AA104E2B0C9D /* RxTableViewDataSourcePrefetchingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C941A43F85A45FC577A9A264558FCB /* RxTableViewDataSourcePrefetchingProxy.swift */; };
@@ -184,13 +185,13 @@
 		232B2F922E972D9F43D2EE15ACECE734 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD72511C79EFFB6A641DAD419309CF15 /* ConstraintPriority.swift */; };
 		241588D302CF69F54DD7C9DE826BFDBA /* UIApplication+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE354E8F3A70686C645A4F103CE37E4F /* UIApplication+Rx.swift */; };
 		2489F1D90FE4D3EAC2D70793286DAAC8 /* SynchronizedDisposeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D266831728A0383377E8C6D4B1EAF9E3 /* SynchronizedDisposeType.swift */; };
-		249227C2C80D211DA0DD8358DAEC234E /* CommonDataModelsKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911C42D47597F279FBD21150891F20F /* CommonDataModelsKit_iOS.framework */; };
 		24BBA40973EAA0F4081EC0D435623358 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDB113E507C61E48DF571D2B83B4F0 /* SnapKit.framework */; };
 		24FD25B394DB5A6F23C103C3373746E7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C57DFBF9D33F561162C1B61D28C1F14 /* CoreMedia.framework */; };
 		2533B682C85887B00E1A7DE6EBF23B46 /* UICollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98BE106868640DDF949AC09BC3D7480 /* UICollectionView+Rx.swift */; };
 		25850C6E47E035FC7D5CF25C60C90D7C /* TapFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB24DC66F44B9A8B33C310019290D4A /* TapFont.swift */; };
 		259D6FC80BCFE785471F743B1F533970 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E544251C4989D61826CBA2A1D52C7B /* IQNSArray+Sort.swift */; };
 		25DA4C2ACC3B7043D57A78452B9DD330 /* Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54264DBF2E10AD24C19472CA5604AA94 /* Catch.swift */; };
+		261CB9761BD028EC34D62FB0E4DD2538 /* BottomRightSuccessCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 35EA7F3BBA5B3C22C6F9A00B52FDC4BF /* BottomRightSuccessCorner.png */; };
 		265B2D45F0F297DE86B95F10878039D0 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F50A28711DCF04C28BDD4554502A52 /* DispatchQueue+Extensions.swift */; };
 		26B88567B31289C7148311178E3D358A /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD59F171B3D1F4ACE815F691CEEF5B18 /* UIView+SimpleAnimation.swift */; };
 		26E93BF7A50526E11152AA5744E8D0F4 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4778371342A206791281EA718C23F471 /* Nuke.framework */; };
@@ -225,6 +226,7 @@
 		2E1787546A7E9E110273BA4194F6245F /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B961C508DF0FD6F75FD92B4175DEB50 /* DispatchQueue+Extensions.swift */; };
 		2E7CABE3A1BD180A8CD84F5242B26E05 /* FIRConfigurationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = CC47B9B2FBA5A449B8717AA7EB39193E /* FIRConfigurationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2EA276F187D1DD9AF5ADFD7275CE593A /* FIRErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = E11ECA0FEE7B0B2666E239C5AEF56623 /* FIRErrorCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2EAA0F79D04D50337E598722F39B8726 /* TopRightSuccessCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = AB930EE2DBC9EE9BE6FFF0706DD69CAB /* TopRightSuccessCorner.png */; };
 		2F2090D8933E070044A0A661025991A8 /* UIKit+TapTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B17D0D7ABA8669D120DDB5DC630D7F0 /* UIKit+TapTheme.swift */; };
 		2F33EE1969F24B9034C3153AC1219305 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0D5E0ED04B7B33E135744A35A9A41 /* ObservableType.swift */; };
 		2F8CFFA2DD63D0573C5BD83075B7DCD3 /* UISegmentedControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877D175579799CAF579F77A76AFA2BB /* UISegmentedControl+Rx.swift */; };
@@ -250,6 +252,7 @@
 		3480B5F7C57D535F0192EFAB135F720B /* TapFontKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF105589C8196297375FFB80BE3E59 /* TapFontKit-iOS-dummy.m */; };
 		34A5371ED823F5004D9C9AA353F35740 /* FBLPromise+Wrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C05C832DDCD86E9CF2ED6B3759D87160 /* FBLPromise+Wrap.h */; };
 		3567D289C44EF3BBB22B8711B579A091 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D6F188DD3440B7F84192FC5C7F0127 /* Error.swift */; };
+		35899A8806612E93A087D395BDD55D2E /* BlurHoleCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FD4111226FE0DF02172E48DF3150C4 /* BlurHoleCorners.swift */; };
 		35A6768812720379A7EBC79B552C0BD1 /* FBLPromise+Await.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 1D8D0E03A45551127D9F6207DC81A6D2 /* FBLPromise+Await.h */; };
 		35CD7117951D3E111F49E6C15E6FB895 /* Flurry-iOS-SDK-FlurryAds-FlurrySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 412C2E41FBF7357C4FA329550855FC14 /* Flurry-iOS-SDK-FlurryAds-FlurrySDK-dummy.m */; };
 		35DDD6805DDD9E1BD962EFE1F8B3FDE1 /* FBLPromise+Await.m in Sources */ = {isa = PBXBuildFile; fileRef = 761E1A8C0594646D74E3BD7DB7192C3D /* FBLPromise+Await.m */; };
@@ -259,7 +262,6 @@
 		36C72EEB1FA02213151B949EB7F6AE7B /* GroupedObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7895BB4A721F3024410581326194B8D /* GroupedObservable.swift */; };
 		36DE527DC2DED818783A12A24F5196F1 /* InlineCardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0DF319F74018D60115F5F086D5BE /* InlineCardInput.swift */; };
 		37201CA41B277FE64658DE0EB7228B97 /* FBLPromise+Race.h in Headers */ = {isa = PBXBuildFile; fileRef = 292313B9DBB1F323C33EC407EF72A0CB /* FBLPromise+Race.h */; };
-		37DD1B59E504D43A6F563C2C0DDA743E /* TapFullScreenCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1EB4BB16B8960DC8B22BC53576EB2B /* TapFullScreenCardScanner.swift */; };
 		381B9B0C234A559009D2373A10545AD4 /* ThemeNavigationBarAppearanceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A549E9D59F13A4F81E79919BB509B8 /* ThemeNavigationBarAppearanceSelector.swift */; };
 		385F1E7BF90587D6697BD9FA3A3CB1F6 /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7261C56453BFD44ABEF973F06EF3567C /* Timeout.swift */; };
 		386F3436307ED18774FD30FEC49279C6 /* OSLogType+greaterEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6ECD81A1781CEF2832108D6E23A30 /* OSLogType+greaterEqual.swift */; };
@@ -288,6 +290,7 @@
 		3EA07194D2A2C60ED0313F110376232A /* Color+wcag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F2347F5E51FC7B88B2AB34FCAE7D6 /* Color+wcag.swift */; };
 		3EBF80501E17D10BACBD67246E398B78 /* UISearchBar+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC8AA759B3CD4C2E2A8EF5913D40BF /* UISearchBar+Rx.swift */; };
 		3F091C427A3E96117C902E8EA143729E /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081F2F7E20AAB4405C6619E634BAEA35 /* IQKeyboardManager.swift */; };
+		3F64A5F19370DF286CD3F021729040A7 /* TapFullScreenScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3E01E7535FB6D70CCEDD86B4C47680 /* TapFullScreenScannerViewController.swift */; };
 		3F706E42A1F7B10301D76AA58D1B3546 /* GDTCCTPrioritizer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD36FD1342E2C1B0463ADB56379F3DF8 /* GDTCCTPrioritizer.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3F8C3D8C881AC44E04F58F42D409FC7D /* FBLPromise+Reduce.h in Headers */ = {isa = PBXBuildFile; fileRef = FA64323AAEE5C1EA13F3D3F9C952C658 /* FBLPromise+Reduce.h */; };
 		3FB7BE07F68E0B5FE329413A39F03C0A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 816544B55D51FA0D4E75BA4134BF3B95 /* WebKit.framework */; };
@@ -322,6 +325,7 @@
 		490CB82DD6D8025943AA2C1D5A7EA664 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDF5BF68A6D1DB6CBF21ADBFFC03B83 /* Bag.swift */; };
 		49573AC7B39453D2C1FFA43EA8B7A338 /* RxCollectionViewReactiveArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0EED44CE554A2ABAA70962DAD4FDD2 /* RxCollectionViewReactiveArrayDataSource.swift */; };
 		497A593D49008335CA1284AF1B2D3CF5 /* FIRInstallationsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB78DD98DA4CFF871E6D47A9E456B78 /* FIRInstallationsStore.m */; };
+		4A120CBF45614F5FE60CF366D94D5185 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2840BC2BD021661D668F64F4EC8BFB4 /* VisualEffectView.swift */; };
 		4A96DD76CB0C446FB2EF1033483FD870 /* KVORepresentable+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DAB608516B831219A72133A23B6FD7 /* KVORepresentable+Swift.swift */; };
 		4AB6F1C348F3F784426CBFA1CC53B759 /* Pods-TapUIKit-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B6CA1E87AB11A76150D0F442DA9B1C /* Pods-TapUIKit-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AE716C8CE1833E6A3314B910C450EB8 /* FIRInstallationsIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9502CC106F9D9802ABB81C5BC0A7CBB /* FIRInstallationsIDController.m */; };
@@ -357,6 +361,7 @@
 		51E2C769ABE2EDA0CBC808CE34749AE9 /* UIAlertAction+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280E23680EDFD3166693B8141D5024C /* UIAlertAction+Rx.swift */; };
 		52177CB52C91DAE2616C33D23D468EFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		52CE754DB2E0D93D3A7CCB520C6D9007 /* SerialDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D505E217581E1BF02CEC77147F269D3 /* SerialDisposable.swift */; };
+		52CF3F40AB84C5ED3356120D13D2FB50 /* TopLeftCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE2BF4A3D5ECF797B3EF9EFA61AE667 /* TopLeftCorner.png */; };
 		531E8E961587F0E6885690056718AAB4 /* ImagePreheater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15F21A6447D08DB1A52895652B927D1 /* ImagePreheater.swift */; };
 		535108BC2FB7005C5C9B280D6BD536F9 /* RxTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2A7987B5DBBDD1B021C790753B0928 /* RxTableViewDataSourceProxy.swift */; };
 		53700E4BBF691D0AF0D79CEBD8252B21 /* GDTCORUploadCoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AED33BA9153AF503784B887E2E1EBE8 /* GDTCORUploadCoordinator.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -387,7 +392,6 @@
 		5A80E2F0704F1D7CBF9407CAC0D03581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		5A8EDB5FAAB15BD6E5B6421AD25BA78D /* FBLPromise+Then.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = D79C78C4B57196C68A9C609797D80A8D /* FBLPromise+Then.h */; };
 		5ADB68F5DB23735F310BA27DE4E963A4 /* FlurryAdNative.h in Headers */ = {isa = PBXBuildFile; fileRef = A2CA34D32C432AF66E07690E17FF3051 /* FlurryAdNative.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5AE666054785D37ECA1FE1DCC12DB8EF /* BlurHoleCorners.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB267E1082C645770E4605A3518D652 /* BlurHoleCorners.xib */; };
 		5B5563CAFC7F68AE11754E5B01832E6E /* FIRLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C3D9A9D546086522E0E4F03F07AE18 /* FIRLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		5B60B95D390CE0F79E2C236052D045A5 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA836A9A0381D09934CD260E71728ED5 /* Sample.swift */; };
 		5B67E826A0DCEFEE57F1B6E47855FDDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
@@ -494,6 +498,7 @@
 		757C477AF763DFCA1BE5A5D78341AFE8 /* FirebaseCoreDiagnostics-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E501396D2E1554208D474BE103253471 /* FirebaseCoreDiagnostics-dummy.m */; };
 		75DC880B5C7FB709C96C355B4110EF1A /* GoogleDataTransportCCTSupport-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBCB4C1E4E7120D2224962279A37175 /* GoogleDataTransportCCTSupport-dummy.m */; };
 		75E146C12D1287228A0B493E87CDE31F /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178394F0AD87FE984F54A83E36A92FD1 /* ConstraintMakerRelatable.swift */; };
+		761AD36DF6686AABFA51775576B0B069 /* TapScannerProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC7E793767E9B3418B31D154AE0CD /* TapScannerProtocl.swift */; };
 		7629B18F6F4B65C4B4C868AEDE1A5264 /* FlurryAdDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 99E7AB92AEC37FE7E8F8830C10E4F21E /* FlurryAdDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7652DD8B4F36809DAC645E1AD53F5986 /* FIRInstallationsErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = B36CC8C21BD02C8C5E12E1FED18648BB /* FIRInstallationsErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7691AC38EEAFDE2E6BCF662CB6C00ABC /* FirebaseInstallations.h in Headers */ = {isa = PBXBuildFile; fileRef = B08EDCEB8B62F54B245A4213B716ADCD /* FirebaseInstallations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -517,8 +522,8 @@
 		7BFA6EFCC11D031F4E49EC3377FB209F /* RxSearchBarDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209361D2BED5D0EAAB84CA241FCB3003 /* RxSearchBarDelegateProxy.swift */; };
 		7C14E7B87F233878C5CEB171195E3E70 /* ThemeStateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4838286BF8E6C3ED5DEEEF3DDF75375 /* ThemeStateSelector.swift */; };
 		7C1702076F3A31D8D2D45A4A9F09B266 /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE2A59E01DAB38A100859DD297B3B /* ConstraintMakerEditable.swift */; };
-		7CF5AFFBA0AE39ADD722E4ED624FDB83 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2037D713BB56B2ABC6D69A653EA1D5 /* TapCanScanStatusResult.swift */; };
 		7D3990A26B5B0EBC616AD259E11497F0 /* ThemeKeyboardAppearanceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C898416ABF7EA3FBA2A6F39F72E3DAB /* ThemeKeyboardAppearanceSelector.swift */; };
+		7D45CF53AC155C40B42ACCB88CE3816C /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB604CA8701B5651499B9E9A2EC943A0 /* FlurryLogger.swift */; };
 		7D4EA0195D1D4B1FEEAB1142DF02717F /* GULAppDelegateSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 60884A76B62A58494205549CE6EF84CA /* GULAppDelegateSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7D77FAC4712F7DB8917A5C1696186DB1 /* DefaultIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0088721558268AB24D53EF1EFA3F0498 /* DefaultIfEmpty.swift */; };
 		7DD647696261BBB0319DEC61EFB231F1 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB966E1CE0CEED0BA858ABBE8F7DD04 /* UIColor+hex.swift */; };
@@ -554,6 +559,7 @@
 		8574EFD4EF1D6018CBAF7437C845A512 /* CombineLatest+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF86FD38C9FEC09FAEA9BF9468FEC55 /* CombineLatest+Collection.swift */; };
 		85814141BD387F39A4A50024A004FDB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88FC5A4425BE6A7E5B056CE909548CFE /* Security.framework */; };
 		861685609955B745374F2821359657FE /* InfiniteSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1460F608D6AF601C9441CE43896C2E /* InfiniteSequence.swift */; };
+		86263180AB30A79A72F2498D91A72C17 /* BottomLeftSuccessCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = F2594C7A201E226ACA80034844029847 /* BottomLeftSuccessCorner.png */; };
 		863813884A4429E7B586C86380DADB66 /* nanopb-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F71EF4F420819196CB9E77A5345F02AD /* nanopb-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86401DCFAA8296BB4508C71D88A5D510 /* LockOwnerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30564C6A89891C97796F4DB8DBBA8A /* LockOwnerType.swift */; };
 		86DD279E85690B291C4F0B019A54100D /* UITabBar+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EF5DBABEF2853B8396070E82ACC757 /* UITabBar+Rx.swift */; };
@@ -581,9 +587,9 @@
 		8C5C3D2168FC38D6CEF221E002391EA8 /* RetryWhen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F89C19BABF07E2233395F6B0B19199 /* RetryWhen.swift */; };
 		8C61A71A5BB58364B3AAAD16A6BD4E73 /* SchedulerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03964C565D5F5B8B5C1BA1AF055FF874 /* SchedulerType.swift */; };
 		8CAB165E98C5A8F41F04D1F81FAC9CDF /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA01858FA3C8137E268736AACD506DBC /* Optional.swift */; };
-		8CD29A5CFA5CA7441CA410627C4D6B4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		8D16265DA7CAD0A406817EE5A4D88A1D /* MOLHLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D629811518DA57484AD89643EAFF1C /* MOLHLanguage.swift */; };
 		8D1E72A6BA27450809F69DB8DBCCF654 /* Capable-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2F2BAC4736AE63313C18065008F7FB /* Capable-dummy.m */; };
+		8D2FEAB6ECE981CABA89380D171C2732 /* BlurHoleCorners.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFBF8DDC2A7BA7BD3C9249FBF4858B5B /* BlurHoleCorners.xib */; };
 		8D8A52D3AD918E73793C298DE56D8241 /* BehaviorRelay+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003C74D85A38D14163F9BED6F007F1D /* BehaviorRelay+Driver.swift */; };
 		8DE4C3A8FD9E0E1115308E2A4896FA8A /* GULMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 810EBAAEC16FA7587789A43B5B6A0723 /* GULMutableDictionary.m */; };
 		8E33DC561A3DC337F5A7FD3C5FFB381E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
@@ -592,6 +598,7 @@
 		8ED46FC391F85311BE63E20FE2BDDFD8 /* RxTableViewReactiveArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0E65A11B63AE34D50F0390B563374 /* RxTableViewReactiveArrayDataSource.swift */; };
 		8F2C1826D5312139D6B198682916C7B9 /* UIFont+fontProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A09463AA3E3A070B4F7214B90B416 /* UIFont+fontProps.swift */; };
 		8F5635455309EC97D8332296ECB5DC0D /* BehaviorSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1A28C00E93F5CFD2223AA5D418E871 /* BehaviorSubject.swift */; };
+		8F7F7620176BFA4D1A39C88C2FA2923E /* BottomRightCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB5FAAC5582E665BBDBE84FBEE306CC /* BottomRightCorner.png */; };
 		8F92DE493E66A26C230C75F95BEB6C77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249EEF21D73210F0FB53A3D41479E659 /* QuartzCore.framework */; };
 		8FC7084181CB492644E7992C89067626 /* GDTCOREventDataObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B448CF9F4C18A625C72800715812FDF /* GDTCOREventDataObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9120D7BE95FE6542993581EABF38B0DC /* FirebaseInstallations-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C615B0F60093A10D990D248FCEDB7141 /* FirebaseInstallations-dummy.m */; };
@@ -628,6 +635,7 @@
 		98BC38F964FA856EBFF4A1910983AD93 /* FIRCoreDiagnosticsConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = F7105397F0332A3DE2B517806EBDC0A0 /* FIRCoreDiagnosticsConnector.m */; };
 		9937646596696E432E07C314E0F82B80 /* diners-club.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFFBD88662FF04FBB87763151C3E2E2 /* diners-club.png */; };
 		99B5296A5EDECE0557B9DA53D9E19CA1 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849095949C7CE2A732EFD7EC8A1D3779 /* ConstraintItem.swift */; };
+		99BFFBDE7F6CD4320E439A9C0CCBD566 /* TopLeftSuccessCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = DFC2FF16D4F3F8EAADD9BCB13C68B2B4 /* TopLeftSuccessCorner.png */; };
 		9A5C86C936D2FBA884750AB191DB220F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		9A7BE1A3E1D5A02BEACED64D0952217B /* MOLHFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6094906FC681F299F5C8DAF74F4A31E /* MOLHFont.swift */; };
 		9A8AE51AEEBA70E08A430B406E264CE8 /* UIColor+rgbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D4F33F32FA854D0C40D60F0FF9DCB /* UIColor+rgbaColor.swift */; };
@@ -647,11 +655,9 @@
 		9E0383E78D5B200469C654A283AF3D94 /* FBLPromise+Any.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 40D130840926E0F8D1A8DB73E8E5171F /* FBLPromise+Any.h */; };
 		9E2A037E4D6EF9CD80A27514CB192F30 /* FBLPromiseError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D85F04C777B221A974D4428C8D21024 /* FBLPromiseError.m */; };
 		9E5420C95A4C8123896BC7A87B699D2F /* NSLayoutConstraint+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8F656A66CA506C463F63F72B4E76A /* NSLayoutConstraint+Rx.swift */; };
-		9F07AE905710108FA446361FBCB854B6 /* TapScannerProtocl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C86D81BA3A71DA0485BF0CCAB91F1CF /* TapScannerProtocl.swift */; };
 		9F72B3F0B979E0AEA2FA035DAD7A6601 /* DelaySubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A237584F2B95F02146C2DB26829C99B /* DelaySubscription.swift */; };
 		A01F94FA55382101CD9640945CA6DAF2 /* ObservableConvertibleType+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F04876CD2A7DCD124D305EA6D2178CC /* ObservableConvertibleType+Driver.swift */; };
 		A0369F12565ADA0166FE3647EEF3BFC0 /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE2453FAE7485D62B1F0E9EEB2946C /* Cancelable.swift */; };
-		A0377944B3FB0CD03255124542E410DD /* TapExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50002CCA2B47BE831706DB2DE06D4608 /* TapExtensions.swift */; };
 		A1321E634EBBA3CCC3FE47888A9E0141 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2A3D15710D4B547BBEC9FF5FB40D3 /* FontProvider.swift */; };
 		A13CA80106C3067A2A1F96CF985017E5 /* CommonDataModelsKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911C42D47597F279FBD21150891F20F /* CommonDataModelsKit_iOS.framework */; };
 		A13DA0C1002C460B5553F6AB1FE4AD83 /* TapThemeManager2020-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9394EFCBB98F59B73D3E9471170A49F9 /* TapThemeManager2020-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -659,6 +665,7 @@
 		A167F02DF6F528A9D7DDC32A48762FDA /* UIBarButtonItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6EC0C892B4B3A72FD88115840832C /* UIBarButtonItem+Rx.swift */; };
 		A1714454124C389238EF1ADE3807E487 /* FIRComponentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D2A7B1D1F38C9F5E7E8EFD6C5577CB /* FIRComponentType.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A198E44609AC439B57F319EBA10C42DA /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E013C28EB0F551E9005CD1AB908A9E7 /* ImageProcessing.swift */; };
+		A201114A35E0EA30E934B2E27567E125 /* TapScannerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB81076EAD37E75059306F38438B0875 /* TapScannerStoryboard.storyboard */; };
 		A270CD9EC3C541FE86E65AEDCEF500CF /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA04801E2BEB6B007D5CE24B37712EF /* ConstraintLayoutGuide.swift */; };
 		A27BB184FC5CAEAC0C6E2758CBFE80C3 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F2F269556FDF8CBBF97CB7AF3F1AA8 /* CurrencyFormatter.swift */; };
 		A31EA4C2697F112DF6D8F3DF3F779DF0 /* TapApplePayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C154C22936AF565D1D5C29DFE4DEC76 /* TapApplePayButton.swift */; };
@@ -678,14 +685,12 @@
 		A59498398A091C6D5094973DC40DA716 /* UINavigationController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13788140473E9C58244A7D26EF87078A /* UINavigationController+Rx.swift */; };
 		A66ED57B365A35434C5BAF4B990819B7 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FF34211C237A36632681BD14C20DC53 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6C32F6E0770D3DB02AEE1CC46E8FDBA /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE0991C6F5E5211D951165928F65301 /* Bag.swift */; };
-		A6D560478761B6B618B1F6AC5D4327AA /* TapCardScanner-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A58AED52926E42EC22051233AEC919 /* TapCardScanner-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A752C647B32107E11441BF27FE2305A7 /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD36DE164C3B557113BAAE82E33D896 /* SwiftSupport.swift */; };
 		A76D1F926B1EB844BAF6D2E9B3A105F8 /* FIRErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = BA95F4E0C6A545DEBE86341BD1D8ED7F /* FIRErrors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A7ECD770EA58D773407E9B4CC26A6D8A /* PullUpController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 721258C672BFCAB9B5A4C4D6C2E80888 /* PullUpController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A82A71AA973E93441F2A2C34E1D2178B /* FIRInstallationsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F09CF26B0EEEABDC35C338E4DA42880 /* FIRInstallationsItem.m */; };
 		A8A6F94A14EE3424814E27F2811FC5F8 /* SubjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F2268B72AB153B803E18A47F3D75 /* SubjectType.swift */; };
 		A90780EB66EC6CD8E54C6E1C397DEC57 /* SheetyColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A2AF579B9A9D10B1D189C98F80632A /* SheetyColorsViewController.swift */; };
-		A938654C131E2C2EBC98E7D158831058 /* TapScannerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9F5E026DBF8062BBE443111621790D /* TapScannerStoryboard.storyboard */; };
 		A94025C32BC205F9DCB879813D7EBDCB /* FlurryAdBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 044CFB1C50FC9259492BC3F0E3808CBF /* FlurryAdBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A96AB572BD06E5D68AD6CC1D3AA04F50 /* FIRInstallationsAuthTokenResult.h in Headers */ = {isa = PBXBuildFile; fileRef = DCBCD6280A8F0B117B53F251A9858521 /* FIRInstallationsAuthTokenResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9BC8CCDF9A31B9C3EFE7E06EC09E54C /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D79DBA662D6656A38BCB0B7DB3D43 /* GradientSlider.swift */; };
@@ -696,7 +701,6 @@
 		AAB6C71C838EFD9533B5E7F5E55AA4E8 /* FIRCoreDiagnosticsData.h in Headers */ = {isa = PBXBuildFile; fileRef = D74C226077F4BBC55422BE3D55DCB6A1 /* FIRCoreDiagnosticsData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB046033482C20C83E50285446037F0C /* FirebaseCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 6905CB9CEB0156239A2A049961EEC235 /* FirebaseCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB1778BEF12E281DCA6520DB182C0A30 /* ImagePipelineConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F211609D77FDF71B6164F09B2CEB57 /* ImagePipelineConfiguration.swift */; };
-		AB261647C80ADF8AFA12E8CE5A3B55FF /* BlurHoleCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CAC76657C75877660F67F3296DBFD /* BlurHoleCorners.swift */; };
 		AB5F1605DF9C2F459EAA9190490EC693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1CDBC9633D1BE9D31DF58C32548514 /* CoreGraphics.framework */; };
 		AB8B850F8580AD11FF4CE5338C36BA02 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0280955C55356AF7780412E3DBC079 /* Range.swift */; };
 		ABC079D00F678C7B10212737EB33D959 /* Circe-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4509D6D27168BBC0F2CBD5DBE8E570E /* Circe-Light.ttf */; };
@@ -713,7 +717,6 @@
 		AE8EB383EE8489F7ABD011087AFC9CD4 /* RBBLinearInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44193F533EC4BA0B160646AA3D14EA2E /* RBBLinearInterpolation.swift */; };
 		AEFB74CC1B3ACA85667B0171F7B2E29E /* _RXObjCRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E915BFB59BAE4D7A9C7C42BFB54247 /* _RXObjCRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF3A13503D1047DBBE497F47DE437B7E /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BF74D8A2AB60CC2886F0A68DC6646 /* PullUpController.swift */; };
-		AF4323EBBDE0DA98863614B24AEA2652 /* TapInlineCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D38CB8A4276FB6E224CBADD5FCAB8 /* TapInlineCardScanner.swift */; };
 		AF90A24F472EF8E17D2FEE296066F111 /* RxTextViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879E9185F109E13C8767F23ABBBF792 /* RxTextViewDelegateProxy.swift */; };
 		B042B5D73CE07D6E42F0F2B0C41EECB4 /* FlurryAdError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DCEB5B2C48B151948877236FE2EBAC3 /* FlurryAdError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0A4BC65D0524BE5AC03B9A2A776DF40 /* RxCocoaObjCRuntimeError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9D050EE7653BBBBBD2B4FC9996B8AC /* RxCocoaObjCRuntimeError+Extensions.swift */; };
@@ -726,7 +729,6 @@
 		B2ADBA919A83F3489D1643A24A241C8B /* FIRConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5544EC54F9D931C1185119D61C8CDCAC /* FIRConfiguration.m */; };
 		B2F44AF266B61D2FDCE8C1325092AF05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		B3577A37064E0779B66A34520BF755AB /* FBLPromise+Any.h in Headers */ = {isa = PBXBuildFile; fileRef = 40D130840926E0F8D1A8DB73E8E5171F /* FBLPromise+Any.h */; };
-		B3D5B05CDC8407D5EE5BF2A9DDA95DA5 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABADD3CDC9ED63E0541FEEAD030A42DB /* FlurryLogger.swift */; };
 		B3DA463FE22DD22C783EA37F931CEFC9 /* FIRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 443C70A712824BF998860D3B680F91C1 /* FIRLogger.m */; };
 		B4562B1D18CE91DD3E9E9489E1A751A7 /* _RXDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = AF8CC5BC9F0B3235E0B8125E3EA0BF6C /* _RXDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46D6B0DB44BE1F0F9E81170B940BDA0 /* UIColor+hsbaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6FD87ACF5AD5FF77A931271F43569 /* UIColor+hsbaColor.swift */; };
@@ -754,7 +756,7 @@
 		B965887AEFFAB64C70D2F50CE58328AA /* FIRInstallationsStoredItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6B76D3D6069FFD76F93EE89135C87B /* FIRInstallationsStoredItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B98378C55379E1B92897F11A22E38443 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3AD01A3D41BF0F29A74FD105AD5DDE /* IQKeyboardManagerSwift-dummy.m */; };
 		BAA22A4AD005A33E591FA21B13FD5004 /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AED6B8D1FDD46FF4AB681A8340FB2 /* SingleAsync.swift */; };
-		BAD1A9AF87538121FDC20CAEAA3BFBF0 /* Flurry_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2527BB711EE2DFDECE460AFEF8472F9 /* Flurry_iOS_SDK.framework */; };
+		BAF828E9F31175F0A354BE8F1F6C79E4 /* TapCardScanner-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 365A9920DEEFB83012A18281D3E91EB5 /* TapCardScanner-iOS-dummy.m */; };
 		BB23D4ADAAC3F2F38EFC89557454E6E2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC0D0637DFFA6AA1A27DD0C96C4CCF /* String.swift */; };
 		BB50863B463F7C51C7F090EA6FA7149A /* TapFontKit-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9365D6D32BE5C22644B4EDA2C7EE3A80 /* TapFontKit-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BBB133D7F122A803DAA60AAE9973DA88 /* TapCardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCBD108A5EA64717CBA0CF1DBA7F08 /* TapCardInput.swift */; };
@@ -762,6 +764,7 @@
 		BC68C6125681CE6D77AACD3CFE5C8443 /* FBLPromise+Do.h in Headers */ = {isa = PBXBuildFile; fileRef = F1F81BBFD97B1F338B59F87D36E118D6 /* FBLPromise+Do.h */; };
 		BD015EEDF3A51EE65B73A48D41AAEA82 /* UILabel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53CA544A5A77712F7EE62DF6D4D7C7 /* UILabel+Rx.swift */; };
 		BD30D501178A064D19E7DB0BDEED207C /* GDTCORTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E634914D5CBD2E38516EDAD01A2279F5 /* GDTCORTransformer.m */; };
+		BD7C884007020CBD576AF7958C7702A0 /* TapCanScanStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92E355764EF478ABAB2B2E71D1F2177 /* TapCanScanStatusResult.swift */; };
 		BDE349D938F60FFF5130E278CA56BE0B /* Materialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6680FA011DA980F1F5B6B0F1DB3FF3F8 /* Materialize.swift */; };
 		BE0D91193F93479C0A37610D8965F54A /* Flurry_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2527BB711EE2DFDECE460AFEF8472F9 /* Flurry_iOS_SDK.framework */; };
 		BE3DCE46739A692E70F683C0C35C3892 /* FBLPromise+Retry.h in Headers */ = {isa = PBXBuildFile; fileRef = 9907B6F3F03D084072224E272CB4FCD7 /* FBLPromise+Retry.h */; };
@@ -799,12 +802,14 @@
 		C67E6ABF1F60622606201D456CDD0349 /* AsyncSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902DFAD42764FA20C62F560E16974509 /* AsyncSubject.swift */; };
 		C68B723007F13A0ADEEAF08EE367413E /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBAE92B67EFA7FB9BE1B99F3E70EE38F /* Roboto-Black.ttf */; };
 		C7382691267CA831BD55F13CF3BA8332 /* FIRVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CF28012B73AAEE0B43675F24F03BEB /* FIRVersion.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C76664B483BD7999723FBCBC629C0AC2 /* TapCardScanner-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AE4FA1ADBDE857FD237A04BB697D38E /* TapCardScanner-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C77012F24FE88C19B9429E08155D3774 /* VirtualTimeConverterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39D62FF425B47815C5CD576256D259 /* VirtualTimeConverterType.swift */; };
 		C8F38DAD654AC5F14FAA9F32C8AD9B1B /* ElementAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89CAA9B0B8AD94F8B5E92161BD10B7 /* ElementAt.swift */; };
 		C90A0A37FC446D14560D97A5D11DA22C /* InvocableScheduledItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B1EE7C2CC412EFE8FAE17542203430 /* InvocableScheduledItem.swift */; };
 		C9288F03A960CD9D2B5B65F9176182D5 /* SectionedViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65756AF98B20B5067E86FC00AFF6110C /* SectionedViewDataSourceType.swift */; };
 		C9B2EACF8FADDC4472A9B9F4A3D40506 /* Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84420390C81B9794E16925E4880B6F0 /* Maybe.swift */; };
 		C9B9AD872E7105F70A7677FF91ED19C8 /* FlurryUserProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = B5591E9697DCF1A165C5F6B1E79096D0 /* FlurryUserProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9D2DA0F33F8082FEBF141469238998A /* Flurry_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2527BB711EE2DFDECE460AFEF8472F9 /* Flurry_iOS_SDK.framework */; };
 		CB9023A79BDA1C10AC3AB5A9E539BA74 /* ThemeVibranceBlurEffectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3997C8C06A0FC2FF181799C853A5EE /* ThemeVibranceBlurEffectSelector.swift */; };
 		CBB7BE2C6778D82DC89C4541F8798D02 /* UIPickerView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005CF34AC958C5E8E5A0E62EDDC9BEA3 /* UIPickerView+Rx.swift */; };
 		CBD6C33EDA705688C4E4D90AB9F52DFD /* FBLPromise+Timeout.m in Sources */ = {isa = PBXBuildFile; fileRef = B151398F971CE1C844DC47538AF05C37 /* FBLPromise+Timeout.m */; };
@@ -812,6 +817,7 @@
 		CC594E7AFA6380F46DFF5349D801CAAF /* HistoricalScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7F783B222B8F7C303100CCB9B0C1 /* HistoricalScheduler.swift */; };
 		CCBBA0BAD7BE7B69B31C52A65728D199 /* Concat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0EACD05752BB343583D3EE774B1F3C /* Concat.swift */; };
 		CD6FDFA0B312325305DCA4A6398B5D93 /* ThemeCgColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6535F83CC4FC283ACC754F4A018013C7 /* ThemeCgColorSelector.swift */; };
+		CDFCD833E487571D60BDF0810D1FDBA5 /* BottomLeftCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = F59917705D64F0D9D2892AA7C5C95573 /* BottomLeftCorner.png */; };
 		CE0FEC83550B3F01490D064267263A78 /* FirebaseInstallations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 56034FC79F6B8B7B896F223B20972C97 /* FirebaseInstallations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE390557A387D5CC643FD8613551C3F6 /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF09906E8A88B587D091B5253E7F0B /* Create.swift */; };
 		CE62FEABA57B2B53EABF8C7DCCC6B2C4 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3FCCFBC74EC66663B700DCB0CAF00A /* ConstraintRelation.swift */; };
@@ -866,6 +872,7 @@
 		DA57103F70F28EAD5BFD5269BB92687B /* Signal+Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F234113B7A301C8363FD00C575E841D /* Signal+Subscription.swift */; };
 		DA905EE0660210FE32F16137C0AF90B9 /* GULHeartbeatDateStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = ACB8EF86BFCA55B97D1DBDB862C700A4 /* GULHeartbeatDateStorage.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DB810E0D105F5C8A55D9D889A21F1F49 /* FIRCoreDiagnosticsData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5364A0435BCAB294BF339D56B1109936 /* FIRCoreDiagnosticsData.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DC74426552D9E50B3C4F0225A5D3953C /* TapInlineCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888CEEF9BB63C8F9862D91831966065B /* TapInlineCardScanner.swift */; };
 		DC9C18EED77BCEDB17FE3C9CFB4DD039 /* StartWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E296DDA964BACB783DD85B19F830E /* StartWith.swift */; };
 		DC9F542FFB8235328C3D3D1713D97ECF /* GULReachabilityMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA50AA10529D2D615E734FD9D128B82 /* GULReachabilityMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD24B6D89473F92F64E2EC722BCFEC86 /* TapFontKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2751EB1932986308B98E25C9EBA2A516 /* TapFontKit_iOS.framework */; };
@@ -885,6 +892,7 @@
 		E113BFF705F231576AB1BC02E8CD31FF /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF984AE2D2D983C1425AEDF700FB167 /* Deprecated.swift */; };
 		E15DCBBD465EC45EB08436FDC284379A /* GULApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E225863869AD5A1E07D1BF845087E3D /* GULApplication.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E165A4BBD6D0834119BC60A2044C1743 /* HelveticaNeueLTW20-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBC870EB034A4054C51F5E886BB4845A /* HelveticaNeueLTW20-Bold.ttf */; };
+		E1800A46597801045F162BE6F5AF47D6 /* CommonDataModelsKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911C42D47597F279FBD21150891F20F /* CommonDataModelsKit_iOS.framework */; };
 		E1F1CFC918899AC3FFB081D366BDF830 /* GDTCOREvent+GDTCCTSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 35286B5EF1D475F6D46A02B6FE1ABC9B /* GDTCOREvent+GDTCCTSupport.m */; };
 		E2149A020927EB3B0E0DDAE73570C7C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F06546CE24324D0E8AACD80221A183 /* UIKit.framework */; };
 		E2509CDDCDABEF3D87C5A080EAB93A82 /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = 3982A8ED43B19DF8709CF70AAABD3C99 /* Flurry.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -920,6 +928,7 @@
 		E8F2429683B3015CBD39CE883770BCA7 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC3695971E5C15E142EF0AC0B4D289 /* ConstraintPriorityTarget.swift */; };
 		E93BC03893C6454C9606AA2807456CB4 /* FlurryCCPA.h in Headers */ = {isa = PBXBuildFile; fileRef = D01AF182B8FDAE36E5CE4B6714D544C4 /* FlurryCCPA.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E95B6F4F3AB5F28C9B80FCCFCFE42993 /* FIRErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = A9798FAA03A32B57E4F5980F418E880D /* FIRErrorCode.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E966EEDB3D50668CC5FC046F9EEC7330 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DBC1338F746288478328160C670B98 /* Foundation.framework */; };
 		E9A970BC24EA15832F248EA020072746 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5BC16ECDF600D8C2BF32676AFBBA8 /* LayoutConstraintItem.swift */; };
 		E9B810311326AC5B44B4BBCFC29B3576 /* CvvPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 86131222B20B23AE9920FB356B278CB2 /* CvvPlaceholder.png */; };
 		EA29D7E4BE4C54E4F1B2753A3D938264 /* SheetyColorsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72B1D212D9E4E4FDB9D536E8323D95 /* SheetyColorsViewDelegate.swift */; };
@@ -966,7 +975,6 @@
 		F4D77C67C573B53AE98BEAA0E1A756CF /* TapThemeManager2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6FEC4C061BFAC56651928EA54306A2 /* TapThemeManager2020.framework */; };
 		F56813F9C517B4196D4D4DAD9172BDF9 /* Pods-TapUIKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D63E9825098A784747D3C2A5B832109A /* Pods-TapUIKit-iOS-dummy.m */; };
 		F631D39EDA6B8B5029860CFE84B5D688 /* FirebaseCore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AC88DFDFD4019759469C84BCFA3E17B /* FirebaseCore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F719A2CA01AEF3058A83A95A67A85B70 /* TapCardScanner-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 948122E982ED1624A4F31F261DD7569C /* TapCardScanner-iOS-dummy.m */; };
 		F72261057BD4740F5AE7F450337F7859 /* RxSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA6578A14369C455BA3B0C6A2D104B8 /* RxSwift-dummy.m */; };
 		F7470693710A73344752673B2839DB9C /* TapApplePayButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED14DB59D1FDE3F2D3399EC9C5C2E64 /* TapApplePayButtonType.swift */; };
 		F7C8DB6DBA8E83BB9B37ED2DB26BB15E /* GDTCORTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = EB064B145BA9509718087DEAA1A465C1 /* GDTCORTransformer.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -1091,6 +1099,13 @@
 			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
 			remoteInfo = SnapKit;
 		};
+		2175F840D79C8F5ECEBCAAD695A6A74E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D49B77E3C54A9573D2E2DDD93687FCBF;
+			remoteInfo = "CommonDataModelsKit-iOS";
+		};
 		22F433D9B7F5023897FADA125B31E9A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1210,13 +1225,6 @@
 			remoteGlobalIDString = 8D7F5D5DD528D21A72DC87ADA5B12E2D;
 			remoteInfo = GoogleUtilities;
 		};
-		53F918F9692CF2645F11772929C9DF65 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7A1C8F08E55F85266691CD003FBAA5FC;
-			remoteInfo = PayCardsRecognizer;
-		};
 		55E9EE23302035918D5D8C39726374FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1252,6 +1260,13 @@
 			remoteGlobalIDString = 8D7F5D5DD528D21A72DC87ADA5B12E2D;
 			remoteInfo = GoogleUtilities;
 		};
+		5EAC07EC4300A33AE0DA88E540AADACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3706539BC40318D14102E13B5D2F92E4;
+			remoteInfo = "Flurry-iOS-SDK-FlurryAds-FlurrySDK";
+		};
 		5F03BB530158598ECA17F3F82932D882 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1272,6 +1287,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3706539BC40318D14102E13B5D2F92E4;
 			remoteInfo = "Flurry-iOS-SDK-FlurryAds-FlurrySDK";
+		};
+		64894932667C5244ED3A617386C8CEDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A1C8F08E55F85266691CD003FBAA5FC;
+			remoteInfo = PayCardsRecognizer;
 		};
 		6DF631D5B739A7CFB1D218FB9284B03F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1377,13 +1399,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = F73BD4CA6A0B23F38687F2A3BB7E5EC7;
 			remoteInfo = TapThemeManager2020;
-		};
-		A6DC7E75307445A7BD7741DDBB3A0CC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3706539BC40318D14102E13B5D2F92E4;
-			remoteInfo = "Flurry-iOS-SDK-FlurryAds-FlurrySDK";
 		};
 		A74BA57159D2F8872C5F98F0AB8D3D96 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1595,13 +1610,6 @@
 			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
 			remoteInfo = SwiftLint;
 		};
-		E5C0AE9CF047685C7D5AAA08AC222D50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D49B77E3C54A9573D2E2DDD93687FCBF;
-			remoteInfo = "CommonDataModelsKit-iOS";
-		};
 		EAB6FFD7B7E244F155A88A34C86D5235 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1750,6 +1758,7 @@
 		00C96866F587AD0C444A3DA754C18C50 /* FIRErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrors.h; path = FirebaseCore/Sources/Private/FIRErrors.h; sourceTree = "<group>"; };
 		00DDB113E507C61E48DF571D2B83B4F0 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01993F5125D1607A9D64B89F36317862 /* RxRelay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxRelay.release.xcconfig; sourceTree = "<group>"; };
+		02397A45C3443ACBB7B20D2227C04D15 /* TapCardScanner-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardScanner-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		030FAE1A47392B187EDC594F4A299782 /* Zip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zip.swift; path = RxSwift/Observables/Zip.swift; sourceTree = "<group>"; };
 		03964C565D5F5B8B5C1BA1AF055FF874 /* SchedulerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SchedulerType.swift; path = RxSwift/SchedulerType.swift; sourceTree = "<group>"; };
 		03E0D5E0ED04B7B33E135744A35A9A41 /* ObservableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObservableType.swift; path = RxSwift/ObservableType.swift; sourceTree = "<group>"; };
@@ -1788,7 +1797,6 @@
 		0A73539394D9B70956A60AFA85941A71 /* FIRInstallationsErrorUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsErrorUtil.m; path = FirebaseInstallations/Source/Library/Errors/FIRInstallationsErrorUtil.m; sourceTree = "<group>"; };
 		0AD8B45139745436552860EAE37C9551 /* mastercard.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = mastercard.png; path = "TapCardInputKit-iOS/Core/assets/mastercard.png"; sourceTree = "<group>"; };
 		0B5E808DA8F97D8DF88C68991A0BDE64 /* Binder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Binder.swift; path = RxCocoa/Common/Binder.swift; sourceTree = "<group>"; };
-		0B6D38CB8A4276FB6E224CBADD5FCAB8 /* TapInlineCardScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapInlineCardScanner.swift; path = "TapCardScanner-iOS/Core/Public/TapInlineCardScanner.swift"; sourceTree = "<group>"; };
 		0BCA626A8CAA0B36DE4F071C5E63362F /* GDTCORUploadPackage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORUploadPackage.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORUploadPackage.m; sourceTree = "<group>"; };
 		0BF9DF2F24197085F36C14B2C0CF8C89 /* GULLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLogger.h; path = GoogleUtilities/Logger/Private/GULLogger.h; sourceTree = "<group>"; };
 		0C898416ABF7EA3FBA2A6F39F72E3DAB /* ThemeKeyboardAppearanceSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeKeyboardAppearanceSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeKeyboardAppearanceSelector.swift; sourceTree = "<group>"; };
@@ -1837,7 +1845,7 @@
 		161C7B6C695C5DF064610A4DB90FFB2A /* GDTCOREvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREvent.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCOREvent.h; sourceTree = "<group>"; };
 		16364392B280FA17F5E6880DD706F3B7 /* FIRInstallationsItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsItem.h; path = FirebaseInstallations/Source/Library/FIRInstallationsItem.h; sourceTree = "<group>"; };
 		178394F0AD87FE984F54A83E36A92FD1 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
-		17A58AED52926E42EC22051233AEC919 /* TapCardScanner-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapCardScanner-iOS-umbrella.h"; sourceTree = "<group>"; };
+		181E55D2B55F090D9F7DAC5B5456EB59 /* TapExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapExtensions.swift; path = "TapCardScanner-iOS/Core/Public/TapExtensions.swift"; sourceTree = "<group>"; };
 		18389576EDA5A8419C6DCC0E230F4A1B /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNativeAsset.h; path = FlurryAds/FlurryAdNative/FlurryAdNativeAsset.h; sourceTree = "<group>"; };
 		18B48A1F5C5E1BF58C4184F70CB635C7 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		18BA2B9BE1B0EFCBD8EAC81E71BA05AC /* GrayscaleViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrayscaleViewModel.swift; path = SheetyColors/Classes/Grayscale/ViewModels/GrayscaleViewModel.swift; sourceTree = "<group>"; };
@@ -1871,6 +1879,7 @@
 		21006C66E6A47BE3CDC90455F7982A34 /* RxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxSwift.release.xcconfig; sourceTree = "<group>"; };
 		213E8DA29D53BED66D472241656BC09A /* GULNetwork.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetwork.m; path = GoogleUtilities/Network/GULNetwork.m; sourceTree = "<group>"; };
 		22D7EE5FE13DF213988B0CE077D0DF14 /* ObserverBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserverBase.swift; path = RxSwift/Observers/ObserverBase.swift; sourceTree = "<group>"; };
+		22FFD8199A05F0ADF418C8C1645EBCC4 /* TapCardScanner-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapCardScanner-iOS-Info.plist"; sourceTree = "<group>"; };
 		23375CD08215D4267ED77A1A537FF310 /* BehaviorRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BehaviorRelay.swift; path = RxRelay/BehaviorRelay.swift; sourceTree = "<group>"; };
 		2375998E56DC2C988B4D2425B6944419 /* GDTCOREvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCOREvent.m; path = GoogleDataTransport/GDTCORLibrary/GDTCOREvent.m; sourceTree = "<group>"; };
 		23A25BC0ED1462E0F2A859AFB4A27EB5 /* FBLPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBLPromise.h; path = Sources/FBLPromises/include/FBLPromise.h; sourceTree = "<group>"; };
@@ -1879,7 +1888,6 @@
 		2439C58B1E6680E5188C1216C08048AD /* GDTCORUploadPackage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORUploadPackage.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORUploadPackage.h; sourceTree = "<group>"; };
 		249EEF21D73210F0FB53A3D41479E659 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		24D60E7847BA7B4386F1CBEA9CA62FF0 /* FBLPromise+Always.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Always.m"; path = "Sources/FBLPromises/FBLPromise+Always.m"; sourceTree = "<group>"; };
-		24FF07E1F8B2E6B179D92068ACCDD3CB /* TapCardScanner-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapCardScanner-iOS-prefix.pch"; sourceTree = "<group>"; };
 		25528B9EAD2D8150BC22A762DDD6A9D8 /* SheetyColorsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsView.swift; path = SheetyColors/Classes/Common/Views/SwiftUI/SheetyColorsView.swift; sourceTree = "<group>"; };
 		25EF213443151F089F5456894E42F60F /* FIRInstallationsStoredAuthToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsStoredAuthToken.m; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredAuthToken.m; sourceTree = "<group>"; };
 		263465926B3991E5E163848E0BD75F6A /* ConformanceLevel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConformanceLevel.swift; path = Source/Colors/Models/ConformanceLevel.swift; sourceTree = "<group>"; };
@@ -1899,6 +1907,7 @@
 		2AA6578A14369C455BA3B0C6A2D104B8 /* RxSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RxSwift-dummy.m"; sourceTree = "<group>"; };
 		2AD0E9339C4DE3D194F17066C60D11A5 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = RxSwift/Observables/Filter.swift; sourceTree = "<group>"; };
 		2AD8A9B8CBDAFF17604174DE8972DC20 /* LocalisationManagerKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LocalisationManagerKit-iOS-umbrella.h"; sourceTree = "<group>"; };
+		2AE4FA1ADBDE857FD237A04BB697D38E /* TapCardScanner-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapCardScanner-iOS-umbrella.h"; sourceTree = "<group>"; };
 		2B2AAD0D1EAFC7E000D218134679BDC4 /* GULKeychainStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULKeychainStorage.m; path = GoogleUtilities/Environment/SecureStorage/GULKeychainStorage.m; sourceTree = "<group>"; };
 		2B62B62B7751D7A41EB6A9A23C9CC552 /* MOLH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MOLH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B6B2384D3658A846678DF2D4C99D818 /* TapThemeManagerParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemeManagerParser.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManagerParser.swift; sourceTree = "<group>"; };
@@ -1947,8 +1956,10 @@
 		358C23B4DFE81CDCB5D92D9BF04CA404 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+Extensions.swift"; path = "RxSwift/ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		35CD0947E6B963DC66CF7AD8C079564C /* URLSession+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSession+Rx.swift"; path = "RxCocoa/Foundation/URLSession+Rx.swift"; sourceTree = "<group>"; };
 		35D065AE278BA02C0191175EDEAE40A7 /* LocalisationManagerKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "LocalisationManagerKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		35EA7F3BBA5B3C22C6F9A00B52FDC4BF /* BottomRightSuccessCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = BottomRightSuccessCorner.png; path = "TapCardScanner-iOS/Core/Assets/BottomRightSuccessCorner.png"; sourceTree = "<group>"; };
 		360211ED372C4275E80C6A8264704E49 /* TapThemeManager2020-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapThemeManager2020-Info.plist"; sourceTree = "<group>"; };
 		361C99418ED8471F041E9D76C12A8813 /* FBLPromise+Testing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Testing.h"; path = "Sources/FBLPromises/include/FBLPromise+Testing.h"; sourceTree = "<group>"; };
+		365A9920DEEFB83012A18281D3E91EB5 /* TapCardScanner-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapCardScanner-iOS-dummy.m"; sourceTree = "<group>"; };
 		366EB9D78C305CCA2BD722F3A0CA00DA /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+Rx.swift"; path = "RxCocoa/iOS/UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		36A10430BDAE23EEBEBE9F9F9627C5A8 /* SingleAssignmentDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SingleAssignmentDisposable.swift; path = RxSwift/Disposables/SingleAssignmentDisposable.swift; sourceTree = "<group>"; };
 		371A6755B0BB2B2553CDC3D0A4710822 /* NSSlider+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSSlider+Rx.swift"; path = "RxCocoa/macOS/NSSlider+Rx.swift"; sourceTree = "<group>"; };
@@ -1961,6 +1972,7 @@
 		3950322DE4775E3F6496220529920E73 /* RxRelay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxRelay-umbrella.h"; sourceTree = "<group>"; };
 		3982A8ED43B19DF8709CF70AAABD3C99 /* Flurry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		39C4EE296DF365E709AA8BE45F8AD538 /* EasyAnimation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EasyAnimation.modulemap; sourceTree = "<group>"; };
+		39FD4111226FE0DF02172E48DF3150C4 /* BlurHoleCorners.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurHoleCorners.swift; path = "TapCardScanner-iOS/Core/Private/Views/BlurHoleCorners.swift"; sourceTree = "<group>"; };
 		3A6275C3C4FFE05E82BDB90E4AA553B5 /* TapCardVlidatorKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardVlidatorKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3ABC036080BE04AA125054A16FDE6910 /* UIHexColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIHexColor.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Extensions/UIHexColor.swift; sourceTree = "<group>"; };
 		3AC88DFDFD4019759469C84BCFA3E17B /* FirebaseCore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseCore-umbrella.h"; sourceTree = "<group>"; };
@@ -2026,7 +2038,6 @@
 		4B418C2511F8FD6BF9074EAAF990DCB6 /* GroupBy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = RxSwift/Observables/GroupBy.swift; sourceTree = "<group>"; };
 		4B4AA2D7B9653D61A9349D803B845091 /* ImmediateSchedulerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImmediateSchedulerType.swift; path = RxSwift/ImmediateSchedulerType.swift; sourceTree = "<group>"; };
 		4C4C5822602512F1BE2EE0D807686030 /* DefaultLightTheme.json */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultLightTheme.json; path = TapThemeManager2020/TapThemeManager2020/Core/assets/DefaultLightTheme.json; sourceTree = "<group>"; };
-		4C86D81BA3A71DA0485BF0CCAB91F1CF /* TapScannerProtocl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapScannerProtocl.swift; path = "TapCardScanner-iOS/Core/Private/TapScannerProtocl.swift"; sourceTree = "<group>"; };
 		4D9D050EE7653BBBBBD2B4FC9996B8AC /* RxCocoaObjCRuntimeError+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RxCocoaObjCRuntimeError+Extensions.swift"; path = "RxCocoa/Common/RxCocoaObjCRuntimeError+Extensions.swift"; sourceTree = "<group>"; };
 		4DB67B012EC68AAC35BF7DA318CC6ED5 /* GoogleUtilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleUtilities.debug.xcconfig; sourceTree = "<group>"; };
 		4DCEB5B2C48B151948877236FE2EBAC3 /* FlurryAdError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdError.h; path = FlurryAds/Shared/FlurryAdError.h; sourceTree = "<group>"; };
@@ -2042,22 +2053,20 @@
 		4FAED815677D20FAE0E9DC6594331EAF /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIScrollView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
 		4FDDD6BBE6B65CF6F85C2A437101FD68 /* FIRInstallationsAuthTokenResultInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsAuthTokenResultInternal.h; path = FirebaseInstallations/Source/Library/FIRInstallationsAuthTokenResultInternal.h; sourceTree = "<group>"; };
 		4FDF96B446837049908985466F3882A2 /* discover.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = discover.png; path = "TapCardInputKit-iOS/Core/assets/discover.png"; sourceTree = "<group>"; };
-		50002CCA2B47BE831706DB2DE06D4608 /* TapExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapExtensions.swift; path = "TapCardScanner-iOS/Core/Public/TapExtensions.swift"; sourceTree = "<group>"; };
 		503982A659023503464F3448464B32FC /* FIRHeartbeatInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRHeartbeatInfo.h; path = FirebaseCore/Sources/Private/FIRHeartbeatInfo.h; sourceTree = "<group>"; };
 		507879BB6AC94452A7CF05381D616CF2 /* Pods-TapUIKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TapUIKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		510CE6EAC9951B2ADD3B87599DAC58AA /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		5129BBDBC9A5823C526B216CFAF0A0D9 /* GDTCCTCompressionHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCCTCompressionHelper.m; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/GDTCCTCompressionHelper.m; sourceTree = "<group>"; };
 		51A28BEAB2D97F256E6875124085C27B /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
-		51B81B96E210DBADB59EA2E569A477AA /* TapFullScreenScannerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFullScreenScannerViewController.swift; path = "TapCardScanner-iOS/Core/Private/Controllers/TapFullScreenScannerViewController.swift"; sourceTree = "<group>"; };
 		526F8624A6A52D13B2F9C187CA00F734 /* TapCurrencyCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCurrencyCode.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCurrencyCode/TapCurrencyCode.swift"; sourceTree = "<group>"; };
 		527C36D21A203752830A105207D21E1D /* TapThemePath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemePath.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemePath.swift; sourceTree = "<group>"; };
 		528417FDF0C2EDB046024558A387BE84 /* SubscribeOn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscribeOn.swift; path = RxSwift/Observables/SubscribeOn.swift; sourceTree = "<group>"; };
 		529C1FF9FCFE7F5FEAC9382A21FC88C9 /* FlurryConsent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryConsent.h; path = Flurry/FlurryConsent.h; sourceTree = "<group>"; };
-		52A13574CF8FE7799F09EB22D3DEE2E6 /* TapCardScanner-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardScanner-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		52C33B460DFA8DE97823192D62A760B9 /* FIRCoreDiagnostics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCoreDiagnostics.m; path = Firebase/CoreDiagnostics/FIRCDLibrary/FIRCoreDiagnostics.m; sourceTree = "<group>"; };
 		52D7B9B67957624581891F4E5D2650C4 /* ConstraintDirectionalInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsetTarget.swift; path = Source/ConstraintDirectionalInsetTarget.swift; sourceTree = "<group>"; };
 		52E339C381E13338DFE14704A6ED7C9E /* FIRAppAssociationRegistration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAppAssociationRegistration.h; path = FirebaseCore/Sources/FIRAppAssociationRegistration.h; sourceTree = "<group>"; };
 		52E4DF6E90A003B491FB1AC3FACC3996 /* GDTCORLifecycle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORLifecycle.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORLifecycle.h; sourceTree = "<group>"; };
+		532B301B4D2D44C1472228EBF1C19863 /* TapCardScanner-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapCardScanner-iOS-prefix.pch"; sourceTree = "<group>"; };
 		535065725CBB7A7AFCCA4091DE5D18D4 /* GDTCORPrioritizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORPrioritizer.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORPrioritizer.h; sourceTree = "<group>"; };
 		5364A0435BCAB294BF339D56B1109936 /* FIRCoreDiagnosticsData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsData.h; path = Interop/CoreDiagnostics/Public/FIRCoreDiagnosticsData.h; sourceTree = "<group>"; };
 		53B8B7FCB61E971F4AFA809B289E819A /* MerchantModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MerchantModel.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/MerchantModel.swift"; sourceTree = "<group>"; };
@@ -2097,6 +2106,7 @@
 		5DDCFB7D70256531A03CDED3112211AB /* HSBAColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBAColor.swift; path = SheetyColors/Classes/HSB/Models/HSBAColor.swift; sourceTree = "<group>"; };
 		5E4B3C520CC1381116F321818F999CE4 /* DelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DelegateProxy.swift; path = RxCocoa/Common/DelegateProxy.swift; sourceTree = "<group>"; };
 		5E86A75BC48E27EEDDB2A0B8006846A4 /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
+		5ECC1AA92F798B0454AB7DA58E51E1EA /* TapFullScreenCardScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFullScreenCardScanner.swift; path = "TapCardScanner-iOS/Core/Public/TapFullScreenCardScanner.swift"; sourceTree = "<group>"; };
 		5ED95C65480155D15CA7C05CFD252564 /* UIImageView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+Rx.swift"; path = "RxCocoa/iOS/UIImageView+Rx.swift"; sourceTree = "<group>"; };
 		5EF86FD38C9FEC09FAEA9BF9468FEC55 /* CombineLatest+Collection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CombineLatest+Collection.swift"; path = "RxSwift/Observables/CombineLatest+Collection.swift"; sourceTree = "<group>"; };
 		5EFD20CA19034351FE5D5B4FFDEFC1F7 /* NSView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSView+Rx.swift"; path = "RxCocoa/macOS/NSView+Rx.swift"; sourceTree = "<group>"; };
@@ -2225,6 +2235,7 @@
 		7A916D7EDCBCCAFB40F2E9609E425F81 /* Driver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Driver.swift; path = RxCocoa/Traits/Driver/Driver.swift; sourceTree = "<group>"; };
 		7AA5184D55ECAB724EEF548D7B94E18F /* SheetyColors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SheetyColors.debug.xcconfig; sourceTree = "<group>"; };
 		7AB2EDB8D04AF3460CD761E7ABF78CE3 /* UIView+anchor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+anchor.swift"; path = "SheetyColors/Classes/Common/Views/Extensions/UIView+anchor.swift"; sourceTree = "<group>"; };
+		7AE2BF4A3D5ECF797B3EF9EFA61AE667 /* TopLeftCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TopLeftCorner.png; path = "TapCardScanner-iOS/Core/Assets/TopLeftCorner.png"; sourceTree = "<group>"; };
 		7B3F852C6FE7126D3068A9C6B3274149 /* SimpleAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAnimation.debug.xcconfig; sourceTree = "<group>"; };
 		7B94E73828327EAFD7237E51FD8A6600 /* UIColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+rgbaColor.swift"; path = "SheetyColors/Classes/RGB/Models/Extensions/UIColor+rgbaColor.swift"; sourceTree = "<group>"; };
 		7BA83FD89B4AB792B7DAF989A98B334E /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2245,6 +2256,7 @@
 		7EB6FA7270009F51CD6CDA8F89267DCB /* FirebaseCoreDiagnostics-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseCoreDiagnostics-Info.plist"; sourceTree = "<group>"; };
 		7EC16605F1B6B891E9EBB8424EEE19D8 /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
 		7ED2310C32517913A90724F37CC6AD19 /* AnyObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyObserver.swift; path = RxSwift/AnyObserver.swift; sourceTree = "<group>"; };
+		7FC89B74DBFF643A520AB664CAEE6BA7 /* TapCardScanner-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "TapCardScanner-iOS.modulemap"; sourceTree = "<group>"; };
 		800735A6090BB3DD744D63B278806DFA /* GDTCORLifecycle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORLifecycle.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORLifecycle.m; sourceTree = "<group>"; };
 		8034A79F0114CCA084ABD573866DDFB4 /* Throttle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Throttle.swift; path = RxSwift/Observables/Throttle.swift; sourceTree = "<group>"; };
 		803CC9E454A1586F94AEEA14DC6D19BD /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
@@ -2273,6 +2285,7 @@
 		88290277EC64AE33DC8CD2E94B2E18BE /* TapCardInputKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapCardInputKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		88299EA86539FCA3B42DBBC1B578B686 /* TapCardVlidatorKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapCardVlidatorKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		8835151868B34C864AD0466451FDAAD6 /* FBLPromises.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBLPromises.h; path = Sources/FBLPromises/include/FBLPromises.h; sourceTree = "<group>"; };
+		888CEEF9BB63C8F9862D91831966065B /* TapInlineCardScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapInlineCardScanner.swift; path = "TapCardScanner-iOS/Core/Public/TapInlineCardScanner.swift"; sourceTree = "<group>"; };
 		88E5707E50EE2080A28A4C42B05738A1 /* Sink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sink.swift; path = RxSwift/Observables/Sink.swift; sourceTree = "<group>"; };
 		88F30235A5F5067E94B9AB6E8028F9B6 /* TapFontKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TapFontKit_iOS.framework; path = "TapFontKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FC5A4425BE6A7E5B056CE909548CFE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
@@ -2292,7 +2305,6 @@
 		8C60976F3C377981A8BEDAC797053909 /* MOLH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MOLH.release.xcconfig; sourceTree = "<group>"; };
 		8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseCoreDiagnostics.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD89BFC9DE29391D6353795EB90908C /* MOLH-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MOLH-umbrella.h"; sourceTree = "<group>"; };
-		8D2037D713BB56B2ABC6D69A653EA1D5 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCanScanStatusResult.swift; path = "TapCardScanner-iOS/Core/Public/enum/TapCanScanStatusResult.swift"; sourceTree = "<group>"; };
 		8D6678FDC1715DB13FE85715B73F99FA /* FBLPromise+Then.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Then.m"; path = "Sources/FBLPromises/FBLPromise+Then.m"; sourceTree = "<group>"; };
 		8D6FEC4C061BFAC56651928EA54306A2 /* TapThemeManager2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapThemeManager2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D740D8AC531CF4C730A17D8A96BAF65 /* PayCardsRecognizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayCardsRecognizer.release.xcconfig; sourceTree = "<group>"; };
@@ -2320,7 +2332,6 @@
 		9153805ABE6C3205C9C9B60D9CFC0C81 /* CardValidationState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardValidationState.swift; path = "TapCardVlidatorKit-iOS/TapCardVlidatorKit-iOS/Core/public/CardValidationState.swift"; sourceTree = "<group>"; };
 		9155F1D53DCBF70C859C00D5226B1231 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		9162D5E954EFC7052F4A622B5392B52C /* Enumerated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enumerated.swift; path = RxSwift/Observables/Enumerated.swift; sourceTree = "<group>"; };
-		9232C6920D3754FCD34E9AAA15628E53 /* TapCardScanner-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapCardScanner-iOS-Info.plist"; sourceTree = "<group>"; };
 		927FC4304F2ABA71C4344E8822768AE0 /* PromisesObjC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PromisesObjC.modulemap; sourceTree = "<group>"; };
 		92B004BC5674ED39C966B7B409D2CC18 /* TransactionItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransactionItemModel.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/TransactionItemModel.swift"; sourceTree = "<group>"; };
 		9365D6D32BE5C22644B4EDA2C7EE3A80 /* TapFontKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-umbrella.h"; sourceTree = "<group>"; };
@@ -2329,7 +2340,6 @@
 		93E136B3697EF99D0563D76E5DD70D69 /* CompactMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompactMap.swift; path = RxSwift/Observables/CompactMap.swift; sourceTree = "<group>"; };
 		941D3CA7D8CFBC0B5EDE7DCA0A802A74 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
 		9422E2869C2693CD62767834C41692C0 /* FBLPromise+Wrap.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Wrap.m"; path = "Sources/FBLPromises/FBLPromise+Wrap.m"; sourceTree = "<group>"; };
-		948122E982ED1624A4F31F261DD7569C /* TapCardScanner-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapCardScanner-iOS-dummy.m"; sourceTree = "<group>"; };
 		94BEB02876B701D94F72110FABD5A9CF /* LocalisationManagerKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LocalisationManagerKit_iOS.framework; path = "LocalisationManagerKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E25E05E5676FCC131FF5485B27A69A /* visa.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = visa.png; path = "TapCardInputKit-iOS/Core/assets/visa.png"; sourceTree = "<group>"; };
 		9505EEE23B39A480E9A1EA8664686254 /* TapCardVlidatorKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardVlidatorKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -2388,12 +2398,14 @@
 		9F9105FBC070D7FD20EBD96087674B67 /* FIRComponentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentType.h; path = FirebaseCore/Sources/Private/FIRComponentType.h; sourceTree = "<group>"; };
 		9F912D70680750324C56512EE92AD8C6 /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Source/Common/Logger/Logger.swift; sourceTree = "<group>"; };
 		A03F2347F5E51FC7B88B2AB34FCAE7D6 /* Color+wcag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Color+wcag.swift"; path = "Source/Colors/Extensions/Color+wcag.swift"; sourceTree = "<group>"; };
+		A0B6C904A65A1D7C333C1F236676E069 /* TapCardScanner-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardScanner-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		A0CFE14D9FDD4BB773B8049401A44E6B /* RxSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RxSwift.modulemap; sourceTree = "<group>"; };
 		A0E4D8E5AE31DBA9A030A7433ACE8DAD /* CommonDataModelsKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "CommonDataModelsKit-iOS.modulemap"; sourceTree = "<group>"; };
 		A0E8E6D89AEF976E51FD41B756AFFFF7 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		A0F101000A21DFB8AC9C2230F62AB07D /* Flurry-iOS-SDK-FlurrySDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Flurry-iOS-SDK-FlurrySDK-Info.plist"; path = "../Flurry-iOS-SDK-FlurrySDK/Flurry-iOS-SDK-FlurrySDK-Info.plist"; sourceTree = "<group>"; };
 		A143896319D4B323826DCB258B0474D2 /* FIRAppAssociationRegistration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAppAssociationRegistration.m; path = FirebaseCore/Sources/FIRAppAssociationRegistration.m; sourceTree = "<group>"; };
 		A1F7F2498735D4A281DF6FC586637406 /* SheetyColors-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SheetyColors-prefix.pch"; sourceTree = "<group>"; };
+		A1F86B06BDCE945EB87B95A096ED82FA /* TopRightCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TopRightCorner.png; path = "TapCardScanner-iOS/Core/Assets/TopRightCorner.png"; sourceTree = "<group>"; };
 		A21386543F8445C403FDDFF9FB80FCA3 /* RxRelay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxRelay.debug.xcconfig; sourceTree = "<group>"; };
 		A2B82FF31B65AF5AD58F8809957DBBB0 /* FIRDependency.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRDependency.m; path = FirebaseCore/Sources/FIRDependency.m; sourceTree = "<group>"; };
 		A2CA34D32C432AF66E07690E17FF3051 /* FlurryAdNative.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNative.h; path = FlurryAds/FlurryAdNative/FlurryAdNative.h; sourceTree = "<group>"; };
@@ -2433,10 +2445,9 @@
 		AA8BF03B1AC165D32C7144127EBD81DF /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdInterstitial.h; path = FlurryAds/FlurryAdInterstitial/FlurryAdInterstitial.h; sourceTree = "<group>"; };
 		AAA50AA10529D2D615E734FD9D128B82 /* GULReachabilityMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityMessageCode.h; path = GoogleUtilities/Reachability/Private/GULReachabilityMessageCode.h; sourceTree = "<group>"; };
 		AB91F01F598427201C1388057ABBA684 /* EasyAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyAnimation.debug.xcconfig; sourceTree = "<group>"; };
-		ABADD3CDC9ED63E0541FEEAD030A42DB /* FlurryLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlurryLogger.swift; path = "TapCardScanner-iOS/Core/Private/FlurryLogger.swift"; sourceTree = "<group>"; };
+		AB930EE2DBC9EE9BE6FFF0706DD69CAB /* TopRightSuccessCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TopRightSuccessCorner.png; path = "TapCardScanner-iOS/Core/Assets/TopRightSuccessCorner.png"; sourceTree = "<group>"; };
 		ABB54964614DCC0B7937D51D30CD57B6 /* cct.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cct.nanopb.c; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/Protogen/nanopb/cct.nanopb.c; sourceTree = "<group>"; };
 		ABF8E3755C9EF06F8451DABA57387327 /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Capable.framework; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABFF2F3450E0C2BE2908650B34047BE7 /* TapCardScanner-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "TapCardScanner-iOS.modulemap"; sourceTree = "<group>"; };
 		AC2A7987B5DBBDD1B021C790753B0928 /* RxTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		AC6DE9975F345F344B25C96F7134B31D /* KeyPathBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyPathBinder.swift; path = RxCocoa/Common/KeyPathBinder.swift; sourceTree = "<group>"; };
 		AC9A4DAE6454AAD2579045A20D4AE749 /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
@@ -2512,6 +2523,7 @@
 		BA95F4E0C6A545DEBE86341BD1D8ED7F /* FIRErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrors.h; path = FirebaseCore/Sources/Private/FIRErrors.h; sourceTree = "<group>"; };
 		BAEAC5CA50A6F1BFEFDC0EA988C7A162 /* NSObject+Rx+RawRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx+RawRepresentable.swift"; path = "RxCocoa/Foundation/NSObject+Rx+RawRepresentable.swift"; sourceTree = "<group>"; };
 		BB14339EEE6B157F1059CC13C61BBC0A /* NSControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSControl+Rx.swift"; path = "RxCocoa/macOS/NSControl+Rx.swift"; sourceTree = "<group>"; };
+		BB3E01E7535FB6D70CCEDD86B4C47680 /* TapFullScreenScannerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFullScreenScannerViewController.swift; path = "TapCardScanner-iOS/Core/Private/Controllers/TapFullScreenScannerViewController.swift"; sourceTree = "<group>"; };
 		BB52CDBD6D31C119578EDF8EBDC2FE0E /* GDTCCTCompressionHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCCTCompressionHelper.h; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTCompressionHelper.h; sourceTree = "<group>"; };
 		BC1CA4D10C7BE85D83CDFD147AB466FD /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
 		BC2677CC1AD28E4116BCEF31C50F0CB4 /* GDTCCTUploader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCCTUploader.m; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/GDTCCTUploader.m; sourceTree = "<group>"; };
@@ -2532,6 +2544,7 @@
 		BEA009F1DBF7D277C55DDFF8F3D950F0 /* GDTCORRegistrar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORRegistrar.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORRegistrar.h; sourceTree = "<group>"; };
 		BEC071C1C214728D5E8168F418CFB103 /* PromisesObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.release.xcconfig; sourceTree = "<group>"; };
 		BFB966E1CE0CEED0BA858ABBE8F7DD04 /* UIColor+hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+hex.swift"; path = "SheetyColors/Classes/Common/Models/Extensions/UIColor+hex.swift"; sourceTree = "<group>"; };
+		BFBF8DDC2A7BA7BD3C9249FBF4858B5B /* BlurHoleCorners.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BlurHoleCorners.xib; path = "TapCardScanner-iOS/Core/Assets/BlurHoleCorners.xib"; sourceTree = "<group>"; };
 		BFC2826186F9BE0727648FF7E38232FC /* Platform.Linux.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.Linux.swift; path = Platform/Platform.Linux.swift; sourceTree = "<group>"; };
 		C00B4170DF1BAD981530DAC8774F937B /* TapApplePayKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapApplePayKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		C05C832DDCD86E9CF2ED6B3759D87160 /* FBLPromise+Wrap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Wrap.h"; path = "Sources/FBLPromises/include/FBLPromise+Wrap.h"; sourceTree = "<group>"; };
@@ -2541,6 +2554,7 @@
 		C1A579C993191473AC35DF345B4E2507 /* UISearchController+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISearchController+Rx.swift"; path = "RxCocoa/iOS/UISearchController+Rx.swift"; sourceTree = "<group>"; };
 		C22D79DBA662D6656A38BCB0B7DB3D43 /* GradientSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientSlider.swift; path = SheetyColors/Classes/Common/Views/GradientSlider.swift; sourceTree = "<group>"; };
 		C25AA5A4CD627FDB7EAC4EC079C98166 /* FIRInstallationsIIDStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsIIDStore.m; path = FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDStore.m; sourceTree = "<group>"; };
+		C2840BC2BD021661D668F64F4EC8BFB4 /* VisualEffectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VisualEffectView.swift; path = "TapCardScanner-iOS/Core/Private/VisualEffectView.swift"; sourceTree = "<group>"; };
 		C2DDE0A337AEA075D6C9C3DE940A5574 /* GULAppDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler_Private.h; path = GoogleUtilities/AppDelegateSwizzler/Internal/GULAppDelegateSwizzler_Private.h; sourceTree = "<group>"; };
 		C302C8EEEA73371A96BCE21261B621DA /* TapCurrencyLocale.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCurrencyLocale.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCurrencyCode/TapCurrencyLocale.swift"; sourceTree = "<group>"; };
 		C32CDFB13ECA49FEA2EF97237B333458 /* First.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = First.swift; path = RxSwift/Observables/First.swift; sourceTree = "<group>"; };
@@ -2588,11 +2602,12 @@
 		CCB5180DC2302DCF778CEFF163A28BE4 /* Pods-TapUIKit-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapUIKit-Example-dummy.m"; sourceTree = "<group>"; };
 		CCE167140013F91E4A50754883CA942B /* MOLH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MOLH.debug.xcconfig; sourceTree = "<group>"; };
 		CD72511C79EFFB6A641DAD419309CF15 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
+		CD9EC7E793767E9B3418B31D154AE0CD /* TapScannerProtocl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapScannerProtocl.swift; path = "TapCardScanner-iOS/Core/Private/TapScannerProtocl.swift"; sourceTree = "<group>"; };
+		CDB5FAAC5582E665BBDBE84FBEE306CC /* BottomRightCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = BottomRightCorner.png; path = "TapCardScanner-iOS/Core/Assets/BottomRightCorner.png"; sourceTree = "<group>"; };
 		CDDF5BF68A6D1DB6CBF21ADBFFC03B83 /* Bag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bag.swift; path = Platform/DataStructures/Bag.swift; sourceTree = "<group>"; };
 		CDF868CDDFBABD481643F2D456E8B5B1 /* GULNetworkConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkConstants.h; path = GoogleUtilities/Network/Private/GULNetworkConstants.h; sourceTree = "<group>"; };
 		CE128B91F208C6D4023AB0E31C7A7082 /* HapticFeedbackProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HapticFeedbackProvider.swift; path = SheetyColors/Classes/Common/Models/HapticFeedbackProvider.swift; sourceTree = "<group>"; };
 		CE14CF7E1F51F90B543DFD910AB5ADC2 /* Dematerialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dematerialize.swift; path = RxSwift/Observables/Dematerialize.swift; sourceTree = "<group>"; };
-		CE1EB4BB16B8960DC8B22BC53576EB2B /* TapFullScreenCardScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFullScreenCardScanner.swift; path = "TapCardScanner-iOS/Core/Public/TapFullScreenCardScanner.swift"; sourceTree = "<group>"; };
 		CE64AF8EC2C8462376C56132D7CD6E8E /* SimpleAnimation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-prefix.pch"; sourceTree = "<group>"; };
 		CE9EB4BEF556D77786EBF8821FDF4597 /* FBLPromisePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBLPromisePrivate.h; path = Sources/FBLPromises/include/FBLPromisePrivate.h; sourceTree = "<group>"; };
 		CEBC2CA6F336FA72B454D2D28241C0CE /* RxCocoaRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RxCocoaRuntime.h; path = RxCocoa/Runtime/include/RxCocoaRuntime.h; sourceTree = "<group>"; };
@@ -2659,6 +2674,7 @@
 		DB3EF0D2D3BC6C6A00C27673B3BBBB6D /* TapFont+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TapFont+Additions.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/TapFont+Additions.swift"; sourceTree = "<group>"; };
 		DB48E3F7A3D2CB7303ED8F3D94165F01 /* TapSwiftFixes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapSwiftFixes.debug.xcconfig; sourceTree = "<group>"; };
 		DB4BEE93ADFE5D88D955742F6A219015 /* FirebaseCoreInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseCoreInternal.h; path = FirebaseCore/Sources/Private/FirebaseCoreInternal.h; sourceTree = "<group>"; };
+		DB604CA8701B5651499B9E9A2EC943A0 /* FlurryLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlurryLogger.swift; path = "TapCardScanner-iOS/Core/Private/FlurryLogger.swift"; sourceTree = "<group>"; };
 		DB62A402556C5CD0087CEEC603D19C64 /* GDTCOREvent+GDTCCTSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GDTCOREvent+GDTCCTSupport.h"; path = "GoogleDataTransportCCTSupport/GDTCCTLibrary/Public/GDTCOREvent+GDTCCTSupport.h"; sourceTree = "<group>"; };
 		DBAE92B67EFA7FB9BE1B99F3E70EE38F /* Roboto-Black.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Black.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		DBC870EB034A4054C51F5E886BB4845A /* HelveticaNeueLTW20-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Bold.ttf"; sourceTree = "<group>"; };
@@ -2672,7 +2688,6 @@
 		DD813545ED473121DDF70922B727C4D8 /* Flurry-iOS-SDK-FlurrySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Flurry-iOS-SDK-FlurrySDK.release.xcconfig"; path = "../Flurry-iOS-SDK-FlurrySDK/Flurry-iOS-SDK-FlurrySDK.release.xcconfig"; sourceTree = "<group>"; };
 		DD97AE11963B00DD164E4A8776E7FB96 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SheetyColors/Classes/Common/Resources/Images.xcassets; sourceTree = "<group>"; };
 		DDB24DC66F44B9A8B33C310019290D4A /* TapFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFont.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/TapFont.swift"; sourceTree = "<group>"; };
-		DDB267E1082C645770E4605A3518D652 /* BlurHoleCorners.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BlurHoleCorners.xib; path = "TapCardScanner-iOS/Core/Assets/BlurHoleCorners.xib"; sourceTree = "<group>"; };
 		DDBD65C6BF90753F185F30B03F2186FC /* TapCardBarButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCardBarButton.swift; path = "TapCardInputKit-iOS/Core/Private/Views/TapCardBarButton.swift"; sourceTree = "<group>"; };
 		DDCF2A65EC2DC7006C0E1DC8121AEDB7 /* PromisesObjC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PromisesObjC-dummy.m"; sourceTree = "<group>"; };
 		DDDECEA752C250C3EA1A391C47106B77 /* _RX.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RX.m; path = RxCocoa/Runtime/_RX.m; sourceTree = "<group>"; };
@@ -2682,6 +2697,7 @@
 		DEC96C364719D7C9F8FD3E0F2FF4DA64 /* GDTCORClock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORClock.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORClock.m; sourceTree = "<group>"; };
 		DF0A0BD7868BAB1B013A8B4552385E0A /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		DFA04801E2BEB6B007D5CE24B37712EF /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
+		DFC2FF16D4F3F8EAADD9BCB13C68B2B4 /* TopLeftSuccessCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TopLeftSuccessCorner.png; path = "TapCardScanner-iOS/Core/Assets/TopLeftSuccessCorner.png"; sourceTree = "<group>"; };
 		E021C990EFC2CE6D2332940294348A5A /* Nuke-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nuke-prefix.pch"; sourceTree = "<group>"; };
 		E11ECA0FEE7B0B2666E239C5AEF56623 /* FIRErrorCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrorCode.h; path = FirebaseCore/Sources/Private/FIRErrorCode.h; sourceTree = "<group>"; };
 		E11F1BA2A662CF1A738DC8B52E243743 /* NSTextStorage+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextStorage+Rx.swift"; path = "RxCocoa/iOS/NSTextStorage+Rx.swift"; sourceTree = "<group>"; };
@@ -2697,7 +2713,6 @@
 		E2527BB711EE2DFDECE460AFEF8472F9 /* Flurry_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Flurry_iOS_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseCore.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BFE2A59E01DAB38A100859DD297B3B /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
-		E37D3258696B9C330FFE07A8948F2338 /* VisualEffectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VisualEffectView.swift; path = "TapCardScanner-iOS/Core/Private/VisualEffectView.swift"; sourceTree = "<group>"; };
 		E3C978E945691EB59EF6AA94CBB5EB41 /* AppearenceProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProvider.swift; path = SheetyColors/Classes/Common/Models/AppearenceProvider.swift; sourceTree = "<group>"; };
 		E3D6F188DD3440B7F84192FC5C7F0127 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = RxSwift/Observables/Error.swift; sourceTree = "<group>"; };
 		E46AA06C38893D1B50F6C63A8773A9BC /* CardInputMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardInputMode.swift; path = "TapCardInputKit-iOS/Core/Public/enums/CardInputMode.swift"; sourceTree = "<group>"; };
@@ -2716,7 +2731,6 @@
 		E6AF95B01607495C148558CAF9FB00D8 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		E72BF9BC417CCD63A51DD0BF58EB4F07 /* Capable-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Capable-prefix.pch"; sourceTree = "<group>"; };
 		E7425A113982645E98682F654EA878D2 /* Pods-TapUIKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapUIKit-iOS.modulemap"; sourceTree = "<group>"; };
-		E74E047E3CCCB7AEA278862E13A6168C /* TapCardScanner-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardScanner-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E7EB295D267ADB468F8B25ACEA9D610B /* GDTCORUploadCoordinator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORUploadCoordinator.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORUploadCoordinator.m; sourceTree = "<group>"; };
 		E8695C701FF376405952C2A0F02EC25A /* SelectorsConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorsConstants.swift; path = TapThemeManager2020/TapThemeManager2020/Core/enums/SelectorsConstants.swift; sourceTree = "<group>"; };
 		E86DEC28135A5D5F539EAD17B45E36F2 /* FIRInstallationsStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsStatus.h; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsStatus.h; sourceTree = "<group>"; };
@@ -2735,6 +2749,7 @@
 		EA836A9A0381D09934CD260E71728ED5 /* Sample.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sample.swift; path = RxSwift/Observables/Sample.swift; sourceTree = "<group>"; };
 		EB064B145BA9509718087DEAA1A465C1 /* GDTCORTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransformer.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransformer.h; sourceTree = "<group>"; };
 		EB62F10AFDFA14FE10727561314E9451 /* FIRHeartbeatInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRHeartbeatInfo.m; path = FirebaseCore/Sources/FIRHeartbeatInfo.m; sourceTree = "<group>"; };
+		EB81076EAD37E75059306F38438B0875 /* TapScannerStoryboard.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = TapScannerStoryboard.storyboard; path = "TapCardScanner-iOS/Core/Assets/TapScannerStoryboard.storyboard"; sourceTree = "<group>"; };
 		EBB21008142EFAAEFBBF0D7F1066057E /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		EC4FCE18249B9F7A313924937ABE6B8C /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
 		EC956F91571B192F3ADB19E0577F9FA9 /* TailRecursiveSink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TailRecursiveSink.swift; path = RxSwift/Observers/TailRecursiveSink.swift; sourceTree = "<group>"; };
@@ -2749,7 +2764,6 @@
 		EEF714537CF72599A8FFD946097B75FA /* FullCardInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FullCardInput.swift; path = "TapCardInputKit-iOS/Core/Private/Views/FullCardInput.swift"; sourceTree = "<group>"; };
 		EF648ECA93DA5E6005A6D01D43638747 /* Flurry-iOS-SDK-FlurryAds-FlurrySDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Flurry-iOS-SDK-FlurryAds-FlurrySDK-Info.plist"; sourceTree = "<group>"; };
 		EF7FF55A128A835D414C04F3F366022C /* Flurry-iOS-SDK-FlurrySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Flurry-iOS-SDK-FlurrySDK-dummy.m"; path = "../Flurry-iOS-SDK-FlurrySDK/Flurry-iOS-SDK-FlurrySDK-dummy.m"; sourceTree = "<group>"; };
-		EF9CAC76657C75877660F67F3296DBFD /* BlurHoleCorners.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurHoleCorners.swift; path = "TapCardScanner-iOS/Core/Private/Views/BlurHoleCorners.swift"; sourceTree = "<group>"; };
 		EFE3DFCE001D9DCB460981DB779FB475 /* TapCardVlidatorKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapCardVlidatorKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0297FAC2A670AD98D118FAF27C54B27 /* RxCocoa-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxCocoa-prefix.pch"; sourceTree = "<group>"; };
 		F03F8773E28A679F6352F30600453BCC /* Disposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposable.swift; path = RxSwift/Disposable.swift; sourceTree = "<group>"; };
@@ -2759,6 +2773,7 @@
 		F1FC2F50F83299FFE6F38F1AFCA3E462 /* SimpleAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAnimation.release.xcconfig; sourceTree = "<group>"; };
 		F20A55F040E2EA151501296CE8D439E4 /* Generate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generate.swift; path = RxSwift/Observables/Generate.swift; sourceTree = "<group>"; };
 		F20AC67FFF0DD03F799A93519A98E65C /* ThemeFontSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeFontSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeFontSelector.swift; sourceTree = "<group>"; };
+		F2594C7A201E226ACA80034844029847 /* BottomLeftSuccessCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = BottomLeftSuccessCorner.png; path = "TapCardScanner-iOS/Core/Assets/BottomLeftSuccessCorner.png"; sourceTree = "<group>"; };
 		F280E23680EDFD3166693B8141D5024C /* UIAlertAction+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIAlertAction+Rx.swift"; path = "RxCocoa/iOS/UIAlertAction+Rx.swift"; sourceTree = "<group>"; };
 		F383E3D0E1CA2074EBA0B7C67A91702D /* MOLHSizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MOLHSizable.swift; path = Sources/MOLH/MOLHSizable.swift; sourceTree = "<group>"; };
 		F3987379941F13428AF84F9F606091E4 /* ViewsExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewsExtensions.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Extensions/ViewsExtensions.swift; sourceTree = "<group>"; };
@@ -2772,6 +2787,7 @@
 		F52822630FE65153627B9DDF0988D366 /* MOLH-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MOLH-prefix.pch"; sourceTree = "<group>"; };
 		F5349B27B744D139C162A9E05A7FCB06 /* CoreGraphicsFixes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CoreGraphicsFixes.h; path = Common/Source/CoreGraphicsFixes/CoreGraphicsFixes.h; sourceTree = "<group>"; };
 		F58A947AF223C4CFFC9CCD748982661C /* ControlTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlTarget.swift; path = RxCocoa/Common/ControlTarget.swift; sourceTree = "<group>"; };
+		F59917705D64F0D9D2892AA7C5C95573 /* BottomLeftCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = BottomLeftCorner.png; path = "TapCardScanner-iOS/Core/Assets/BottomLeftCorner.png"; sourceTree = "<group>"; };
 		F5D5FCD67050FCB13D53D637CF8CBC97 /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
 		F5F0A49FC7C409465C32AEE6CE0C86CD /* GoogleDataTransportCCTSupport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleDataTransportCCTSupport.release.xcconfig; sourceTree = "<group>"; };
 		F6AD64F73BA4172536C073F67A17A38A /* GULOriginalIMPConvenienceMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULOriginalIMPConvenienceMacros.h; path = GoogleUtilities/MethodSwizzler/Private/GULOriginalIMPConvenienceMacros.h; sourceTree = "<group>"; };
@@ -2788,6 +2804,7 @@
 		F8B1EE7C2CC412EFE8FAE17542203430 /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
 		F8D9435BE9FB3CE29B0D73125F497462 /* TapApplePayKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapApplePayKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		F9018407F0B25F5A528FAD680FAF447A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		F92E355764EF478ABAB2B2E71D1F2177 /* TapCanScanStatusResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCanScanStatusResult.swift; path = "TapCardScanner-iOS/Core/Public/enum/TapCanScanStatusResult.swift"; sourceTree = "<group>"; };
 		F939AB6BB281C66E2E2C1F1C353DA301 /* LocalisationManagerKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LocalisationManagerKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		F9964CD075B539BCC09633650D94E2A6 /* CurrentThreadScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CurrentThreadScheduler.swift; path = RxSwift/Schedulers/CurrentThreadScheduler.swift; sourceTree = "<group>"; };
 		F9B7BB1F76B7AC16F3377251EA1B186D /* ThemeBlurEffectSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBlurEffectSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeBlurEffectSelector.swift; sourceTree = "<group>"; };
@@ -2807,7 +2824,6 @@
 		FC35AC7F931EA26062FF6285D559C41F /* FBLPromise+Timeout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Timeout.h"; path = "Sources/FBLPromises/include/FBLPromise+Timeout.h"; sourceTree = "<group>"; };
 		FC7F2E2978084DFB5F45A0027A260D0C /* CombineLatest+arity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CombineLatest+arity.swift"; path = "RxSwift/Observables/CombineLatest+arity.swift"; sourceTree = "<group>"; };
 		FC93B5D2CCB5ABDE991BDFEA30697F9E /* CardCVVTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardCVVTextField.swift; path = "TapCardInputKit-iOS/Core/Private/TextFields/CardCVVTextField.swift"; sourceTree = "<group>"; };
-		FC9F5E026DBF8062BBE443111621790D /* TapScannerStoryboard.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = TapScannerStoryboard.storyboard; path = "TapCardScanner-iOS/Core/Assets/TapScannerStoryboard.storyboard"; sourceTree = "<group>"; };
 		FCF3E848D5678F594394AAF9B807ED82 /* RxTabBarDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTabBarDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxTabBarDelegateProxy.swift; sourceTree = "<group>"; };
 		FD8055552551EFA6D232C361C0C90765 /* Circe-ExtraLight.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraLight.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraLight.ttf"; sourceTree = "<group>"; };
 		FD955C7C9F66F281E89D155E74BF3D9B /* Pods-TapUIKit-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapUIKit-Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -2963,6 +2979,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4570F60A5AD701A736EB356DE93B6F6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1800A46597801045F162BE6F5AF47D6 /* CommonDataModelsKit_iOS.framework in Frameworks */,
+				C9D2DA0F33F8082FEBF141469238998A /* Flurry_iOS_SDK.framework in Frameworks */,
+				E966EEDB3D50668CC5FC046F9EEC7330 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CD309DA1F0AC71D2C7840A114B64B5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3073,16 +3099,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6503E5FA1DB025A926636A725E5D694 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				249227C2C80D211DA0DD8358DAEC234E /* CommonDataModelsKit_iOS.framework in Frameworks */,
-				BAD1A9AF87538121FDC20CAEAA3BFBF0 /* Flurry_iOS_SDK.framework in Frameworks */,
-				8CD29A5CFA5CA7441CA410627C4D6B4C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFF5070A49BF45B92C426B62591628A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3159,6 +3175,23 @@
 			);
 			name = nanopb;
 			path = nanopb;
+			sourceTree = "<group>";
+		};
+		0CBBAD74BEE0F070D76AA556E55D8ABC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF8DDC2A7BA7BD3C9249FBF4858B5B /* BlurHoleCorners.xib */,
+				F59917705D64F0D9D2892AA7C5C95573 /* BottomLeftCorner.png */,
+				F2594C7A201E226ACA80034844029847 /* BottomLeftSuccessCorner.png */,
+				CDB5FAAC5582E665BBDBE84FBEE306CC /* BottomRightCorner.png */,
+				35EA7F3BBA5B3C22C6F9A00B52FDC4BF /* BottomRightSuccessCorner.png */,
+				EB81076EAD37E75059306F38438B0875 /* TapScannerStoryboard.storyboard */,
+				7AE2BF4A3D5ECF797B3EF9EFA61AE667 /* TopLeftCorner.png */,
+				DFC2FF16D4F3F8EAADD9BCB13C68B2B4 /* TopLeftSuccessCorner.png */,
+				A1F86B06BDCE945EB87B95A096ED82FA /* TopRightCorner.png */,
+				AB930EE2DBC9EE9BE6FFF0706DD69CAB /* TopRightSuccessCorner.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		0D31095583AEA06F92B9D867AC75CBBD /* NSData+zlib */ = {
@@ -3299,21 +3332,6 @@
 			);
 			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
-			sourceTree = "<group>";
-		};
-		249F1D995680F1423934B9AD6D96B25B /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				ABFF2F3450E0C2BE2908650B34047BE7 /* TapCardScanner-iOS.modulemap */,
-				948122E982ED1624A4F31F261DD7569C /* TapCardScanner-iOS-dummy.m */,
-				9232C6920D3754FCD34E9AAA15628E53 /* TapCardScanner-iOS-Info.plist */,
-				24FF07E1F8B2E6B179D92068ACCDD3CB /* TapCardScanner-iOS-prefix.pch */,
-				17A58AED52926E42EC22051233AEC919 /* TapCardScanner-iOS-umbrella.h */,
-				52A13574CF8FE7799F09EB22D3DEE2E6 /* TapCardScanner-iOS.debug.xcconfig */,
-				E74E047E3CCCB7AEA278862E13A6168C /* TapCardScanner-iOS.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TapCardScanner-iOS";
 			sourceTree = "<group>";
 		};
 		279D5A22AC022A91117CA96DA4A63F63 /* CoreGraphics */ = {
@@ -4010,34 +4028,6 @@
 			name = Exceptions;
 			sourceTree = "<group>";
 		};
-		6965E5A84C13A009F145879079FF9BA8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DDB267E1082C645770E4605A3518D652 /* BlurHoleCorners.xib */,
-				FC9F5E026DBF8062BBE443111621790D /* TapScannerStoryboard.storyboard */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		6A5F1534816BA494016D3B26FA4A4912 /* TapCardScanner-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				EF9CAC76657C75877660F67F3296DBFD /* BlurHoleCorners.swift */,
-				ABADD3CDC9ED63E0541FEEAD030A42DB /* FlurryLogger.swift */,
-				8D2037D713BB56B2ABC6D69A653EA1D5 /* TapCanScanStatusResult.swift */,
-				50002CCA2B47BE831706DB2DE06D4608 /* TapExtensions.swift */,
-				CE1EB4BB16B8960DC8B22BC53576EB2B /* TapFullScreenCardScanner.swift */,
-				51B81B96E210DBADB59EA2E569A477AA /* TapFullScreenScannerViewController.swift */,
-				0B6D38CB8A4276FB6E224CBADD5FCAB8 /* TapInlineCardScanner.swift */,
-				4C86D81BA3A71DA0485BF0CCAB91F1CF /* TapScannerProtocl.swift */,
-				E37D3258696B9C330FFE07A8948F2338 /* VisualEffectView.swift */,
-				6965E5A84C13A009F145879079FF9BA8 /* Resources */,
-				249F1D995680F1423934B9AD6D96B25B /* Support Files */,
-			);
-			name = "TapCardScanner-iOS";
-			path = "TapCardScanner-iOS";
-			sourceTree = "<group>";
-		};
 		6D3C6DE73F7103C8986E11D1277FC0AC /* CoreOnly */ = {
 			isa = PBXGroup;
 			children = (
@@ -4079,13 +4069,28 @@
 				F6FDE2A90324787662F4EA7555410866 /* SwiftLint */,
 				14822C630E064EAD511BBD5F8F45BA86 /* TapApplePayKit-iOS */,
 				3AC18436A48BF75600413B6AA31DE185 /* TapCardInputKit-iOS */,
-				6A5F1534816BA494016D3B26FA4A4912 /* TapCardScanner-iOS */,
+				8E83A04829EFF7717DFE2183B71CAA5C /* TapCardScanner-iOS */,
 				789853CFECC99C840F658CC94B05CA11 /* TapCardVlidatorKit-iOS */,
 				D80D81E478B7432BF153C82760443CF5 /* TapFontKit-iOS */,
 				3D9E90E6A2E98DAFF1428C3550F56E6F /* TapSwiftFixes */,
 				C0908E91D6AC0B1E9393B7C7040773A8 /* TapThemeManager2020 */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		70067EED55959A86F49217FD33548D5A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FC89B74DBFF643A520AB664CAEE6BA7 /* TapCardScanner-iOS.modulemap */,
+				365A9920DEEFB83012A18281D3E91EB5 /* TapCardScanner-iOS-dummy.m */,
+				22FFD8199A05F0ADF418C8C1645EBCC4 /* TapCardScanner-iOS-Info.plist */,
+				532B301B4D2D44C1472228EBF1C19863 /* TapCardScanner-iOS-prefix.pch */,
+				2AE4FA1ADBDE857FD237A04BB697D38E /* TapCardScanner-iOS-umbrella.h */,
+				02397A45C3443ACBB7B20D2227C04D15 /* TapCardScanner-iOS.debug.xcconfig */,
+				A0B6C904A65A1D7C333C1F236676E069 /* TapCardScanner-iOS.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TapCardScanner-iOS";
 			sourceTree = "<group>";
 		};
 		70D88815563355B0740BC66655B0A1FC /* Products */ = {
@@ -4198,6 +4203,25 @@
 			);
 			name = "CommonDataModelsKit-iOS";
 			path = "CommonDataModelsKit-iOS";
+			sourceTree = "<group>";
+		};
+		8E83A04829EFF7717DFE2183B71CAA5C /* TapCardScanner-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				39FD4111226FE0DF02172E48DF3150C4 /* BlurHoleCorners.swift */,
+				DB604CA8701B5651499B9E9A2EC943A0 /* FlurryLogger.swift */,
+				F92E355764EF478ABAB2B2E71D1F2177 /* TapCanScanStatusResult.swift */,
+				181E55D2B55F090D9F7DAC5B5456EB59 /* TapExtensions.swift */,
+				5ECC1AA92F798B0454AB7DA58E51E1EA /* TapFullScreenCardScanner.swift */,
+				BB3E01E7535FB6D70CCEDD86B4C47680 /* TapFullScreenScannerViewController.swift */,
+				888CEEF9BB63C8F9862D91831966065B /* TapInlineCardScanner.swift */,
+				CD9EC7E793767E9B3418B31D154AE0CD /* TapScannerProtocl.swift */,
+				C2840BC2BD021661D668F64F4EC8BFB4 /* VisualEffectView.swift */,
+				0CBBAD74BEE0F070D76AA556E55D8ABC /* Resources */,
+				70067EED55959A86F49217FD33548D5A /* Support Files */,
+			);
+			name = "TapCardScanner-iOS";
+			path = "TapCardScanner-iOS";
 			sourceTree = "<group>";
 		};
 		8F6A05293280B1853E01D2C27E2AB79B /* Resources */ = {
@@ -5306,14 +5330,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F358C74F2AB3890B04F97A4C8B9228D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6D560478761B6B618B1F6AC5D4327AA /* TapCardScanner-iOS-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		722E475DE0CF9919A20939E5C73B50DC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -5565,6 +5581,14 @@
 				65680F571546ACC1DEF3C50E40B29EE6 /* GDTCORUploadPackage_Private.h in Headers */,
 				733882D0B9F269B5548564BEB05BCD22 /* GoogleDataTransport-umbrella.h in Headers */,
 				5B7C1D4CABC9266CA6B09098A9500E44 /* GoogleDataTransport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD213F2E1713AB0B4287CC051DA1CC0C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C76664B483BD7999723FBCBC629C0AC2 /* TapCardScanner-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5978,19 +6002,19 @@
 		};
 		A69E391A11C234F827CD955C6FE288C0 /* TapCardScanner-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2828D5EF781F67226A855166D6C2065A /* Build configuration list for PBXNativeTarget "TapCardScanner-iOS" */;
+			buildConfigurationList = 2597F5564619F5343495BA011A02F104 /* Build configuration list for PBXNativeTarget "TapCardScanner-iOS" */;
 			buildPhases = (
-				6F358C74F2AB3890B04F97A4C8B9228D /* Headers */,
-				A07B05B5BE91C8A1AA2E67BB8E3D3BE8 /* Sources */,
-				B6503E5FA1DB025A926636A725E5D694 /* Frameworks */,
-				4BE22FAE85D4335F95432C26CDF8EFBE /* Resources */,
+				FD213F2E1713AB0B4287CC051DA1CC0C /* Headers */,
+				1FA1E3A05ED6B771C67F58BA89BD0F18 /* Sources */,
+				4570F60A5AD701A736EB356DE93B6F6F /* Frameworks */,
+				C2A0F4D3A1786D3AC15C71E6C0F78533 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				587C5C13791F2480561D9F0BCAC5E525 /* PBXTargetDependency */,
-				3ED37C0A5D7560E8243C19091547798E /* PBXTargetDependency */,
-				24D5A2B66C84CF1BADE36B855702CDBF /* PBXTargetDependency */,
+				EEBA0D1CC64374E9B241D76E2760FA59 /* PBXTargetDependency */,
+				17E81E5D25529F7A07CD1BC82A6D2EAB /* PBXTargetDependency */,
+				26CEDE0E5B877189B929FFC625B641D6 /* PBXTargetDependency */,
 			);
 			name = "TapCardScanner-iOS";
 			productName = "TapCardScanner-iOS";
@@ -6391,15 +6415,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BE22FAE85D4335F95432C26CDF8EFBE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AE666054785D37ECA1FE1DCC12DB8EF /* BlurHoleCorners.xib in Resources */,
-				A938654C131E2C2EBC98E7D158831058 /* TapScannerStoryboard.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4C83FA00B3F215264F5BE5D7E7593A3F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6485,6 +6500,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2A0F4D3A1786D3AC15C71E6C0F78533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D2FEAB6ECE981CABA89380D171C2732 /* BlurHoleCorners.xib in Resources */,
+				CDFCD833E487571D60BDF0810D1FDBA5 /* BottomLeftCorner.png in Resources */,
+				86263180AB30A79A72F2498D91A72C17 /* BottomLeftSuccessCorner.png in Resources */,
+				8F7F7620176BFA4D1A39C88C2FA2923E /* BottomRightCorner.png in Resources */,
+				261CB9761BD028EC34D62FB0E4DD2538 /* BottomRightSuccessCorner.png in Resources */,
+				A201114A35E0EA30E934B2E27567E125 /* TapScannerStoryboard.storyboard in Resources */,
+				52CF3F40AB84C5ED3356120D13D2FB50 /* TopLeftCorner.png in Resources */,
+				99BFFBDE7F6CD4320E439A9C0CCBD566 /* TopLeftSuccessCorner.png in Resources */,
+				13210D15FC011A774B229BFC163A73E1 /* TopRightCorner.png in Resources */,
+				2EAA0F79D04D50337E598722F39B8726 /* TopRightSuccessCorner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6653,6 +6685,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F56813F9C517B4196D4D4DAD9172BDF9 /* Pods-TapUIKit-iOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FA1E3A05ED6B771C67F58BA89BD0F18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35899A8806612E93A087D395BDD55D2E /* BlurHoleCorners.swift in Sources */,
+				7D45CF53AC155C40B42ACCB88CE3816C /* FlurryLogger.swift in Sources */,
+				BD7C884007020CBD576AF7958C7702A0 /* TapCanScanStatusResult.swift in Sources */,
+				BAF828E9F31175F0A354BE8F1F6C79E4 /* TapCardScanner-iOS-dummy.m in Sources */,
+				0507592B6C35FB5594A0F50077453057 /* TapExtensions.swift in Sources */,
+				14FBBEBC6F8ADD18A714CCFD91D71D06 /* TapFullScreenCardScanner.swift in Sources */,
+				3F64A5F19370DF286CD3F021729040A7 /* TapFullScreenScannerViewController.swift in Sources */,
+				DC74426552D9E50B3C4F0225A5D3953C /* TapInlineCardScanner.swift in Sources */,
+				761AD36DF6686AABFA51775576B0B069 /* TapScannerProtocl.swift in Sources */,
+				4A120CBF45614F5FE60CF366D94D5185 /* VisualEffectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7108,23 +7157,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A07B05B5BE91C8A1AA2E67BB8E3D3BE8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AB261647C80ADF8AFA12E8CE5A3B55FF /* BlurHoleCorners.swift in Sources */,
-				B3D5B05CDC8407D5EE5BF2A9DDA95DA5 /* FlurryLogger.swift in Sources */,
-				7CF5AFFBA0AE39ADD722E4ED624FDB83 /* TapCanScanStatusResult.swift in Sources */,
-				F719A2CA01AEF3058A83A95A67A85B70 /* TapCardScanner-iOS-dummy.m in Sources */,
-				A0377944B3FB0CD03255124542E410DD /* TapExtensions.swift in Sources */,
-				37DD1B59E504D43A6F563C2C0DDA743E /* TapFullScreenCardScanner.swift in Sources */,
-				19A1FFD78959BFF2E1446F15E98F9AF2 /* TapFullScreenScannerViewController.swift in Sources */,
-				AF4323EBBDE0DA98863614B24AEA2652 /* TapInlineCardScanner.swift in Sources */,
-				9F07AE905710108FA446361FBCB854B6 /* TapScannerProtocl.swift in Sources */,
-				0BE1555B94DEB4F9FAD31ECA7465A607 /* VisualEffectView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A710D8DD87257035884AE2D60E622379 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7475,6 +7507,12 @@
 			target = 2A84B9D796D0D04B87F4B7C8561AAF92 /* TapSwiftFixes */;
 			targetProxy = 0D30DB2CAD821BCA80D168A11F1AC3BB /* PBXContainerItemProxy */;
 		};
+		17E81E5D25529F7A07CD1BC82A6D2EAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Flurry-iOS-SDK-FlurryAds-FlurrySDK";
+			target = 3706539BC40318D14102E13B5D2F92E4 /* Flurry-iOS-SDK-FlurryAds-FlurrySDK */;
+			targetProxy = 5EAC07EC4300A33AE0DA88E540AADACF /* PBXContainerItemProxy */;
+		};
 		1ABAAEC6628FE0222F34600F078D2881 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "TapCardVlidatorKit-iOS";
@@ -7493,11 +7531,11 @@
 			target = 620E05868772C10B4920DC7E324F2C87 /* FirebaseCoreDiagnostics */;
 			targetProxy = 040622B4EF3FFAC25FCB8BED372F45F5 /* PBXContainerItemProxy */;
 		};
-		24D5A2B66C84CF1BADE36B855702CDBF /* PBXTargetDependency */ = {
+		26CEDE0E5B877189B929FFC625B641D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PayCardsRecognizer;
 			target = 7A1C8F08E55F85266691CD003FBAA5FC /* PayCardsRecognizer */;
-			targetProxy = 53F918F9692CF2645F11772929C9DF65 /* PBXContainerItemProxy */;
+			targetProxy = 64894932667C5244ED3A617386C8CEDE /* PBXContainerItemProxy */;
 		};
 		28EABD032A8D666F774323A77EFA4DEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7534,12 +7572,6 @@
 			name = nanopb;
 			target = D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */;
 			targetProxy = C6318E60C9E68C5F678F7ADDF357AED8 /* PBXContainerItemProxy */;
-		};
-		3ED37C0A5D7560E8243C19091547798E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Flurry-iOS-SDK-FlurryAds-FlurrySDK";
-			target = 3706539BC40318D14102E13B5D2F92E4 /* Flurry-iOS-SDK-FlurryAds-FlurrySDK */;
-			targetProxy = A6DC7E75307445A7BD7741DDBB3A0CC4 /* PBXContainerItemProxy */;
 		};
 		3F93EE18EF243CEDBAD3766C4B7E55F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7600,12 +7632,6 @@
 			name = RxRelay;
 			target = 4622BFEF3DC16E8BD15EEFC30D4D0084 /* RxRelay */;
 			targetProxy = 07E45B0AFEEED2846D13571956E582B3 /* PBXContainerItemProxy */;
-		};
-		587C5C13791F2480561D9F0BCAC5E525 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "CommonDataModelsKit-iOS";
-			target = D49B77E3C54A9573D2E2DDD93687FCBF /* CommonDataModelsKit-iOS */;
-			targetProxy = E5C0AE9CF047685C7D5AAA08AC222D50 /* PBXContainerItemProxy */;
 		};
 		58AB858E63D1A384816C625797C32025 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7979,6 +8005,12 @@
 			target = A69E391A11C234F827CD955C6FE288C0 /* TapCardScanner-iOS */;
 			targetProxy = B6AF875C29453C0B68AA45B8A0A02DA1 /* PBXContainerItemProxy */;
 		};
+		EEBA0D1CC64374E9B241D76E2760FA59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CommonDataModelsKit-iOS";
+			target = D49B77E3C54A9573D2E2DDD93687FCBF /* CommonDataModelsKit-iOS */;
+			targetProxy = 2175F840D79C8F5ECEBCAAD695A6A74E /* PBXContainerItemProxy */;
+		};
 		EED6B4D3375D3442C6A72CC0EDB4CD4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "LocalisationManagerKit-iOS";
@@ -8263,6 +8295,43 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		1EDF7C7634AFB5B76FA236E43334CD92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0B6C904A65A1D7C333C1F236676E069 /* TapCardScanner-iOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS.modulemap";
+				PRODUCT_MODULE_NAME = TapCardScanner_iOS;
+				PRODUCT_NAME = TapCardScanner_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		23D36FE84C408821034CED43D980C401 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -8625,43 +8694,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		3BB20CA9F4AEAE02F9675C302699F224 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E74E047E3CCCB7AEA278862E13A6168C /* TapCardScanner-iOS.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS.modulemap";
-				PRODUCT_MODULE_NAME = TapCardScanner_iOS;
-				PRODUCT_NAME = TapCardScanner_iOS;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		3C087AC905F338A0DBBF017C6622589B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -10374,6 +10406,42 @@
 			};
 			name = Release;
 		};
+		DD6CA9784EEBD5B80C508CE8DCA7C892 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02397A45C3443ACBB7B20D2227C04D15 /* TapCardScanner-iOS.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS.modulemap";
+				PRODUCT_MODULE_NAME = TapCardScanner_iOS;
+				PRODUCT_NAME = TapCardScanner_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		E68FD10E2CB21180D0FE84644EDBA939 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8FFE39E85C02DCF6B25FA4591DEBD47E /* Nuke.release.xcconfig */;
@@ -10480,42 +10548,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		EDBA223519748E2960CE0239F9025B25 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52A13574CF8FE7799F09EB22D3DEE2E6 /* TapCardScanner-iOS.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TapCardScanner-iOS/TapCardScanner-iOS.modulemap";
-				PRODUCT_MODULE_NAME = TapCardScanner_iOS;
-				PRODUCT_NAME = TapCardScanner_iOS;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		EEB842386D09E1BCF44762B2CCB11CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -10723,6 +10755,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		2597F5564619F5343495BA011A02F104 /* Build configuration list for PBXNativeTarget "TapCardScanner-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD6CA9784EEBD5B80C508CE8DCA7C892 /* Debug */,
+				1EDF7C7634AFB5B76FA236E43334CD92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		25B0FDFF3F282B8C4772A9715701F488 /* Build configuration list for PBXNativeTarget "FirebaseInstallations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -10746,15 +10787,6 @@
 			buildConfigurations = (
 				A7F7F1A22CF33E864F4B27C81355EC67 /* Debug */,
 				56EB3A2C07EDB2CC47FCB3813F2A2BAB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2828D5EF781F67226A855166D6C2065A /* Build configuration list for PBXNativeTarget "TapCardScanner-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDBA223519748E2960CE0239F9025B25 /* Debug */,
-				3BB20CA9F4AEAE02F9675C302699F224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

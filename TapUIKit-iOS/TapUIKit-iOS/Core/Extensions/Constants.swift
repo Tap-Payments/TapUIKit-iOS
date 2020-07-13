@@ -8,13 +8,17 @@
 
 import Foundation
 import struct UIKit.CGFloat
-
+import class UIKit.UIScreen
 
 public class TapConstantManager {
     
     static let TapBottomSheetContainerTag:Int = 100
     static let TapBottomSheetMinimumHeight:CGFloat = 50
-    static let TapBottomSheetMinimumYPoint:CGFloat = 40
+    static let TapBottomSheetMinimumYPoint:CGFloat = 50
     public static let TapAnimationDuration:Double = 0.500
+    
+    static var maxAllowedHeight:CGFloat {
+        return UIScreen.main.bounds.height - (TapBottomSheetMinimumYPoint * 1)
+    }
     
 }

@@ -169,7 +169,7 @@ import TapThemeManager2020
     private var tapBottomSheetStickingPoints:[CGFloat]? {
         guard let dataSource = dataSource, let sitckingPoints = dataSource.tapBottomSheetStickingPoints?() else { return nil }
         
-        return [TapConstantManager.TapBottomSheetMinimumYPoint] + sitckingPoints
+        return [TapConstantManager.TapBottomSheetMinimumYPoint] + sitckingPoints + [TapConstantManager.maxAllowedHeight]
     }
     
     // MARK: Override methods
@@ -304,7 +304,7 @@ import TapThemeManager2020
         // Tell it the initial height, as this is a sticky point
         pullUpController.initialHeight = tapBottomSheetInitialHeight
         // Tell it the max height, will use it in case the caller didn't define stcky points and we will create our own
-        pullUpController.maxHeight = self.view.frame.height - TapConstantManager.TapBottomSheetMinimumYPoint
+        pullUpController.maxHeight = TapConstantManager.maxAllowedHeight
         // Tell it the points the caller passed if any
         pullUpController.tapBottomSheetStickingPoints = tapBottomSheetStickingPoints
     }
