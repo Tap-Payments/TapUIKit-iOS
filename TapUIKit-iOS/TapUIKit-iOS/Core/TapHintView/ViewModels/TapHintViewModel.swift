@@ -48,6 +48,10 @@ internal protocol TapHintViewDelegate {
         }
     }
     
+    @objc public override init() {
+        super.init()
+    }
+    
     /// Inform the view model with the click action happened on the hint view
     internal func hintViewClicked() {
         delegate?.hintViewClicked(with: self)

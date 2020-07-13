@@ -12,14 +12,16 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
 
 /// Enum to define different statuses for hint view, providing info about each different status
 @objc public enum TapHintViewStatusEnum:Int {
-    /// Warning case like invalid Expiry or invalid CVV
-    case Warning = 1
-    /// Error case like wrong card number
-    case Error = 2
-    /// Default case like ready to scan
-    case Default = 3
+    /// Warning case missing CVV
+    case WarningCVV = 1
+    /// Warning case missing CVV and Expiry
+    case WarningExpiryCVV = 2
+    /// Error case wrong card number
+    case ErrorCardNumber = 3
+    /// Ready to scan
+    case ReadyToScan = 4
     /// The successful scanner feedback hint
-    case Scanned = 4
+    case Scanned = 5
     
     /**
      The theme path that has the UI info for each case
@@ -27,11 +29,11 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
      */
     func themePath() -> String {
         switch self {
-        case .Warning:
+        case .WarningCVV,.WarningExpiryCVV:
             return "Hints.Warning"
-        case .Error:
+        case .ErrorCardNumber:
             return "Hints.Error"
-        case .Default:
+        case .ReadyToScan:
             return "Hints.Default"
         case .Scanned:
             return "Hints.Scanned"
@@ -47,14 +49,16 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         let sharedLocalisationManager:TapLocalisationManager = .shared
         
         switch self {
-        case .Warning:
-            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning"
-        case .Error:
-            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Error", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Error"
-        case .Default:
-            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Default", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Default"
+        case .WarningExpiryCVV:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingExpiryCVV", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingExpiryCVV"
+        case .WarningCVV:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingCVV", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingCVV"
+        case .ErrorCardNumber:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Error.wrongCardNumber", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Error.wrongCardNumber"
+        case .ReadyToScan:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Default.scan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Default.scan"
         case .Scanned:
-            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Scanned", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Scanned"
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Scanned.scan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Scanned.scan"
         }
     }
     
