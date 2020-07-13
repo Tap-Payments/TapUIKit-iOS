@@ -11,7 +11,7 @@ import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
 
 /// Enum to define different statuses for hint view, providing info about each different status
-@objc enum TapHintViewStatusEnum:Int {
+@objc public enum TapHintViewStatusEnum:Int {
     /// Warning case like invalid Expiry or invalid CVV
     case Warning = 1
     /// Error case like wrong card number
