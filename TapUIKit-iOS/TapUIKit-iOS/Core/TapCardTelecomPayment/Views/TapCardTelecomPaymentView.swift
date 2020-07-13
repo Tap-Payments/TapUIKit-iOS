@@ -64,6 +64,8 @@ import RxSwift
         }
     }
     
+    
+    
     /// Used to collect any reactive garbage
     internal let disposeBag:DisposeBag = .init()
     
@@ -91,6 +93,14 @@ import RxSwift
             // Ons et, we need to setup the phont input view witht the new country details
             phoneInputView.setup(with: tapCountry)
         }
+    }
+    
+    /**
+     Call this method when you  need to fill in the text fields with data.
+     - Parameter tapCard: The TapCard that holds the data needed to be filled into the textfields
+     */
+    @objc public func setCard(with card:TapCard) {
+        cardInputView.setCardData(tapCard: card)
     }
     
     

@@ -305,15 +305,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func showScanner() {
         self.view.endEditing(true)
-        
-        print("MAX HEIGHT : \(tapVerticalView.getMaxAvailableHeight())")
-        
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
-                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                //print("MAX HEIGHT : \(tapVerticalView.getMaxAvailableHeight())")
                 let tapCardScannerView:TapCardScannerView = .init()
                 tapCardScannerView.delegate = self
                 tapCardScannerView.configureScanner()
@@ -420,8 +415,12 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
     }
     
     func tapCardScannerDidFinish(with tapCard: TapCard) {
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
             self?.closeScannerClicked()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
+                self?.tapCardTelecomPaymentView.setCard(with: tapCard)
+            }
         }
     }
     
