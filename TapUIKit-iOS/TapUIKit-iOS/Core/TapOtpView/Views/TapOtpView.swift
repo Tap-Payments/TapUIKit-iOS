@@ -9,9 +9,14 @@
 import UIKit
 import TapThemeManager2020
 
-public class TapOtpView: UIView {
+@objc public class TapOtpView: UIView {
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
+    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var timerLabel: UILabel!
+    
+    /// The view model that controls the data to be displayed and the events to be fired
+    @objc public var viewModel = TapOtpViewModel()
 
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -29,11 +34,21 @@ public class TapOtpView: UIView {
         self.containerView = setupXIB()
         //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
         applyTheme()
+        
+        // Whenever the view model is assigned, we delcare ourself as the  delegate to start getting load UI
+        viewModel.delegate = self
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds
+    }
+}
+
+extension TapOtpView: TapOtpViewModelDelegate {
+    public func reloadUI() {
+        self.messageLabel.text = viewModel.message
+        
     }
 }
 

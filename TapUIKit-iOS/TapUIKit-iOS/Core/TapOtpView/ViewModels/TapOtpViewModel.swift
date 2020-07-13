@@ -6,4 +6,25 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import Foundation
+public protocol TapOtpViewModelDelegate: class {
+    func reloadUI()
+}
+
+@objc public class TapOtpViewModel: NSObject {
+    var state: TapOTPState = .Empty {
+        didSet {
+            self.delegate?.reloadUI()
+        }
+    }
+    var phoneNo: String = ""
+    
+    weak var delegate: TapOtpViewModelDelegate? {
+        didSet {
+            self.delegate?.reloadUI()
+        }
+    }
+    
+    var message: String {
+        return self.state.message(mobileNo: phoneNo)
+    }
+}
