@@ -28,7 +28,7 @@ internal protocol TapHintViewDelegate {
     /// The delegate used to fire events inside the associated view
     internal var viewDelegate:TapHintViewDelegate?
     /// The status of this hint
-    @objc public var tapHintViewStatus:TapHintViewStatusEnum = .Default {
+    @objc public var tapHintViewStatus:TapHintViewStatusEnum = .ReadyToScan {
         didSet{
             // Upon status change, the associated view needs to reload itself
             viewDelegate?.reloadHintView()
