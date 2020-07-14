@@ -48,6 +48,7 @@ import SimpleAnimation
     private func commonInit() {
         self.containerView = setupXIB()
         setupStackScrollView()
+        dismissKey()
     }
     
     
@@ -128,7 +129,7 @@ import SimpleAnimation
     
     @objc public func getMaxAvailableHeight() -> CGFloat {
         var currentViewsHeight:CGFloat = 0
-        stackView.arrangedSubviews.forEach{ currentViewsHeight += $0.frame.height }
+        stackView.arrangedSubviews.forEach{ currentViewsHeight += ($0.frame.height > 0) ? $0.frame.height : 45 }
         return TapConstantManager.maxAllowedHeight - currentViewsHeight
     }
     
@@ -191,6 +192,45 @@ import SimpleAnimation
         itemsBeingRemoved = false
     }
     
+    
+    /**
+     Adds a hint view below a given view
+     - Parameter hintView: The hint view to be added
+     - Parameter to: The type of the view you want to show the hint below it
+     - Parameter animations: A boolean to indicate whether you want to show the hint with animation or right away
+     */
+    
+    @objc public func attach(hintView:TapHintView,to:AnyClass,with animations:Bool = false) {
+        // First we remove all hints
+        removeAllHintViews()
+        // Then we check that there is already a view with the passed type
+        let filteredViews:[UIView] = stackView.arrangedSubviews.filter{ $0.isKind(of: to) }
+        guard  filteredViews.count > 0 else { return }
+        
+        // Fetch the index of the view we will attach the hint
+        guard let attachToViewIndex:Int = stackView.arrangedSubviews.firstIndex(of: filteredViews[0]) else { return }
+        // All good now we can add, but let us determine the animations first
+        let requiredAnimations:[TapVerticalViewAnimationType] = animations ? [.fadeIn()] : []
+        // Insert at the hint view at the correct index
+        if attachToViewIndex == stackView.arrangedSubviews.count - 1 {
+            // The attaching to view is already the last element, hence we add at the end normally as we usually do
+            add(view: hintView, with: requiredAnimations)
+        }else {
+            add(view: hintView,at: (attachToViewIndex+1), with: requiredAnimations)
+        }
+    }
+    
+    
+    @objc public func removeAllHintViews() {
+        let hintViews:[TapHintView] = stackView.arrangedSubviews.filter{ $0.isKind(of: TapHintView.self) } as? [TapHintView] ?? []
+        guard hintViews.count > 0 else { return }
+        remove(subViews: hintViews, animationSequence: .none)
+        
+        hintViews.forEach { hintView in
+            remove(view: hintView, with: TapVerticalViewAnimationType.none)
+        }
+    }
+    
     /**
      Adds an arranged subview to the vertical hierarchy at a certain position
      - Parameter view: The view to be added
@@ -219,13 +259,15 @@ import SimpleAnimation
         
         itemsBeingAdded += 1
         
+        // If the index is not defined, then we just add it to the end
+        if let index = index {
+            stackView.insertArrangedSubview(view, at: index)
+        }else{
+            stackView.addArrangedSubview(view)
+        }
+        
         DispatchQueue.main.async { [weak self] in
-            // If the index is not defined, then we just add it to the end
-            if let index = index {
-                self?.stackView.insertArrangedSubview(view, at: index)
-            }else{
-                self?.stackView.addArrangedSubview(view)
-            }
+            
             
             // Make sure there are some animations passed
             guard animations.count > 0 else {
@@ -460,6 +502,21 @@ public enum TapVerticalViewAnimationType: Equatable {
     case serial
     /// Perofm the animations all togethe
     case parallel
+}
+
+
+
+extension TapVerticalView {
+    func dismissKey()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard()
+    {
+        endEditing(true)
+    }
 }
 
 

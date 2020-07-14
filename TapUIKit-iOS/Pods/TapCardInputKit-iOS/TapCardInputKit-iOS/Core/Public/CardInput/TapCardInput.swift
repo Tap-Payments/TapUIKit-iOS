@@ -48,6 +48,11 @@ internal protocol TapCardInputCommonProtocol {
      - Parameter enabled: Will be true if the switch is enabled and false otherwise
      */
     func saveCardChanged(enabled:Bool)
+    /**
+     This method will be called whenever any text change occures
+     - Parameter tapCard: The TapCard model that hold sthe data the currently enetred by the user till now
+     */
+    func dataChanged(tapCard:TapCard)
 }
 
 /// This represents the custom view for card input provided by Tap
@@ -207,9 +212,20 @@ internal protocol TapCardInputCommonProtocol {
         
     }
     
-    
+    /**
+     Decicdes the status of the current card number
+     - Returns: tuble of(Card brand and Validation state) to tell if there is a brand detected, and if any what is the validation status of this brand
+     */
     public func cardBrandWithStatus() -> (CardBrand?,CardValidationState) {
         return cardNumber.cardBrand(for: tapCard.tapCardNumber ?? "")
+    }
+    
+    /**
+     Decides if each field is a valid one or not
+     - Returns: tuble of (card number valid or not, card expiry valid or not, card cvv is valid or not)
+     */
+    public func fieldsValidationStatuses() -> (Bool,Bool,Bool) {
+        return (cardNumber.isValid(cardNumber: tapCard.tapCardNumber),cardExpiry.isValid(),cardCVV.isValid())
     }
     
     
@@ -373,7 +389,12 @@ internal protocol TapCardInputCommonProtocol {
                 // If the card cvv changed, we change the holding TapCard and we fire the logic needed to do when the card data changed
                 self?.tapCard.tapCardCVV = cardCVV
                 self?.cardDatachanged()
+                if self?.cardCVV.isValid() ?? false {
+                    self?.cardCVV.resignFirstResponder()
+                }
         })
+        
+        fields.forEach{ $0.textChanged = { [weak self] _ in self?.delegate?.dataChanged(tapCard: self!.tapCard) }}
         
         saveSwitch.addTarget(self, action: #selector(saveCardSwitchChanged), for: .valueChanged)
         handleOneBrandIcon()
@@ -508,6 +529,7 @@ internal protocol TapCardInputCommonProtocol {
         fields.forEach{
             $0.text = ""
             updateWidths(for: $0)
+            $0.resignFirstResponder()
         }
         cardDatachanged()
     }

@@ -56,6 +56,9 @@
 		E8428E21245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; };
 		E8428E22245820EF00D5A45A /* Pods_TapUIKit_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8437F5924BC7D260059F1B8 /* TapHintViewStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F5824BC7D260059F1B8 /* TapHintViewStatusEnum.swift */; };
+		E8437F5C24BC93CF0059F1B8 /* TapHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F5B24BC93CF0059F1B8 /* TapHintView.swift */; };
+		E8437F5E24BC93D70059F1B8 /* TapHintView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437F5D24BC93D70059F1B8 /* TapHintView.xib */; };
+		E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F6024BCC5240059F1B8 /* TapHintViewModel.swift */; };
 		E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */; };
 		E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */; };
 		E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */; };
@@ -207,6 +210,9 @@
 		E8428E122457FDFC00D5A45A /* DefaultDarkTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultDarkTheme.json; sourceTree = "<group>"; };
 		E8428E132457FDFC00D5A45A /* DefaultLightTheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DefaultLightTheme.json; sourceTree = "<group>"; };
 		E8437F5824BC7D260059F1B8 /* TapHintViewStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHintViewStatusEnum.swift; sourceTree = "<group>"; };
+		E8437F5B24BC93CF0059F1B8 /* TapHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHintView.swift; sourceTree = "<group>"; };
+		E8437F5D24BC93D70059F1B8 /* TapHintView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapHintView.xib; sourceTree = "<group>"; };
+		E8437F6024BCC5240059F1B8 /* TapHintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHintViewModel.swift; sourceTree = "<group>"; };
 		E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayViewModel.swift; sourceTree = "<group>"; };
@@ -534,6 +540,7 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E8437F5D24BC93D70059F1B8 /* TapHintView.xib */,
 				E88F9E1324BB40D800A7B470 /* TapCardScannerView.xib */,
 				E8BE3FAB24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib */,
 				E8E69994249F6446007A32FA /* TapGenericTableCell.xib */,
@@ -574,9 +581,27 @@
 		E8437F5724BC7D080059F1B8 /* TapHintView */ = {
 			isa = PBXGroup;
 			children = (
+				E8437F5F24BCC4A80059F1B8 /* ViewModels */,
+				E8437F5A24BC93B80059F1B8 /* Views */,
 				E8437F5824BC7D260059F1B8 /* TapHintViewStatusEnum.swift */,
 			);
 			path = TapHintView;
+			sourceTree = "<group>";
+		};
+		E8437F5A24BC93B80059F1B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8437F5B24BC93CF0059F1B8 /* TapHintView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E8437F5F24BCC4A80059F1B8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E8437F6024BCC5240059F1B8 /* TapHintViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E8670CB924988F85003F87D8 /* GoPayyChip */ = {
@@ -1003,6 +1028,7 @@
 				E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */,
 				6267E45924B758C400844225 /* TapOtpController.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
+				E8437F5E24BC93D70059F1B8 /* TapHintView.xib in Resources */,
 				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
 				E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */,
@@ -1109,6 +1135,7 @@
 				E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */,
 				E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */,
 				6278370924BB5328005692D3 /* BottomLineTextField.swift in Sources */,
+				E8437F5C24BC93CF0059F1B8 /* TapHintView.swift in Sources */,
 				E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */,
 				6267E45724B7588000844225 /* TapOtpController.swift in Sources */,
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
@@ -1143,6 +1170,7 @@
 				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
+				E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */,
 				E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */,
 				E8E69998249F645A007A32FA /* TapGenericTableCellViewModel.swift in Sources */,
 			);
