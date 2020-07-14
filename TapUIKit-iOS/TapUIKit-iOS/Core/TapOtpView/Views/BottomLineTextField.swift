@@ -8,6 +8,12 @@
 
 import UIKit
 
+class UnTouchableTextField: BottomLineTextField {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        return nil
+    }
+}
+
 class BottomLineTextField: UITextField {
     let bottomLine = CALayer()
     var bottomLineWidth = 1

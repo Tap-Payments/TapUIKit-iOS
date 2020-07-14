@@ -52,8 +52,11 @@ public protocol TapOtpViewModelDelegate: class {
         case .ready:
             self.delegate?.validateOtp(otpDigits: self.otpValue)
             
-        case .invalid, .expired:
+        case .invalid:
             self.delegate?.updateMessage()
+            
+        case .expired:
+            self.delegate?.otpExpired()
             
         case .empty:
             self.timer.start()
@@ -79,7 +82,8 @@ extension TapOtpViewModel: TapTimerDelegate {
     }
     
     func onTimeUpdate(minutes: Int, seconds: Int) {
-        self.delegate?.updateTimer(currentTime: "\(minutes):\(seconds)")
+        self.delegate?.updateTimer(currentTime: String(format: "%02d:%02d", minutes, seconds))//(currentTime: "\(minutes):\(seconds)")
+        
     }
     
     

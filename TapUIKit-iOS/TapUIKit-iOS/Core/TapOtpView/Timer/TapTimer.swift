@@ -31,7 +31,7 @@ class TapTimer {
     
     @objc private func didUpdateTime() {
         if seconds < 1 {
-            timer.invalidate()
+            self.reset()
             self.delegate?.onTimeFinish()
         } else {
             self.seconds -= 1

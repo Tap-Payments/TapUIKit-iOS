@@ -16,11 +16,11 @@ protocol TapOtpControllerDelegate: class {
 public class TapOtpController: UIView, UITextFieldDelegate {
     
     @IBOutlet weak private var textField1: BottomLineTextField!
-    @IBOutlet weak private var textField2: BottomLineTextField!
-    @IBOutlet weak private var textField3: BottomLineTextField!
-    @IBOutlet weak private var textField4: BottomLineTextField!
-    @IBOutlet weak private var textField5: BottomLineTextField!
-    @IBOutlet weak private var textField6: BottomLineTextField!
+    @IBOutlet weak private var textField2: UnTouchableTextField!
+    @IBOutlet weak private var textField3: UnTouchableTextField!
+    @IBOutlet weak private var textField4: UnTouchableTextField!
+    @IBOutlet weak private var textField5: UnTouchableTextField!
+    @IBOutlet weak private var textField6: UnTouchableTextField!
     
     
     @IBInspectable public var pinCount: Int = 4
@@ -81,7 +81,6 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField4.addBottomLine()
         self.textField5.addBottomLine()
         self.textField6.addBottomLine()
-
     }
     
     fileprivate func setTextFieldsDelegate() {
@@ -107,6 +106,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     private func updateDigits(_ textField: UITextField) {
+        print("updateDigits: value: \(String(describing: textField.text))")
         switch textField {
         case textField1:
             digits[0] = textField.text!
@@ -140,6 +140,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
             
         }
         else if textField.text!.count >= 1 {
+            moveToNextTextField(textField)
             textField.text = string
             self.updateDigits(textField)
             return false
@@ -194,5 +195,16 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         if textField == textField2 {
             textField1.becomeFirstResponder()
         }
+    }
+    
+    // MARK: ResetAllTextFields
+    public func resetAll() {
+        self.digits = ["", "", "", "", "", ""]
+        self.textField1.text = ""
+        self.textField2.text = ""
+        self.textField3.text = ""
+        self.textField4.text = ""
+        self.textField5.text = ""
+        self.textField6.text = ""
     }
 }

@@ -63,6 +63,8 @@ extension TapOtpView: TapOtpViewModelDelegate {
     
     public func otpExpired() {
         // enable resend button
+        self.messageLabel.text = viewModel.message
+        self.otpController.resetAll()
     }
 }
 
