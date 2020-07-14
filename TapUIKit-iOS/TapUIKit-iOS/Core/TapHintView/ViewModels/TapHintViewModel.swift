@@ -52,6 +52,14 @@ internal protocol TapHintViewDelegate {
         super.init()
     }
     
+    @objc public func createHintView() -> TapHintView {
+        let tapHintView:TapHintView = .init()
+        tapHintView.translatesAutoresizingMaskIntoConstraints = false
+        tapHintView.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        tapHintView.setup(with: self)
+        return tapHintView
+    }
+    
     /// Inform the view model with the click action happened on the hint view
     internal func hintViewClicked() {
         delegate?.hintViewClicked(with: self)

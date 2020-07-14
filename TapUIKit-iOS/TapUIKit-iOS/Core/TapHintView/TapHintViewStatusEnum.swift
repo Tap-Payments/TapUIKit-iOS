@@ -58,7 +58,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         case .ReadyToScan:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Default.scan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Default.scan"
         case .Scanned:
-            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Scanned.scan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Scanned.scan"
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Scanned.successFullScan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Scanned.successFullScan"
         }
     }
     

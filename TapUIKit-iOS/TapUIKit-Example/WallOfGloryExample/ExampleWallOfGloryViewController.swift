@@ -291,10 +291,12 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 scannerElement.killScanner()
                 self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
+                views.remove(at: index-1)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
                 tapAmountSectionViewModel.scannerVisibility(changed: false)
                 DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
@@ -309,14 +311,18 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == gatewaysListView {
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
+                let hintView:TapHintView = hintViewModel.createHintView()
                 let tapCardScannerView:TapCardScannerView = .init()
                 tapCardScannerView.delegate = self
                 tapCardScannerView.configureScanner()
                 views.remove(at: index)
                 views.remove(at: index)
+                views.append(hintView)
                 views.append(tapCardScannerView)
                 tapAmountSectionViewModel.scannerVisibility(changed: true)
                 DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
                     self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
                 }
                 break
@@ -416,7 +422,10 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
     
     func tapCardScannerDidFinish(with tapCard: TapCard) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
+        let hintViewModel:TapHintViewModel = .init(with: .Scanned)
+        let hintView:TapHintView = hintViewModel.createHintView()
+        tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) { [weak self] in
             self?.closeScannerClicked()
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
                 self?.tapCardTelecomPaymentView.setCard(with: tapCard)
