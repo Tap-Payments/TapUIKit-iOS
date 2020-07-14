@@ -42,6 +42,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         super.viewDidLoad()
         tapVerticalView.delegate = self
         // Do any additional setup after loading the view.
+        tapVerticalView.updateKeyBoardHandling(with: true)
         createDefaultViewModels()
         // Setting up the number of lines and doing a word wrapping
         UILabel.appearance(whenContainedInInstancesOf:[UIAlertController.self]).numberOfLines = 2

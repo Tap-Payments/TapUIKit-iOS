@@ -50,6 +50,9 @@
 		E8437F5C24BC93CF0059F1B8 /* TapHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F5B24BC93CF0059F1B8 /* TapHintView.swift */; };
 		E8437F5E24BC93D70059F1B8 /* TapHintView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437F5D24BC93D70059F1B8 /* TapHintView.xib */; };
 		E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F6024BCC5240059F1B8 /* TapHintViewModel.swift */; };
+		E8437F6824BE07860059F1B8 /* SpaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437F6724BE07860059F1B8 /* SpaceView.xib */; };
+		E8437F6A24BE07900059F1B8 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F6924BE07900059F1B8 /* SpaceView.swift */; };
+		E8437F6B24BE083E0059F1B8 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F6424BDDCDD0059F1B8 /* KeyboardHelper.swift */; };
 		E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */; };
 		E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */; };
 		E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */; };
@@ -195,6 +198,9 @@
 		E8437F5B24BC93CF0059F1B8 /* TapHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHintView.swift; sourceTree = "<group>"; };
 		E8437F5D24BC93D70059F1B8 /* TapHintView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapHintView.xib; sourceTree = "<group>"; };
 		E8437F6024BCC5240059F1B8 /* TapHintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapHintViewModel.swift; sourceTree = "<group>"; };
+		E8437F6424BDDCDD0059F1B8 /* KeyboardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
+		E8437F6724BE07860059F1B8 /* SpaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceView.xib; sourceTree = "<group>"; };
+		E8437F6924BE07900059F1B8 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
 		E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayViewModel.swift; sourceTree = "<group>"; };
@@ -444,6 +450,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E8437F6624BE06EE0059F1B8 /* Keyboard */,
 				E8437F5724BC7D080059F1B8 /* TapHintView */,
 				E88F9E0E24BB3D3200A7B470 /* TapCardScanner */,
 				E8BE3FAD24B60F6D00F15C41 /* TapCardTelecomPayment */,
@@ -475,6 +482,7 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E8437F6724BE07860059F1B8 /* SpaceView.xib */,
 				E8437F5D24BC93D70059F1B8 /* TapHintView.xib */,
 				E88F9E1324BB40D800A7B470 /* TapCardScannerView.xib */,
 				E8BE3FAB24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib */,
@@ -535,6 +543,15 @@
 				E8437F6024BCC5240059F1B8 /* TapHintViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E8437F6624BE06EE0059F1B8 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E8437F6424BDDCDD0059F1B8 /* KeyboardHelper.swift */,
+				E8437F6924BE07900059F1B8 /* SpaceView.swift */,
+			);
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 		E8670CB924988F85003F87D8 /* GoPayyChip */ = {
@@ -941,6 +958,7 @@
 				E8CD42862495F91B0013AEE7 /* TapChipHorizontalList.xib in Resources */,
 				E8670CC52498B001003F87D8 /* tap.png in Resources */,
 				E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */,
+				E8437F6824BE07860059F1B8 /* SpaceView.xib in Resources */,
 				E82A56C8249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib in Resources */,
 				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
 				E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */,
@@ -1094,7 +1112,9 @@
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
 				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
+				E8437F6B24BE083E0059F1B8 /* KeyboardHelper.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
+				E8437F6A24BE07900059F1B8 /* SpaceView.swift in Sources */,
 				E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */,
 				E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */,
 				E8E69998249F645A007A32FA /* TapGenericTableCellViewModel.swift in Sources */,

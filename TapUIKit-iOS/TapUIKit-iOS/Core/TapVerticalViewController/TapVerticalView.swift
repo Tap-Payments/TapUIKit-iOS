@@ -33,6 +33,7 @@ import SimpleAnimation
     /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
     @objc public var delegate:TapVerticalViewDelegate?
     private var newSizeTimer:Timer?
+    private let keyboardHelper = KeyboardHelper()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -116,6 +117,39 @@ import SimpleAnimation
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds
+    }
+    
+    
+    @objc public func updateKeyBoardHandling(with newStatus:Bool = false) {
+        if newStatus {
+            keyboardHelper.onKeyboardWillBeShown = {[weak self] keyboardRect in
+                print("KEYBOARD SHOW : \(keyboardRect)")
+                self?.addSpaceView(with: keyboardRect)
+            }
+            keyboardHelper.onKeyboardWillBeHidden = { [weak self] keyboardRect in
+                self?.removeSpaceViews()
+            }
+        }else{
+            keyboardHelper.onKeyboardWillBeShown = nil
+            keyboardHelper.onKeyboardWillBeHidden = nil
+        }
+    }
+    
+    internal func addSpaceView(with keyboardRect:CGRect) {
+        removeSpaceViews()
+        let space:SpaceView = .init()
+        space.backgroundColor = .clear
+        space.translatesAutoresizingMaskIntoConstraints = false
+        space.heightAnchor.constraint(equalToConstant: keyboardRect.height).isActive = true
+        add(view: space, with: [.none])
+    }
+    
+    internal func removeSpaceViews() {
+        let spaceViews:[SpaceView] = stackView.arrangedSubviews.filter{ $0.isKind(of: SpaceView.self) } as? [SpaceView] ?? []
+        guard spaceViews.count > 0 else { return }
+        spaceViews.forEach { spaceView in
+            remove(view: spaceView, with: TapVerticalViewAnimationType.none)
+        }
     }
     
     /**
@@ -224,8 +258,6 @@ import SimpleAnimation
     @objc public func removeAllHintViews() {
         let hintViews:[TapHintView] = stackView.arrangedSubviews.filter{ $0.isKind(of: TapHintView.self) } as? [TapHintView] ?? []
         guard hintViews.count > 0 else { return }
-        remove(subViews: hintViews, animationSequence: .none)
-        
         hintViews.forEach { hintView in
             remove(view: hintView, with: TapVerticalViewAnimationType.none)
         }
