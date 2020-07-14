@@ -12,7 +12,11 @@ protocol TapTimerDelegate: class {
 
 class TapTimer {
     private var seconds: Int
-    weak var delegate: TapTimerDelegate?
+    weak var delegate: TapTimerDelegate? {
+        didSet {
+            self.delegate?.onTimeUpdate(minutes: seconds / 60, seconds: seconds % 60)
+        }
+    }
     private lazy var timer: Timer = {
         return Timer()
     }()

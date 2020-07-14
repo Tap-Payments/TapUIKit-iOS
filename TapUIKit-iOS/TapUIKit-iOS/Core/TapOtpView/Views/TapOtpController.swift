@@ -25,8 +25,19 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     
     @IBInspectable public var pinCount: Int = 4
     @IBInspectable public var textColor: UIColor = .white
-    @IBInspectable public var bottomLineWidth: Int = 2
-    
+    @IBInspectable public var bottomLineWidth: CGFloat = 1
+    @IBInspectable public var bottomLineColor: UIColor = .white {
+        didSet {
+            self.textField1.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            self.textField2.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            self.textField3.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            self.textField4.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            self.textField5.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            self.textField6.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+        }
+    }
+    @IBInspectable public var bottomLineActiveColor: UIColor = .blue
+
     weak var delegate: TapOtpControllerDelegate?
     
     private var contentView: UIView?
@@ -75,12 +86,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField5.textColor = self.textColor
         self.textField6.textColor = self.textColor
         
-        self.textField1.addBottomLine()
-        self.textField2.addBottomLine()
-        self.textField3.addBottomLine()
-        self.textField4.addBottomLine()
-        self.textField5.addBottomLine()
-        self.textField6.addBottomLine()
+        self.textField1.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
+        self.textField2.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
+        self.textField3.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
+        self.textField4.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
+        self.textField5.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
+        self.textField6.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
     }
     
     fileprivate func setTextFieldsDelegate() {
@@ -95,13 +106,13 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         if let textFieldObj = textField as? BottomLineTextField {
-            textFieldObj.bottomLine.borderColor = UIColor.blue.cgColor
+            textFieldObj.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
         }
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let textFieldObj = textField as? BottomLineTextField {
-            textFieldObj.bottomLine.borderColor = textFieldObj.textColor?.cgColor
+            textFieldObj.bottomLine.borderColor = self.bottomLineColor.cgColor
         }
     }
     

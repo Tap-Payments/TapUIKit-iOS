@@ -50,6 +50,13 @@
             "close": "Close",
             "items": "Items",
             "item": "Item"
+        },
+        "TapOtpView": {
+          "Message": {
+            "Ready": "OTP has been sent to",
+            "Expired": "OTP has been expired!",
+            "Invalid": "Invalid OTP number!"
+          }
         }
     },
     "ar": {
@@ -103,6 +110,13 @@
             "close": "غلق",
             "items": "منتجات",
             "item": "منتج"
+        },
+        "TapOtpView": {
+          "Message": {
+            "Ready": "تم إرسال الكود إلى",
+            "Expired": "انتهت صلاحية الكود!",
+            "Invalid": "الكود الئي تم إدخاله غير صالح!"
+          }
         }
     }
 }

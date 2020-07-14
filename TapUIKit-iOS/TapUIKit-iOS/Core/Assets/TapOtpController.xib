@@ -27,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="61" height="70"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="xE8-nm-JOe"/>
                     </connections>
@@ -36,7 +36,7 @@
                     <rect key="frame" x="69" y="0.0" width="61" height="70"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="BDI-cZ-vfR"/>
                     </connections>
@@ -45,7 +45,7 @@
                     <rect key="frame" x="138" y="0.0" width="61" height="70"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="vSE-Kf-EBm"/>
                     </connections>
@@ -54,7 +54,7 @@
                     <rect key="frame" x="215" y="0.0" width="61" height="70"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="N5K-QB-lis"/>
                     </connections>
@@ -63,7 +63,7 @@
                     <rect key="frame" x="284" y="0.0" width="61" height="70"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="VKW-5t-j91"/>
                     </connections>
@@ -72,7 +72,7 @@
                     <rect key="frame" x="353" y="0.0" width="61" height="70"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="SRh-KW-z4c"/>
                     </connections>

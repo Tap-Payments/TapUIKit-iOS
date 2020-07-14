@@ -17,8 +17,10 @@ import TapThemeManager2020
     @IBOutlet weak var otpController: TapOtpController!
     
     /// The view model that controls the data to be displayed and the events to be fired
-    @objc public var viewModel = TapOtpViewModel(minutes: 0, seconds: 30)
+    @objc public var viewModel = TapOtpViewModel(minutes: 0, seconds: 10)
 
+    private let themePath = "TapOtpView"
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,12 +60,14 @@ extension TapOtpView: TapOtpViewModelDelegate {
     }
     
     public func updateMessage() {
-        self.messageLabel.text = viewModel.message
+        let status: TapOTPState = viewModel.state
+        
+        self.messageLabel.attributedText = viewModel.messageAttributed(mainColor: TapThemeManager.colorValue(for: "\(status.themePath()).Message.title") ?? .white, secondaryColor: TapThemeManager.colorValue(for: "\(status.themePath()).Message.subtitle") ?? .white)
     }
     
     public func otpExpired() {
         // enable resend button
-        self.messageLabel.text = viewModel.message
+        self.updateMessage()
         self.otpController.resetAll()
     }
 }
@@ -84,6 +88,23 @@ extension TapOtpView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
+        let status: TapOTPState = viewModel.state
+        
+        tap_theme_backgroundColor = .init(keyPath: "\(status.themePath()).backgroundColor")
+        timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
+        timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
+        
+        self.otpController.bottomLineColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.bottomLineColor") ?? .white
+        self.otpController.bottomLineActiveColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.activeBottomColor") ?? .blue
+        
+//        self.otpController.bottomLineColor = .in
+        
+        
+//        hintLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).textFont")
+//        hintLabel.tap_theme_textColor = .init(stringLiteral: "\(status.themePath()).textColor")
+        
+        
+        
 //        amountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).originalAmountLabelFont",shouldLocalise:false)
 //        amountLabel.tap_theme_textColor = .init(keyPath: "\(themePath).originalAmountLabelColor")
 //
@@ -101,6 +122,7 @@ extension TapOtpView {
 //        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         
     }
+    
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

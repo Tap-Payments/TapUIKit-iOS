@@ -27,7 +27,7 @@
                     <color key="textColor" red="0.91764705882352937" green="0.38039215686274508" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBD-Zw-obQ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBD-Zw-obQ">
                     <rect key="frame" x="334" y="100" width="60" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="ENL-X5-HV9"/>

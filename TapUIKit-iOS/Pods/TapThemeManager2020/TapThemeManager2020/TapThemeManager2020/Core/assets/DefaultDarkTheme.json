@@ -25,7 +25,8 @@
             "cherryRed":"#e12131",
             "cherryRed10":"#e1213119",
             "cherryRed20":"#e12132",
-            "deepSkyBlue15":"#007aff26"
+            "deepSkyBlue15":"#007aff26",
+            "brownGreyFour":"#a6a6a6"
         }
     },
     "inlineCard": {
@@ -442,6 +443,34 @@
             "textColor": "deepSkyBlue",
             "backgroundColor": "deepSkyBlue15",
             "borderColor": "clear"
+        }
+    },
+    "TapOtpView": {
+        "OtpController": {
+            "bottomLineColor": "brownGreyFour",
+            "activeBottomColor": "deepSkyBlue"
+        },
+        "Timer": {
+            "textFont": "Roboto-Regular,16",
+            "textColor": "deepSkyBlue"
+        },
+        "Ready": {
+            "Message": {
+                "title": "greyishBrown",
+                "subtitle": "deepSkyBlue"
+            }
+        },
+        "Expired": {
+            "Message": {
+                "title": "greyishBrown",
+                "subtitle": "deepSkyBlue"
+            }
+        },
+        "Invalid": {
+            "Message": {
+                "title": "orange",
+                "subtitle": "orange"
+            }
         }
     }
 }

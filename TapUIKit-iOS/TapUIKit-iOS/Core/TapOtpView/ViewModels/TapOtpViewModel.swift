@@ -6,6 +6,8 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
+import  UIKit
+
 public protocol TapOtpViewModelDelegate: class {
     func updateMessage()
     func updateTimer(currentTime: String)
@@ -31,10 +33,6 @@ public protocol TapOtpViewModelDelegate: class {
         }
     }
     
-    var message: String {
-        return self.state.message(mobileNo: phoneNo)
-    }
-    
     var otpValue = "" {
         didSet {
             self.updateState()
@@ -46,6 +44,10 @@ public protocol TapOtpViewModelDelegate: class {
         self.timer = TapTimer(minutes: minutes, seconds: seconds)
     }
     
+    // MARK: Message
+    func messageAttributed(mainColor: UIColor, secondaryColor: UIColor) -> NSAttributedString {
+        return self.state.message(mobileNo: phoneNo, mainColor: mainColor, secondaryColor: secondaryColor)
+    }
     // MARK: State Change
     func stateDidChange() {
         switch self.state {

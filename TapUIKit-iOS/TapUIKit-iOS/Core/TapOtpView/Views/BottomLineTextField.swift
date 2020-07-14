@@ -16,13 +16,11 @@ class UnTouchableTextField: BottomLineTextField {
 
 class BottomLineTextField: UITextField {
     let bottomLine = CALayer()
-    var bottomLineWidth = 1
-    func addBottomLine() {
+    func addBottomLine(lineWidth: CGFloat, color: UIColor) {
         
-        let width = CGFloat(self.bottomLineWidth)
-        bottomLine.borderColor = self.textColor?.cgColor
-        bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
-        bottomLine.borderWidth = width
+        bottomLine.borderColor = color.cgColor
+        bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - lineWidth, width:  self.frame.size.width, height: self.frame.size.height)
+        bottomLine.borderWidth = lineWidth
         self.layer.addSublayer(bottomLine)
         self.layer.masksToBounds = true
     }
