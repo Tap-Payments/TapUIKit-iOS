@@ -62,6 +62,9 @@ import RxCocoa
         }
     }
     
+    /// last reported tap card
+    internal var lastReportedTapCard:TapCard = .init()
+    
     /// The delegate that wants to hear from the view on new data and events
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     
@@ -115,6 +118,7 @@ import RxCocoa
      - Parameter tapCard: The TapCard that holds the data needed to be filled into the textfields
      */
     @objc public func setCard(with card:TapCard) {
+        lastReportedTapCard = card
         cardInputView.setCardData(tapCard: card)
     }
     
@@ -215,9 +219,11 @@ import RxCocoa
         if segment == "telecom" {
             cardInputView.fadeOut()
             phoneInputView.fadeIn()
+            hintStatus = nil
         }else if segment == "cards" {
             cardInputView.fadeIn()
             phoneInputView.fadeOut()
+            decideHintStatus(with: lastReportedTapCard)
         }
     }
     
@@ -247,6 +253,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
     
     public func cardDataChanged(tapCard: TapCard) {
         delegate?.cardDataChanged(tapCard: tapCard)
+        lastReportedTapCard = tapCard
         decideHintStatus(with: tapCard)
     }
     
