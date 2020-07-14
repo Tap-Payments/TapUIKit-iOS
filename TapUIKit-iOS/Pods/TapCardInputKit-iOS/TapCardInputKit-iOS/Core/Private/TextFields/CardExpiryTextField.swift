@@ -112,6 +112,9 @@ extension CardExpiryTextField:CardInputTextFieldProtocol {
              // If the text input by the user is valid and exxpiry changed block is assigned, we need to fire this event by passing back the entered month and year
             nonNullBlock(textField.text!.substring(to: 2),textField.text!.substring(from: 3))
         }
+        if let nonNullTextChangeBlock = textChanged {
+            nonNullTextChangeBlock(self.text ?? "")
+        }
     }
 }
 
@@ -142,7 +145,6 @@ extension CardExpiryTextField:UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         // attempt to read the range they are trying to change, or exit if we can't
         guard let currentText = textField.text as NSString? else {
             return false
@@ -189,7 +191,9 @@ extension CardExpiryTextField:UITextFieldDelegate {
         }
         // Afterall, we need to color the text based on the validty of the field
         self.textColor = (self.isValid()) ? normalTextColor : errorTextColor
-        
+        if let nonNullTextChangeBlock = textChanged {
+            nonNullTextChangeBlock(self.text ?? "")
+        }
         return self.isValid()
     }
     

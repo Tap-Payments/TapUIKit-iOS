@@ -71,7 +71,8 @@ internal class TapCardTextField: UITextField {
     var errorTextColor: UIColor = .red
     /// This is a block to tell the subscriber that the editing stats had been changed, whether editing TRUE or end editing FALSE
     var editingStatusChanged:((Bool)->())?
-    
+    /// This is a block to tell the subscriber that any change happened to the text
+    var textChanged:((String)->())?
     /// This defines if the field should fill in the remaining space width wise in the inline mode
     var fillBiggestAvailableSpace:Bool = false
 

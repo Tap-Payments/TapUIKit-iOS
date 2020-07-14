@@ -12,6 +12,7 @@ import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
 import SimpleAnimation
 import RxSwift
+import RxCocoa
 
 /// External protocol to allow the TapCardInput to pass back data and events to the parent UIViewController
 @objc public protocol TapCardTelecomPaymentProtocol {
@@ -28,6 +29,15 @@ import RxSwift
     @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
     /// This method will be called once the user clicks on Scan button
     @objc func scanCardClicked()
+    
+    /**
+     This method will be called whenever there is a need to show a certain hint below the card phone input form
+     - Parameter status: The status of the required hint to be shown
+     */
+    @objc func showHint(with status:TapHintViewStatusEnum)
+    
+    ///This method will be called whenever there is no need to show ay hints views
+    @objc func hideHints()
 }
 
 
@@ -56,7 +66,7 @@ import RxSwift
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     
     /// Computed value based on data source, will be nil if we have more than 1 brand. and will be the URL if the icon of the brand in case ONLY 1 brand
-    var brandIconUrl:String? {
+    internal var brandIconUrl:String? {
         if tapCardPhoneListViewModel.dataSource.count != 1 {
             return nil
         }else {
@@ -64,10 +74,15 @@ import RxSwift
         }
     }
     
-    
-    
     /// Used to collect any reactive garbage
     internal let disposeBag:DisposeBag = .init()
+    
+    /// Used to collect any reactive garbage
+    internal var hintStatus:TapHintViewStatusEnum? {
+        willSet{
+            if newValue != hintStatus {reportHintStatus(with: newValue )}
+        }
+    }
     
     /// Used to remove the tab bar when there is only one payment option
     @IBOutlet weak var tabBarHeightConstraint: NSLayoutConstraint!
@@ -148,6 +163,49 @@ import RxSwift
             }).disposed(by: disposeBag)
     }
     
+    /**
+        Decides which delegate function about hint status to be called
+        - Parameter status: The hint status to be reported. If nill, then we will insntruct the delegate to hide all the statuses
+     */
+    internal func reportHintStatus(with status:TapHintViewStatusEnum?) {
+        // Check if there is a status to show, or we need to hide the hint view
+        guard let status = status else {
+            delegate?.hideHints()
+            return
+        }
+        delegate?.showHint(with: status)
+    }
+    
+    /**
+     Decides which hint status to be shown based on the validation statuses for the card input fields
+     - Parameter tapCard: The current tap card input by the user
+     */
+    internal func decideHintStatus(with tapCard:TapCard) {
+        var newStatus:TapHintViewStatusEnum?
+        
+        // Check first if the card nnumber has data otherwise we are in the IDLE state
+        guard let cardNumber:String = tapCard.tapCardNumber, cardNumber != "" else {
+            hintStatus = nil
+            return
+        }
+        // Let us get the validation status of the fields
+        let (cardNumberValid,cardExpiryValid,cardCVVValid) = cardInputView.fieldsValidationStatuses()
+        
+        // Firs we check the validation result of the card number (has the highest priority)
+        if !cardNumberValid {
+            // If not valid, report a wrong card number hint
+            newStatus = .ErrorCardNumber
+        }else {
+            // Now we need to check if there is text in CVV and Expiry
+            if !cardExpiryValid {
+                newStatus = .WarningExpiryCVV
+            }else if !cardCVVValid {
+                newStatus = .WarningCVV
+            }
+        }
+        hintStatus = newStatus
+    }
+    
     
     /**
      Decides which input field should be shown based on the selected segment id
@@ -183,8 +241,13 @@ import RxSwift
 }
 
 extension TapCardTelecomPaymentView: TapCardInputProtocol {
+    public func dataChanged(tapCard: TapCard) {
+        decideHintStatus(with: tapCard)
+    }
+    
     public func cardDataChanged(tapCard: TapCard) {
         delegate?.cardDataChanged(tapCard: tapCard)
+        decideHintStatus(with: tapCard)
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {

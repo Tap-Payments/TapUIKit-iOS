@@ -384,6 +384,17 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    
+    func showHint(with status: TapHintViewStatusEnum) {
+        let hintViewModel:TapHintViewModel = .init(with: status)
+        let hintView:TapHintView = hintViewModel.createHintView()
+        tapVerticalView.attach(hintView: hintView, to: TapCardTelecomPaymentView.self,with: true)
+    }
+    
+    func hideHints() {
+        tapVerticalView.removeAllHintViews()
+    }
+    
     func cardDataChanged(tapCard: TapCard) {
         
     }
