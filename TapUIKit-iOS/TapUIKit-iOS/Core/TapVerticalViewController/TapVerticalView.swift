@@ -48,6 +48,7 @@ import SimpleAnimation
     private func commonInit() {
         self.containerView = setupXIB()
         setupStackScrollView()
+        dismissKey()
     }
     
     
@@ -501,6 +502,21 @@ public enum TapVerticalViewAnimationType: Equatable {
     case serial
     /// Perofm the animations all togethe
     case parallel
+}
+
+
+
+extension TapVerticalView {
+    func dismissKey()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard()
+    {
+        endEditing(true)
+    }
 }
 
 

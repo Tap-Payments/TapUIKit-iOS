@@ -389,6 +389,9 @@ internal protocol TapCardInputCommonProtocol {
                 // If the card cvv changed, we change the holding TapCard and we fire the logic needed to do when the card data changed
                 self?.tapCard.tapCardCVV = cardCVV
                 self?.cardDatachanged()
+                if self?.cardCVV.isValid() ?? false {
+                    self?.cardCVV.resignFirstResponder()
+                }
         })
         
         fields.forEach{ $0.textChanged = { [weak self] _ in self?.delegate?.dataChanged(tapCard: self!.tapCard) }}
@@ -526,6 +529,7 @@ internal protocol TapCardInputCommonProtocol {
         fields.forEach{
             $0.text = ""
             updateWidths(for: $0)
+            $0.resignFirstResponder()
         }
         cardDatachanged()
     }
