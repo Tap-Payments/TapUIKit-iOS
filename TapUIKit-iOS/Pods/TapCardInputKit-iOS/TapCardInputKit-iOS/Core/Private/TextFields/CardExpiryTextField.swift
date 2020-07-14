@@ -18,13 +18,13 @@ class CardExpiryTextField:TapCardTextField {
     var cardExpiryChanged: ((String,String) -> ())? =  nil
     
     /**
-    Method that is used to setup the field by providing the needed info and the obersvers for the events
-    - Parameter minVisibleChars: Number of mimum charachters to be visible when the field is inactive, in Inline mode. Default is 5
-    - Parameter maxVisibleChars: Number of maximum charachters to be visible when the field is inactive, in Inline mode. Default is 5
-    - Parameter placeholder: The placeholder to show in this field. Default is ""
-    - Parameter editingStatusChanged: Observer to listen to the event when the editing status changed, whether started or ended editing
-    - Parameter cardExpiryChanged: Observer to listen to the event when a the card exxpiry is changed by user input till the moment
-    */
+     Method that is used to setup the field by providing the needed info and the obersvers for the events
+     - Parameter minVisibleChars: Number of mimum charachters to be visible when the field is inactive, in Inline mode. Default is 5
+     - Parameter maxVisibleChars: Number of maximum charachters to be visible when the field is inactive, in Inline mode. Default is 5
+     - Parameter placeholder: The placeholder to show in this field. Default is ""
+     - Parameter editingStatusChanged: Observer to listen to the event when the editing status changed, whether started or ended editing
+     - Parameter cardExpiryChanged: Observer to listen to the event when a the card exxpiry is changed by user input till the moment
+     */
     func setup(with minVisibleChars: Int = 5, maxVisibleChars: Int = 5, placeholder:String = "", editingStatusChanged: ((Bool) -> ())? = nil, cardExpiryChanged: ((String,String) -> ())? =  nil) {
         
         // Set the place holder with the theme color
@@ -104,12 +104,12 @@ extension CardExpiryTextField:CardInputTextFieldProtocol {
     
     
     /**
-        This method does the logic required when a text change event is fired for the text field
-        - Parameter textField: The text field that has its text changed
-        */
+     This method does the logic required when a text change event is fired for the text field
+     - Parameter textField: The text field that has its text changed
+     */
     @objc func didChangeText(textField:UITextField) {
-       if self.isValid(), let nonNullBlock = cardExpiryChanged {
-             // If the text input by the user is valid and exxpiry changed block is assigned, we need to fire this event by passing back the entered month and year
+        if self.isValid(), let nonNullBlock = cardExpiryChanged {
+            // If the text input by the user is valid and exxpiry changed block is assigned, we need to fire this event by passing back the entered month and year
             nonNullBlock(textField.text!.substring(to: 2),textField.text!.substring(from: 3))
         }
         if let nonNullTextChangeBlock = textChanged {
@@ -126,7 +126,7 @@ extension CardExpiryTextField:UITextFieldDelegate {
             nonNullEditingBlock(true)
         }
         print("Expiry # TRUE")
-        self.textColor = normalTextColor 
+        self.textColor = normalTextColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
@@ -140,8 +140,8 @@ extension CardExpiryTextField:UITextFieldDelegate {
         
         if self.isValid(), let nonNullBlock = cardExpiryChanged {
             // If the text input by the user is valid and exxpiry changed block is assigned, we need to fire this event by passing back the entered month and year
-           nonNullBlock(textField.text!.substring(to: 2),textField.text!.substring(from: 3))
-       }
+            nonNullBlock(textField.text!.substring(to: 2),textField.text!.substring(from: 3))
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -178,10 +178,10 @@ extension CardExpiryTextField:UITextFieldDelegate {
     }
     
     /**
-    This method does the logic required to check if a given text is allowed to be written to the card expiry field or not
-    - Parameter month: The month part of the date
+     This method does the logic required to check if a given text is allowed to be written to the card expiry field or not
+     - Parameter month: The month part of the date
      - Parameter year: The year part of the date
-    */
+     */
     internal func changeText(with month:String?, year:String?) -> Bool {
         
         if let nonNullMonth = formatMonthPart(with: month),
@@ -230,10 +230,10 @@ extension CardExpiryTextField:UITextFieldDelegate {
     }
     
     /**
-    This method does the logic of formatting a given year number into YY.
-    - Parameter year: The year part of the date that needs to be formatted
-    - Returns: A formatted string as follows: If it is YY we return it as is, if it is YYYY we return last YY of it
-    */
+     This method does the logic of formatting a given year number into YY.
+     - Parameter year: The year part of the date that needs to be formatted
+     - Returns: A formatted string as follows: If it is YY we return it as is, if it is YYYY we return last YY of it
+     */
     internal func formatYearPart(with year:String?) -> String? {
         // Check if the caller passed a valid year string first
         if let nonNullYear = year {
