@@ -7,16 +7,16 @@
 //
 
 public enum TapOTPState {
-    case Empty
-    case Invalid
-    case Ready
+    case empty
+    case invalid
+    case ready
     case expired
     
     func message(mobileNo: String = "") -> String {
         switch self {
-        case .Empty, .expired, .Ready:
+        case .empty, .expired, .ready:
             return "OTP has been sent to " + mobileNo
-        case .Invalid:
+        case .invalid:
             return "Invalid OTP number!"
         }
     }

@@ -16,7 +16,7 @@ import TapThemeManager2020
     @IBOutlet private weak var timerLabel: UILabel!
     
     /// The view model that controls the data to be displayed and the events to be fired
-    @objc public var viewModel = TapOtpViewModel()
+    @objc public var viewModel = TapOtpViewModel(minutes: 0, seconds: 30)
 
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -46,9 +46,21 @@ import TapThemeManager2020
 }
 
 extension TapOtpView: TapOtpViewModelDelegate {
-    public func reloadUI() {
-        self.messageLabel.text = viewModel.message
+    public func validateOtp(otpDigits: String) {
+        // should call validate otp api
         
+    }
+    
+    public func updateTimer(currentTime: String) {
+        self.timerLabel.text = currentTime
+    }
+    
+    public func updateMessage() {
+        self.messageLabel.text = viewModel.message
+    }
+    
+    public func otpExpired() {
+        // enable resend button
     }
 }
 
