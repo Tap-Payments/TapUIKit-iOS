@@ -1072,6 +1072,53 @@
             </objects>
             <point key="canvasLocation" x="2567" y="6575"/>
         </scene>
+        <!--Go Pay Login Tab Segment View Controller-->
+        <scene sceneID="39n-3V-8yF">
+            <objects>
+                <viewController storyboardIdentifier="GoPayLoginTabSegmentViewController" id="zLZ-O4-kqj" customClass="GoPayLoginTabSegmentViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iMN-c0-BX5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m97-E7-huQ" customClass="TapGoPayTitleView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="172" y="74" width="70" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="fwB-wQ-NK8"/>
+                                    <constraint firstAttribute="height" constant="44" id="lqw-Ke-0hQ"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e3P-lG-HWc">
+                                <rect key="frame" x="8" y="138" width="398" height="32"/>
+                                <segments>
+                                    <segment title="Selected"/>
+                                    <segment title="Un Selected"/>
+                                </segments>
+                                <connections>
+                                    <action selector="statusChanged:" destination="zLZ-O4-kqj" eventType="valueChanged" id="yQn-ED-Irz"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e3P-lG-HWc" firstAttribute="leading" secondItem="iMN-c0-BX5" secondAttribute="leading" constant="8" id="5Zp-Yt-WMe"/>
+                            <constraint firstItem="m97-E7-huQ" firstAttribute="top" secondItem="mR6-NT-TdB" secondAttribute="top" constant="30" id="FAN-Qi-bnP"/>
+                            <constraint firstItem="e3P-lG-HWc" firstAttribute="top" secondItem="m97-E7-huQ" secondAttribute="bottom" constant="20" id="YB1-tn-sJm"/>
+                            <constraint firstItem="m97-E7-huQ" firstAttribute="centerX" secondItem="iMN-c0-BX5" secondAttribute="centerX" id="c9x-I1-Az0"/>
+                            <constraint firstAttribute="trailing" secondItem="e3P-lG-HWc" secondAttribute="trailing" constant="8" id="iqe-Hd-3tG"/>
+                            <constraint firstItem="e3P-lG-HWc" firstAttribute="centerX" secondItem="iMN-c0-BX5" secondAttribute="centerX" id="kMd-I4-kQO"/>
+                            <constraint firstItem="e3P-lG-HWc" firstAttribute="top" secondItem="m97-E7-huQ" secondAttribute="bottom" constant="20" id="kP7-0U-nnE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mR6-NT-TdB"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapGoPayTitleTab" destination="m97-E7-huQ" id="Zwp-CW-3Um"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4A-Jf-Uvh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="7311"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>
