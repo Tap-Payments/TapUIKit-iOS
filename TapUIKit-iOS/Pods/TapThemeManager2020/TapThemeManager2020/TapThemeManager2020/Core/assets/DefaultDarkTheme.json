@@ -26,7 +26,8 @@
             "cherryRed10":"#e1213119",
             "cherryRed20":"#e12132",
             "deepSkyBlue15":"#007aff26",
-            "brownGreyFour":"#a6a6a6"
+            "brownGreyFour":"#a6a6a6",
+            "brownGreyFive":"#aeaeae"
         }
     },
     "inlineCard": {
@@ -470,7 +471,23 @@
             "Message": {
                 "title": "orange",
                 "subtitle": "orange"
+                }
+        }
+    },
+    "goPay": {
+        "loginBar" :{
+            "backgroundColor" : "whiteTwo",
+            "title": {
+                "selected": {
+                    "textFont": "Roboto-Regular,12",
+                    "textColor": "greyishBrown"
+                },
+                "otherSegmentSelected" : {
+                    "textFont": "Roboto-Regular,12",
+                    "textColor": "brownGreyFive"
+                }
             }
         }
     }
 }
+
