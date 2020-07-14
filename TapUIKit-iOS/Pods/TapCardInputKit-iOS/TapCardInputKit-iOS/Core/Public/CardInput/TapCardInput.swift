@@ -319,6 +319,11 @@ internal protocol TapCardInputCommonProtocol {
         // Defines scan button icon
         scanButton.setImage(TapThemeManager.imageValue(for: "\(themePath).scanImage.image",from: Bundle(for: type(of: self))), for: .normal)
         scanButton.imageView?.contentMode = .scaleAspectFit
+        scanButton.backgroundColor = .clear
+        scanButton.tintColor = .clear
+        scanButton.setBackgroundColor(color: .clear, forState: .highlighted)
+        scanButton.setBackgroundColor(color: .clear, forState: .selected)
+        scanButton.setBackgroundColor(color: .clear, forState: .focused)
         
         saveSwitch.tap_theme_tintColor = ThemeUIColorSelector.init(keyPath: "\(themePath).saveCardOption.switchTintColor")
         saveSwitch.tap_theme_thumbTintColor = ThemeUIColorSelector.init(keyPath: "\(themePath).saveCardOption.switchThumbColor")
@@ -429,6 +434,7 @@ internal protocol TapCardInputCommonProtocol {
         clearButtonClicked()
     }
     
+    
     /**
      The method that holds the logic needed to do when a card brand is detected
      - Parameter brand: The detected card brand
@@ -515,6 +521,7 @@ internal protocol TapCardInputCommonProtocol {
             nonNullDelegate.scanCardClicked()
         }
         FlurryLogger.logEvent(with: "Tap_Card_Input_Scan_Clicked")
+        self.scanButton.setImage(TapThemeManager.imageValue(for: "\(themePath).scanImage.selected",from: Bundle(for: type(of: self))), for: .normal)
     }
     
     
@@ -750,6 +757,21 @@ extension TapCardInput:TapCardInputCommonProtocol {
             addFullViews()
         default:
             return
+        }
+    }
+}
+
+
+internal extension UIButton {
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+        self.clipsToBounds = true  // add this to maintain corner radius
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(color.cgColor)
+            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+            let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            self.setBackgroundImage(colorImage, for: forState)
         }
     }
 }

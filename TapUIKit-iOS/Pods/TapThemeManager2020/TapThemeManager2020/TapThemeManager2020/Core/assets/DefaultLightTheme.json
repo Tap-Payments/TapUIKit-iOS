@@ -51,6 +51,7 @@
         },
         "scanImage": {
             "image": "scanIcon",
+            "selected": "selectedScan",
             "width": 32
         },
         "clearImage": {
