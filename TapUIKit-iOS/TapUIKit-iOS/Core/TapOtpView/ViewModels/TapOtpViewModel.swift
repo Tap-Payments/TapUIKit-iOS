@@ -26,7 +26,8 @@ public protocol TapOtpViewModelDelegate: class {
     
     weak var delegate: TapOtpViewModelDelegate? {
         didSet {
-            self.delegate?.updateMessage()
+            self.state = .empty
+            self.timer.delegate = self
         }
     }
     
@@ -36,7 +37,7 @@ public protocol TapOtpViewModelDelegate: class {
     
     var otpValue = "" {
         didSet {
-            
+            self.updateState()
         }
     }
     
@@ -62,7 +63,7 @@ public protocol TapOtpViewModelDelegate: class {
     
     func updateState() {
         if self.otpValue.count == 6 {
-            
+            self.state = .ready
         } else {
             if self.state != .empty {
                 self.state = .empty

@@ -12,7 +12,7 @@ protocol TapTimerDelegate: class {
 
 class TapTimer {
     private var seconds: Int
-    private weak var delegate: TapTimerDelegate?
+    weak var delegate: TapTimerDelegate?
     private lazy var timer: Timer = {
         return Timer()
     }()
@@ -22,7 +22,7 @@ class TapTimer {
     }
     
     func start() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdateTime), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdateTime), userInfo: nil, repeats: true)
     }
     
     func reset() {

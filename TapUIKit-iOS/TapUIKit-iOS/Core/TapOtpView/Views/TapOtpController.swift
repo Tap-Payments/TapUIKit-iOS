@@ -8,27 +8,30 @@
 
 import UIKit
 
-protocol BottomLineTextFieldProtocol {
-    var bottomLine: CALayer { get set }
+protocol TapOtpControllerDelegate: class {
+    func digitsDidChange(newDigits: String)
 }
 
 @IBDesignable
 public class TapOtpController: UIView, UITextFieldDelegate {
     
-    @IBOutlet private weak var textField1: BottomLineTextField!
-    @IBOutlet private weak var textField2: BottomLineTextField!
-    @IBOutlet private weak var textField3: BottomLineTextField!
-    @IBOutlet private weak var textField4: BottomLineTextField!
-    @IBOutlet private weak var textField5: BottomLineTextField!
-    @IBOutlet private weak var textField6: BottomLineTextField!
+    @IBOutlet weak private var textField1: BottomLineTextField!
+    @IBOutlet weak private var textField2: BottomLineTextField!
+    @IBOutlet weak private var textField3: BottomLineTextField!
+    @IBOutlet weak private var textField4: BottomLineTextField!
+    @IBOutlet weak private var textField5: BottomLineTextField!
+    @IBOutlet weak private var textField6: BottomLineTextField!
     
     
     @IBInspectable public var pinCount: Int = 4
     @IBInspectable public var textColor: UIColor = .white
     @IBInspectable public var bottomLineWidth: Int = 2
     
+    weak var delegate: TapOtpControllerDelegate?
     
     private var contentView: UIView?
+        
+    private var digits: [String] = ["", "", "", "", "", ""]
     
     public override func awakeFromNib() {
         superview?.awakeFromNib()
@@ -78,6 +81,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField4.addBottomLine()
         self.textField5.addBottomLine()
         self.textField6.addBottomLine()
+
     }
     
     fileprivate func setTextFieldsDelegate() {
@@ -94,7 +98,6 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         if let textFieldObj = textField as? BottomLineTextField {
             textFieldObj.bottomLine.borderColor = UIColor.blue.cgColor
         }
-//        textField.
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -103,19 +106,42 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
     }
     
+    private func updateDigits(_ textField: UITextField) {
+        switch textField {
+        case textField1:
+            digits[0] = textField.text!
+        case textField2:
+            digits[1] = textField.text!
+        case textField3:
+            digits[2] = textField.text!
+        case textField4:
+            digits[3] = textField.text!
+        case textField5:
+            digits[4] = textField.text!
+        case textField6:
+            digits[5] = textField.text!
+                
+        default: break
+        }
+        self.delegate?.digitsDidChange(newDigits: digits.joined())
+    }
+    
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.text!.count < 1 && string.count > 0 {
             moveToNextTextField(textField)
             textField.text = string
+            self.updateDigits(textField)
             return false
         } else if textField.text!.count >= 1 && string.count == 0 {
             moveToPreviousTextField(textField)
             textField.text = ""
+            self.updateDigits(textField)
             return false
             
         }
         else if textField.text!.count >= 1 {
             textField.text = string
+            self.updateDigits(textField)
             return false
         }
         return true

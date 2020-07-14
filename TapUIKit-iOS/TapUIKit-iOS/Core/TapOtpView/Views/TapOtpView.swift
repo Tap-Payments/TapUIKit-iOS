@@ -14,6 +14,7 @@ import TapThemeManager2020
     @IBOutlet var containerView: UIView!
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var timerLabel: UILabel!
+    @IBOutlet weak var otpController: TapOtpController!
     
     /// The view model that controls the data to be displayed and the events to be fired
     @objc public var viewModel = TapOtpViewModel(minutes: 0, seconds: 30)
@@ -37,6 +38,7 @@ import TapThemeManager2020
         
         // Whenever the view model is assigned, we delcare ourself as the  delegate to start getting load UI
         viewModel.delegate = self
+        otpController.delegate = self
     }
     
     public override func layoutSubviews() {
@@ -61,6 +63,12 @@ extension TapOtpView: TapOtpViewModelDelegate {
     
     public func otpExpired() {
         // enable resend button
+    }
+}
+
+extension TapOtpView: TapOtpControllerDelegate {
+    func digitsDidChange(newDigits: String) {
+        viewModel.otpValue = newDigits
     }
 }
 
