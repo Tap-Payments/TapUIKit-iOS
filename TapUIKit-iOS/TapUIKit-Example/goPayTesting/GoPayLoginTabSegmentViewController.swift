@@ -13,7 +13,7 @@ class GoPayLoginTabSegmentViewController: UIViewController {
 
     
     @IBOutlet weak var tapGoPayTitleTab: TapGoPayTitleView!
-    let tapGoPayTitleViewModel:TapGoPayTitleViewModel = .init(titleStatus: .selected, titleSegment: "Email")
+    let tapGoPayTitleViewModel:TapGoPayTitleViewModel = .init(titleStatus: .selected, titleSegment: .Email)
     
     
     override func viewDidLoad() {

@@ -455,7 +455,7 @@
                 "unselected": {
                     "backgroundColor" : "brownGrey",
                 }
-            }
+            },
             "title": {
                 "selected": {
                     "textFont": "Roboto-Regular,12",
