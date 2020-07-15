@@ -6,10 +6,11 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import TapThemeManager2020
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
 import SimpleAnimation
+import LocalisationManagerKit_iOS
 /// External protocol to allow the GoPayLoginOptions to pass back data and events to the parent UIViewController
 @objc internal protocol GoPayLoginOptionsPorotocl {
     /**
@@ -50,7 +51,10 @@ class GoPayLoginOptions: UIView {
             phoneInput.delegate = self
         }
     }
-   
+    @IBOutlet weak var hintLabel: UILabel!
+    
+    /// Holds the last style theme applied
+    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
     /// The delegate that wants to hear from the view on new data and events
     var delegate:GoPayLoginOptionsPorotocl?
@@ -62,6 +66,7 @@ class GoPayLoginOptions: UIView {
             // Setup the bar view with the passed payment options list
             loginOptionsTabBar.setup(with: tapGoPayLoginBarViewModel)
             tapGoPayLoginBarViewModel.delegate = self
+            hintLabel.text = tapGoPayLoginBarViewModel.hintLabelText
         }
     }
     
@@ -98,6 +103,7 @@ class GoPayLoginOptions: UIView {
     private func commonInit() {
         self.contentView = setupXIB()
         showLoginView()
+        applyTheme()
         
     }
     
@@ -156,6 +162,35 @@ extension GoPayLoginOptions: TapGoPayLoginBarViewModelDelegate {
     func loginOptionSelected(with viewModel: TapGoPayTitleViewModel) {
         showInputFor(for: viewModel.titleSegment)
         delegate?.loginOptionSelected?(with: viewModel)
+    }
+}
+
+
+
+
+// Mark:- Theme methods
+extension GoPayLoginOptions {
+    /// Consolidated one point to apply all needed theme methods
+    public func applyTheme() {
+        matchThemeAttributes()
+    }
+    
+    /// Match the UI attributes with the correct theming entries
+    private func matchThemeAttributes() {
+        hintLabel.tap_theme_font = .init(stringLiteral: "goPay.loginBar.hintLabel.textFont")
+        hintLabel.tap_theme_textColor = .init(stringLiteral: "goPay.loginBar.hintLabel.textColor")
+    }
+    
+    /// Listen to light/dark mde changes and apply the correct theme based on the new style
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        
+        guard lastUserInterfaceStyle != self.traitCollection.userInterfaceStyle else {
+            return
+        }
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
+        applyTheme()
     }
 }
 

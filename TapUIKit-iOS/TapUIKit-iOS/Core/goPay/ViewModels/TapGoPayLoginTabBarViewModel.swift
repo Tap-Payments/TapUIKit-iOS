@@ -8,6 +8,9 @@
 
 import Foundation
 import SnapKit
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
+
 /// Protocol to communicate between the view controlled by this view model ad the view model itself
 internal protocol TapGoPayLoginBarViewDelegate {
     /**
@@ -49,6 +52,10 @@ internal protocol TapGoPayLoginBarViewDelegate {
     // MARK:- Public normal swift variables
     /// Porotocl to communicate with the outer parent to inform him about events
     @objc public var delegate:TapGoPayLoginBarViewModelDelegate?
+    
+    @objc public var hintLabelText:String {
+        return TapLocalisationManager.shared.localisedValue(for: "GoPay.HintLabel", with: TapCommonConstants.pathForDefaultLocalisation())
+    }
     
     /**
      Creates a new instance of the TapGoPayLoginBarViewModel

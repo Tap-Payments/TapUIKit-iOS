@@ -54,6 +54,9 @@
             "email": "email",
             "phone": "phone",
             "password": "Password"
+        },
+        "GoPay": {
+            "HintLabel": "You can access your saved cards from anywhere with goPay."
         }
     },
     "ar": {
@@ -111,6 +114,9 @@
             "email": "البريد",
             "phone": "الهاتف",
             "password": "كلمة السر"
+        },
+        "GoPay": {
+            "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"
         }
     }
 }

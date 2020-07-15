@@ -497,6 +497,10 @@
                     "textFont": "Roboto-Regular,12",
                     "textColor": "brownGreyFive"
                 }
+            },
+            "hintLabel": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "brownGreyThree"
             }
         },
         "passwordField": {
