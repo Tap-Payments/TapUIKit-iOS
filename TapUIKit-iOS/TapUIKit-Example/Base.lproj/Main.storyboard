@@ -1201,6 +1201,38 @@
             </objects>
             <point key="canvasLocation" x="2567" y="8703"/>
         </scene>
+        <!--Go Pay Password View Controller-->
+        <scene sceneID="LeB-1w-IzD">
+            <objects>
+                <viewController storyboardIdentifier="GoPayPasswordViewController" id="tI8-2J-hSE" customClass="GoPayPasswordViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JrK-Kk-oqp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzN-Gc-SUk" customClass="TapGoPayPasswordTextField" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="wkl-cm-XXB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1nf-Xn-cXH" firstAttribute="trailing" secondItem="vzN-Gc-SUk" secondAttribute="trailing" id="5W0-m1-tLN"/>
+                            <constraint firstItem="vzN-Gc-SUk" firstAttribute="leading" secondItem="1nf-Xn-cXH" secondAttribute="leading" id="8K6-yi-kff"/>
+                            <constraint firstItem="vzN-Gc-SUk" firstAttribute="top" secondItem="1nf-Xn-cXH" secondAttribute="top" constant="30" id="oju-jj-hio"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1nf-Xn-cXH"/>
+                    </view>
+                    <connections>
+                        <outlet property="goPayPasswordField" destination="vzN-Gc-SUk" id="8pE-GH-3EV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lGc-ZG-nmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="9407"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>

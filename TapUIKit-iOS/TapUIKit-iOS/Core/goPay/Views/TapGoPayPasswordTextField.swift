@@ -107,6 +107,7 @@ extension TapGoPayPasswordTextField:UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.returnClicked(with: textField.text ?? "")
+        textField.resignFirstResponder()
         return true
     }
 }
@@ -128,16 +129,21 @@ extension TapGoPayPasswordTextField {
         passwordTextField.tap_theme_font = .init(stringLiteral: "\(themePath).textFont")
         passwordTextField.tap_theme_textColor = .init(stringLiteral: "\(themePath).textColor")
         
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: sharedLocalisationManager.localisedValue(for: "Common.password", with: TapCommonConstants.pathForDefaultLocalisation()), attributes: [NSAttributedString.Key.foregroundColor: ThemeUIColorSelector.init(stringLiteral: "\(themePath).placeHolderColor")])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: sharedLocalisationManager.localisedValue(for: "Common.password", with: TapCommonConstants.pathForDefaultLocalisation()), attributes: [NSAttributedString.Key.foregroundColor: TapThemeManager.colorValue(for: "\(themePath).placeHolderColor") ?? .black])
         
+        themeShowPasswordButton()
         themeUnderLine()
         
+    }
+    
+    private func themeShowPasswordButton() {
+        visibleButton.tap_theme_setImage(selector: .init(keyPath: "\(themePath).showPasswordIcon"), forState: .normal)
     }
     
     private func themeUnderLine() {
         let underLineStatusThemePath:String = passwordTextField.isEditing ? "underline.filled" : "underline.empty"
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.underLineView.layer.tap_theme_backgroundColor = .init(stringLiteral: "\(self?.themePath ?? "").\(underLineStatusThemePath)")
+            self?.underLineView.tap_theme_backgroundColor = .init(stringLiteral: "\(self?.themePath ?? "").\(underLineStatusThemePath).backgroundColor")
         })
         
     }

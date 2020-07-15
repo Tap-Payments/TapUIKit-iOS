@@ -67,7 +67,8 @@
 		E8437F8D24BEFE1A0059F1B8 /* GoPayLoginOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437F8C24BEFE1A0059F1B8 /* GoPayLoginOptions.xib */; };
 		E8437F8F24BF0BA00059F1B8 /* GoPayWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F8E24BF0BA00059F1B8 /* GoPayWrapperViewController.swift */; };
 		E8437F9724BF1FC00059F1B8 /* TapGoPayPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F9624BF1FC00059F1B8 /* TapGoPayPasswordTextField.swift */; };
-		E8437F9924BF1FD40059F1B8 /* TapGoPayPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437F9824BF1FD40059F1B8 /* TapGoPayPasswordView.xib */; };
+		E8437F9924BF1FD40059F1B8 /* TapGoPayPasswordTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437F9824BF1FD40059F1B8 /* TapGoPayPasswordTextField.xib */; };
+		E8437F9B24BF2B5B0059F1B8 /* GoPayPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437F9A24BF2B5B0059F1B8 /* GoPayPasswordViewController.swift */; };
 		E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */; };
 		E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */; };
 		E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */; };
@@ -230,7 +231,8 @@
 		E8437F8C24BEFE1A0059F1B8 /* GoPayLoginOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoPayLoginOptions.xib; sourceTree = "<group>"; };
 		E8437F8E24BF0BA00059F1B8 /* GoPayWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPayWrapperViewController.swift; sourceTree = "<group>"; };
 		E8437F9624BF1FC00059F1B8 /* TapGoPayPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayPasswordTextField.swift; sourceTree = "<group>"; };
-		E8437F9824BF1FD40059F1B8 /* TapGoPayPasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayPasswordView.xib; sourceTree = "<group>"; };
+		E8437F9824BF1FD40059F1B8 /* TapGoPayPasswordTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayPasswordTextField.xib; sourceTree = "<group>"; };
+		E8437F9A24BF2B5B0059F1B8 /* GoPayPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPayPasswordViewController.swift; sourceTree = "<group>"; };
 		E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayViewModel.swift; sourceTree = "<group>"; };
@@ -551,7 +553,7 @@
 				E8437F7D24BEC7A70059F1B8 /* TapGoPayLoginBarView.xib */,
 				E8437F8824BEF7920059F1B8 /* TapGoPaySignInView.xib */,
 				E8437F8C24BEFE1A0059F1B8 /* GoPayLoginOptions.xib */,
-				E8437F9824BF1FD40059F1B8 /* TapGoPayPasswordView.xib */,
+				E8437F9824BF1FD40059F1B8 /* TapGoPayPasswordTextField.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -627,6 +629,7 @@
 				E8437F7624BE1DFC0059F1B8 /* GoPayLoginTabSegmentViewController.swift */,
 				E8437F7F24BED5C50059F1B8 /* GoPayLoginTabBarViewController.swift */,
 				E8437F8E24BF0BA00059F1B8 /* GoPayWrapperViewController.swift */,
+				E8437F9A24BF2B5B0059F1B8 /* GoPayPasswordViewController.swift */,
 			);
 			path = goPayTesting;
 			sourceTree = "<group>";
@@ -1066,7 +1069,7 @@
 				E8E69949249F49BE007A32FA /* ItemTableViewCell.xib in Resources */,
 				E87E09E824A8BE74004A7A46 /* Assets.xcassets in Resources */,
 				E87E09E224A878C6004A7A46 /* TapCardPhoneIconView.xib in Resources */,
-				E8437F9924BF1FD40059F1B8 /* TapGoPayPasswordView.xib in Resources */,
+				E8437F9924BF1FD40059F1B8 /* TapGoPayPasswordTextField.xib in Resources */,
 				E8A57AA524A9B28900C1B6CD /* TapCardPhoneBarList.xib in Resources */,
 				E8670CC62498B001003F87D8 /* tap@2x.png in Resources */,
 			);
@@ -1215,6 +1218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8428DF82456DB3200D5A45A /* ViewController.swift in Sources */,
+				E8437F9B24BF2B5B0059F1B8 /* GoPayPasswordViewController.swift in Sources */,
 				E8861D40249FA8C20002FEDE /* ItemCellViewController.swift in Sources */,
 				E8E92B49248F977A00DD7DBB /* TapDragHandlerViewController.swift in Sources */,
 				E8E92B3F248F70AA00DD7DBB /* TapSeparatorViewController.swift in Sources */,
