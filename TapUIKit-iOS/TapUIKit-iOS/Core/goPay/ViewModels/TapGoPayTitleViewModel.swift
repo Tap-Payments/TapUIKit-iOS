@@ -8,6 +8,9 @@
 
 import Foundation
 import struct UIKit.CGRect
+import LocalisationManagerKit_iOS
+import class CommonDataModelsKit_iOS.TapCommonConstants
+
 
 /// Protocol to communicate between the parenr viewmodel (The bar list view model) and this view model
 internal protocol TapGoPayTitleViewModelDelegate {
@@ -42,8 +45,8 @@ internal protocol TapGoPayTitleViewDelegate {
         }
     }
     
-    /// Represent the url for the image to be loaded inside this icon
-    @objc public var titleSegment:String = "" {
+    /// Represent the title of this segment
+    internal var titleSegment:GoPyLoginOption = .Email {
         didSet{
             // Update the attached view to set its text
             viewDelegate?.reload()
@@ -55,6 +58,8 @@ internal protocol TapGoPayTitleViewDelegate {
     ///Delegate to communicate between the parenr viewmodel (The bar list view model) and this view model
     internal var delegate:TapGoPayTitleViewModelDelegate?
     
+    
+    
     /// Delegae to communicate between the view controlled by this view model ad the view model itself
     internal var viewDelegate:TapGoPayTitleViewDelegate?
     
@@ -62,6 +67,14 @@ internal protocol TapGoPayTitleViewDelegate {
     internal func titleIsSelected() {
         // We need to inform our view model delegate that a selection happened, so it can execute the needed logic
         delegate?.titleIsSelected(with: self)
+    }
+    
+    /**
+     Computes the frame of the associated tab view
+      - Returns: The rect for the assocuated tab or .ZERO as a fall back
+     */
+    internal func viewFrame() -> CGRect {
+        return viewDelegate?.viewFrame() ?? .zero
     }
     
     
@@ -78,11 +91,34 @@ internal protocol TapGoPayTitleViewDelegate {
      - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
      this icon
      */
-    @objc public init(titleStatus: TapCardPhoneIconStatus = .selected, titleSegment:String) {
+    @objc public init(titleStatus: TapCardPhoneIconStatus = .selected, titleSegment:GoPyLoginOption) {
         super.init()
         defer{
             self.titleStatus = titleStatus
             self.titleSegment = titleSegment
         }
     }
+}
+
+/// Represents the ossible cases to login to goPay
+@objc public enum GoPyLoginOption: Int {
+    /// Login to goPay using email and passwod
+    case Email
+    /// Login to goPay using phone and OTP
+    case Phone
+    
+    
+    public func localisedTitle() -> String {
+        // Used to fetch the localised titles for different options
+        let sharedLocalisation:TapLocalisationManager = .shared
+        
+        switch self {
+            
+        case .Email:
+            return sharedLocalisation.localisedValue(for: "Common.email", with: TapCommonConstants.pathForDefaultLocalisation()).uppercased()
+        case .Phone:
+            return sharedLocalisation.localisedValue(for: "Common.phone", with: TapCommonConstants.pathForDefaultLocalisation()).uppercased()
+        }
+    }
+    
 }

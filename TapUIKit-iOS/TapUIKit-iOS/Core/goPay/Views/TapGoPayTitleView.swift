@@ -24,7 +24,7 @@ import TapThemeManager2020
     }
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
-    private let themePath:String = "goPay"
+    private let themePath:String = "goPay.loginBar"
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -62,7 +62,7 @@ import TapThemeManager2020
     
     /// Fetch the displayed title from the view model
     private func fetchData() {
-        titleLabel.text = viewModel?.titleSegment ?? ""
+        titleLabel.text = viewModel?.titleSegment.localisedTitle() ?? ""
     }
     
     /// Instruct the view model the user did select this title
@@ -93,9 +93,9 @@ extension TapGoPayTitleView {
     private func matchThemeAttributes() {
         let status:TapCardPhoneIconStatus = viewModel?.titleStatus ?? .selected
         
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).loginBar.backgroundColor")
-        titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).loginBar.title.\(status.themePath()).textFont")
-        titleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).loginBar.title.\(status.themePath()).textColor")
+        backgroundColor = .clear
+        titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).title.\(status.themePath()).textFont")
+        titleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).title.\(status.themePath()).textColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

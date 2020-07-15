@@ -49,7 +49,9 @@
             "edit": "Edit",
             "close": "Close",
             "items": "Items",
-            "item": "Item"
+            "item": "Item",
+            "email": "email",
+            "phone": "phone"
         }
     },
     "ar": {
@@ -102,7 +104,9 @@
             "edit": "تعديل",
             "close": "غلق",
             "items": "منتجات",
-            "item": "منتج"
+            "item": "منتج",
+            "email": "البريد",
+            "phone": "الهاتف"
         }
     }
 }
