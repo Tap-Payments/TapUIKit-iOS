@@ -17,8 +17,8 @@ import TapThemeManager2020
     @IBOutlet weak var otpController: TapOtpController!
     
     /// The view model that controls the data to be displayed and the events to be fired
-    @objc public var viewModel = TapOtpViewModel(minutes: 0, seconds: 10)
-
+    @objc public var viewModel:TapOtpViewModel = .init()
+    
     private let themePath = "TapOtpView"
     
     // Mark:- Init methods
@@ -37,24 +37,25 @@ import TapThemeManager2020
         self.containerView = setupXIB()
         //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
         applyTheme()
-        
-        // Whenever the view model is assigned, we delcare ourself as the  delegate to start getting load UI
-        viewModel.delegate = self
-        otpController.delegate = self
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds
     }
+    
+    /**
+     Seup the hint view according to the view model
+     - Parameter viewModel: The new required view model to attach the view to
+     */
+    @objc public func setup(with viewModel:TapOtpViewModel) {
+        self.viewModel = viewModel
+        self.viewModel.viewDelegate = self
+        self.otpController.delegate = self
+    }
 }
 
-extension TapOtpView: TapOtpViewModelDelegate {
-    public func validateOtp(otpDigits: String) {
-        // should call validate otp api
-        
-    }
-    
+extension TapOtpView: TapOtpViewDelegate {
     public func updateTimer(currentTime: String) {
         self.timerLabel.text = currentTime
     }

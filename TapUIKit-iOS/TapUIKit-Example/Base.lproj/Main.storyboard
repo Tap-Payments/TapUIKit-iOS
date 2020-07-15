@@ -323,6 +323,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WJ8-yX-RHa"/>
                     </view>
+                    <connections>
+                        <outlet property="tapOtpView" destination="T7v-qK-guO" id="n1U-E6-Y4Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYY-I4-NLI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import TapUIKit_iOS
 
 class TapOtpExampleViewController: UIViewController {
 
+    @IBOutlet weak var tapOtpView: TapOtpView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setupOtp() {
+        let otpViewModel: TapOtpViewModel = .init()
+        let otpView: TapOtpView = otpViewModel.createOtpView()
     }
 
 }

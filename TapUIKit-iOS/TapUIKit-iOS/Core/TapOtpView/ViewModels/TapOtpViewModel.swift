@@ -8,40 +8,69 @@
 
 import  UIKit
 
-public protocol TapOtpViewModelDelegate: class {
+/// A protocol to be used to fire functions and events in the associated view
+internal protocol TapOtpViewDelegate {
+    /// A method to instruc the view to update status message
     func updateMessage()
+    
+    /// A method to instruc update the timer
+    /// - Parameter currentTime: The remaining time until the OTP get expired
     func updateTimer(currentTime: String)
-    func validateOtp(otpDigits: String)
+    
+    /// A method to instruc the view to update view on otp state becomes expired
     func otpExpired()
+    
+    /// A method to instruc the view to enable editing otp view on state becomes empty
     func enableOtpEditing()
 }
 
+/// A protocol to be used to fire functions and events in the parent view
+@objc public protocol TapOtpViewModelDelegate {
+    /**
+        An event will be fired once the user enter all the otp digits
+     - Parameter otpValue: the OTP value entered by user
+     */
+    @objc func otpStateReadyToValidate(otpValue: String)
+    
+    /**
+     An event will be fired once the timer stopped and the state became expired
+     */
+    @objc func otpStateExpired()
+}
+
+
 @objc public class TapOtpViewModel: NSObject {
     
-    
-    var timer: TapTimer
+    private var timer: TapTimer?
     var state: TapOTPState = .empty {
         didSet {
             self.stateDidChange()
         }
     }
+    
     var phoneNo: String = ""
     
-    weak var delegate: TapOtpViewModelDelegate? {
+    /// The delegate used to fire events inside the associated view
+    internal var viewDelegate:TapOtpViewDelegate? {
         didSet {
             self.state = .empty
-            self.timer.delegate = self
         }
     }
     
+    /// The delegate used to fire events to the caller view
+    @objc public var delegate:TapOtpViewModelDelegate?
+
     var otpValue = "" {
         didSet {
             self.updateState()
         }
     }
-    
-    // MARK: Init
-    init(minutes: Int, seconds: Int) {
+
+    // MARK: UpdateTimer
+    @objc public func updateTimer(minutes: Int, seconds: Int) {
+        if self.timer?.delegate == nil {
+            self.timer?.delegate = self
+        }
         self.timer = TapTimer(minutes: minutes, seconds: seconds)
     }
     
@@ -49,22 +78,24 @@ public protocol TapOtpViewModelDelegate: class {
     func messageAttributed(mainColor: UIColor, secondaryColor: UIColor) -> NSAttributedString {
         return self.state.message(mobileNo: phoneNo, mainColor: mainColor, secondaryColor: secondaryColor)
     }
+    
     // MARK: State Change
     func stateDidChange() {
         switch self.state {
         case .ready:
-            self.delegate?.validateOtp(otpDigits: self.otpValue)
+            self.delegate?.otpStateReadyToValidate(otpValue: self.otpValue)
             
         case .invalid:
-            self.delegate?.updateMessage()
+            self.viewDelegate?.updateMessage()
             
         case .expired:
-            self.delegate?.otpExpired()
+            self.viewDelegate?.otpExpired()
+            self.delegate?.otpStateExpired()
             
         case .empty:
-            self.timer.start()
-            self.delegate?.updateMessage()
-            self.delegate?.enableOtpEditing()
+            self.timer?.start()
+            self.viewDelegate?.updateMessage()
+            self.viewDelegate?.enableOtpEditing()
         }
     }
     
@@ -78,11 +109,18 @@ public protocol TapOtpViewModelDelegate: class {
         }
     }
     
+    @objc public func createOtpView() -> TapOtpView {
+        let tapOtpView:TapOtpView = .init()
+        tapOtpView.translatesAutoresizingMaskIntoConstraints = false
+        tapOtpView.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        tapOtpView.setup(with: self)
+        return tapOtpView
+    }
+    
     // MARK: Resend
     @objc public func resetStateReady() {
         self.state = .empty
     }
-    
 }
 
 extension TapOtpViewModel: TapTimerDelegate {
@@ -91,9 +129,6 @@ extension TapOtpViewModel: TapTimerDelegate {
     }
     
     func onTimeUpdate(minutes: Int, seconds: Int) {
-        self.delegate?.updateTimer(currentTime: String(format: "%02d:%02d", minutes, seconds))//(currentTime: "\(minutes):\(seconds)")
-        
+        self.viewDelegate?.updateTimer(currentTime: String(format: "%02d:%02d", minutes, seconds))
     }
-    
-    
 }
