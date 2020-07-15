@@ -27,14 +27,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="70" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="eBj-2U-T81"/>
+                        <constraint firstAttribute="width" priority="250" constant="70" id="73L-To-Wqg"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="DCC-bW-ryb"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWI-zH-QU6" customClass="TapGoPayTitleView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="70" y="0.0" width="70" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="jtP-bA-5fZ"/>
+                        <constraint firstAttribute="width" priority="250" constant="70" id="jtP-bA-5fZ"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="zY1-eg-cTS"/>
                     </constraints>
                 </view>
                 <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-s6-DSi">

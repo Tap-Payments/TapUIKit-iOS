@@ -1119,6 +1119,56 @@
             </objects>
             <point key="canvasLocation" x="2567" y="7311"/>
         </scene>
+        <!--Go Pay Login Tab Bar View Controller-->
+        <scene sceneID="yLM-Mm-7BK">
+            <objects>
+                <viewController storyboardIdentifier="GoPayLoginTabBarViewController" id="AZU-Jg-8kJ" customClass="GoPayLoginTabBarViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ncm-qG-huJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDH-al-KmD" customClass="TapGoPayLoginBarView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uSC-DY-jCj"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-al-Xxh">
+                                <rect key="frame" x="20" y="143" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jFy-5h-ElR">
+                                <rect key="frame" x="345" y="138" width="51" height="31"/>
+                                <connections>
+                                    <action selector="oneBrandSwitchChanged:" destination="vbd-Ib-n7G" eventType="valueChanged" id="Xik-we-9Y4"/>
+                                    <action selector="validChanged:" destination="AZU-Jg-8kJ" eventType="valueChanged" id="tLS-WY-vjD"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gfu-Ak-AkK" firstAttribute="trailing" secondItem="rDH-al-KmD" secondAttribute="trailing" id="4UP-0i-fxs"/>
+                            <constraint firstItem="rDH-al-KmD" firstAttribute="leading" secondItem="Gfu-Ak-AkK" secondAttribute="leading" id="CMz-gO-hXu"/>
+                            <constraint firstItem="dCA-al-Xxh" firstAttribute="leading" secondItem="Gfu-Ak-AkK" secondAttribute="leading" constant="20" id="P0x-ul-RJt"/>
+                            <constraint firstItem="Gfu-Ak-AkK" firstAttribute="trailing" secondItem="jFy-5h-ElR" secondAttribute="trailing" constant="20" id="QrX-5h-Hra"/>
+                            <constraint firstItem="rDH-al-KmD" firstAttribute="top" secondItem="Gfu-Ak-AkK" secondAttribute="top" constant="30" id="a0s-Ub-8a2"/>
+                            <constraint firstItem="jFy-5h-ElR" firstAttribute="centerY" secondItem="dCA-al-Xxh" secondAttribute="centerY" id="lcF-rS-1Kl"/>
+                            <constraint firstItem="jFy-5h-ElR" firstAttribute="top" secondItem="rDH-al-KmD" secondAttribute="bottom" constant="20" id="qth-N5-5I2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gfu-Ak-AkK"/>
+                    </view>
+                    <connections>
+                        <outlet property="goPayLoginBar" destination="rDH-al-KmD" id="1wx-bd-R9b"/>
+                        <outlet property="validSwitch" destination="jFy-5h-ElR" id="6Xc-Rb-adw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIf-M9-bzW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="8012"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>

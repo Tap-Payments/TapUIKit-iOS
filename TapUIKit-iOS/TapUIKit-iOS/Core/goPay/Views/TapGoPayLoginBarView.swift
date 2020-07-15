@@ -7,23 +7,36 @@
 //
 
 import TapThemeManager2020
-
+/// Represents the view for go pay login options tab bar
 @objc public class TapGoPayLoginBarView: UIView {
 
     // MARK:- Outlets
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var underLineBar: UIProgressView!
+    /// Represents the under line view
+    @IBOutlet weak var underLineBar: UIProgressView!{
+        didSet{
+            // We need to make it changable regardless of the constraint
+            underLineBar.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    /// Represents the leading constraint for the under line view
     @IBOutlet weak var underLineBarLeadingConstraint: NSLayoutConstraint!
+    /// Represents the width constraint for the under line view
     @IBOutlet weak var underLineBarWidthConstraint: NSLayoutConstraint!
+    /// Represents the view for email login option
     @IBOutlet weak var goPayEmailLogin: TapGoPayTitleView!
+    /// Represents the view for phone login option
     @IBOutlet weak var goPayPhoneLogin: TapGoPayTitleView!
     
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// Represents the view model for email login option
     private let themePath:String = "goPay.loginBar"
+    /// Represents the validation status for the current selected tab
     internal var validSelection:Bool = false {
         didSet {
+            // When changed, we need to re color the underline based on the new validation status
             themeBar()
         }
     }
@@ -53,18 +66,23 @@ import TapThemeManager2020
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.contentView = setupXIB()
+        // Create the view models for each login option
         createGoPayLoginOptionsViewModels()
         applyTheme()
     }
     
+    /// Create the view models for each login option
     internal func createGoPayLoginOptionsViewModels() {
         // Email login viewModel
         let emailViewModel:TapGoPayTitleViewModel = .init(titleSegment: .Email)
         goPayEmailLogin.setup(with: emailViewModel)
+        
+        // Phone login viewModel
         let phoneViewModel:TapGoPayTitleViewModel = .init(titleSegment: .Phone)
         goPayPhoneLogin.setup(with: phoneViewModel)
     }
     
+    /// Configure the connections between this view and its view model
     internal func configureViewModel() {
         viewModel?.viewDelegate = self
         viewModel?.dataSource = [goPayEmailLogin.viewModel!,goPayPhoneLogin.viewModel!]
@@ -95,7 +113,7 @@ extension TapGoPayLoginBarView {
         themeBar()
     }
     
-    
+    /// Applies the correct theme for the underline view
     private func themeBar() {
         let selectionThemePath:String = validSelection ? "selected" : "unselected"
         underLineBar.tap_theme_progressTintColor = .init(keyPath: "\(themePath).underline.\(selectionThemePath).backgroundColor")
@@ -117,6 +135,7 @@ extension TapGoPayLoginBarView {
 
 
 extension TapGoPayLoginBarView: TapGoPayLoginBarViewDelegate {
+    
     func animateBar(to x: CGFloat, with width: CGFloat) {
         underLineBar.layoutIfNeeded()
         underLineBar.updateConstraints()

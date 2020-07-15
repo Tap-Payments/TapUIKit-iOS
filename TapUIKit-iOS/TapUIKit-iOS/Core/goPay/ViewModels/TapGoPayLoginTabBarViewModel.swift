@@ -8,8 +8,6 @@
 
 import Foundation
 import SnapKit
-import enum TapCardVlidatorKit_iOS.CardBrand
-
 /// Protocol to communicate between the view controlled by this view model ad the view model itself
 internal protocol TapGoPayLoginBarViewDelegate {
     /**
@@ -35,7 +33,7 @@ internal protocol TapGoPayLoginBarViewDelegate {
     @objc func loginOptionSelected(with viewModel:TapGoPayTitleViewModel)
 }
 
-/// View model that controls the actions and the ui of the card/phone tab bar
+/// View model that controls the actions and the ui of the go pay login options tab bar
 @objc public class TapGoPayLoginBarViewModel: NSObject {
     
     /// Delegate to communicate between the view controlled by this view model ad the view model itself
@@ -43,7 +41,7 @@ internal protocol TapGoPayLoginBarViewDelegate {
     /// The data source which is the list if tab view models that we need to render
     internal var dataSource:[TapGoPayTitleViewModel] = [] {
         didSet{
-            // Once set, we need to wire up the observables with their subscribers
+            // Once set, we need to configure the inner view models
             configureDataSource()
         }
     }
@@ -53,7 +51,7 @@ internal protocol TapGoPayLoginBarViewDelegate {
     @objc public var delegate:TapGoPayLoginBarViewModelDelegate?
     
     /**
-     Creates a new instance of the TapCardPhoneBarListViewModel
+     Creates a new instance of the TapGoPayLoginBarViewModel
      - Parameter dataSource: The data source which is the list if tab view models that we need to render
      */
     @objc public init(delegate:TapGoPayLoginBarViewModelDelegate? = nil) {
@@ -66,9 +64,17 @@ internal protocol TapGoPayLoginBarViewDelegate {
         // Assign each viewmodel delegate to self
         dataSource.forEach{ $0.delegate = self }
         // On load, select the first option :)
-        select(option: dataSource[0].titleSegment, with: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
+            // Give it a little time to render the labels (so if an option has LONG title, then bar will fit nicely) 
+            self?.select(option: self!.dataSource[0].titleSegment, with: false)
+        }
+        
     }
     
+    /**
+     Informs all options to deselct themselves except the selected one
+     - Parameter optionViewModel: The selected view model, other viewmodels will be deselected
+     */
     internal func deselectOptions(except optionViewModel:TapGoPayTitleViewModel) {
         dataSource.forEach{ $0.titleStatus = (optionViewModel == $0) ? .selected : .otherIconIsSelectedUnVerified }
     }
@@ -85,7 +91,9 @@ internal protocol TapGoPayLoginBarViewDelegate {
         // After firing the required events, we need to move the bar to the selected tab associated to the brand
         let relatedModels:[TapGoPayTitleViewModel] = dataSource.filter{ $0.titleSegment == loginOption}
         guard relatedModels.count > 0 else { return }
+        // Perform logic needed for selecting an option
         titleIsSelected(with: relatedModels[0])
+        // Apply the theme based on the validation status provided
         changeSelectionValidation(to: validation)
     }
     
