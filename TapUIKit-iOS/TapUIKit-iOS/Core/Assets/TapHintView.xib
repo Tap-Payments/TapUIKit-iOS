@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapHintView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="ZTf-RG-o5G" id="cJK-Nz-J6l"/>
                 <outlet property="hintLabel" destination="EED-yO-pkN" id="iIK-6m-UdG"/>
             </connections>
         </placeholder>
@@ -24,14 +25,23 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTf-RG-o5G">
+                    <rect key="frame" x="343" y="7" width="53" height="30"/>
+                    <state key="normal" title="Change"/>
+                    <connections>
+                        <action selector="actionButtonClicked:" destination="-1" eventType="touchUpInside" id="dHL-18-8bG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EED-yO-pkN" secondAttribute="trailing" constant="19" id="2K1-Ri-wZd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZTf-RG-o5G" secondAttribute="trailing" constant="18" id="63n-Sy-G3q"/>
                 <constraint firstItem="EED-yO-pkN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="VhM-ma-N3c"/>
                 <constraint firstItem="EED-yO-pkN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aTB-aa-MaQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EED-yO-pkN" secondAttribute="bottom" constant="2" id="ajf-NM-N3C"/>
                 <constraint firstItem="EED-yO-pkN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="2" id="cEI-hi-cde"/>
+                <constraint firstItem="ZTf-RG-o5G" firstAttribute="centerY" secondItem="EED-yO-pkN" secondAttribute="centerY" id="rvM-vJ-Iq4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
