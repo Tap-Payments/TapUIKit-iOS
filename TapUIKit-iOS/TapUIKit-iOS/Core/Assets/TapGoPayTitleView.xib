@@ -20,10 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB0-Bn-76N">
-                    <rect key="frame" x="0.0" y="11.666666666666664" width="70" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="Hus-Mu-Yds"/>
-                    </constraints>
+                    <rect key="frame" x="15" y="0.0" width="40" height="44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -38,9 +35,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="WB0-Bn-76N" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4I4-As-6IN"/>
+                <constraint firstItem="WB0-Bn-76N" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-15" id="5oE-nM-bIu"/>
+                <constraint firstItem="WB0-Bn-76N" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="Nvb-sJ-2jM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xZI-1w-Bn3" secondAttribute="bottom" id="OdA-yX-il4"/>
+                <constraint firstItem="WB0-Bn-76N" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="STQ-Cg-msf"/>
                 <constraint firstItem="xZI-1w-Bn3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Uzk-FC-LpY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xZI-1w-Bn3" secondAttribute="trailing" id="Vrg-Hs-FLD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WB0-Bn-76N" secondAttribute="bottom" id="dwr-nF-QpN"/>
                 <constraint firstItem="xZI-1w-Bn3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xSl-JH-Tsk"/>
                 <constraint firstItem="WB0-Bn-76N" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xuP-mv-e5L"/>
             </constraints>
