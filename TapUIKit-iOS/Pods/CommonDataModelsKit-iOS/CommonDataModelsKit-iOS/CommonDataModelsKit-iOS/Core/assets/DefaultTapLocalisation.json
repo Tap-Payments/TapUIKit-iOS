@@ -5,7 +5,8 @@
             "cardNamePlaceHolder": "Holder name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
-            "cardSaveLabel": "For faster and more secure checkout,\nsave your card"
+            "cardSaveLabel": "For faster and more secure checkout,\nsave your card",
+            "emailPlaceHolder": "email@email.com"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
@@ -67,7 +68,8 @@
             "cardNamePlaceHolder": "صاحب البطاقة",
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",
-            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة"
+            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة",
+            "emailPlaceHolder": "email@email.com"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"

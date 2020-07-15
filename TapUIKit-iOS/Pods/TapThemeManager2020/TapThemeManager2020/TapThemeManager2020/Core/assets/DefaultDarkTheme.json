@@ -25,9 +25,9 @@
             "cherryRed":"#e12131",
             "cherryRed10":"#e1213119",
             "cherryRed20":"#e12132",
-            "deepSkyBlue15":"#007aff26",
             "brownGreyFour":"#a6a6a6",
-            "brownGreyFive":"#aeaeae"
+            "brownGreyFive":"#aeaeae",
+            "deepSkyBlue15":"#007aff26"
         }
     },
     "inlineCard": {
@@ -93,6 +93,37 @@
         },
         "iconImage": {
             "image": "mobileFormIcon",
+            "width": 32
+        },
+        "clearImage": {
+            "image": "clearFormIcon",
+            "width": 32
+        },
+        "textFields": {
+            "textColor": "greyishBrown",
+            "errorTextColor": "#FF0000",
+            "font" : "Roboto-Light,17",
+            "placeHolderColor" : "brownGreyThree"
+        }
+    },
+    "emailCard": {
+        "commonAttributes": {
+            "backgroundColor": "white",
+            "borderColor": "clear",
+            "cornerRadius": 0,
+            "borderWidth": 0,
+            "itemSpacing": 5,
+            "shadow":{
+                "color": "clear",
+                "radius": 0,
+                "offsetWidth": 0,
+                "offsetHeight": 0,
+                "opacity": 0
+            },
+            "widthMargin": 7
+        },
+        "iconImage": {
+            "image": "mailFormIcon",
             "width": 32
         },
         "clearImage": {
@@ -498,4 +529,3 @@
         }
     }
 }
-
