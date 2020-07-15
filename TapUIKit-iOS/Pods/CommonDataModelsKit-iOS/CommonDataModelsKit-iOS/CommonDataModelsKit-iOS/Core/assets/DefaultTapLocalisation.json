@@ -52,7 +52,8 @@
             "items": "Items",
             "item": "Item",
             "email": "email",
-            "phone": "phone"
+            "phone": "phone",
+            "password": "Password"
         }
     },
     "ar": {
@@ -108,7 +109,8 @@
             "items": "منتجات",
             "item": "منتج",
             "email": "البريد",
-            "phone": "الهاتف"
+            "phone": "الهاتف",
+            "password": "كلمة السر"
         }
     }
 }

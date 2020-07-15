@@ -499,5 +499,21 @@
                 }
             }
         }
+    },
+    "passwordField": {
+        "backgroundColor" : "clear",
+        "textFont": "Roboto-Light,17",
+        "textColor": "greyishBrown",
+        "placeHolderColor" : "brownGreyThree",
+        "showPasswordIcon" : "passwordEye",
+        "hidePasswordIcon" : "passwordEye",
+        "underline":{
+            "empty": {
+                "backgroundColor" : "brownGrey"
+            },
+            "filled": {
+                "backgroundColor" : "deepSkyBlue"
+            }
+        }
     }
 }
