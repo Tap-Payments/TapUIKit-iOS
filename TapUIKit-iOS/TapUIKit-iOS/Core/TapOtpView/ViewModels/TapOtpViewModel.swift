@@ -13,6 +13,7 @@ public protocol TapOtpViewModelDelegate: class {
     func updateTimer(currentTime: String)
     func validateOtp(otpDigits: String)
     func otpExpired()
+    func enableOtpEditing()
 }
 
 @objc public class TapOtpViewModel: NSObject {
@@ -63,6 +64,7 @@ public protocol TapOtpViewModelDelegate: class {
         case .empty:
             self.timer.start()
             self.delegate?.updateMessage()
+            self.delegate?.enableOtpEditing()
         }
     }
     
@@ -74,6 +76,11 @@ public protocol TapOtpViewModelDelegate: class {
                 self.state = .empty
             }
         }
+    }
+    
+    // MARK: Resend
+    @objc public func resetStateReady() {
+        self.state = .empty
     }
     
 }

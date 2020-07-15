@@ -69,6 +69,11 @@ extension TapOtpView: TapOtpViewModelDelegate {
         // enable resend button
         self.updateMessage()
         self.otpController.resetAll()
+        self.otpController.enabled = false
+    }
+    
+    public func enableOtpEditing() {
+        self.otpController.enabled = true
     }
 }
 

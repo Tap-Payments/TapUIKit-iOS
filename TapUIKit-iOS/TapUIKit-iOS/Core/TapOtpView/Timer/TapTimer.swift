@@ -17,20 +17,22 @@ class TapTimer {
             self.delegate?.onTimeUpdate(minutes: seconds / 60, seconds: seconds % 60)
         }
     }
-    private lazy var timer: Timer = {
-        return Timer()
-    }()
+    private var timer: Timer?
     
     init(minutes: Int, seconds: Int) {
         self.seconds = seconds + minutes * 60
     }
     
     func start() {
+        if timer == nil {
+            timer = Timer()
+        }
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdateTime), userInfo: nil, repeats: true)
     }
     
     func reset() {
-        timer.invalidate()
+        timer?.invalidate()
+        timer = nil
     }
     
     @objc private func didUpdateTime() {

@@ -44,6 +44,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         
     private var digits: [String] = ["", "", "", "", "", ""]
     
+    public var enabled: Bool = true {
+        didSet {
+            self.textField1.isUserInteractionEnabled = enabled
+        }
+    }
+    
     public override func awakeFromNib() {
         superview?.awakeFromNib()
         self.configure()
@@ -217,5 +223,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField4.text = ""
         self.textField5.text = ""
         self.textField6.text = ""
+        
+        self.textField1.resignFirstResponder()
+        self.textField2.resignFirstResponder()
+        self.textField3.resignFirstResponder()
+        self.textField4.resignFirstResponder()
+        self.textField5.resignFirstResponder()
+        self.textField6.resignFirstResponder()
     }
 }
