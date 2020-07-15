@@ -45,6 +45,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     /// A delegate listener to listen to the events fired from the phone input form fields
     @objc public var delegate:TapEmailInputProtocol?
     
+    
     // Mark:- Init methods
     @objc public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,8 +62,12 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     }
     
     
-    
-    
+    @objc public func validationStatus() -> CrardInputTextFieldStatusEnum {
+        // Now we need to validate the email entered
+        // So we validate it using the telecom brands we have available
+        let validationStatus:Bool = emailTextField.text?.isValidEmail() ?? false
+        return (validationStatus) ? .Valid : .Invalid
+    }
     
     /// This method is the brain controller of showing the views, as it taks the process for adding subview, laying them out and applying the theme
     internal func setupViews() {

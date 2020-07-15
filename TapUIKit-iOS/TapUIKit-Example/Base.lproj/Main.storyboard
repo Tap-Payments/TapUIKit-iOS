@@ -1169,6 +1169,38 @@
             </objects>
             <point key="canvasLocation" x="2567" y="8012"/>
         </scene>
+        <!--Go Pay Wrapper View Controller-->
+        <scene sceneID="itw-y4-qrC">
+            <objects>
+                <viewController storyboardIdentifier="GoPayWrapperViewController" id="4rW-Qb-zCe" customClass="GoPayWrapperViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NwD-37-p3l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ4-QR-pnt" customClass="TapGoPaySignInView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="162"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="HnQ-Xr-5i4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YQ4-QR-pnt" firstAttribute="leading" secondItem="FEq-9u-0aA" secondAttribute="leading" id="7Ye-9f-Hdn"/>
+                            <constraint firstItem="YQ4-QR-pnt" firstAttribute="top" secondItem="FEq-9u-0aA" secondAttribute="top" constant="30" id="Kva-8J-Gar"/>
+                            <constraint firstItem="FEq-9u-0aA" firstAttribute="trailing" secondItem="YQ4-QR-pnt" secondAttribute="trailing" id="ZXE-XL-fBi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FEq-9u-0aA"/>
+                    </view>
+                    <connections>
+                        <outlet property="signGoPayView" destination="YQ4-QR-pnt" id="mNw-g3-3sL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RG8-Oj-eA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="8703"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Wallpaper" width="372" height="696"/>

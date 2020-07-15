@@ -80,7 +80,11 @@ import TapCardVlidatorKit_iOS
     }
     
     
-    
+    @objc public func validationStatus() -> CrardInputTextFieldStatusEnum {
+        // Now we need to validate the phone entered matching country length
+        let validationStatus:Bool = tapCountry?.phoneLength ?? -1 == phoneNumberTextField.text?.count
+        return (validationStatus) ? .Valid : .Invalid
+    }
     
     
     /// This method is the brain controller of showing the views, as it taks the process for adding subview, laying them out and applying the theme
