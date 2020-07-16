@@ -26,6 +26,7 @@
             "cherryRed10":"#e1213119",
             "cherryRed20":"#e12132",
             "deepSkyBlue15":"#007aff26",
+            "brownGreyFour":"#a6a6a6",
             "brownGreyFive":"#aeaeae",
             "deepSkyBlue15":"#007aff26"
         }
@@ -492,6 +493,36 @@
             "borderColor": "clear",
             "actionButtonTextColor" : "deepSkyBlue",
             "actionButtonTextFont" : "Roboto-Regular,12"
+        }
+    },
+    "TapOtpView": {
+        "backgroundColor": "clear",
+        "OtpController": {
+            "bottomLineColor": "brownGreyFour",
+            "activeBottomColor": "deepSkyBlue",
+            "textColor": "greyishBrown"
+        },
+        "Timer": {
+            "textFont": "Roboto-Regular,16",
+            "textColor": "deepSkyBlue"
+        },
+        "Ready": {
+            "Message": {
+                "title": "greyishBrown",
+                "subtitle": "deepSkyBlue"
+            }
+        },
+        "Expired": {
+            "Message": {
+                "title": "greyishBrown",
+                "subtitle": "deepSkyBlue"
+            }
+        },
+        "Invalid": {
+            "Message": {
+                "title": "orange",
+                "subtitle": "orange"
+            }
         }
     },
     "goPay": {
