@@ -22,6 +22,8 @@ import TapThemeManager2020
             reloadHintView()
         }
     }
+    /// The view that will have the color of the hint
+    @IBOutlet weak var actualBackgroundView: UIView!
     @IBOutlet weak var actionButton: UIButton!
     
     /// Holds the last style theme applied
@@ -90,7 +92,8 @@ extension TapHintView {
     private func matchThemeAttributes() {
         let status:TapHintViewStatusEnum = viewModel.tapHintViewStatus
         
-        tap_theme_backgroundColor = .init(keyPath: "\(status.themePath()).backgroundColor")
+        tap_theme_backgroundColor  = .init(keyPath: "horizontalList.backgroundColor")
+        actualBackgroundView.tap_theme_backgroundColor = .init(keyPath: "\(status.themePath()).backgroundColor")
         hintLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).textFont")
         hintLabel.tap_theme_textColor = .init(stringLiteral: "\(status.themePath()).textColor")
         actionButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(status.themePath()).actionButtonTextColor"), forState: .normal)

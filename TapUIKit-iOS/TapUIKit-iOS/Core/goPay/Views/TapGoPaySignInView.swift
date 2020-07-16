@@ -166,6 +166,7 @@ import McPicker
     
     /// Handles th logic to show the country picker below the GoPay login fields
     internal func showCountryPicker() {
+        self.endEditing(true)
         // Check if we have more than one country to show
         guard let countries:[TapCountry] = goPayLoginOptionsView.tapGoPayLoginBarViewModel?.allowedCountries,
             countries.count > 1 else { return }
