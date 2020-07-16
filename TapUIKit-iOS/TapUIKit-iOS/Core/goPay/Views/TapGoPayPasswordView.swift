@@ -7,26 +7,32 @@
 //
 
 import TapThemeManager2020
-
+/// External protocol to allow the TapGoPayPasswordView to pass back data and events to the parent UIViewController
 @objc public protocol TapGoPayPasswordViewProtocol {
     
+    /// Will be fired once the user asks to change the email written in the previous step
     @objc func changeEmailClicked()
     
 }
 
+/// Represents the goay pssword view which will have the password text field + the upper hint + the change button
 @objc public class TapGoPayPasswordView: UIView {
 
+    /// The super view that holds everything
     @IBOutlet var contentView: UIView!
+    /// The upper hint view that shows the email and the change button
     @IBOutlet weak var hintView: TapHintView!
+    /// The password textfield correctly themable and customised
     @IBOutlet weak var passwordView: TapGoPayPasswordTextField! {
         didSet{
             passwordView.delegate = self
         }
     }
+    /// The view model needed to create the upper hint view
     internal var hintViewModel:TapHintViewModel = .init(with: .GoPayPassword)
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
-    
+    /// External protocol to allow the TapGoPayPasswordView to pass back data and events to the parent UIViewController
     @objc public var delegate:TapGoPayPasswordViewProtocol?
     
     // Mark:- Init methods
@@ -48,6 +54,10 @@ import TapThemeManager2020
         applyTheme()
     }
     
+    /**
+     Setup the view and show proper message
+     - Parameter email: The email that was entered by the user in the previous step
+     */
     @objc public func setup(with email:String) {
         hintViewModel.overrideTitle = email
     }
