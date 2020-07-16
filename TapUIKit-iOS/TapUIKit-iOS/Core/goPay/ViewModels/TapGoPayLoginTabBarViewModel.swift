@@ -8,6 +8,9 @@
 
 import Foundation
 import SnapKit
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
+
 /// Protocol to communicate between the view controlled by this view model ad the view model itself
 internal protocol TapGoPayLoginBarViewDelegate {
     /**
@@ -46,17 +49,35 @@ internal protocol TapGoPayLoginBarViewDelegate {
         }
     }
     
+    /// The countries which the user is allowed to login with it, should have at least 1 country
+    internal var allowedCountries:[TapCountry] = [] {
+        didSet {
+            configureLoginCountries()
+        }
+    }
+    
     // MARK:- Public normal swift variables
     /// Porotocl to communicate with the outer parent to inform him about events
     @objc public var delegate:TapGoPayLoginBarViewModelDelegate?
     
+    @objc public var hintLabelText:String {
+        return TapLocalisationManager.shared.localisedValue(for: "GoPay.HintLabel", with: TapCommonConstants.pathForDefaultLocalisation())
+    }
+    
     /**
      Creates a new instance of the TapGoPayLoginBarViewModel
-     - Parameter dataSource: The data source which is the list if tab view models that we need to render
+     - Parameter delegate: The delegate which listenes to our events
+     - Parameter countries: The countries which the user is allowed to login with it, should have at least 1 country
      */
-    @objc public init(delegate:TapGoPayLoginBarViewModelDelegate? = nil) {
+    @objc public init(delegate:TapGoPayLoginBarViewModelDelegate? = nil,countries:[TapCountry]) {
         super.init()
         self.delegate = delegate
+        guard countries.count > 0 else {
+            fatalError("The countries the user can login with should have at least 1 country")
+        }
+        defer {
+            self.allowedCountries = countries
+        }
     }
     
     /// Handles all the logic POST assigning a new data source
@@ -68,6 +89,11 @@ internal protocol TapGoPayLoginBarViewDelegate {
             // Give it a little time to render the labels (so if an option has LONG title, then bar will fit nicely) 
             self?.select(option: self!.dataSource[0].titleSegment, with: false)
         }
+        
+    }
+    
+    /// Method to adjust the phone input with the default country once they are set
+    internal func configureLoginCountries() {
         
     }
     

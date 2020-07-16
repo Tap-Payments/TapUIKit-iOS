@@ -61,6 +61,12 @@ import TapThemeManager2020
     }
     
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
+    
     // MARK:- Private methods
     
     /// Used as a consolidated method to do all the needed steps upon creating the view

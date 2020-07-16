@@ -34,6 +34,19 @@ internal protocol TapHintViewDelegate {
             viewDelegate?.reloadHintView()
         }
     }
+    /// Set this value if you want to set a specific title in the hint view
+    @objc public var overrideTitle:String? {
+        didSet {
+            viewDelegate?.reloadHintView()
+        }
+    }
+    /// Set this valye if you want to append a value to the normal hint status localized value
+    @objc public var appendTitle:String? {
+        didSet {
+            viewDelegate?.reloadHintView()
+        }
+    }
+    
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapHintViewModelDelegate?
     
@@ -46,6 +59,20 @@ internal protocol TapHintViewDelegate {
         defer {
             self.tapHintViewStatus = tapHintViewStatus
         }
+    }
+    
+    /**
+     The localization path of the localized value to show for each status putting in mind if the user wants to override this value or append to it
+     - Parameter localized: If set, the method will return th localzed value otherwise, will return the localization path only
+     - Returns: The actual localization path in the localization file or the localized value itself based on inptu, overrided by an verride value of provided or append
+     */
+    internal func localizedTitle(localized: Bool = true) -> String {
+        // Check if the user provided an override value
+        if let overrideValue = overrideTitle {
+            return overrideValue
+        }
+        // Return the localized value and append to it the append value if any
+        return "\(tapHintViewStatus.localizedTitle(localized: localized)) \(appendTitle ?? "")"
     }
     
     @objc public override init() {

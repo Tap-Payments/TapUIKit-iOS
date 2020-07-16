@@ -20,6 +20,8 @@ import RxCocoa
     @objc optional func closeItemsClicked()
     /// A block to execute logic in view model when the close scanner had been clicked
     @objc optional func closeScannerClicked()
+    /// A block to execute logic in view model when the close GoPay login had been clicked
+    @objc optional func closeGoPayClicked()
     /// A block to execute logic in view model when the amount section view in the view is clixked by the user
     @objc optional func amountSectionClicked()
 }
@@ -144,10 +146,10 @@ import RxCocoa
         }
     }
     
-    /// Call this method to informthe amount section that scanner is visible, hence it changes the items button title and action handler
-    @objc public func scannerVisibility(changed withVisbile:Bool) {
+    /// Call this method to informthe amount section the current state of the screen changed, hence the title of items button and its action will differ
+    @objc public func screenChanged(to state:AmountSectionCurrentState) {
         // Adjust inner details to represent the new state
-        currentStateView = withVisbile ? .ScannerView : .DefaultView
+        currentStateView = state
     }
     
     private func updateAmountObserver(for amount:Double, with currencyCode:TapCurrencyCode?, on observer:BehaviorRelay<String>) {
@@ -182,9 +184,13 @@ import RxCocoa
             case .ItemsView:
                 closeItems()
                 break
-        // Meaning currently we are showing the list items and we need to go back to the normal view
+        // Meaning currently we are showing the scanner and we need to go back to the normal view
         case .ScannerView:
             closeScanner()
+            break
+        // Meaning currently we are showing the GoPay Login and we need to go back to the normal view
+        case .GoPayView:
+            closeGoPay()
             break
         }
     }
@@ -193,7 +199,7 @@ import RxCocoa
         switch currentStateView{
         case .DefaultView:
             itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
-        case .ItemsView,.ScannerView:
+        case .ItemsView,.ScannerView,.GoPayView:
             itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
         }
     }
@@ -225,6 +231,15 @@ import RxCocoa
         delegate?.closeScannerClicked?()
     }
     
+    
+    private func closeGoPay() {
+        // Adjust inner details to represent the new state
+        currentStateView = .DefaultView
+        numberOfItems = numberOfItems + 0
+        // Inform the delegate that we need to take an action to show the items
+        delegate?.closeGoPayClicked?()
+    }
+    
     /// A block to execute logic in view model when the amount section view in the view is clixked by the user
     internal func amountSectionClicked() {
         delegate?.amountSectionClicked?()
@@ -238,11 +253,13 @@ import RxCocoa
 }
 
 /// Enum to determine the current state of the amount view, whether we are shoing the default view or the items list is currencly visiblt
-internal enum AmountSectionCurrentState {
+@objc public enum AmountSectionCurrentState:Int {
     /// Default view, which has the normal payment screen + title is "ITEMS"
     case DefaultView
     /// Means, the current screen displays the items list
     case ItemsView
     /// Means, the current screen displays the scannner
     case ScannerView
+    /// Means, the current screen displays the GoPay
+    case GoPayView
 }

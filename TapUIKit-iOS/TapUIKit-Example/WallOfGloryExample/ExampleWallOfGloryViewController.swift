@@ -15,6 +15,7 @@ import TapCardVlidatorKit_iOS
 import TapCardInputKit_iOS
 import TapCardScanner_iOS
 import AVFoundation
+import McPicker
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -29,6 +30,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
+    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
@@ -49,7 +51,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         UILabel.appearance(whenContainedInInstancesOf:[UIAlertController.self]).lineBreakMode = .byWordWrapping
         addGloryViews()
     }
-    
     
     func createDefaultViewModels() {
         tapMerchantHeaderViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
@@ -202,6 +203,34 @@ class ExampleWallOfGloryViewController: UIViewController {
         currencyListView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         currencyListView.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
     }
+    
+    
+    func showGoPay() {
+        let signGoPayView: TapGoPaySignInView = .init()
+        signGoPayView.delegate = self
+        signGoPayView.backgroundColor = .clear
+        signGoPayView.translatesAutoresizingMaskIntoConstraints = false
+        signGoPayView.heightAnchor.constraint(equalToConstant: 161).isActive = true
+        
+        signGoPayView.setup(with: goPayBarViewModel)
+        tapAmountSectionViewModel.screenChanged(to: .GoPayView)
+        
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if element == gatewaysListView {
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
+                views.remove(at: index)
+                views.remove(at: index)
+                views.append(signGoPayView)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.slideIn(.bottom,duration: 0.5,delay: 0.25)])
+                }
+                break
+            }
+        }
+        
+    }
     /*
      // MARK: - Navigation
      
@@ -295,11 +324,31 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index-1)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
-                tapAmountSectionViewModel.scannerVisibility(changed: false)
+                tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                }
+                break
+            }
+        }
+    }
+    
+    
+    func closeGoPayClicked() {
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
+                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.slideOut(.bottom, duration: 0.25))
+                views.remove(at: index)
+                views.append(gatewaysListView)
+                views.append(tapCardTelecomPaymentView)
+                tapAmountSectionViewModel.screenChanged(to: .DefaultView)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.removeAllHintViews()
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn(duration: 0.1,delay: 0.25)])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn(duration:0.1,delay: 0.25)])
                 }
                 break
             }
@@ -321,7 +370,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(hintView)
                 views.append(tapCardScannerView)
-                tapAmountSectionViewModel.scannerVisibility(changed: true)
+                tapAmountSectionViewModel.screenChanged(to: .ScannerView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
                     self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
@@ -362,7 +411,8 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {
-        showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
+        //showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
+        showGoPay()
     }
     
     func headerLeftButtonClicked(in headerType: TapHorizontalHeaderType) {
@@ -450,6 +500,36 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
     }
     
     
+}
+
+
+extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
+    func countryCodeClicked() {
+        view.endEditing(true)
+        let data: [[String]] = [["Kevin", "Lauren", "Kibby", "Stella"]]
+        let mcPicker = McPicker(data: data)
+        
+        
+        
+        mcPicker.backgroundColor = .gray
+        mcPicker.backgroundColorAlpha = 0
+        mcPicker.pickerBackgroundColor = .init(white: 1, alpha: 0.8)
+        let fixedSpace = McPickerBarButtonItem.fixedSpace(width: 9.0)
+        let flexibleSpace = McPickerBarButtonItem.flexibleSpace()
+        let fireButton = McPickerBarButtonItem.done(mcPicker: mcPicker, title: "Done", barButtonSystemItem: .done) // Set custom Text
+        let cancelButton = McPickerBarButtonItem.cancel(mcPicker: mcPicker,title: "إلغاء", barButtonSystemItem: .cancel) // or system items
+        // Set custom toolbar items
+        mcPicker.setToolbarItems(items: [fixedSpace, cancelButton, flexibleSpace, fireButton, fixedSpace])
+        
+        
+        mcPicker.show(doneHandler: { (Selection) in
+            
+        }, cancelHandler: {
+            
+        }) { (Selections, Index) in
+            
+        }
+    }
 }
 
 

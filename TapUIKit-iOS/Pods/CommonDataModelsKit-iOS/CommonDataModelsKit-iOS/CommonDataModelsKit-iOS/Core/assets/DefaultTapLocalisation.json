@@ -40,6 +40,11 @@
             "Scanned":
             {
                 "successFullScan" : "Your card has been scanned successfully."
+            },
+            "GoPayLogin":
+            {
+                "password": "",
+                "otp": "OTP has been sent to"
             }
         },
         "Common": {
@@ -52,7 +57,9 @@
             "items": "Items",
             "item": "Item",
             "email": "email",
-            "phone": "phone"
+            "phone": "phone",
+            "password": "Password",
+            "change": "change"
         },
         "TapOtpView": {
             "Message": {
@@ -60,6 +67,9 @@
                 "Expired": "OTP has been expired!",
                 "Invalid": "Invalid OTP number!"
             }
+        },
+        "GoPay": {
+            "HintLabel": "You can access your saved cards from anywhere with goPay."
         }
     },
     "ar": {
@@ -103,6 +113,11 @@
             "Scanned":
             {
                 "successFullScan" : "تم  تصوير الكارت بنجاح"
+            },
+            "GoPayLogin":
+            {
+                "password": "",
+                "otp": "تم إرسال الرمز لـ"
             }
         },
         "Common": {
@@ -115,7 +130,9 @@
             "items": "منتجات",
             "item": "منتج",
             "email": "البريد",
-            "phone": "الهاتف"
+            "phone": "الهاتف",
+            "password": "كلمة السر",
+            "change": "تعديل"
         },
         "TapOtpView": {
           "Message": {
@@ -123,6 +140,9 @@
             "Expired": "انتهت صلاحية الكود!",
             "Invalid": "الكود الئي تم إدخاله غير صالح!"
           }
+        },
+        "GoPay": {
+            "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"
         }
     }
 }

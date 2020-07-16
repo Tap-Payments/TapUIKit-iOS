@@ -453,28 +453,45 @@
             "textFont": "Roboto-Light,12",
             "textColor": "orange",
             "backgroundColor": "apricot30",
-            "borderColor": "reddishOrange20"
+            "borderColor": "reddishOrange20",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         },
         "Error":
         {
             "textFont": "Roboto-Light,12",
             "textColor": "cherryRed",
             "backgroundColor": "cherryRed10",
-            "borderColor": "cherryRed20"
+            "borderColor": "cherryRed20",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         },
         "Default":
         {
             "textFont": "Roboto-Light,12",
             "textColor": "greyishBrown",
             "backgroundColor": "whiteTwo",
-            "borderColor": "clear"
+            "borderColor": "clear",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         },
         "Scanned":
         {
             "textFont": "Roboto-Light,12",
             "textColor": "deepSkyBlue",
             "backgroundColor": "deepSkyBlue15",
-            "borderColor": "clear"
+            "borderColor": "clear",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
+        },
+        "GoPayLogin":
+        {
+            "textFont": "Roboto-Light,14",
+            "textColor": "greyishBrown",
+            "backgroundColor": "whiteTwo",
+            "borderColor": "clear",
+            "actionButtonTextColor" : "deepSkyBlue",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         }
     },
     "TapOtpView": {
@@ -524,6 +541,29 @@
                 "otherSegmentSelected" : {
                     "textFont": "Roboto-Regular,12",
                     "textColor": "brownGreyFive"
+                }
+            },
+            "hintLabel": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "brownGreyThree"
+            }
+        },
+        "passwordView" :{
+            "backgroundColor": "clear"
+        },
+        "passwordField": {
+            "backgroundColor" : "clear",
+            "textFont": "Roboto-Light,17",
+            "textColor": "greyishBrown",
+            "placeHolderColor" : "brownGreyThree",
+            "showPasswordIcon" : "passwordEye",
+            "hidePasswordIcon" : "passwordEye",
+            "underline":{
+                "empty": {
+                    "backgroundColor" : "brownGrey"
+                },
+                "filled": {
+                    "backgroundColor" : "deepSkyBlue"
                 }
             }
         }

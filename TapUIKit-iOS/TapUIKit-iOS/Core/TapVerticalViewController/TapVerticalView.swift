@@ -204,12 +204,12 @@ import SimpleAnimation
             view.bounceOut(to: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
         case .fadeIn:
             view.fadeIn(completion: {_ in self.removeFromStackView(view:view)})
-        case .fadeOut:
-            view.fadeOut(completion: {_ in self.removeFromStackView(view:view)})
+        case .fadeOut(let duration,_):
+            view.fadeOut(duration:duration,completion: {_ in self.removeFromStackView(view:view)})
         case .slideIn(let direction,_,_):
             view.slideIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .slideOut(let direction,_,_):
-            view.slideOut(to: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
+        case .slideOut(let direction,let duration,_):
+            view.slideOut(to: direction.animationKitDirection(),duration:duration,completion: {_ in self.removeFromStackView(view:view)})
         case .popIn:
             view.popIn()
         case .popOut:
@@ -222,6 +222,7 @@ import SimpleAnimation
     
     
     private func removeFromStackView(view:UIView) {
+        view.fadeOut(duration:0)
         stackView.removeArrangedSubview(view)
         itemsBeingRemoved = false
     }
@@ -368,7 +369,7 @@ import SimpleAnimation
                     completion()
                 })
             case .slideIn(let direction,let duration,let delay):
-                view.slideIn(from: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
+                view.slideIn(from: direction.animationKitDirection(),x:0,y:400, duration:duration, delay:delay, completion: { _ in
                     completion()
                 })
             case .slideOut(let direction,let duration,let delay):
@@ -547,7 +548,7 @@ extension TapVerticalView {
     }
     @objc func dismissKeyboard()
     {
-        endEditing(true)
+        //endEditing(true)
     }
 }
 

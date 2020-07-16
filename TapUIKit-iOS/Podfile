@@ -33,5 +33,6 @@ target 'TapUIKit-iOS' do
   pod 'TapCardVlidatorKit-iOS'
   pod 'EasyAnimation'
   pod 'TapCardInputKit-iOS'
-  pod 'TapCardScanner-iOS' 
+  pod 'TapCardScanner-iOS'
+  pod 'McPicker'
 end
