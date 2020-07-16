@@ -96,7 +96,7 @@ extension TapOtpView {
         
 //        let status: TapOTPState = viewModel.state
         
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath)).backgroundColor")
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
         timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
         

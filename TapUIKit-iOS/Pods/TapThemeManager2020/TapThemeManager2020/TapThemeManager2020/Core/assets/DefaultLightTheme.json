@@ -26,6 +26,7 @@
             "cherryRed10":"#e1213119",
             "cherryRed20":"#e12132",
             "deepSkyBlue15":"#007aff26",
+            "brownGreyFour":"#a6a6a6",
             "brownGreyFive":"#aeaeae",
             "deepSkyBlue15":"#007aff26"
         }
@@ -495,6 +496,7 @@
         }
     },
     "TapOtpView": {
+        "backgroundColor": "clear",
         "OtpController": {
             "bottomLineColor": "brownGreyFour",
             "activeBottomColor": "deepSkyBlue",
@@ -520,7 +522,7 @@
             "Message": {
                 "title": "orange",
                 "subtitle": "orange"
-            }
+                }
         }
     },
     "goPay": {
