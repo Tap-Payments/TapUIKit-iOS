@@ -12,15 +12,17 @@ import TapUIKit_iOS
 class TapOtpExampleViewController: UIViewController {
 
     @IBOutlet weak var tapOtpView: TapOtpView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setupOtp()
     }
     
     func setupOtp() {
         let otpViewModel: TapOtpViewModel = .init()
-        let otpView: TapOtpView = otpViewModel.createOtpView()
+        self.tapOtpView.setup(with: otpViewModel)
         otpViewModel.updateTimer(minutes: 0, seconds: 70)
+
     }
 
 }

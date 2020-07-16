@@ -94,9 +94,9 @@ extension TapOtpView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        let status: TapOTPState = viewModel.state
+//        let status: TapOTPState = viewModel.state
         
-        tap_theme_backgroundColor = .init(keyPath: "\(status.themePath()).backgroundColor")
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath)).backgroundColor")
         timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
         timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
         
