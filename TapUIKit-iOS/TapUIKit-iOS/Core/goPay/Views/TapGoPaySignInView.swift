@@ -105,7 +105,7 @@ import McPicker
     
     
     internal func showOtpView(with phone:String) {
-        goPayOTPView.setup(with: phone,expires: 50)
+        goPayOTPView.setup(with: phone,expires: 20)
         goPayOTPView.fadeIn(duration: animationDuration)
         goPayOTPView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
     }
@@ -228,7 +228,7 @@ extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
     }
     
     public func otpStateExpired() {
-        
+        changePhoneClicked()
     }
     
     public func validateOTP(with otp: String) {
