@@ -32,6 +32,12 @@ import LocalisationManagerKit_iOS
      - Parameter viewModel: THe selected login option view model
      */
     @objc optional func loginOptionSelected(with viewModel: TapGoPayTitleViewModel)
+    
+    /// This method will be called whenever the user hits return on the email text
+    @objc optional func emailReturned(with email:String)
+    
+    /// This method will be called whenever the user hits return on the phone text
+    @objc optional func phoneReturned(with phon:String)
 }
 
 
@@ -76,6 +82,14 @@ class GoPayLoginOptions: UIView {
         }
     }
     
+    @objc public func focus(field:GoPyLoginOption) {
+        switch field {
+        case .Email:
+            emailInput.focus()
+        case .Phone:
+            phoneInput.focus()
+        }
+    }
     
     /// Represents the country that telecom options are being shown for, used to handle country code and correct phone length
     @objc public var tapCountry:TapCountry? {
@@ -96,26 +110,20 @@ class GoPayLoginOptions: UIView {
         commonInit()
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
+    
     
     // MARK:- Private methods
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.contentView = setupXIB()
-        showLoginView()
         applyTheme()
         
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.contentView.frame = bounds
-    }
-    
-    
-    internal func showLoginView() {
-        loginOptionsTabBar.fadeIn()
-        tap_theme_backgroundColor = .init(keyPath: "goPay.loginBar.backgroundColor")
     }
     
     /**
@@ -144,6 +152,15 @@ extension GoPayLoginOptions: TapEmailInputProtocol {
         validationStatus = (validation == .Valid) ? true : false
     }
     
+    
+    func emailReturned(with email: String) {
+        validationStatus = (emailInput.validationStatus() == .Valid) ? true : false
+        if validationStatus {
+            // Instruct the parent caller that email is valid and user hit NEXT
+            delegate?.emailReturned?(with: email)
+        }
+    }
+    
 }
 
 
@@ -154,11 +171,18 @@ extension GoPayLoginOptions: TapPhoneInputProtocol {
         delegate?.phoneChanged(phone: phoneNumber, with: validation)
         validationStatus = (validation == .Valid) ? true : false
     }
+    
+    func phoneReturned(with phone: String) {
+        validationStatus = (phoneInput.validationStatus() == .Valid) ? true : false
+        if validationStatus {
+            // Instruct the parent caller that email is valid and user hit NEXT
+            delegate?.phoneReturned?(with: phone)
+        }
+    }
 }
 
 
 extension GoPayLoginOptions: TapGoPayLoginBarViewModelDelegate {
-    
     func loginOptionSelected(with viewModel: TapGoPayTitleViewModel) {
         showInputFor(for: viewModel.titleSegment)
         delegate?.loginOptionSelected?(with: viewModel)
@@ -179,6 +203,8 @@ extension GoPayLoginOptions {
     private func matchThemeAttributes() {
         hintLabel.tap_theme_font = .init(stringLiteral: "goPay.loginBar.hintLabel.textFont")
         hintLabel.tap_theme_textColor = .init(stringLiteral: "goPay.loginBar.hintLabel.textColor")
+        
+        tap_theme_backgroundColor = .init(keyPath: "goPay.loginBar.backgroundColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

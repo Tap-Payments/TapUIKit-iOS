@@ -520,6 +520,9 @@
                 "textColor": "brownGreyThree"
             }
         },
+        "passwordView" :{
+            "backgroundColor": "clear"
+        },
         "passwordField": {
             "backgroundColor" : "clear",
             "textFont": "Roboto-Light,17",

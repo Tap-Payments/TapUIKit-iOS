@@ -69,6 +69,12 @@ import TapThemeManager2020
     @IBAction func titleClicked(_ sender: Any) {
         viewModel?.titleIsSelected()
     }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
 }
 
 

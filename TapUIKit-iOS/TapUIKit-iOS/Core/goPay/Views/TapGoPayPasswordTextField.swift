@@ -91,6 +91,12 @@ import LocalisationManagerKit_iOS
         delegate?.passwordChanged(to: passwordTextField.text ?? "")
     }
     
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
 }
 
 

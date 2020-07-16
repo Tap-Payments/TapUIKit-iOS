@@ -28,6 +28,9 @@ import TapCardVlidatorKit_iOS
     
      /// This method will be called whenever the user clicked on the country code
     @objc optional func countryCodeClicked()
+    
+    /// This method will be called whenever the user hits return on the phone text
+    @objc optional func phoneReturned(with phone:String)
 }
 
 
@@ -239,6 +242,9 @@ extension TapPhoneInput {
         applyTheme()
     }
     
+    @objc public func focus() {
+        phoneNumberTextField.becomeFirstResponder()
+    }
     
     /// Method that glows or the dims the card input view based on the shadow theme provided and if any of the fields is active
     internal func  updateShadow() {
@@ -288,6 +294,15 @@ extension TapPhoneInput: UITextFieldDelegate {
             phoneNumberTextField.resignFirstResponder()
             return false
         }
+        
+        return true
+    }
+    
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard textField == phoneNumberTextField else { return true }
+        
+        delegate?.phoneReturned?(with: phoneNumberTextField.text ?? "")
         
         return true
     }

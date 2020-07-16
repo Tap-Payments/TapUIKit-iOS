@@ -63,7 +63,7 @@ import TapThemeManager2020
     
     /// localise the hint text based on th enew current status
     private func localise() {
-        hintLabel.text = viewModel.tapHintViewStatus.localizedTitle(localized: true)
+        hintLabel.text = viewModel.localizedTitle()
         actionButton.setTitle(viewModel.tapHintViewStatus.localizedActionButtonTitle(), for: .normal)
     }
     

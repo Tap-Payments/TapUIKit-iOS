@@ -20,6 +20,9 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
      - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
      */
     @objc optional func emailChanged(email:String,with validation:CrardInputTextFieldStatusEnum)
+    
+    /// This method will be called whenever the user hits return on the email text
+    @objc optional func emailReturned(with email:String)
 }
 
 
@@ -61,6 +64,9 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         setupViews()
     }
     
+    @objc public func focus() {
+        emailTextField.becomeFirstResponder()
+    }
     
     @objc public func validationStatus() -> CrardInputTextFieldStatusEnum {
         // Now we need to validate the email entered
@@ -122,12 +128,14 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         
         emailTextField.delegate = self
         
-        clearButton.addTarget(self, action: #selector(clearPhoneInput), for: .touchUpInside)
+        emailTextField.returnKeyType = .next
+        
+        clearButton.addTarget(self, action: #selector(clearEmailInput), for: .touchUpInside)
     }
     
     
     /// Handles the logic of clearing and reseting the component
-    @objc public func clearPhoneInput() {
+    @objc public func clearEmailInput() {
         
         emailTextField.text = ""
         didChangeText(textField: emailTextField)
@@ -255,6 +263,15 @@ extension TapEmailInput: UITextFieldDelegate {
         let updatedText:String = currentText.replacingCharacters(in: stringRange, with: string)
         // Check if the new string is a valid one to allow writing it to the card number field
         return changeText(with: updatedText)
+    }
+    
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard textField == emailTextField else { return true }
+        
+        delegate?.emailReturned?(with: emailTextField.text ?? "")
+        
+        return true
     }
     
     

@@ -12,10 +12,17 @@ import CommonDataModelsKit_iOS
 
 @objc public class TapGoPaySignInView: UIView {
 
+    let animationDuration:Double = 0.5
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var goPayLoginOptionsView: GoPayLoginOptions! {
         didSet {
             goPayLoginOptionsView.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var goPayPasswordView: TapGoPayPasswordView! {
+        didSet {
+            goPayPasswordView.delegate = self
         }
     }
     
@@ -55,7 +62,27 @@ import CommonDataModelsKit_iOS
     private func configureWithStatus() {
         //applyTheme()
     }
-
+    
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
+    
+    internal func showPasswordView(with email:String) {
+        goPayPasswordView.setup(with: email)
+        goPayPasswordView.fadeIn(duration: animationDuration)
+        goPayPasswordView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
+    }
+    
+    
+    internal func showLoginOptions(focus field:GoPyLoginOption? = nil) {
+        if let field = field {
+            goPayLoginOptionsView.focus(field: field)
+        }
+        goPayLoginOptionsView.fadeIn(duration:animationDuration)
+    }
 }
 
 
@@ -70,5 +97,25 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
         
     }
     
+    func emailReturned(with email: String) {
+        // Show password view
+        goPayLoginOptionsView.fadeOut(duration:animationDuration)
+        showPasswordView(with: email)
+    }
+    
+    func phoneReturned(with phon: String) {
+        
+    }
+}
+
+
+extension TapGoPaySignInView: TapGoPayPasswordViewProtocol {
+    
+    public func changeEmailClicked() {
+        // Show login opions view
+        showLoginOptions(focus: .Email)
+        goPayPasswordView.slideOut(to:.bottom,duration:animationDuration)
+        goPayPasswordView.fadeOut(duration:animationDuration)
+    }
     
 }

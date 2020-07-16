@@ -547,7 +547,7 @@ extension TapVerticalView {
     }
     @objc func dismissKeyboard()
     {
-        endEditing(true)
+        //endEditing(true)
     }
 }
 

@@ -29,6 +29,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
+    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init()
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
@@ -49,7 +50,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         UILabel.appearance(whenContainedInInstancesOf:[UIAlertController.self]).lineBreakMode = .byWordWrapping
         addGloryViews()
     }
-    
     
     func createDefaultViewModels() {
         tapMerchantHeaderViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
@@ -202,6 +202,32 @@ class ExampleWallOfGloryViewController: UIViewController {
         currencyListView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         currencyListView.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
     }
+    
+    
+    func showGoPay() {
+        let signGoPayView: TapGoPaySignInView = .init()
+        signGoPayView.backgroundColor = .clear
+        signGoPayView.translatesAutoresizingMaskIntoConstraints = false
+        signGoPayView.heightAnchor.constraint(equalToConstant: 161).isActive = true
+        signGoPayView.setup(with: goPayBarViewModel,and: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+        tapAmountSectionViewModel.screenChanged(to: .GoPayView)
+        
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if element == gatewaysListView {
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
+                views.remove(at: index)
+                views.append(signGoPayView)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
+                }
+                break
+            }
+        }
+        
+    }
     /*
      // MARK: - Navigation
      
@@ -295,7 +321,27 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index-1)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
-                tapAmountSectionViewModel.scannerVisibility(changed: false)
+                tapAmountSectionViewModel.screenChanged(to: .DefaultView)
+                DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.removeAllHintViews()
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                }
+                break
+            }
+        }
+    }
+    
+    
+    func closeGoPayClicked() {
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
+                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
+                views.append(gatewaysListView)
+                views.append(tapCardTelecomPaymentView)
+                tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
@@ -321,7 +367,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(hintView)
                 views.append(tapCardScannerView)
-                tapAmountSectionViewModel.scannerVisibility(changed: true)
+                tapAmountSectionViewModel.screenChanged(to: .ScannerView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
                     self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
@@ -362,7 +408,8 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {
-        showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
+        //showAlert(title: "GoPay cell clicked", message: "You clicked on GoPay.")
+        showGoPay()
     }
     
     func headerLeftButtonClicked(in headerType: TapHorizontalHeaderType) {
