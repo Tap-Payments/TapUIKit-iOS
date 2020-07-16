@@ -20,6 +20,8 @@ class OTPViewController: UIViewController {
         otpViewModel.updateTimer(minutes: 0, seconds: 50)
         otpView.setup(with: otpViewModel)
         otpViewModel.updateTimer(minutes: 0, seconds: 50)
+        
+        //otpViewModel.delegate = self
         // Do any additional setup after loading the view.
     }
     
