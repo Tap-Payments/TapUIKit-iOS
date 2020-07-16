@@ -46,6 +46,12 @@ import McPicker
         }
     }
     
+    @IBOutlet weak var goPayOTPView: TapGoPayOTPView! {
+        didSet {
+            goPayOTPView.delegate = self
+        }
+    }
+    
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     private let themePath:String = "goPay.signIn"
@@ -98,6 +104,12 @@ import McPicker
     }
     
     
+    internal func showOtpView(with phone:String) {
+        goPayOTPView.setup(with: phone,expires: 50)
+        goPayOTPView.fadeIn(duration: animationDuration)
+        goPayOTPView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
+    }
+    
     internal func showLoginOptions(focus field:GoPyLoginOption? = nil) {
         if let field = field {
             goPayLoginOptionsView.focus(field: field)
@@ -126,6 +138,9 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
     }
     
     func phoneReturned(with phon: String) {
+        // Show phone view
+        goPayLoginOptionsView.fadeOut(duration:animationDuration)
+        showOtpView(with: phon)
         delegate?.phoneReturned?(with: phon)
     }
     
@@ -200,4 +215,23 @@ extension TapGoPaySignInView: TapGoPayPasswordViewProtocol {
         goPayPasswordView.fadeOut(duration:animationDuration)
     }
     
+}
+
+
+extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
+    
+    public func changePhoneClicked() {
+        // Show login opions view
+        showLoginOptions(focus: .Phone)
+        goPayOTPView.slideOut(to:.bottom,duration:animationDuration)
+        goPayOTPView.fadeOut(duration:animationDuration)
+    }
+    
+    public func otpStateExpired() {
+        
+    }
+    
+    public func validateOTP(with otp: String) {
+        
+    }
 }
