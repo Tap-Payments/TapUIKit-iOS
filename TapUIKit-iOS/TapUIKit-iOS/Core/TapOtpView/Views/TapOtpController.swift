@@ -194,6 +194,8 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         return true
     }
     
+    
+    
     // MARK: TextField Movements
     fileprivate func moveToNextTextField(_ textField: UITextField) {
         if textField == textField1 {
