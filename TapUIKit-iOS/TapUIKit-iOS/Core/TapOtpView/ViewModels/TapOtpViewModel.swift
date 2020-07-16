@@ -10,6 +10,10 @@ import  UIKit
 
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapOtpViewDelegate {
+    
+    /// A method to instruc the view to show / hide message label on the view
+    func updateMessageVisibility(hide: Bool)
+    
     /// A method to instruc the view to update status message
     func updateMessage()
     
@@ -48,7 +52,8 @@ internal protocol TapOtpViewDelegate {
         }
     }
     
-    var phoneNo: String = ""
+    private var phoneNo: String
+    private var showMessage: Bool
     
     /// The delegate used to fire events inside the associated view
     internal var viewDelegate:TapOtpViewDelegate? {
@@ -64,6 +69,12 @@ internal protocol TapOtpViewDelegate {
         didSet {
             self.updateState()
         }
+    }
+    
+    public
+    init(phoneNo: String, showMessage: Bool) {
+        self.phoneNo = phoneNo
+        self.showMessage = showMessage
     }
 
     // MARK: UpdateTimer
@@ -81,12 +92,15 @@ internal protocol TapOtpViewDelegate {
     
     // MARK: State Change
     func stateDidChange() {
+        self.viewDelegate?.updateMessageVisibility(hide: !showMessage)
+
+        
         switch self.state {
         case .ready:
             self.delegate?.otpStateReadyToValidate(otpValue: self.otpValue)
             
         case .invalid:
-            self.viewDelegate?.updateMessage()
+            self.updateMessageViewDelegate()
             
         case .expired:
             self.viewDelegate?.otpExpired()
@@ -94,7 +108,7 @@ internal protocol TapOtpViewDelegate {
             
         case .empty:
             self.timer?.start()
-            self.viewDelegate?.updateMessage()
+            self.updateMessageViewDelegate()
             self.viewDelegate?.enableOtpEditing()
         }
     }
@@ -115,6 +129,12 @@ internal protocol TapOtpViewDelegate {
         tapOtpView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         tapOtpView.setup(with: self)
         return tapOtpView
+    }
+    
+    func updateMessageViewDelegate() {
+        if self.showMessage {
+            self.viewDelegate?.updateMessage()
+        }
     }
     
     // MARK: Resend

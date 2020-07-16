@@ -172,6 +172,13 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if let pasteValue = UIPasteboard.general.string {
+//
+//           print("paste: \(pasteValue)")
+//            self.paste(value: pasteValue)
+//            return false
+//        }
+        
         print("string : \(string)")
         if textField.text!.count < 1 && string.count > 0 {
             moveToNextTextField(textField)
@@ -195,6 +202,37 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     
+    // MARK: TextField Paste
+    func paste(value: String) {
+        for (index, char) in value.enumerated() {
+            if index > 5 {
+                self.resignAllTextFields()
+                break
+            }
+            switch index {
+            case 0:
+                self.textField1.text = "\(char)"
+                self.updateDigits(textField1)
+            case 1:
+                self.textField2.text = "\(char)"
+                self.updateDigits(textField2)
+            case 2:
+                self.textField3.text = "\(char)"
+                self.updateDigits(textField3)
+            case 3:
+                self.textField4.text = "\(char)"
+                self.updateDigits(textField4)
+            case 4:
+                self.textField5.text = "\(char)"
+                self.updateDigits(textField5)
+                
+            case 5:
+                self.textField6.text = "\(char)"
+                self.updateDigits(textField6)
+            default: break
+            }
+        }
+    }
     
     // MARK: TextField Movements
     fileprivate func moveToNextTextField(_ textField: UITextField) {
@@ -246,6 +284,15 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     // MARK: ResetAllTextFields
+    fileprivate func resignAllTextFields() {
+        self.textField1.resignFirstResponder()
+        self.textField2.resignFirstResponder()
+        self.textField3.resignFirstResponder()
+        self.textField4.resignFirstResponder()
+        self.textField5.resignFirstResponder()
+        self.textField6.resignFirstResponder()
+    }
+    
     public func resetAll() {
         self.digits = ["", "", "", "", "", ""]
         self.textField1.text = ""
@@ -255,11 +302,6 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField5.text = ""
         self.textField6.text = ""
         
-        self.textField1.resignFirstResponder()
-        self.textField2.resignFirstResponder()
-        self.textField3.resignFirstResponder()
-        self.textField4.resignFirstResponder()
-        self.textField5.resignFirstResponder()
-        self.textField6.resignFirstResponder()
+        resignAllTextFields()
     }
 }

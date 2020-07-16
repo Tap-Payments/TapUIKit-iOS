@@ -17,7 +17,7 @@ import TapThemeManager2020
     @IBOutlet weak var otpController: TapOtpController!
     
     /// The view model that controls the data to be displayed and the events to be fired
-    @objc public var viewModel:TapOtpViewModel = .init()
+    @objc public var viewModel:TapOtpViewModel = .init(phoneNo: "", showMessage: false)
     
     private let themePath = "TapOtpView"
     
@@ -56,6 +56,10 @@ import TapThemeManager2020
 }
 
 extension TapOtpView: TapOtpViewDelegate {
+    func updateMessageVisibility(hide: Bool) {
+        self.messageLabel.isHidden = hide
+    }
+    
     public func updateTimer(currentTime: String) {
         self.timerLabel.text = currentTime
     }

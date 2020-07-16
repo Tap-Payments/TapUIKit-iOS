@@ -12,7 +12,7 @@ import TapUIKit_iOS
 class OTPViewController: UIViewController {
 
     @IBOutlet weak var otpView: TapOtpView!
-    let otpViewModel:TapOtpViewModel = .init()
+    let otpViewModel:TapOtpViewModel = .init(phoneNo: "50393828", showMessage: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()

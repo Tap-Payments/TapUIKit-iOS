@@ -22,7 +22,7 @@ import TapThemeManager2020
     @IBOutlet weak var hintView: TapHintView!
     @IBOutlet weak var otpView: TapOtpView!
     internal var hintViewModel:TapHintViewModel = .init(with: .GoPayOtp)
-    internal var otpViewModel:TapOtpViewModel = .init()
+    internal var otpViewModel:TapOtpViewModel = .init(phoneNo: "", showMessage: false)
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
