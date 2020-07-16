@@ -215,13 +215,13 @@ class ExampleWallOfGloryViewController: UIViewController {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(signGoPayView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.slideIn(.bottom,duration: 0.5,delay: 0.25)])
                 }
                 break
             }
@@ -337,15 +337,15 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
-                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.slideOut(.bottom, duration: 0.25))
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
-                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn(duration: 0.1,delay: 0.25)])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn(duration:0.1,delay: 0.25)])
                 }
                 break
             }
