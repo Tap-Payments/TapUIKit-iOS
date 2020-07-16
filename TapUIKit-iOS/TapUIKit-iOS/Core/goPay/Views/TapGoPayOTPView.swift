@@ -7,25 +7,35 @@
 //
 
 import TapThemeManager2020
-
+/// External protocol to allow the TapGoPayOTPView to pass back data and events to the parent UIViewControlle
 @objc public protocol TapGoPayOTPViewProtocol {
-    
+    /// Will be fired once the user asks to change the phone written in the previous step
     @objc func changePhoneClicked()
+    /// Will be fired once the otp is expired
     @objc func otpStateExpired()
+    /**
+     An event will be fired once the user enter all the otp digits
+     - Parameter otpValue: the OTP value entered by user
+     */
     @objc func validateOTP(with otp:String)
     
 }
 
+/// Represents the view that shows the OTP + the hint + the change button
 @objc public class TapGoPayOTPView: UIView {
-    
+    /// The super view that holds everything
     @IBOutlet var contentView: UIView!
+    /// The upper hint view that shows the phone and the change button
     @IBOutlet weak var hintView: TapHintView!
+    /// The OTP view correctly themable and customised
     @IBOutlet weak var otpView: TapOtpView!
+    /// The view model needed to create the upper hint view
     internal var hintViewModel:TapHintViewModel = .init(with: .GoPayOtp)
+    /// The view model needed to setup the OTP view
     internal var otpViewModel:TapOtpViewModel = .init()
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
-    
+    /// External protocol to allow the TapGoPayOTPView to pass back data and events to the parent UIViewControlle
     @objc public var delegate:TapGoPayOTPViewProtocol?
     
     // Mark:- Init methods
@@ -47,6 +57,11 @@ import TapThemeManager2020
         applyTheme()
     }
     
+    /**
+     Setup the view and show proper message
+     - Parameter phone: The phone that was entered by the user in the previous step
+     - Parameter expires: The duration in seconds after which, the OTP will expire
+     */
     @objc public func setup(with phone:String,expires after:Int) {
         hintViewModel.appendTitle = phone
         otpViewModel.delegate = self
