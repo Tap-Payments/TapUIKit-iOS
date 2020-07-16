@@ -42,7 +42,7 @@ internal protocol TapOtpViewDelegate {
 @objc public class TapOtpViewModel: NSObject {
     
     private var timer: TapTimer?
-    var state: TapOTPState = .empty {
+    @objc public var state: TapOTPState = .empty {
         didSet {
             self.stateDidChange()
         }
