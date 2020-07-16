@@ -135,10 +135,14 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
     }
     
     internal func showCountryPicker() {
+        // Check if we have more than one country to show
+        guard let countries:[TapCountry] = goPayLoginOptionsView.tapGoPayLoginBarViewModel?.allowedCountries,
+            countries.count > 1 else { return }
+        
         
         changeHeight(with: 250)
         // Show the picker just after the animation of height changed
-        let data: [[String]] = [["Kevin", "Lauren", "Kibby", "Stella"]]
+        let data: [[String]] = [countries.map{ $0.nameEN ?? "" }]
         let mcPicker = McPicker(data: data)
         
         
