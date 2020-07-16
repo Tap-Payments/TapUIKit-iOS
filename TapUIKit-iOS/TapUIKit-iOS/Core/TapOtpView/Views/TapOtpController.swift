@@ -24,7 +24,17 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     
     
     @IBInspectable public var pinCount: Int = 4
-    @IBInspectable public var textColor: UIColor = .white
+    @IBInspectable public var textColor: UIColor = .white {
+        didSet {
+            self.textField1.textColor = self.textColor
+            self.textField2.textColor = self.textColor
+            self.textField3.textColor = self.textColor
+            self.textField4.textColor = self.textColor
+            self.textField5.textColor = self.textColor
+            self.textField6.textColor = self.textColor
+        }
+    }
+
     @IBInspectable public var bottomLineWidth: CGFloat = 1
     @IBInspectable public var bottomLineColor: UIColor = .white {
         didSet {

@@ -497,7 +497,8 @@
     "TapOtpView": {
         "OtpController": {
             "bottomLineColor": "brownGreyFour",
-            "activeBottomColor": "deepSkyBlue"
+            "activeBottomColor": "deepSkyBlue",
+            "textColor": "greyishBrown"
         },
         "Timer": {
             "textFont": "Roboto-Regular,16",
