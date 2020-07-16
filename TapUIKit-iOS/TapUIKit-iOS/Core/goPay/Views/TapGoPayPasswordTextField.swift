@@ -10,24 +10,36 @@ import TapThemeManager2020
 import CommonDataModelsKit_iOS
 import SimpleAnimation
 import LocalisationManagerKit_iOS
-
+/// External protocol to allow the TapGoPayPasswordTextField to pass back data and events to the parent UIViewController
 @objc public protocol TapGoPayPasswordTextFieldProtocol {
+    /**
+     This method will be called whenever the password  changed. It is being called in a live manner
+     - Parameter password: The new password after the last update done bu the user
+     */
     @objc func passwordChanged(to password:String)
+    /**
+     This method will be called whenever the user hits return on the password text
+     - Parameter password: The password text inside the password field at the time the user hit return
+     */
     @objc func returnClicked(with password:String)
 }
 
+/// Represents the view that shows the password step in the TapGoPayPasswordTextField which is a customised text field
 @objc public class TapGoPayPasswordTextField: UIView {
 
+    /// The view that holds everything
     @IBOutlet var contentView: UIView!
+    /// The Tap password text field
     @IBOutlet weak var passwordTextField: UITextField!
+    /// The underline view which shows a bottom line under the text field
     @IBOutlet weak var underLineView: UIView!
+    /// A button to change the secure text value of th password text field
     @IBOutlet weak var visibleButton: UIButton!
-    
-    
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// The theme path that has the theme values for the gopay password field
     private let themePath:String = "goPay.passwordField"
-    
+    /// External protocol to allow the TapGoPayPasswordTextField to pass back data and events to the parent UIViewController
     @objc public var delegate:TapGoPayPasswordTextFieldProtocol?
     
     
@@ -43,8 +55,8 @@ import LocalisationManagerKit_iOS
     }
     
     /**
-     Seup the hint view according to the view model
-     - Parameter viewModel: The new required view model to attach the view to
+     Fetch the password string entered til now
+     - Returns: The current password string in the text field and empty as a fallback
      */
     @objc public func password() -> String {
         return passwordTextField.text ?? ""
@@ -76,6 +88,7 @@ import LocalisationManagerKit_iOS
         
     }
     
+    /// Handles the logic to negate the secure text value of the password text field
     @IBAction func visibleButtonClicked(_ sender: Any) {
         // Flip the security attribute of the field
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
@@ -88,6 +101,7 @@ import LocalisationManagerKit_iOS
      */
     @objc func didChangeText(textField:UITextField) {
         guard passwordTextField == textField else { return }
+        // Inform the delegate that the password changed
         delegate?.passwordChanged(to: passwordTextField.text ?? "")
     }
     
