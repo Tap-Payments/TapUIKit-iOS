@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         dataSource.append(["title":"goPay Login Tab Bar","subtitle":"Displays tab bar with options for gopay","navigationID":"GoPayLoginTabBarViewController","lang":"0","push":"0"])
         dataSource.append(["title":"goPay Wrapper","subtitle":"Displays wrapping of login bar + inputs","navigationID":"GoPayWrapperViewController","lang":"0","push":"0"])
         dataSource.append(["title":"goPay Password","subtitle":"Displays goPay login Password field","navigationID":"GoPayPasswordViewController","lang":"0","push":"0"])
+        dataSource.append(["title":"OTP","subtitle":"Displays OTP View","navigationID":"OTPViewController","lang":"0","push":"0"])
         
         dataSource.append(["title":"Wall Of Glory","subtitle":"Shows all ui components from Checkout SDK done in action. NOTE: TRY CLICKING ANYWHERE TO SEE THE FIRED EVENTS","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         
