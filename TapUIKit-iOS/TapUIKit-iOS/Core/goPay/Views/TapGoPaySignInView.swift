@@ -163,6 +163,61 @@ import McPicker
             }
         }
     }
+    
+    /// Handles th logic to show the country picker below the GoPay login fields
+    internal func showCountryPicker() {
+        // Check if we have more than one country to show
+        guard let countries:[TapCountry] = goPayLoginOptionsView.tapGoPayLoginBarViewModel?.allowedCountries,
+            countries.count > 1 else { return }
+        
+        // Show the picker just after the animation of height changed
+        changeHeight(with: 250)
+        // COnver the list of countris to the correct labels values
+        let data: [[String]] = [countries.map{ "\($0.code ?? "") \($0.nameEN ?? "")" }]
+        let mcPicker = McPicker(data: data)
+        
+        configureCountryPicker(for:mcPicker)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+            mcPicker.show(doneHandler: { [weak self] (Selection) in
+                self?.changeHeight(with: -250)
+                let countryNameSelected:String = Selection[0] ?? ""
+                self?.changePhoneCountry(with: countries[data[0].firstIndex(of:countryNameSelected) ?? 0])
+                }, cancelHandler: { [weak self] in
+                    self?.changeHeight(with: -250)
+            }) { (Selections, Index) in
+                
+            }
+        }
+    }
+    
+    /**
+     Apply the needed theming for the country picker
+     - Parameter mcPicker: The picker we need to theme
+     */
+    internal func configureCountryPicker(for mcPicker:McPicker) {
+        // BACKGROUND COLORS
+        mcPicker.backgroundColor = .gray
+        mcPicker.backgroundColorAlpha = 0
+        mcPicker.pickerBackgroundColor = .init(white: 1, alpha: 0.8)
+        // Tool bar spacing and buttons
+        let fixedSpace = McPickerBarButtonItem.fixedSpace(width: 9.0)
+        let flexibleSpace = McPickerBarButtonItem.flexibleSpace()
+        let fireButton = McPickerBarButtonItem.done(mcPicker: mcPicker, title: "Done", barButtonSystemItem: .done) // Set custom Text
+        let cancelButton = McPickerBarButtonItem.cancel(mcPicker: mcPicker, barButtonSystemItem: .cancel) // or system items
+        // Set custom toolbar items
+        mcPicker.setToolbarItems(items: [fixedSpace, cancelButton, flexibleSpace, fireButton, fixedSpace])
+    }
+    
+    /**
+     Apply a new country for the phone input
+     - Parameter country: The new country we want to set
+     */
+    internal func changePhoneCountry(with country:TapCountry) {
+        
+        goPayLoginOptionsView.tapCountry = country
+        
+    }
 }
 
 
@@ -194,48 +249,6 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
     func countryCodeClicked() {
         //delegate?.countryCodeClicked?()
         showCountryPicker()
-    }
-    
-    internal func showCountryPicker() {
-        // Check if we have more than one country to show
-        guard let countries:[TapCountry] = goPayLoginOptionsView.tapGoPayLoginBarViewModel?.allowedCountries,
-            countries.count > 1 else { return }
-        
-        
-        changeHeight(with: 250)
-        // Show the picker just after the animation of height changed
-        let data: [[String]] = [countries.map{ "\($0.code ?? "") \($0.nameEN ?? "")" }]
-        let mcPicker = McPicker(data: data)
-        
-        
-        
-        mcPicker.backgroundColor = .gray
-        mcPicker.backgroundColorAlpha = 0
-        mcPicker.pickerBackgroundColor = .init(white: 1, alpha: 0.8)
-        let fixedSpace = McPickerBarButtonItem.fixedSpace(width: 9.0)
-        let flexibleSpace = McPickerBarButtonItem.flexibleSpace()
-        let fireButton = McPickerBarButtonItem.done(mcPicker: mcPicker, title: "Done", barButtonSystemItem: .done) // Set custom Text
-        let cancelButton = McPickerBarButtonItem.cancel(mcPicker: mcPicker, barButtonSystemItem: .cancel) // or system items
-        // Set custom toolbar items
-        mcPicker.setToolbarItems(items: [fixedSpace, cancelButton, flexibleSpace, fireButton, fixedSpace])
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
-            mcPicker.show(doneHandler: { [weak self] (Selection) in
-                self?.changeHeight(with: -250)
-                let countryNameSelected:String = Selection[0] ?? ""
-                self?.changePhoneCountry(with: countries[data[0].firstIndex(of:countryNameSelected) ?? 0])
-                }, cancelHandler: { [weak self] in
-                    self?.changeHeight(with: -250)
-            }) { (Selections, Index) in
-                
-            }
-        }
-    }
-    
-    internal func changePhoneCountry(with country:TapCountry) {
-        
-        goPayLoginOptionsView.tapCountry = country
-        
     }
 }
 
