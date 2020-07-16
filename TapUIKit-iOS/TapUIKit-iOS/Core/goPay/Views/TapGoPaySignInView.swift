@@ -142,7 +142,7 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
         
         changeHeight(with: 250)
         // Show the picker just after the animation of height changed
-        let data: [[String]] = [countries.map{ $0.nameEN ?? "" }]
+        let data: [[String]] = [countries.map{ "\($0.code ?? "") \($0.nameEN ?? "")" }]
         let mcPicker = McPicker(data: data)
         
         
