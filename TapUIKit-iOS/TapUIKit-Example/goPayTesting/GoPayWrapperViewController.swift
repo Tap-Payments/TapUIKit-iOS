@@ -13,12 +13,12 @@ import TapCardScanner_iOS
 class GoPayWrapperViewController: UIViewController {
 
     @IBOutlet weak var signGoPayView: TapGoPaySignInView!
-    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init()
+    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signGoPayView.setup(with: goPayBarViewModel,and: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+        signGoPayView.setup(with: goPayBarViewModel)
     }
     
     

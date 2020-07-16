@@ -68,9 +68,8 @@ import McPicker
      - Parameter viewModel: The new required view model to attach the view to
      - Parameter tapCountry: Represents the country that telecom options are being shown for, used to handle country code and correct phone length
      */
-    @objc public func setup(with viewModel:TapGoPayLoginBarViewModel,and tapCountry:TapCountry) {
+    @objc public func setup(with viewModel:TapGoPayLoginBarViewModel) {
         goPayLoginOptionsView.tapGoPayLoginBarViewModel = viewModel
-        goPayLoginOptionsView.tapCountry = tapCountry
     }
     
     // MARK:- Private methods

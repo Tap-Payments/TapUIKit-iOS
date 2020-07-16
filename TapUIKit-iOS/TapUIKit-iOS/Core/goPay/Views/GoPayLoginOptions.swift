@@ -70,19 +70,21 @@ class GoPayLoginOptions: UIView {
     var delegate:GoPayLoginOptionsPorotocl?
     
     /// The view model that has the needed payment options and data source to display the payment view
-    var tapGoPayLoginBarViewModel:TapGoPayLoginBarViewModel = .init() {
+    var tapGoPayLoginBarViewModel:TapGoPayLoginBarViewModel? {
         didSet {
             // On init, we need to:
             // Setup the bar view with the passed payment options list
+            guard let tapGoPayLoginBarViewModel = tapGoPayLoginBarViewModel else { return }
             loginOptionsTabBar.setup(with: tapGoPayLoginBarViewModel)
             tapGoPayLoginBarViewModel.delegate = self
             hintLabel.text = tapGoPayLoginBarViewModel.hintLabelText
+            tapCountry = tapGoPayLoginBarViewModel.allowedCountries[0]
         }
     }
     
     var validationStatus:Bool = false {
         didSet{
-            tapGoPayLoginBarViewModel.changeSelectionValidation(to: validationStatus)
+            tapGoPayLoginBarViewModel?.changeSelectionValidation(to: validationStatus)
         }
     }
     

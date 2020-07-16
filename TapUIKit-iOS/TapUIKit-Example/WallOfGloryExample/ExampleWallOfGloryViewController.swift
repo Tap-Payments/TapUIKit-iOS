@@ -30,7 +30,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
-    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init()
+    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)])
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
@@ -212,7 +212,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         signGoPayView.translatesAutoresizingMaskIntoConstraints = false
         signGoPayView.heightAnchor.constraint(equalToConstant: 161).isActive = true
         
-        signGoPayView.setup(with: goPayBarViewModel,and: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+        signGoPayView.setup(with: goPayBarViewModel)
         tapAmountSectionViewModel.screenChanged(to: .GoPayView)
         
         self.view.endEditing(true)

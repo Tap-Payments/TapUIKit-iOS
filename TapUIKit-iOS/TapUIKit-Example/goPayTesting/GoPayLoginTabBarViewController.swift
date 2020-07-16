@@ -12,7 +12,7 @@ import TapUIKit_iOS
 class GoPayLoginTabBarViewController: UIViewController {
 
     @IBOutlet weak var goPayLoginBar: TapGoPayLoginBarView!
-    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init()
+    let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)])
     
     @IBOutlet weak var validSwitch: UISwitch!
     override func viewDidLoad() {
