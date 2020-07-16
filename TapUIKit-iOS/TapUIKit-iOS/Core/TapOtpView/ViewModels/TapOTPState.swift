@@ -9,7 +9,7 @@ import UIKit
 import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
 
-public enum TapOTPState {
+@objc public enum TapOTPState: Int {
     case empty
     case invalid
     case ready
