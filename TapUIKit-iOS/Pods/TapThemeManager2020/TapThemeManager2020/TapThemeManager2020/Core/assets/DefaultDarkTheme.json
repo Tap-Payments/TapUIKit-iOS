@@ -500,7 +500,8 @@
         "OtpController": {
             "bottomLineColor": "brownGreyFour",
             "activeBottomColor": "deepSkyBlue",
-            "textColor": "greyishBrown"
+            "textColor": "greyishBrown",
+            "textFont": "Roboto-Light,25"
         },
         "Timer": {
             "textFont": "Roboto-Regular,16",
@@ -509,19 +510,22 @@
         "Ready": {
             "Message": {
                 "title": "greyishBrown",
-                "subtitle": "deepSkyBlue"
+                "subtitle": "deepSkyBlue",
+                "textFont": "Roboto-Light,12"
             }
         },
         "Expired": {
             "Message": {
                 "title": "greyishBrown",
-                "subtitle": "deepSkyBlue"
+                "subtitle": "deepSkyBlue",
+                "textFont": "Roboto-Light,12"
             }
         },
         "Invalid": {
             "Message": {
                 "title": "orange",
-                "subtitle": "orange"
+                "subtitle": "orange",
+                "textFont": "Roboto-Light,12"
             }
         }
     },

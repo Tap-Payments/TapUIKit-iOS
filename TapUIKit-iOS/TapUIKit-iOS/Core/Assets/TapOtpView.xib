@@ -39,13 +39,13 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70I-tM-WsA" customClass="TapOtpController" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="20" y="0.0" width="374" height="70"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="E0T-De-BaI"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="zzg-pY-9e2" firstAttribute="top" secondItem="70I-tM-WsA" secondAttribute="bottom" constant="30" id="5Gv-jE-zcp"/>
                 <constraint firstItem="70I-tM-WsA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dlv-Ty-66h"/>

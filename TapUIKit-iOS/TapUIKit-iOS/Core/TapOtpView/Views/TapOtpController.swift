@@ -12,7 +12,6 @@ protocol TapOtpControllerDelegate: class {
     func digitsDidChange(newDigits: String)
 }
 
-@IBDesignable
 public class TapOtpController: UIView, UITextFieldDelegate {
     
     @IBOutlet weak private var textField1: BottomLineTextField!
@@ -23,8 +22,8 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     @IBOutlet weak private var textField6: UnTouchableTextField!
     
     
-    @IBInspectable public var pinCount: Int = 4
-    @IBInspectable public var textColor: UIColor = .white {
+    public var pinCount: Int = 4
+    public var textColor: UIColor = .white {
         didSet {
             self.textField1.textColor = self.textColor
             self.textField2.textColor = self.textColor
@@ -35,8 +34,8 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
     }
 
-    @IBInspectable public var bottomLineWidth: CGFloat = 1
-    @IBInspectable public var bottomLineColor: UIColor = .white {
+    public var bottomLineWidth: CGFloat = 1
+    public var bottomLineColor: UIColor = .white {
         didSet {
             self.textField1.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
             self.textField2.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
@@ -46,7 +45,18 @@ public class TapOtpController: UIView, UITextFieldDelegate {
             self.textField6.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
         }
     }
-    @IBInspectable public var bottomLineActiveColor: UIColor = .blue
+    
+    public var font: UIFont = .systemFont(ofSize: 12) {
+        didSet {
+            self.textField1.font = self.font
+            self.textField2.font = self.font
+            self.textField3.font = self.font
+            self.textField4.font = self.font
+            self.textField5.font = self.font
+            self.textField6.font = self.font
+        }
+    }
+    public var bottomLineActiveColor: UIColor = .blue
 
     weak var delegate: TapOtpControllerDelegate?
     
@@ -108,6 +118,14 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField4.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
         self.textField5.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
         self.textField6.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
+        
+        self.textField1.keyboardType = .asciiCapableNumberPad
+        self.textField2.keyboardType = .asciiCapableNumberPad
+        self.textField3.keyboardType = .asciiCapableNumberPad
+        self.textField4.keyboardType = .asciiCapableNumberPad
+        self.textField5.keyboardType = .asciiCapableNumberPad
+        self.textField6.keyboardType = .asciiCapableNumberPad
+        
     }
     
     fileprivate func setTextFieldsDelegate() {

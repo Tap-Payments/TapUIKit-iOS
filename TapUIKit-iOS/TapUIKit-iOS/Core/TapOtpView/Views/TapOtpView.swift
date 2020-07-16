@@ -94,40 +94,19 @@ extension TapOtpView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-//        let status: TapOTPState = viewModel.state
+        let status: TapOTPState = viewModel.state
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
         timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
         
+        self.messageLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).Message.textFont",shouldLocalise:false)
+        
         self.otpController.bottomLineColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.bottomLineColor") ?? .white
         self.otpController.bottomLineActiveColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.activeBottomColor") ?? .blue
         
         self.otpController.textColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.textColor") ?? .black
-//        self.otpController.bottomLineColor = .in
-        
-        
-//        hintLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).textFont")
-//        hintLabel.tap_theme_textColor = .init(stringLiteral: "\(status.themePath()).textColor")
-        
-        
-        
-//        amountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).originalAmountLabelFont",shouldLocalise:false)
-//        amountLabel.tap_theme_textColor = .init(keyPath: "\(themePath).originalAmountLabelColor")
-//
-//        convertedAmountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).convertedAmountLabelFont",shouldLocalise:false)
-//        convertedAmountLabel.tap_theme_textColor = .init(keyPath: "\(themePath).convertedAmountLabelColor")
-//
-//        itemsNumberLabel.tap_theme_font = .init(stringLiteral: "\(themePath).itemsLabelFont")
-//        itemsNumberLabel.tap_theme_textColor = .init(keyPath: "\(themePath).itemsLabelColor")
-//
-//        itemsHolderView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).itemsNumberButtonBackgroundColor")
-//        itemsHolderView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).itemsNumberButtonCorner")
-//        itemsHolderView.layer.tap_theme_borderWidth = .init(keyPath: "\(themePath).itemsNumberButtonBorder.width")
-//        itemsHolderView.layer.tap_theme_borderColor = .init(keyPath: "\(themePath).itemsNumberButtonBorder.color")
-//
-//        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
-        
+        self.otpController.font = TapThemeManager.fontValue(for: "\(themePath).OtpController.textFont") ?? .systemFont(ofSize: 12)
     }
     
     
