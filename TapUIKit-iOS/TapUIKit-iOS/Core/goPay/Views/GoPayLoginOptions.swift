@@ -38,6 +38,10 @@ import LocalisationManagerKit_iOS
     
     /// This method will be called whenever the user hits return on the phone text
     @objc optional func phoneReturned(with phon:String)
+    
+    
+    /// This method will be called whenever the user clicked on the country code
+    @objc optional func countryCodeClicked()
 }
 
 
@@ -178,6 +182,10 @@ extension GoPayLoginOptions: TapPhoneInputProtocol {
             // Instruct the parent caller that email is valid and user hit NEXT
             delegate?.phoneReturned?(with: phone)
         }
+    }
+    
+    func countryCodeClicked() {
+        delegate?.countryCodeClicked?()
     }
 }
 

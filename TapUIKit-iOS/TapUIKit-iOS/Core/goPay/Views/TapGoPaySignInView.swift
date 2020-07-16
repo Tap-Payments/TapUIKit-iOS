@@ -9,7 +9,26 @@
 import UIKit
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
+import McPicker
 
+/// External protocol to allow the GoPayLoginOptions to pass back data and events to the parent UIViewController
+@objc public protocol TapGoPaySignInViewProtocol {
+    
+    /**
+     Will be fired once the user make a selection to change the login option from the tab bar
+     - Parameter viewModel: THe selected login option view model
+     */
+    @objc optional func loginOptionSelected(with viewModel: TapGoPayTitleViewModel)
+    
+    /// This method will be called whenever the user hits return on the email text
+    @objc optional func emailReturned(with email:String)
+    
+    /// This method will be called whenever the user hits return on the phone text
+    @objc optional func phoneReturned(with phon:String)
+    
+    /// This method will be called whenever the user clicked on the country code
+    @objc optional func countryCodeClicked()
+}
 @objc public class TapGoPaySignInView: UIView {
 
     let animationDuration:Double = 0.5
@@ -19,6 +38,7 @@ import CommonDataModelsKit_iOS
             goPayLoginOptionsView.delegate = self
         }
     }
+    internal var originalHeight:CGFloat = 0
     
     @IBOutlet weak var goPayPasswordView: TapGoPayPasswordView! {
         didSet {
@@ -40,6 +60,8 @@ import CommonDataModelsKit_iOS
         super.init(coder: aDecoder)
         commonInit()
     }
+    
+    @objc public var delegate:TapGoPaySignInViewProtocol?
     
     /**
      Seup the hint view according to the view model
@@ -101,10 +123,60 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
         // Show password view
         goPayLoginOptionsView.fadeOut(duration:animationDuration)
         showPasswordView(with: email)
+        delegate?.emailReturned?(with: email)
     }
     
     func phoneReturned(with phon: String) {
+        delegate?.phoneReturned?(with: phon)
+    }
+    
+    func countryCodeClicked() {
+        //delegate?.countryCodeClicked?()
+        showCountryPicker()
+    }
+    
+    internal func showCountryPicker() {
         
+        changeHeight(with: 250)
+        // Show the picker just after the animation of height changed
+        let data: [[String]] = [["Kevin", "Lauren", "Kibby", "Stella"]]
+        let mcPicker = McPicker(data: data)
+        
+        
+        
+        mcPicker.backgroundColor = .gray
+        mcPicker.backgroundColorAlpha = 0
+        mcPicker.pickerBackgroundColor = .init(white: 1, alpha: 0.8)
+        let fixedSpace = McPickerBarButtonItem.fixedSpace(width: 9.0)
+        let flexibleSpace = McPickerBarButtonItem.flexibleSpace()
+        let fireButton = McPickerBarButtonItem.done(mcPicker: mcPicker, title: "Done", barButtonSystemItem: .done) // Set custom Text
+        let cancelButton = McPickerBarButtonItem.cancel(mcPicker: mcPicker, barButtonSystemItem: .cancel) // or system items
+        // Set custom toolbar items
+        mcPicker.setToolbarItems(items: [fixedSpace, cancelButton, flexibleSpace, fireButton, fixedSpace])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
+            mcPicker.show(doneHandler: { [weak self] (Selection) in
+                self?.changeHeight(with: -250)
+                }, cancelHandler: { [weak self] in
+                    self?.changeHeight(with: -250)
+            }) { (Selections, Index) in
+                
+            }
+        }
+    }
+    
+    
+    internal func changeHeight(with offset:CGFloat) {
+        DispatchQueue.main.async { [weak self] in
+            self?.constraints.forEach { (constraint) in
+                if constraint.firstAttribute == .height {
+                    constraint.constant += offset
+                    self?.layoutIfNeeded()
+                    self?.superview?.layoutIfNeeded()
+                    return
+                }
+            }
+        }
     }
 }
 

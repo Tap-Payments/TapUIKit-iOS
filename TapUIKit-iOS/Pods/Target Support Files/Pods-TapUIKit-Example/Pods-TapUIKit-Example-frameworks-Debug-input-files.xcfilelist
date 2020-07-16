@@ -15,6 +15,7 @@ ${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
 ${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurryAds-FlurrySDK/Flurry_iOS_SDK.framework
 ${BUILT_PRODUCTS_DIR}/EasyAnimation/EasyAnimation.framework
+${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework
 ${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
 ${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework
 ${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework
