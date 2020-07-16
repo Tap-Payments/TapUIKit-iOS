@@ -33,10 +33,16 @@ import LocalisationManagerKit_iOS
      */
     @objc optional func loginOptionSelected(with viewModel: TapGoPayTitleViewModel)
     
-    /// This method will be called whenever the user hits return on the email text
+    /**
+     This method will be called whenever the user hits return on the email text
+     - Parameter email: The email text inside the email field at the time the user hit return
+     */
     @objc optional func emailReturned(with email:String)
     
-    /// This method will be called whenever the user hits return on the phone text
+    /**
+     This method will be called whenever the user hits return on the phone text
+     - Parameter phon: The phone text inside the phone field at the time the user hit return
+     */
     @objc optional func phoneReturned(with phon:String)
     
     
@@ -45,22 +51,27 @@ import LocalisationManagerKit_iOS
 }
 
 
-
+/// Represents the viw which holds the GoPay login tab bar + the input fields
 class GoPayLoginOptions: UIView {
 
+    /// The view that holds everything
     @IBOutlet var contentView: UIView!
+    /// The tab bar that holds the different login options
     @IBOutlet weak var loginOptionsTabBar: TapGoPayLoginBarView!
+    /// The  view that holds the email input used by login with email
     @IBOutlet weak var emailInput: TapEmailInput! {
         didSet {
             emailInput.setup()
             emailInput.delegate = self
         }
     }
+    /// The  view that holds the phone input used by login with phone
     @IBOutlet weak var phoneInput: TapPhoneInput! {
         didSet {
             phoneInput.delegate = self
         }
     }
+    /// The  view that holds the label that shows a hint message below the input
     @IBOutlet weak var hintLabel: UILabel!
     
     /// Holds the last style theme applied
@@ -73,21 +84,29 @@ class GoPayLoginOptions: UIView {
     var tapGoPayLoginBarViewModel:TapGoPayLoginBarViewModel? {
         didSet {
             // On init, we need to:
-            // Setup the bar view with the passed payment options list
+            // Setup the bar view with the passed login options list
             guard let tapGoPayLoginBarViewModel = tapGoPayLoginBarViewModel else { return }
             loginOptionsTabBar.setup(with: tapGoPayLoginBarViewModel)
             tapGoPayLoginBarViewModel.delegate = self
+            // Adjust the hint label
             hintLabel.text = tapGoPayLoginBarViewModel.hintLabelText
+            // Define the default country to be the first one
             tapCountry = tapGoPayLoginBarViewModel.allowedCountries[0]
         }
     }
     
+    /// Defines the validation status of the current selected tab
     var validationStatus:Bool = false {
         didSet{
+            // When changed we need to re theme the underline bar
             tapGoPayLoginBarViewModel?.changeSelectionValidation(to: validationStatus)
         }
     }
     
+    /**
+     Show the keboard and focus a text field
+     - Parameter field: The field we need to focus
+     */
     @objc public func focus(field:GoPyLoginOption) {
         switch field {
         case .Email:
