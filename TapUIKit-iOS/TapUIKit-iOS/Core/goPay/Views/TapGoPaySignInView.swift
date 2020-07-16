@@ -160,6 +160,8 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150)) {
             mcPicker.show(doneHandler: { [weak self] (Selection) in
                 self?.changeHeight(with: -250)
+                let countryNameSelected:String = Selection[0] ?? ""
+                self?.changePhoneCountry(with: countries[data[0].firstIndex(of:countryNameSelected) ?? 0])
                 }, cancelHandler: { [weak self] in
                     self?.changeHeight(with: -250)
             }) { (Selections, Index) in
@@ -168,6 +170,11 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
         }
     }
     
+    internal func changePhoneCountry(with country:TapCountry) {
+        
+        goPayLoginOptionsView.tapCountry = country
+        
+    }
     
     internal func changeHeight(with offset:CGFloat) {
         DispatchQueue.main.async { [weak self] in
