@@ -22,15 +22,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid OTP number! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzg-pY-9e2">
-                    <rect key="frame" x="20" y="45.5" width="294" height="20.5"/>
+                    <rect key="frame" x="20" y="45.5" width="314" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.91764705882352937" green="0.38039215686274508" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBD-Zw-obQ">
-                    <rect key="frame" x="334" y="45.5" width="60" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59:59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBD-Zw-obQ">
+                    <rect key="frame" x="354" y="45.5" width="42" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="ENL-X5-HV9"/>
+                        <constraint firstAttribute="width" constant="42" id="ENL-X5-HV9"/>
                         <constraint firstAttribute="height" constant="21" id="srB-WU-VZZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,7 +46,7 @@
             <constraints>
                 <constraint firstItem="zzg-pY-9e2" firstAttribute="top" secondItem="70I-tM-WsA" secondAttribute="bottom" constant="3" id="5Gv-jE-zcp"/>
                 <constraint firstItem="70I-tM-WsA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dlv-Ty-66h"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tBD-Zw-obQ" secondAttribute="trailing" constant="20" id="H6c-0G-Fw5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tBD-Zw-obQ" secondAttribute="trailing" constant="18" id="H6c-0G-Fw5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="70I-tM-WsA" secondAttribute="trailing" constant="20" id="Jpl-0C-Bo9"/>
                 <constraint firstItem="zzg-pY-9e2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="M8s-3a-pe4"/>
                 <constraint firstItem="70I-tM-WsA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Ss4-4j-4W3"/>

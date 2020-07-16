@@ -37,12 +37,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     public var bottomLineWidth: CGFloat = 1
     public var bottomLineColor: UIColor = .white {
         didSet {
-            self.textField1.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
-            self.textField2.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
-            self.textField3.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
-            self.textField4.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
-            self.textField5.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
-            self.textField6.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
+            self.textField1.bottomLine.backgroundColor = self.bottomLineColor.cgColor
+            self.textField2.bottomLine.backgroundColor = self.bottomLineColor.cgColor
+            self.textField3.bottomLine.backgroundColor = self.bottomLineColor.cgColor
+            self.textField4.bottomLine.backgroundColor = self.bottomLineColor.cgColor
+            self.textField5.bottomLine.backgroundColor = self.bottomLineColor.cgColor
+            self.textField6.bottomLine.backgroundColor = self.bottomLineColor.cgColor
         }
     }
     
