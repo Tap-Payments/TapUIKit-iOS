@@ -37,12 +37,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     public var bottomLineWidth: CGFloat = 1
     public var bottomLineColor: UIColor = .white {
         didSet {
-            self.textField1.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
-            self.textField2.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
-            self.textField3.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
-            self.textField4.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
-            self.textField5.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
-            self.textField6.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            self.textField1.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
+            self.textField2.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
+            self.textField3.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
+            self.textField4.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
+            self.textField5.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
+            self.textField6.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
         }
     }
     
@@ -140,13 +140,13 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     // MARK: UITextFieldDelegate
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         if let textFieldObj = textField as? BottomLineTextField {
-            textFieldObj.bottomLine.borderColor = self.bottomLineActiveColor.cgColor
+            textFieldObj.bottomLine.backgroundColor = self.bottomLineActiveColor.cgColor
         }
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let textFieldObj = textField as? BottomLineTextField {
-            textFieldObj.bottomLine.borderColor = self.bottomLineColor.cgColor
+            textFieldObj.bottomLine.backgroundColor = self.bottomLineColor.cgColor
         }
     }
     
@@ -172,6 +172,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("string : \(string)")
         if textField.text!.count < 1 && string.count > 0 {
             moveToNextTextField(textField)
             textField.text = string
