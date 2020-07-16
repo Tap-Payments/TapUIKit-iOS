@@ -59,7 +59,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     }
     
     
-     ///Call this method when you  need to setup the view
+    ///Call this method when you  need to setup the view
     @objc public func setup() {
         setupViews()
     }
@@ -281,7 +281,7 @@ extension TapEmailInput: UITextFieldDelegate {
      */
     @objc func didChangeText(textField:UITextField) {
         guard textField == emailTextField else { return }
-
+        
         clearButton.alpha = emailTextField.text == "" ? 0 : 1
         
         // Now we need to validate the email entered

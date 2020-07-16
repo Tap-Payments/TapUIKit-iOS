@@ -26,7 +26,7 @@ import TapCardVlidatorKit_iOS
      */
     @objc optional func phoneBrandDetected(for phoneBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
     
-     /// This method will be called whenever the user clicked on the country code
+    /// This method will be called whenever the user clicked on the country code
     @objc optional func countryCodeClicked()
     
     /// This method will be called whenever the user hits return on the phone text
