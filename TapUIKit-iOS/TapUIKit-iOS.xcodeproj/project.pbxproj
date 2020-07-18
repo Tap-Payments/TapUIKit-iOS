@@ -10,6 +10,8 @@
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
+		E80C052924C0C5BE00B12C00 /* TapActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C052824C0C5BE00B12C00 /* TapActionButton.swift */; };
+		E80C052B24C0C5C800B12C00 /* TapActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80C052A24C0C5C800B12C00 /* TapActionButton.xib */; };
 		E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */; };
 		E80E8AA52487C053009AF18F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA42487C053009AF18F /* Constants.swift */; };
 		E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */; };
@@ -187,6 +189,8 @@
 		DF4C0BAE4F2FB5B88BFD1BD6 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayChipViewModel.swift; sourceTree = "<group>"; };
 		E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTapChipViewModel.swift; sourceTree = "<group>"; };
+		E80C052824C0C5BE00B12C00 /* TapActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapActionButton.swift; sourceTree = "<group>"; };
+		E80C052A24C0C5C800B12C00 /* TapActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapActionButton.xib; sourceTree = "<group>"; };
 		E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetDialogViewController.swift; sourceTree = "<group>"; };
 		E80E8AA42487C053009AF18F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetExampleViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +376,30 @@
 			path = GatewayChip;
 			sourceTree = "<group>";
 		};
+		E80C052524C0C58D00B12C00 /* TapActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				E80C052724C0C59E00B12C00 /* ViewModels */,
+				E80C052624C0C59900B12C00 /* Views */,
+			);
+			path = TapActionButton;
+			sourceTree = "<group>";
+		};
+		E80C052624C0C59900B12C00 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E80C052824C0C5BE00B12C00 /* TapActionButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E80C052724C0C59E00B12C00 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E80E8AA12487B6A1009AF18F /* TapBottomSheetDialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +541,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E80C052524C0C58D00B12C00 /* TapActionButton */,
 				E8437FA624C05E3E0059F1B8 /* TapOtpView */,
 				E8437F6C24BE0C030059F1B8 /* goPay */,
 				E8437F6624BE06EE0059F1B8 /* Keyboard */,
@@ -589,6 +618,7 @@
 				E8437FA224C05E360059F1B8 /* TapOtpController.xib */,
 				E8437FA324C05E360059F1B8 /* TapOtpView.xib */,
 				E8437FB924C073940059F1B8 /* TapGoPayOTPView.xib */,
+				E80C052A24C0C5C800B12C00 /* TapActionButton.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1146,6 +1176,7 @@
 				E8437FBA24C073940059F1B8 /* TapGoPayOTPView.xib in Resources */,
 				E8437FA524C05E370059F1B8 /* TapOtpView.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
+				E80C052B24C0C5C800B12C00 /* TapActionButton.xib in Resources */,
 				E8437F5E24BC93D70059F1B8 /* TapHintView.xib in Resources */,
 				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
@@ -1251,6 +1282,7 @@
 				E8437FB324C05E3E0059F1B8 /* TapOtpView.swift in Sources */,
 				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
 				E8E92B52248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift in Sources */,
+				E80C052924C0C5BE00B12C00 /* TapActionButton.swift in Sources */,
 				E8C590FF249293E200E03424 /* TapAmountSectionView.swift in Sources */,
 				E8E92B3A248F5C9000DD7DBB /* TapSeparatorView.swift in Sources */,
 				E8437FB224C05E3E0059F1B8 /* TapTimer.swift in Sources */,
@@ -1549,7 +1581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapUIKit-Example/TapUIKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1571,7 +1603,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TapUIKit-Example/TapUIKit-Example.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = G46S76PUH4;
 				INFOPLIST_FILE = "TapUIKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

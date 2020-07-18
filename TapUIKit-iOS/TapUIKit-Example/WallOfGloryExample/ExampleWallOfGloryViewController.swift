@@ -15,7 +15,6 @@ import TapCardVlidatorKit_iOS
 import TapCardInputKit_iOS
 import TapCardScanner_iOS
 import AVFoundation
-import McPicker
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -505,30 +504,6 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
 
 extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     func countryCodeClicked() {
-        view.endEditing(true)
-        let data: [[String]] = [["Kevin", "Lauren", "Kibby", "Stella"]]
-        let mcPicker = McPicker(data: data)
-        
-        
-        
-        mcPicker.backgroundColor = .gray
-        mcPicker.backgroundColorAlpha = 0
-        mcPicker.pickerBackgroundColor = .init(white: 1, alpha: 0.8)
-        let fixedSpace = McPickerBarButtonItem.fixedSpace(width: 9.0)
-        let flexibleSpace = McPickerBarButtonItem.flexibleSpace()
-        let fireButton = McPickerBarButtonItem.done(mcPicker: mcPicker, title: "Done", barButtonSystemItem: .done) // Set custom Text
-        let cancelButton = McPickerBarButtonItem.cancel(mcPicker: mcPicker,title: "إلغاء", barButtonSystemItem: .cancel) // or system items
-        // Set custom toolbar items
-        mcPicker.setToolbarItems(items: [fixedSpace, cancelButton, flexibleSpace, fireButton, fixedSpace])
-        
-        
-        mcPicker.show(doneHandler: { (Selection) in
-            
-        }, cancelHandler: {
-            
-        }) { (Selections, Index) in
-            
-        }
     }
 }
 
