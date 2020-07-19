@@ -61,22 +61,15 @@
             "password": "Password",
             "change": "change"
         },
-        "TapOtpView": {
-            "Message": {
-                "Ready": "OTP has been sent to",
-                "Expired": "OTP has been expired!",
-                "Invalid": "Invalid OTP number!"
-            }
-        },
         "GoPay": {
             "HintLabel": "You can access your saved cards from anywhere with goPay."
         },
-        "TapOtpView": {
-            "Message": {
-                "Ready": "OTP has been sent to",
-                "Expired": "OTP has been expired!",
-                "Invalid": "Invalid OTP number!"
-            }
+        "ActionButton":{
+            "pay": "Pay",
+            "confirm": "Confirm",
+            "resend": "Resend OTP"
+            "next": "Next",
+            "signin": "Signin"
         }
     },
     "ar": {
@@ -141,22 +134,15 @@
             "password": "كلمة السر",
             "change": "تعديل"
         },
-        "TapOtpView": {
-            "Message": {
-                "Ready": "تم إرسال الكود إلى",
-                "Expired": "انتهت صلاحية الكود!",
-                "Invalid": "الكود الئي تم إدخاله غير صالح!"
-            }
-        },
         "GoPay": {
             "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"
-        },
-        "TapOtpView": {
-            "Message": {
-                "Ready": "تم إرسال الكود إلى",
-                "Expired": "انتهت صلاحية الكود!",
-                "Invalid": "الكود الئي تم إدخاله غير صالح!"
-            }
         }
+    },
+    "ActionButton":{
+        "pay": "إدفع",
+        "confirm": "تأكيد",
+        "resend": "إعادة إرسال",
+        "next": "التالي",
+        "signin": "دخول"
     }
 }
