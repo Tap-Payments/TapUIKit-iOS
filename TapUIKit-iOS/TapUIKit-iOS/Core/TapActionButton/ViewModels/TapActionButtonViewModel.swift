@@ -51,14 +51,33 @@ internal protocol TapActionButtonViewDelegate {
     @objc public override init() {
         super.init()
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActionButtonStatusChanged"), object: nil)
+
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActionButtonBlockChanged"), object: nil)
+
+        
         NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: "ActionButtonStatusChanged"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: "ActionButtonBlockChanged"), object: nil)
     }
     
     @objc func StnNotificationExist(_ notification:NSNotification)
     {
-        if let status:TapActionButtonStatusEnum = notification.userInfo!["newStatus"] as? TapActionButtonStatusEnum
-        {
+        if notification.name.rawValue == "ActionButtonStatusChanged" {
+            handleNewStatusNotification(with: notification)
+        }else if notification.name.rawValue == "ActionButtonBlockChanged" {
+            handleNewActionBlockNotification(with: notification)
+        }
+    }
+    
+    internal func handleNewStatusNotification(with notification:NSNotification) {
+        if let status:TapActionButtonStatusEnum = notification.userInfo!["newStatus"] as? TapActionButtonStatusEnum {
             self.buttonStatus = status
+        }
+    }
+    
+    internal func handleNewActionBlockNotification(with notification:NSNotification) {
+        if let actionBlock:()->() = notification.userInfo!["newBlock"] as? ()->() {
+            self.buttonActionBlock = actionBlock
         }
     }
     

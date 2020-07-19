@@ -9,6 +9,7 @@
 
 import class UIKit.UICollectionView
 import class UIKit.UINib
+import class UIKit.UIApplication
 import class TapApplePayKit_iOS.TapApplePayToken
 
 /// This is the public protocol for outer components to listen to events and data fired from this view model and its attached view
@@ -240,6 +241,15 @@ extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
     
     func gateway(for viewModel: GatewayChipViewModel) {
         delegate?.gateway(for: viewModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":TapActionButtonStatusEnum.ValidPayment] )
+        
+        let gatewayActionBlock:()->() = {
+            DispatchQueue.main.async {
+                UIApplication.shared.open(URL(string: "https://www.google.com")!)
+            }
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":gatewayActionBlock] )
+        
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {
