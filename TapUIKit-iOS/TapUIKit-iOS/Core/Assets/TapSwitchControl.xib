@@ -13,8 +13,9 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitch" customModule="TapUIKit_iOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitchControl" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="3O6-jV-Lkj"/>
                 <outlet property="detailsLabel" destination="WNY-jS-5Ck" id="lcJ-bx-Azm"/>
                 <outlet property="switchButton" destination="KuF-3l-7hP" id="G4D-1W-tPz"/>
                 <outlet property="titleLabel" destination="RvW-9L-cJg" id="0Ik-rb-K3V"/>
