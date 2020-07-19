@@ -36,11 +36,13 @@ import TapThemeManager2020
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        setInitialWidth()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        setInitialWidth()
     }
     
     /**
@@ -50,10 +52,15 @@ import TapThemeManager2020
     @objc public func setup(with viewModel:TapActionButtonViewModel) {
         self.viewModel = viewModel
         self.viewModel?.viewDelegate = self
+        
     }
     
     
     // MARK:- Private methods
+    /// Adjusts the button to have the initil width relative to the superview width
+    private func setInitialWidth() {
+        viewHolderWidth.constant = frame.width - 32
+    }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
@@ -109,6 +116,8 @@ extension TapActionButton {
         
         payButton.tap_theme_setTitleColor(selector: ThemeUIColorSelector.init(stringLiteral: "\(themePath).Common.titleLabelColor"), forState: .normal)
         payButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).Common.titleLabelFont")
+        
+        viewHolder.layer.cornerRadius = 20
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
