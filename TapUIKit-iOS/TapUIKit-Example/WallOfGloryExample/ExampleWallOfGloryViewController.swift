@@ -417,6 +417,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func gateway(for viewModel: GatewayChipViewModel) {
         showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
+        tapActionButtonViewModel.startLoading()
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {
