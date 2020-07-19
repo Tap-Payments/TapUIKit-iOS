@@ -9,12 +9,23 @@ import UIKit
 import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
 
-@objc public enum TapOTPState: Int {
+/// Enum to define different states for otp view, providing info about each different status
+@objc public enum TapOTPStateEnum: Int {
+    /// Initial case when otp digits are not filled completely or empty
     case empty
+    /// invalid when otp digits are filled with wrong digits
     case invalid
+    /// ready state when otp is filled completely and ready to be validated
     case ready
+    /// expired case when otp timer is finished
     case expired
     
+    /// This method returns formatted message for each state
+    /// - Parameters:
+    ///   - mobileNo: mobile number to be shown in the state message
+    ///   - mainColor: default text color to be used in the formatted text
+    ///   - secondaryColor: second text color to be set for the mobile number text
+    /// - Returns: return NSAttributedString contains the message and the mobile number depending on the current state
     func message(mobileNo: String = "", mainColor: UIColor, secondaryColor: UIColor) -> NSAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: mainColor]
 

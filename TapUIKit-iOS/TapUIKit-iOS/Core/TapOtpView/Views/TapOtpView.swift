@@ -65,7 +65,7 @@ extension TapOtpView: TapOtpViewDelegate {
     }
     
     public func updateMessage() {
-        let status: TapOTPState = viewModel.state
+        let status: TapOTPStateEnum = viewModel.state
         
         self.messageLabel.attributedText = viewModel.messageAttributed(mainColor: TapThemeManager.colorValue(for: "\(status.themePath()).Message.title") ?? .white, secondaryColor: TapThemeManager.colorValue(for: "\(status.themePath()).Message.subtitle") ?? .white)
     }
@@ -98,7 +98,7 @@ extension TapOtpView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        let status: TapOTPState = viewModel.state
+        let status: TapOTPStateEnum = viewModel.state
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")

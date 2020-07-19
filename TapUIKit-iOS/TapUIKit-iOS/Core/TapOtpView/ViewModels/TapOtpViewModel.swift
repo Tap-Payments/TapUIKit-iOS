@@ -45,14 +45,19 @@ internal protocol TapOtpViewDelegate {
 
 @objc public class TapOtpViewModel: NSObject {
     
+    /// Timer to be used in counting down to update the state to expired
     private var timer: TapTimer?
-    @objc public var state: TapOTPState = .empty {
+    
+    /// Showing the current state of the otp
+    @objc public var state: TapOTPStateEnum = .empty {
         didSet {
             self.stateDidChange()
         }
     }
     
+    /// Phone number to be used in the message depending on the state
     private var phoneNo: String
+    /// Showing the message label if set to true
     private var showMessage: Bool
     
     /// The delegate used to fire events inside the associated view
@@ -64,15 +69,20 @@ internal protocol TapOtpViewDelegate {
     
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapOtpViewModelDelegate?
-
+    
+    /// The OTP digits entered by the user
     var otpValue = "" {
         didSet {
             self.updateState()
         }
     }
     
-    public
-    init(phoneNo: String, showMessage: Bool) {
+    /**
+    Creates a view model with the phone number and showing message flag
+    - Parameter phoneNo: The phone number
+    - Parameter showMessage: should show message lebel, set to true to show the message
+    */
+    public init(phoneNo: String, showMessage: Bool) {
         self.phoneNo = phoneNo
         self.showMessage = showMessage
     }
