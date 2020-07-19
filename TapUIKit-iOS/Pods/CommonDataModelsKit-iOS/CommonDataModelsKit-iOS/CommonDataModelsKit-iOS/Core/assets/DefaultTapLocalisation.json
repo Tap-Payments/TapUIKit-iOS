@@ -67,7 +67,7 @@
         "ActionButton":{
             "pay": "Pay",
             "confirm": "Confirm",
-            "resend": "Resend OTP"
+            "resend": "Resend OTP",
             "next": "Next",
             "signin": "Signin"
         }
