@@ -90,12 +90,43 @@ import TapThemeManager2020
         viewModel?.didClickButton()
     }
     
+    /**
+     Decides the loader image gif
+     - Returns: The loader gif from the TapThemeManager
+     */
+    internal func loaderImage() -> UIImage {
+        
+        return TapThemeManager.imageValue(for: "actionButton.Common.assets.loading") ?? .init()
+        
+    }
+    
+    /**
+     Decides the loader image gif
+     - Parameter status: Indicate which asset is required success or failure
+     - Returns: The loader gif from the TapThemeManager
+     */
+    internal func loaderResultImage(with status:Bool) -> UIImage {
+        return TapThemeManager.imageValue(for: "actionButton.Common.assets.\(status ? "success" : "error")") ?? .init()
+    }
 }
 
 
 extension TapActionButton:TapActionButtonViewDelegate {
     func startLoading(completion: () -> ()?) {
+        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
+        let gif = try! UIImage(gifData: imageData!)
         
+        
+        payButton.fadeOut()
+        loaderGif.fadeIn()
+        loaderGif.setGifImage(gif, loopCount: -1)
+        viewHolderWidth.constant = 40
+        
+        UIView.animate(withDuration: 1.0, animations: { [weak self] in
+            self?.viewHolder.updateConstraints()
+            self?.layoutIfNeeded()
+        })
     }
     
     func endLoading(with success: Bool, completion: () -> ()?) {

@@ -72,6 +72,4 @@ internal protocol TapActionButtonViewDelegate {
         // perform the latest action block defined from the parent caller
         buttonActionBlock()
     }
-    
-    
 }

@@ -17,6 +17,9 @@
 		E80C053924C438DD00B12C00 /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053624C438DD00B12C00 /* SwiftyGifManager.swift */; };
 		E80C053A24C438DD00B12C00 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053724C438DD00B12C00 /* UIImageView+SwiftyGif.swift */; };
 		E80C053B24C438DD00B12C00 /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053824C438DD00B12C00 /* UIImage+SwiftyGif.swift */; };
+		E80C053F24C46B8400B12C00 /* 3sec-white-loader-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = E80C053C24C46B8300B12C00 /* 3sec-white-loader-2.gif */; };
+		E80C054024C46B8400B12C00 /* white-success-mob.gif in Resources */ = {isa = PBXBuildFile; fileRef = E80C053D24C46B8300B12C00 /* white-success-mob.gif */; };
+		E80C054124C46B8400B12C00 /* white-error-mob.gif in Resources */ = {isa = PBXBuildFile; fileRef = E80C053E24C46B8400B12C00 /* white-error-mob.gif */; };
 		E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */; };
 		E80E8AA52487C053009AF18F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA42487C053009AF18F /* Constants.swift */; };
 		E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */; };
@@ -201,6 +204,9 @@
 		E80C053624C438DD00B12C00 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGifManager.swift; sourceTree = "<group>"; };
 		E80C053724C438DD00B12C00 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
 		E80C053824C438DD00B12C00 /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
+		E80C053C24C46B8300B12C00 /* 3sec-white-loader-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "3sec-white-loader-2.gif"; sourceTree = "<group>"; };
+		E80C053D24C46B8300B12C00 /* white-success-mob.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "white-success-mob.gif"; sourceTree = "<group>"; };
+		E80C053E24C46B8400B12C00 /* white-error-mob.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "white-error-mob.gif"; sourceTree = "<group>"; };
 		E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetDialogViewController.swift; sourceTree = "<group>"; };
 		E80E8AA42487C053009AF18F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetExampleViewController.swift; sourceTree = "<group>"; };
@@ -634,6 +640,9 @@
 				E8437FA324C05E360059F1B8 /* TapOtpView.xib */,
 				E8437FB924C073940059F1B8 /* TapGoPayOTPView.xib */,
 				E80C052A24C0C5C800B12C00 /* TapActionButton.xib */,
+				E80C053C24C46B8300B12C00 /* 3sec-white-loader-2.gif */,
+				E80C053E24C46B8400B12C00 /* white-error-mob.gif */,
+				E80C053D24C46B8300B12C00 /* white-success-mob.gif */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1163,6 +1172,7 @@
 				E8428E152457FDFC00D5A45A /* DefaultLightTheme.json in Resources */,
 				E8CD428B249610240013AEE7 /* GatewayImageCollectionViewCell.xib in Resources */,
 				E8CD42862495F91B0013AEE7 /* TapChipHorizontalList.xib in Resources */,
+				E80C053F24C46B8400B12C00 /* 3sec-white-loader-2.gif in Resources */,
 				E8670CC52498B001003F87D8 /* tap.png in Resources */,
 				E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */,
 				E8437F6824BE07860059F1B8 /* SpaceView.xib in Resources */,
@@ -1194,6 +1204,7 @@
 				E80C052B24C0C5C800B12C00 /* TapActionButton.xib in Resources */,
 				E8437F5E24BC93D70059F1B8 /* TapHintView.xib in Resources */,
 				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
+				E80C054024C46B8400B12C00 /* white-success-mob.gif in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
 				E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */,
 				E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */,
@@ -1201,6 +1212,7 @@
 				E8E69949249F49BE007A32FA /* ItemTableViewCell.xib in Resources */,
 				E87E09E824A8BE74004A7A46 /* Assets.xcassets in Resources */,
 				E87E09E224A878C6004A7A46 /* TapCardPhoneIconView.xib in Resources */,
+				E80C054124C46B8400B12C00 /* white-error-mob.gif in Resources */,
 				E8437F9924BF1FD40059F1B8 /* TapGoPayPasswordTextField.xib in Resources */,
 				E8A57AA524A9B28900C1B6CD /* TapCardPhoneBarList.xib in Resources */,
 				E8670CC62498B001003F87D8 /* tap@2x.png in Resources */,
