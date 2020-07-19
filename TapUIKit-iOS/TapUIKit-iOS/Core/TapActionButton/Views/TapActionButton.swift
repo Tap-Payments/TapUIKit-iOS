@@ -59,7 +59,8 @@ import TapThemeManager2020
     // MARK:- Private methods
     /// Adjusts the button to have the initil width relative to the superview width
     private func setInitialWidth() {
-        viewHolderWidth.constant = frame.width - 32
+        // We need to wait a little bit until the view is renderd to calculate the correct needed width
+        //viewHolderWidth.constant = frame.width - 32
     }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view

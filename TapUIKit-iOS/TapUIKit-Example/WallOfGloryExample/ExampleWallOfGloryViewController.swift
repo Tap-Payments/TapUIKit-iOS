@@ -30,12 +30,15 @@ class ExampleWallOfGloryViewController: UIViewController {
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
+    let tapActionButtonViewModel: TapActionButtonViewModel = .init()
+    
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
+    var tapActionButton: TapActionButton = .init()
     
     var rates:[String:Double] = [:]
     
@@ -57,6 +60,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapMerchantHeaderViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
+        
+        tapActionButtonViewModel.buttonStatus = .InvalidPayment
         
         
         createTabBarViewModel()
@@ -149,6 +154,11 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: tapCardTelecomPaymentView.requiredHeight()).isActive = true
         tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
         views.append(tapCardTelecomPaymentView)
+        
+        
+        // The button
+        tapActionButton.setup(with: tapActionButtonViewModel)
+        views.append(tapActionButton)
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
