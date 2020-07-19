@@ -6,8 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import Foundation
-
+import TapThemeManager2020
 /// Represents the different statuses for the tap button action statuses, defining the context, localisation and theming
 @objc public enum TapActionButtonStatusEnum:Int {
     
@@ -30,4 +29,28 @@ import Foundation
     /// Where we need to show a blue background with the titl Signin
     case ValidNext
     
+    
+    /**
+     Decides the color of the action button based on its current status
+     - Returns: The correct color from the theme manager file based on the given status
+     */
+    public func buttonBackGroundColor() -> UIColor {
+        
+        var backgroundThemePath:String = ""
+        
+        switch self {
+        case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
+            backgroundThemePath = "actionButton.Invalid.backgroundColor"
+            break
+        case .ValidPayment:
+            backgroundThemePath = "actionButton.Valid.paymentBackgroundColor"
+            break
+        case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext:
+            backgroundThemePath = "actionButton.Valid.goLoginBackgroundColor"
+            break
+        }
+        
+        
+        return TapThemeManager.colorValue(for: backgroundThemePath) ?? .clear
+    }
 }
