@@ -12,13 +12,17 @@ import TapThemeManager2020
 @objc public class TapOtpView: UIView {
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
+    /// The message label that holds the description of the current OTP state
     @IBOutlet private weak var messageLabel: UILabel!
+    /// The timer label that holds the remaining time until the OTP get expired
     @IBOutlet private weak var timerLabel: UILabel!
+    /// This controller contains the OTP view
     @IBOutlet weak var otpController: TapOtpController!
     
     /// The view model that controls the data to be displayed and the events to be fired
     @objc public var viewModel:TapOtpViewModel = .init(phoneNo: "", showMessage: false)
     
+    /// This contains the path of OTP view theme in the theme manager
     private let themePath = "TapOtpView"
     
     // Mark:- Init methods
@@ -39,6 +43,7 @@ import TapThemeManager2020
         applyTheme()
     }
     
+    /// Updates the container view frame to the parent view bounds
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds

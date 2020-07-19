@@ -9,6 +9,9 @@
 import UIKit
 
 protocol TapOtpControllerDelegate: class {
+    /**
+     This method being called on digits changed by user
+     */
     func digitsDidChange(newDigits: String)
 }
 

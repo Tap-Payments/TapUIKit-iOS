@@ -88,23 +88,34 @@ internal protocol TapOtpViewDelegate {
     }
 
     // MARK: UpdateTimer
+    /**
+    Initialize the timer and set the delegate with the required minutes and seconds until otp expire
+    - Parameter minutes: number of minutes until the otp expire
+    - Parameter seconds: number of seconds until the otp expire
+    */
     @objc public func updateTimer(minutes: Int, seconds: Int) {
+        self.timer = TapTimer(minutes: minutes, seconds: seconds)
         if self.timer?.delegate == nil {
             self.timer?.delegate = self
         }
-        self.timer = TapTimer(minutes: minutes, seconds: seconds)
     }
     
     // MARK: Message
+    /**
+    Returns NSAttributedString with the message using mainColor and secondColor
+    - Parameter mainColor: number of minutes until the otp expire
+    - Parameter secondaryColor: number of seconds until the otp expire
+    */
     func messageAttributed(mainColor: UIColor, secondaryColor: UIColor) -> NSAttributedString {
         return self.state.message(mobileNo: phoneNo, mainColor: mainColor, secondaryColor: secondaryColor)
     }
     
     // MARK: State Change
+    /**
+     This method apply the required functionality and delegates on state change
+    */
     func stateDidChange() {
         self.viewDelegate?.updateMessageVisibility(hide: !showMessage)
-
-        
         switch self.state {
         case .ready:
             self.delegate?.otpStateReadyToValidate(otpValue: self.otpValue)
@@ -122,7 +133,9 @@ internal protocol TapOtpViewDelegate {
             self.viewDelegate?.enableOtpEditing()
         }
     }
-    
+    /**
+     This function update the state on otp digits change
+    */
     func updateState() {
         if self.otpValue.count == 6 {
             self.state = .ready
@@ -133,6 +146,9 @@ internal protocol TapOtpViewDelegate {
         }
     }
     
+    /**
+        This
+    */
     @objc public func createOtpView() -> TapOtpView {
         let tapOtpView:TapOtpView = .init()
         tapOtpView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,23 +157,35 @@ internal protocol TapOtpViewDelegate {
         return tapOtpView
     }
     
+    /**
+        This method calls the viewDelegate to update the message view
+     */
     func updateMessageViewDelegate() {
         if self.showMessage {
             self.viewDelegate?.updateMessage()
         }
     }
     
-    // MARK: Resend
+    // MARK: Reset
+    /**
+     Reset the state to the initialize state
+     */
     @objc public func resetStateReady() {
         self.state = .empty
     }
 }
 
 extension TapOtpViewModel: TapTimerDelegate {
+    /**
+    This function is being called on the remaining time reach to zero seconds
+    */
     func onTimeFinish() {
         self.state = .expired
     }
     
+    /**
+     This function is being called on the timer update the remaining time
+     */
     func onTimeUpdate(minutes: Int, seconds: Int) {
         self.viewDelegate?.updateTimer(currentTime: String(format: "%02d:%02d", minutes, seconds))
     }
