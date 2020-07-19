@@ -7,6 +7,9 @@
 //
 
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
+import class CommonDataModelsKit_iOS.TapCommonConstants
+
 /// Represents the different statuses for the tap button action statuses, defining the context, localisation and theming
 @objc public enum TapActionButtonStatusEnum:Int {
     
@@ -64,13 +67,52 @@ import TapThemeManager2020
         var backgroundThemePath:String = ""
         
         switch self {
+            // These cases we need to have a clear background to show the blur background
         case .SaveValidPayment,.InvalidConfirm,.ValidConfirm,.ResendOTP,.InvalidSignIn,.ValidSignIn:
             backgroundThemePath = "actionButton.BackgroundColor.Otp"
             break
         default:
+            // These cases we need to have a white two background color
             backgroundThemePath = "actionButton.BackgroundColor.default"
             break
         }
         return TapThemeManager.colorValue(for: backgroundThemePath) ?? .clear
     }
+    
+    
+    /**
+     Decides the title of the tap action button based on the status
+     - Returns: The correct title of the tap action button basde on the given status
+     */
+    public func buttonTitle() -> String {
+        let sharedLocalisationManager:TapLocalisationManager = .shared
+       
+        var localizedTitle:String = ""
+        
+        switch self {
+        case .InvalidSignIn,.ValidSignIn:
+            // These cases we need to have a SignIn title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.signin", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        case .ValidConfirm,.InvalidConfirm:
+            // These cases we need to have a Confitm title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.confirm", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        case .ResendOTP:
+            // These cases we need to have a ResendOTP title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.resend", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        case .InvalidNext,.ValidNext:
+            // These cases we need to have a Next title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.next", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        default:
+            // These cases we need to have a PAY title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.pay", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        }
+        return localizedTitle
+    }
+    
+    
 }
