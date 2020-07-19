@@ -35,5 +35,4 @@ target 'TapUIKit-iOS' do
   pod 'TapCardInputKit-iOS'
   pod 'TapCardScanner-iOS'
   pod 'McPicker'
-  pod 'SwiftyGif'
 end

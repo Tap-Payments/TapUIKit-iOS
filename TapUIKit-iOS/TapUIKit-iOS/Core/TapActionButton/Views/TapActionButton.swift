@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import UIKit
+import TapThemeManager2020
 
 /// Represents the Tap Action Button View
 @objc public class TapActionButton: UIView {

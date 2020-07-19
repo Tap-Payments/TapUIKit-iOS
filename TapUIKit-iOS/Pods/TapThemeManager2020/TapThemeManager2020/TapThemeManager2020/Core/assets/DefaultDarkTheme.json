@@ -26,9 +26,9 @@
             "cherryRed10":"#e1213119",
             "cherryRed20":"#e12132",
             "deepSkyBlue15":"#007aff26",
-            "brownGreyFour":"#a6a6a6",
             "brownGreyFive":"#aeaeae",
-            "deepSkyBlue15":"#007aff26"
+            "deepSkyBlue15":"#007aff26",
+            "veryLightPinkThree": "d7d7d7"
         }
     },
     "inlineCard": {
@@ -495,40 +495,6 @@
             "actionButtonTextFont" : "Roboto-Regular,12"
         }
     },
-    "TapOtpView": {
-        "backgroundColor": "clear",
-        "OtpController": {
-            "bottomLineColor": "brownGreyFour",
-            "activeBottomColor": "deepSkyBlue",
-            "textColor": "greyishBrown",
-            "textFont": "Roboto-Light,25"
-        },
-        "Timer": {
-            "textFont": "Roboto-Regular,16",
-            "textColor": "deepSkyBlue"
-        },
-        "Ready": {
-            "Message": {
-                "title": "greyishBrown",
-                "subtitle": "deepSkyBlue",
-                "textFont": "Roboto-Light,12"
-            }
-        },
-        "Expired": {
-            "Message": {
-                "title": "greyishBrown",
-                "subtitle": "deepSkyBlue",
-                "textFont": "Roboto-Light,12"
-            }
-        },
-        "Invalid": {
-            "Message": {
-                "title": "orange",
-                "subtitle": "orange",
-                "textFont": "Roboto-Light,12"
-            }
-        }
-    },
     "goPay": {
         "loginBar" :{
             "backgroundColor" : "whiteTwo",
@@ -573,6 +539,28 @@
                     "backgroundColor" : "deepSkyBlue"
                 }
             }
+        }
+    },
+    "actionButton": {
+        "Common": {
+            "titleLabelFont" : "Roboto-Regular,16",
+            "titleLabelColor" : "white",
+            "assets": {
+                "loading": "3sec-white-loader-2.gif",
+                "error": "white-error-mob.gif",
+                "success": "white-success-mob.gif"
+            }
+        },
+        "Invalid" : {
+            "backgroundColor" : "veryLightPinkThree"
+        },
+        "Valid" : {
+            "goLoginBackgroundColor" : "deepSkyBlue",
+            "paymentBackgroundColor" : "vibrantGreen"
+        },
+        "BackgroundColor": {
+            "Otp" : "clear",
+            "default" : "whiteTwo"
         }
     }
 }

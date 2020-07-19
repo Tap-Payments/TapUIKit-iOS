@@ -14,6 +14,9 @@
 		E80C052B24C0C5C800B12C00 /* TapActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80C052A24C0C5C800B12C00 /* TapActionButton.xib */; };
 		E80C053324C423C300B12C00 /* TapActionButtonStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053224C423C300B12C00 /* TapActionButtonStatusEnum.swift */; };
 		E80C053524C437DC00B12C00 /* TapActionButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053424C437DC00B12C00 /* TapActionButtonViewModel.swift */; };
+		E80C053924C438DD00B12C00 /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053624C438DD00B12C00 /* SwiftyGifManager.swift */; };
+		E80C053A24C438DD00B12C00 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053724C438DD00B12C00 /* UIImageView+SwiftyGif.swift */; };
+		E80C053B24C438DD00B12C00 /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053824C438DD00B12C00 /* UIImage+SwiftyGif.swift */; };
 		E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */; };
 		E80E8AA52487C053009AF18F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA42487C053009AF18F /* Constants.swift */; };
 		E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */; };
@@ -195,6 +198,9 @@
 		E80C052A24C0C5C800B12C00 /* TapActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapActionButton.xib; sourceTree = "<group>"; };
 		E80C053224C423C300B12C00 /* TapActionButtonStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapActionButtonStatusEnum.swift; sourceTree = "<group>"; };
 		E80C053424C437DC00B12C00 /* TapActionButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapActionButtonViewModel.swift; sourceTree = "<group>"; };
+		E80C053624C438DD00B12C00 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGifManager.swift; sourceTree = "<group>"; };
+		E80C053724C438DD00B12C00 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
+		E80C053824C438DD00B12C00 /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
 		E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetDialogViewController.swift; sourceTree = "<group>"; };
 		E80E8AA42487C053009AF18F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetExampleViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +399,9 @@
 		E80C052624C0C59900B12C00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E80C053624C438DD00B12C00 /* SwiftyGifManager.swift */,
+				E80C053824C438DD00B12C00 /* UIImage+SwiftyGif.swift */,
+				E80C053724C438DD00B12C00 /* UIImageView+SwiftyGif.swift */,
 				E80C052824C0C5BE00B12C00 /* TapActionButton.swift */,
 			);
 			path = Views;
@@ -1307,6 +1316,7 @@
 				E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */,
 				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
 				E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */,
+				E80C053924C438DD00B12C00 /* SwiftyGifManager.swift in Sources */,
 				E8CD42842495F9130013AEE7 /* TapChipHorizontalList.swift in Sources */,
 				E87E09E424A8840E004A7A46 /* TapCardPhoneIconViewModel.swift in Sources */,
 				E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */,
@@ -1317,6 +1327,7 @@
 				E82A56B22499ED7A00E3F00D /* SavedCardCollectionViewCell.swift in Sources */,
 				E8437F9724BF1FC00059F1B8 /* TapGoPayPasswordTextField.swift in Sources */,
 				E88F9E1124BB3D5300A7B470 /* TapCardScannerView.swift in Sources */,
+				E80C053A24C438DD00B12C00 /* UIImageView+SwiftyGif.swift in Sources */,
 				E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */,
 				E8437FB524C05E3E0059F1B8 /* TapOtpController.swift in Sources */,
 				E8E92B4C248FA4DF00DD7DBB /* TapMerchantHeaderView.swift in Sources */,
@@ -1325,6 +1336,7 @@
 				E8E69944249F3F4A007A32FA /* ItemModel.swift in Sources */,
 				E87E09EA24A8C3BE004A7A46 /* TapBlackWhiteImage.swift in Sources */,
 				E8437FB124C05E3E0059F1B8 /* TapOtpViewModel.swift in Sources */,
+				E80C053B24C438DD00B12C00 /* UIImage+SwiftyGif.swift in Sources */,
 				E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */,
 				E8437F7924BE36D40059F1B8 /* TapGoPayLoginTabBarViewModel.swift in Sources */,
 				E8E69945249F3F4A007A32FA /* DiscountModel.swift in Sources */,
