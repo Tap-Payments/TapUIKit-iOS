@@ -60,7 +60,11 @@ import TapThemeManager2020
     /// Adjusts the button to have the initil width relative to the superview width
     private func setInitialWidth() {
         // We need to wait a little bit until the view is renderd to calculate the correct needed width
-        //viewHolderWidth.constant = frame.width - 32
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
+            self?.viewHolderWidth.constant = (self?.contentView.frame.width ?? 0) - 32
+            self?.viewHolder.updateConstraints()
+            self?.layoutIfNeeded()
+        }
     }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
@@ -112,7 +116,7 @@ extension TapActionButton {
     private func matchThemeAttributes() {
         let status:TapActionButtonStatusEnum = viewModel?.buttonStatus ?? .InvalidPayment
         
-        backgroundColor = status.buttonViewBackGroundColor()
+        contentView.backgroundColor = status.buttonViewBackGroundColor()
         viewHolder.backgroundColor = status.buttonBackGroundColor()
         
         payButton.tap_theme_setTitleColor(selector: ThemeUIColorSelector.init(stringLiteral: "\(themePath).Common.titleLabelColor"), forState: .normal)
