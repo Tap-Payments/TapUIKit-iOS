@@ -12,6 +12,7 @@
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
 		E80C052924C0C5BE00B12C00 /* TapActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C052824C0C5BE00B12C00 /* TapActionButton.swift */; };
 		E80C052B24C0C5C800B12C00 /* TapActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80C052A24C0C5C800B12C00 /* TapActionButton.xib */; };
+		E80C053324C423C300B12C00 /* TapActionButtonStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C053224C423C300B12C00 /* TapActionButtonStatusEnum.swift */; };
 		E80E8AA32487B6EB009AF18F /* TapBottomSheetDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */; };
 		E80E8AA52487C053009AF18F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA42487C053009AF18F /* Constants.swift */; };
 		E80E8AA82487C252009AF18F /* TapBottomSheetExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */; };
@@ -191,6 +192,7 @@
 		E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTapChipViewModel.swift; sourceTree = "<group>"; };
 		E80C052824C0C5BE00B12C00 /* TapActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapActionButton.swift; sourceTree = "<group>"; };
 		E80C052A24C0C5C800B12C00 /* TapActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapActionButton.xib; sourceTree = "<group>"; };
+		E80C053224C423C300B12C00 /* TapActionButtonStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapActionButtonStatusEnum.swift; sourceTree = "<group>"; };
 		E80E8AA22487B6EB009AF18F /* TapBottomSheetDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetDialogViewController.swift; sourceTree = "<group>"; };
 		E80E8AA42487C053009AF18F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E80E8AA72487C252009AF18F /* TapBottomSheetExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBottomSheetExampleViewController.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			children = (
 				E80C052724C0C59E00B12C00 /* ViewModels */,
 				E80C052624C0C59900B12C00 /* Views */,
+				E80C053224C423C300B12C00 /* TapActionButtonStatusEnum.swift */,
 			);
 			path = TapActionButton;
 			sourceTree = "<group>";
@@ -1293,6 +1296,7 @@
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
 				E8437F7024BE16A10059F1B8 /* TapGoPayTitleViewModel.swift in Sources */,
 				E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */,
+				E80C053324C423C300B12C00 /* TapActionButtonStatusEnum.swift in Sources */,
 				E8437FBC24C074A90059F1B8 /* TapGoPayOTPView.swift in Sources */,
 				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
 				E8437F7C24BEC79F0059F1B8 /* TapGoPayLoginBarView.swift in Sources */,
