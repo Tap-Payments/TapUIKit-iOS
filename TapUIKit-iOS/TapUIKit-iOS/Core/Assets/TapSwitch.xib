@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitch" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="detailsLabel" destination="WNY-jS-5Ck" id="lcJ-bx-Azm"/>
+                <outlet property="switchButton" destination="KuF-3l-7hP" id="G4D-1W-tPz"/>
+                <outlet property="titleLabel" destination="RvW-9L-cJg" id="0Ik-rb-K3V"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save for goPay Checkouts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvW-9L-cJg">
+                    <rect key="frame" x="15" y="16" width="304" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="7dh-4A-Ixo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNY-jS-5Ck">
+                    <rect key="frame" x="15" y="41" width="304" height="43"/>
+                    <string key="text">By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.</string>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KuF-3l-7hP">
+                    <rect key="frame" x="348" y="16" width="51" height="31"/>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" constant="17" id="3qX-wp-2MD"/>
+                <constraint firstItem="RvW-9L-cJg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="814-CT-gFo"/>
+                <constraint firstItem="WNY-jS-5Ck" firstAttribute="top" secondItem="RvW-9L-cJg" secondAttribute="bottom" constant="3" id="S9d-XU-W5j"/>
+                <constraint firstItem="KuF-3l-7hP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="XfG-GB-ef0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WNY-jS-5Ck" secondAttribute="trailing" constant="95" id="b4C-V8-h6q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WNY-jS-5Ck" secondAttribute="bottom" constant="8" id="gYw-kY-Lkp"/>
+                <constraint firstItem="WNY-jS-5Ck" firstAttribute="leading" secondItem="RvW-9L-cJg" secondAttribute="leading" id="h1U-Ak-JaT"/>
+                <constraint firstItem="WNY-jS-5Ck" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="sfF-sx-WUc"/>
+                <constraint firstItem="RvW-9L-cJg" firstAttribute="trailing" secondItem="WNY-jS-5Ck" secondAttribute="trailing" id="y0x-0e-7o4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="105.13392857142857"/>
+        </view>
+    </objects>
+</document>

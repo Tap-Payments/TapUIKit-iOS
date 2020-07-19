@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6229B1AD24C486420019413A /* TapSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1AC24C486420019413A /* TapSwitch.swift */; };
+		6229B1AF24C486560019413A /* TapSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6229B1AE24C486560019413A /* TapSwitch.xib */; };
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
@@ -190,6 +192,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6229B1AC24C486420019413A /* TapSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitch.swift; sourceTree = "<group>"; };
+		6229B1AE24C486560019413A /* TapSwitch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSwitch.xib; sourceTree = "<group>"; };
 		6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,6 +367,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6229B1A924C485DD0019413A /* TapSwitchView */ = {
+			isa = PBXGroup;
+			children = (
+				6229B1AB24C4860D0019413A /* Views */,
+				6229B1AA24C485ED0019413A /* ViewModels */,
+			);
+			path = TapSwitchView;
+			sourceTree = "<group>";
+		};
+		6229B1AA24C485ED0019413A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6229B1AB24C4860D0019413A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6229B1AC24C486420019413A /* TapSwitch.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A1057834EC965C7C3A18355D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,6 +590,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6229B1A924C485DD0019413A /* TapSwitchView */,
 				E80C052524C0C58D00B12C00 /* TapActionButton */,
 				E8437FA624C05E3E0059F1B8 /* TapOtpView */,
 				E8437F6C24BE0C030059F1B8 /* goPay */,
@@ -643,6 +672,7 @@
 				E80C053C24C46B8300B12C00 /* 3sec-white-loader-2.gif */,
 				E80C053E24C46B8400B12C00 /* white-error-mob.gif */,
 				E80C053D24C46B8300B12C00 /* white-success-mob.gif */,
+				6229B1AE24C486560019413A /* TapSwitch.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1174,6 +1204,7 @@
 				E8CD42862495F91B0013AEE7 /* TapChipHorizontalList.xib in Resources */,
 				E80C053F24C46B8400B12C00 /* 3sec-white-loader-2.gif in Resources */,
 				E8670CC52498B001003F87D8 /* tap.png in Resources */,
+				6229B1AF24C486560019413A /* TapSwitch.xib in Resources */,
 				E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */,
 				E8437F6824BE07860059F1B8 /* SpaceView.xib in Resources */,
 				E82A56C8249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib in Resources */,
@@ -1335,6 +1366,7 @@
 				E8BE3FB024B60F6D00F15C41 /* TapCardTelecomPaymentView.swift in Sources */,
 				E8437F8724BEF7840059F1B8 /* TapGoPaySignInView.swift in Sources */,
 				E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */,
+				6229B1AD24C486420019413A /* TapSwitch.swift in Sources */,
 				E8428E102457F8D900D5A45A /* TapUIExtensions.swift in Sources */,
 				E82A56B22499ED7A00E3F00D /* SavedCardCollectionViewCell.swift in Sources */,
 				E8437F9724BF1FC00059F1B8 /* TapGoPayPasswordTextField.swift in Sources */,
