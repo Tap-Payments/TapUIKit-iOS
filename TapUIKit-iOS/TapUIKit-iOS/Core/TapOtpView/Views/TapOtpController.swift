@@ -9,6 +9,9 @@
 import UIKit
 
 protocol TapOtpControllerDelegate: class {
+    /**
+     This method being called on digits changed by user
+     */
     func digitsDidChange(newDigits: String)
 }
 
@@ -119,12 +122,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField5.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
         self.textField6.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
         
-        self.textField1.keyboardType = .asciiCapableNumberPad
-        self.textField2.keyboardType = .asciiCapableNumberPad
-        self.textField3.keyboardType = .asciiCapableNumberPad
-        self.textField4.keyboardType = .asciiCapableNumberPad
-        self.textField5.keyboardType = .asciiCapableNumberPad
-        self.textField6.keyboardType = .asciiCapableNumberPad
+        self.textField1.keyboardType = .numberPad
+        self.textField2.keyboardType = .numberPad
+        self.textField3.keyboardType = .numberPad
+        self.textField4.keyboardType = .numberPad
+        self.textField5.keyboardType = .numberPad
+        self.textField6.keyboardType = .numberPad
         
     }
     
