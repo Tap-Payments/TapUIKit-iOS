@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapHintView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="ZTf-RG-o5G" id="cJK-Nz-J6l"/>
+                <outlet property="actualBackgroundView" destination="My5-mB-04i" id="cCS-Pf-xHk"/>
                 <outlet property="hintLabel" destination="EED-yO-pkN" id="iIK-6m-UdG"/>
             </connections>
         </placeholder>
@@ -18,24 +20,41 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="My5-mB-04i">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EED-yO-pkN">
                     <rect key="frame" x="19" y="2" width="376" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTf-RG-o5G">
+                    <rect key="frame" x="343" y="7" width="53" height="30"/>
+                    <state key="normal" title="Change"/>
+                    <connections>
+                        <action selector="actionButtonClicked:" destination="-1" eventType="touchUpInside" id="dHL-18-8bG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EED-yO-pkN" secondAttribute="trailing" constant="19" id="2K1-Ri-wZd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZTf-RG-o5G" secondAttribute="trailing" constant="18" id="63n-Sy-G3q"/>
+                <constraint firstItem="My5-mB-04i" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="TKj-bN-3J5"/>
+                <constraint firstItem="My5-mB-04i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="V6c-q0-R1A"/>
                 <constraint firstItem="EED-yO-pkN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="VhM-ma-N3c"/>
+                <constraint firstAttribute="bottom" secondItem="My5-mB-04i" secondAttribute="bottom" id="Zrh-Na-MDf"/>
                 <constraint firstItem="EED-yO-pkN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aTB-aa-MaQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EED-yO-pkN" secondAttribute="bottom" constant="2" id="ajf-NM-N3C"/>
                 <constraint firstItem="EED-yO-pkN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="2" id="cEI-hi-cde"/>
+                <constraint firstItem="ZTf-RG-o5G" firstAttribute="centerY" secondItem="EED-yO-pkN" secondAttribute="centerY" id="rvM-vJ-Iq4"/>
+                <constraint firstItem="My5-mB-04i" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="urA-kT-IzR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="153"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.44565217391306"/>
         </view>
     </objects>
 </document>

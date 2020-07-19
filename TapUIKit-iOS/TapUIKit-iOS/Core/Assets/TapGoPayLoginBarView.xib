@@ -40,9 +40,10 @@
                     </constraints>
                 </view>
                 <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-s6-DSi">
-                    <rect key="frame" x="0.0" y="43.333333333333336" width="1" height="2.6666666666666643"/>
+                    <rect key="frame" x="0.0" y="43" width="1" height="3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="tze-O0-AfG"/>
+                        <constraint firstAttribute="height" constant="2" id="zBV-UZ-cYi"/>
                     </constraints>
                 </progressView>
             </subviews>

@@ -93,7 +93,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-M1-LDk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unnamed-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-M1-LDk">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUe-LR-wIk">
@@ -488,16 +488,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxc-UX-gjt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="voi-LQ-d92">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrK-rK-d1l">
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="768"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5zv-QK-db1">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="768"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="regular"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVq-mQ-vQh" customClass="TapVerticalView" customModule="TapUIKit_iOS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bxc-UX-gjt" firstAttribute="top" secondItem="wN4-ZW-HOD" secondAttribute="top" id="1d9-Zl-MtD"/>
+                            <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="bxc-UX-gjt" secondAttribute="trailing" id="9rc-XP-7uI"/>
                             <constraint firstAttribute="bottom" secondItem="oVq-mQ-vQh" secondAttribute="bottom" id="Ny9-NW-eAE"/>
+                            <constraint firstAttribute="bottom" secondItem="bxc-UX-gjt" secondAttribute="bottom" id="UJ6-OP-baS"/>
                             <constraint firstItem="DGq-3B-tfj" firstAttribute="trailing" secondItem="oVq-mQ-vQh" secondAttribute="trailing" id="WSa-74-mkh"/>
                             <constraint firstItem="oVq-mQ-vQh" firstAttribute="top" secondItem="wN4-ZW-HOD" secondAttribute="top" id="eH6-e1-MRf"/>
+                            <constraint firstItem="bxc-UX-gjt" firstAttribute="leading" secondItem="DGq-3B-tfj" secondAttribute="leading" id="nus-bc-MT7"/>
                             <constraint firstItem="oVq-mQ-vQh" firstAttribute="leading" secondItem="DGq-3B-tfj" secondAttribute="leading" id="ut2-NP-mel"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DGq-3B-tfj"/>
@@ -508,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jei-to-QDS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3619" y="725"/>
+            <point key="canvasLocation" x="3618.840579710145" y="724.55357142857144"/>
         </scene>
         <!--Tap Amount Section View Controller-->
         <scene sceneID="RDb-ao-xMg">
@@ -1169,8 +1194,137 @@
             </objects>
             <point key="canvasLocation" x="2567" y="8012"/>
         </scene>
+        <!--Go Pay Wrapper View Controller-->
+        <scene sceneID="itw-y4-qrC">
+            <objects>
+                <viewController storyboardIdentifier="GoPayWrapperViewController" id="4rW-Qb-zCe" customClass="GoPayWrapperViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NwD-37-p3l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unnamed-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="idx-Y4-aop">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5TL-F1-EnO">
+                                <rect key="frame" x="0.0" y="74" width="414" height="162"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fxk-ZW-9Db">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-Mh-pMb">
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyV-FX-SdD">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="regular"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ4-QR-pnt" customClass="TapGoPaySignInView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="162"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="HnQ-Xr-5i4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YQ4-QR-pnt" firstAttribute="leading" secondItem="FEq-9u-0aA" secondAttribute="leading" id="7Ye-9f-Hdn"/>
+                            <constraint firstItem="5TL-F1-EnO" firstAttribute="leading" secondItem="YQ4-QR-pnt" secondAttribute="leading" id="Cla-7L-I7e"/>
+                            <constraint firstItem="5TL-F1-EnO" firstAttribute="bottom" secondItem="YQ4-QR-pnt" secondAttribute="bottom" id="ImY-Za-XMI"/>
+                            <constraint firstItem="idx-Y4-aop" firstAttribute="trailing" secondItem="FEq-9u-0aA" secondAttribute="trailing" id="Jmg-Yr-WL7"/>
+                            <constraint firstItem="YQ4-QR-pnt" firstAttribute="top" secondItem="FEq-9u-0aA" secondAttribute="top" constant="30" id="Kva-8J-Gar"/>
+                            <constraint firstItem="FEq-9u-0aA" firstAttribute="trailing" secondItem="YQ4-QR-pnt" secondAttribute="trailing" id="ZXE-XL-fBi"/>
+                            <constraint firstItem="idx-Y4-aop" firstAttribute="top" secondItem="NwD-37-p3l" secondAttribute="top" id="aSz-6S-QjH"/>
+                            <constraint firstItem="idx-Y4-aop" firstAttribute="leading" secondItem="FEq-9u-0aA" secondAttribute="leading" id="fpo-w2-daZ"/>
+                            <constraint firstAttribute="bottom" secondItem="idx-Y4-aop" secondAttribute="bottom" id="kvK-hf-iRM"/>
+                            <constraint firstItem="5TL-F1-EnO" firstAttribute="top" secondItem="YQ4-QR-pnt" secondAttribute="top" id="pvP-hT-GNx"/>
+                            <constraint firstItem="5TL-F1-EnO" firstAttribute="trailing" secondItem="YQ4-QR-pnt" secondAttribute="trailing" id="qhq-cG-dsC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FEq-9u-0aA"/>
+                    </view>
+                    <connections>
+                        <outlet property="signGoPayView" destination="YQ4-QR-pnt" id="mNw-g3-3sL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RG8-Oj-eA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2566.666666666667" y="8702.6785714285706"/>
+        </scene>
+        <!--Go Pay Password View Controller-->
+        <scene sceneID="LeB-1w-IzD">
+            <objects>
+                <viewController storyboardIdentifier="GoPayPasswordViewController" id="tI8-2J-hSE" customClass="GoPayPasswordViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JrK-Kk-oqp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzN-Gc-SUk" customClass="TapGoPayPasswordTextField" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="wkl-cm-XXB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1nf-Xn-cXH" firstAttribute="trailing" secondItem="vzN-Gc-SUk" secondAttribute="trailing" id="5W0-m1-tLN"/>
+                            <constraint firstItem="vzN-Gc-SUk" firstAttribute="leading" secondItem="1nf-Xn-cXH" secondAttribute="leading" id="8K6-yi-kff"/>
+                            <constraint firstItem="vzN-Gc-SUk" firstAttribute="top" secondItem="1nf-Xn-cXH" secondAttribute="top" constant="30" id="oju-jj-hio"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1nf-Xn-cXH"/>
+                    </view>
+                    <connections>
+                        <outlet property="goPayPasswordField" destination="vzN-Gc-SUk" id="8pE-GH-3EV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lGc-ZG-nmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="9407"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uTM-Vj-57H">
+            <objects>
+                <viewController storyboardIdentifier="OTPViewController" id="Hvf-49-7C8" customClass="OTPViewController" customModule="TapUIKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bys-ML-68h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dge-9a-LLW" customClass="TapOtpView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="haN-d4-nYt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dge-9a-LLW" firstAttribute="top" secondItem="xJh-i1-MeG" secondAttribute="top" constant="30" id="fWB-Op-cji"/>
+                            <constraint firstItem="xJh-i1-MeG" firstAttribute="trailing" secondItem="dge-9a-LLW" secondAttribute="trailing" id="kfc-wm-AsO"/>
+                            <constraint firstItem="dge-9a-LLW" firstAttribute="leading" secondItem="xJh-i1-MeG" secondAttribute="leading" id="qMk-aA-zkZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xJh-i1-MeG"/>
+                    </view>
+                    <connections>
+                        <outlet property="otpView" destination="dge-9a-LLW" id="cv6-H9-eMX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J4c-Dw-jlh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="10147"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Wallpaper" width="372" height="696"/>
+        <image name="unnamed-2.png" width="540.47998046875" height="960.47998046875"/>
     </resources>
 </document>

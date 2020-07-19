@@ -27,7 +27,8 @@
             "cherryRed20":"#e12132",
             "deepSkyBlue15":"#007aff26",
             "brownGreyFive":"#aeaeae",
-            "deepSkyBlue15":"#007aff26"
+            "deepSkyBlue15":"#007aff26",
+            "veryLightPinkThree": "#d7d7d7"
         }
     },
     "inlineCard": {
@@ -453,28 +454,45 @@
             "textFont": "Roboto-Light,12",
             "textColor": "orange",
             "backgroundColor": "apricot30",
-            "borderColor": "reddishOrange20"
+            "borderColor": "reddishOrange20",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         },
         "Error":
         {
             "textFont": "Roboto-Light,12",
             "textColor": "cherryRed",
             "backgroundColor": "cherryRed10",
-            "borderColor": "cherryRed20"
+            "borderColor": "cherryRed20",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         },
         "Default":
         {
             "textFont": "Roboto-Light,12",
             "textColor": "greyishBrown",
             "backgroundColor": "whiteTwo",
-            "borderColor": "clear"
+            "borderColor": "clear",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         },
         "Scanned":
         {
             "textFont": "Roboto-Light,12",
             "textColor": "deepSkyBlue",
             "backgroundColor": "deepSkyBlue15",
-            "borderColor": "clear"
+            "borderColor": "clear",
+            "actionButtonTextColor" : "clear",
+            "actionButtonTextFont" : "Roboto-Regular,12"
+        },
+        "GoPayLogin":
+        {
+            "textFont": "Roboto-Light,14",
+            "textColor": "greyishBrown",
+            "backgroundColor": "whiteTwo",
+            "borderColor": "clear",
+            "actionButtonTextColor" : "deepSkyBlue",
+            "actionButtonTextFont" : "Roboto-Regular,12"
         }
     },
     "goPay": {
@@ -497,7 +515,52 @@
                     "textFont": "Roboto-Regular,12",
                     "textColor": "brownGreyFive"
                 }
+            },
+            "hintLabel": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "brownGreyThree"
             }
+        },
+        "passwordView" :{
+            "backgroundColor": "clear"
+        },
+        "passwordField": {
+            "backgroundColor" : "clear",
+            "textFont": "Roboto-Light,17",
+            "textColor": "greyishBrown",
+            "placeHolderColor" : "brownGreyThree",
+            "showPasswordIcon" : "passwordEye",
+            "hidePasswordIcon" : "passwordEye",
+            "underline":{
+                "empty": {
+                    "backgroundColor" : "brownGrey"
+                },
+                "filled": {
+                    "backgroundColor" : "deepSkyBlue"
+                }
+            }
+        }
+    },
+    "actionButton": {
+        "Common": {
+            "titleLabelFont" : "Roboto-Regular,16",
+            "titleLabelColor" : "white",
+            "assets": {
+                "loading": "3sec-white-loader-2.gif",
+                "error": "white-error-mob.gif",
+                "success": "white-success-mob.gif"
+            }
+        },
+        "Invalid" : {
+            "backgroundColor" : "veryLightPinkThree"
+        },
+        "Valid" : {
+            "goLoginBackgroundColor" : "deepSkyBlue",
+            "paymentBackgroundColor" : "vibrantGreen"
+        },
+        "BackgroundColor": {
+            "Otp" : "clear",
+            "default" : "whiteTwo"
         }
     }
 }

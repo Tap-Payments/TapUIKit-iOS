@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapOtpView" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="0kI-jw-sZ1"/>
+                <outlet property="messageLabel" destination="zzg-pY-9e2" id="fqY-5E-FNT"/>
+                <outlet property="otpController" destination="70I-tM-WsA" id="Uls-Po-L5S"/>
+                <outlet property="timerLabel" destination="tBD-Zw-obQ" id="9yj-2d-ukS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid OTP number! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzg-pY-9e2">
+                    <rect key="frame" x="20" y="45.5" width="314" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.91764705882352937" green="0.38039215686274508" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59:59" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBD-Zw-obQ">
+                    <rect key="frame" x="354" y="45.5" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="ENL-X5-HV9"/>
+                        <constraint firstAttribute="height" constant="21" id="srB-WU-VZZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70I-tM-WsA" customClass="TapOtpController" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="20" y="0.0" width="374" height="42.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="zzg-pY-9e2" firstAttribute="top" secondItem="70I-tM-WsA" secondAttribute="bottom" constant="3" id="5Gv-jE-zcp"/>
+                <constraint firstItem="70I-tM-WsA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dlv-Ty-66h"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tBD-Zw-obQ" secondAttribute="trailing" constant="18" id="H6c-0G-Fw5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="70I-tM-WsA" secondAttribute="trailing" constant="20" id="Jpl-0C-Bo9"/>
+                <constraint firstItem="zzg-pY-9e2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="M8s-3a-pe4"/>
+                <constraint firstItem="70I-tM-WsA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Ss4-4j-4W3"/>
+                <constraint firstItem="tBD-Zw-obQ" firstAttribute="leading" secondItem="zzg-pY-9e2" secondAttribute="trailing" constant="20" id="gas-cy-xQ0"/>
+                <constraint firstItem="tBD-Zw-obQ" firstAttribute="top" secondItem="zzg-pY-9e2" secondAttribute="top" id="n5A-K6-YUY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zzg-pY-9e2" secondAttribute="bottom" constant="4" id="wzw-Rm-6KD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="113.04347826086958" y="-14.732142857142856"/>
+        </view>
+    </objects>
+</document>

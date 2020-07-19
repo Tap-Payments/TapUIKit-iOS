@@ -40,6 +40,11 @@
             "Scanned":
             {
                 "successFullScan" : "Your card has been scanned successfully."
+            },
+            "GoPayLogin":
+            {
+                "password": "",
+                "otp": "OTP has been sent to"
             }
         },
         "Common": {
@@ -52,7 +57,19 @@
             "items": "Items",
             "item": "Item",
             "email": "email",
-            "phone": "phone"
+            "phone": "phone",
+            "password": "Password",
+            "change": "change"
+        },
+        "GoPay": {
+            "HintLabel": "You can access your saved cards from anywhere with goPay."
+        },
+        "ActionButton":{
+            "pay": "Pay",
+            "confirm": "Confirm",
+            "resend": "Resend OTP",
+            "next": "Next",
+            "signin": "Signin"
         }
     },
     "ar": {
@@ -96,6 +113,11 @@
             "Scanned":
             {
                 "successFullScan" : "تم  تصوير الكارت بنجاح"
+            },
+            "GoPayLogin":
+            {
+                "password": "",
+                "otp": "تم إرسال الرمز لـ"
             }
         },
         "Common": {
@@ -108,7 +130,19 @@
             "items": "منتجات",
             "item": "منتج",
             "email": "البريد",
-            "phone": "الهاتف"
+            "phone": "الهاتف",
+            "password": "كلمة السر",
+            "change": "تعديل"
+        },
+        "GoPay": {
+            "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"
         }
+    },
+    "ActionButton":{
+        "pay": "إدفع",
+        "confirm": "تأكيد",
+        "resend": "إعادة إرسال",
+        "next": "التالي",
+        "signin": "دخول"
     }
 }

@@ -37,7 +37,7 @@ internal protocol TapGoPayTitleViewDelegate {
 @objc public class TapGoPayTitleViewModel:NSObject {
     
     // MARK:- Public normal swift variables
-    /// Represent the icon state
+    /// Represent the title state
     @objc public var titleStatus:TapCardPhoneIconStatus = .selected {
         didSet{
             // Update the attached view to reload itself based on the new status
@@ -107,7 +107,10 @@ internal protocol TapGoPayTitleViewDelegate {
     /// Login to goPay using phone and OTP
     case Phone
     
-    
+    /**
+     The localized title to show regarding a certain GoPayLogin option
+     - Returns: The localized title of the associated GoPayLogin
+     */
     public func localisedTitle() -> String {
         // Used to fetch the localised titles for different options
         let sharedLocalisation:TapLocalisationManager = .shared

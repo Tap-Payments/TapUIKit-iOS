@@ -31,7 +31,7 @@ import TapThemeManager2020
     
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
-    /// Represents the view model for email login option
+    /// Represents the theme path to theme the GoPay tab bar
     private let themePath:String = "goPay.loginBar"
     /// Represents the validation status for the current selected tab
     internal var validSelection:Bool = false {
@@ -58,6 +58,12 @@ import TapThemeManager2020
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
     }
     
     
@@ -137,6 +143,7 @@ extension TapGoPayLoginBarView {
 extension TapGoPayLoginBarView: TapGoPayLoginBarViewDelegate {
     
     func animateBar(to x: CGFloat, with width: CGFloat) {
+        // Mov ethe bar to the required position
         underLineBar.layoutIfNeeded()
         underLineBar.updateConstraints()
         underLineBarLeadingConstraint.constant = x

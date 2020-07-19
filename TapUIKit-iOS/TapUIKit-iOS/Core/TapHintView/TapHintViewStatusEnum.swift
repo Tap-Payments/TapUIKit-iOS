@@ -22,6 +22,10 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case ReadyToScan = 4
     /// The successful scanner feedback hint
     case Scanned = 5
+    /// The feedback anout the email to use the password to
+    case GoPayPassword = 6
+    /// The feedback aout the number the OTP sent to
+    case GoPayOtp = 7
     
     /**
      The theme path that has the UI info for each case
@@ -37,6 +41,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return "Hints.Default"
         case .Scanned:
             return "Hints.Scanned"
+        case .GoPayOtp,.GoPayPassword:
+            return "Hints.GoPayLogin"
         }
     }
     
@@ -59,6 +65,38 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Default.scan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Default.scan"
         case .Scanned:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Scanned.successFullScan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Scanned.successFullScan"
+        case .GoPayPassword:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.GoPayLogin.password", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.GoPayLogin.password"
+        case .GoPayOtp:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.GoPayLogin.otp", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.GoPayLogin.otp"
+        }
+    }
+    
+    /**
+     Fetches the localized title of the action button
+     - Returns: Change for OTP and Password and nothing otherwise
+     */
+    func localizedActionButtonTitle() -> String {
+        let sharedLocalisationManager:TapLocalisationManager = .shared
+        switch self {
+        case .GoPayOtp,.GoPayPassword:
+            return sharedLocalisationManager.localisedValue(for: "Common.change", with: TapCommonConstants.pathForDefaultLocalisation()).uppercased()
+        default:
+            return ""
+        }
+    }
+    
+    
+    /**
+     Determinse based on the status if the action sheet should be visible or not
+     - Returns: True if it is an otp or password hint and false otherwise
+     */
+    func shouldShowActionButton() -> Bool {
+        switch self {
+            case .GoPayOtp,.GoPayPassword:
+            return true
+        default:
+            return false
         }
     }
     

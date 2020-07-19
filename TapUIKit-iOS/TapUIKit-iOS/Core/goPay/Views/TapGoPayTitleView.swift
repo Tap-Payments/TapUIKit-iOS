@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 
-/// Represent the icon cell inside the horizontal bar of go pay login options
+/// Represent the title cell inside the horizontal bar of go pay login options
 @objc public class TapGoPayTitleView: UIView {
 
     // MARK:- Outlets
@@ -24,6 +24,7 @@ import TapThemeManager2020
     }
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// The theme path to theme the TapGoPay cell in the login options bar
     private let themePath:String = "goPay.loginBar"
     
     // Mark:- Init methods
@@ -69,6 +70,12 @@ import TapThemeManager2020
     @IBAction func titleClicked(_ sender: Any) {
         viewModel?.titleIsSelected()
     }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = bounds
+    }
+    
 }
 
 

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoPayLoginOptions" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="vQK-84-8NZ"/>
+                <outlet property="emailInput" destination="GpY-as-bfJ" id="GBI-8r-Oot"/>
+                <outlet property="hintLabel" destination="beI-BV-X21" id="ZRg-hf-FVD"/>
+                <outlet property="loginOptionsTabBar" destination="8tA-Gg-WoY" id="ygP-o4-FRU"/>
+                <outlet property="phoneInput" destination="9x3-wD-ie2" id="QZw-ND-wzC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="187"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tA-Gg-WoY" customClass="TapGoPayLoginBarView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Ki0-NT-MXU"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UC-mi-yW2" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="45" width="414" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="PTh-LT-dx5"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpY-as-bfJ" customClass="TapEmailInput" customModule="TapCardInputKit_iOS">
+                    <rect key="frame" x="0.0" y="46" width="414" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="KaO-b6-iFt"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9x3-wD-ie2" customClass="TapPhoneInput" customModule="TapCardInputKit_iOS">
+                    <rect key="frame" x="0.0" y="46" width="414" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="bPH-Sd-mCI"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8o-aa-Cbc" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="91" width="414" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="i0G-ip-xGO"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beI-BV-X21">
+                    <rect key="frame" x="17" y="102" width="380" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="9x3-wD-ie2" firstAttribute="bottom" secondItem="GpY-as-bfJ" secondAttribute="bottom" id="2hr-Q5-GCK"/>
+                <constraint firstItem="GpY-as-bfJ" firstAttribute="top" secondItem="5UC-mi-yW2" secondAttribute="bottom" id="3wr-IJ-nmG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GpY-as-bfJ" secondAttribute="trailing" id="5cQ-1i-sYf"/>
+                <constraint firstItem="5UC-mi-yW2" firstAttribute="top" secondItem="8tA-Gg-WoY" secondAttribute="bottom" id="6pJ-zL-m7n"/>
+                <constraint firstItem="beI-BV-X21" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="7wG-9P-LEe"/>
+                <constraint firstItem="F8o-aa-Cbc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Edz-vX-RR1"/>
+                <constraint firstItem="F8o-aa-Cbc" firstAttribute="top" secondItem="GpY-as-bfJ" secondAttribute="bottom" id="HrJ-Oi-8ch"/>
+                <constraint firstItem="9x3-wD-ie2" firstAttribute="leading" secondItem="GpY-as-bfJ" secondAttribute="leading" id="S69-dC-qr3"/>
+                <constraint firstItem="GpY-as-bfJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WP8-45-dgZ"/>
+                <constraint firstItem="8tA-Gg-WoY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dOj-rC-kqP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8tA-Gg-WoY" secondAttribute="trailing" id="gfc-0h-gdR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5UC-mi-yW2" secondAttribute="trailing" id="hV8-L6-o3W"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="beI-BV-X21" secondAttribute="trailing" constant="17" id="hpU-wV-Rxj"/>
+                <constraint firstItem="5UC-mi-yW2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lcl-Om-Mer"/>
+                <constraint firstItem="9x3-wD-ie2" firstAttribute="top" secondItem="GpY-as-bfJ" secondAttribute="top" id="nVE-fe-zKp"/>
+                <constraint firstItem="9x3-wD-ie2" firstAttribute="trailing" secondItem="GpY-as-bfJ" secondAttribute="trailing" id="oEB-CK-lDH"/>
+                <constraint firstAttribute="trailing" secondItem="F8o-aa-Cbc" secondAttribute="trailing" id="oeF-sY-CIN"/>
+                <constraint firstItem="beI-BV-X21" firstAttribute="top" secondItem="F8o-aa-Cbc" secondAttribute="bottom" constant="10" id="vBb-k2-Sb7"/>
+                <constraint firstItem="8tA-Gg-WoY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wEh-fy-pBW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="182.20108695652175"/>
+        </view>
+    </objects>
+</document>

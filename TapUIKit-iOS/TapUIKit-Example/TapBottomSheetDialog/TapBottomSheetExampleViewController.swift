@@ -176,6 +176,8 @@ extension TapBottomSheetExampleViewController: TapBottomSheetDialogDelegate {
     
     func tapBottomSheetDidTapOutside() {
         eventsTextView.text = "Controller did tap outside\n\(eventsTextView.text ?? "")"
+        self.view.endEditing(true)
+        bottomSheetController.view.endEditing(true)
     }
     
     func tapBottomSheetHeightChanged(with newHeight: CGFloat) {

@@ -22,6 +22,10 @@ import TapThemeManager2020
             reloadHintView()
         }
     }
+    /// The view that will have the color of the hint
+    @IBOutlet weak var actualBackgroundView: UIView!
+    @IBOutlet weak var actionButton: UIButton!
+    
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     
@@ -61,7 +65,12 @@ import TapThemeManager2020
     
     /// localise the hint text based on th enew current status
     private func localise() {
-        hintLabel.text = viewModel.tapHintViewStatus.localizedTitle(localized: true)
+        hintLabel.text = viewModel.localizedTitle()
+        actionButton.setTitle(viewModel.tapHintViewStatus.localizedActionButtonTitle(), for: .normal)
+    }
+    
+    @IBAction func actionButtonClicked(_ sender: Any) {
+        viewModel.hintViewClicked()
     }
 }
 
@@ -83,9 +92,13 @@ extension TapHintView {
     private func matchThemeAttributes() {
         let status:TapHintViewStatusEnum = viewModel.tapHintViewStatus
         
-        tap_theme_backgroundColor = .init(keyPath: "\(status.themePath()).backgroundColor")
+        tap_theme_backgroundColor  = .init(keyPath: "horizontalList.backgroundColor")
+        actualBackgroundView.tap_theme_backgroundColor = .init(keyPath: "\(status.themePath()).backgroundColor")
         hintLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).textFont")
         hintLabel.tap_theme_textColor = .init(stringLiteral: "\(status.themePath()).textColor")
+        actionButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(status.themePath()).actionButtonTextColor"), forState: .normal)
+        actionButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(status.themePath()).actionButtonTextFont")
+        actionButton.isHidden = !status.shouldShowActionButton()
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
