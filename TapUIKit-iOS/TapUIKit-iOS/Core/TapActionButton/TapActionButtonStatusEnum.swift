@@ -14,6 +14,8 @@ import TapThemeManager2020
     case InvalidPayment
     /// Where we need to show a green background with the titl PAY
     case ValidPayment
+    /// Where we need to show a green background with the titl PAY and the user is opening the save card switches
+    case SaveValidPayment
     /// Where we need to show a grey background with the titl confirm
     case InvalidConfirm
     /// Where we need to show a blue background with the titl confirm
@@ -42,15 +44,33 @@ import TapThemeManager2020
         case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
             backgroundThemePath = "actionButton.Invalid.backgroundColor"
             break
-        case .ValidPayment:
+        case .ValidPayment,.SaveValidPayment:
             backgroundThemePath = "actionButton.Valid.paymentBackgroundColor"
             break
         case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext:
             backgroundThemePath = "actionButton.Valid.goLoginBackgroundColor"
             break
         }
+        return TapThemeManager.colorValue(for: backgroundThemePath) ?? .clear
+    }
+    
+    
+    /**
+     Decides the color of the holder view background color of the action button
+     - Returns: The correct holder view background color from the theme manager file based on the given status
+     */
+    public func buttonViewBackGroundColor() -> UIColor {
         
+        var backgroundThemePath:String = ""
         
+        switch self {
+        case .SaveValidPayment,.InvalidConfirm,.ValidConfirm,.ResendOTP,.InvalidSignIn,.ValidSignIn:
+            backgroundThemePath = "actionButton.BackgroundColor.Otp"
+            break
+        default:
+            backgroundThemePath = "actionButton.BackgroundColor.default"
+            break
+        }
         return TapThemeManager.colorValue(for: backgroundThemePath) ?? .clear
     }
 }
