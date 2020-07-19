@@ -112,8 +112,10 @@ class GoPayLoginOptions: UIView {
         switch field {
         case .Email:
             emailInput.focus()
+            emailActionBlock()
         case .Phone:
             phoneInput.focus()
+            phoneActionBlock()
         }
     }
     
@@ -159,14 +161,40 @@ class GoPayLoginOptions: UIView {
     private func showInputFor(for  segment:GoPyLoginOption) {
         switch segment {
         case .Email:
-            emailInput.fadeIn()
-            phoneInput.fadeOut()
-            validationStatus = (emailInput.validationStatus() == .Valid) ? true : false
+            handleEmailSelection()
         case .Phone:
-            emailInput.fadeOut()
-            phoneInput.fadeIn()
-            validationStatus = (phoneInput.validationStatus() == .Valid) ? true : false
+            handlePhoneSelection()
         }
+    }
+    
+    internal func handleEmailSelection() {
+        emailInput.fadeIn()
+        phoneInput.fadeOut()
+        validationStatus = (emailInput.validationStatus() == .Valid) ? true : false
+        emailActionBlock()
+    }
+    
+    internal func emailActionBlock() {
+        let actionButtonBlock:()->() = { [weak self] in
+            self?.emailReturned(with: self?.emailInput.email() ?? "")
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":actionButtonBlock] )
+    }
+    
+    internal func phoneActionBlock() {
+        let actionButtonBlock:()->() = { [weak self] in
+            self?.phoneReturned(with: self?.phoneInput.phone() ?? "")
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":actionButtonBlock] )
+    }
+    
+    internal func handlePhoneSelection() {
+        emailInput.fadeOut()
+        phoneInput.fadeIn()
+        validationStatus = (phoneInput.validationStatus() == .Valid) ? true : false
+        phoneActionBlock()
     }
 }
 

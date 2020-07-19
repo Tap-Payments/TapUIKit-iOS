@@ -126,6 +126,7 @@ import McPicker
         // Show the password view
         goPayPasswordView.fadeIn(duration: animationDuration)
         goPayPasswordView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
+        goPayPasswordView.passwordAction()
     }
     
     /**
@@ -261,6 +262,10 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
 
 
 extension TapGoPaySignInView: TapGoPayPasswordViewProtocol {
+    public func returnClicked(with password: String) {
+        self.endEditing(true)
+    }
+    
     
     public func changeEmailClicked() {
         // Show login opions view

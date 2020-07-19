@@ -246,6 +246,10 @@ extension TapPhoneInput {
         phoneNumberTextField.becomeFirstResponder()
     }
     
+    @objc public func phone() -> String {
+        return phoneNumberTextField.text ?? ""
+    }
+    
     /// Method that glows or the dims the card input view based on the shadow theme provided and if any of the fields is active
     internal func  updateShadow() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

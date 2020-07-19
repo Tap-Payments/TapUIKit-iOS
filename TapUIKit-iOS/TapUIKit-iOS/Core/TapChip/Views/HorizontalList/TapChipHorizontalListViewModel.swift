@@ -248,6 +248,7 @@ extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
                 UIApplication.shared.open(URL(string: "https://www.google.com")!)
             }
         }
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":gatewayActionBlock] )
         
     }
