@@ -27,9 +27,6 @@ import SimpleAnimation
     @IBOutlet internal weak var scrollView: UIScrollView!
     /// The main view loaded from the Xib
     @IBOutlet internal weak var containerView: UIView!
-    /// The action button added as a floating view
-    @IBOutlet weak var tapActionButton: TapActionButton!
-    @IBOutlet weak var tapActionButtonHeightConstraint: NSLayoutConstraint!
     /// Used to determine if we need to delay any coming view addition requests to wait until the items being removed to finish the animation first:)
     internal var itemsBeingRemoved:Bool = false
     internal var itemsBeingAdded:Int = 0
@@ -55,39 +52,6 @@ import SimpleAnimation
         dismissKey()
     }
     
-    /**
-     Adjusts the action button with the correct view model
-     - Parameter viewModel: The view model needed to control the Tap Action Button view
-     */
-    @objc public func setupActionButton(with viewModel:TapActionButtonViewModel) {
-        tapActionButton.setup(with: viewModel)
-    }
-    
-    
-    /**
-     Adjusts the action button with the correct view model
-     - Parameter viewModel: The view model needed to control the Tap Action Button view
-     */
-    @objc public func updateActionButtonVisibility(to visible:Bool) {
-        if visible && tapActionButtonHeightConstraint.constant != 74 {
-            // We need to show the button
-            tapActionButton.fadeIn()
-            tapActionButtonHeightConstraint.constant = 74
-            UIView.animate(withDuration: 0.25, animations: { [weak self] in
-                self?.tapActionButton.updateConstraints()
-                self?.layoutIfNeeded()
-            })
-        }else if !visible && tapActionButtonHeightConstraint.constant != 0 {
-            // We need to hide the button
-            tapActionButton.fadeOut()
-            tapActionButtonHeightConstraint.constant = 0
-            UIView.animate(withDuration: 0.25, animations: { [weak self] in
-                self?.tapActionButton.updateConstraints()
-                self?.layoutIfNeeded()
-            })
-        }
-    }
-    
     /// Configure the scroll view and stack view constraints and attach the scrolling view inner content to the stack view
     private func setupStackScrollView() {
         // Add the observer to listen to changes in the content size of the scroll view, this will be affected by updating the subviews of the stackview
@@ -100,8 +64,6 @@ import SimpleAnimation
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        
-        tapActionButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     
@@ -123,8 +85,7 @@ import SimpleAnimation
         if let window = UIApplication.shared.keyWindow {
             bottomPadding = window.safeAreaInsets.bottom
         }*/
-        var contentSize = scrollView.contentSize
-        contentSize.height += tapActionButton.frame.height
+        let contentSize = scrollView.contentSize
         let newSize = contentSize
         //newSize.height += bottomPadding
         //delegate.innerSizeChanged?(to: newSize, with: self.frame)
