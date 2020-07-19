@@ -228,6 +228,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
+                self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
                 views.remove(at: index)
@@ -282,6 +283,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.updateActionButtonVisibility(to: false)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
@@ -304,6 +306,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == currencyListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: tabItemsTableView, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
@@ -348,8 +351,11 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func closeGoPayClicked() {
         self.view.endEditing(true)
+        tapActionButtonViewModel.buttonStatus = .InvalidPayment
+        
         for (index, element) in views.enumerated() {
             if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
+                self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.slideOut(.bottom, duration: 0.25))
                 views.remove(at: index)
                 views.append(gatewaysListView)
