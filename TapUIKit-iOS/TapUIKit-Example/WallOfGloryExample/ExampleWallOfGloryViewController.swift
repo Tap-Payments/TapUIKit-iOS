@@ -38,7 +38,6 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
-    var tapActionButton: TapActionButton = .init()
     
     var rates:[String:Double] = [:]
     
@@ -157,8 +156,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         
         // The button
-        tapActionButton.setup(with: tapActionButtonViewModel)
-        views.append(tapActionButton)
+        self.tapVerticalView.setupActionButton(with: tapActionButtonViewModel)
         
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
@@ -215,6 +213,9 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     
     func showGoPay() {
+        
+        tapActionButtonViewModel.buttonStatus = .InvalidNext
+        
         let signGoPayView: TapGoPaySignInView = .init()
         signGoPayView.delegate = self
         signGoPayView.backgroundColor = .clear

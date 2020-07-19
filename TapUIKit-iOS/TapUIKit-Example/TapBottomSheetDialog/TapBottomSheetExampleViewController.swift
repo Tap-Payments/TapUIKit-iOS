@@ -202,6 +202,6 @@ extension TapBottomSheetExampleViewController : ToPresentAsPopupViewControllerDe
     }
     
     func changeHeight(to newHeight: CGFloat) {
-        bottomSheetController.changeHeight(to: newHeight + 5)
+        bottomSheetController.changeHeight(to: newHeight)
     }
 }

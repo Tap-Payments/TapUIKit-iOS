@@ -60,7 +60,7 @@ import TapThemeManager2020
     /// Adjusts the button to have the initil width relative to the superview width
     private func setInitialWidth() {
         // We need to wait a little bit until the view is renderd to calculate the correct needed width
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
             self?.viewHolderWidth.constant = (self?.contentView.frame.width ?? 0) - 32
             self?.viewHolder.updateConstraints()
             self?.layoutIfNeeded()
