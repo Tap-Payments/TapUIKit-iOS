@@ -52,7 +52,6 @@ import SimpleAnimation
         dismissKey()
     }
     
-    
     /// Configure the scroll view and stack view constraints and attach the scrolling view inner content to the stack view
     private func setupStackScrollView() {
         // Add the observer to listen to changes in the content size of the scroll view, this will be affected by updating the subviews of the stackview
@@ -72,6 +71,8 @@ import SimpleAnimation
         return scrollView.contentSize
     }
     
+    
+    
     /// It is overriden to listen to the change in size of the scroll view
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         // Make sure this is the notfication we want to listen to which is the contentSize of the scroll view
@@ -84,7 +85,8 @@ import SimpleAnimation
         if let window = UIApplication.shared.keyWindow {
             bottomPadding = window.safeAreaInsets.bottom
         }*/
-        let newSize = scrollView.contentSize
+        let contentSize = scrollView.contentSize
+        let newSize = contentSize
         //newSize.height += bottomPadding
         //delegate.innerSizeChanged?(to: newSize, with: self.frame)
         if let timer = newSizeTimer {

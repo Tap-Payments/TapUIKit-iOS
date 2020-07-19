@@ -38,7 +38,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
-    var tapActionButton: TapActionButton = .init()
+    var tapActionButton:TapActionButton = .init()
     
     var rates:[String:Double] = [:]
     
@@ -215,11 +215,14 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     
     func showGoPay() {
+        
+        tapActionButtonViewModel.buttonStatus = .InvalidNext
+        
         let signGoPayView: TapGoPaySignInView = .init()
         signGoPayView.delegate = self
         signGoPayView.backgroundColor = .clear
         signGoPayView.translatesAutoresizingMaskIntoConstraints = false
-        signGoPayView.heightAnchor.constraint(equalToConstant: 161).isActive = true
+        signGoPayView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
         signGoPayView.setup(with: goPayBarViewModel)
         tapAmountSectionViewModel.screenChanged(to: .GoPayView)
@@ -227,13 +230,18 @@ class ExampleWallOfGloryViewController: UIViewController {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
-                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.fadeOut(duration:0.25))
+                //self.tapVerticalView.updateActionButtonVisibility(to: true)
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
+                views.removeLast()
                 views.append(signGoPayView)
+                views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.slideIn(.bottom,duration: 0.5,delay: 0.25)])
+                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -281,10 +289,13 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.updateActionButtonVisibility(to: false)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
+                views.removeLast()
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
@@ -303,15 +314,18 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == currencyListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: tabItemsTableView, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
+                views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -347,17 +361,24 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func closeGoPayClicked() {
         self.view.endEditing(true)
+        tapActionButtonViewModel.buttonStatus = .InvalidPayment
+        
         for (index, element) in views.enumerated() {
             if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
-                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.slideOut(.bottom, duration: 0.25))
+                //self.tapVerticalView.updateActionButtonVisibility(to: true)
+                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
+                views.removeLast()
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
+                views.append(tapActionButton)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
-                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn(duration: 0.1,delay: 0.25)])
-                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn(duration:0.1,delay: 0.25)])
+                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -412,12 +433,13 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     }
     
     func savedCard(for viewModel: SavedCardCollectionViewCellModel) {
-        showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
+        //showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
+        tapActionButtonViewModel.buttonStatus = .ValidPayment
     }
     
     func gateway(for viewModel: GatewayChipViewModel) {
-        showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
-        tapActionButtonViewModel.startLoading()
+        //showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
+        tapActionButtonViewModel.buttonStatus = .ValidPayment
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {
@@ -461,7 +483,7 @@ extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
     }
     
     func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
-        
+        //tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
     }
     
     func scanCardClicked() {

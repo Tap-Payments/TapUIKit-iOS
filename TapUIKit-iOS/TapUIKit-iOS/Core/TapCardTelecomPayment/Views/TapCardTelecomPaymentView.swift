@@ -175,8 +175,10 @@ import RxCocoa
         // Check if there is a status to show, or we need to hide the hint view
         guard let status = status else {
             delegate?.hideHints()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":TapActionButtonStatusEnum.ValidPayment] )
             return
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":TapActionButtonStatusEnum.InvalidPayment] )
         delegate?.showHint(with: status)
     }
     
@@ -292,6 +294,8 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
         }
         
         delegate?.brandDetected(for: cardBrand, with: validation)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":(validation == .Valid) ? TapActionButtonStatusEnum.ValidPayment : .InvalidPayment] )
     }
     
 }

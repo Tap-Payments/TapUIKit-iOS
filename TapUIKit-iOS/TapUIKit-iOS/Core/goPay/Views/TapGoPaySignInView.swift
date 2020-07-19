@@ -34,6 +34,12 @@ import McPicker
     
     /// This method will be called whenever the user clicked on the country code
     @objc optional func countryCodeClicked()
+    
+    /**
+     This method will be called whenever the user hits return on the phone text
+     - Parameter phon: The phone text inside the phone field at the time the user hit return
+     */
+    @objc optional func changeActionButtonStatus(with status:TapActionButtonStatusEnum)
 }
 /// Represents the GoPaySignInView where all needed logic and transistions between GoPayViews are encapsulated
 @objc public class TapGoPaySignInView: UIView {

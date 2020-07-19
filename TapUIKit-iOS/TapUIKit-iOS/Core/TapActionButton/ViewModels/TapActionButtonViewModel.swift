@@ -47,6 +47,21 @@ internal protocol TapActionButtonViewDelegate {
         viewDelegate?.startLoading(completion: completion)
     }
     
+    
+    @objc public override init() {
+        super.init()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActionButtonStatusChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: "ActionButtonStatusChanged"), object: nil)
+    }
+    
+    @objc func StnNotificationExist(_ notification:NSNotification)
+    {
+        if let status:TapActionButtonStatusEnum = notification.userInfo!["newStatus"] as? TapActionButtonStatusEnum
+        {
+            self.buttonStatus = status
+        }
+    }
+    
     /**
      Instructs the button to end loading with a given result
      - Parameter success: Indicates whether the button shall transform from loading to success or failing state

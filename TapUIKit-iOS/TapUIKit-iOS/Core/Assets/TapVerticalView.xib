@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DK2-Wu-MF0">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="-68" width="414" height="964"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="contentLayoutGuide" id="PUO-8I-N1z"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="hk3-mP-Zxp"/>
@@ -29,9 +29,9 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="DK2-Wu-MF0" secondAttribute="bottom" id="1oF-sc-3cv"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="K3E-KX-xbz"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OXd-OT-gRw"/>
-                <constraint firstAttribute="bottom" secondItem="DK2-Wu-MF0" secondAttribute="bottom" id="XuJ-EM-NYv"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ljk-Lz-kif"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

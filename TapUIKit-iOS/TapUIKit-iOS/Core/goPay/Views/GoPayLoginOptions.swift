@@ -100,6 +100,7 @@ class GoPayLoginOptions: UIView {
         didSet{
             // When changed we need to re theme the underline bar
             tapGoPayLoginBarViewModel?.changeSelectionValidation(to: validationStatus)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":(validationStatus) ? TapActionButtonStatusEnum.ValidNext : .InvalidNext] )
         }
     }
     
