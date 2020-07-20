@@ -76,6 +76,7 @@ import TapThemeManager2020
     /// Fetch the displayed title from the view model
     private func fetchData() {
         payButton.setTitle(viewModel?.buttonStatus.buttonTitle(), for: .normal)
+        payButton.isUserInteractionEnabled = viewModel?.buttonStatus.isButtonEnabled() ?? false
     }
     
     /// Apply the needed logic to reload UI and localisations upon an order from the view model

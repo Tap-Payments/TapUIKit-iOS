@@ -114,6 +114,17 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         return localizedTitle
     }
     
-    
+    /**
+     Decides if the button should be enabled or not based on the given status
+     - Returns: The correct enable status of the button based on the current button status
+     */
+    public func isButtonEnabled() -> Bool {
+        switch self {
+        case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
+            return false
+        default:
+            return true
+        }
+    }
     
 }

@@ -34,6 +34,11 @@ import SimpleAnimation
     @objc public var delegate:TapVerticalViewDelegate?
     private var newSizeTimer:Timer?
     private let keyboardHelper = KeyboardHelper()
+    @IBOutlet weak var tapActionButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tapActionButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tapActionButton: TapActionButton!
+    
+    internal var keyboardPadding:CGFloat = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,9 +72,34 @@ import SimpleAnimation
     }
     
     
+    /**
+     Setup the tap action button and attach it to the view model
+     - Parameter viewModel: The tap action button view model that will control the tap action button
+     */
+    public func setupActionButton(with viewModel:TapActionButtonViewModel) {
+        tapActionButton.setup(with: viewModel)
+    }
+    
     internal func neededSize() -> CGSize {
         return scrollView.contentSize
     }
+    
+    
+    /// Shows the action button fade in + height increase
+    public func showActionButton() {
+        tapActionButton.fadeIn()
+        tapActionButtonHeightConstraint.constant = 74
+        tapActionButton.updateConstraints()
+        layoutIfNeeded()
+    }
+    
+    /// Hide the action button fade out + height decrease
+    public func hideActionButton() {
+        tapActionButtonHeightConstraint.constant = 0
+        tapActionButton.updateConstraints()
+        layoutIfNeeded()
+    }
+    
     
     
     
@@ -110,8 +140,10 @@ import SimpleAnimation
         }
         
         guard let info:[String:Any] = timer.userInfo as? [String:Any],
-              let newSize:CGSize = info["newSize"] as? CGSize,
+              var newSize:CGSize = info["newSize"] as? CGSize,
               let frame:CGRect = info["newFrame"] as? CGRect else { return }
+        
+        newSize.height += keyboardPadding + tapActionButtonHeightConstraint.constant
         
         delegate?.innerSizeChanged?(to: newSize, with: frame)
     }
@@ -126,15 +158,53 @@ import SimpleAnimation
         if newStatus {
             keyboardHelper.onKeyboardWillBeShown = {[weak self] keyboardRect in
                 print("KEYBOARD SHOW : \(keyboardRect)")
-                self?.addSpaceView(with: keyboardRect)
+                self?.addKeyboardSpaceView(with: keyboardRect)
             }
             keyboardHelper.onKeyboardWillBeHidden = { [weak self] keyboardRect in
-                self?.removeSpaceViews()
+                self?.removeKeyboardSpaceView(with: keyboardRect)
             }
         }else{
             keyboardHelper.onKeyboardWillBeShown = nil
             keyboardHelper.onKeyboardWillBeHidden = nil
         }
+    }
+    
+    internal func addKeyboardSpaceView(with keyboardRect:CGRect) {
+        let vv:UIView = .init()
+        vv.backgroundColor = .clear
+        vv.translatesAutoresizingMaskIntoConstraints = false
+        vv.tag = 900900
+        scrollView.addSubview(vv)
+        
+        vv.translatesAutoresizingMaskIntoConstraints = false
+        vv.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        vv.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        vv.topAnchor.constraint(equalTo: tapActionButton.bottomAnchor).isActive = true
+        vv.heightAnchor.constraint(equalToConstant: keyboardRect.height).isActive = true
+        
+        tapActionButtonBottomConstraint.constant = keyboardRect.height
+        
+        vv.updateConstraints()
+        tapActionButton.updateConstraints()
+        scrollView.layoutIfNeeded()
+        keyboardPadding = keyboardRect.height
+        
+        var currentContentSize = scrollView.contentSize
+        currentContentSize.height -= 1
+        scrollView.contentSize = currentContentSize
+        
+        self.layoutIfNeeded()
+    }
+    
+    internal func removeKeyboardSpaceView(with keyboardRect:CGRect) {
+        keyboardPadding = 0
+        tapActionButtonBottomConstraint.constant = 0
+        tapActionButton.updateConstraints()
+        scrollView.layoutIfNeeded()
+        
+        var currentContentSize = scrollView.contentSize
+        currentContentSize.height += 1
+        scrollView.contentSize = currentContentSize
     }
     
     internal func addSpaceView(with keyboardRect:CGRect) {

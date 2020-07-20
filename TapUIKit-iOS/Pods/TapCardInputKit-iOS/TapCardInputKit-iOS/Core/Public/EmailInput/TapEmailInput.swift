@@ -64,6 +64,10 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         setupViews()
     }
     
+    @objc public func email() -> String {
+        return emailTextField.text ?? ""
+    }
+    
     @objc public func focus() {
         emailTextField.becomeFirstResponder()
     }

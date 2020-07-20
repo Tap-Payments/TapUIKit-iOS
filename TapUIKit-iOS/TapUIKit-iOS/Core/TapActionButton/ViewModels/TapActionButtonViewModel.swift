@@ -50,15 +50,52 @@ internal protocol TapActionButtonViewDelegate {
     
     @objc public override init() {
         super.init()
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ActionButtonStatusChanged"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: "ActionButtonStatusChanged"), object: nil)
+        
+        // Register for notifications to allow changing the status and the action block at run time form anywhere in the app
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetStatusNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetBlockNotification), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetStatusNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetBlockNotification), object: nil)
     }
     
+    /**
+     Handles the logic needed to recieve the notifiations from other parts in the SDK to change the status and the action block of the button
+      - Parameter notification: The recieved notification object from the dispatcher object
+     */
     @objc func StnNotificationExist(_ notification:NSNotification)
     {
-        if let status:TapActionButtonStatusEnum = notification.userInfo!["newStatus"] as? TapActionButtonStatusEnum
-        {
+        // Let us decide if the notification is related to us, and if yes, let us decide its type and behave accordingly
+        if notification.name.rawValue == TapConstantManager.TapActionSheetStatusNotification {
+            // This is a notification to change the status of the button
+            handleNewStatusNotification(with: notification)
+        }else if notification.name.rawValue == TapConstantManager.TapActionSheetBlockNotification {
+            // This is a notification to change the action handler of the button
+            handleNewActionBlockNotification(with: notification)
+        }
+    }
+    
+    /**
+     Handles the logic needed to recieve update button status notification
+     - Parameter notification: The recieved notification object from the dispatcher object
+     */
+    internal func handleNewStatusNotification(with notification:NSNotification) {
+        // Defensive code to make syre the dispatcher sent a correct button status
+        if let status:TapActionButtonStatusEnum = notification.userInfo![TapConstantManager.TapActionSheetStatusNotification] as? TapActionButtonStatusEnum {
+            // assign the new status
             self.buttonStatus = status
+        }
+    }
+    
+    /**
+     Handles the logic needed to recieve update button action block notification
+     - Parameter notification: The recieved notification object from the dispatcher object
+     */
+    internal func handleNewActionBlockNotification(with notification:NSNotification) {
+        // Defensive code to make syre the dispatcher sent a correct action button block
+        if let actionBlock:()->() = notification.userInfo![TapConstantManager.TapActionSheetBlockNotification] as? ()->() {
+            // assign the new block
+            self.buttonActionBlock = actionBlock
         }
     }
     

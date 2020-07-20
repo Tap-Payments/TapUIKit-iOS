@@ -13,6 +13,12 @@ import TapThemeManager2020
     /// Will be fired once the user asks to change the email written in the previous step
     @objc func changeEmailClicked()
     
+    /**
+     This method will be called whenever the user hits return on the password text
+     - Parameter password: The password text inside the password field at the time the user hit return
+     */
+    @objc func returnClicked(with password:String)
+    
 }
 
 /// Represents the goay pssword view which will have the password text field + the upper hint + the change button
@@ -52,6 +58,17 @@ import TapThemeManager2020
         hintViewModel.delegate = self
         hintView.setup(with: hintViewModel)
         applyTheme()
+    }
+    
+    internal func passwordAction() {
+        let actionButtonBlock:()->() = { [weak self] in
+            self?.returnClicked(with: self?.passwordView.password() ?? "")
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
+        
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidSignIn] )
     }
     
     /**
@@ -94,11 +111,11 @@ extension TapGoPayPasswordView {
 
 extension TapGoPayPasswordView:TapGoPayPasswordTextFieldProtocol {
     public func passwordChanged(to password: String) {
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(password == "") ? TapActionButtonStatusEnum.InvalidSignIn : TapActionButtonStatusEnum.ValidSignIn] )
     }
     
     public func returnClicked(with password: String) {
-        
+        delegate?.returnClicked(with: password)
     }
 }
 

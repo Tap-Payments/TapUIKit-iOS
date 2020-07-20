@@ -100,7 +100,7 @@ class GoPayLoginOptions: UIView {
         didSet{
             // When changed we need to re theme the underline bar
             tapGoPayLoginBarViewModel?.changeSelectionValidation(to: validationStatus)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":(validationStatus) ? TapActionButtonStatusEnum.ValidNext : .InvalidNext] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(validationStatus) ? TapActionButtonStatusEnum.ValidNext : .InvalidNext] )
         }
     }
     
@@ -112,8 +112,12 @@ class GoPayLoginOptions: UIView {
         switch field {
         case .Email:
             emailInput.focus()
+            emailActionBlock()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidNext] )
         case .Phone:
             phoneInput.focus()
+            phoneActionBlock()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidNext] )
         }
     }
     
@@ -159,14 +163,50 @@ class GoPayLoginOptions: UIView {
     private func showInputFor(for  segment:GoPyLoginOption) {
         switch segment {
         case .Email:
-            emailInput.fadeIn()
-            phoneInput.fadeOut()
-            validationStatus = (emailInput.validationStatus() == .Valid) ? true : false
+            handleEmailSelection()
         case .Phone:
-            emailInput.fadeOut()
-            phoneInput.fadeIn()
-            validationStatus = (phoneInput.validationStatus() == .Valid) ? true : false
+            handlePhoneSelection()
         }
+    }
+    
+    /// Handles the logic needed when the user selects the email input
+    internal func handleEmailSelection() {
+        // Show the email inpit
+        emailInput.fadeIn()
+        phoneInput.fadeOut()
+        // Decide the needed validations and action for the global tap action button
+        validationStatus = (emailInput.validationStatus() == .Valid) ? true : false
+        emailActionBlock()
+    }
+    
+    /// Addin the correct action block for email login field to the global tap action button
+    internal func emailActionBlock() {
+        // Define the needed block
+        let actionButtonBlock:()->() = { [weak self] in
+            self?.emailReturned(with: self?.emailInput.email() ?? "")
+        }
+        // Inform the button to update itself
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
+    }
+    
+    /// Addin the correct action block for phone login field to the global tap action button
+    internal func phoneActionBlock() {
+        // Define the needed block
+        let actionButtonBlock:()->() = { [weak self] in
+            self?.phoneReturned(with: self?.phoneInput.phone() ?? "")
+        }
+        // Inform the button to update itself
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
+    }
+    
+    /// Handles the logic needed when the user selects the phon input
+    internal func handlePhoneSelection() {
+        // Show the phone input
+        emailInput.fadeOut()
+        phoneInput.fadeIn()
+        // Decide the needed validations and action for the global tap action button
+        validationStatus = (phoneInput.validationStatus() == .Valid) ? true : false
+        phoneActionBlock()
     }
 }
 
