@@ -27,6 +27,8 @@ import RxCocoa
      - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
      */
     @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
+    
+    
     /// This method will be called once the user clicks on Scan button
     @objc func scanCardClicked()
     
@@ -38,13 +40,6 @@ import RxCocoa
     
     ///This method will be called whenever there is no need to show ay hints views
     @objc func hideHints()
-    
-    
-    /**
-     This method will be called whenever the user clicked on pay with card
-     - Parameter tapCard: The TapCard model that hold sthe data the currently enetred by the user till now
-     */
-    @objc func pay(with tapCard:TapCard)
 }
 
 
@@ -193,13 +188,13 @@ import RxCocoa
      Decides which hint status to be shown based on the validation statuses for the card input fields
      - Parameter tapCard: The current tap card input by the user
      */
-    internal func decideHintStatus(with tapCard:TapCard) {
+    public func decideHintStatus(with tapCard:TapCard? = nil) -> TapHintViewStatusEnum? {
+        let tapCard:TapCard = tapCard ?? lastReportedTapCard
         var newStatus:TapHintViewStatusEnum?
         
         // Check first if the card nnumber has data otherwise we are in the IDLE state
         guard let cardNumber:String = tapCard.tapCardNumber, cardNumber != "" else {
-            hintStatus = nil
-            return
+            return nil
         }
         // Let us get the validation status of the fields
         let (cardNumberValid,cardExpiryValid,cardCVVValid) = cardInputView.fieldsValidationStatuses()
@@ -216,7 +211,7 @@ import RxCocoa
                 newStatus = .WarningCVV
             }
         }
-        hintStatus = newStatus
+        return newStatus
     }
     
     
@@ -232,7 +227,7 @@ import RxCocoa
         }else if segment == "cards" {
             cardInputView.fadeIn()
             phoneInputView.fadeOut()
-            decideHintStatus(with: lastReportedTapCard)
+            hintStatus = decideHintStatus(with: lastReportedTapCard)
         }
     }
     
@@ -244,6 +239,8 @@ import RxCocoa
         cardInputView.setup(for: .InlineCardInput, allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand }.filter{ $0.brandSegmentIdentifier == "cards" }.map{ $0.rawValue }, cardIconUrl: brandIconUrl)
         // Reset any selection done on the bar layout
         tapCardPhoneListViewModel.resetCurrentSegment()
+        
+        delegate?.brandDetected(for: .unknown, with: .Invalid)
     }
     
     /**
@@ -257,13 +254,14 @@ import RxCocoa
 
 extension TapCardTelecomPaymentView: TapCardInputProtocol {
     public func dataChanged(tapCard: TapCard) {
-        decideHintStatus(with: tapCard)
+        hintStatus = decideHintStatus(with: tapCard)
     }
     
     public func cardDataChanged(tapCard: TapCard) {
         delegate?.cardDataChanged(tapCard: tapCard)
         lastReportedTapCard = tapCard
-        decideHintStatus(with: tapCard)
+        hintStatus = decideHintStatus(with: tapCard)
+        
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -301,8 +299,6 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
         }
         
         delegate?.brandDetected(for: cardBrand, with: validation)
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(validation == .Valid) ? TapActionButtonStatusEnum.ValidPayment : .InvalidPayment] )
     }
     
 }

@@ -461,13 +461,27 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func didSelect(item viewModel: GenericTapChipViewModel) {
         
+    }
+    
+    
+    func handleTelecomPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+        tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
+    }
+    
+    func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+        if validation == .Valid,
+            tapCardTelecomPaymentView.decideHintStatus() == nil {
+            tapActionButtonViewModel.buttonStatus = .ValidPayment
+        }else{
+            tapActionButtonViewModel.buttonStatus = .InvalidPayment
+        }
         
     }
 }
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
-    
+   
     func showHint(with status: TapHintViewStatusEnum) {
         let hintViewModel:TapHintViewModel = .init(with: status)
         let hintView:TapHintView = hintViewModel.createHintView()
@@ -484,6 +498,12 @@ extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
     
     func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
         //tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
+        // Based on the detected brand type we decide the action button status
+        if cardBrand.brandSegmentIdentifier == "telecom" {
+            handleTelecomPayment(for: cardBrand, with: validation)
+        }else if cardBrand.brandSegmentIdentifier == "telecom" {
+            handleCardPayment(for: cardBrand, with: validation)
+        }
     }
     
     func scanCardClicked() {
