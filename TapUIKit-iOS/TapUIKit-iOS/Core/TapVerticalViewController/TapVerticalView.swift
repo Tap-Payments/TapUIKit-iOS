@@ -71,7 +71,10 @@ import SimpleAnimation
     }
     
     
-    
+    /**
+     Setup the tap action button and attach it to the view model
+     - Parameter viewModel: The tap action button view model that will control the tap action button
+     */
     public func setupActionButton(with viewModel:TapActionButtonViewModel) {
         tapActionButton.setup(with: viewModel)
     }
@@ -81,6 +84,7 @@ import SimpleAnimation
     }
     
     
+    /// Shows the action button fade in + height increase
     public func showActionButton() {
         tapActionButton.fadeIn()
         tapActionButtonHeightConstraint.constant = 74
@@ -88,6 +92,7 @@ import SimpleAnimation
         layoutIfNeeded()
     }
     
+    /// Hide the action button fade out + height decrease
     public func hideActionButton() {
         tapActionButton.fadeOut() { [weak self] _ in
             self?.tapActionButtonHeightConstraint.constant = 0
