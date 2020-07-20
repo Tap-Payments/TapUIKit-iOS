@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitchView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="Xz5-dZ-i8q"/>
+                <outlet property="mainSwitch" destination="0WX-pw-QB7" id="smV-at-uLd"/>
+                <outlet property="stackView" destination="sNg-n0-Dwd" id="yoR-me-udi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,19 +20,22 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIF-lq-eSD" customClass="TapSwitchControl" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="62" id="FHK-0q-UmR"/>
-                    </constraints>
-                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sNg-n0-Dwd">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WX-pw-QB7" customClass="TapSwitchControl" customModule="TapUIKit_iOS" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="LIF-lq-eSD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9ID-sh-3eD"/>
-                <constraint firstItem="LIF-lq-eSD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dLx-yD-kjh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LIF-lq-eSD" secondAttribute="trailing" id="sry-KN-UPW"/>
+                <constraint firstItem="sNg-n0-Dwd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2cP-Zt-XBZ"/>
+                <constraint firstItem="sNg-n0-Dwd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3GZ-pp-tKj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sNg-n0-Dwd" secondAttribute="trailing" id="A9d-UN-QWa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sNg-n0-Dwd" secondAttribute="bottom" id="t3A-hd-yHX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

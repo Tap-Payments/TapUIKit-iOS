@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import TapThemeManager2020
 
-class TapSwitchView: UIView {
+@objc public class TapSwitchView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet weak private var containerView: UIView!
+    
+    /// The stack view that holds all the switch views
+    @IBOutlet weak private var stackView: UIStackView!
+    
+    ///
+    @IBOutlet weak private var mainSwitch: TapSwitchControl!
+    
+    /// The view model that controls the data to be displayed and the events to be fired
+    @objc public var viewModel:TapSwitchViewModel = .init()
+    
+    /// This contains the path of Tap Switch view theme in the theme manager
+    private let themePath = "TapSwitchView"
     
     // Mark:- Init methods
         override init(frame: CGRect) {
@@ -37,4 +50,16 @@ class TapSwitchView: UIView {
             self.containerView.frame = bounds
         }
 
+    /**
+     Seup the hint view according to the view model
+     - Parameter viewModel: The new required view model to attach the view to
+     */
+    @objc public func setup(with viewModel: TapSwitchViewModel) {
+        self.viewModel = viewModel
+        self.viewModel.viewDelegate = self
+    }
+}
+
+extension TapSwitchView: TapSwitchViewDelegate {
+    
 }
