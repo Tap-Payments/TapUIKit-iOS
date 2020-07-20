@@ -23,30 +23,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DK2-Wu-MF0">
-                    <rect key="frame" x="0.0" y="-68" width="414" height="964"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-oi-8Dg" customClass="TapActionButton" customModule="TapUIKit_iOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="836" width="414" height="128"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="74" id="MeX-bO-gUR"/>
-                            </constraints>
-                        </view>
-                    </subviews>
+                    <rect key="frame" x="0.0" y="-68" width="414" height="471"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="1uI-oi-8Dg" firstAttribute="leading" secondItem="hk3-mP-Zxp" secondAttribute="leading" id="Yim-jn-tHG"/>
-                        <constraint firstItem="1uI-oi-8Dg" firstAttribute="trailing" secondItem="hk3-mP-Zxp" secondAttribute="trailing" id="bAJ-fh-2Ip"/>
-                        <constraint firstAttribute="bottom" secondItem="1uI-oi-8Dg" secondAttribute="bottom" id="hFD-Ah-BvI"/>
-                    </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="PUO-8I-N1z"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="hk3-mP-Zxp"/>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-oi-8Dg" customClass="TapActionButton" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="822" width="414" height="74"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="MeX-bO-gUR"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="DK2-Wu-MF0" secondAttribute="bottom" id="1oF-sc-3cv"/>
+                <constraint firstItem="1uI-oi-8Dg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4H3-wQ-Zu3"/>
+                <constraint firstItem="1uI-oi-8Dg" firstAttribute="top" secondItem="DK2-Wu-MF0" secondAttribute="bottom" id="GIH-nY-pE2"/>
+                <constraint firstAttribute="trailing" secondItem="1uI-oi-8Dg" secondAttribute="trailing" id="JST-Xn-S0r"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="K3E-KX-xbz"/>
+                <constraint firstAttribute="bottom" secondItem="1uI-oi-8Dg" secondAttribute="bottom" id="Mwj-Zr-qek"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OXd-OT-gRw"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ljk-Lz-kif"/>
             </constraints>

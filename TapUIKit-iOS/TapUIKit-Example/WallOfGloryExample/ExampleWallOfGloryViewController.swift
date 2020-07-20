@@ -489,7 +489,15 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func startPayment(then success:Bool) {
         view.endEditing(true)
         
-        
+        for (index, element) in views.enumerated() {
+            if element == gatewaysListView {
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
+                views.remove(at: index)
+                break
+            }
+        }
         
         tapActionButtonViewModel.startLoading()
     }

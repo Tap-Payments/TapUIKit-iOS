@@ -66,7 +66,7 @@ import SimpleAnimation
         stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: tapActionButton.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
@@ -94,12 +94,12 @@ import SimpleAnimation
     
     /// Hide the action button fade out + height decrease
     public func hideActionButton() {
-        tapActionButton.fadeOut() { [weak self] _ in
-            self?.tapActionButtonHeightConstraint.constant = 0
-            self?.tapActionButton.updateConstraints()
-            self?.layoutIfNeeded()
-        }
+        tapActionButtonHeightConstraint.constant = 0
+        tapActionButton.updateConstraints()
+        layoutIfNeeded()
     }
+    
+    
     
     
     /// It is overriden to listen to the change in size of the scroll view
@@ -142,7 +142,7 @@ import SimpleAnimation
               var newSize:CGSize = info["newSize"] as? CGSize,
               let frame:CGRect = info["newFrame"] as? CGRect else { return }
         
-        newSize.height += keyboardPadding
+        newSize.height += keyboardPadding + tapActionButtonHeightConstraint.constant
         
         delegate?.innerSizeChanged?(to: newSize, with: frame)
     }
