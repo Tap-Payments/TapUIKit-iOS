@@ -465,17 +465,34 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     
     func handleTelecomPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
-        tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
+        if validation == .Valid {
+            tapActionButtonViewModel.buttonStatus = .ValidPayment
+            let payAction:()->() = { self.startPayment(then:false) }
+            tapActionButtonViewModel.buttonActionBlock = payAction
+        }else {
+            tapActionButtonViewModel.buttonStatus = .InvalidPayment
+            tapActionButtonViewModel.buttonActionBlock = {}
+        }
     }
     
     func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
         if validation == .Valid,
             tapCardTelecomPaymentView.decideHintStatus() == nil {
             tapActionButtonViewModel.buttonStatus = .ValidPayment
+            let payAction:()->() = { self.startPayment(then:true) }
+            tapActionButtonViewModel.buttonActionBlock = payAction
         }else{
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
+            tapActionButtonViewModel.buttonActionBlock = {}
         }
+    }
+    
+    func startPayment(then success:Bool) {
+        view.endEditing(true)
         
+        
+        
+        tapActionButtonViewModel.startLoading()
     }
 }
 
