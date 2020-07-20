@@ -65,7 +65,7 @@ import TapThemeManager2020
             self?.returnClicked(with: self?.passwordView.password() ?? "")
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":actionButtonBlock] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
     }
     
     /**

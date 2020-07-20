@@ -241,7 +241,7 @@ extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
     
     func gateway(for viewModel: GatewayChipViewModel) {
         delegate?.gateway(for: viewModel)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":TapActionButtonStatusEnum.ValidPayment] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
         
         let gatewayActionBlock:()->() = {
             DispatchQueue.main.async {
@@ -249,7 +249,7 @@ extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
             }
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":gatewayActionBlock] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:gatewayActionBlock] )
         
     }
     

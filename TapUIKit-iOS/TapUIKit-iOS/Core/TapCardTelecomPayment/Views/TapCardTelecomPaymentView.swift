@@ -38,6 +38,13 @@ import RxCocoa
     
     ///This method will be called whenever there is no need to show ay hints views
     @objc func hideHints()
+    
+    
+    /**
+     This method will be called whenever the user clicked on pay with card
+     - Parameter tapCard: The TapCard model that hold sthe data the currently enetred by the user till now
+     */
+    @objc func pay(with tapCard:TapCard)
 }
 
 
@@ -175,10 +182,10 @@ import RxCocoa
         // Check if there is a status to show, or we need to hide the hint view
         guard let status = status else {
             delegate?.hideHints()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":TapActionButtonStatusEnum.ValidPayment] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
             return
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":TapActionButtonStatusEnum.InvalidPayment] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidPayment] )
         delegate?.showHint(with: status)
     }
     
@@ -295,7 +302,7 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
         
         delegate?.brandDetected(for: cardBrand, with: validation)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":(validation == .Valid) ? TapActionButtonStatusEnum.ValidPayment : .InvalidPayment] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(validation == .Valid) ? TapActionButtonStatusEnum.ValidPayment : .InvalidPayment] )
     }
     
 }

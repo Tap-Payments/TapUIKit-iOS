@@ -15,6 +15,8 @@ public class TapConstantManager {
     static let TapBottomSheetContainerTag:Int = 100
     static let TapBottomSheetMinimumHeight:CGFloat = 50
     static let TapBottomSheetMinimumYPoint:CGFloat = 30
+    internal static let TapActionSheetStatusNotification:String = TapConstantManager.TapActionSheetStatusNotification
+    internal static let TapActionSheetBlockNotification:String = TapConstantManager.TapActionSheetBlockNotification
     public static let TapAnimationDuration:Double = 0.75
     
     static var maxAllowedHeight:CGFloat {

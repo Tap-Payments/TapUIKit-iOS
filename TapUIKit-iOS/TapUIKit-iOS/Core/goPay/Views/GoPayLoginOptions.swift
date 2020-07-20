@@ -100,7 +100,7 @@ class GoPayLoginOptions: UIView {
         didSet{
             // When changed we need to re theme the underline bar
             tapGoPayLoginBarViewModel?.changeSelectionValidation(to: validationStatus)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonStatusChanged"), object: nil, userInfo: ["newStatus":(validationStatus) ? TapActionButtonStatusEnum.ValidNext : .InvalidNext] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(validationStatus) ? TapActionButtonStatusEnum.ValidNext : .InvalidNext] )
         }
     }
     
@@ -179,7 +179,7 @@ class GoPayLoginOptions: UIView {
             self?.emailReturned(with: self?.emailInput.email() ?? "")
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":actionButtonBlock] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
     }
     
     internal func phoneActionBlock() {
@@ -187,7 +187,7 @@ class GoPayLoginOptions: UIView {
             self?.phoneReturned(with: self?.phoneInput.phone() ?? "")
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "ActionButtonBlockChanged"), object: nil, userInfo: ["newBlock":actionButtonBlock] )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
     }
     
     internal func handlePhoneSelection() {
