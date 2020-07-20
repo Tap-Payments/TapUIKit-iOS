@@ -14,8 +14,8 @@
             filePath = "TapUIKit-iOS/Core/TapVerticalViewController/TapVerticalView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "observeValue(forKeyPath:of:change:context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "TapUIKit-iOS/Core/TapVerticalViewController/TapVerticalView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "addKeyboardSpaceView(with:)"
             landmarkType = "7">
          </BreakpointContent>

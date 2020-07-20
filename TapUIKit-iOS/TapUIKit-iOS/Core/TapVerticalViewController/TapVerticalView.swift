@@ -34,8 +34,8 @@ import SimpleAnimation
     @objc public var delegate:TapVerticalViewDelegate?
     private var newSizeTimer:Timer?
     private let keyboardHelper = KeyboardHelper()
+    @IBOutlet weak var tapActionButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tapActionButton: TapActionButton!
-    @IBOutlet weak var scrollContentView: UIView!
     
     internal var keyboardPadding:CGFloat = 0
     
@@ -60,14 +60,14 @@ import SimpleAnimation
     private func setupStackScrollView() {
         // Add the observer to listen to changes in the content size of the scroll view, this will be affected by updating the subviews of the stackview
         scrollView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
-        scrollContentView.addSubview(stackView)
+        scrollView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: scrollContentView.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: tapActionButton.topAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollContentView.widthAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
     
@@ -80,6 +80,21 @@ import SimpleAnimation
         return scrollView.contentSize
     }
     
+    
+    public func showActionButton() {
+        tapActionButton.fadeIn()
+        tapActionButtonHeightConstraint.constant = 74
+        tapActionButton.updateConstraints()
+        layoutIfNeeded()
+    }
+    
+    public func hideActionButton() {
+        tapActionButton.fadeOut() { [weak self] _ in
+            self?.tapActionButtonHeightConstraint.constant = 0
+            self?.tapActionButton.updateConstraints()
+            self?.layoutIfNeeded()
+        }
+    }
     
     
     /// It is overriden to listen to the change in size of the scroll view
@@ -153,7 +168,7 @@ import SimpleAnimation
         vv.backgroundColor = .clear
         vv.translatesAutoresizingMaskIntoConstraints = false
         vv.tag = 900900
-        scrollContentView.addSubview(vv)
+        scrollView.addSubview(vv)
         
         vv.translatesAutoresizingMaskIntoConstraints = false
         vv.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
@@ -163,7 +178,6 @@ import SimpleAnimation
         
         vv.updateConstraints()
         scrollView.layoutIfNeeded()
-        scrollContentView.layoutIfNeeded()
         keyboardPadding = keyboardRect.height
         
         var currentContentSize = scrollView.contentSize

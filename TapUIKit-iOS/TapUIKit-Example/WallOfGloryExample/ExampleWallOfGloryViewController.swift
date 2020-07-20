@@ -289,6 +289,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.updateActionButtonVisibility(to: false)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.hideActionButton()
                 //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
@@ -320,6 +321,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(tapCardTelecomPaymentView)
                 //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
+                    self?.tapVerticalView.showActionButton()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                     //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
