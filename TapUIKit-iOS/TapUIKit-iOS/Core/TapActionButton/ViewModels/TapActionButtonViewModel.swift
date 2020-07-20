@@ -24,7 +24,9 @@ internal protocol TapActionButtonViewDelegate {
      - Parameter success: Indicates whether the button shall transform from loading to success or failing state
      - Parameter completion: A block to be called once the success or failure has been shown to the user (POST status block)
      */
-    func endLoading(with success:Bool,completion:()->()?)
+    func endLoading(with success:Bool,completion: @escaping ()->())
+    
+    func expand()
 }
 
 /// Represents the view model that controls the events and the look and feel for the Tap Action Button View
@@ -104,9 +106,16 @@ internal protocol TapActionButtonViewDelegate {
      - Parameter success: Indicates whether the button shall transform from loading to success or failing state
      - Parameter completion: A block to be called once the success or failure has been shown to the user (POST status block)
      */
-    @objc public func endLoading(with success:Bool,completion:()->() = {}) {
+    @objc public func endLoading(with success:Bool,completion: @escaping ()->() = {}) {
         viewDelegate?.endLoading(with: success, completion: completion)
     }
+    
+    
+    @objc public func expandButton() {
+        viewDelegate?.expand()
+    }
+
+    
     
     
     /// A protocol to communicate with the view controller with this view model

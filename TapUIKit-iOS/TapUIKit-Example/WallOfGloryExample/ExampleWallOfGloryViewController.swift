@@ -341,6 +341,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
                 scannerElement.killScanner()
+                
                 self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index-1)
@@ -349,6 +350,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
+                    self?.tapVerticalView.showActionButton()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
@@ -361,7 +363,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func closeGoPayClicked() {
         self.view.endEditing(true)
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
-        
+        self.changeBlur(to: false)
         for (index, element) in views.enumerated() {
             if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
@@ -390,6 +392,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == gatewaysListView {
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.hideActionButton()
                 let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
                 let hintView:TapHintView = hintViewModel.createHintView()
                 let tapCardScannerView:TapCardScannerView = .init()
@@ -466,7 +469,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func handleTelecomPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
         if validation == .Valid {
             tapActionButtonViewModel.buttonStatus = .ValidPayment
-            let payAction:()->() = { self.startPayment(then:false) }
+            let payAction:()->() = { self.startPayment(then:true) }
             tapActionButtonViewModel.buttonActionBlock = payAction
         }else {
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
@@ -478,7 +481,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         if validation == .Valid,
             tapCardTelecomPaymentView.decideHintStatus() == nil {
             tapActionButtonViewModel.buttonStatus = .ValidPayment
-            let payAction:()->() = { self.startPayment(then:true) }
+            let payAction:()->() = { self.startPayment(then:false) }
             tapActionButtonViewModel.buttonActionBlock = payAction
         }else{
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
@@ -489,17 +492,29 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func startPayment(then success:Bool) {
         view.endEditing(true)
         
-        for (index, element) in views.enumerated() {
-            if element == gatewaysListView {
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
-                views.remove(at: index)
-                break
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
+            for (index, element) in self.views.enumerated() {
+                if element == self.gatewaysListView {
+                    self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
+                    self.tapVerticalView.remove(view: self.views[index+1], with: TapVerticalViewAnimationType.none)
+                    self.views.remove(at: index)
+                    self.views.remove(at: index)
+                    self.tapActionButtonViewModel.startLoading()
+                    break
+                }
             }
         }
         
-        tapActionButtonViewModel.startLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3500)) {
+            self.tapActionButtonViewModel.endLoading(with: success, completion: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
+        
+        
     }
 }
 
@@ -525,7 +540,7 @@ extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
         // Based on the detected brand type we decide the action button status
         if cardBrand.brandSegmentIdentifier == "telecom" {
             handleTelecomPayment(for: cardBrand, with: validation)
-        }else if cardBrand.brandSegmentIdentifier == "telecom" {
+        }else if cardBrand.brandSegmentIdentifier == "cards" {
             handleCardPayment(for: cardBrand, with: validation)
         }
     }
@@ -581,6 +596,27 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
 
 extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     func countryCodeClicked() {
+        
+    }
+    
+    func changeBlur(to:Bool) {
+        self.tapVerticalView.backgroundColor = (to) ? .clear : try! UIColor(tap_hex: "#f4f4f4")
+    }
+    
+    func signIn(with email: String, and password: String) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+            self.tapActionButtonViewModel.startLoading()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3500)) {
+            self.tapActionButtonViewModel.endLoading(with: true, completion: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
+                    self.closeGoPayClicked()
+                    self.tapActionButtonViewModel.buttonStatus = .InvalidPayment
+                    self.tapActionButtonViewModel.expandButton()
+                }
+            })
+        }
     }
 }
 

@@ -197,14 +197,20 @@ import SimpleAnimation
     }
     
     internal func removeKeyboardSpaceView(with keyboardRect:CGRect) {
-        keyboardPadding = 0
-        tapActionButtonBottomConstraint.constant = 0
-        tapActionButton.updateConstraints()
-        scrollView.layoutIfNeeded()
-        
-        var currentContentSize = scrollView.contentSize
-        currentContentSize.height += 1
-        scrollView.contentSize = currentContentSize
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+            
+            self.keyboardPadding = 0
+            var currentContentSize = self.scrollView.contentSize
+            currentContentSize.height += 1
+            self.scrollView.contentSize = currentContentSize
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.tapActionButtonBottomConstraint.constant = 0
+                self.tapActionButton.updateConstraints()
+                self.scrollView.layoutIfNeeded()
+            }
+        }
+       
     }
     
     internal func addSpaceView(with keyboardRect:CGRect) {
