@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapVerticalView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="rxe-2N-XoY"/>
+                <outlet property="scrollContentView" destination="XNF-vH-nbl" id="fyn-6o-LKo"/>
                 <outlet property="scrollView" destination="DK2-Wu-MF0" id="juh-hj-KCL"/>
                 <outlet property="stackView" destination="tT2-ez-5Th" id="9hq-ma-5JH"/>
+                <outlet property="tapActionButton" destination="1uI-oi-8Dg" id="dr8-Kp-9F9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,7 +24,33 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DK2-Wu-MF0">
                     <rect key="frame" x="0.0" y="-68" width="414" height="964"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XNF-vH-nbl">
+                            <rect key="frame" x="0.0" y="68" width="414" height="896"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-oi-8Dg" customClass="TapActionButton" customModule="TapUIKit_iOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="768" width="414" height="128"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="74" id="MeX-bO-gUR"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="1uI-oi-8Dg" firstAttribute="leading" secondItem="XNF-vH-nbl" secondAttribute="leading" id="QCS-wY-neh"/>
+                                <constraint firstAttribute="trailing" secondItem="1uI-oi-8Dg" secondAttribute="trailing" id="cIW-Hw-APk"/>
+                                <constraint firstAttribute="bottom" secondItem="1uI-oi-8Dg" secondAttribute="bottom" id="jpx-64-bLu"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="XNF-vH-nbl" secondAttribute="bottom" id="ra9-qJ-I2I"/>
+                        <constraint firstItem="hk3-mP-Zxp" firstAttribute="trailing" secondItem="XNF-vH-nbl" secondAttribute="trailing" id="ueL-Je-RiO"/>
+                        <constraint firstItem="XNF-vH-nbl" firstAttribute="top" secondItem="hk3-mP-Zxp" secondAttribute="top" id="yKj-jV-CmQ"/>
+                        <constraint firstItem="XNF-vH-nbl" firstAttribute="leading" secondItem="hk3-mP-Zxp" secondAttribute="leading" id="yj1-WY-jzS"/>
+                    </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="PUO-8I-N1z"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="hk3-mP-Zxp"/>
                 </scrollView>

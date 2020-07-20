@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE85CF2F-ED54-4922-91F9-F37FF3190B98"
+            uuid = "B949FE4A-A03D-46E6-8765-F1BC2A670B30"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapActionButton/ViewModels/TapActionButtonViewModel.swift"
+            filePath = "TapUIKit-iOS/Core/TapVerticalViewController/TapVerticalView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "didClickButton()"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "observeValue(forKeyPath:of:change:context:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5079BAAB-7920-4348-9F7F-ED303BB6ED8B"
+            uuid = "F2863B91-C1E0-4743-8FC5-276C06F13445"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapActionButton/ViewModels/TapActionButtonViewModel.swift"
+            filePath = "TapUIKit-iOS/Core/TapVerticalViewController/TapVerticalView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "StnNotificationExist(_:)"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "addKeyboardSpaceView(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

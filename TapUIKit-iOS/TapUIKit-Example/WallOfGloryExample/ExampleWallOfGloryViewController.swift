@@ -38,7 +38,6 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
-    var tapActionButton:TapActionButton = .init()
     
     var rates:[String:Double] = [:]
     
@@ -157,9 +156,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         
         // The button
-        tapActionButton.setup(with: tapActionButtonViewModel)
-        views.append(tapActionButton)
-        
+        self.tapVerticalView.setupActionButton(with: tapActionButtonViewModel)
         self.tapVerticalView.updateSubViews(with: views,and: .none)
     }
     
@@ -233,15 +230,15 @@ class ExampleWallOfGloryViewController: UIViewController {
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
+                //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
-                views.removeLast()
+                //views.removeLast()
                 views.append(signGoPayView)
-                views.append(tapActionButton)
+                //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
+                    //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -292,10 +289,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.updateActionButtonVisibility(to: false)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
+                //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
-                views.removeLast()
+                //views.removeLast()
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
@@ -321,11 +318,11 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
-                views.append(tapActionButton)
+                //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
+                    //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -367,18 +364,18 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
+                //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
-                views.removeLast()
+                //views.removeLast()
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
-                views.append(tapActionButton)
+                //views.append(tapActionButton)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
+                    //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }

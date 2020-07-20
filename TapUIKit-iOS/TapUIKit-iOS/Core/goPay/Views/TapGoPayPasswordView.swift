@@ -66,6 +66,9 @@ import TapThemeManager2020
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
+        
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidSignIn] )
     }
     
     /**
@@ -108,7 +111,7 @@ extension TapGoPayPasswordView {
 
 extension TapGoPayPasswordView:TapGoPayPasswordTextFieldProtocol {
     public func passwordChanged(to password: String) {
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(password == "") ? TapActionButtonStatusEnum.InvalidSignIn : TapActionButtonStatusEnum.ValidSignIn] )
     }
     
     public func returnClicked(with password: String) {

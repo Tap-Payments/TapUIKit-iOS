@@ -113,9 +113,11 @@ class GoPayLoginOptions: UIView {
         case .Email:
             emailInput.focus()
             emailActionBlock()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidNext] )
         case .Phone:
             phoneInput.focus()
             phoneActionBlock()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidNext] )
         }
     }
     
