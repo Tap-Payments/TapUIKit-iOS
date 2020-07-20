@@ -35,6 +35,7 @@ import SimpleAnimation
     private var newSizeTimer:Timer?
     private let keyboardHelper = KeyboardHelper()
     @IBOutlet weak var tapActionButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tapActionButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tapActionButton: TapActionButton!
     
     internal var keyboardPadding:CGFloat = 0
@@ -181,12 +182,15 @@ import SimpleAnimation
         vv.topAnchor.constraint(equalTo: tapActionButton.bottomAnchor).isActive = true
         vv.heightAnchor.constraint(equalToConstant: keyboardRect.height).isActive = true
         
+        tapActionButtonBottomConstraint.constant = keyboardRect.height
+        
         vv.updateConstraints()
+        tapActionButton.updateConstraints()
         scrollView.layoutIfNeeded()
         keyboardPadding = keyboardRect.height
         
         var currentContentSize = scrollView.contentSize
-        currentContentSize.height += 1
+        currentContentSize.height -= 1
         scrollView.contentSize = currentContentSize
         
         self.layoutIfNeeded()
@@ -194,6 +198,9 @@ import SimpleAnimation
     
     internal func removeKeyboardSpaceView(with keyboardRect:CGRect) {
         keyboardPadding = 0
+        tapActionButtonBottomConstraint.constant = 0
+        tapActionButton.updateConstraints()
+        scrollView.layoutIfNeeded()
         
         var currentContentSize = scrollView.contentSize
         currentContentSize.height += 1

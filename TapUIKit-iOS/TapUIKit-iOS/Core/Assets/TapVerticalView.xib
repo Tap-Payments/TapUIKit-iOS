@@ -14,6 +14,7 @@
                 <outlet property="scrollView" destination="DK2-Wu-MF0" id="juh-hj-KCL"/>
                 <outlet property="stackView" destination="tT2-ez-5Th" id="9hq-ma-5JH"/>
                 <outlet property="tapActionButton" destination="1uI-oi-8Dg" id="dr8-Kp-9F9"/>
+                <outlet property="tapActionButtonBottomConstraint" destination="Mwj-Zr-qek" id="42i-Rc-VDN"/>
                 <outlet property="tapActionButtonHeightConstraint" destination="MeX-bO-gUR" id="Xik-Su-pJg"/>
             </connections>
         </placeholder>
