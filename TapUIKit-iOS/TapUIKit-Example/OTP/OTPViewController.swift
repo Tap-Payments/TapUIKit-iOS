@@ -11,15 +11,15 @@ import TapUIKit_iOS
 
 class OTPViewController: UIViewController {
 
-    @IBOutlet weak var otpView: TapOtpView!
-    let otpViewModel:TapOtpViewModel = .init(phoneNo: "50393828", showMessage: true)
+    @IBOutlet weak var otpView: TapSwitchView!//TapOtpView!
+    let otpViewModel: TapSwitchViewModel = .init()//TapOtpViewModel = .init(phoneNo: "50393828", showMessage: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        otpViewModel.updateTimer(minutes: 0, seconds: 50)
+//        otpViewModel.updateTimer(minutes: 0, seconds: 50)
         otpView.setup(with: otpViewModel)
-        otpViewModel.updateTimer(minutes: 0, seconds: 50)
+//        otpViewModel.updateTimer(minutes: 0, seconds: 50)
         
         //otpViewModel.delegate = self
         // Do any additional setup after loading the view.
