@@ -386,7 +386,7 @@ import TapThemeManager2020
             timer.invalidate()
         }
         // All good, time to animate the height :)
-        heightTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
+        heightTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
     }
     
     
