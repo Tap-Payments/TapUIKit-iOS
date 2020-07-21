@@ -20,7 +20,6 @@ import TapThemeManager2020
     ///
     @IBOutlet weak private var mainSwitchControl: TapSwitchControl!
     
-    private var bottomCurvedSeparator: UIView?
     internal var tapBottomSheetRadiousCorners:CACornerMask = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     internal var tapBottomSheetControllerRadious:CGFloat = 8
 
@@ -112,18 +111,7 @@ import TapThemeManager2020
     
     // MARK: Bottom Curved View
     func createCurvedSeparatorView() {
-        if self.bottomCurvedSeparator == nil {
-            self.bottomCurvedSeparator = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 4))
-            bottomCurvedSeparator!.translatesAutoresizingMaskIntoConstraints = false
-            bottomCurvedSeparator!.heightAnchor.constraint(equalToConstant: 4).isActive = true
-        }
-        self.bottomCurvedSeparator?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).CurvedSeparator.BackgroundColor")
-        self.bottomCurvedSeparator?.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
-        if self.bottomCurvedSeparator!.isHidden {
-            self.bottomCurvedSeparator?.isHidden.toggle()
-        } else {
-            self.stackView.addArrangedSubview(self.bottomCurvedSeparator!)
-        }
+        self.mainSwitchControl.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
     }
 }
 
@@ -141,13 +129,8 @@ extension TapSwitchView: TapSwitchViewDelegate {
             }
         }
             
-               
-        if let bottomCurvedSeparator = self.bottomCurvedSeparator {
-            if self.stackView.arrangedSubviews.contains(bottomCurvedSeparator) {
-                bottomCurvedSeparator.isHidden = true
-            }
-        }
-        
+        self.mainSwitchControl.layer.cornerRadius = CGFloat(0)
+        self.mainSwitchControl.clipsToBounds = false
         self.mainSwitchControl.isOn = false
     }
     
@@ -156,8 +139,6 @@ extension TapSwitchView: TapSwitchViewDelegate {
         self.createMerchantSwitch()
         self.createGoPaySwitch()
     }
-    
-    
 }
 
 extension TapSwitchView: TapSwitchControlDelegate {
@@ -185,6 +166,9 @@ extension TapSwitchView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+
+        
         // main
         self.mainSwitchControl?.titleFont = TapThemeManager.fontValue(for: "\(themePath).main.title.textFont") ?? .systemFont(ofSize: 12)
         
@@ -194,6 +178,7 @@ extension TapSwitchView {
         
         self.mainSwitchControl.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).main.subtitle.textColor") ?? .black
         
+        self.mainSwitchControl.tap_theme_backgroundColor = .init(keyPath: "\(themePath).main.backgroundColor")
         
         // merchant
         self.merchantSwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).merchant.SwitchOnColor") ?? .blue
@@ -207,6 +192,8 @@ extension TapSwitchView {
         
         self.merchantSwitchControl?.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).merchant.subtitle.textColor") ?? .black
         
+        self.mainSwitchControl.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchant.backgroundColor")
+        
         // goPay
         self.goPaySwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).goPay.SwitchOnColor") ?? .blue
         
@@ -219,6 +206,8 @@ extension TapSwitchView {
         self.goPaySwitchControl?.titleTextColor = TapThemeManager.colorValue(for: "\(themePath).goPay.title.textColor") ?? .black
         
         self.goPaySwitchControl?.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).goPay.subtitle.textColor") ?? .black
+        
+        self.mainSwitchControl.tap_theme_backgroundColor = .init(keyPath: "\(themePath).goPay.backgroundColor")
     }
     
     

@@ -28,13 +28,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Save for goPay Checkouts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvW-9L-cJg">
-                    <rect key="frame" x="15" y="16" width="304" height="16.5"/>
+                    <rect key="frame" x="15" y="12" width="304" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="e0m-F3-f0h"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNY-jS-5Ck">
-                    <rect key="frame" x="15" y="37.5" width="304" height="46.5"/>
+                    <rect key="frame" x="15" y="47" width="304" height="37"/>
                     <string key="text">By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="10"/>
                     <nil key="textColor"/>
@@ -51,10 +54,10 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" constant="17" id="3qX-wp-2MD"/>
-                <constraint firstItem="RvW-9L-cJg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="814-CT-gFo"/>
+                <constraint firstItem="RvW-9L-cJg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="814-CT-gFo"/>
                 <constraint firstItem="lqa-he-XHj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="NFq-oL-M9o"/>
                 <constraint firstItem="WNY-jS-5Ck" firstAttribute="top" secondItem="RvW-9L-cJg" secondAttribute="bottom" constant="5" id="S9d-XU-W5j"/>
                 <constraint firstItem="lqa-he-XHj" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" id="UkC-kA-ThP"/>
