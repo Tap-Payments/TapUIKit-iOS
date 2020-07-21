@@ -242,10 +242,15 @@ extension TapPhoneInput {
         applyTheme()
     }
     
+    /// Focuses the keyboard for the phone input
     @objc public func focus() {
         phoneNumberTextField.becomeFirstResponder()
     }
     
+    /**
+     Gets the phone in the phone field
+     - Returns: The typed phone or an empty string
+     */
     @objc public func phone() -> String {
         return phoneNumberTextField.text ?? ""
     }
