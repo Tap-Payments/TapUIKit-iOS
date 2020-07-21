@@ -562,5 +562,10 @@
             "Otp" : "clear",
             "default" : "whiteTwo"
         }
+    },
+    "TapSwitchView": {
+        "CurvedSeparator": {
+            "BackgroundColor": "whiteTwo"
+        }
     }
 }

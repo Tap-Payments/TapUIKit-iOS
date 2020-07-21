@@ -1300,12 +1300,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dge-9a-LLW" customClass="TapSwitchView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="74" width="414" height="70"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dge-9a-LLW" customClass="TapSwitchView" customModule="TapUIKit_iOS">
+                                <rect key="frame" x="0.0" y="74" width="414" height="447"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="haN-d4-nYt"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1322,7 +1319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4c-Dw-jlh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="10147"/>
+            <point key="canvasLocation" x="2566.666666666667" y="10146.428571428571"/>
         </scene>
     </scenes>
     <resources>

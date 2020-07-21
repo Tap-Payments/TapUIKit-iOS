@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitchView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="Xz5-dZ-i8q"/>
-                <outlet property="mainSwitch" destination="0WX-pw-QB7" id="smV-at-uLd"/>
+                <outlet property="mainSwitchControl" destination="0WX-pw-QB7" id="smV-at-uLd"/>
                 <outlet property="stackView" destination="sNg-n0-Dwd" id="yoR-me-udi"/>
             </connections>
         </placeholder>

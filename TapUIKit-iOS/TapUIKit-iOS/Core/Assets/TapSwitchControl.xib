@@ -16,7 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitchControl" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="3O6-jV-Lkj"/>
-                <outlet property="detailsLabel" destination="WNY-jS-5Ck" id="lcJ-bx-Azm"/>
+                <outlet property="subtitleLabel" destination="WNY-jS-5Ck" id="lcJ-bx-Azm"/>
                 <outlet property="switchButton" destination="KuF-3l-7hP" id="G4D-1W-tPz"/>
                 <outlet property="titleLabel" destination="RvW-9L-cJg" id="0Ik-rb-K3V"/>
             </connections>
@@ -26,17 +26,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save for goPay Checkouts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvW-9L-cJg">
-                    <rect key="frame" x="15" y="16" width="304" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="7dh-4A-Ixo"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Save for goPay Checkouts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvW-9L-cJg">
+                    <rect key="frame" x="15" y="16" width="304" height="16.5"/>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNY-jS-5Ck">
-                    <rect key="frame" x="15" y="41" width="304" height="43"/>
+                    <rect key="frame" x="15" y="37.5" width="304" height="46.5"/>
                     <string key="text">By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="10"/>
                     <nil key="textColor"/>
@@ -50,7 +47,7 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" constant="17" id="3qX-wp-2MD"/>
                 <constraint firstItem="RvW-9L-cJg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="814-CT-gFo"/>
-                <constraint firstItem="WNY-jS-5Ck" firstAttribute="top" secondItem="RvW-9L-cJg" secondAttribute="bottom" constant="3" id="S9d-XU-W5j"/>
+                <constraint firstItem="WNY-jS-5Ck" firstAttribute="top" secondItem="RvW-9L-cJg" secondAttribute="bottom" constant="5" id="S9d-XU-W5j"/>
                 <constraint firstItem="KuF-3l-7hP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="XfG-GB-ef0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WNY-jS-5Ck" secondAttribute="trailing" constant="95" id="b4C-V8-h6q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WNY-jS-5Ck" secondAttribute="bottom" constant="8" id="gYw-kY-Lkp"/>
