@@ -29,7 +29,9 @@
             "brownGreyFive":"#aeaeae",
             "deepSkyBlue15":"#007aff26",
             "veryLightPinkThree": "#d7d7d7",
-            "azure": "#009aff"
+            "azure": "#009aff",
+            "brownGreySix": "#a7a7a7",
+            "brownGreySeven": "#7e7e7e"
         }
     },
     "inlineCard": {
@@ -571,11 +573,11 @@
         "main": {
             "title": {
                 "textFont": "Roboto-Light,12",
-                "textColor": "greyishBrown"
+                "textColor": "brownGreySix"
             },
             "subtitle": {
                 "textFont": "Roboto-Light,10",
-                "textColor": "greyishBrown"
+                "textColor": "brownGreySix"
             }
         },
         "goPay": {
@@ -586,7 +588,7 @@
             },
             "subtitle": {
                 "textFont": "Roboto-Light,10",
-                "textColor": "greyishBrown"
+                "textColor": "brownGreySeven"
             }
         },
         "merchant": {

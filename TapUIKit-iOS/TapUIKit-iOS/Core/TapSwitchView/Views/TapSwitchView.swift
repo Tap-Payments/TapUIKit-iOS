@@ -79,6 +79,7 @@ import TapThemeManager2020
             if self.merchantSwitchControl == nil {
                 self.merchantSwitchControl = .init()
                 applyTheme()
+                self.merchantSwitchControl?.showSeparator = viewModel.goPaySwitch != nil
             }
             self.merchantSwitchControl!.configure(with: merchantSwitch)
             self.merchantSwitchControl?.delegate = self
@@ -184,32 +185,40 @@ extension TapSwitchView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        self.goPaySwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).goPay.SwitchOnColor") ?? .blue
-        self.merchantSwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).merchant.SwitchOnColor") ?? .blue
+        // main
+        self.mainSwitchControl?.titleFont = TapThemeManager.fontValue(for: "\(themePath).main.title.textFont") ?? .systemFont(ofSize: 12)
         
+        self.mainSwitchControl?.subtitleFont = TapThemeManager.fontValue(for: "\(themePath).main.subtitle.textFont") ?? .systemFont(ofSize: 12)
+        
+        self.mainSwitchControl.titleTextColor = TapThemeManager.colorValue(for: "\(themePath).main.title.textColor") ?? .black
+        
+        self.mainSwitchControl.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).main.subtitle.textColor") ?? .black
+        
+        
+        // merchant
+        self.merchantSwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).merchant.SwitchOnColor") ?? .blue
         
         self.merchantSwitchControl?.titleFont = TapThemeManager.fontValue(for: "\(themePath).merchant.title.textFont") ?? .systemFont(ofSize: 12)
         
         self.merchantSwitchControl?.subtitleFont = TapThemeManager.fontValue(for: "\(themePath).merchant.subtitle.textFont") ?? .systemFont(ofSize: 12)
         
+        
+        self.merchantSwitchControl?.titleTextColor = TapThemeManager.colorValue(for: "\(themePath).merchant.title.textColor") ?? .black
+        
+        self.merchantSwitchControl?.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).merchant.subtitle.textColor") ?? .black
+        
+        // goPay
+        self.goPaySwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).goPay.SwitchOnColor") ?? .blue
+        
+        
         self.goPaySwitchControl?.titleFont = TapThemeManager.fontValue(for: "\(themePath).goPay.title.textFont") ?? .systemFont(ofSize: 12)
         
         self.goPaySwitchControl?.subtitleFont = TapThemeManager.fontValue(for: "\(themePath).goPay.subtitle.textFont") ?? .systemFont(ofSize: 12)
         
-//        let status: TapOTPStateEnum = viewModel.state
         
-//        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        self.goPaySwitchControl?.titleTextColor = TapThemeManager.colorValue(for: "\(themePath).goPay.title.textColor") ?? .black
         
-//        timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
-//        timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
-//
-//        self.messageLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).Message.textFont",shouldLocalise:false)
-//
-//        self.otpController.bottomLineColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.bottomLineColor") ?? .white
-//        self.otpController.bottomLineActiveColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.activeBottomColor") ?? .blue
-//
-//        self.otpController.textColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.textColor") ?? .black
-//        self.otpController.font = TapThemeManager.fontValue(for: "\(themePath).OtpController.textFont") ?? .systemFont(ofSize: 12)
+        self.goPaySwitchControl?.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).goPay.subtitle.textColor") ?? .black
     }
     
     

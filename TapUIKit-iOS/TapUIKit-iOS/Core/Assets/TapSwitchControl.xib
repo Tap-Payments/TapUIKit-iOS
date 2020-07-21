@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapSwitchControl" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="3O6-jV-Lkj"/>
+                <outlet property="separator" destination="lqa-he-XHj" id="vFw-UK-gRz"/>
                 <outlet property="subtitleLabel" destination="WNY-jS-5Ck" id="lcJ-bx-Azm"/>
                 <outlet property="switchButton" destination="KuF-3l-7hP" id="G4D-1W-tPz"/>
                 <outlet property="titleLabel" destination="RvW-9L-cJg" id="0Ik-rb-K3V"/>
@@ -42,16 +43,26 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KuF-3l-7hP">
                     <rect key="frame" x="348" y="16" width="51" height="31"/>
                 </switch>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqa-he-XHj">
+                    <rect key="frame" x="13" y="91" width="384" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="gkY-wM-DGF"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" constant="17" id="3qX-wp-2MD"/>
                 <constraint firstItem="RvW-9L-cJg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="814-CT-gFo"/>
+                <constraint firstItem="lqa-he-XHj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="NFq-oL-M9o"/>
                 <constraint firstItem="WNY-jS-5Ck" firstAttribute="top" secondItem="RvW-9L-cJg" secondAttribute="bottom" constant="5" id="S9d-XU-W5j"/>
+                <constraint firstItem="lqa-he-XHj" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" id="UkC-kA-ThP"/>
                 <constraint firstItem="KuF-3l-7hP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="XfG-GB-ef0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WNY-jS-5Ck" secondAttribute="trailing" constant="95" id="b4C-V8-h6q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WNY-jS-5Ck" secondAttribute="bottom" constant="8" id="gYw-kY-Lkp"/>
                 <constraint firstItem="WNY-jS-5Ck" firstAttribute="leading" secondItem="RvW-9L-cJg" secondAttribute="leading" id="h1U-Ak-JaT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lqa-he-XHj" secondAttribute="bottom" id="iMK-5Q-sWV"/>
                 <constraint firstItem="WNY-jS-5Ck" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="sfF-sx-WUc"/>
                 <constraint firstItem="RvW-9L-cJg" firstAttribute="trailing" secondItem="WNY-jS-5Ck" secondAttribute="trailing" id="y0x-0e-7o4"/>
             </constraints>

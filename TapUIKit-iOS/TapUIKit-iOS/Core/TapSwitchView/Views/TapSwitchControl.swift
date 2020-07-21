@@ -23,6 +23,8 @@ public class TapSwitchControl: UIView {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var subtitleLabel: UILabel!
     @IBOutlet weak private var switchButton: UISwitch!
+    @IBOutlet weak private var separator: UIView!
+
     
     weak var delegate: TapSwitchControlDelegate?
     
@@ -50,6 +52,18 @@ public class TapSwitchControl: UIView {
         }
     }
     
+    public var titleTextColor: UIColor = .white {
+        didSet {
+            self.titleLabel.textColor = titleTextColor
+        }
+    }
+    
+    public var subtitleTextColor: UIColor = .white {
+        didSet {
+            self.subtitleLabel.textColor = subtitleTextColor
+        }
+    }
+    
     public var isOn: Bool = false {
         didSet {
             self.switchButton.isOn = isOn
@@ -65,6 +79,12 @@ public class TapSwitchControl: UIView {
     public var switchOffColor: UIColor? {
         didSet {
             self.switchButton.thumbTintColor = switchOnColor
+        }
+    }
+    
+    public var showSeparator: Bool = false {
+        didSet {
+            self.separator.isHidden = !self.showSeparator
         }
     }
     
@@ -89,6 +109,7 @@ public class TapSwitchControl: UIView {
         self.containerView = setupXIB()
         //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
 //        applyTheme()
+        self.separator.isHidden = true
         self.switchButton.addTarget(self, action: #selector(switchToggled(sender:)), for: .valueChanged)
     }
     
