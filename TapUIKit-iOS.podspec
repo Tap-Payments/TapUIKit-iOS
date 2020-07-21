@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapUIKit-iOS"
-  spec.version      = "1.0.4"
+  spec.version      = "1.0.5"
   spec.summary      = "A collection of inner Tap UI components generically developed to fit into any of Tap's apps."
 
   # This description is used to generate tags and improve search results.
@@ -103,7 +103,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  # spec.resources = "TapUIKit-iOS/TapUIKit-iOS/Core/Assets/**/*.{json,xib,pdf,png}"
+  spec.resources = "TapUIKit-iOS/TapUIKit-iOS/Core/Assets/**/*.{json,xib,pdf,png,gif}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -134,13 +134,15 @@ Pod::Spec.new do |spec|
   spec.dependency "TapThemeManager2020"
   spec.dependency "MOLH"
   spec.dependency "LocalisationManagerKit-iOS"
-  spec.dependency "LocalisationManagerKit-iOS"
   spec.dependency "CommonDataModelsKit-iOS"
   spec.dependency "PullUpController"
   spec.dependency "SimpleAnimation"
-  spec.dependency "MapleBacon"
+  spec.dependency "Nuke"
   spec.dependency "RxSwift"
   spec.dependency "RxCocoa"
   spec.dependency "TapApplePayKit-iOS"
-  spec.dependency "Nuke"
-end
+  spec.dependency "TapCardVlidatorKit-iOS"
+  spec.dependency "EasyAnimation"
+  spec.dependency "TapCardInputKit-iOS"
+  spec.dependency "TapCardScanner-iOS"
+  spec.dependency "McPicker"end
