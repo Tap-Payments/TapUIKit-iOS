@@ -593,6 +593,10 @@
             "subtitle": {
                 "textFont": "Roboto-Light,10",
                 "textColor": "brownGreySeven"
+            },
+            "notes": {
+                "textFont": "Roboto-Light,12",
+                "textColor": "greyishBrown"
             }
         },
         "merchant": {
@@ -604,6 +608,10 @@
             },
             "subtitle": {
                 "textFont": "Roboto-Light,10",
+                "textColor": "greyishBrown"
+            },
+            "notes": {
+                "textFont": "Roboto-Light,12",
                 "textColor": "greyishBrown"
             }
         }

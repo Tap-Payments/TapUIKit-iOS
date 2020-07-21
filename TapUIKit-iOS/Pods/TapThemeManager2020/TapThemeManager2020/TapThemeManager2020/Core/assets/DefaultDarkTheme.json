@@ -564,8 +564,52 @@
         }
     },
     "TapSwitchView": {
+        "backgroundColor": "clear",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
+        },
+        "main": {
+            "backgroundColor": "whiteTwo",
+            "title": {
+                "textFont": "Roboto-Light,12",
+                "textColor": "brownGreySix"
+            },
+            "subtitle": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "brownGreySix"
+            }
+        },
+        "goPay": {
+            "backgroundColor": "white78",
+            "SwitchOnColor": "azure",
+            "title": {
+                "textFont": "Roboto-Light,14",
+                "textColor": "greyishBrown"
+            },
+            "subtitle": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "brownGreySeven"
+            },
+            "notes": {
+                "textFont": "Roboto-Light,12",
+                "textColor": "greyishBrown"
+            }
+        },
+        "merchant": {
+            "backgroundColor": "white78",
+            "SwitchOnColor": "azure",
+            "title": {
+                "textFont": "Roboto-Light,14",
+                "textColor": "greyishBrown"
+            },
+            "subtitle": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "greyishBrown"
+            },
+            "notes": {
+                "textFont": "Roboto-Light,12",
+                "textColor": "greyishBrown"
+            }
         }
     }
 }

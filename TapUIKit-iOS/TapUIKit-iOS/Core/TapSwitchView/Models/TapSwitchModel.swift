@@ -9,11 +9,13 @@
 public class TapSwitchModel: NSObject {
     internal let title: String
     internal let subtitle: String
+    internal let notes: String
     internal var isOn: Bool
     
-    public init(title: String, subtitle: String, isOn: Bool = false) {
+    public init(title: String, subtitle: String, isOn: Bool = false, notes: String = "") {
         self.title = title
         self.subtitle = subtitle
+        self.notes = notes
         self.isOn = isOn
     }
 }

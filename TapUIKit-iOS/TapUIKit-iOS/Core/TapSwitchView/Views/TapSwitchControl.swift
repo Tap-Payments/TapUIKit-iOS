@@ -22,6 +22,8 @@ public class TapSwitchControl: UIView {
     
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var subtitleLabel: UILabel!
+    @IBOutlet weak private var notesLabel: UILabel!
+
     @IBOutlet weak private var switchButton: UISwitch!
     @IBOutlet weak private var separator: UIView!
 
@@ -40,6 +42,12 @@ public class TapSwitchControl: UIView {
         }
     }
     
+    public var notes: String? {
+        didSet {
+            self.notesLabel.text = notes
+        }
+    }
+    
     public var titleFont: UIFont = .systemFont(ofSize: 12) {
         didSet {
             self.titleLabel.font = titleFont
@@ -52,6 +60,12 @@ public class TapSwitchControl: UIView {
         }
     }
     
+    public var notesFont: UIFont = .systemFont(ofSize: 12) {
+        didSet {
+            self.notesLabel.font = notesFont
+        }
+    }
+    
     public var titleTextColor: UIColor = .white {
         didSet {
             self.titleLabel.textColor = titleTextColor
@@ -61,6 +75,12 @@ public class TapSwitchControl: UIView {
     public var subtitleTextColor: UIColor = .white {
         didSet {
             self.subtitleLabel.textColor = subtitleTextColor
+        }
+    }
+    
+    public var notesTextColor: UIColor = .white {
+        didSet {
+            self.notesLabel.textColor = notesTextColor
         }
     }
     
@@ -123,6 +143,7 @@ public class TapSwitchControl: UIView {
         self.title = switchModel.title
         self.subtitle = switchModel.subtitle
         self.isOn = switchModel.isOn
+        self.notes = switchModel.notes
     }
     
     @objc func switchToggled(sender: UISwitch) {
