@@ -16,9 +16,9 @@ internal protocol TapSwitchViewDelegate {
 @objc public protocol TapSwitchViewModelDelegate {
     /**
        An event will be fired once the main switch toggled
-    - Parameter enabled: is the switch is on, true if  the switch is on
+    - Parameter enabled: return current switch state
     */
-    @objc func didToggleMainSwitch(enabled: Bool)
+    @objc func didChangeState(state: TapSwitchEnum)
 }
 
 @objc public class TapSwitchViewModel: NSObject {
@@ -29,10 +29,15 @@ internal protocol TapSwitchViewDelegate {
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapSwitchViewModelDelegate?
     
-    public var mainSwitch: TapSwitchModel
-    public var goPaySwitch: TapSwitchModel?
-    public var merchantSwitch: TapSwitchModel?
+    internal var mainSwitch: TapSwitchModel
+    internal var goPaySwitch: TapSwitchModel?
+    internal var merchantSwitch: TapSwitchModel?
     
+    public var state: TapSwitchEnum = .none {
+        didSet {
+            self.delegate?.didChangeState(state: state)
+        }
+    }
     
     public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel) {
         self.mainSwitch = mainSwitch
@@ -56,22 +61,53 @@ internal protocol TapSwitchViewDelegate {
         self.mainSwitch.isOn = isOn
         if isOn {
             self.viewDelegate?.addSubSwitches()
+            if self.merchantSwitch != nil {
+                self.updateMerchantSwitchState(isOn: true)
+            }
+            if self.goPaySwitch != nil {
+                self.updateGoPaySwitchState(isOn: true)
+            }
+            
         } else {
             self.viewDelegate?.removeSubSwitches()
+            self.state = .none
         }
-        self.delegate?.didToggleMainSwitch(enabled: isOn)
     }
     
     internal func updateGoPaySwitchState(isOn: Bool) {
         self.goPaySwitch?.isOn = isOn
+        self.validateState()
     }
     
     internal func updateMerchantSwitchState(isOn: Bool) {
         self.merchantSwitch?.isOn = isOn
+        self.validateState()
+    }
+    
+    internal func validateState() {
+        let merchantState: Bool = self.merchantSwitch?.isOn ?? false
+        let goPayState: Bool = self.goPaySwitch?.isOn ?? false
+
+        if !merchantState && !goPayState {
+            self.updateMainSwitchState(isOn: false)
+            return
+        } else if merchantState && goPayState {
+            self.state = .all
+            return
+        }
+        
+        if merchantState {
+            self.state = .merchant
+            return
+        }
+        
+        if goPayState {
+            self.state = .goPay
+        }
     }
     
     /**
-        This
+        Creating and setup Switch View
     */
     @objc public func createSwitchView() -> TapSwitchView {
         let tapSwitchView:TapSwitchView = .init()

@@ -38,6 +38,18 @@ public class TapSwitchControl: UIView {
         }
     }
     
+    public var titleFont: UIFont = .systemFont(ofSize: 12) {
+        didSet {
+            self.titleLabel.font = titleFont
+        }
+    }
+    
+    public var subtitleFont: UIFont = .systemFont(ofSize: 12) {
+        didSet {
+            self.subtitleLabel.font = subtitleFont
+        }
+    }
+    
     public var isOn: Bool = false {
         didSet {
             self.switchButton.isOn = isOn

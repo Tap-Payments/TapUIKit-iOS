@@ -12,7 +12,10 @@ import TapUIKit_iOS
 class OTPViewController: UIViewController {
 
     @IBOutlet weak var otpView: TapSwitchView!//TapOtpView!
-    let otpViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""),
+    let otpViewModel: TapSwitchViewModel =
+//        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites."))
+//        
+        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""),
         goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites."),
         merchantSwitch: TapSwitchModel(title: "Save for [merchant_name] Checkouts", subtitle: ""))
     
@@ -21,6 +24,11 @@ class OTPViewController: UIViewController {
 
 //        otpViewModel.updateTimer(minutes: 0, seconds: 50)
         otpView.setup(with: otpViewModel)
+//        print(otpViewModel.goPaySwitch?.isOn)
+//        print(otpViewModel.mainSwitch.isOn)
+//        print(otpViewModel.merchantSwitch?.isOn)
+        
+        otpViewModel.delegate = self
 //        otpViewModel.updateTimer(minutes: 0, seconds: 50)
         
         //otpViewModel.delegate = self
@@ -38,4 +46,10 @@ class OTPViewController: UIViewController {
     }
     */
 
+}
+
+extension OTPViewController: TapSwitchViewModelDelegate {
+    func didChangeState(state: TapSwitchEnum) {
+        print("current state: \(state.rawValue)")
+    }
 }

@@ -28,7 +28,8 @@
             "deepSkyBlue15":"#007aff26",
             "brownGreyFive":"#aeaeae",
             "deepSkyBlue15":"#007aff26",
-            "veryLightPinkThree": "#d7d7d7"
+            "veryLightPinkThree": "#d7d7d7",
+            "azure": "#009aff"
         }
     },
     "inlineCard": {
@@ -566,6 +567,38 @@
     "TapSwitchView": {
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
+        },
+        "main": {
+            "title": {
+                "textFont": "Roboto-Light,12",
+                "textColor": "greyishBrown"
+            },
+            "subtitle": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "greyishBrown"
+            }
+        },
+        "goPay": {
+            "SwitchOnColor": "azure",
+            "title": {
+                "textFont": "Roboto-Light,14",
+                "textColor": "greyishBrown"
+            },
+            "subtitle": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "greyishBrown"
+            }
+        },
+        "merchant": {
+            "SwitchOnColor": "azure",
+            "title": {
+                "textFont": "Roboto-Light,14",
+                "textColor": "greyishBrown"
+            },
+            "subtitle": {
+                "textFont": "Roboto-Light,10",
+                "textColor": "greyishBrown"
+            }
         }
     }
 }

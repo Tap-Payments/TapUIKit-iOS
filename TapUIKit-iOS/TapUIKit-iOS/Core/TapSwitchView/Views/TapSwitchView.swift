@@ -47,8 +47,7 @@ import TapThemeManager2020
         /// Used as a consolidated method to do all the needed steps upon creating the view
         private func commonInit() {
             self.containerView = setupXIB()
-            //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
-    //        applyTheme()
+            applyTheme()
         }
         
         /// Updates the container view frame to the parent view bounds
@@ -79,6 +78,7 @@ import TapThemeManager2020
         if let merchantSwitch = viewModel.merchantSwitch {
             if self.merchantSwitchControl == nil {
                 self.merchantSwitchControl = .init()
+                applyTheme()
             }
             self.merchantSwitchControl!.configure(with: merchantSwitch)
             self.merchantSwitchControl?.delegate = self
@@ -88,6 +88,7 @@ import TapThemeManager2020
             } else {
                 self.stackView.addArrangedSubview(self.merchantSwitchControl!)
             }
+            self.merchantSwitchControl?.isOn = true
         }
     }
     
@@ -95,6 +96,7 @@ import TapThemeManager2020
         if let goPaySwitch = viewModel.goPaySwitch {
             if self.goPaySwitchControl == nil {
                 self.goPaySwitchControl = .init()
+                applyTheme()
             }
             self.goPaySwitchControl!.configure(with: goPaySwitch)
             self.goPaySwitchControl?.delegate = self
@@ -103,6 +105,7 @@ import TapThemeManager2020
             } else {
                 self.stackView.addArrangedSubview(self.goPaySwitchControl!)
             }
+            self.goPaySwitchControl?.isOn = true
         }
     }
     
@@ -128,16 +131,12 @@ extension TapSwitchView: TapSwitchViewDelegate {
         if let goPaySwitchControl = self.goPaySwitchControl {
             if self.stackView.arrangedSubviews.contains(goPaySwitchControl) {
                 goPaySwitchControl.isHidden = true
-//                self.stackView.removeArrangedSubview(goPaySwitchControl)
-//                self.goPaySwitchControl?.removeFromSuperview()
             }
         }
         
         if let merchantSwitchControl = self.merchantSwitchControl {
             if self.stackView.arrangedSubviews.contains(merchantSwitchControl) {
                 merchantSwitchControl.isHidden = true
-//                self.stackView.removeArrangedSubview(merchantSwitchControl)
-//                self.merchantSwitchControl?.removeFromSuperview()
             }
         }
             
@@ -145,10 +144,10 @@ extension TapSwitchView: TapSwitchViewDelegate {
         if let bottomCurvedSeparator = self.bottomCurvedSeparator {
             if self.stackView.arrangedSubviews.contains(bottomCurvedSeparator) {
                 bottomCurvedSeparator.isHidden = true
-//                self.stackView.removeArrangedSubview(bottomCurvedSeparator)
-//                self.bottomCurvedSeparator?.removeFromSuperview()
             }
         }
+        
+        self.mainSwitchControl.isOn = false
     }
     
     func addSubSwitches() {
@@ -171,5 +170,53 @@ extension TapSwitchView: TapSwitchControlDelegate {
             self.viewModel.updateMerchantSwitchState(isOn: isOn)
         default: break
         }
+    }
+}
+
+
+// Mark:- Theme methods
+extension TapSwitchView {
+    /// Consolidated one point to apply all needed theme methods
+    public func applyTheme() {
+        matchThemeAttributes()
+    }
+    
+    /// Match the UI attributes with the correct theming entries
+    private func matchThemeAttributes() {
+        
+        self.goPaySwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).goPay.SwitchOnColor") ?? .blue
+        self.merchantSwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).merchant.SwitchOnColor") ?? .blue
+        
+        
+        self.merchantSwitchControl?.titleFont = TapThemeManager.fontValue(for: "\(themePath).merchant.title.textFont") ?? .systemFont(ofSize: 12)
+        
+        self.merchantSwitchControl?.subtitleFont = TapThemeManager.fontValue(for: "\(themePath).merchant.subtitle.textFont") ?? .systemFont(ofSize: 12)
+        
+        self.goPaySwitchControl?.titleFont = TapThemeManager.fontValue(for: "\(themePath).goPay.title.textFont") ?? .systemFont(ofSize: 12)
+        
+        self.goPaySwitchControl?.subtitleFont = TapThemeManager.fontValue(for: "\(themePath).goPay.subtitle.textFont") ?? .systemFont(ofSize: 12)
+        
+//        let status: TapOTPStateEnum = viewModel.state
+        
+//        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        
+//        timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
+//        timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
+//
+//        self.messageLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).Message.textFont",shouldLocalise:false)
+//
+//        self.otpController.bottomLineColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.bottomLineColor") ?? .white
+//        self.otpController.bottomLineActiveColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.activeBottomColor") ?? .blue
+//
+//        self.otpController.textColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.textColor") ?? .black
+//        self.otpController.font = TapThemeManager.fontValue(for: "\(themePath).OtpController.textFont") ?? .systemFont(ofSize: 12)
+    }
+    
+    
+    /// Listen to light/dark mde changes and apply the correct theme based on the new style
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        applyTheme()
     }
 }

@@ -7,9 +7,9 @@
 //
 
 public class TapSwitchModel: NSObject {
-    public let title: String
-    public let subtitle: String
-    public var isOn: Bool
+    internal let title: String
+    internal let subtitle: String
+    internal var isOn: Bool
     
     public init(title: String, subtitle: String, isOn: Bool = false) {
         self.title = title
