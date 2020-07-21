@@ -20,7 +20,7 @@ import struct UIKit.CGRect
    
     var viewModel:TapWebViewModel? {
         didSet {
-            reload()
+            viewModel?.viewDelegate = self
         }
     }
     
@@ -63,4 +63,31 @@ import struct UIKit.CGRect
         guard let viewModel = viewModel else { return }
         webView.navigationDelegate = viewModel
     }
+}
+
+
+extension TapWebView: TapWebViewDelegate {
+    func reloadWebView() {
+        webView.reload()
+    }
+    
+    func load(with url: URL) {
+        webView.load(.init(url: url))
+    }
+    
+    func stopLoading() {
+        webView.stopLoading()
+    }
+    
+    func loaderVisibility(changed to: Bool) {
+        if to {
+            loader.fadeIn()
+        }else {
+            loader.fadeIn()
+        }
+        
+        webView.isUserInteractionEnabled = !to
+    }
+    
+    
 }
