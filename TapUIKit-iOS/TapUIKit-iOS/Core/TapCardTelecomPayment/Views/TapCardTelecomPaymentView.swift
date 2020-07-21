@@ -299,6 +299,9 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
         }
         
         delegate?.brandDetected(for: cardBrand, with: validation)
+        if validation == .Valid {
+            endEditing(true)
+        }
     }
     
 }

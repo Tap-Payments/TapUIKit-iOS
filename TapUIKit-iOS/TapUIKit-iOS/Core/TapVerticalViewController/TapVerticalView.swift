@@ -39,6 +39,7 @@ import SimpleAnimation
     @IBOutlet weak var tapActionButton: TapActionButton!
     
     internal var keyboardPadding:CGFloat = 0
+    internal var delaySizeChange:Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -116,14 +117,22 @@ import SimpleAnimation
             bottomPadding = window.safeAreaInsets.bottom
         }*/
         let contentSize = scrollView.contentSize
-        let newSize = contentSize
+        var newSize = contentSize
         //newSize.height += bottomPadding
         //delegate.innerSizeChanged?(to: newSize, with: self.frame)
         if let timer = newSizeTimer {
             timer.invalidate()
         }
         // All good, time to animate the height :)
-        newSizeTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: ["newSize":newSize,"newFrame":self.frame], repeats: false)
+        if delaySizeChange {
+            newSizeTimer = Timer.scheduledTimer(timeInterval: 0.1 , target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: ["newSize":newSize,"newFrame":self.frame], repeats: false)
+        }else {
+            newSize.height += keyboardPadding + tapActionButtonHeightConstraint.constant
+            
+            delegate?.innerSizeChanged?(to: newSize, with: frame)
+        }
+        
+        delaySizeChange = true
         
         //publishNewContentSize(to: newSize, with: self.frame)
     }
@@ -170,41 +179,64 @@ import SimpleAnimation
     }
     
     internal func addKeyboardSpaceView(with keyboardRect:CGRect) {
-        let vv:UIView = .init()
-        vv.backgroundColor = .clear
-        vv.translatesAutoresizingMaskIntoConstraints = false
-        vv.tag = 900900
-        scrollView.addSubview(vv)
-        
-        vv.translatesAutoresizingMaskIntoConstraints = false
-        vv.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        vv.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        vv.topAnchor.constraint(equalTo: tapActionButton.bottomAnchor).isActive = true
-        vv.heightAnchor.constraint(equalToConstant: keyboardRect.height).isActive = true
-        
         tapActionButtonBottomConstraint.constant = keyboardRect.height
-        
-        vv.updateConstraints()
-        tapActionButton.updateConstraints()
-        scrollView.layoutIfNeeded()
+       
         keyboardPadding = keyboardRect.height
         
         var currentContentSize = scrollView.contentSize
         currentContentSize.height -= 1
-        scrollView.contentSize = currentContentSize
         
-        self.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.tapActionButton.updateConstraints()
+            //scrollView.layoutIfNeeded()
+            self.layoutIfNeeded()
+        }) { _ in
+            
+        }
+        
+        self.delaySizeChange = false
+        self.scrollView.contentSize = currentContentSize
     }
     
     internal func removeKeyboardSpaceView(with keyboardRect:CGRect) {
-        keyboardPadding = 0
+        
+        
         tapActionButtonBottomConstraint.constant = 0
-        tapActionButton.updateConstraints()
-        scrollView.layoutIfNeeded()
+        
+        keyboardPadding = 0
         
         var currentContentSize = scrollView.contentSize
-        currentContentSize.height += 1
-        scrollView.contentSize = currentContentSize
+        currentContentSize.height -= 1
+        
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.tapActionButton.updateConstraints()
+            //scrollView.layoutIfNeeded()
+            self.layoutIfNeeded()
+        }) { _ in
+            
+        }
+        
+        self.delaySizeChange = false
+        self.scrollView.contentSize = currentContentSize
+        
+        
+        
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+            
+            self.keyboardPadding = 0
+            var currentContentSize = self.scrollView.contentSize
+            currentContentSize.height += 1
+            self.scrollView.contentSize = currentContentSize
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.tapActionButtonBottomConstraint.constant = 0
+                self.tapActionButton.updateConstraints()
+                self.scrollView.layoutIfNeeded()
+            }
+        }*/
+       
     }
     
     internal func addSpaceView(with keyboardRect:CGRect) {

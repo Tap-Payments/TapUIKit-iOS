@@ -32,6 +32,7 @@ internal extension UIImageView {
             addTapGesture()
         }
     }
+
     
     /// The tap gesture recognizer that listens to the tap
     private var gesture: UITapGestureRecognizer {

@@ -40,6 +40,17 @@ import McPicker
      - Parameter phon: The phone text inside the phone field at the time the user hit return
      */
     @objc optional func changeActionButtonStatus(with status:TapActionButtonStatusEnum)
+    
+    
+    /**
+     This method will be called whenever the user hits return on the phone text
+     - Parameter phon: The phone text inside the phone field at the time the user hit return
+     */
+    @objc optional func signIn(with email:String, and password:String)
+    
+    
+    @objc optional func changeBlur(to:Bool)
+    
 }
 /// Represents the GoPaySignInView where all needed logic and transistions between GoPayViews are encapsulated
 @objc public class TapGoPaySignInView: UIView {
@@ -122,6 +133,7 @@ import McPicker
      */
     internal func showPasswordView(with email:String) {
         // Show the email in the hint view
+        delegate?.changeBlur?(to: true)
         goPayPasswordView.setup(with: email)
         // Show the password view
         goPayPasswordView.fadeIn(duration: animationDuration)
@@ -135,6 +147,7 @@ import McPicker
      */
     internal func showOtpView(with phone:String) {
         // Show the phone in the hint view
+        delegate?.changeBlur?(to: true)
         goPayOTPView.setup(with: phone,expires: 20)
         // Show the phone view
         goPayOTPView.fadeIn(duration: animationDuration)
@@ -147,6 +160,7 @@ import McPicker
      - Parameter field: Tells whether we need to show the keyboard for a given field after showing the login view
      */
     internal func showLoginOptions(focus field:GoPyLoginOption? = nil) {
+        delegate?.changeBlur?(to: false)
         if let field = field {
             // of there is a field we need to focus, we do
             goPayLoginOptionsView.focus(field: field)
@@ -264,6 +278,7 @@ extension TapGoPaySignInView: GoPayLoginOptionsPorotocl {
 extension TapGoPaySignInView: TapGoPayPasswordViewProtocol {
     public func returnClicked(with password: String) {
         self.endEditing(true)
+        delegate?.signIn?(with: goPayLoginOptionsView.emailInput.email(), and: password)
     }
     
     

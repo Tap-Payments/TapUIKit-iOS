@@ -128,6 +128,13 @@ import EasyAnimation
      */
     @objc public func setupView(with viewModel:TapCardPhoneBarListViewModel) {
         self.viewModel = viewModel
+        
+        // Selet the first tab by default
+        guard let dataSource = self.viewModel?.dataSource, dataSource.count > 0 else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+            // Give it time to render and bind observables
+            self.viewModel?.select(segment: dataSource[0].associatedCardBrand.brandSegmentIdentifier)
+        }
     }
     
 }

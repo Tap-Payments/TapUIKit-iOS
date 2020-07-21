@@ -32,6 +32,9 @@ import TapThemeManager2020
         }
     }
     
+    
+    internal var afterLoadingCallback:()->() = {}
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,6 +124,7 @@ extension TapActionButton:TapActionButtonViewDelegate {
         
         payButton.fadeOut()
         loaderGif.fadeIn()
+        loaderGif.delegate = nil
         loaderGif.setGifImage(gif, loopCount: -1)
         viewHolderWidth.constant = 40
         
@@ -130,8 +134,32 @@ extension TapActionButton:TapActionButtonViewDelegate {
         })
     }
     
-    func endLoading(with success: Bool, completion: () -> ()?) {
+    func endLoading(with success: Bool, completion: @escaping () -> () = {}) {
+        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
+        afterLoadingCallback = completion
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: (success) ? "white-success-mob" : "white-error-mob", withExtension: "gif")!)
+        let gif = try! UIImage(gifData: imageData!)
+        loaderGif.setGifImage(gif, loopCount: 1) // Will loop forever
+        if(success) {
+            //viewHolder.fadeColor(toColor: .systemGreen)
+            loaderGif.delegate = self
+        }else {
+            viewHolder.fadeColor(toColor: .systemGray, duration: 1, completion: { _ in
+                completion()
+            })
+        }
+    }
+    
+    func expand() {
+        payButton.fadeIn()
+        loaderGif.fadeOut()
+        loaderGif.delegate = nil
+        viewHolderWidth.constant = frame.width - 32
         
+        UIView.animate(withDuration: 1.0, animations: { [weak self] in
+            self?.viewHolder.updateConstraints()
+            self?.layoutIfNeeded()
+        })
     }
 }
 
@@ -170,4 +198,16 @@ extension TapActionButton {
     }
 }
 
+
+
+extension TapActionButton:SwiftyGifDelegate {
+    
+    func gifDidStop(sender: UIImageView) {
+        afterLoadingCallback()
+    }
+    
+    
+    
+    
+}
 
