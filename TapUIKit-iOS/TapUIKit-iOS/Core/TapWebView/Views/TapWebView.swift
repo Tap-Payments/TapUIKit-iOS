@@ -15,12 +15,12 @@ import struct UIKit.CGRect
 @objc public class TapWebView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var loader: UIImageView!
     @IBOutlet weak var webView: WKWebView!
    
     var viewModel:TapWebViewModel? {
         didSet {
             viewModel?.viewDelegate = self
+            reload()
         }
     }
     
@@ -49,14 +49,6 @@ import struct UIKit.CGRect
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.contentView = setupXIB()
-    
-        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
-        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
-        let gif = try! UIImage(gifData: imageData!)
-        
-        loader.delegate = nil
-        loader.setGifImage(gif, loopCount: -1)
-        loader.isHidden = true
     }
     
     internal func reload() {
@@ -80,13 +72,7 @@ extension TapWebView: TapWebViewDelegate {
     }
     
     func loaderVisibility(changed to: Bool) {
-        if to {
-            loader.fadeIn()
-        }else {
-            loader.fadeIn()
-        }
-        
-        webView.isUserInteractionEnabled = !to
+       
     }
     
     

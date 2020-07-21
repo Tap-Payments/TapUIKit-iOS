@@ -241,16 +241,6 @@ extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
     
     func gateway(for viewModel: GatewayChipViewModel) {
         delegate?.gateway(for: viewModel)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
-        
-        let gatewayActionBlock:()->() = {
-            DispatchQueue.main.async {
-                UIApplication.shared.open(URL(string: "https://www.google.com")!)
-            }
-        }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:gatewayActionBlock] )
-        
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {

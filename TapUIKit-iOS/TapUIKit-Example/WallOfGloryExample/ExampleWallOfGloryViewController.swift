@@ -38,6 +38,9 @@ class ExampleWallOfGloryViewController: UIViewController {
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
+    var dragView:TapDragHandlerView = .init()
+    var merchantHeaderView:TapMerchantHeaderView = .init()
+    var amountSectionView:TapAmountSectionView = .init()
     
     var rates:[String:Double] = [:]
     
@@ -118,20 +121,17 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         
         // The drag handler
-        let dragView:TapDragHandlerView = .init()
         dragView.translatesAutoresizingMaskIntoConstraints = false
         dragView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         views.append(dragView)
         
         // The TapMerchantHeaderView
-        let merchantHeaderView:TapMerchantHeaderView = .init()
         merchantHeaderView.translatesAutoresizingMaskIntoConstraints = false
         merchantHeaderView.heightAnchor.constraint(equalToConstant: 55).isActive = true
         views.append(merchantHeaderView)
         merchantHeaderView.changeViewModel(with: tapMerchantHeaderViewModel)
         
         // The TapAmountSectionView
-        let amountSectionView:TapAmountSectionView = .init()
         amountSectionView.translatesAutoresizingMaskIntoConstraints = false
         amountSectionView.heightAnchor.constraint(equalToConstant: 59).isActive = true
         views.append(amountSectionView)
@@ -411,6 +411,27 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             }
         }
     }
+    
+    func showWebView(with url:URL) {
+       
+        let webViewModel:TapWebViewModel = .init()
+        let webView:TapWebView = .init()
+        webView.setup(with: webViewModel)
+       
+        self.tapVerticalView.remove(view: merchantHeaderView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: amountSectionView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: gatewaysListView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapActionButtonViewModel.startLoading()
+        views = []
+        views.append(webView)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+            self?.tapVerticalView.hideActionButton()
+            self?.tapVerticalView.add(view: webView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
+            webViewModel.load(with: url)
+        }
+    }
 }
 
 
@@ -442,6 +463,14 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func gateway(for viewModel: GatewayChipViewModel) {
         //showAlert(title: "gateway cell clicked", message: "You clicked on a \(viewModel.title ?? ""). In real life example, this will open a web view to complete the payment")
         //tapActionButtonViewModel.buttonStatus = .ValidPayment
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
+        
+        let gatewayActionBlock:()->() = { [weak self] in
+            self?.showWebView(with: URL(string: "https://www.tap.company")!)
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:gatewayActionBlock] )
     }
     
     func goPay(for viewModel: TapGoPayViewModel) {
