@@ -75,7 +75,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
             }else {
                 TapThemeManager.setDefaultTapTheme()
                 if let gloryExample:TapBottomSheetExampleViewController = destnationVC as? TapBottomSheetExampleViewController, indexPath.row == (dataSource.count - 1) {
-                    MOLH.setLanguageTo("en")
+                    TapLocalisationManager.shared.localisationLocale = "ar"
+                    MOLH.setLanguageTo("ar")
                     gloryExample.showWallOfGlory = true
                 }
                 showController(contoller: destnationVC, push: dataSource[indexPath.row]["push"] == "1")
