@@ -84,6 +84,8 @@ import LocalisationManagerKit_iOS
         passwordTextField.isSecureTextEntry = true
         // Listen to the event of text change
         passwordTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
+        let sharedLocalisationManager:TapLocalisationManager = .shared
+        passwordTextField.textAlignment = (sharedLocalisationManager.localisationLocale == "ar") ? .right : .left
         applyTheme()
         
     }
