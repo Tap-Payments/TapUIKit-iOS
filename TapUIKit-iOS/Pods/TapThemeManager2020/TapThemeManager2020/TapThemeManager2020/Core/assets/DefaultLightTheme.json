@@ -32,7 +32,8 @@
             "azure": "#009aff",
             "brownGreySix": "#a7a7a7",
             "brownGreySeven": "#7e7e7e",
-            "white78": "#f9f9f9C6"
+            "white78": "#f9f9f9C6",
+            "brownGreyFour": "#a6a6a6"
         }
     },
     "inlineCard": {
