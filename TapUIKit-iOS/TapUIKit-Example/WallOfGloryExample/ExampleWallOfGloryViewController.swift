@@ -157,6 +157,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         // Save Card switch view
         views.append(tapSaveCardSwitchView)
+        tapSaveCardSwitchViewModel.delegate = self
         tapSaveCardSwitchView.setup(with: tapSaveCardSwitchViewModel, adjustConstraints: true)
         
         // The button
@@ -633,7 +634,7 @@ extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     }
     
     func changeBlur(to:Bool) {
-        self.tapVerticalView.backgroundColor = (to) ? .clear : try! UIColor(tap_hex: "#f4f4f4")
+        self.tapVerticalView.backgroundColor = (to) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
     }
     
     func signIn(with email: String, and password: String) {
@@ -678,5 +679,14 @@ extension UIView {
 extension UIApplication {
     var keyWindowInConnectedScenes: UIWindow? {
         return windows.first(where: { $0.isKeyWindow })
+    }
+}
+
+
+extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
+    
+    func didChangeState(state: TapSwitchEnum) {
+        
+        self.tapVerticalView.backgroundColor = (state != .none) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
     }
 }

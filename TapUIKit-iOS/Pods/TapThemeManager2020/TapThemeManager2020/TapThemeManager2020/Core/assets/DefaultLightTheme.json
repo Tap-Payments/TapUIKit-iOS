@@ -32,7 +32,7 @@
             "azure": "#009aff",
             "brownGreySix": "#a7a7a7",
             "brownGreySeven": "#7e7e7e",
-            "white78": "#f9f9f9"
+            "white78": "#f9f9f9C6"
         }
     },
     "inlineCard": {
@@ -584,7 +584,7 @@
             }
         },
         "goPay": {
-            "backgroundColor": "white78",
+            "backgroundColor": "clear",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",
@@ -600,7 +600,7 @@
             }
         },
         "merchant": {
-            "backgroundColor": "white78",
+            "backgroundColor": "clear",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",
