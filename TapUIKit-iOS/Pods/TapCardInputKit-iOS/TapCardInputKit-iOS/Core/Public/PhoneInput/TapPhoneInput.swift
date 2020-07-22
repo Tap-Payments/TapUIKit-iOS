@@ -146,11 +146,12 @@ import TapCardVlidatorKit_iOS
         
         // Set the correct font type and colors
         adjustFieldsTextFonts()
-        
+                
         // Set the keyboard type for the fields
         fields.forEach {
             $0.keyboardType = .numberPad
             $0.delegate = self
+            $0.textAlignment = (sharedLocalisationManager.localisationLocale == "ar") ? .right : .left
         }
         
         clearButton.addTarget(self, action: #selector(clearPhoneInput), for: .touchUpInside)
