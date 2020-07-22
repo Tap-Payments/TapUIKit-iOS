@@ -36,6 +36,13 @@ internal protocol TapOtpViewDelegate {
      */
     @objc func otpStateReadyToValidate(otpValue: String)
     
+    
+    /**
+     An event will be fired everytime the statuse of the OTP view changes
+     - Parameter to: the new status of the otp view
+     */
+    @objc func otpState(changed to:TapOTPStateEnum)
+    
     /**
      An event will be fired once the timer stopped and the state became expired
      */
@@ -56,7 +63,7 @@ internal protocol TapOtpViewDelegate {
     }
     
     /// Phone number to be used in the message depending on the state
-    private var phoneNo: String
+    internal var phoneNo: String
     /// Showing the message label if set to true
     private var showMessage: Bool
     
@@ -74,6 +81,13 @@ internal protocol TapOtpViewDelegate {
     var otpValue = "" {
         didSet {
             self.updateState()
+        }
+    }
+    
+    /// The OTP digits entered by the user
+    var currentOtpValue: String {
+        get{
+            return otpValue
         }
     }
     
@@ -132,6 +146,8 @@ internal protocol TapOtpViewDelegate {
             self.updateMessageViewDelegate()
             self.viewDelegate?.enableOtpEditing()
         }
+        
+        delegate?.otpState(changed: state)
     }
     /**
      This function update the state on otp digits change

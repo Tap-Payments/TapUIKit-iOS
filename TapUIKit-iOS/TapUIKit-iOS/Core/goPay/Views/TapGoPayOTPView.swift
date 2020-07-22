@@ -16,8 +16,9 @@ import TapThemeManager2020
     /**
      An event will be fired once the user enter all the otp digits
      - Parameter otpValue: the OTP value entered by user
+     - Parameter phone: The phone number used to send the OTP to
      */
-    @objc func validateOTP(with otp:String)
+    @objc func validateOTP(with otp:String,for phone:String)
     
 }
 
@@ -69,6 +70,31 @@ import TapThemeManager2020
         otpView.setup(with: otpViewModel)
         otpViewModel.updateTimer(minutes: 0, seconds: after)
     }
+    
+    
+    
+    internal func otpAction() {
+        
+        var actionButtonBlock:()->() = {}
+        
+        var buttonStatus:TapActionButtonStatusEnum = .InvalidConfirm
+        
+        switch otpViewModel.state {
+        case .expired:
+            buttonStatus = .ResendOTP
+            actionButtonBlock = { [weak self] in self?.otpStateExpired() }
+        case .ready:
+            buttonStatus = .ValidConfirm
+            actionButtonBlock = { [weak self] in self?.otpStateReadyToValidate(otpValue: self?.otpViewModel.currentOtpValue ?? "") }
+        default:
+            buttonStatus = .InvalidConfirm
+            actionButtonBlock = { }
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:actionButtonBlock] )
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:buttonStatus] )
+    }
 }
 
 
@@ -101,9 +127,15 @@ extension TapGoPayOTPView {
 
 
 extension TapGoPayOTPView:TapOtpViewModelDelegate {
-    public func otpStateReadyToValidate(otpValue: String) {
-        delegate?.validateOTP(with: otpValue)
+    
+    public func otpState(changed to: TapOTPStateEnum) {
+        otpAction()
     }
+    
+    public func otpStateReadyToValidate(otpValue: String) {
+        delegate?.validateOTP(with: otpValue,for: otpViewModel.phoneNo)
+    }
+    
     
     public func otpStateExpired() {
         delegate?.otpStateExpired()

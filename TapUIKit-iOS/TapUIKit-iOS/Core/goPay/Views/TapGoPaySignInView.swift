@@ -43,10 +43,18 @@ import McPicker
     
     
     /**
-     This method will be called whenever the user hits return on the phone text
-     - Parameter phon: The phone text inside the phone field at the time the user hit return
+     This method will be called whenever the user wants to sign in with email and passwod
+     - Parameter email: the email the user needs to login wiht
+     - Parameter password: the password entered by the user
      */
     @objc optional func signIn(with email:String, and password:String)
+    
+    /**
+     This method will be called whenever the user wants to sign in with  phone after verifying the phone ownership
+     - Parameter phone: the phone verified with OTP
+     - Parameter otp:   the otp entered
+     */
+    @objc optional func signIn(phone:String, and otp:String)
     
     
     @objc optional func changeBlur(to:Bool)
@@ -152,6 +160,7 @@ import McPicker
         // Show the phone view
         goPayOTPView.fadeIn(duration: animationDuration)
         goPayOTPView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
+        goPayOTPView.otpAction()
     }
     
     
@@ -293,6 +302,11 @@ extension TapGoPaySignInView: TapGoPayPasswordViewProtocol {
 
 
 extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
+   
+    public func validateOTP(with otp: String, for phone: String) {
+        delegate?.signIn?(phone: phone, and: otp)
+    }
+    
     
     public func changePhoneClicked() {
         // Show login opions view
@@ -305,7 +319,5 @@ extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
         changePhoneClicked()
     }
     
-    public func validateOTP(with otp: String) {
-        
-    }
+    
 }

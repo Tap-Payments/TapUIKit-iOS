@@ -651,6 +651,17 @@ extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     }
     
     func signIn(with email: String, and password: String) {
+       demoSigning()
+    }
+    
+    
+    func signIn(phone: String, and otp: String) {
+        demoSigning()
+    }
+    
+    
+    
+    func demoSigning() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
             self.tapActionButtonViewModel.startLoading()
         }
@@ -665,6 +676,8 @@ extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
             })
         }
     }
+    
+    
 }
 
 
