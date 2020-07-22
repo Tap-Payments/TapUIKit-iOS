@@ -235,7 +235,9 @@ class ExampleWallOfGloryViewController: UIViewController {
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
                 //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
                 //views.removeLast()
@@ -294,8 +296,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.updateActionButtonVisibility(to: false)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.hideActionButton()
                 //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
+                views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
                 //views.removeLast()
@@ -324,11 +328,13 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
+                views.append(tapSaveCardSwitchView)
                 //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.showActionButton()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
                     //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
@@ -352,12 +358,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index-1)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
+                views.append(tapSaveCardSwitchView)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.showActionButton()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -378,12 +386,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //views.removeLast()
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
+                views.append(tapSaveCardSwitchView)
                 //views.append(tapActionButton)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
                     //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
@@ -397,12 +407,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == gatewaysListView {
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.hideActionButton()
                 let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
                 let hintView:TapHintView = hintViewModel.createHintView()
                 let tapCardScannerView:TapCardScannerView = .init()
                 tapCardScannerView.delegate = self
                 tapCardScannerView.configureScanner()
+                views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(hintView)
@@ -427,6 +439,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.tapVerticalView.remove(view: amountSectionView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: gatewaysListView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapSaveCardSwitchView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapActionButtonViewModel.startLoading()
         views = []
         views.append(webView)
