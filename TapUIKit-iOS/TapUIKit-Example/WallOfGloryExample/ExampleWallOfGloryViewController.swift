@@ -31,7 +31,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
-    
+    let tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
@@ -41,6 +41,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var dragView:TapDragHandlerView = .init()
     var merchantHeaderView:TapMerchantHeaderView = .init()
     var amountSectionView:TapAmountSectionView = .init()
+    var tapSaveCardSwitchView:TapSwitchView = .init()
     
     var rates:[String:Double] = [:]
     
@@ -154,6 +155,9 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
         views.append(tapCardTelecomPaymentView)
         
+        // Save Card switch view
+        views.append(tapSaveCardSwitchView)
+        tapSaveCardSwitchView.setup(with: tapSaveCardSwitchViewModel, adjustConstraints: true)
         
         // The button
         self.tapVerticalView.setupActionButton(with: tapActionButtonViewModel)

@@ -573,7 +573,7 @@
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "whiteTwo",
+            "backgroundColor": "black",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"

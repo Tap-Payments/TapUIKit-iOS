@@ -58,11 +58,30 @@ import TapThemeManager2020
     /**
      Seup the hint view according to the view model
      - Parameter viewModel: The new required view model to attach the view to
+     - Parameter adjustConstraints: Tells the view if it needs to handle itself regarding dynamic height for the main switch and the sub switches, default is false meaning the super view will takecare about it
      */
-    @objc public func setup(with viewModel: TapSwitchViewModel) {
+    @objc public func setup(with viewModel: TapSwitchViewModel, adjustConstraints:Bool = false) {
         self.viewModel = viewModel
         self.viewModel.viewDelegate = self
         self.configureMainSwitch()
+        if adjustConstraints {
+            self.adjustConstraints()
+        }
+    }
+    
+    /// Tells the view if it needs to handle itself regarding dynamic height for the main switch and the sub switches. hence, will set the requied constraints to automaically enlarge the height to match the added switches
+    internal func adjustConstraints() {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let originalHeightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 63)
+        originalHeightConstraint.priority = .defaultHigh
+        
+        let acceptedHeightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 63)
+        
+        originalHeightConstraint.isActive = true
+        acceptedHeightConstraint.isActive = true
+        
+        addConstraints([originalHeightConstraint,acceptedHeightConstraint])
     }
     
     // MARK: Configure Switches
@@ -86,6 +105,8 @@ import TapThemeManager2020
             if self.merchantSwitchControl!.isHidden {
                 self.merchantSwitchControl?.isHidden.toggle()
             } else {
+                self.merchantSwitchControl?.translatesAutoresizingMaskIntoConstraints = false
+                self.merchantSwitchControl?.heightAnchor.constraint(greaterThanOrEqualToConstant: 63).isActive = true
                 self.stackView.addArrangedSubview(self.merchantSwitchControl!)
             }
             self.merchantSwitchControl?.isOn = true
@@ -103,6 +124,8 @@ import TapThemeManager2020
             if self.goPaySwitchControl!.isHidden {
                 self.goPaySwitchControl?.isHidden.toggle()
             } else {
+                self.goPaySwitchControl?.translatesAutoresizingMaskIntoConstraints = false
+                self.goPaySwitchControl?.heightAnchor.constraint(equalToConstant: 150).isActive = true
                 self.stackView.addArrangedSubview(self.goPaySwitchControl!)
             }
             self.goPaySwitchControl?.isOn = true
@@ -152,6 +175,8 @@ extension TapSwitchView: TapSwitchControlDelegate {
             self.viewModel.updateMerchantSwitchState(isOn: isOn)
         default: break
         }
+        
+        
     }
 }
 
