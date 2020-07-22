@@ -27,7 +27,7 @@ internal protocol TapWebViewDelegate {
 }
 
 @objc public class TapWebViewModel:NSObject {
-    var delegate:TapWebViewModelDelegate?
+    @objc public var delegate:TapWebViewModelDelegate?
     var viewDelegate:TapWebViewDelegate?
     
     @objc public func load(with url:URL) {

@@ -15,6 +15,7 @@ import TapCardVlidatorKit_iOS
 import TapCardInputKit_iOS
 import TapCardScanner_iOS
 import AVFoundation
+import WebKit
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -44,6 +45,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapSaveCardSwitchView:TapSwitchView = .init()
     
     var rates:[String:Double] = [:]
+    var loadedWebPages:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -432,6 +434,8 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showWebView(with url:URL) {
        
         let webViewModel:TapWebViewModel = .init()
+        webViewModel.delegate = self
+        
         let webView:TapWebView = .init()
         webView.setup(with: webViewModel)
        
@@ -448,6 +452,28 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             self?.tapVerticalView.hideActionButton()
             self?.tapVerticalView.add(view: webView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
             webViewModel.load(with: url)
+        }
+    }
+    
+    
+    func closeWebView() {
+        self.view.endEditing(true)
+        for (_, element) in views.enumerated() {
+            if element.isKind(of: TapWebView.self) {
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut())
+                self.tapVerticalView.showActionButton()
+            }
+            break
+        }
+        self.tapActionButtonViewModel.startLoading()
+        views = []
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+            self?.tapActionButtonViewModel.endLoading(with: true, completion: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            })
         }
     }
 }
@@ -485,7 +511,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
         
         let gatewayActionBlock:()->() = { [weak self] in
-            self?.showWebView(with: URL(string: "https://www.tap.company")!)
+            self?.showWebView(with: URL(string: "https://www.google.com")!)
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetBlockNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetBlockNotification:gatewayActionBlock] )
@@ -716,6 +742,23 @@ extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
         self.tapVerticalView.backgroundColor = (state != .none) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
         
         self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
+        
+    }
+}
+
+extension ExampleWallOfGloryViewController:TapWebViewModelDelegate {
+    func willLoad(request: URLRequest) -> WKNavigationActionPolicy {
+        return .allow
+    }
+    
+    func didLoad(url: URL?) {
+        loadedWebPages += 1
+        if loadedWebPages > 2 {
+            closeWebView()
+        }
+    }
+    
+    func didFail(with error: Error, for url: URL?) {
         
     }
 }
