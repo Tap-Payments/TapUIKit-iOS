@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6225550424C8721A00A6FBDC /* TapAuthenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6225550324C8721A00A6FBDC /* TapAuthenticate.swift */; };
 		6229B1AD24C486420019413A /* TapSwitchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1AC24C486420019413A /* TapSwitchControl.swift */; };
 		6229B1AF24C486560019413A /* TapSwitchControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6229B1AE24C486560019413A /* TapSwitchControl.xib */; };
 		6229B1B124C49C1B0019413A /* TapSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1B024C49C1B0019413A /* TapSwitchView.swift */; };
@@ -200,6 +201,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6225550324C8721A00A6FBDC /* TapAuthenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAuthenticate.swift; sourceTree = "<group>"; };
 		6229B1AC24C486420019413A /* TapSwitchControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchControl.swift; sourceTree = "<group>"; };
 		6229B1AE24C486560019413A /* TapSwitchControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSwitchControl.xib; sourceTree = "<group>"; };
 		6229B1B024C49C1B0019413A /* TapSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchView.swift; sourceTree = "<group>"; };
@@ -383,6 +385,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6225550224C871F900A6FBDC /* TapAuthenticate */ = {
+			isa = PBXGroup;
+			children = (
+				6225550324C8721A00A6FBDC /* TapAuthenticate.swift */,
+			);
+			path = TapAuthenticate;
+			sourceTree = "<group>";
+		};
 		6229B1A924C485DD0019413A /* TapSwitchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +628,7 @@
 		E8428E052456DBB500D5A45A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6225550224C871F900A6FBDC /* TapAuthenticate */,
 				6229B1A924C485DD0019413A /* TapSwitchView */,
 				E87B3C6024C7045400F1005A /* TapWebView */,
 				E80C052524C0C58D00B12C00 /* TapActionButton */,
@@ -1410,6 +1421,7 @@
 				E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */,
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
+				6225550424C8721A00A6FBDC /* TapAuthenticate.swift in Sources */,
 				E8437F7024BE16A10059F1B8 /* TapGoPayTitleViewModel.swift in Sources */,
 				E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */,
 				E80C053324C423C300B12C00 /* TapActionButtonStatusEnum.swift in Sources */,
