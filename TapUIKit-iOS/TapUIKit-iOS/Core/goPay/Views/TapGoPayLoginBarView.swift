@@ -7,6 +7,8 @@
 //
 
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
+
 /// Represents the view for go pay login options tab bar
 @objc public class TapGoPayLoginBarView: UIView {
 
@@ -143,10 +145,13 @@ extension TapGoPayLoginBarView {
 extension TapGoPayLoginBarView: TapGoPayLoginBarViewDelegate {
     
     func animateBar(to x: CGFloat, with width: CGFloat) {
+        
+        let sharedLocalisationManager:TapLocalisationManager = .shared
+        
         // Mov ethe bar to the required position
         underLineBar.layoutIfNeeded()
         underLineBar.updateConstraints()
-        underLineBarLeadingConstraint.constant = x
+        underLineBarLeadingConstraint.constant = (sharedLocalisationManager.localisationLocale == "ar") ? (frame.width - x - width) : x
         underLineBarWidthConstraint.constant = width
         
         UIView.animate(withDuration: 0.3, animations: {
