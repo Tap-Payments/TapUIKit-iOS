@@ -47,6 +47,13 @@
                 "otp": "OTP has been sent to"
             }
         },
+        "TapOtpView": {
+            "Message": {
+                "Ready": "OTP has been sent to",
+                "Invalid": "Invalid OTP number! ",
+                "Expired": ""
+            }
+        },
         "Common": {
             "next": "Next",
             "previous": "Previous",
@@ -94,6 +101,13 @@
             "showDesc": "إظهار الوصف",
             "hideDesc": "إخفاء الوصف",
             "Discount": "خصم"
+        },
+        "TapOtpView": {
+            "Message": {
+                "Ready": "تم إرسال الكود لـ",
+                "Invalid": "الكود غير صحيح!",
+                "Expired": ""
+            }
         },
         "Hints":
         {
