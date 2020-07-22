@@ -714,5 +714,8 @@ extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
     func didChangeState(state: TapSwitchEnum) {
         
         self.tapVerticalView.backgroundColor = (state != .none) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
+        
+        self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
+        
     }
 }
