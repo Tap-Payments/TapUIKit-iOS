@@ -143,6 +143,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         
         emailTextField.spellCheckingType = .no
         
+        emailTextField.textAlignment = (sharedLocalisationManager.localisationLocale == "ar") ? .right : .left
+        
         clearButton.addTarget(self, action: #selector(clearEmailInput), for: .touchUpInside)
     }
     
