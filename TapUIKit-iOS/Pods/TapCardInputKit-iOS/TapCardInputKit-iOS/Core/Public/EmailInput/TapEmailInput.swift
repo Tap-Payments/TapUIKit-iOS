@@ -139,6 +139,10 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         
         emailTextField.returnKeyType = .next
         
+        emailTextField.autocorrectionType = .no
+        
+        emailTextField.spellCheckingType = .no
+        
         clearButton.addTarget(self, action: #selector(clearEmailInput), for: .touchUpInside)
     }
     
