@@ -217,7 +217,7 @@ extension TapSwitchView {
         
         self.merchantSwitchControl?.subtitleTextColor = TapThemeManager.colorValue(for: "\(themePath).merchant.subtitle.textColor") ?? .black
         
-        self.mainSwitchControl.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchant.backgroundColor")
+        self.merchantSwitchControl?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchant.backgroundColor")
         
         // goPay
         self.goPaySwitchControl?.switchOnColor = TapThemeManager.colorValue(for: "\(themePath).goPay.SwitchOnColor") ?? .blue
@@ -235,7 +235,8 @@ extension TapSwitchView {
         
         self.goPaySwitchControl?.notesTextColor = TapThemeManager.colorValue(for: "\(themePath).goPay.notes.textColor") ?? .black
         
-        self.mainSwitchControl.tap_theme_backgroundColor = .init(keyPath: "\(themePath).goPay.backgroundColor")
+        self.goPaySwitchControl?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).goPay.backgroundColor")
+        
     }
     
     

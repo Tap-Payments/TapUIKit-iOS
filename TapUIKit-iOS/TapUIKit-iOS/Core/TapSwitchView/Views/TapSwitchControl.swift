@@ -18,7 +18,7 @@ protocol TapSwitchControlDelegate: class {
 public class TapSwitchControl: UIView {
 
     /// The container view that holds everything from the XIB
-    @IBOutlet weak private var containerView: UIView!
+    @IBOutlet weak internal var containerView: UIView!
     
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var subtitleLabel: UILabel!
