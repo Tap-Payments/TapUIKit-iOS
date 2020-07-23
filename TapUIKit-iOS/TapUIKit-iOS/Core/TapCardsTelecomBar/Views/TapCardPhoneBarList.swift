@@ -10,10 +10,13 @@ import TapThemeManager2020
 import RxSwift
 import SimpleAnimation
 import EasyAnimation
+import LocalisationManagerKit_iOS
 
 /// Represent the view of tab bar list
 @objc public class TapCardPhoneBarList: UIView {
 
+    /// Determine the current locale
+    let sharedLocalisationManager:TapLocalisationManager = .shared
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
     /// Represents the holder layout for our icons horizontal bar views
@@ -198,7 +201,7 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
         
         underLineBar.layoutIfNeeded()
         underLineBar.updateConstraints()
-        self.underLineLeadingConstraint.constant = x
+        self.underLineLeadingConstraint.constant = (sharedLocalisationManager.localisationLocale == "ar") ? (frame.width - x) : x
         self.underLineWidthConstraint.constant = width
         
         UIView.animate(withDuration: 0.3, animations: {

@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import SnapKit
 import enum TapCardVlidatorKit_iOS.CardBrand
-
+import LocalisationManagerKit_iOS
 /// Protocol to communicate between the view controlled by this view model ad the view model itself
 internal protocol TapCardPhoneBarListViewModelDelegate {
     /**
@@ -99,19 +99,37 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         
         // Get the frame of the FIRST tab within the segment
         var resultRect:CGRect = filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero
+        let sharedLocalisationManager:TapLocalisationManager = .shared
         
         // Now we need to decide shall we highlight the whole segment or there is an already selected tab within this segment
         guard let selectedBrand:CardBrand = segmentSelectionObserver.value[segment] as? CardBrand else {
             // Meaning, there is no selected icon inside this segment, hence we highlight the whole segment
             
+            
+            
             // If it is the first segment, we need to start from X = 0
-            if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
-                resultRect.origin.x = 0
-                resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+            if sharedLocalisationManager.localisationLocale == "ar" {
+                // RTL computations
+                if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                    resultRect.size.width = UIScreen.main.bounds.size.width - (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).minX
+                    resultRect.origin.x = UIScreen.main.bounds.size.width
+                }else {
+                    // If the last segment, hence we need the width to cover the whole screen till the end
+                    if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
+                        resultRect.size.width = (filteredViewModel.first?.viewDelegate?.viewFrame() ?? .zero).maxX
+                        resultRect.origin.x = resultRect.size.width
+                    }
+                }
             }else {
-                // If the last segment, hence we need the width to cover the whole screen till the end
-                if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
-                    resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+                // LTR computations
+                if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                    resultRect.origin.x = 0
+                    resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+                }else {
+                    // If the last segment, hence we need the width to cover the whole screen till the end
+                    if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
+                        resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+                    }
                 }
             }
             return resultRect
@@ -126,12 +144,18 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         resultRect = selectedViewModel.viewDelegate?.viewFrame() ?? .zero
         
         // If it is the first tab, we need to start from X = 0
-        if dataSource.firstIndex(of: selectedViewModel) == 0 {
-            resultRect.size.width += resultRect.origin.x
-            resultRect.origin.x = 0
-        }else if dataSource.firstIndex(of: selectedViewModel) == dataSource.count - 1 {
-            // If the last tab, hence we need the width to cover the whole screen till the end
-            resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+        if sharedLocalisationManager.localisationLocale == "ar" {
+            // RTL computations
+            
+        }else {
+            // LTR computations
+            if dataSource.firstIndex(of: selectedViewModel) == 0 {
+                resultRect.size.width += resultRect.origin.x
+                resultRect.origin.x = 0
+            }else if dataSource.firstIndex(of: selectedViewModel) == dataSource.count - 1 {
+                // If the last tab, hence we need the width to cover the whole screen till the end
+                resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+            }
         }
         return resultRect
     }
@@ -220,7 +244,7 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
         // Fetch the frame for the selected tab
         var segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
         // Add half of the spacing to its width
-        segmentFrame.size.width += (viewDelegate?.calculatedSpacing() ?? 0)
+        //segmentFrame.size.width += abs((viewDelegate?.calculatedSpacing() ?? 0))
         // Change the underline to the computed frame
         viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
         selectedSegmentObserver.accept(viewModel.associatedCardBrand.brandSegmentIdentifier)
