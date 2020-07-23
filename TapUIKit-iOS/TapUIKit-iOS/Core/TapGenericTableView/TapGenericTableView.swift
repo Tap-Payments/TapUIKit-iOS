@@ -116,6 +116,8 @@ extension TapGenericTableView:TapCellGenericTableViewModelDelegate {
     
     func reload(new dataSource: [TapGenericTableCellViewModel]) {
         reloadData()
+        layoutIfNeeded()
+        tableView.layoutIfNeeded()
     }
 }
 

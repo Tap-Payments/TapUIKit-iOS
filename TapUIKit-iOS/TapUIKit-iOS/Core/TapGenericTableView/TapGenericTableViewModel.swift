@@ -163,6 +163,11 @@ internal protocol TapCellGenericTableViewModelDelegate {
     private func assignModelsDelegate() {
         dataSource.forEach{ $0.viewModelDelegate = self }
     }
+    
+    /// Call this method when you think the table view shoud re render itsel to reflect some ui changes
+    @objc public func reloadCells() {
+        cellDelegate?.reload(new: dataSource)
+    }
 }
 
 
