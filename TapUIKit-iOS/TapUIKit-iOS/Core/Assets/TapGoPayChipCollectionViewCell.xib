@@ -19,29 +19,10 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MB-HB-UIf">
                         <rect key="frame" x="0.0" y="0.0" width="109" height="40"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tap.png" translatesAutoresizingMaskIntoConstraints="NO" id="q4B-On-rLe">
-                                <rect key="frame" x="25" y="10.5" width="20" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="q4B-On-rLe" secondAttribute="height" multiplier="1:1" constant="1" id="1qN-vJ-JWv"/>
-                                    <constraint firstAttribute="width" constant="20" id="EmD-bH-KhK"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="goPay" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cD7-2A-cth">
-                                <rect key="frame" x="47" y="13" width="33" height="14.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="q4B-On-rLe" firstAttribute="leading" secondItem="9MB-HB-UIf" secondAttribute="leading" constant="25" id="ADz-9C-BK2"/>
                             <constraint firstAttribute="height" priority="750" constant="40" id="GXv-fI-V6c"/>
-                            <constraint firstItem="cD7-2A-cth" firstAttribute="leading" secondItem="q4B-On-rLe" secondAttribute="trailing" constant="2" id="bvD-eu-eZV"/>
                             <constraint firstAttribute="width" priority="750" constant="109" id="gMd-4h-caw"/>
-                            <constraint firstItem="cD7-2A-cth" firstAttribute="centerY" secondItem="q4B-On-rLe" secondAttribute="centerY" id="hxT-Og-oGu"/>
-                            <constraint firstItem="q4B-On-rLe" firstAttribute="centerY" secondItem="9MB-HB-UIf" secondAttribute="centerY" id="juD-qS-J0m"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -55,13 +36,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="goPayLabel" destination="cD7-2A-cth" id="Erw-3j-UBq"/>
                 <outlet property="mainView" destination="9MB-HB-UIf" id="5Yg-DJ-UOp"/>
             </connections>
             <point key="canvasLocation" x="139" y="99"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="tap.png" width="10" height="10"/>
-    </resources>
 </document>

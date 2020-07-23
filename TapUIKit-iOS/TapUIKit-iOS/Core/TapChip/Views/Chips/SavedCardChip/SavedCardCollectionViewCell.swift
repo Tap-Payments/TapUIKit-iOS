@@ -9,15 +9,16 @@
 
 import TapThemeManager2020
 import Nuke
+import SnapKit
 /// Represents the Saved card chip cell
 
 @objc class SavedCardCollectionViewCell: GenericTapChip {
     // MARK:- Variables
     
     /// Reference to the saved card icon image view
-    @IBOutlet weak var cardBrandIconImageView: UIImageView!
+    var cardBrandIconImageView: UIImageView = .init()
     /// Reference to the saved card secured number
-    @IBOutlet weak var cardSchemeLabel: UILabel!
+    var cardSchemeLabel: UILabel = .init()
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
@@ -71,6 +72,8 @@ import Nuke
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
+        addSubViews()
+        setupConstraints()
         applyTheme()
     }
     
@@ -78,6 +81,29 @@ import Nuke
     func reload() {
         loadImages()
         assignLabels()
+    }
+    
+    func addSubViews() {
+        addSubview(cardBrandIconImageView)
+        addSubview(cardSchemeLabel)
+    }
+    func setupConstraints() {
+        cardBrandIconImageView.snp.remakeConstraints { (make) in
+            //make.left.equalToSuperview().offset(15)
+            make.left.equalToSuperview().offset(15)
+            make.width.equalTo(18)
+            make.height.equalTo(18)
+            make.right.equalTo(self.cardSchemeLabel.snp.left).offset(-12)
+            make.centerY.equalToSuperview()
+        }
+        
+        cardSchemeLabel.snp.remakeConstraints { (make) in
+            //make.right.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.centerY.equalTo(cardBrandIconImageView.snp.centerY)
+        }
+        
+        layoutIfNeeded()
     }
     
     
@@ -119,9 +145,7 @@ extension SavedCardCollectionViewCell {
         layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
         self.clipsToBounds = false
         self.layer.masksToBounds = false
-        
-        guard let _ = cardSchemeLabel else { return }
-        
+
         cardSchemeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
         cardSchemeLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
     }

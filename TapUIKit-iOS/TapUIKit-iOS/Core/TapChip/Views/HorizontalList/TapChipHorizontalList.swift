@@ -98,6 +98,7 @@ import SimpleAnimation
     }
     
     
+    /// This method assigns the correct flippable layout with the scrolling direction + the item sizing
     private func assignFlowLaout() {
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
         //let sectionMargins:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
@@ -108,7 +109,7 @@ import SimpleAnimation
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
-        
+        // Give it a chance to breath and layout to correctly render the new assigned flow layout
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             self.collectionView.layoutIfNeeded()
             self.collectionView.reloadData()

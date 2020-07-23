@@ -9,13 +9,16 @@
 
 import TapThemeManager2020
 import SimpleAnimation
+import SnapKit
 
 /// Represents the GoPay chip cell
 @objc class TapGoPayChipCollectionViewCell: GenericTapChip {
     // MARK:- Variables
     
     /// Reference to GoPay title label
-    @IBOutlet weak var goPayLabel: UILabel!
+    var goPayLabel: UILabel = .init()
+    /// Reference to the tap icon image view
+    var tapBrandIconImageView: UIImageView = .init()
     /// Holds the main view, used to control the size of the cell at run time
     @IBOutlet weak var mainView: UIView!
     /// Holds the last style theme applied
@@ -68,7 +71,35 @@ import SimpleAnimation
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
+        addSubViews()
+        setupConstraints()
         applyTheme()
+    }
+    
+    
+    func addSubViews() {
+        addSubview(tapBrandIconImageView)
+        addSubview(goPayLabel)
+    }
+    func setupConstraints() {
+        tapBrandIconImageView.snp.remakeConstraints { (make) in
+            //make.left.equalToSuperview().offset(15)
+            make.left.equalToSuperview().offset(19)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.centerY.equalToSuperview()
+        }
+        
+        goPayLabel.snp.remakeConstraints { (make) in
+            //make.right.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(41)
+            make.right.equalToSuperview().offset(-18)
+            make.centerY.equalTo(tapBrandIconImageView.snp.centerY)
+        }
+        
+        goPayLabel.textAlignment = .center
+        
+        layoutIfNeeded()
     }
 
 }
@@ -96,13 +127,12 @@ extension TapGoPayChipCollectionViewCell {
         self.clipsToBounds = false
         self.layer.masksToBounds = false
         
-        guard let _ = goPayLabel else { return }
-        
         goPayLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
         goPayLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
+    
+        tapBrandIconImageView.image = UIImage(named: "tap", in: Bundle(for: TapGoPayChipCollectionViewCell.self), compatibleWith: nil)
         
-        
-        
+        goPayLabel.text = "goPay"
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
