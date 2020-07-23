@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera is needed to scan a card</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>This allows you to sign into your app.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
