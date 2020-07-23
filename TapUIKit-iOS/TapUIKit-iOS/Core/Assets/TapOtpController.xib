@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -90,24 +90,24 @@
                 <constraint firstItem="8F5-5v-ph6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="06t-a1-yu3"/>
                 <constraint firstItem="BeY-wH-5h5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="1A9-VJ-MqQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zJ0-DK-glA" secondAttribute="bottom" id="2Rr-Da-VAg"/>
-                <constraint firstItem="BeY-wH-5h5" firstAttribute="leading" secondItem="wNo-bf-9dx" secondAttribute="trailing" constant="9" id="4Rw-Wu-DKK"/>
+                <constraint firstItem="BeY-wH-5h5" firstAttribute="left" secondItem="wNo-bf-9dx" secondAttribute="right" constant="9" id="4Rw-Wu-DKK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wNo-bf-9dx" secondAttribute="bottom" id="6fa-i5-Bda"/>
-                <constraint firstItem="wNo-bf-9dx" firstAttribute="leading" secondItem="q5G-D9-C2d" secondAttribute="trailing" constant="9" id="7Fv-Oy-wos"/>
+                <constraint firstItem="wNo-bf-9dx" firstAttribute="left" secondItem="q5G-D9-C2d" secondAttribute="right" constant="9" id="7Fv-Oy-wos"/>
                 <constraint firstItem="q5G-D9-C2d" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9Zw-B5-tth"/>
                 <constraint firstItem="BeY-wH-5h5" firstAttribute="width" secondItem="q5G-D9-C2d" secondAttribute="width" id="BU3-jQ-gdj"/>
                 <constraint firstItem="FfX-cI-OTB" firstAttribute="width" secondItem="zJ0-DK-glA" secondAttribute="width" id="C0M-XU-jXj"/>
-                <constraint firstItem="zJ0-DK-glA" firstAttribute="leading" secondItem="8F5-5v-ph6" secondAttribute="trailing" constant="9" id="CRP-Ma-IcW"/>
-                <constraint firstItem="q5G-D9-C2d" firstAttribute="leading" secondItem="wvL-mJ-LlF" secondAttribute="trailing" id="D3I-fh-cOm"/>
-                <constraint firstItem="FfX-cI-OTB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Fna-WE-rLe"/>
+                <constraint firstItem="zJ0-DK-glA" firstAttribute="left" secondItem="8F5-5v-ph6" secondAttribute="right" constant="9" id="CRP-Ma-IcW"/>
+                <constraint firstItem="q5G-D9-C2d" firstAttribute="left" secondItem="wvL-mJ-LlF" secondAttribute="right" id="D3I-fh-cOm"/>
+                <constraint firstItem="FfX-cI-OTB" firstAttribute="left" secondItem="vUN-kp-3ea" secondAttribute="left" id="Fna-WE-rLe"/>
                 <constraint firstAttribute="bottom" secondItem="FfX-cI-OTB" secondAttribute="bottom" id="M7w-gn-IgE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BeY-wH-5h5" secondAttribute="bottom" id="Mjy-4e-FN9"/>
-                <constraint firstItem="8F5-5v-ph6" firstAttribute="leading" secondItem="FfX-cI-OTB" secondAttribute="trailing" constant="9" id="NWj-XV-Lta"/>
-                <constraint firstItem="BeY-wH-5h5" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="UMH-GY-K8C"/>
+                <constraint firstItem="8F5-5v-ph6" firstAttribute="left" secondItem="FfX-cI-OTB" secondAttribute="right" constant="9" id="NWj-XV-Lta"/>
+                <constraint firstItem="BeY-wH-5h5" firstAttribute="right" secondItem="vUN-kp-3ea" secondAttribute="right" id="UMH-GY-K8C"/>
                 <constraint firstItem="BeY-wH-5h5" firstAttribute="width" secondItem="wNo-bf-9dx" secondAttribute="width" id="VIQ-kC-SBT"/>
                 <constraint firstItem="FfX-cI-OTB" firstAttribute="width" secondItem="8F5-5v-ph6" secondAttribute="width" id="bnU-gs-wOA"/>
                 <constraint firstItem="wvL-mJ-LlF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ea6-c4-CKe"/>
                 <constraint firstItem="wNo-bf-9dx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fje-5i-H7s"/>
-                <constraint firstItem="wvL-mJ-LlF" firstAttribute="leading" secondItem="zJ0-DK-glA" secondAttribute="trailing" id="j3a-la-nip"/>
+                <constraint firstItem="wvL-mJ-LlF" firstAttribute="left" secondItem="zJ0-DK-glA" secondAttribute="right" id="j3a-la-nip"/>
                 <constraint firstItem="zJ0-DK-glA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ki5-sY-982"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="q5G-D9-C2d" secondAttribute="bottom" id="lcy-8l-m2p"/>
                 <constraint firstItem="wvL-mJ-LlF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r3M-lb-gT6"/>
