@@ -549,7 +549,9 @@
             "assets": {
                 "loading": "3sec-white-loader-2.gif",
                 "error": "white-error-mob.gif",
-                "success": "white-success-mob.gif"
+                "success": "white-success-mob.gif",
+                "faceID": "faceID",
+                "touchID": "touchID"
             }
         },
         "Invalid" : {
