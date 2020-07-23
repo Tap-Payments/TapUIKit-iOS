@@ -178,7 +178,6 @@ internal class flippableCollectionLayout:UICollectionViewFlowLayout{
         let localisationManager = TapLocalisationManager.shared
         
         guard let locale:String = localisationManager.localisationLocale, locale == "ar" else { return false }
-        
         return true
     }
 }

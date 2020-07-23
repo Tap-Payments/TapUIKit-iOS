@@ -108,6 +108,11 @@ import SimpleAnimation
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            self.collectionView.layoutIfNeeded()
+            self.collectionView.reloadData()
+        }
     }
     
     /// The method handles the logic needed to update the displayed items and their statuses upon request
