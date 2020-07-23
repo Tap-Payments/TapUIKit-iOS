@@ -197,6 +197,10 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
 }
 
 extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
+    func refreshLayout() {
+        assignFlowLaout()
+    }
+    
     func showHeader(with type: TapHorizontalHeaderType) {
         handleHeaderView(with: type)
         headerView.showHeader(with: type)

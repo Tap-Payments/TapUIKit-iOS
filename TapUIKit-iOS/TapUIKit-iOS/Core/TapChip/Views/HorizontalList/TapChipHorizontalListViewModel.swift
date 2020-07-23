@@ -65,7 +65,13 @@ internal protocol TapChipHorizontalViewModelDelegate {
      - Parameter dataSource: Represents the new datasource if needed
      */
     func reload(new dataSource:[GenericTapChipViewModel])
+    /**
+     The event will be fired when the data source of the view model had been changed hence the UIVIew needs to show or hide the header view
+     - Parameter dataSource: Represents the new datasource if needed
+     */
     func showHeader(with type:TapHorizontalHeaderType)
+    /// Will be fired when teh view model thinks the attached view needs to update its  flow layout to properly render the scrolling direction
+    func refreshLayout()
 }
 
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
@@ -222,6 +228,11 @@ internal protocol TapChipHorizontalViewModelDelegate {
     
     private func assignModelsDelegate() {
         dataSource.forEach{ $0.viewModelDelegate = self }
+    }
+    
+    /// Call this method when you think the collectionview needs to update its flow layout to reflect the correct scrolling directions
+    @objc public func refreshLayout() {
+        cellDelegate?.refreshLayout()
     }
 }
 
