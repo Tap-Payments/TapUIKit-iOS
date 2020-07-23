@@ -382,6 +382,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.changeBlur(to: false)
         for (index, element) in views.enumerated() {
             if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
+                goPayElement.stopOTPTimers()
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.none)
                 //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)

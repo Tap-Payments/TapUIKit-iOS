@@ -117,6 +117,11 @@ import McPicker
         goPayLoginOptionsView.tapGoPayLoginBarViewModel = viewModel
     }
     
+    /// Call this method upon hiding the view to make sure OTP is being invalidated and won't be fired when expired
+    @objc public func stopOTPTimers() {
+        goPayOTPView.otpViewModel.close()
+    }
+    
     // MARK:- Private methods
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
@@ -313,6 +318,7 @@ extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
         showLoginOptions(focus: .Phone)
         goPayOTPView.slideOut(to:.bottom,duration:animationDuration)
         goPayOTPView.fadeOut(duration:animationDuration)
+        stopOTPTimers()
     }
     
     public func otpStateExpired() {
