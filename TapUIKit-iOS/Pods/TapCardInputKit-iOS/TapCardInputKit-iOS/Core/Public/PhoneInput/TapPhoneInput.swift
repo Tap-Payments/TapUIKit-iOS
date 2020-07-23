@@ -146,7 +146,7 @@ import TapCardVlidatorKit_iOS
         
         // Set the correct font type and colors
         adjustFieldsTextFonts()
-                
+        
         // Set the keyboard type for the fields
         fields.forEach {
             $0.keyboardType = .numberPad

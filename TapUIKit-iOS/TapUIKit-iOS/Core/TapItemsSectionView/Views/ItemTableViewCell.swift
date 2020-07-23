@@ -8,6 +8,7 @@
 
 import TapThemeManager2020
 import SimpleAnimation
+import LocalisationManagerKit_iOS
 
 @objc public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
@@ -140,7 +141,10 @@ extension ItemTableViewCell {
         
         itemDescLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont")
         itemDescLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
+        itemDescLabel.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
         itemDescrriptionView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).descriptionBackgroundColor")
+        
+        
         
         itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont",shouldLocalise:false)
         itemPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).priceLabelColor")
