@@ -30,7 +30,7 @@ class TapTimer {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(didUpdateTime), userInfo: nil, repeats: true)
     }
     
-    func reset() {
+    internal func reset() {
         timer?.invalidate()
         timer = nil
     }

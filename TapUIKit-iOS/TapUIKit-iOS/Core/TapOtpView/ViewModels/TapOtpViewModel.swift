@@ -17,8 +17,10 @@ internal protocol TapOtpViewDelegate {
     /// A method to instruc the view to update status message
     func updateMessage()
     
-    /// A method to instruc update the timer
-    /// - Parameter currentTime: The remaining time until the OTP get expired
+    /**
+     A method to instruc update the timer
+     - Parameter currentTime: The remaining time until the OTP get expired
+     */
     func updateTimer(currentTime: String)
     
     /// A method to instruc the view to update view on otp state becomes expired
@@ -31,11 +33,10 @@ internal protocol TapOtpViewDelegate {
 /// A protocol to be used to fire functions and events in the parent view
 @objc public protocol TapOtpViewModelDelegate {
     /**
-        An event will be fired once the user enter all the otp digits
+    An event will be fired once the user enter all the otp digits
      - Parameter otpValue: the OTP value entered by user
      */
     @objc func otpStateReadyToValidate(otpValue: String)
-    
     
     /**
      An event will be fired everytime the statuse of the OTP view changes
@@ -188,6 +189,16 @@ internal protocol TapOtpViewDelegate {
      */
     @objc public func resetStateReady() {
         self.state = .empty
+    }
+    
+    /**
+     Invalidate OTP timer and reset all properties
+     */
+    @objc public func close() {
+        self.timer?.reset()
+        self.timer?.delegate = nil
+        self.delegate = nil
+        self.viewDelegate = nil
     }
 }
 

@@ -82,6 +82,7 @@ import TapThemeManager2020
         switch otpViewModel.state {
         case .expired:
             buttonStatus = .ResendOTP
+            self.otpViewModel.close()
             actionButtonBlock = { [weak self] in self?.otpStateExpired() }
         case .ready:
             buttonStatus = .ValidConfirm
