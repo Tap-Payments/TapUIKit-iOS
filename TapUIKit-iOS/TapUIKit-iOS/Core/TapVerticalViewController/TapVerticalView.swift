@@ -170,6 +170,7 @@ import SimpleAnimation
                 self?.addKeyboardSpaceView(with: keyboardRect)
             }
             keyboardHelper.onKeyboardWillBeHidden = { [weak self] keyboardRect in
+                self?.removeAllHintViews()
                 self?.removeKeyboardSpaceView(with: keyboardRect)
             }
         }else{

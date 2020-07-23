@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         dataSource.append(["title":"OTP","subtitle":"Displays OTP View","navigationID":"OTPViewController","lang":"0","push":"0"])
         
         dataSource.append(["title":"Wall Of Glory","subtitle":"Shows all ui components from Checkout SDK done in action. NOTE: TRY CLICKING ANYWHERE TO SEE THE FIRED EVENTS","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
+        dataSource.append(["title":"Arabic Wall Of Glory","subtitle":"Shows all ui components from Checkout SDK done in action. NOTE: TRY CLICKING ANYWHERE TO SEE THE FIRED EVENTS","navigationID":"TapBottomSheetExampleViewController","lang":"0","push":"1"])
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -44,6 +45,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         MOLH.setLanguageTo("en")
+        TapLocalisationManager.shared.localisationLocale = "en"
         MOLH.reset()
     }
 }
@@ -77,6 +79,10 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
                 if let gloryExample:TapBottomSheetExampleViewController = destnationVC as? TapBottomSheetExampleViewController, indexPath.row == (dataSource.count - 1) {
                     TapLocalisationManager.shared.localisationLocale = "ar"
                     MOLH.setLanguageTo("ar")
+                    gloryExample.showWallOfGlory = true
+                }else if let gloryExample:TapBottomSheetExampleViewController = destnationVC as? TapBottomSheetExampleViewController, indexPath.row == (dataSource.count - 2) {
+                    TapLocalisationManager.shared.localisationLocale = "en"
+                    MOLH.setLanguageTo("en")
                     gloryExample.showWallOfGlory = true
                 }
                 showController(contoller: destnationVC, push: dataSource[indexPath.row]["push"] == "1")
