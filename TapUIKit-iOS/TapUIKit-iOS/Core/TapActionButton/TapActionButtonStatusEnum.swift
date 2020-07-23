@@ -132,4 +132,33 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         }
     }
     
+    /**
+     Returns the authentication image icon to be shown inside the shrinked button based on the current button status
+     - Returns: The FACEID or TOUCHID icons or nil otherwise
+     */
+    public func authenticationIcons() -> UIImage? {
+        switch self {
+        case .FaceID:
+            return TapThemeManager.imageValue(for: "actionButton.Common.assets.faceID")
+        case .TouchID:
+            return TapThemeManager.imageValue(for: "actionButton.Common.assets.touchID")
+        default:
+            return nil
+        }
+    }
+    
+    
+    /**
+     Decides if the button should auto shrink when this new status is applied
+     - Returns: The FACEID or TOUCHID are true and false otherwise
+     */
+    public func shouldAutoShrink() -> Bool {
+        switch self {
+        case .FaceID,.TouchID:
+            return true
+        default:
+            return false
+        }
+    }
+    
 }

@@ -24,14 +24,13 @@ import LocalAuthentication
     @objc func authenticationFailed(with error: Error?)
 }
 
+@objc public enum BiometricType: Int {
+    case none
+    case touchID
+    case faceID
+}
 
 @objc public class TapAuthenticate: NSObject {
-    
-    public enum BiometricType: Int {
-        case none
-        case touchID
-        case faceID
-    }
     
     private let context = LAContext()
     private var error: NSError?

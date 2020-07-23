@@ -119,19 +119,8 @@ extension TapActionButton:TapActionButtonViewDelegate {
     func startLoading(completion: () -> ()?) {
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
         let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
-        let gif = try! UIImage(gifData: imageData!)
         
-        
-        payButton.fadeOut()
-        loaderGif.fadeIn()
-        loaderGif.delegate = nil
-        loaderGif.setGifImage(gif, loopCount: -1)
-        viewHolderWidth.constant = 40
-        
-        UIView.animate(withDuration: 1.0, animations: { [weak self] in
-            self?.viewHolder.updateConstraints()
-            self?.layoutIfNeeded()
-        })
+        shrink(with: try! UIImage(gifData: imageData!))
     }
     
     func endLoading(with success: Bool, completion: @escaping () -> () = {}) {
@@ -160,6 +149,21 @@ extension TapActionButton:TapActionButtonViewDelegate {
             self?.viewHolder.updateConstraints()
             self?.layoutIfNeeded()
         })
+    }
+    
+    func shrink(with image:UIImage? = nil) {
+        viewHolderWidth.constant = 40
+        UIView.animate(withDuration: 1.0, animations: { [weak self] in
+            self?.viewHolder.updateConstraints()
+            self?.layoutIfNeeded()
+        })
+        
+        guard let image = image else { return }
+        
+        payButton.fadeOut()
+        loaderGif.fadeIn()
+        loaderGif.delegate = nil
+        loaderGif.setImage(image)
     }
 }
 
