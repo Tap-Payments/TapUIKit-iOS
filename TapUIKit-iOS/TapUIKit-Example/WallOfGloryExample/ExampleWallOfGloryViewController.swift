@@ -504,6 +504,13 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func savedCard(for viewModel: SavedCardCollectionViewCellModel) {
         //showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
         tapActionButtonViewModel.buttonStatus = .ValidPayment
+        
+        let authenticator = TapAuthenticate(reason: "Login into tap account")
+        if authenticator.type != .none {
+            tapActionButtonViewModel.buttonStatus = (authenticator.type == BiometricType.faceID) ? .FaceID : .TouchID
+            authenticator.delegate = self
+            authenticator.authenticate()
+        }
     }
     
     func gateway(for viewModel: GatewayChipViewModel) {
@@ -590,6 +597,19 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         }
         
         
+    }
+}
+
+extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
+    func authenticationSuccess() {
+        print("authenticationSuccess")
+        startPayment(then: true)
+    }
+    
+    func authenticationFailed(with error: Error?) {
+        print("authenticationFailed")
+        tapActionButtonViewModel.buttonStatus = .ValidPayment
+        tapActionButtonViewModel.expandButton()
     }
 }
 

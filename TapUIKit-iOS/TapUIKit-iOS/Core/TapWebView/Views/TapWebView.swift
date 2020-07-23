@@ -12,13 +12,17 @@ import class UIKit.UIView
 import class UIKit.UIImage
 import struct UIKit.CGRect
 
+/// Represents the cutom TapWebView
 @objc public class TapWebView: UIView {
-
+    /// Represents the main holding view
     @IBOutlet var contentView: UIView!
+    /// Represents the actual backbone web view
     @IBOutlet weak var webView: WKWebView!
    
+    /// Represents the view model controlling this web view
     var viewModel:TapWebViewModel? {
         didSet {
+            // once assigned, we declare our self as the delegate
             viewModel?.viewDelegate = self
             reload()
         }
@@ -66,14 +70,7 @@ extension TapWebView: TapWebViewDelegate {
     func load(with url: URL) {
         webView.load(.init(url: url))
     }
-    
     func stopLoading() {
         webView.stopLoading()
     }
-    
-    func loaderVisibility(changed to: Bool) {
-       
-    }
-    
-    
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import class UIKit.UIImage
 /// A protocol to communicate with the view controller with this view model
 internal protocol TapActionButtonViewDelegate {
     
@@ -26,7 +26,14 @@ internal protocol TapActionButtonViewDelegate {
      */
     func endLoading(with success:Bool,completion: @escaping ()->())
     
+    /// Instructs the view to expand itself again after being in a shrinked state. This will re show the title and hide the icon
     func expand()
+    
+    /**
+     Instructs the button to shrink itself and sets an image if any
+     - Parameter image: Will show this image inside the button if passed. Default is nil
+     */
+    func shrink(with image:UIImage?)
 }
 
 /// Represents the view model that controls the events and the look and feel for the Tap Action Button View
@@ -110,7 +117,7 @@ internal protocol TapActionButtonViewDelegate {
         viewDelegate?.endLoading(with: success, completion: completion)
     }
     
-    
+    /// Instructs the view to expand itself again after being in a shrinked state. This will re show the title and hide the icon
     @objc public func expandButton() {
         viewDelegate?.expand()
     }
@@ -126,6 +133,9 @@ internal protocol TapActionButtonViewDelegate {
     internal func buttonStatusChanged() {
         // Inform the view, that he needs to reload itself based on the new status
         viewDelegate?.reload()
+        if buttonStatus.shouldAutoShrink() {
+            viewDelegate?.shrink(with: buttonStatus.authenticationIcons())
+        }
     }
     
     /// Handles the logic needed when the action button is clicked, this will be fired from the view itself

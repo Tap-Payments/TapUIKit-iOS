@@ -33,6 +33,11 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case InvalidNext
     /// Where we need to show a blue background with the titl Signin
     case ValidNext
+    /// Where we need to show a green background with faceID icon
+    case FaceID
+    /// Where we need to show a green background with faceID icon
+    case TouchID
+    
     
     
     /**
@@ -47,7 +52,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
             backgroundThemePath = "actionButton.Invalid.backgroundColor"
             break
-        case .ValidPayment,.SaveValidPayment:
+        case .ValidPayment,.SaveValidPayment,.FaceID,.TouchID:
             backgroundThemePath = "actionButton.Valid.paymentBackgroundColor"
             break
         case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext:
@@ -124,6 +129,35 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return false
         default:
             return true
+        }
+    }
+    
+    /**
+     Returns the authentication image icon to be shown inside the shrinked button based on the current button status
+     - Returns: The FACEID or TOUCHID icons or nil otherwise
+     */
+    public func authenticationIcons() -> UIImage? {
+        switch self {
+        case .FaceID:
+            return TapThemeManager.imageValue(for: "actionButton.Common.assets.faceID")
+        case .TouchID:
+            return TapThemeManager.imageValue(for: "actionButton.Common.assets.touchID")
+        default:
+            return nil
+        }
+    }
+    
+    
+    /**
+     Decides if the button should auto shrink when this new status is applied
+     - Returns: The FACEID or TOUCHID are true and false otherwise
+     */
+    public func shouldAutoShrink() -> Bool {
+        switch self {
+        case .FaceID,.TouchID:
+            return true
+        default:
+            return false
         }
     }
     

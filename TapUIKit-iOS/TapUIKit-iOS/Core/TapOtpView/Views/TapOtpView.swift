@@ -109,7 +109,7 @@ extension TapOtpView {
         timerLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).Timer.textColor")
         timerLabel.tap_theme_font = .init(stringLiteral: "\(themePath).Timer.textFont",shouldLocalise:false)
         
-        self.messageLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).Message.textFont",shouldLocalise:false)
+        self.messageLabel.tap_theme_font = .init(stringLiteral: "\(status.themePath()).Message.textFont")
         
         self.otpController.bottomLineColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.bottomLineColor") ?? .white
         self.otpController.bottomLineActiveColor = TapThemeManager.colorValue(for: "\(themePath).OtpController.activeBottomColor") ?? .blue

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TapSwitchControlDelegate: class {
+protocol TapSwitchControlDelegate {
     /**
      This method being called on switch change
      */
@@ -28,7 +28,7 @@ public class TapSwitchControl: UIView {
     @IBOutlet weak private var separator: UIView!
 
     
-    weak var delegate: TapSwitchControlDelegate?
+    var delegate: TapSwitchControlDelegate?
     
     public var title: String? {
         didSet {

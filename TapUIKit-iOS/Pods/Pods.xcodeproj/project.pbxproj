@@ -74,11 +74,11 @@
 		014CF4E765E7AF99E91AD320A2039959 /* LocalisationManagerKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32E5FE34A1D4F29B236E4AE227E73DD /* LocalisationManagerKit_iOS.framework */; };
 		01C550A53C9E2047C83F8E85BBB558E6 /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CEE2E0100930BC737F771B0BAEDC53 /* ConstraintLayoutSupportDSL.swift */; };
 		0239D6793093EC356DDE1315BDB7C6A8 /* TapFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0540F1D446D1113C732F9BB87B29E /* TapFont+Additions.swift */; };
-		0283716BB0445A53B101567ACF085574 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D0338689FB8F84ED4D2B20568CDCBFE /* Roboto-Bold.ttf */; };
 		028B6B66AA38064CA17CE137BE92EFFA /* FullCardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95014BED6DD96DE59ECDDDE79C4A7FD5 /* FullCardInput.swift */; };
 		02E15DD4F899A5F1F22B31B8A5F81DDC /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE5822625AEC510F6FCADF974CF579 /* Disposable.swift */; };
 		03076368C9CC2486A04099CB4C4985C1 /* Deferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0205F2ADF66E754C4AB8034C7D3911D /* Deferred.swift */; };
 		03362D47D4CD88E4014D9E7661928F00 /* ScheduledItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2789B6A353BC79A6537CA51E46A7B95D /* ScheduledItemType.swift */; };
+		039A343FD363A5162634F48C14950DEA /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B0CB4575462C986AE753C3EB1D4761D /* Tajawal-Bold.ttf */; };
 		039EAFE7935113805F3FC21BF1B7C9D5 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E876A08885E5BEFD159C55416DE504 /* LayoutConstraint.swift */; };
 		03AB08EDD3D8F0D939449A92E5AC9B5B /* GULLoggerCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 684C80C27BF036558D04CEBD07BB15E5 /* GULLoggerCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03D601A5DFD1ACB07FF029E4791BC0F7 /* FBLPromise+Recover.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 4D9C91F478B0E4006260812F32929EE8 /* FBLPromise+Recover.h */; };
@@ -95,15 +95,14 @@
 		06D8B2A168A1D08CBFA30EDDB5F20AD8 /* FIRAnalyticsConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E17CDA9345E7E6E5CC822F5CF2765E7 /* FIRAnalyticsConfiguration.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		07141BDF264104502C0D2041648F7880 /* FIRComponentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC99C4713A9D8DDB0C4E8930453895 /* FIRComponentType.m */; };
 		072EBCDF716D0FA89AA90D5B42B47466 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76A9886563E4F98201594C2AAF1D97E9 /* SystemConfiguration.framework */; };
-		07EC8F8535B92789C573FC0081205A3B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D41DA3453F60ADF808DBC795E46E8F10 /* Roboto-Thin.ttf */; };
 		080D996C588B3246A97741FDB942CC79 /* GULNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEC74D3375DEB853F14AD8FCBFDD43A /* GULNSData+zlib.m */; };
 		0838BDA6C0FCED5C3902AE5CBF8BA3C2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F59D048525BB589C8C86DE9E861CFB3 /* Security.framework */; };
 		08983584FF5416A45D57FE288D70A6E0 /* TapFontKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F536F25AEDA158E3866416CDCB1262AF /* TapFontKit_iOS.framework */; };
 		094905DC8F2C48AA042269E20462DD35 /* ObserveOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE996C1315C59E37B9D5949BFE19640 /* ObserveOn.swift */; };
-		097A8B5B2F6664C13A39659BBD9D23ED /* HelveticaNeueLTW20-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE2A1A323CF6F34A20D2B57D98A93751 /* HelveticaNeueLTW20-Light.ttf */; };
 		09BE233E2230EC56C6EA5ECA34C40DC2 /* GULLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 42ECA5A739CE4BF076537B2721720832 /* GULLogger.m */; };
 		09F2344CDF2289F7B806ED72CB1E16C9 /* FIRAppAssociationRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF01BCFF1CB0962A3DF8C1B4144BCE6 /* FIRAppAssociationRegistration.m */; };
 		0A12C7C7EEE78E6E740FBBC9B85CCD4A /* FBLPromise+Validate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6081CCC3276EA2DC3CD2DFB2B9FFD612 /* FBLPromise+Validate.m */; };
+		0A578C9DD26E281453B872F0F42D6431 /* Tajawal-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0F9AAF8C3AB1D57261064469F1B90CA /* Tajawal-ExtraLight.ttf */; };
 		0A6CB62CC05F34AC1AEEE96D44035B0A /* TransactionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316F74DDD7B24CED9732E3A69CAB907 /* TransactionItemModel.swift */; };
 		0A91796EE2B4F220A29379096ECC52AB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CEFC4F1188A3DB819FB30B5618873A /* UIViewController+Rx.swift */; };
 		0AA3AA11533ABE5FCBB6DC1B0F6830E5 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CF25B5B4E4AFF935F32872A7DA8219 /* RxSwift.framework */; };
@@ -180,6 +179,7 @@
 		1D8DF6AB0E242EAC3F4318139C82E1B1 /* GULHeartbeatDateStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 91BE06701730E5392437BB12FD916FA6 /* GULHeartbeatDateStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DC6F5BC2A7B371573E3403F1C7C51BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5CC61A5CF01C22CB4B7DEE5B494330 /* UIKit.framework */; };
 		1E5283D2800D1D93A49EC9AA71FBBBC5 /* GULUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D02E7129ECB9F21DEAEEB9452F897540 /* GULUserDefaults.m */; };
+		1E951BF09701BADC56996DC65085533D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB5DD76D62AB3882A642DA5367138048 /* Roboto-Regular.ttf */; };
 		1EF4C8F62BE00557CC54FE5CA6CCDC80 /* McPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E9D6A0F1EA3813E6C43E4587160DAB /* McPicker.swift */; };
 		1F70D15F69CE482AB35E3A7B941BF011 /* TapThemeManagerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832F0A5B63F03E9DF92470E55FEE7A79 /* TapThemeManagerParser.swift */; };
 		1FB66CFBDE57D8F0A438FAA86770CCAD /* Flurry-iOS-SDK-FlurrySDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 740E0603280069A92FFA009FC6D02565 /* Flurry-iOS-SDK-FlurrySDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -241,6 +241,7 @@
 		314BEFBCD6A8C616A4589D1939461D15 /* GULKeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BC83A90DEB66784F31254E509D63F2 /* GULKeychainStorage.m */; };
 		3223BCCC7F657CD79C5C43FDF195C241 /* pb_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = B687ADD992F1AB28CA7919AD38CEC782 /* pb_encode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -fno-objc-arc"; }; };
 		323C88651612351DA5CB7A5EB415C57E /* FBLPromise+All.h in Headers */ = {isa = PBXBuildFile; fileRef = A3933E929905424C5041564290D7E423 /* FBLPromise+All.h */; };
+		3252B17C49F583781F7B2F0792389348 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED0DE19C9C8918E4508E7642328CCCC0 /* Roboto-Light.ttf */; };
 		328B38BAC9CD9F5FF574BF7AE23312CC /* ControlProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12368EB856BDEB55D204A5EFE008A34 /* ControlProperty.swift */; };
 		32D1D6B90FEAF26D37B4D616D3006B1A /* FlurryAdNativeAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 85BA73386CADBA9335B800FBF440C486 /* FlurryAdNativeAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32EA7E4C835004F46C33055CC091694B /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9396A1D7CB4359A434B0C6BB9EE4CC /* PriorityQueue.swift */; };
@@ -274,7 +275,6 @@
 		38BFC3CD5480E0EEAB911DD3BD7BFCD5 /* MOLH-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C37B17A7884F1592370A4E2F4EB115 /* MOLH-dummy.m */; };
 		392048FB7FB2A9213AA9C602F61A321A /* FIRInstallationsErrorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 464F91B8B6A9D8AC5D5263AC884BD095 /* FIRInstallationsErrorUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		397B57EBA093A1DA2A7D362725166C1B /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA394619FE2BC4C6F6C99B99E489E2BD /* Switch.swift */; };
-		398ADF855C1CE18B07E8CF4A0AC37655 /* Circe-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30C4614008D9B546C910E1A2A39933B8 /* Circe-Light.ttf */; };
 		3A039635978356CEB751960152216741 /* FlurryAdNativeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C768296345B9B628894F8C7F3411B28 /* FlurryAdNativeDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A05C478BECA7AF7BF2C06840D5487DF /* TapCurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD512B37DA3182477DAC6CF17AC72E23 /* TapCurrencyCode.swift */; };
 		3A49CB53523C1E3C182B14BC8A901920 /* OperationQueueScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFE262D1ED8059A2493FABDC27DC3B2 /* OperationQueueScheduler.swift */; };
@@ -295,7 +295,6 @@
 		3DDF693E323B755DC6A79C0AF027FC60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABBB3A329DEDDBB8C40490E5A4AA2E /* Foundation.framework */; };
 		3E5285F4F36EAD77ECABBFB7F36BB1BB /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A51F16F98A384CF1A2DF5B56DACA5 /* ConstraintView+Extensions.swift */; };
 		3E8F0F55EE8762B13FCF169F53C12810 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABBB3A329DEDDBB8C40490E5A4AA2E /* Foundation.framework */; };
-		3E90B3030572BD9C611612C6C9089F2B /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4758AE57219A4170A4C7E1B8DF634582 /* Roboto-Black.ttf */; };
 		3EA07194D2A2C60ED0313F110376232A /* Color+wcag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC9CDC6C249412EA76F71308EDC1D0C /* Color+wcag.swift */; };
 		3EBF80501E17D10BACBD67246E398B78 /* UISearchBar+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A27528EEC921BD4D7C390C8FF8F3A /* UISearchBar+Rx.swift */; };
 		3F2277D2EEB6CD2DF48AA7899E929B0D /* GULReachabilityMessageCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A370887494A3C924209A7D2A0B8BFF3 /* GULReachabilityMessageCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -316,6 +315,7 @@
 		42CCA88FE13995C4DE8CB024EEDF022A /* RxPickerViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CC1A90C18709102F4EAC1997DF4349 /* RxPickerViewDataSourceProxy.swift */; };
 		42EB75261A0B097221C1F9CD1D7A678A /* RxScrollViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD44AA419292522C9800AF03956E09CC /* RxScrollViewDelegateProxy.swift */; };
 		43921B982F60543EF7DDFEF47BCECA0C /* ReplaySubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBABAD3DB27F6A5AF6F922A1B3C1773 /* ReplaySubject.swift */; };
+		43C86556374F8080D81F7F73300BF0DC /* Circe-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59C177C4CF925695235CD88E769ECE99 /* Circe-Regular.ttf */; };
 		43D534319038D273FD5AE39522FEE353 /* GULAppEnvironmentUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = A38D0DC7C812A1A8F7AC5D2612EDCB45 /* GULAppEnvironmentUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		43DAAB5965C99B88C42DEE3903A30431 /* EAAnimationFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5C59029A183877D035A5C3D312226E /* EAAnimationFuture.swift */; };
 		44E6EE9CF5DC35176CE592916F1AE2B2 /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583634B6C2E24ABF39D64C43206D1FD5 /* CardValidator.swift */; };
@@ -340,7 +340,6 @@
 		4A120CBF45614F5FE60CF366D94D5185 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90186B02DFAFB8802753C61EBA981BB4 /* VisualEffectView.swift */; };
 		4A96DD76CB0C446FB2EF1033483FD870 /* KVORepresentable+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034B6EA098AAA7FAC500AD5AE0BAFB5B /* KVORepresentable+Swift.swift */; };
 		4AE716C8CE1833E6A3314B910C450EB8 /* FIRInstallationsIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1910375132AE1F4E3949F7EE8CECF18E /* FIRInstallationsIDController.m */; };
-		4B040FDB7192863A172BEAAF36D41B19 /* Circe-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B11C258A152953DB745A09B8878EBCF /* Circe-Regular.ttf */; };
 		4B4BDA3A8ACB152A9F9BF17C0132519C /* TapThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C3DCB526BD729056073F74592860A /* TapThemeManager.swift */; };
 		4C0F3B39831DAA049A07DA075DB97E14 /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F27A8BE98F4444C761439247172494 /* ObservableType+Extensions.swift */; };
 		4C78F20AA6B3F3F7473A0B3AC1427221 /* UITextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA48E702C04F6B886B004078133F883 /* UITextView+Rx.swift */; };
@@ -361,6 +360,7 @@
 		4E1A17ADDED622E45B6CC4D0F886D18F /* FBLPromise+Delay.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 5FD3BC69B8E976056A26B98E24B0FE7F /* FBLPromise+Delay.h */; };
 		4E63E9C47DC7240E36363C8F4BB115EF /* FIROptionsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E62DE22D55128728489F09E76226CE6 /* FIROptionsInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4E8A9D87CC40C992AA01B3FC541BEDDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F59D048525BB589C8C86DE9E861CFB3 /* Security.framework */; };
+		4EE36C10CB9FE3DC1A76865C339ED411 /* HelveticaNeueLTW20-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7826F65DB7B847B532C3EE16EF8B60BE /* HelveticaNeueLTW20-Bold.ttf */; };
 		4F2D63C641E194CEF0F1A23E4C083789 /* CommonDataModelsKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47962D5CFBA2EACCB611B40BFE9C4AC3 /* CommonDataModelsKit-iOS-dummy.m */; };
 		4F8FDE1577465D3C046317BA3EC628C0 /* FBLPromise+Catch.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6D12D79F962D936EB246A211D83306 /* FBLPromise+Catch.h */; };
 		4F9CC62C3C00E13B0F8FA93BD00E3D7F /* ObserverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E737A22F4E726521BFE79229EC72F6D /* ObserverType.swift */; };
@@ -394,6 +394,7 @@
 		5854DF509E8A016B6235793D04083035 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BBE2017EB2889C1CC5D54BD5478FF /* ConstraintConstantTarget.swift */; };
 		5857E4CC0AAF89BB24A5DA2EC2CB6481 /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A733B227392C208CE81C0D935CC39D13 /* ImageRequest.swift */; };
 		586DA93B2F301069A0D5C7067FE837CE /* FIRApp.h in Headers */ = {isa = PBXBuildFile; fileRef = BDA072C5C6D1497494498FAA06A93ACB /* FIRApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		587524DBCCED3E309B914AE886EE9759 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CACA3653BE5EBEEAD7FE3774A7629806 /* Roboto-Thin.ttf */; };
 		587E6045AD74F119416C7CC2459F7C87 /* FIRLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0004E4887F1489729084DD1234810DC7 /* FIRLogger.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5896D2CB29E5127FB72CF2352E0FE8AC /* _RX.h in Headers */ = {isa = PBXBuildFile; fileRef = C3531BDCF8664EFD7D5749D7036533D4 /* _RX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58A43ACC1FFBCC2F3EA6A25797071D79 /* GULHeartbeatDateStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = FF049F841550E4D15771B5228CDB75BC /* GULHeartbeatDateStorage.m */; };
@@ -416,7 +417,6 @@
 		5C38D5E36CCF43DA2CA1689D47B4035F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABBB3A329DEDDBB8C40490E5A4AA2E /* Foundation.framework */; };
 		5C515FBE23BA13F6E7E07F1CD207783E /* RxTabBarControllerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE6AE62EBB80630005E2EAAD6D9F11 /* RxTabBarControllerDelegateProxy.swift */; };
 		5C845DDF80BE22A049FE5FEA83E74E14 /* TailRecursiveSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2AB5317C8788629A087E459ADA549A /* TailRecursiveSink.swift */; };
-		5CB46218D4869E0AC8FCEFF87E81F62E /* HelveticaNeueLTW20-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4176006F3311E5D347D78755A2FA3796 /* HelveticaNeueLTW20-Bold.ttf */; };
 		5D1A036B3D324201E867909005995960 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABBB3A329DEDDBB8C40490E5A4AA2E /* Foundation.framework */; };
 		5D666D5BF5178D08EC3A5C4746BDD0BD /* _RXKVOObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = D51778CAF451D8A1E8288CEC789CE875 /* _RXKVOObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA2B11F9A41C6EAEC8B31F281A6E549 /* ImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB6D0E606A002286BC22E604ED1618 /* ImageViewExtensions.swift */; };
@@ -425,7 +425,7 @@
 		5E644639C682C75BD043F1EB33056823 /* GDTCORStorageEventSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F3AFD518B294D496AE81B545D1159C /* GDTCORStorageEventSelector.m */; };
 		5E95C949892D2B70F92849BD812D0C32 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA0571F4AC8084C7F619064659F319 /* Deprecated.swift */; };
 		5EA5D59F87123DB454316CA84C8A568F /* ItemEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17251A52BA1F377C43B039FDE0BEB77E /* ItemEvents.swift */; };
-		5F8DA2DC7D8AB11B85D255C4B7901AD2 /* TapFontKit-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FF172186B024EB1B03706FA00409504 /* TapFontKit-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F8DA2DC7D8AB11B85D255C4B7901AD2 /* TapFontKit-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 85C4829A4FF89AE74A1224B1498D4EEB /* TapFontKit-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F913FF66A8F54DCBCC28C3AE1366450 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9AAF1E846829044B813C5D7EB98AC /* TextInput.swift */; };
 		5FAE40FE684583E5269FE01B44C28512 /* NSImageView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3111B0C85E08E99C504C689DBF5F8CA /* NSImageView+Rx.swift */; };
 		5FF05392E95374FC8DFAEAAAEB551A4F /* TapApplePayPaymentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C8CC3D8B7FF486C61E45AC1423CE2A /* TapApplePayPaymentNetwork.swift */; };
@@ -487,6 +487,7 @@
 		6FAD00B4A78E07C3324BCDFB1AE1731E /* BehaviorRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C611C6A823493C5360EB67A054DDE7AD /* BehaviorRelay.swift */; };
 		6FF0A65A31F4EFE0DEA5CD4335CBBDC4 /* _RXDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C641B91651140133A1CA68D0D1FA09F /* _RXDelegateProxy.m */; };
 		700C326F6CD4B6B2C6D6BE5171880DD4 /* FBLPromise+Timeout.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 7B3B3ABBADD6DA3EEDDBDDD58973FE8D /* FBLPromise+Timeout.h */; };
+		7015434C9BB154B06CCCAB0A0A910062 /* Circe-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B04774224FBFF3D43244E7C1E9CEAF3 /* Circe-Bold.ttf */; };
 		707CEABF45A54764FD0B7D855D3DA98F /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A2B8297D416CF6B83B7E6BDC65DAD3 /* mastercard.png */; };
 		70BE21E7B1A67FEEBF728186E89173D1 /* FlurryConsent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF4DFB1DE04088F59A9F22ACFBF963C /* FlurryConsent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71126CC00E845D1C24CB339EE3B2342E /* ImmediateSchedulerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D9448B2803BE06D2141A77F6D66E6 /* ImmediateSchedulerType.swift */; };
@@ -515,14 +516,17 @@
 		78C09D0A8F521996D6759AFFDD98BFAC /* GULUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = 446B106992E9309592E205BCDCB46E85 /* GULUserDefaults.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		79000253B34F9C746E1AF17E1832C0AD /* UIColor+grayscaleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E1BEC1E96C9BFDC90F19C63FD7F08 /* UIColor+grayscaleColor.swift */; };
 		790CEE61CE59C751AD356096AB83B3E0 /* SwitchIfEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D2DC48DA3F20D4CB9A1F14F1B1597E /* SwitchIfEmpty.swift */; };
+		793CAEDB5CEB3BFC85A5B4721E0E79F7 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBAAD39A2DA72C49FB81949D704E1133 /* Roboto-Black.ttf */; };
 		7955194DF6796115A98BFB4D939D1214 /* PublishSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CBCE40B0E42F372A4729783082D3D /* PublishSubject.swift */; };
 		795C51A233CA0A3DB742EFF7DD3B88B0 /* KeyPathBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3967876816E830991A2D6333AD70EF36 /* KeyPathBinder.swift */; };
+		79B05F79ED464FE4E7CB51DF7456DEFA /* Tajawal-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 338B1148E2DF97612FE039B2CDC12665 /* Tajawal-ExtraBold.ttf */; };
 		79E0AD4F4180F0958392212CA49E755F /* FIRInstallationsHTTPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7D2B2731254C65E64E7AEC94DFE3C /* FIRInstallationsHTTPError.m */; };
 		7A096956D78E581EC62A5B1BBD56D592 /* GULOriginalIMPConvenienceMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C2681A0951BD7AAB1844E7F814E679 /* GULOriginalIMPConvenienceMacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7A0CBB108057CC7025F88F647DB5395C /* GoogleDataTransportInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BCE044CF10ED9E02D8E5740FA81B082 /* GoogleDataTransportInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7A377D6B6C745B0B3035B7F69BE5551E /* Observable+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA68E2C4238F7817E175E3F08FC64295 /* Observable+Bind.swift */; };
 		7A38D7188792F42AA0B525259BBE3118 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB08DEDC454AAC66F62CB09049CC051 /* Task.swift */; };
 		7A3FDC65D654DBD6C197DFD0ECE19C8A /* ThemeDictionarySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AADDE0C868C63138BB4E77EF2D6D14 /* ThemeDictionarySelector.swift */; };
+		7ABA511B6D657D340630E38D8B93D74A /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4100711FB64B5151EE5EAFA59E114143 /* Tajawal-Medium.ttf */; };
 		7B3351253D37C383474A50027AF73499 /* RBBBlockBasedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F29BD457D42DB4435B179E68D2911A6 /* RBBBlockBasedArray.swift */; };
 		7B85C3133AC3156D7119A2092E78AE43 /* FIRLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = E9D8EF368531473EF551BE74D403D4E8 /* FIRLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7B90EB385A04164455492E3BE92A5034 /* ToArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB25EAFED88A9E3A5F6A3A601C874072 /* ToArray.swift */; };
@@ -559,7 +563,7 @@
 		84901337E6298387C7597F48A4244F93 /* FIRInstallationsIIDTokenStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9CE5C45F8942965E2BD6B2066A374A /* FIRInstallationsIIDTokenStore.m */; };
 		84CE894B9CA97EE8918C3F64E389D3E4 /* GDTCCTCompressionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 51C0D58541AF698E27D0B28C5EA08E8A /* GDTCCTCompressionHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8507700E00DC3C13923B6F3299B2F1D7 /* ImageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A073F744596D61799815C2DE8213D71 /* ImageArea.swift */; };
-		853B2F07E2B5491AF977363CE39B165F /* TapFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD8C84322A01BCE4C5C44E6CFF802D /* TapFont.swift */; };
+		853B2F07E2B5491AF977363CE39B165F /* TapFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F49732579DF6966A3551DB0484704 /* TapFont.swift */; };
 		8574EFD4EF1D6018CBAF7437C845A512 /* CombineLatest+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E8B1FB8680E433D653D9306990EF11 /* CombineLatest+Collection.swift */; };
 		85814141BD387F39A4A50024A004FDB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F59D048525BB589C8C86DE9E861CFB3 /* Security.framework */; };
 		861685609955B745374F2821359657FE /* InfiniteSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE4C2C231C70111800E70660434534 /* InfiniteSequence.swift */; };
@@ -570,7 +574,6 @@
 		8768B002FC9A8F36A16932CAA602BFA3 /* GDTCORFlatFileStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 319C91F63813D0BA22055512F46CEE2F /* GDTCORFlatFileStorage.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		879A2F12063F7F3EC23F4BB0AC979758 /* FBLPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD57442DBA1E0589740720AB8509FF3 /* FBLPromise.m */; };
 		879DBE369BDF00E60841542570716423 /* GULSceneDelegateSwizzler_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = A647B5F37C8454C5B78782924179E119 /* GULSceneDelegateSwizzler_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		879ECE47C75DD2F20C3213345FFC2364 /* HelveticaNeueLTW20-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09432D37C42CCAED4EAFE493CE79546A /* HelveticaNeueLTW20-Roman.ttf */; };
 		87AC25E063EBE8CD17661BC96092C7A3 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884CFCDC139FD68B1DEE88322B926EFE /* Driver.swift */; };
 		87E8C6E0DA3CA00812A94A9489E1CD19 /* UITableView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419B3642A7657C8F63C4A1B44D6E9022 /* UITableView+Rx.swift */; };
 		8840BA1B525A524CB85B98F106987D68 /* PreviewColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464B2FE19260CC75232895F69584A0FC /* PreviewColorView.swift */; };
@@ -580,6 +583,9 @@
 		8A51B4943A33D9D189A01EE6B157870E /* FlurryAdTargeting.h in Headers */ = {isa = PBXBuildFile; fileRef = 605F05E0ADA3AD42D78AF14985A2105F /* FlurryAdTargeting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A77DDEE62494C3D749EBBAB907565D1 /* FIRInstallationsErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC7E6382138649E9B6B6AF655B7C01B /* FIRInstallationsErrorUtil.m */; };
 		8A8ECA607EA4E9DDA4A2F1404F1AA4A2 /* ImageDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC80540153EB46269CDE0BB21B0DEF9 /* ImageDecoding.swift */; };
+		8A97232CAD5EA647AF51F831E62DB999 /* HelveticaNeueLTW20-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B535F40BC2BAB0B75499EB55337195FB /* HelveticaNeueLTW20-Roman.ttf */; };
+		8ADE4212955D3F1A93995C945FF98A37 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 259CF5FFB95C9E1C25FD1C16450A77A1 /* Tajawal-Light.ttf */; };
+		8B079D0D7CC26757F1CC3C00979BFECE /* Tajawal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6488FC6C65A2AB453753C94FD20B8107 /* Tajawal-Black.ttf */; };
 		8B0A6DE54E1ED4BB0DD22CAD84114DD5 /* CommonDataModelsKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 516F788E682DFCC78FE40A42B3AAC414 /* CommonDataModelsKit_iOS.framework */; };
 		8BB033130CBE39319E3C8D71E51D8DB9 /* SubscriptionDisposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD746EC2AA4373EA050C964B10BDA4A9 /* SubscriptionDisposable.swift */; };
 		8BEA8A8F19C1310C2026849C119EF383 /* Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1143072D5F35458F7FF54269B9AE1E17 /* Rx.swift */; };
@@ -593,6 +599,7 @@
 		8D1E72A6BA27450809F69DB8DBCCF654 /* Capable-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD909D1C3B9285F521B56A57822C1E8F /* Capable-dummy.m */; };
 		8D2FEAB6ECE981CABA89380D171C2732 /* BlurHoleCorners.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20FBCCAD1490425762B55146EE77D89 /* BlurHoleCorners.xib */; };
 		8D8A52D3AD918E73793C298DE56D8241 /* BehaviorRelay+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABECD38E8E02F3D8EFC879F4E3D58B /* BehaviorRelay+Driver.swift */; };
+		8D9E94B76CC9B88499277E47D5C06106 /* Circe-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08294D264782753822C081D8E78AEB34 /* Circe-Light.ttf */; };
 		8DBB9CC2219B438476C792A24E2F754C /* FirebaseCoreInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 73016555B8A1880D234B14960734B210 /* FirebaseCoreInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8DE4C3A8FD9E0E1115308E2A4896FA8A /* GULMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EECCAF5244DE3EE0810A123121F0DCD /* GULMutableDictionary.m */; };
 		8DF069878CC42477E30CE08074A4D80A /* TapThemeManager2020-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC97301FBD9B1DC3F8FC3328AD196E2 /* TapThemeManager2020-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -634,9 +641,9 @@
 		979243DB7BF5C1BFB5966534EA7F7651 /* FirebaseCore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBB65118634EA9B8FBFDD7CF4982C8A /* FirebaseCore-dummy.m */; };
 		97CF55B7E0719297FAEBA79CD5D37988 /* GULSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A719DA25491DB461E25215AABEA74A /* GULSwizzler.m */; };
 		9847B3D4D9FFA9044035C4C88C3ED54A /* AsSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09621665BC192B3D4ACC752743AC0FE9 /* AsSingle.swift */; };
-		98611A119D0241CC93C9739EF0DDB1D1 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E63E9E7BEDF6F2A6A23DC96E82E582C /* Roboto-Light.ttf */; };
 		98AE3253A49C3B2066A97BE3B46667AA /* Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F1E301821C5BAE5E08FE73A518860D /* Single.swift */; };
 		98BC38F964FA856EBFF4A1910983AD93 /* FIRCoreDiagnosticsConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA43901F1D63B6723B7EA9BF464E45 /* FIRCoreDiagnosticsConnector.m */; };
+		98CF9EEE646192BDE98776F63A226F77 /* Circe-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57D150F6C3FAB9C60770A20B4C0426FF /* Circe-ExtraBold.ttf */; };
 		98DCEA289A4B80422FA0A6C5091395CC /* GDTCORUploadCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC02A281AC1FB71124E4C6E1FA125ED /* GDTCORUploadCoordinator.m */; };
 		99806DDB70BB941FE51B9A1B805FC19F /* GDTCORLifecycle.h in Headers */ = {isa = PBXBuildFile; fileRef = 96EA30F06997EDCC9AACCCA28D623274 /* GDTCORLifecycle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9992069832F87A661306CDFB7993DA1D /* FIRInstallationsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = E04ED2CBAB37B4B2F88F2C7F79FA8134 /* FIRInstallationsStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -667,10 +674,9 @@
 		9E3FC6A8C67151F269ABA3A883226C15 /* ThemeStringAttributesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D16B0CC8F39B1C70017AACF8425571 /* ThemeStringAttributesSelector.swift */; };
 		9E5420C95A4C8123896BC7A87B699D2F /* NSLayoutConstraint+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD37B30A1B53E1CDDEF3752ED4332A38 /* NSLayoutConstraint+Rx.swift */; };
 		9EC9961D675F1365A24B103BA82D0C3A /* GDTCORLifecycle.m in Sources */ = {isa = PBXBuildFile; fileRef = F0463DC159F373B48BA3C522A54EF70E /* GDTCORLifecycle.m */; };
-		9F08B587B9F3719F3949B5A2E4DC7E4E /* Circe-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC121C1865D12155249E22B01724F9AF /* Circe-ExtraBold.ttf */; };
 		9F72B3F0B979E0AEA2FA035DAD7A6601 /* DelaySubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF95F259AEE655C91FC492066ABF8F09 /* DelaySubscription.swift */; };
 		9F7587CAD443C05B8EDBB2203B875847 /* GULAppDelegateSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 597BCC37D8CF963233C92D68D9945B9D /* GULAppDelegateSwizzler.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		9FD236F51D6F06BE5420A7BB3AB1E1F7 /* TapFontKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DFBDE583BEFE52E384BFBA0F71B652 /* TapFontKit-iOS-dummy.m */; };
+		9FD236F51D6F06BE5420A7BB3AB1E1F7 /* TapFontKit-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD363212FE36AC0156E12519669693C7 /* TapFontKit-iOS-dummy.m */; };
 		A01F94FA55382101CD9640945CA6DAF2 /* ObservableConvertibleType+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA2E70613CC0F3213C9CA2B2791E0C /* ObservableConvertibleType+Driver.swift */; };
 		A0369F12565ADA0166FE3647EEF3BFC0 /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804D8D2CE2322D648353066DBE0BB74D /* Cancelable.swift */; };
 		A13CA80106C3067A2A1F96CF985017E5 /* CommonDataModelsKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 516F788E682DFCC78FE40A42B3AAC414 /* CommonDataModelsKit_iOS.framework */; };
@@ -684,6 +690,7 @@
 		A3561BE887FADBC5B87813FD388223D2 /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF44E2692BD83E86DD21C1970D60CC /* Debounce.swift */; };
 		A35C62088F8D04AC5EBC5C1F406AC120 /* RxSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14EDCECAC99DB56DD7866C85ED4F1738 /* RxSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A39907EFF1F61E218A7CEF0833DE4D70 /* SheetyColorsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B09327B18E0C247B76229CFC55773EA /* SheetyColorsType.swift */; };
+		A40C4D6BA32BAE96D712C657F5507A26 /* Circe-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB561039BDB11A8355FCC9B6934698FD /* Circe-Thin.ttf */; };
 		A4BA3929D2ABDB7A3A30D66F228B565B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5CC61A5CF01C22CB4B7DEE5B494330 /* UIKit.framework */; };
 		A4D82C6165F9200FD01060A9F69370A6 /* SerialDispatchQueueScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8AE9E9B25A829DA3F04F6F8308758 /* SerialDispatchQueueScheduler.swift */; };
 		A4D97AAFEECD9D6962D375D023AB768A /* ThemeStatusBarStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3240A9177AA0CA4E81D14B0EDC5ACA /* ThemeStatusBarStyleSelector.swift */; };
@@ -699,7 +706,6 @@
 		A811EF9B4CB10C7DEC5F80DDA4B9AE20 /* SelectorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7ED5E8E378C9376C385EC1A7B3A68 /* SelectorsConstants.swift */; };
 		A82A71AA973E93441F2A2C34E1D2178B /* FIRInstallationsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D02AAEF9C540AA8E8D5805F7E473665 /* FIRInstallationsItem.m */; };
 		A8A6F94A14EE3424814E27F2811FC5F8 /* SubjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8307954516D0091A19066950A49A6283 /* SubjectType.swift */; };
-		A8DAB1323F5B238673F7491CFF73F988 /* Circe-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB72CF6D0445943626FD4C43730BFF2B /* Circe-Thin.ttf */; };
 		A906E5086DDAE78EB76F6615AAC42F03 /* FlurryLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD8C66CC17F741D2C669311F3BC8C9 /* FlurryLogger.swift */; };
 		A90780EB66EC6CD8E54C6E1C397DEC57 /* SheetyColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E95168BC0D253124307EFA65ED80D7F /* SheetyColorsViewController.swift */; };
 		A94025C32BC205F9DCB879813D7EBDCB /* FlurryAdBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AB492CB59867114607DA76779A9A72B /* FlurryAdBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -709,9 +715,9 @@
 		AB5F1605DF9C2F459EAA9190490EC693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C34780BABE82BE6A70374D84DE781A /* CoreGraphics.framework */; };
 		AB73ED0172C33FB1DC4089C772884062 /* LocalisationManagerKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32E5FE34A1D4F29B236E4AE227E73DD /* LocalisationManagerKit_iOS.framework */; };
 		AB8B850F8580AD11FF4CE5338C36BA02 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79CEF9E2DA6602DD5ACEA54B5CB3E3 /* Range.swift */; };
+		AB94FCFD5757E3D7AEE487C036E2D707 /* HelveticaNeueLTW20-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 145CF329A21AF4E8F28588E4C2F8A52F /* HelveticaNeueLTW20-Light.ttf */; };
 		ABF99A187E110B6F62BB3441ABCCC206 /* FBLPromise+Reduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E19879C8409D46868968507E651BB /* FBLPromise+Reduce.m */; };
 		AC35C9341C4BB156BB26FDD237EE3721 /* ConstraintDirectionalInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59057B80AAF15F1C5C111C0CD8967273 /* ConstraintDirectionalInsets.swift */; };
-		ACECE8D29931C5670639D765C910A83C /* Circe-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E8CB9C756DAE54E32CCC985DC91893B /* Circe-Bold.ttf */; };
 		ACEFF7D6E84B03B88A4FD06E6C16D717 /* RxCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD5C6A0AA5E0FCBDEADACD1D894A5A1 /* RxCollectionViewDelegateProxy.swift */; };
 		ACF6DD98CD51E2BF1A6AF80274ACBFB6 /* ThemeImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3319B37629BB84AB9A90FF9C2C395 /* ThemeImageSelector.swift */; };
 		ACFD942963E0E2615AD8717CED81EF7C /* TapCardBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D8F95A79973871BD8C59AE21BB94F /* TapCardBarButton.swift */; };
@@ -827,7 +833,6 @@
 		CC7E6E0FCD0341FFFEA691EEBAD33B7F /* pb_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = DA418DD4D03B14CF4BC72A519F45DCEE /* pb_decode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCB3705662624879F9E7B0B7EC3283E4 /* ThemeScrollViewIndicatorStyleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79AD50DEB1B33BBF970884C75D1DF99 /* ThemeScrollViewIndicatorStyleSelector.swift */; };
 		CCBBA0BAD7BE7B69B31C52A65728D199 /* Concat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6494EA4AC079A1A847E15520CC946 /* Concat.swift */; };
-		CCD7ACC9759FEAD57396232D086744C2 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A610B0FEA3CDF0ADB5054D0DF11B32FC /* Roboto-Medium.ttf */; };
 		CD949ECD1B5980D9A2A7A30BF43F28B4 /* GDTCOREvent.h in Headers */ = {isa = PBXBuildFile; fileRef = B941E6EE10069F6A27A799214C7506FB /* GDTCOREvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDFCD833E487571D60BDF0810D1FDBA5 /* BottomLeftCorner.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA83FE0820ED4742D2281E814B75848 /* BottomLeftCorner.png */; };
 		CE390557A387D5CC643FD8613551C3F6 /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A872907E9AF11D49F2D64DBC767A5D9 /* Create.swift */; };
@@ -840,12 +845,12 @@
 		CFB072DC4FE51A8C6DF6EB7AA99572A7 /* FirebaseCoreInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 04C14C5BB17F3538F326B126CC406A9C /* FirebaseCoreInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D0748C95AF75ED8CE2536B989921EECB /* HSBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281F436C88ACEB8020D482F9FCAC8A41 /* HSBViewModel.swift */; };
 		D0EE26AE9A3536034F0367CE9BECFBB6 /* CombineLatest+arity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CC27FAA3A81C239F6306B4A3115E8 /* CombineLatest+arity.swift */; };
+		D1D138C2B8EE49038671B163F68C3490 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23AA27F6FFB00B0FD69D296405A3FC08 /* Roboto-Medium.ttf */; };
 		D1E7AAD3FF2C1A84BFC24355AD86EBA6 /* GoogleDataTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = CA6269A82EB821681F0CBC7C24508EBC /* GoogleDataTransport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D207C4339DB468B945C59F4EE74B02EC /* UIDatePicker+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E634C2FFFFF334EE314FF33378073 /* UIDatePicker+Rx.swift */; };
 		D25D9516216D8C4C5F97B6CD63DAF758 /* TapApplePayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2188F908664E71333ECD061A3B237AF1 /* TapApplePayRequest.swift */; };
 		D2D5F0AA0A1A56FB11377C86B551234A /* FBLPromise+Wrap.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 9F01B49BD173B898195E0C6C20531926 /* FBLPromise+Wrap.h */; };
 		D3EC4A4A0FA9F9CA633838FDCF6D6177 /* ViewsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F453919FBCA253E346C7F7B8A15C1B /* ViewsExtensions.swift */; };
-		D3F8E7F7EDFF5C707739D96DAB9780CC /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3C705EB98F1802E4879A359D5DB63D6 /* Roboto-Regular.ttf */; };
 		D41BFE735D60ED4F8ABAA9EB60BC36C9 /* FIRVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = C2C67AD6414F02EBA66AC56152FDD236 /* FIRVersion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D4697DC40F3B059E4A0867838CA1814E /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C465D7B17AEFA1BEDCE2FAF2BEA734D /* ConstraintMultiplierTarget.swift */; };
 		D474F7D0FFF415A22CAE072D9D91BD6F /* GULAppEnvironmentUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C35FF421195E35AFFDCB7ED688BD1C9E /* GULAppEnvironmentUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -888,7 +893,6 @@
 		DD6BAAE4C93D57D821F63362BB3698B1 /* FirebaseInstallations.h in Headers */ = {isa = PBXBuildFile; fileRef = 932BE2A72465744682CDB58AA2882C3D /* FirebaseInstallations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDC47ADF2BBFE1A156C579C308B75E7D /* UIGestureRecognizer+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89799D797D28DEAE05340EDBEB229141 /* UIGestureRecognizer+Rx.swift */; };
 		DDF36B30095605D96C91E69A56B515E7 /* GDTCORReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CB385012E26FC5CA9388EF639AF19D /* GDTCORReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE069C588D59B13B1EA1BBFF7A316ED8 /* Circe-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91D2CA10952855B8B7DD17A70E6014D4 /* Circe-ExtraLight.ttf */; };
 		DE12B135124CC64A3808775C5EBDA71D /* CurrentThreadScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EAB13F55B4CD7D4028C09DE4BAF38 /* CurrentThreadScheduler.swift */; };
 		DE6DD66AF072AB02CF98992C33574FED /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E89A8A5276F26C38EF123F1DCBDABE3 /* UIScrollView+Rx.swift */; };
 		DE9FF8AADB5510F6C3F7C29A7401497A /* MOLH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DE14CA67CDA2F17A6B507B3C2CD63F /* MOLH.framework */; };
@@ -896,6 +900,7 @@
 		DEF1FA8EA83C66B14555CEFA301F9764 /* CommonDataModelsKit-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A71EC67B59E8397755F0E94A8DF64B /* CommonDataModelsKit-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF725383DE8483CA81E1BB6250EDB261 /* FIRComponentContainerInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = D32053D247DEB9E3693BFD3DCA61127F /* FIRComponentContainerInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DF8A644DDF8E1DBC8A57213E95B5B567 /* RxCocoa-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C49A61D74F335F1DD1D984597B0AE44 /* RxCocoa-dummy.m */; };
+		E0023830E89F700EFB5CFB67DBAB0215 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9519306B4E04A3703922FC3E024EB3C0 /* Tajawal-Regular.ttf */; };
 		E00C90EC225B6C54293C2FC163925EE9 /* _RX.m in Sources */ = {isa = PBXBuildFile; fileRef = 8444DFA4D21593A1DF4DBC28C424B8E1 /* _RX.m */; };
 		E08E8AA3F5809368D75215D146E68959 /* FIRCoreDiagnosticsInterop.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C85F9AFAB414C4DE42D1FB5FB013A79 /* FIRCoreDiagnosticsInterop.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E10BE3A2DB6B28B68A9AEE1E99BF2828 /* FIRInstallationsStoredItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F9687D55DC4C5E2A1D31A9BA91F90E6 /* FIRInstallationsStoredItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -953,7 +958,7 @@
 		EEEB64174CE14AA9F1134AD567F889C2 /* GULSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B37F4A16B63F613B1C8D9596403538E /* GULSecureCoding.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EF627458DF9DF92352237F2364F8D8B7 /* FIRCoreDiagnostics.m in Sources */ = {isa = PBXBuildFile; fileRef = 48604A15F17C8C7272D24CB31736A48B /* FIRCoreDiagnostics.m */; };
 		EF829C4D848706FFCCE960815DE2A931 /* UIAlertController+customView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4552414730CDE1D6A20A6CD67DA2623F /* UIAlertController+customView.swift */; };
-		EF9B0345744BB51F0F473979010094A1 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60A27912A4F4EDB33A49087C5976D8 /* FontProvider.swift */; };
+		EF9B0345744BB51F0F473979010094A1 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542CB2EC2909E199955A0B73BF3571BE /* FontProvider.swift */; };
 		EFB80D8242E8DAD143B3F75BE685D5BD /* SkipWhile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD734F4ED66F3B6AD5EA732A834B22B1 /* SkipWhile.swift */; };
 		EFEEDA96472641CDAA26CCDCEF0FFFA5 /* GrayscaleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E57A08B0626F0BDC994154BB7BD8E1 /* GrayscaleViewModel.swift */; };
 		F09ACB2C5062701272570EBBE36BB7C7 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2260B33B0D45E322AF1C7D2712130D1 /* DataCache.swift */; };
@@ -965,6 +970,7 @@
 		F275AEBEA954A89BFA2C59F24E7F103B /* FBLPromise+Reduce.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = F84B9759AA86A080CB24817240B5979C /* FBLPromise+Reduce.h */; };
 		F2A9053BF8B31B158E4A653203ABE93F /* ControlEvent+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576E3B5F2103DBCBE28706025AA1CD1D /* ControlEvent+Driver.swift */; };
 		F2F9BFE8C2F398407C8D12E324E8B53D /* RxTableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5AE21809EDCC6B75582DF3F05628B /* RxTableViewDelegateProxy.swift */; };
+		F36A1C01032287AAC13943B2B0227852 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D752FE337C1F794D465EBECAA7E8C904 /* Roboto-Bold.ttf */; };
 		F41ED6009FE6A446559897BFF07B52AB /* SimpleAnimation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A97E8EEB5D22377EE2781AFCC448079 /* SimpleAnimation-dummy.m */; };
 		F456199F1029B531A10132973797738E /* FlurryAdNativeStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 174DD687FF4252DFB426C066968D88FD /* FlurryAdNativeStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4A92686A9B37BD2814BADA7148DCEA6 /* Completable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C756B275522A3188418E4F8BD39EE /* Completable.swift */; };
@@ -977,6 +983,7 @@
 		F80201229DADE2AE7E9965772776B6E9 /* GDTCORClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE944704592A64B5C91DA3F996B550 /* GDTCORClock.m */; };
 		F829154BC405458C21283E143C507FAE /* Multicast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC91E2F496B7FC28F59679F8E90DA1B /* Multicast.swift */; };
 		F8A43E710351BA0D79DECD899BD3600E /* RxCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEB10B43ACB153DCB7F8D67FFB1E746 /* RxCocoa.swift */; };
+		F8D28F33AA44A78C49BDD9F16BB3E139 /* Circe-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91A081AAC05F3689B3FFF0238B786130 /* Circe-ExtraLight.ttf */; };
 		F98BC05279DAC5D8C7FDC542E4765036 /* FIROptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 632D1A441DF4FCEF9779E14F793AEA3D /* FIROptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9B2A521BC18DDEA1E00CB071347C6AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ABBB3A329DEDDBB8C40490E5A4AA2E /* Foundation.framework */; };
 		FA1D14E2CCC19B8F734B1346F528E62C /* FBLPromisePrivate.h in Copy . Private Headers */ = {isa = PBXBuildFile; fileRef = 6F0FB720E4CED473DE7446FB2635B61A /* FBLPromisePrivate.h */; };
@@ -1768,15 +1775,16 @@
 		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D4C62EB51D17D95F8208489FC402D0 /* BottomLeftSuccessCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = BottomLeftSuccessCorner.png; path = "TapCardScanner-iOS/Core/Assets/BottomLeftSuccessCorner.png"; sourceTree = "<group>"; };
 		081AB042A016C5245592D029EE8B736E /* TapThemeManager2020-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapThemeManager2020-dummy.m"; sourceTree = "<group>"; };
+		08294D264782753822C081D8E78AEB34 /* Circe-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Light.ttf"; sourceTree = "<group>"; };
 		083D6513CC54CC967751C61592096E2E /* DisposeBag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DisposeBag.swift; path = RxSwift/Disposables/DisposeBag.swift; sourceTree = "<group>"; };
 		086998621F665184239968CA947ACB3C /* ThemeSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeSelector.swift; sourceTree = "<group>"; };
 		092FFD70C98C54F2A1B21726275FBE30 /* Materialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Materialize.swift; path = RxSwift/Observables/Materialize.swift; sourceTree = "<group>"; };
-		09432D37C42CCAED4EAFE493CE79546A /* HelveticaNeueLTW20-Roman.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Roman.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Roman.ttf"; sourceTree = "<group>"; };
 		09621665BC192B3D4ACC752743AC0FE9 /* AsSingle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsSingle.swift; path = RxSwift/Observables/AsSingle.swift; sourceTree = "<group>"; };
 		09C2681A0951BD7AAB1844E7F814E679 /* GULOriginalIMPConvenienceMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULOriginalIMPConvenienceMacros.h; path = GoogleUtilities/MethodSwizzler/Private/GULOriginalIMPConvenienceMacros.h; sourceTree = "<group>"; };
 		09E572F76D066CAF5691CDB7A0033B78 /* FIRDiagnosticsData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDiagnosticsData.h; path = FirebaseCore/Sources/FIRDiagnosticsData.h; sourceTree = "<group>"; };
 		09E84883A0BD96C9434EBABAF949892B /* FirebaseInstallations-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseInstallations-Info.plist"; sourceTree = "<group>"; };
 		0AB98921F68B600B15F8AA7F9115327F /* _RXKVOObserver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _RXKVOObserver.m; path = RxCocoa/Runtime/_RXKVOObserver.m; sourceTree = "<group>"; };
+		0B1AB1FEDA50B77382C8EA8343F23B69 /* TapFontKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapFontKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		0B1BDD446E3C43C848070D98D2BF49F2 /* TapCardVlidatorKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapCardVlidatorKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		0B87D6005A307FAFC45BDB7F3CE54AF8 /* Flurry-iOS-SDK-FlurrySDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "Flurry-iOS-SDK-FlurrySDK.modulemap"; path = "../Flurry-iOS-SDK-FlurrySDK/Flurry-iOS-SDK-FlurrySDK.modulemap"; sourceTree = "<group>"; };
 		0C277260B0B6D4E80F429CC131168A09 /* TapFullScreenCardScanner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFullScreenCardScanner.swift; path = "TapCardScanner-iOS/Core/Public/TapFullScreenCardScanner.swift"; sourceTree = "<group>"; };
@@ -1808,6 +1816,7 @@
 		12F8594219EB8D20F388BF3542D4AFC5 /* TapSwiftFixes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapSwiftFixes-dummy.m"; sourceTree = "<group>"; };
 		1367127053785F617F6FD199D24DA5F6 /* UIBarButtonItem+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIBarButtonItem+Rx.swift"; path = "RxCocoa/iOS/UIBarButtonItem+Rx.swift"; sourceTree = "<group>"; };
 		13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseInstallations.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		145CF329A21AF4E8F28588E4C2F8A52F /* HelveticaNeueLTW20-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Light.ttf"; sourceTree = "<group>"; };
 		148A5F73490C4D45BB18938C7AC053A0 /* NSTextView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextView+Rx.swift"; path = "RxCocoa/macOS/NSTextView+Rx.swift"; sourceTree = "<group>"; };
 		1493233E3095D89DBD6A0FC1EF9125A7 /* EasyAnimation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyAnimation-umbrella.h"; sourceTree = "<group>"; };
 		14D885853F5D1382BA0B1C1EF3C73B3D /* GoogleDataTransport-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleDataTransport-Info.plist"; sourceTree = "<group>"; };
@@ -1868,12 +1877,14 @@
 		236C398CA6EEA47182E5F8FC864DE907 /* FIRLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLibrary.h; path = FirebaseCore/Sources/Private/FIRLibrary.h; sourceTree = "<group>"; };
 		23701A896BBC01F2BFC1B7B26AECC230 /* FIRErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrors.h; path = FirebaseCore/Sources/Private/FIRErrors.h; sourceTree = "<group>"; };
 		2383B82402343765484201471BEB27D9 /* TapCardVlidatorKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapCardVlidatorKit-iOS-dummy.m"; sourceTree = "<group>"; };
+		23AA27F6FFB00B0FD69D296405A3FC08 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Medium.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		24519BA3D3B602F956000979735D2592 /* GDTCOREvent+GDTCCTSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GDTCOREvent+GDTCCTSupport.h"; path = "GoogleDataTransport/GDTCCTLibrary/Public/GDTCOREvent+GDTCCTSupport.h"; sourceTree = "<group>"; };
 		245A19198C65D320596D39FE6F700177 /* NSObject+Rx+KVORepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx+KVORepresentable.swift"; path = "RxCocoa/Foundation/NSObject+Rx+KVORepresentable.swift"; sourceTree = "<group>"; };
 		248A8ADA15A15BB74E06C256AEECBD1A /* AppearenceProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProvider.swift; path = SheetyColors/Classes/Common/Models/AppearenceProvider.swift; sourceTree = "<group>"; };
 		24C13116170BD7FEE7ABB120405EE2B4 /* UISlider+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISlider+Rx.swift"; path = "RxCocoa/iOS/UISlider+Rx.swift"; sourceTree = "<group>"; };
 		24CC1A90C18709102F4EAC1997DF4349 /* RxPickerViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxPickerViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxPickerViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		2592ED460AABE12C8336D6C5FF683881 /* GoogleUtilities.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleUtilities.modulemap; sourceTree = "<group>"; };
+		259CF5FFB95C9E1C25FD1C16450A77A1 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		25F0D924A0D8FA9C10BEA261F0ED16C7 /* TapCurrencyLocale.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCurrencyLocale.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/enums/TapCurrencyCode/TapCurrencyLocale.swift"; sourceTree = "<group>"; };
 		26022BA97915867ED3425D38414D8B6F /* GULSecureCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSecureCoding.m; path = GoogleUtilities/Environment/GULSecureCoding.m; sourceTree = "<group>"; };
 		263B868D37B2704DCF397A4807690754 /* Deprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecated.swift; path = Sources/Deprecated.swift; sourceTree = "<group>"; };
@@ -1924,7 +1935,6 @@
 		2FD57442DBA1E0589740720AB8509FF3 /* FBLPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBLPromise.m; path = Sources/FBLPromises/FBLPromise.m; sourceTree = "<group>"; };
 		2FFEE7034B49696C09020540BBFFEFD0 /* FIRErrorCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrorCode.h; path = FirebaseCore/Sources/Private/FIRErrorCode.h; sourceTree = "<group>"; };
 		307AE72B319A7E716C563E06F9BFA75B /* PayCardsRecognizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayCardsRecognizer.debug.xcconfig; sourceTree = "<group>"; };
-		30C4614008D9B546C910E1A2A39933B8 /* Circe-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Light.ttf"; sourceTree = "<group>"; };
 		30EDDB3ED2E54E452B06334EC6F57F97 /* GDTCORRegistrar_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORRegistrar_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORRegistrar_Private.h; sourceTree = "<group>"; };
 		313B4F920AE35EFE280F9A9CCC31B788 /* Internal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Internal.swift; path = Sources/Internal.swift; sourceTree = "<group>"; };
 		316B5E3022E84E8C23497CE3E0EB422B /* Flurry-iOS-SDK-FlurryAds-FlurrySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Flurry-iOS-SDK-FlurryAds-FlurrySDK-prefix.pch"; sourceTree = "<group>"; };
@@ -1937,6 +1947,7 @@
 		32ABBB3A329DEDDBB8C40490E5A4AA2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBLPromises.framework; path = PromisesObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3351F1C390B6311AC7AFE793779B778C /* UIPickerView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIPickerView+Rx.swift"; path = "RxCocoa/iOS/UIPickerView+Rx.swift"; sourceTree = "<group>"; };
+		338B1148E2DF97612FE039B2CDC12665 /* Tajawal-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-ExtraBold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-ExtraBold.ttf"; sourceTree = "<group>"; };
 		34556167BD48D80C0D4E70A9742150F0 /* FlurryAdsEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlurryAdsEmpty.m; path = FlurryAds/FlurryAdsEmpty.m; sourceTree = "<group>"; };
 		347749534057B0F476878681FF56B5DF /* nanopb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = nanopb.release.xcconfig; sourceTree = "<group>"; };
 		3490A9429728484C6E41AE8CD1841C3E /* ObserverBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObserverBase.swift; path = RxSwift/Observers/ObserverBase.swift; sourceTree = "<group>"; };
@@ -1951,6 +1962,7 @@
 		3601C408C33E23065AA3C41EF67053E8 /* GULKeychainUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULKeychainUtils.h; path = GoogleUtilities/Environment/Private/GULKeychainUtils.h; sourceTree = "<group>"; };
 		364AFE11EEF707E3B06B103AF37BFE36 /* VirtualTimeScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VirtualTimeScheduler.swift; path = RxSwift/Schedulers/VirtualTimeScheduler.swift; sourceTree = "<group>"; };
 		36B843AD99C5B0251BFB29934C6E0C11 /* RxTableViewReactiveArrayDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewReactiveArrayDataSource.swift; path = RxCocoa/iOS/DataSources/RxTableViewReactiveArrayDataSource.swift; sourceTree = "<group>"; };
+		36EE79DE84C46186DBEDBF8CAB4C097D /* TapFontKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapFontKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		377E634C2FFFFF334EE314FF33378073 /* UIDatePicker+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIDatePicker+Rx.swift"; path = "RxCocoa/iOS/UIDatePicker+Rx.swift"; sourceTree = "<group>"; };
 		378667D3B35C62A96775620E846C860E /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
 		37886FB339278546B47051C2034BA2DB /* Flurry-iOS-SDK-FlurryAds-FlurrySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Flurry-iOS-SDK-FlurryAds-FlurrySDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1984,9 +1996,7 @@
 		3C90E428448B24D9220487472EA4B847 /* SheetyColors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SheetyColors.release.xcconfig; sourceTree = "<group>"; };
 		3CC02A281AC1FB71124E4C6E1FA125ED /* GDTCORUploadCoordinator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORUploadCoordinator.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORUploadCoordinator.m; sourceTree = "<group>"; };
 		3CCDE38721D553F5FD79E50E266ACCFB /* GDTCORRegistrar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORRegistrar.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORRegistrar.m; sourceTree = "<group>"; };
-		3D0338689FB8F84ED4D2B20568CDCBFE /* Roboto-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		3E0E9BD5953067185F4A64CAAC78E1AF /* GoogleAppMeasurement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleAppMeasurement.release.xcconfig; sourceTree = "<group>"; };
-		3E63E9E7BEDF6F2A6A23DC96E82E582C /* Roboto-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		3E82BD1543E0A8B93BDD3CA5FE4C5595 /* FIRHeartbeatInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRHeartbeatInfo.m; path = FirebaseCore/Sources/FIRHeartbeatInfo.m; sourceTree = "<group>"; };
 		3EA755D6D22F6B23CD45480EA7BB9CE1 /* LocalisationManagerKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LocalisationManagerKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		3EB5AE21809EDCC6B75582DF3F05628B /* RxTableViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDelegateProxy.swift; sourceTree = "<group>"; };
@@ -2000,7 +2010,7 @@
 		3FCA1C238A772B009D8843F35E8EBFE8 /* GDTCORTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORTransformer.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORTransformer.m; sourceTree = "<group>"; };
 		40104E8DEF11630DD918FB399DA6B6BF /* MerchantModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MerchantModel.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/MerchantModel.swift"; sourceTree = "<group>"; };
 		40F77D0427152B2E9619407605A1EE94 /* Scan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scan.swift; path = RxSwift/Observables/Scan.swift; sourceTree = "<group>"; };
-		4176006F3311E5D347D78755A2FA3796 /* HelveticaNeueLTW20-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Bold.ttf"; sourceTree = "<group>"; };
+		4100711FB64B5151EE5EAFA59E114143 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-Medium.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		419B3642A7657C8F63C4A1B44D6E9022 /* UITableView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Rx.swift"; path = "RxCocoa/iOS/UITableView+Rx.swift"; sourceTree = "<group>"; };
 		41EFE74A225D4B5F5FAF6026BE8E3DFC /* GoogleAppMeasurement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleAppMeasurement.debug.xcconfig; sourceTree = "<group>"; };
 		421BE7D7BF96287FBFC7AF84060EC496 /* GULHeartbeatDateStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULHeartbeatDateStorage.h; path = GoogleUtilities/Environment/Private/GULHeartbeatDateStorage.h; sourceTree = "<group>"; };
@@ -2027,8 +2037,6 @@
 		46981811FD24CCE9B64664CB5B681746 /* TapThemeManager2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TapThemeManager2020.framework; path = TapThemeManager2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B9621F0272DC763174833EE0BB4391 /* Just.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Just.swift; path = RxSwift/Observables/Just.swift; sourceTree = "<group>"; };
 		46F8F6E27384E9AAB05EDAACF629B3F0 /* ThemeFontSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeFontSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeFontSelector.swift; sourceTree = "<group>"; };
-		4713860B4F46405183DC2BE9EF649D80 /* TapFontKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "TapFontKit-iOS.modulemap"; sourceTree = "<group>"; };
-		4758AE57219A4170A4C7E1B8DF634582 /* Roboto-Black.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Black.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		475E91C1F5D69FE39B20596DBB94BB4F /* Using.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Using.swift; path = RxSwift/Observables/Using.swift; sourceTree = "<group>"; };
 		476A51F16F98A384CF1A2DF5B56DACA5 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		47962D5CFBA2EACCB611B40BFE9C4AC3 /* CommonDataModelsKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CommonDataModelsKit-iOS-dummy.m"; sourceTree = "<group>"; };
@@ -2042,6 +2050,7 @@
 		49771BCB03262EEFB9B90FE404D07E18 /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdInterstitial.h; path = FlurryAds/FlurryAdInterstitial/FlurryAdInterstitial.h; sourceTree = "<group>"; };
 		498C900A4EDEE2832E8BEA4A5204D26A /* SynchronizedOnType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SynchronizedOnType.swift; path = RxSwift/Concurrency/SynchronizedOnType.swift; sourceTree = "<group>"; };
 		4A3C3DCB526BD729056073F74592860A /* TapThemeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemeManager.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManager.swift; sourceTree = "<group>"; };
+		4A7894D86B21EC7EF859759DF4DD9889 /* TapFontKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapFontKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4A8BCEC0A66A63BC7F7476A18068ECD5 /* TapCountry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCountry.swift; path = "CommonDataModelsKit-iOS/CommonDataModelsKit-iOS/Core/models/TapCountry.swift"; sourceTree = "<group>"; };
 		4AE2BB14701C4FE4DD380FCAD2329913 /* SimpleAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAnimation.debug.xcconfig; sourceTree = "<group>"; };
 		4B61BBAE9EA178F88992EEA8E78E5A66 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
@@ -2084,6 +2093,7 @@
 		53D791F0344FD38A44D70F26829E118C /* GoogleDataTransport-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleDataTransport-dummy.m"; sourceTree = "<group>"; };
 		53D808306379FB22B73C755E74ECE713 /* GULAppEnvironmentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppEnvironmentUtil.h; path = GoogleUtilities/Environment/Private/GULAppEnvironmentUtil.h; sourceTree = "<group>"; };
 		53E57A08B0626F0BDC994154BB7BD8E1 /* GrayscaleViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GrayscaleViewModel.swift; path = SheetyColors/Classes/Grayscale/ViewModels/GrayscaleViewModel.swift; sourceTree = "<group>"; };
+		542CB2EC2909E199955A0B73BF3571BE /* FontProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProvider.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/FontProvider.swift"; sourceTree = "<group>"; };
 		54C3031C33B41E987A6070799A2659B4 /* Nuke.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nuke.debug.xcconfig; sourceTree = "<group>"; };
 		54D29F88C4E0489C9C3A59D5E3E95C67 /* TapThemePath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapThemePath.swift; path = TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemePath.swift; sourceTree = "<group>"; };
 		553A8C19438FD9F5D09BF75B340B8B7C /* FIRBundleUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRBundleUtil.m; path = FirebaseCore/Sources/FIRBundleUtil.m; sourceTree = "<group>"; };
@@ -2094,6 +2104,7 @@
 		573E673F01A8092C84D0B1F23C42A3DE /* MainScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainScheduler.swift; path = RxSwift/Schedulers/MainScheduler.swift; sourceTree = "<group>"; };
 		576E3B5F2103DBCBE28706025AA1CD1D /* ControlEvent+Driver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlEvent+Driver.swift"; path = "RxCocoa/Traits/Driver/ControlEvent+Driver.swift"; sourceTree = "<group>"; };
 		577B3E839BA30455AAF2D196831A19CC /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
+		57D150F6C3FAB9C60770A20B4C0426FF /* Circe-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraBold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraBold.ttf"; sourceTree = "<group>"; };
 		58327FC4A46CB60F88D3D6EC65F2A4B7 /* FBLPromise+Await.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Await.h"; path = "Sources/FBLPromises/include/FBLPromise+Await.h"; sourceTree = "<group>"; };
 		583634B6C2E24ABF39D64C43206D1FD5 /* CardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardValidator.swift; path = "TapCardVlidatorKit-iOS/TapCardVlidatorKit-iOS/Core/public/CardValidator.swift"; sourceTree = "<group>"; };
 		586322EF2FFE5690CBDD457D132B01CB /* FIRCoreDiagnosticsConnector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsConnector.h; path = FirebaseCore/Sources/Private/FIRCoreDiagnosticsConnector.h; sourceTree = "<group>"; };
@@ -2105,6 +2116,7 @@
 		596B7D550E95B48BE566435F12CEA29B /* TapJson.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapJson.swift; path = "LocalisationManagerKit-iOS/LocalisationManagerKit-iOS/Core/Private/TapJson.swift"; sourceTree = "<group>"; };
 		597BCC37D8CF963233C92D68D9945B9D /* GULAppDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULAppDelegateSwizzler.h; sourceTree = "<group>"; };
 		59BFF62BB9EDD3BAD0B205F02743CC9A /* ThreadingFixes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadingFixes.swift; path = Common/Source/ThreadingFixes/ThreadingFixes.swift; sourceTree = "<group>"; };
+		59C177C4CF925695235CD88E769ECE99 /* Circe-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Regular.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Regular.ttf"; sourceTree = "<group>"; };
 		59D541A84075E33EA42B29645DD672DC /* RxTableViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourceType.swift; path = RxCocoa/iOS/Protocols/RxTableViewDataSourceType.swift; sourceTree = "<group>"; };
 		59E1A629A305796CCCC752191B753861 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
 		59FAFBA917EFF0AA6238BA35F3868FFE /* Pods_TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TapUIKit_iOS.framework; path = "Pods-TapUIKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2149,13 +2161,13 @@
 		6185A631F40B9A24FB3149F245D8EB8E /* GDTCORConsoleLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORConsoleLogger.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORConsoleLogger.m; sourceTree = "<group>"; };
 		61EA43901F1D63B6723B7EA9BF464E45 /* FIRCoreDiagnosticsConnector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCoreDiagnosticsConnector.m; path = FirebaseCore/Sources/FIRCoreDiagnosticsConnector.m; sourceTree = "<group>"; };
 		6219DA8A49F2A5AC4173D14B0F7E3E55 /* EasyAnimation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyAnimation-prefix.pch"; sourceTree = "<group>"; };
-		62DFBDE583BEFE52E384BFBA0F71B652 /* TapFontKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapFontKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		632D1A441DF4FCEF9779E14F793AEA3D /* FIROptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIROptions.h; path = FirebaseCore/Sources/Public/FIROptions.h; sourceTree = "<group>"; };
 		63629858755691B9B827581FDD096CE9 /* Flurry_iOS_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Flurry_iOS_SDK.framework; path = "Flurry-iOS-SDK-FlurrySDK.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636BB241D98DA98477896AE56F401179 /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
 		63CAF2B6D3CCE9A01253F5173362C5C4 /* GULApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULApplication.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULApplication.h; sourceTree = "<group>"; };
 		644F17CECFF3B129EFBD5B343F81DEE4 /* FBLPromise+Retry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Retry.m"; path = "Sources/FBLPromises/FBLPromise+Retry.m"; sourceTree = "<group>"; };
 		64618B03D431D4C708FCF783084FDC40 /* UIColor+rgbaColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+rgbaColor.swift"; path = "Source/Colors/Extensions/UIColor+rgbaColor.swift"; sourceTree = "<group>"; };
+		6488FC6C65A2AB453753C94FD20B8107 /* Tajawal-Black.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-Black.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-Black.ttf"; sourceTree = "<group>"; };
 		64CFCBD429D44A9AA82343CD56542AAE /* Capable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Capable.modulemap; sourceTree = "<group>"; };
 		65173E7841F55F16A93619366E2B7FCB /* Pods-TapUIKit-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapUIKit-Example.modulemap"; sourceTree = "<group>"; };
 		652408CA0164527F9B15A1CC18F6B906 /* GDTCORAssert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORAssert.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORAssert.m; sourceTree = "<group>"; };
@@ -2172,7 +2184,6 @@
 		684C80C27BF036558D04CEBD07BB15E5 /* GULLoggerCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerCodes.h; path = GoogleUtilities/Common/GULLoggerCodes.h; sourceTree = "<group>"; };
 		687EB51484F3F8E6A0596A6C6AB8310F /* Dematerialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dematerialize.swift; path = RxSwift/Observables/Dematerialize.swift; sourceTree = "<group>"; };
 		6887DDD921AD607C3ABB41A80D2E2A6F /* UIImageView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+Rx.swift"; path = "RxCocoa/iOS/UIImageView+Rx.swift"; sourceTree = "<group>"; };
-		68E35A645499A84B58B607C36A6E716F /* TapFontKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapFontKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		68FF9F838674C2584FA4B5CA1F5072E5 /* GroupBy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = RxSwift/Observables/GroupBy.swift; sourceTree = "<group>"; };
 		69A592E6FF4C719411006F8F09735EA5 /* FIROptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIROptions.m; path = FirebaseCore/Sources/FIROptions.m; sourceTree = "<group>"; };
 		69A9AAF1E846829044B813C5D7EB98AC /* TextInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextInput.swift; path = RxCocoa/Common/TextInput.swift; sourceTree = "<group>"; };
@@ -2181,12 +2192,12 @@
 		6A8BA8534672AC63CBABCA01878F89A8 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		6AC91E2F496B7FC28F59679F8E90DA1B /* Multicast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Multicast.swift; path = RxSwift/Observables/Multicast.swift; sourceTree = "<group>"; };
 		6ADDABA4BEA75F98393C9B44F75FCD12 /* TapApplePay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapApplePay.swift; path = "TapApplePayKit-iOS/Core/public/Controllers/TapApplePay.swift"; sourceTree = "<group>"; };
+		6B04774224FBFF3D43244E7C1E9CEAF3 /* Circe-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Bold.ttf"; sourceTree = "<group>"; };
 		6B2207ACDFE0BE70B7DCA784C9A8A034 /* TopLeftCorner.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = TopLeftCorner.png; path = "TapCardScanner-iOS/Core/Assets/TopLeftCorner.png"; sourceTree = "<group>"; };
 		6B4820879757FF3320C050C91DF812D0 /* CardInputMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardInputMode.swift; path = "TapCardInputKit-iOS/Core/Public/enums/CardInputMode.swift"; sourceTree = "<group>"; };
 		6B4B8B9F16BE6534B42A4B69EDF9CB98 /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = RxSwift/SwiftSupport/SwiftSupport.swift; sourceTree = "<group>"; };
 		6B7E9C2EF2C753F7DA59DFC4716A4170 /* Delay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Delay.swift; path = RxSwift/Observables/Delay.swift; sourceTree = "<group>"; };
 		6BABFDD70747ACCAE65926BC7E30EC09 /* GULKeychainUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULKeychainUtils.h; path = GoogleUtilities/Environment/Private/GULKeychainUtils.h; sourceTree = "<group>"; };
-		6BBD8C84322A01BCE4C5C44E6CFF802D /* TapFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFont.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/TapFont.swift"; sourceTree = "<group>"; };
 		6BC1D09B67F1BDD592AE9086BCFFA014 /* GULReachabilityChecker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULReachabilityChecker.m; path = GoogleUtilities/Reachability/GULReachabilityChecker.m; sourceTree = "<group>"; };
 		6BC35D422C9263EE0E7F362E0ECB4167 /* TapApplePayKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapApplePayKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		6BFBD137B432D65770ABBE80799CADA0 /* Pods-TapUIKit-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapUIKit-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -2205,8 +2216,6 @@
 		6E49781E39A7A39BC33F6606A4E7C096 /* ImageProcessing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessing.swift; path = Sources/ImageProcessing.swift; sourceTree = "<group>"; };
 		6E52779DE1702C847C30D11460D8A144 /* AppearenceProviderProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearenceProviderProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/AppearenceProviderProtocol.swift; sourceTree = "<group>"; };
 		6E5625C437259F514690F1EC65FDCCB0 /* Pods-TapUIKit-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TapUIKit-Example-frameworks.sh"; sourceTree = "<group>"; };
-		6E60A27912A4F4EDB33A49087C5976D8 /* FontProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProvider.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/FontProvider.swift"; sourceTree = "<group>"; };
-		6E8CB9C756DAE54E32CCC985DC91893B /* Circe-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Bold.ttf"; sourceTree = "<group>"; };
 		6EC2D3C872767044C8AAD3FFF0170D75 /* GULSecureCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSecureCoding.h; path = GoogleUtilities/Environment/Private/GULSecureCoding.h; sourceTree = "<group>"; };
 		6ED3D43C4A7A7562250A49C7D357B553 /* PromisesObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.release.xcconfig; sourceTree = "<group>"; };
 		6EFBC6F4EF7E909E8AFC2B75530FF661 /* FirebaseInstallations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FirebaseInstallations.modulemap; sourceTree = "<group>"; };
@@ -2216,7 +2225,6 @@
 		6F8E2430B97AECC2DA93D9AC33DABA33 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		6F923F793782E05AAC6B6256375DB457 /* Pods-TapUIKit-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapUIKit-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6FC014D9B30F78EFD0C54265747E9683 /* Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = RxCocoa/Traits/Signal/Signal.swift; sourceTree = "<group>"; };
-		6FF172186B024EB1B03706FA00409504 /* TapFontKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		701537947B40F48E49A126FB9C9AFB99 /* GoogleUtilities-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleUtilities-dummy.m"; sourceTree = "<group>"; };
 		7016ED2F8C0E129B6055440BC718E39C /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
 		702164B5C9A1BB2175C7930927DE4579 /* Zip+arity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Zip+arity.swift"; path = "RxSwift/Observables/Zip+arity.swift"; sourceTree = "<group>"; };
@@ -2259,6 +2267,7 @@
 		77398D36E0633F2D2CD78F51131EAED0 /* UIAlertAction+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIAlertAction+Rx.swift"; path = "RxCocoa/iOS/UIAlertAction+Rx.swift"; sourceTree = "<group>"; };
 		77F1DA1C148B1EC2E6BB4BAFE0A112A8 /* SimpleAnimation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-umbrella.h"; sourceTree = "<group>"; };
 		77F5CA8DFBC83AD8736A22B6B9DB76AD /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
+		7826F65DB7B847B532C3EE16EF8B60BE /* HelveticaNeueLTW20-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Bold.ttf"; sourceTree = "<group>"; };
 		78704558ED84AB4C83ED00D51C4DBD17 /* RxRelay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxRelay-umbrella.h"; sourceTree = "<group>"; };
 		787BD95BC1572A211CBEA1AD3D6A68FF /* ExceptionCatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ExceptionCatcher.m; path = Common/Source/ExceptionCatcher/ExceptionCatcher.m; sourceTree = "<group>"; };
 		7895335B66F69894AC22DFAD56BB9C5F /* NopDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NopDisposable.swift; path = RxSwift/Disposables/NopDisposable.swift; sourceTree = "<group>"; };
@@ -2269,7 +2278,7 @@
 		7AC3A762DA3D2790AB42F95C8320CFDF /* UIControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIControl+Rx.swift"; path = "RxCocoa/iOS/UIControl+Rx.swift"; sourceTree = "<group>"; };
 		7AD8CBBF19F4FBDEAF237A3A44E9BEA9 /* FIRComponentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentType.h; path = FirebaseCore/Sources/Private/FIRComponentType.h; sourceTree = "<group>"; };
 		7B0752176FA988FE835B98E01A2347BB /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		7B11C258A152953DB745A09B8878EBCF /* Circe-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Regular.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Regular.ttf"; sourceTree = "<group>"; };
+		7B0CB4575462C986AE753C3EB1D4761D /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-Bold.ttf"; sourceTree = "<group>"; };
 		7B28567D0994274F8501348F12A22AE7 /* Flurry-iOS-SDK-FlurryAds-FlurrySDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Flurry-iOS-SDK-FlurryAds-FlurrySDK-Info.plist"; sourceTree = "<group>"; };
 		7B3B3ABBADD6DA3EEDDBDDD58973FE8D /* FBLPromise+Timeout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Timeout.h"; path = "Sources/FBLPromises/include/FBLPromise+Timeout.h"; sourceTree = "<group>"; };
 		7B5485F534828C5A31B4AFB95393B8DC /* visa.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = visa.png; path = "TapCardInputKit-iOS/Core/assets/visa.png"; sourceTree = "<group>"; };
@@ -2306,6 +2315,7 @@
 		809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RxSwift.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CEFC4F1188A3DB819FB30B5618873A /* UIViewController+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Rx.swift"; path = "RxCocoa/iOS/UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		80E7D2B2731254C65E64E7AEC94DFE3C /* FIRInstallationsHTTPError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsHTTPError.m; path = FirebaseInstallations/Source/Library/Errors/FIRInstallationsHTTPError.m; sourceTree = "<group>"; };
+		813269988123403073CD0ABA85211B4B /* TapFontKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "TapFontKit-iOS.modulemap"; sourceTree = "<group>"; };
 		8147096A9CA8BA9B9349A7CAE0C6AA5D /* SheetyColorsConfigProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetyColorsConfigProtocol.swift; path = SheetyColors/Classes/Common/Models/Protocols/SheetyColorsConfigProtocol.swift; sourceTree = "<group>"; };
 		815B8545A4A108C429853443E08C2E4A /* RxSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RxSwift.modulemap; sourceTree = "<group>"; };
 		816B1DCF793DC5A25A0AD3987F05FB6F /* ImagePipelineConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePipelineConfiguration.swift; path = Sources/ImagePipelineConfiguration.swift; sourceTree = "<group>"; };
@@ -2325,6 +2335,7 @@
 		8466CC5FCDB6DA28913A85C8BCE7284C /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleDataTransport.framework; path = GoogleDataTransport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BA73386CADBA9335B800FBF440C486 /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdNativeAsset.h; path = FlurryAds/FlurryAdNative/FlurryAdNativeAsset.h; sourceTree = "<group>"; };
+		85C4829A4FF89AE74A1224B1498D4EEB /* TapFontKit-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-umbrella.h"; sourceTree = "<group>"; };
 		867DA0DBF9C6F81F8B7A894DF40FE269 /* GULNetworkMessageCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkMessageCode.h; path = GoogleUtilities/Network/Private/GULNetworkMessageCode.h; sourceTree = "<group>"; };
 		86AA509AC220F074634266C219296664 /* TakeWhile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TakeWhile.swift; path = RxSwift/Observables/TakeWhile.swift; sourceTree = "<group>"; };
 		86B1CC4803E55C754D795DBF2901865C /* UIStepper+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIStepper+Rx.swift"; path = "RxCocoa/iOS/UIStepper+Rx.swift"; sourceTree = "<group>"; };
@@ -2369,8 +2380,8 @@
 		910909FE22F50E6A4B3603D9D6480A04 /* Capable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Capable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9155F1D53DCBF70C859C00D5226B1231 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		91737D5B6C1274FB86ABECDA47FF1DFF /* Window.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Window.swift; path = RxSwift/Observables/Window.swift; sourceTree = "<group>"; };
+		91A081AAC05F3689B3FFF0238B786130 /* Circe-ExtraLight.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraLight.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraLight.ttf"; sourceTree = "<group>"; };
 		91BE06701730E5392437BB12FD916FA6 /* GULHeartbeatDateStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULHeartbeatDateStorage.h; path = GoogleUtilities/Environment/Private/GULHeartbeatDateStorage.h; sourceTree = "<group>"; };
-		91D2CA10952855B8B7DD17A70E6014D4 /* Circe-ExtraLight.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraLight.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraLight.ttf"; sourceTree = "<group>"; };
 		925ACCF031E2A8A4A7F6D19061E8DF4B /* FirebaseCoreDiagnostics.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FirebaseCoreDiagnostics.modulemap; sourceTree = "<group>"; };
 		932BE2A72465744682CDB58AA2882C3D /* FirebaseInstallations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseInstallations.h; path = FirebaseInstallations/Source/Library/Public/FirebaseInstallations.h; sourceTree = "<group>"; };
 		938CCB29D8005F53AF4400BFEF7AF911 /* PriorityQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PriorityQueue.swift; path = Platform/DataStructures/PriorityQueue.swift; sourceTree = "<group>"; };
@@ -2384,6 +2395,7 @@
 		94D000EA13EC732692CA4C65927628C2 /* american-express.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "american-express.png"; path = "TapCardInputKit-iOS/Core/assets/american-express.png"; sourceTree = "<group>"; };
 		94F8CC97F53A0733FFAE3C47A54D68CD /* SubscribeOn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscribeOn.swift; path = RxSwift/Observables/SubscribeOn.swift; sourceTree = "<group>"; };
 		95014BED6DD96DE59ECDDDE79C4A7FD5 /* FullCardInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FullCardInput.swift; path = "TapCardInputKit-iOS/Core/Private/Views/FullCardInput.swift"; sourceTree = "<group>"; };
+		9519306B4E04A3703922FC3E024EB3C0 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-Regular.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-Regular.ttf"; sourceTree = "<group>"; };
 		952AAA60F248EDE1A3C9D31936EA6C25 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryAdDelegate.h; path = FlurryAds/StaticAPI/FlurryAdDelegate.h; sourceTree = "<group>"; };
 		964156632179166378D7FCCFF5F7EABC /* GDTCORRegistrar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORRegistrar.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORRegistrar.h; sourceTree = "<group>"; };
 		964F91ACF61F1F69D35FC35C0D70F63E /* FlurryCCPA.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurryCCPA.h; path = Flurry/FlurryCCPA.h; sourceTree = "<group>"; };
@@ -2436,14 +2448,13 @@
 		A2C442318CDCB604F6C2D05223F9484F /* RecursiveLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecursiveLock.swift; path = Platform/RecursiveLock.swift; sourceTree = "<group>"; };
 		A38D0DC7C812A1A8F7AC5D2612EDCB45 /* GULAppEnvironmentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppEnvironmentUtil.h; path = GoogleUtilities/Environment/Private/GULAppEnvironmentUtil.h; sourceTree = "<group>"; };
 		A3933E929905424C5041564290D7E423 /* FBLPromise+All.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+All.h"; path = "Sources/FBLPromises/include/FBLPromise+All.h"; sourceTree = "<group>"; };
-		A3C705EB98F1802E4879A359D5DB63D6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Regular.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A3D7C654BB5BEBE4630D66DD3DD41675 /* GoogleDataTransport.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleDataTransport.modulemap; sourceTree = "<group>"; };
 		A45BDB31FFFBEAD6AA3B70C8300812C9 /* TapApplePayKit-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapApplePayKit-iOS-prefix.pch"; sourceTree = "<group>"; };
 		A4EEE7894643E29BDBB4D6E7B3E67237 /* MOLH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MOLH.framework; path = MOLH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51F49732579DF6966A3551DB0484704 /* TapFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapFont.swift; path = "TapFontKit-iOS/TapFontKit-iOS/Core/TapFont.swift"; sourceTree = "<group>"; };
 		A528DDFC5BAB74CE0263D4C2317FD0D1 /* GDTCORUploader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORUploader.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORUploader.h; sourceTree = "<group>"; };
 		A554A9A80E67A06F0B86B2223ABC127F /* FIRInstallationsItem+RegisterInstallationAPI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FIRInstallationsItem+RegisterInstallationAPI.m"; path = "FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsItem+RegisterInstallationAPI.m"; sourceTree = "<group>"; };
 		A5922C164851325029BF9ED6D69F722E /* CoreGraphicsFixes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CoreGraphicsFixes.m; path = Common/Source/CoreGraphicsFixes/CoreGraphicsFixes.m; sourceTree = "<group>"; };
-		A610B0FEA3CDF0ADB5054D0DF11B32FC /* Roboto-Medium.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Medium.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		A61496E4D7847983A5C7491A7A730E36 /* unionpay.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = unionpay.png; path = "TapCardInputKit-iOS/Core/assets/unionpay.png"; sourceTree = "<group>"; };
 		A647B5F37C8454C5B78782924179E119 /* GULSceneDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSceneDelegateSwizzler_Private.h; path = GoogleUtilities/SceneDelegateSwizzler/Internal/GULSceneDelegateSwizzler_Private.h; sourceTree = "<group>"; };
 		A679C41FBF4178D879964DB0B3747E6D /* ThemeKeyboardAppearanceSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeKeyboardAppearanceSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeKeyboardAppearanceSelector.swift; sourceTree = "<group>"; };
@@ -2468,6 +2479,7 @@
 		AAAD8CBFEBCF7157F7F19C39D05D584D /* TapScannerProtocl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapScannerProtocl.swift; path = "TapCardScanner-iOS/Core/Private/TapScannerProtocl.swift"; sourceTree = "<group>"; };
 		AAAE4C2C231C70111800E70660434534 /* InfiniteSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InfiniteSequence.swift; path = Platform/DataStructures/InfiniteSequence.swift; sourceTree = "<group>"; };
 		AAAFB978BE04DE4EF639B0FA68605C9C /* Binder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Binder.swift; path = RxCocoa/Common/Binder.swift; sourceTree = "<group>"; };
+		AB5DD76D62AB3882A642DA5367138048 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Regular.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AB6D12D79F962D936EB246A211D83306 /* FBLPromise+Catch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Catch.h"; path = "Sources/FBLPromises/include/FBLPromise+Catch.h"; sourceTree = "<group>"; };
 		ABA12F8986E1761AD2AC3A52E573630D /* PromisesObjC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PromisesObjC.modulemap; sourceTree = "<group>"; };
 		ABC12D971A902198E868BE14B47BB5BB /* UIFont+fontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+fontProps.swift"; path = "Source/Colors/Extensions/UIFont+fontProps.swift"; sourceTree = "<group>"; };
@@ -2489,6 +2501,7 @@
 		B0AADDE0C868C63138BB4E77EF2D6D14 /* ThemeDictionarySelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeDictionarySelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeDictionarySelector.swift; sourceTree = "<group>"; };
 		B0C2BEA268EB51540FB4E0B66BE877DF /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Extensions.swift"; path = "Platform/DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		B0D4C7C3F0AAD5DBDC24D0357BC9BC82 /* PullUpController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PullUpController-Info.plist"; sourceTree = "<group>"; };
+		B0F9AAF8C3AB1D57261064469F1B90CA /* Tajawal-ExtraLight.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Tajawal-ExtraLight.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Tajawal-ExtraLight.ttf"; sourceTree = "<group>"; };
 		B17C8246ED9D612EC18B38A2AA2F8AF5 /* Reactive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reactive.swift; path = RxSwift/Reactive.swift; sourceTree = "<group>"; };
 		B1DE14CA67CDA2F17A6B507B3C2CD63F /* MOLH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MOLH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20FBCCAD1490425762B55146EE77D89 /* BlurHoleCorners.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BlurHoleCorners.xib; path = "TapCardScanner-iOS/Core/Assets/BlurHoleCorners.xib"; sourceTree = "<group>"; };
@@ -2503,12 +2516,14 @@
 		B4D9445745D75370F944BAE9729FFE99 /* RxCollectionViewDataSourcePrefetchingProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCollectionViewDataSourcePrefetchingProxy.swift; path = RxCocoa/iOS/Proxies/RxCollectionViewDataSourcePrefetchingProxy.swift; sourceTree = "<group>"; };
 		B4F045ED11F5A198A02A4073C5FADA84 /* TapThemeManager+array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TapThemeManager+array.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Manager/TapThemeManager+array.swift"; sourceTree = "<group>"; };
 		B4FEAC75F20743718095B161374570AD /* Lock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lock.swift; path = RxSwift/Concurrency/Lock.swift; sourceTree = "<group>"; };
+		B535F40BC2BAB0B75499EB55337195FB /* HelveticaNeueLTW20-Roman.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Roman.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Roman.ttf"; sourceTree = "<group>"; };
 		B57C3AC0F8D6722FE9F29A60FE35DACE /* AddRef.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AddRef.swift; path = RxSwift/Observables/AddRef.swift; sourceTree = "<group>"; };
 		B5CF25B5B4E4AFF935F32872A7DA8219 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B60162356BC8C52F64C2072CE998A97E /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		B64EDE25D132F30E47BF63DB0A08C267 /* FIRAnalyticsConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAnalyticsConfiguration.m; path = FirebaseCore/Sources/FIRAnalyticsConfiguration.m; sourceTree = "<group>"; };
 		B64FBDA0BD3EFE3689AB2B1FA583642F /* GULKeychainStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULKeychainStorage.h; path = GoogleUtilities/Environment/Private/GULKeychainStorage.h; sourceTree = "<group>"; };
 		B687ADD992F1AB28CA7919AD38CEC782 /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_encode.c; sourceTree = "<group>"; };
+		B69A2532DCFA5BF37F511FCD4BA3CACD /* TapFontKit-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-prefix.pch"; sourceTree = "<group>"; };
 		B714E2B574EC4AC51E1A9EECB69E2F69 /* ThemeVibranceBlurEffectSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeVibranceBlurEffectSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeVibranceBlurEffectSelector.swift; sourceTree = "<group>"; };
 		B72EAB13F55B4CD7D4028C09DE4BAF38 /* CurrentThreadScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CurrentThreadScheduler.swift; path = RxSwift/Schedulers/CurrentThreadScheduler.swift; sourceTree = "<group>"; };
 		B762F01AFD381BD783F642D3C3C74A7F /* Pods-TapUIKit-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapUIKit-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -2531,6 +2546,7 @@
 		BABA538A926325812727BDCFA6223433 /* AsyncLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncLock.swift; path = RxSwift/Concurrency/AsyncLock.swift; sourceTree = "<group>"; };
 		BAC3D29F1CFE8F5C182CD7F0CC2C4469 /* CardBrand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardBrand.swift; path = "TapCardVlidatorKit-iOS/TapCardVlidatorKit-iOS/Core/public/CardBrand.swift"; sourceTree = "<group>"; };
 		BB9BD5B6727D73B37A83534AC6C6C462 /* FBLPromise+Catch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Catch.m"; path = "Sources/FBLPromises/FBLPromise+Catch.m"; sourceTree = "<group>"; };
+		BBAAD39A2DA72C49FB81949D704E1133 /* Roboto-Black.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Black.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		BBDB0D193150406FB7E2FA5F8FFD20DE /* RBBLinearInterpolation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RBBLinearInterpolation.swift; path = EasyAnimation/RBBSpringAnimation/RBBLinearInterpolation.swift; sourceTree = "<group>"; };
 		BBED2B565D45A738401CA2460B1D705F /* FirebaseAnalytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseAnalytics.debug.xcconfig; sourceTree = "<group>"; };
 		BBEE353E3AB1FC12CFF2C80BA5A84600 /* GULLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLogger.h; path = GoogleUtilities/Logger/Private/GULLogger.h; sourceTree = "<group>"; };
@@ -2539,6 +2555,7 @@
 		BCA94CAEDAE7D8B07AB52EF408B10988 /* GoogleDataTransport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleDataTransport.debug.xcconfig; sourceTree = "<group>"; };
 		BCCF4A7B4D96DAAEB4E5432A55FE2FDE /* NSObject+tapTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+tapTheme.swift"; path = "TapThemeManager2020/TapThemeManager2020/Core/Extensions/NSObject+tapTheme.swift"; sourceTree = "<group>"; };
 		BCDB6D0E606A002286BC22E604ED1618 /* ImageViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageViewExtensions.swift; path = Sources/ImageViewExtensions.swift; sourceTree = "<group>"; };
+		BD363212FE36AC0156E12519669693C7 /* TapFontKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapFontKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		BD44AA419292522C9800AF03956E09CC /* RxScrollViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxScrollViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxScrollViewDelegateProxy.swift; sourceTree = "<group>"; };
 		BD6AD7E6C8775E36E8A623EA8F7BCDFF /* GULNSDataInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNSDataInternal.h; path = "GoogleUtilities/NSData+zlib/Private/GULNSDataInternal.h"; sourceTree = "<group>"; };
 		BD746EC2AA4373EA050C964B10BDA4A9 /* SubscriptionDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscriptionDisposable.swift; path = RxSwift/Disposables/SubscriptionDisposable.swift; sourceTree = "<group>"; };
@@ -2596,9 +2613,10 @@
 		CA5E0E6B6949763082F89B29908F0A8F /* PromisesObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.debug.xcconfig; sourceTree = "<group>"; };
 		CA6269A82EB821681F0CBC7C24508EBC /* GoogleDataTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleDataTransport.h; path = GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport.h; sourceTree = "<group>"; };
 		CAA1D7CA1125B3D6FAE236FE74E846FD /* Empty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Empty.swift; path = RxSwift/Observables/Empty.swift; sourceTree = "<group>"; };
+		CACA3653BE5EBEEAD7FE3774A7629806 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Thin.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		CADD1D8606F232B8988D27758536F6FD /* FIRCoreDiagnosticsData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsData.h; path = Interop/CoreDiagnostics/Public/FIRCoreDiagnosticsData.h; sourceTree = "<group>"; };
+		CB561039BDB11A8355FCC9B6934698FD /* Circe-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Thin.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Thin.ttf"; sourceTree = "<group>"; };
 		CBE9C6CE761A671DDF2CB419BD90CDEF /* TapCardVlidatorKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "TapCardVlidatorKit-iOS.modulemap"; sourceTree = "<group>"; };
-		CC121C1865D12155249E22B01724F9AF /* Circe-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-ExtraBold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-ExtraBold.ttf"; sourceTree = "<group>"; };
 		CC3D41D9E479B2B6998444360BA4D28F /* GoogleDataTransport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleDataTransport.release.xcconfig; sourceTree = "<group>"; };
 		CCB5180DC2302DCF778CEFF163A28BE4 /* Pods-TapUIKit-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapUIKit-Example-dummy.m"; sourceTree = "<group>"; };
 		CCB715A62F28219CB01544A380EAABF1 /* TapApplePayButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapApplePayButton.swift; path = "TapApplePayKit-iOS/Core/public/Controllers/TapApplePayButton.swift"; sourceTree = "<group>"; };
@@ -2635,7 +2653,6 @@
 		D318D8F3C2BB6CAF86B91F5291351311 /* InlineCardInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InlineCardInput.swift; path = "TapCardInputKit-iOS/Core/Private/Views/InlineCardInput.swift"; sourceTree = "<group>"; };
 		D32053D247DEB9E3693BFD3DCA61127F /* FIRComponentContainerInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentContainerInternal.h; path = FirebaseCore/Sources/FIRComponentContainerInternal.h; sourceTree = "<group>"; };
 		D397EB0C2DDD814784443742CA18C9CC /* GDTCOREvent_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREvent_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCOREvent_Private.h; sourceTree = "<group>"; };
-		D41DA3453F60ADF808DBC795E46E8F10 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Thin.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		D4C719A76E048E4D1CFF9F62FBFD0777 /* CIImage+initWithImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CIImage+initWithImage.swift"; path = "Source/Colors/Extensions/CIImage+initWithImage.swift"; sourceTree = "<group>"; };
 		D4E535895600213C3E785127FCFAC245 /* SynchronizedDisposeType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SynchronizedDisposeType.swift; path = RxSwift/Concurrency/SynchronizedDisposeType.swift; sourceTree = "<group>"; };
 		D4F3AFD518B294D496AE81B545D1159C /* GDTCORStorageEventSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORStorageEventSelector.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORStorageEventSelector.m; sourceTree = "<group>"; };
@@ -2652,6 +2669,7 @@
 		D63E9825098A784747D3C2A5B832109A /* Pods-TapUIKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapUIKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		D73AF33F224ECAD450C959FC235A7EAE /* ControlEvent+Signal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlEvent+Signal.swift"; path = "RxCocoa/Traits/Signal/ControlEvent+Signal.swift"; sourceTree = "<group>"; };
 		D73F64EEE72B734063B36743D9485D44 /* FIRComponentContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentContainer.h; path = FirebaseCore/Sources/Private/FIRComponentContainer.h; sourceTree = "<group>"; };
+		D752FE337C1F794D465EBECAA7E8C904 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Bold.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D7776EB334637BC65A8EB890E6C44386 /* FIRInstallationsVersion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsVersion.m; path = FirebaseInstallations/Source/Library/FIRInstallationsVersion.m; sourceTree = "<group>"; };
 		D7C1341D3ED111D3A04369D3A47EFE20 /* GULHeartbeatDateStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULHeartbeatDateStorage.h; path = GoogleUtilities/Environment/Private/GULHeartbeatDateStorage.h; sourceTree = "<group>"; };
 		D7CBDE7C996DC3BF37E6CCF91344FA96 /* Debug.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = RxSwift/Observables/Debug.swift; sourceTree = "<group>"; };
@@ -2670,7 +2688,6 @@
 		DA7C4C19404668B473AD393735CEA012 /* FirebaseCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseCore.release.xcconfig; sourceTree = "<group>"; };
 		DA9FCC9A08FD17505D391CAEF87F6B70 /* RxTableViewDataSourcePrefetchingProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourcePrefetchingProxy.swift; path = RxCocoa/iOS/Proxies/RxTableViewDataSourcePrefetchingProxy.swift; sourceTree = "<group>"; };
 		DAF32A62CDBDA7AEC6570B6A76E5880D /* VirtualTimeConverterType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VirtualTimeConverterType.swift; path = RxSwift/Schedulers/VirtualTimeConverterType.swift; sourceTree = "<group>"; };
-		DB72CF6D0445943626FD4C43730BFF2B /* Circe-Thin.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Circe-Thin.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Circe-Thin.ttf"; sourceTree = "<group>"; };
 		DBA2E47D9A46B81106529B99B3512EBD /* CompactMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompactMap.swift; path = RxSwift/Observables/CompactMap.swift; sourceTree = "<group>"; };
 		DC3F6090CBA9B78D9157AAA1681E6519 /* GULKeychainUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULKeychainUtils.h; path = GoogleUtilities/Environment/Private/GULKeychainUtils.h; sourceTree = "<group>"; };
 		DC690EAE86862FE3F3494F41300DE495 /* ExceptionCatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ExceptionCatcher.h; path = Common/Source/ExceptionCatcher/ExceptionCatcher.h; sourceTree = "<group>"; };
@@ -2695,11 +2712,9 @@
 		E04ED2CBAB37B4B2F88F2C7F79FA8134 /* FIRInstallationsStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsStore.h; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStore.h; sourceTree = "<group>"; };
 		E0B4FBD6C10DBDC668CCC536B673CF3C /* RxRelay-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RxRelay-Info.plist"; sourceTree = "<group>"; };
 		E189E3A8346B157033241984AA026ED3 /* TapApplePayButtonStyleOutline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapApplePayButtonStyleOutline.swift; path = "TapApplePayKit-iOS/Core/public/enums/TapApplePayButtonStyleOutline.swift"; sourceTree = "<group>"; };
-		E19ECCF404F28A096439A2C6F0900D00 /* TapFontKit-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontKit-iOS-prefix.pch"; sourceTree = "<group>"; };
 		E1BF79D4D2E9CC6FC687276FAE45BFBC /* ThemeBarStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeBarStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeBarStyleSelector.swift; sourceTree = "<group>"; };
 		E1D16B0CC8F39B1C70017AACF8425571 /* ThemeStringAttributesSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeStringAttributesSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeStringAttributesSelector.swift; sourceTree = "<group>"; };
 		E1E408FDF3AC8482D452FEFD22FF3D1C /* TapSwiftFixes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapSwiftFixes.debug.xcconfig; sourceTree = "<group>"; };
-		E28C73B6EE5F70FBC813A1700F24FB9E /* TapFontKit-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapFontKit-iOS-Info.plist"; sourceTree = "<group>"; };
 		E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseCore.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E31D8F95A79973871BD8C59AE21BB94F /* TapCardBarButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapCardBarButton.swift; path = "TapCardInputKit-iOS/Core/Private/Views/TapCardBarButton.swift"; sourceTree = "<group>"; };
 		E39E59189B1382141371026BDA8C03EB /* ControlTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlTarget.swift; path = RxCocoa/Common/ControlTarget.swift; sourceTree = "<group>"; };
@@ -2718,7 +2733,6 @@
 		E65A10ED3A137A049B83FC0DC8923467 /* ControlProperty+Driver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlProperty+Driver.swift"; path = "RxCocoa/Traits/Driver/ControlProperty+Driver.swift"; sourceTree = "<group>"; };
 		E6792A1CB19243A20FDB4753E4E6F598 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
 		E7114BA0FD5334FBB0605ADD600FCEE7 /* GDTCCTUploader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCCTUploader.h; path = GoogleDataTransport/GDTCCTLibrary/Private/GDTCCTUploader.h; sourceTree = "<group>"; };
-		E73EBF825D672D8D5FA51FF5C48BFC4B /* TapFontKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapFontKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E7425A113982645E98682F654EA878D2 /* Pods-TapUIKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapUIKit-iOS.modulemap"; sourceTree = "<group>"; };
 		E79AD50DEB1B33BBF970884C75D1DF99 /* ThemeScrollViewIndicatorStyleSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeScrollViewIndicatorStyleSelector.swift; path = TapThemeManager2020/TapThemeManager2020/Core/ThemeSelectors/ThemeScrollViewIndicatorStyleSelector.swift; sourceTree = "<group>"; };
 		E7BD87A874F5890B4D0E861CEE35343B /* LocalisationManagerKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "LocalisationManagerKit-iOS.modulemap"; sourceTree = "<group>"; };
@@ -2747,13 +2761,13 @@
 		EC7349203B0E6CE17140EA36429429AE /* GULNetwork.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetwork.m; path = GoogleUtilities/Network/GULNetwork.m; sourceTree = "<group>"; };
 		EC8954D00E5725B6E0BD23BF6F8582B4 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		ECBA9E86A25A44F4A91727162EEB50E2 /* ElementAt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementAt.swift; path = RxSwift/Observables/ElementAt.swift; sourceTree = "<group>"; };
+		ED0DE19C9C8918E4508E7642328CCCC0 /* Roboto-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Roboto-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		ED0DE50E79867B4DA6170145E0732CDB /* _RXDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RXDelegateProxy.h; path = RxCocoa/Runtime/include/_RXDelegateProxy.h; sourceTree = "<group>"; };
 		ED11985D028512106C104ED6BCB1A6BE /* PullUpController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PullUpController.debug.xcconfig; sourceTree = "<group>"; };
 		ED9396A1D7CB4359A434B0C6BB9EE4CC /* PriorityQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PriorityQueue.swift; path = Platform/DataStructures/PriorityQueue.swift; sourceTree = "<group>"; };
 		EDB39AD4A1B8D4D10273992DFDF5FCDF /* Enumerated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enumerated.swift; path = RxSwift/Observables/Enumerated.swift; sourceTree = "<group>"; };
 		EDD0ACF4F0F70AE1E2318408918CE095 /* DelegateProxyType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DelegateProxyType.swift; path = RxCocoa/Common/DelegateProxyType.swift; sourceTree = "<group>"; };
 		EE201F6730BA0696232E72EAE4B491B2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
-		EE2A1A323CF6F34A20D2B57D98A93751 /* HelveticaNeueLTW20-Light.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "HelveticaNeueLTW20-Light.ttf"; path = "TapFontKit-iOS/TapFontKit-iOS/Resources/HelveticaNeueLTW20-Light.ttf"; sourceTree = "<group>"; };
 		EEB7B54693D0997652C3E62CE16CC841 /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
 		EECDAE5AEE491CC49A0B7EC0B4832863 /* FirebaseCore-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseCore-Info.plist"; sourceTree = "<group>"; };
 		EEF01BCFF1CB0962A3DF8C1B4144BCE6 /* FIRAppAssociationRegistration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAppAssociationRegistration.m; path = FirebaseCore/Sources/FIRAppAssociationRegistration.m; sourceTree = "<group>"; };
@@ -3134,6 +3148,35 @@
 			name = "NSData+zlib";
 			sourceTree = "<group>";
 		};
+		05279F5914D762BBE2535F48FCDEF610 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6B04774224FBFF3D43244E7C1E9CEAF3 /* Circe-Bold.ttf */,
+				57D150F6C3FAB9C60770A20B4C0426FF /* Circe-ExtraBold.ttf */,
+				91A081AAC05F3689B3FFF0238B786130 /* Circe-ExtraLight.ttf */,
+				08294D264782753822C081D8E78AEB34 /* Circe-Light.ttf */,
+				59C177C4CF925695235CD88E769ECE99 /* Circe-Regular.ttf */,
+				CB561039BDB11A8355FCC9B6934698FD /* Circe-Thin.ttf */,
+				7826F65DB7B847B532C3EE16EF8B60BE /* HelveticaNeueLTW20-Bold.ttf */,
+				145CF329A21AF4E8F28588E4C2F8A52F /* HelveticaNeueLTW20-Light.ttf */,
+				B535F40BC2BAB0B75499EB55337195FB /* HelveticaNeueLTW20-Roman.ttf */,
+				BBAAD39A2DA72C49FB81949D704E1133 /* Roboto-Black.ttf */,
+				D752FE337C1F794D465EBECAA7E8C904 /* Roboto-Bold.ttf */,
+				ED0DE19C9C8918E4508E7642328CCCC0 /* Roboto-Light.ttf */,
+				23AA27F6FFB00B0FD69D296405A3FC08 /* Roboto-Medium.ttf */,
+				AB5DD76D62AB3882A642DA5367138048 /* Roboto-Regular.ttf */,
+				CACA3653BE5EBEEAD7FE3774A7629806 /* Roboto-Thin.ttf */,
+				6488FC6C65A2AB453753C94FD20B8107 /* Tajawal-Black.ttf */,
+				7B0CB4575462C986AE753C3EB1D4761D /* Tajawal-Bold.ttf */,
+				338B1148E2DF97612FE039B2CDC12665 /* Tajawal-ExtraBold.ttf */,
+				B0F9AAF8C3AB1D57261064469F1B90CA /* Tajawal-ExtraLight.ttf */,
+				259CF5FFB95C9E1C25FD1C16450A77A1 /* Tajawal-Light.ttf */,
+				4100711FB64B5151EE5EAFA59E114143 /* Tajawal-Medium.ttf */,
+				9519306B4E04A3703922FC3E024EB3C0 /* Tajawal-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		063CF7577CA8A1BB16FF3B6C79DEB836 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -3181,6 +3224,18 @@
 				59BFF62BB9EDD3BAD0B205F02743CC9A /* ThreadingFixes.swift */,
 			);
 			name = Threading;
+			sourceTree = "<group>";
+		};
+		178F5A1F9DE1A380116A05DBA53F8B2B /* TapFontKit-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				542CB2EC2909E199955A0B73BF3571BE /* FontProvider.swift */,
+				A51F49732579DF6966A3551DB0484704 /* TapFont.swift */,
+				05279F5914D762BBE2535F48FCDEF610 /* Resources */,
+				F346B4C4B46D019D31A918733CC43BF5 /* Support Files */,
+			);
+			name = "TapFontKit-iOS";
+			path = "TapFontKit-iOS";
 			sourceTree = "<group>";
 		};
 		1CC222F42E166C231145B8EABB996C92 /* Capable */ = {
@@ -3342,21 +3397,6 @@
 				26FC14FFC7E807DB18344BD63B9F2766 /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3580F5C72A2447107A7F3A1D569DDF54 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				4713860B4F46405183DC2BE9EF649D80 /* TapFontKit-iOS.modulemap */,
-				62DFBDE583BEFE52E384BFBA0F71B652 /* TapFontKit-iOS-dummy.m */,
-				E28C73B6EE5F70FBC813A1700F24FB9E /* TapFontKit-iOS-Info.plist */,
-				E19ECCF404F28A096439A2C6F0900D00 /* TapFontKit-iOS-prefix.pch */,
-				6FF172186B024EB1B03706FA00409504 /* TapFontKit-iOS-umbrella.h */,
-				68E35A645499A84B58B607C36A6E716F /* TapFontKit-iOS.debug.xcconfig */,
-				E73EBF825D672D8D5FA51FF5C48BFC4B /* TapFontKit-iOS.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TapFontKit-iOS";
 			sourceTree = "<group>";
 		};
 		3756BBD1C6225785DD5B06EDFA8AA0E6 /* Support Files */ = {
@@ -4163,28 +4203,6 @@
 			name = decode;
 			sourceTree = "<group>";
 		};
-		90722DC693127A49BF50DE5F6664AE95 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6E8CB9C756DAE54E32CCC985DC91893B /* Circe-Bold.ttf */,
-				CC121C1865D12155249E22B01724F9AF /* Circe-ExtraBold.ttf */,
-				91D2CA10952855B8B7DD17A70E6014D4 /* Circe-ExtraLight.ttf */,
-				30C4614008D9B546C910E1A2A39933B8 /* Circe-Light.ttf */,
-				7B11C258A152953DB745A09B8878EBCF /* Circe-Regular.ttf */,
-				DB72CF6D0445943626FD4C43730BFF2B /* Circe-Thin.ttf */,
-				4176006F3311E5D347D78755A2FA3796 /* HelveticaNeueLTW20-Bold.ttf */,
-				EE2A1A323CF6F34A20D2B57D98A93751 /* HelveticaNeueLTW20-Light.ttf */,
-				09432D37C42CCAED4EAFE493CE79546A /* HelveticaNeueLTW20-Roman.ttf */,
-				4758AE57219A4170A4C7E1B8DF634582 /* Roboto-Black.ttf */,
-				3D0338689FB8F84ED4D2B20568CDCBFE /* Roboto-Bold.ttf */,
-				3E63E9E7BEDF6F2A6A23DC96E82E582C /* Roboto-Light.ttf */,
-				A610B0FEA3CDF0ADB5054D0DF11B32FC /* Roboto-Medium.ttf */,
-				A3C705EB98F1802E4879A359D5DB63D6 /* Roboto-Regular.ttf */,
-				D41DA3453F60ADF808DBC795E46E8F10 /* Roboto-Thin.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		9086E9A50AD03A48C263DFC296352BA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -4271,7 +4289,7 @@
 				2FE370994E6F3756163244FE0CE4257F /* TapCardInputKit-iOS */,
 				DAC5865AE971E8E2E0C67500C433899B /* TapCardScanner-iOS */,
 				F8B36F123B23C93A1E79884EDD26B846 /* TapCardVlidatorKit-iOS */,
-				C38BBC5B5D40DF636956A247360273AF /* TapFontKit-iOS */,
+				178F5A1F9DE1A380116A05DBA53F8B2B /* TapFontKit-iOS */,
 				82058F0743982CE89115B7119F48A411 /* TapSwiftFixes */,
 				E3A5C30381A5942FE6E46E509AABC12E /* TapThemeManager2020 */,
 			);
@@ -4720,18 +4738,6 @@
 			path = PromisesObjC;
 			sourceTree = "<group>";
 		};
-		C38BBC5B5D40DF636956A247360273AF /* TapFontKit-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6E60A27912A4F4EDB33A49087C5976D8 /* FontProvider.swift */,
-				6BBD8C84322A01BCE4C5C44E6CFF802D /* TapFont.swift */,
-				90722DC693127A49BF50DE5F6664AE95 /* Resources */,
-				3580F5C72A2447107A7F3A1D569DDF54 /* Support Files */,
-			);
-			name = "TapFontKit-iOS";
-			path = "TapFontKit-iOS";
-			sourceTree = "<group>";
-		};
 		C88D8869879164C232B2EC22901A6C86 /* Pods-TapUIKit-iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -4996,6 +5002,21 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
+		F346B4C4B46D019D31A918733CC43BF5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				813269988123403073CD0ABA85211B4B /* TapFontKit-iOS.modulemap */,
+				BD363212FE36AC0156E12519669693C7 /* TapFontKit-iOS-dummy.m */,
+				36EE79DE84C46186DBEDBF8CAB4C097D /* TapFontKit-iOS-Info.plist */,
+				B69A2532DCFA5BF37F511FCD4BA3CACD /* TapFontKit-iOS-prefix.pch */,
+				85C4829A4FF89AE74A1224B1498D4EEB /* TapFontKit-iOS-umbrella.h */,
+				4A7894D86B21EC7EF859759DF4DD9889 /* TapFontKit-iOS.debug.xcconfig */,
+				0B1AB1FEDA50B77382C8EA8343F23B69 /* TapFontKit-iOS.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TapFontKit-iOS";
 			sourceTree = "<group>";
 		};
 		F4395AF2A50ED3C74BC8691055720940 /* GoogleDataTransport */ = {
@@ -6179,7 +6200,7 @@
 				7754ACBD7A7304932CF0F948EDF53DC9 /* Headers */,
 				9E0A82A7637C435F247FCBED964BE332 /* Sources */,
 				FDB775DBE9CC7191E1D80D7EC8D717DB /* Frameworks */,
-				00B9974C4248627CC644360CD0E781F8 /* Resources */,
+				3AA033BBA30CC7255E67A0E3428023E3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -6294,28 +6315,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		00B9974C4248627CC644360CD0E781F8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ACECE8D29931C5670639D765C910A83C /* Circe-Bold.ttf in Resources */,
-				9F08B587B9F3719F3949B5A2E4DC7E4E /* Circe-ExtraBold.ttf in Resources */,
-				DE069C588D59B13B1EA1BBFF7A316ED8 /* Circe-ExtraLight.ttf in Resources */,
-				398ADF855C1CE18B07E8CF4A0AC37655 /* Circe-Light.ttf in Resources */,
-				4B040FDB7192863A172BEAAF36D41B19 /* Circe-Regular.ttf in Resources */,
-				A8DAB1323F5B238673F7491CFF73F988 /* Circe-Thin.ttf in Resources */,
-				5CB46218D4869E0AC8FCEFF87E81F62E /* HelveticaNeueLTW20-Bold.ttf in Resources */,
-				097A8B5B2F6664C13A39659BBD9D23ED /* HelveticaNeueLTW20-Light.ttf in Resources */,
-				879ECE47C75DD2F20C3213345FFC2364 /* HelveticaNeueLTW20-Roman.ttf in Resources */,
-				3E90B3030572BD9C611612C6C9089F2B /* Roboto-Black.ttf in Resources */,
-				0283716BB0445A53B101567ACF085574 /* Roboto-Bold.ttf in Resources */,
-				98611A119D0241CC93C9739EF0DDB1D1 /* Roboto-Light.ttf in Resources */,
-				CCD7ACC9759FEAD57396232D086744C2 /* Roboto-Medium.ttf in Resources */,
-				D3F8E7F7EDFF5C707739D96DAB9780CC /* Roboto-Regular.ttf in Resources */,
-				07EC8F8535B92789C573FC0081205A3B /* Roboto-Thin.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		077AF910AB68BE80E7E0DB717FE57896 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6348,6 +6347,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA033BBA30CC7255E67A0E3428023E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7015434C9BB154B06CCCAB0A0A910062 /* Circe-Bold.ttf in Resources */,
+				98CF9EEE646192BDE98776F63A226F77 /* Circe-ExtraBold.ttf in Resources */,
+				F8D28F33AA44A78C49BDD9F16BB3E139 /* Circe-ExtraLight.ttf in Resources */,
+				8D9E94B76CC9B88499277E47D5C06106 /* Circe-Light.ttf in Resources */,
+				43C86556374F8080D81F7F73300BF0DC /* Circe-Regular.ttf in Resources */,
+				A40C4D6BA32BAE96D712C657F5507A26 /* Circe-Thin.ttf in Resources */,
+				4EE36C10CB9FE3DC1A76865C339ED411 /* HelveticaNeueLTW20-Bold.ttf in Resources */,
+				AB94FCFD5757E3D7AEE487C036E2D707 /* HelveticaNeueLTW20-Light.ttf in Resources */,
+				8A97232CAD5EA647AF51F831E62DB999 /* HelveticaNeueLTW20-Roman.ttf in Resources */,
+				793CAEDB5CEB3BFC85A5B4721E0E79F7 /* Roboto-Black.ttf in Resources */,
+				F36A1C01032287AAC13943B2B0227852 /* Roboto-Bold.ttf in Resources */,
+				3252B17C49F583781F7B2F0792389348 /* Roboto-Light.ttf in Resources */,
+				D1D138C2B8EE49038671B163F68C3490 /* Roboto-Medium.ttf in Resources */,
+				1E951BF09701BADC56996DC65085533D /* Roboto-Regular.ttf in Resources */,
+				587524DBCCED3E309B914AE886EE9759 /* Roboto-Thin.ttf in Resources */,
+				8B079D0D7CC26757F1CC3C00979BFECE /* Tajawal-Black.ttf in Resources */,
+				039A343FD363A5162634F48C14950DEA /* Tajawal-Bold.ttf in Resources */,
+				79B05F79ED464FE4E7CB51DF7456DEFA /* Tajawal-ExtraBold.ttf in Resources */,
+				0A578C9DD26E281453B872F0F42D6431 /* Tajawal-ExtraLight.ttf in Resources */,
+				8ADE4212955D3F1A93995C945FF98A37 /* Tajawal-Light.ttf in Resources */,
+				7ABA511B6D657D340630E38D8B93D74A /* Tajawal-Medium.ttf in Resources */,
+				E0023830E89F700EFB5CFB67DBAB0215 /* Tajawal-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8250,7 +8278,7 @@
 		};
 		1FA4C7B52BF3F9D391B048914FBA16A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68E35A645499A84B58B607C36A6E716F /* TapFontKit-iOS.debug.xcconfig */;
+			baseConfigurationReference = 4A7894D86B21EC7EF859759DF4DD9889 /* TapFontKit-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -8647,7 +8675,7 @@
 		};
 		3A2C0829DF4E9F74AAF5B5496A265220 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E73EBF825D672D8D5FA51FF5C48BFC4B /* TapFontKit-iOS.release.xcconfig */;
+			baseConfigurationReference = 0B1AB1FEDA50B77382C8EA8343F23B69 /* TapFontKit-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
