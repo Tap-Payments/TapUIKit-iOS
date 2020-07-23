@@ -177,6 +177,8 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
                 // If the last tab, hence we need the width to cover the whole screen till the end
                 resultRect.size.width = resultRect.origin.x + resultRect.maxX
                 resultRect.origin.x = resultRect.size.width
+            }else {
+                resultRect.origin.x += resultRect.size.width
             }
         }else {
             // LTR computations
