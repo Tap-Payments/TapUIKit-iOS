@@ -101,13 +101,13 @@ internal protocol ItemCellViewModelDelegate {
     /// Returns the formatted Item description to be displayed
     public func itemDesctiptionButtonTitle() -> String {
         // Nothing ig there is no description
-        guard let _ = itemModel?.description else { return "" }
+        guard let _ = itemModel?.itemDescription else { return "" }
         return sharedLocalisationManager.localisedValue(for: (descriptionState == .hidden) ? "ItemList.showDesc" : "ItemList.hideDesc", with: TapCommonConstants.pathForDefaultLocalisation())
     }
     
     
     public func itemDescription() -> String {
-        guard let description = itemModel?.description else { return "" }
+        guard let description = itemModel?.itemDescription else { return "" }
         return (descriptionState == .shown) ? "\n\(description)\n" : ""
     }
     
