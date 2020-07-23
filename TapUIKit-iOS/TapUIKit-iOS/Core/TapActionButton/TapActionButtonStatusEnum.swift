@@ -33,6 +33,11 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case InvalidNext
     /// Where we need to show a blue background with the titl Signin
     case ValidNext
+    /// Where we need to show a green background with faceID icon
+    case FaceID
+    /// Where we need to show a green background with faceID icon
+    case TouchID
+    
     
     
     /**
@@ -47,7 +52,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
             backgroundThemePath = "actionButton.Invalid.backgroundColor"
             break
-        case .ValidPayment,.SaveValidPayment:
+        case .ValidPayment,.SaveValidPayment,.FaceID,.TouchID:
             backgroundThemePath = "actionButton.Valid.paymentBackgroundColor"
             break
         case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext:
