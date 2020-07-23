@@ -104,35 +104,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         // Now we need to decide shall we highlight the whole segment or there is an already selected tab within this segment
         guard let selectedBrand:CardBrand = segmentSelectionObserver.value[segment] as? CardBrand else {
             // Meaning, there is no selected icon inside this segment, hence we highlight the whole segment
-            
-            
-            
-            // If it is the first segment, we need to start from X = 0
-            if sharedLocalisationManager.localisationLocale == "ar" {
-                // RTL computations
-                if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
-                    resultRect.size.width = UIScreen.main.bounds.size.width - (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).minX
-                    resultRect.origin.x = UIScreen.main.bounds.size.width
-                }else {
-                    // If the last segment, hence we need the width to cover the whole screen till the end
-                    if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
-                        resultRect.size.width = (filteredViewModel.first?.viewDelegate?.viewFrame() ?? .zero).maxX
-                        resultRect.origin.x = resultRect.size.width
-                    }
-                }
-            }else {
-                // LTR computations
-                if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
-                    resultRect.origin.x = 0
-                    resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
-                }else {
-                    // If the last segment, hence we need the width to cover the whole screen till the end
-                    if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
-                        resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
-                    }
-                }
-            }
-            return resultRect
+            return computeSegmentGroupRect(for: filteredViewModel, and: resultRect)
         }
         
         // Meaning there is a sepcic icon selected in this segment, we need to highlight it alone
@@ -157,6 +129,44 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
                 resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
             }
         }
+        return resultRect
+    }
+    
+    /**
+     Comutes the frame to cover a whole segment based on the current localisation. Will set the correct X and correct width
+     - Parameter filteredViewModel: The view models that are covered within the required segment to get its frame
+     - Parameter initialRect: The intial computed frame
+     */
+    internal func computeSegmentGroupRect(for filteredViewModel:[TapCardPhoneIconViewModel],and initialRect:CGRect) -> CGRect {
+        let sharedLocalisationManager:TapLocalisationManager = .shared
+        var resultRect = initialRect
+        
+        // If it is the first segment, we need to start from X = 0
+        // If the last segment, hence we need the width to cover the whole screen till the end
+        
+        if sharedLocalisationManager.localisationLocale == "ar" {
+            // RTL computations
+            if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                resultRect.size.width = UIScreen.main.bounds.size.width - (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).minX
+                resultRect.origin.x = UIScreen.main.bounds.size.width
+            }else {
+                if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
+                    resultRect.size.width = (filteredViewModel.first?.viewDelegate?.viewFrame() ?? .zero).maxX
+                    resultRect.origin.x = resultRect.size.width
+                }
+            }
+        }else {
+            // LTR computations
+            if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                resultRect.origin.x = 0
+                resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
+            }else {
+                if dataSource.firstIndex(of: filteredViewModel.last!) == dataSource.count - 1 {
+                    resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+                }
+            }
+        }
+        
         return resultRect
     }
     
