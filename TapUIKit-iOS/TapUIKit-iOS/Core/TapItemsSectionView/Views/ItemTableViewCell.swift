@@ -148,13 +148,14 @@ extension ItemTableViewCell {
         
         itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont")
         itemPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).priceLabelColor")
+        itemPriceLabel.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .left : .right
         
         itemDiscountPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).calculatedPriceLabelFont")
         itemDiscountPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).calculatedPriceLabelColor")
         
         itemQuantityView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).count.backgroundColor")
         itemQuantityView.layer.cornerRadius = itemQuantityView.frame.width / 2
-        itemQuantityLabel.tap_theme_font = .init(stringLiteral: "\(themePath).count.countLabelFont",shouldLocalise:false)
+        itemQuantityLabel.tap_theme_font = .init(stringLiteral: "\(themePath).count.countLabelFont")
         itemQuantityLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).count.countLabelColor")
     }
     
