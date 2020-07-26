@@ -133,7 +133,7 @@ extension ItemTableViewCell {
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         separatorView.tap_theme_backgroundColor = .init(keyPath: "itemsList.separatorColor")
         
-        itemTitleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont",shouldLocalise:false)
+        itemTitleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont")
         itemTitleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).titleLabelColor")
         
         itemDescriptionLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont")
@@ -146,10 +146,10 @@ extension ItemTableViewCell {
         
         
         
-        itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont",shouldLocalise:false)
+        itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont")
         itemPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).priceLabelColor")
         
-        itemDiscountPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).calculatedPriceLabelFont",shouldLocalise:false)
+        itemDiscountPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).calculatedPriceLabelFont")
         itemDiscountPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).calculatedPriceLabelColor")
         
         itemQuantityView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).count.backgroundColor")
