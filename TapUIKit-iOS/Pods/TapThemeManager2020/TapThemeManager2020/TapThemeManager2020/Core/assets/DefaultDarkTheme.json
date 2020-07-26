@@ -453,6 +453,11 @@
             }
         }
     },
+    "TapVerticalView":
+    {
+        "blurBackgroundColor":"clear",
+        "defaultBackgroundColor":"whiteTwo"
+    },
     "Hints":
     {
         "Warning":

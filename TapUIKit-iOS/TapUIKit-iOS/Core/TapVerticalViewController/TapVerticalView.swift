@@ -7,6 +7,7 @@
 //
 
 import SimpleAnimation
+import TapThemeManager2020
 
 /// The protocol for the delegates and notifications fired from the TapVerticalView
 @objc public protocol TapVerticalViewDelegate {
@@ -32,6 +33,14 @@ import SimpleAnimation
     internal var itemsBeingAdded:Int = 0
     /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
     @objc public var delegate:TapVerticalViewDelegate?
+    /// Holds the last style theme applied
+    private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// This informs the sheet that we need to show bg as a blurring view
+    @objc public var showBlur:Bool = false {
+        didSet{
+            applyTheme()
+        }
+    }
     private var newSizeTimer:Timer?
     private let keyboardHelper = KeyboardHelper()
     @IBOutlet weak var tapActionButtonHeightConstraint: NSLayoutConstraint!
@@ -40,6 +49,8 @@ import SimpleAnimation
     
     internal var keyboardPadding:CGFloat = 0
     internal var delaySizeChange:Bool = true
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +67,7 @@ import SimpleAnimation
         self.containerView = setupXIB()
         setupStackScrollView()
         dismissKey()
+        applyTheme()
     }
     
     /// Configure the scroll view and stack view constraints and attach the scrolling view inner content to the stack view
@@ -659,4 +671,20 @@ extension TapVerticalView {
     }
 }
 
-
+extension TapVerticalView {
+    func applyTheme() {
+        tap_theme_backgroundColor = .init(keyPath: "TapVerticalView.\(showBlur ? "blurBackgroundColor" : "defaultBackgroundColor")")
+    }
+    
+    /// Listen to light/dark mde changes and apply the correct theme based on the new style
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        
+        guard lastUserInterfaceStyle != self.traitCollection.userInterfaceStyle else {
+            return
+        }
+        lastUserInterfaceStyle = self.traitCollection.userInterfaceStyle
+        applyTheme()
+    }
+}

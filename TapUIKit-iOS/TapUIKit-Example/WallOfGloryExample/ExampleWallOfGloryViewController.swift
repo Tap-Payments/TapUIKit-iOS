@@ -748,7 +748,7 @@ extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     }
     
     func changeBlur(to:Bool) {
-        self.tapVerticalView.backgroundColor = (to) ? try! UIColor(tap_hex: "#f9f9f9C6") : TapThemeManager.colorValue(for: "Hints.Default.backgroundColor")
+        self.tapVerticalView.showBlur = to
     }
     
     func signIn(with email: String, and password: String) {
@@ -814,7 +814,8 @@ extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
     
     func didChangeState(state: TapSwitchEnum) {
         
-        self.tapVerticalView.backgroundColor = (state != .none) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
+        
+        changeBlur(to: state != .none)
         
         self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
         
