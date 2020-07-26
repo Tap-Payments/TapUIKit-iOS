@@ -313,10 +313,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             },
@@ -324,10 +324,10 @@
                 "backgroundColor" : "white",
                 "shadow": {
                     "color" : "lightPeriwinkle",
-                    "radius" : 3,
+                    "radius" : 0,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
-                    "opacity": 1
+                    "opacity": 0
                 }
             },
             "goPayChip": {
@@ -346,10 +346,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             },
@@ -371,10 +371,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             },
@@ -394,10 +394,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             }
