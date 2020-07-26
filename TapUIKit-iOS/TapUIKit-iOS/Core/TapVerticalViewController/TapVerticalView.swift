@@ -82,7 +82,9 @@ import SimpleAnimation
     }
     
     internal func neededSize() -> CGSize {
-        return scrollView.contentSize
+        var contentSize = scrollView.contentSize
+        contentSize.height += tapActionButtonHeightConstraint.constant
+        return contentSize
     }
     
     

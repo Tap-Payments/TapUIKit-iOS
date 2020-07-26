@@ -32,10 +32,15 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
-    let tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
+    // للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.
+    // حفظ ل goPay Checkouts
+    // من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.
+    // يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.
+    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
+    var goPayListView:TapChipHorizontalList = .init()
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
@@ -68,6 +73,10 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
         
+        
+        if TapLocalisationManager.shared.localisationLocale == "ar" {
+            tapSaveCardSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."))
+        }
         
         createTabBarViewModel()
         createGatewaysViews()
@@ -147,6 +156,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         //views.append(vv)
         
         // The GatwayListSection
+        views.append(goPayListView)
         views.append(gatewaysListView)
         
         // The tab bar section
@@ -209,6 +219,11 @@ class ExampleWallOfGloryViewController: UIViewController {
         gatewaysListView.translatesAutoresizingMaskIntoConstraints = false
         gatewaysListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         gatewaysListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
+        
+        
+        goPayListView.translatesAutoresizingMaskIntoConstraints = false
+        goPayListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        goPayListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
         
         
         

@@ -114,11 +114,15 @@ class TapHorizontalHeaderView: UIView {
 @objc public enum TapHorizontalHeaderType:Int {
     /// The SELECT - EDIT header view for the list of payment gatewas and saved cards
     case GatewayListHeader
+    /// The SELECT - EDIT header view for the list of saved card from goPay
+    case goPayListHeader
+    /// The SELECT header view for the list of saved payment gatewas and saved cards and goPay is shown
+    case GateWayListWithGoPayListHeader
     case NoHeader
     /// Defines the theme entry based on the type
     func themePath() -> String {
         switch self {
-            case .GatewayListHeader:
+            case .GatewayListHeader,.goPayListHeader,.GateWayListWithGoPayListHeader:
                 return "horizontalList.headers.gatewayHeader"
         case .NoHeader:
             return ""
@@ -136,8 +140,10 @@ class TapHorizontalHeaderView: UIView {
         var (leftTitleKey,rightTitleKey) = ("","")
         
         switch self {
-        case .GatewayListHeader:
+        case .GatewayListHeader,.goPayListHeader:
             (leftTitleKey,rightTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle")
+        case .GateWayListWithGoPayListHeader:
+            (leftTitleKey,rightTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","")
         case .NoHeader:
             (leftTitleKey,rightTitleKey) = ("","")
         }

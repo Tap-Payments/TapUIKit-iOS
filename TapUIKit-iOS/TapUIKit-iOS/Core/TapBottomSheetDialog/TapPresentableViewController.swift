@@ -99,7 +99,7 @@ internal class TapPresentableViewController: PullUpController {
             return
         }
         
-        guard let tapVertical:TapVerticalView = childVC?.view.subviews[0] as? TapVerticalView else { return }
+        guard let tapVertical:TapVerticalView = childVC?.view.subviews[1] as? TapVerticalView else { return }
         
         
         if tapVertical.neededSize().height > containerView.frame.height {
