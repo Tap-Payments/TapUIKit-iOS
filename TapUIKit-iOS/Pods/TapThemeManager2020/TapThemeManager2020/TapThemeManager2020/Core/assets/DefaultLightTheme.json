@@ -455,7 +455,7 @@
     },
     "TapVerticalView":
     {
-        "blurBackgroundColor":"clear",
+        "blurBackgroundColor":"#f9f9f9C6",
         "defaultBackgroundColor":"whiteTwo"
     },
     "Hints":

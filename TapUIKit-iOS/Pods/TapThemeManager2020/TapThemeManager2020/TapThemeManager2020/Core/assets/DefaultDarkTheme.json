@@ -419,7 +419,7 @@
             "calculatedPriceLabelFont" : "Roboto-Light,12",
             "calculatedPriceLabelColor" : "brownGrey",
             "count": {
-                "backgroundColor": "paleLilac",
+                "backgroundColor": "whiteTwo",
                 "countLabelFont" : "Roboto-Regular,9",
                 "countLabelColor" : "greyishBrown",
             }
