@@ -9,6 +9,7 @@
 import UIKit
 import TapThemeManager2020
 
+/// The view  that renders a tap otp view
 @objc public class TapOtpView: UIView {
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!

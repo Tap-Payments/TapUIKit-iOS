@@ -39,7 +39,7 @@ internal protocol TapOtpViewDelegate {
     @objc func otpStateReadyToValidate(otpValue: String)
     
     /**
-     An event will be fired everytime the statuse of the OTP view changes
+     An event will be fired everytime the statuse of the OTP  state changes
      - Parameter to: the new status of the otp view
      */
     @objc func otpState(changed to:TapOTPStateEnum)
@@ -51,12 +51,13 @@ internal protocol TapOtpViewDelegate {
 }
 
 
+/// The view model that controls the tap otp view
 @objc public class TapOtpViewModel: NSObject {
     
     /// Timer to be used in counting down to update the state to expired
     private var timer: TapTimer?
     
-    /// Showing the current state of the otp
+    /// Showing the current state of the otp, default is .empty
     @objc public var state: TapOTPStateEnum = .empty {
         didSet {
             self.stateDidChange()
@@ -65,7 +66,7 @@ internal protocol TapOtpViewDelegate {
     
     /// Phone number to be used in the message depending on the state
     internal var phoneNo: String
-    /// Showing the message label if set to true
+    /// Showing the message label if set to true, default is false
     private var showMessage: Bool
     
     /// The delegate used to fire events inside the associated view
@@ -75,7 +76,7 @@ internal protocol TapOtpViewDelegate {
         }
     }
     
-    /// The delegate used to fire events to the caller view
+    /// The delegate used to fire events to the parent view
     @objc public var delegate:TapOtpViewModelDelegate?
     
     /// The OTP digits entered by the user
@@ -118,8 +119,8 @@ internal protocol TapOtpViewDelegate {
     // MARK: Message
     /**
     Returns NSAttributedString with the message using mainColor and secondColor
-    - Parameter mainColor: number of minutes until the otp expire
-    - Parameter secondaryColor: number of seconds until the otp expire
+    - Parameter mainColor: default text color to be used in the formatted text
+    - Parameter secondaryColor: second text color to be set for the mobile number text
     */
     func messageAttributed(mainColor: UIColor, secondaryColor: UIColor) -> NSAttributedString {
         return self.state.message(mobileNo: phoneNo, mainColor: mainColor, secondaryColor: secondaryColor)
@@ -155,16 +156,19 @@ internal protocol TapOtpViewDelegate {
     */
     func updateState() {
         if self.otpValue.count == 6 {
+            // all otp digits got filled
             self.state = .ready
         } else {
             if self.state != .empty {
+                // otp digits not filled completely
+                // set otp state to initial (default) state
                 self.state = .empty
             }
         }
     }
     
     /**
-        This
+     Create OTP view and prepare the view to be ready
     */
     @objc public func createOtpView() -> TapOtpView {
         let tapOtpView:TapOtpView = .init()
@@ -192,7 +196,7 @@ internal protocol TapOtpViewDelegate {
     }
     
     /**
-     Invalidate OTP timer and reset all properties
+     Invalidate OTP timer and reset all properties and delegates
      */
     @objc public func close() {
         self.timer?.reset()

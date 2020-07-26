@@ -25,7 +25,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     @IBOutlet weak private var textField6: UnTouchableTextField!
     
     
-    public var pinCount: Int = 4
+    /// Set text color of textField digits
     public var textColor: UIColor = .white {
         didSet {
             self.textField1.textColor = self.textColor
@@ -36,8 +36,10 @@ public class TapOtpController: UIView, UITextFieldDelegate {
             self.textField6.textColor = self.textColor
         }
     }
-
+    
+    /// Set the bottom line width to be added to the digits textFields
     public var bottomLineWidth: CGFloat = 1
+    /// Set the bottom line color to be added to the digits textFields
     public var bottomLineColor: UIColor = .white {
         didSet {
             self.textField1.bottomLine.backgroundColor = self.bottomLineColor.cgColor
@@ -49,6 +51,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
     }
     
+    /// Set the font of the textField digits
     public var font: UIFont = .systemFont(ofSize: 12) {
         didSet {
             self.textField1.font = self.font
@@ -59,14 +62,18 @@ public class TapOtpController: UIView, UITextFieldDelegate {
             self.textField6.font = self.font
         }
     }
+    /// Set the bottom line color when the textField is active
     public var bottomLineActiveColor: UIColor = .blue
-
+    
+    /// Delegate to fire events on otp digits change
     weak var delegate: TapOtpControllerDelegate?
     
     private var contentView: UIView?
-        
+    
+    /// Holds the digits list as strings to be passed to the owner view
     private var digits: [String] = ["", "", "", "", "", ""]
     
+    /// Set initial textfield enabled to user interaction, true to enable user interaction
     public var enabled: Bool = true {
         didSet {
             self.textField1.isUserInteractionEnabled = enabled
@@ -103,6 +110,9 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     // MARK:- configure
+    /**
+     Configures the textfields properties to make the view ready for user interaction
+     */
     func configure() {
         
         setTextFieldsDelegate()
@@ -130,7 +140,9 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField6.keyboardType = .numberPad
         
     }
-    
+    /**
+     Set the textFields delegates
+     */
     fileprivate func setTextFieldsDelegate() {
         self.textField1.delegate = self
         self.textField2.delegate = self
@@ -153,6 +165,10 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
     }
     
+    /**
+     Update the digits list depending on textField value change
+     - Parameter textField: the updated textField
+     */
     private func updateDigits(_ textField: UITextField) {
         print("updateDigits: value: \(String(describing: textField.text))")
         switch textField {
@@ -171,6 +187,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
                 
         default: break
         }
+        /// Callback the delegate with the changed digits
         self.delegate?.digitsDidChange(newDigits: digits.joined())
     }
     
@@ -238,6 +255,10 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     // MARK: TextField Movements
+    /**
+     Decide the next textField to become active
+     - Parameter textField: the current active textField
+     */
     fileprivate func moveToNextTextField(_ textField: UITextField) {
         if textField == textField1 {
             textField2.becomeFirstResponder()
@@ -264,6 +285,10 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
     }
     
+    /**
+    Decide the previous textField to become active
+    - Parameter textField: the current active textField
+    */
     fileprivate func moveToPreviousTextField(_ textField: UITextField) {
         if textField == textField6 {
             textField5.becomeFirstResponder()
@@ -287,6 +312,9 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     // MARK: ResetAllTextFields
+    /**
+     Resign all textField and dismiss keyboard
+     */
     fileprivate func resignAllTextFields() {
         self.textField1.resignFirstResponder()
         self.textField2.resignFirstResponder()
@@ -296,6 +324,9 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.textField6.resignFirstResponder()
     }
     
+    /**
+     Reset All the digits and dismiss the keyboard
+     */
     public func resetAll() {
         self.digits = ["", "", "", "", "", ""]
         self.textField1.text = ""
