@@ -1,14 +1,14 @@
 {
     "GlobalValues" : {
         "Colors" : {
-            "white" : "#FFFFFF",
+            "white" : "#1c1c1e",
             "black" : "#000000",
             "black50" : "#00000080",
-            "lightPeach" : "#b6b6b6",
-            "greyishBrown" : "#4b4847",
-            "veryLightPinkTwo" : "#dfdfdf",
-            "brownGrey" : "#a8a8a8",
-            "whiteTwo": "#f4f4f4",
+            "lightPeach" : "#98989f",
+            "greyishBrown" : "#ffffff",
+            "veryLightPinkTwo" : "#404043",
+            "brownGrey" : "#98989f",
+            "whiteTwo": "#2b2b2f",
             "deepSkyBlue": "#007aff",
             "white30":"#ffffff4D",
             "lightPeriwinkle": "#d9d9da",
@@ -29,6 +29,10 @@
             "brownGreyFive":"#aeaeae",
             "deepSkyBlue15":"#007aff26",
             "veryLightPinkThree": "#d7d7d7",
+            "azure": "#009aff",
+            "brownGreySix": "#a7a7a7",
+            "brownGreySeven": "#7e7e7e",
+            "white78": "#f9f9f9C6",
             "brownGreyFour": "#a6a6a6"
         }
     },
@@ -245,7 +249,8 @@
         "image" : "tapHandlerImage",
         "width" : 75,
         "height" : 2,
-        "corner" : 2
+        "corner" : 2,
+        "backgroundColor": "white"
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
@@ -308,10 +313,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             },
@@ -319,10 +324,10 @@
                 "backgroundColor" : "white",
                 "shadow": {
                     "color" : "lightPeriwinkle",
-                    "radius" : 3,
+                    "radius" : 0,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
-                    "opacity": 1
+                    "opacity": 0
                 }
             },
             "goPayChip": {
@@ -341,19 +346,19 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             },
             "applePayChip": {
                 "backgroundColor" : "black",
                 "applePayTitleFont": "Roboto-Regular,14",
-                "applePayTitleColor": "white",
+                "applePayTitleColor": "greyishBrown",
                 "appleLogoTitleFont": "Roboto-Regular,16",
-                "appleLogoTitleColor": "white",
+                "appleLogoTitleColor": "greyishBrown",
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",
@@ -366,10 +371,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             },
@@ -389,10 +394,10 @@
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 0,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 0
                     }
                 }
             }
@@ -447,6 +452,11 @@
                 "alpha": 1
             }
         }
+    },
+    "TapVerticalView":
+    {
+        "blurBackgroundColor":"clear",
+        "defaultBackgroundColor":"whiteTwo"
     },
     "Hints":
     {

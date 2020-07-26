@@ -16,6 +16,7 @@ import TapCardInputKit_iOS
 import TapCardScanner_iOS
 import AVFoundation
 import WebKit
+import TapThemeManager2020
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -25,17 +26,24 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapMerchantHeaderViewModel:TapMerchantHeaderViewModel = .init()
     var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
     var tapGatewayChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
+    var tapGoPayChipsHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var tapCurrienciesChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var gatewayChipsViewModel:[GenericTapChipViewModel] = []
+    var goPayChipsViewModel:[GenericTapChipViewModel] = []
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
-    let tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
+    // للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.
+    // حفظ ل goPay Checkouts
+    // من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.
+    // يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.
+    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
+    var goPayListView:TapChipHorizontalList = .init()
     var currencyListView:TapChipHorizontalList = .init()
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
@@ -68,6 +76,10 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
         
+        
+        if TapLocalisationManager.shared.localisationLocale == "ar" {
+            tapSaveCardSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."))
+        }
         
         createTabBarViewModel()
         createGatewaysViews()
@@ -147,6 +159,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         //views.append(vv)
         
         // The GatwayListSection
+        views.append(goPayListView)
         views.append(gatewaysListView)
         
         // The tab bar section
@@ -206,11 +219,21 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapGatewayChipHorizontalListViewModel.delegate = self
         
         
+        goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 3333", icon:"https://img.icons8.com/color/2x/amex.png", listSource: .GoPayListHeader))
+        goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 4444", icon:"https://img.icons8.com/color/2x/visa.png", listSource: .GoPayListHeader))
+        goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5555", icon:"https://img.icons8.com/color/2x/mastercard-logo.png", listSource: .GoPayListHeader))
+        
+        tapGoPayChipsHorizontalListViewModel = .init(dataSource: goPayChipsViewModel, headerType: .GoPayListHeader)
+        tapGoPayChipsHorizontalListViewModel.delegate = self
+        
+        
         gatewaysListView.translatesAutoresizingMaskIntoConstraints = false
         gatewaysListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         gatewaysListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
         
-        
+        goPayListView.translatesAutoresizingMaskIntoConstraints = false
+        goPayListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        goPayListView.changeViewMode(with: tapGoPayChipsHorizontalListViewModel)
         
         currencyListView.translatesAutoresizingMaskIntoConstraints = false
         currencyListView.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -235,6 +258,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
+                self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
@@ -242,6 +266,7 @@ class ExampleWallOfGloryViewController: UIViewController {
                 views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
+                views.remove(at: (index-1))
                 //views.removeLast()
                 views.append(signGoPayView)
                 //views.append(tapActionButton)
@@ -296,6 +321,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             if element == gatewaysListView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.updateActionButtonVisibility(to: false)
+                self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
@@ -304,6 +330,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
+                views.remove(at: (index-1))
                 //views.removeLast()
                 views.append(currencyListView)
                 views.append(tabItemsTableView)
@@ -329,12 +356,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 self.tapVerticalView.remove(view: tabItemsTableView, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
+                views.append(goPayListView)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
                 views.append(tapSaveCardSwitchView)
                 //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.showActionButton()
+                    self?.tapVerticalView.add(view: self!.goPayListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
@@ -359,6 +388,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index-1)
+                views.append(goPayListView)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
                 views.append(tapSaveCardSwitchView)
@@ -366,6 +396,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.showActionButton()
+                    self?.tapVerticalView.add(view: self!.goPayListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
@@ -388,6 +419,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 //views.removeLast()
+                views.append(goPayListView)
                 views.append(gatewaysListView)
                 views.append(tapCardTelecomPaymentView)
                 views.append(tapSaveCardSwitchView)
@@ -395,6 +427,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
+                    self?.tapVerticalView.add(view: self!.goPayListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
@@ -409,6 +442,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
             if element == gatewaysListView {
+                self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
@@ -421,6 +455,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.remove(at: index)
                 views.remove(at: index)
+                views.remove(at: (index-1))
                 views.append(hintView)
                 views.append(tapCardScannerView)
                 tapAmountSectionViewModel.screenChanged(to: .ScannerView)
@@ -443,6 +478,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
        
         self.tapVerticalView.remove(view: merchantHeaderView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: amountSectionView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: goPayListView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: gatewaysListView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapSaveCardSwitchView, with: TapVerticalViewAnimationType.fadeOut())
@@ -505,11 +541,22 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         //showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
         tapActionButtonViewModel.buttonStatus = .ValidPayment
         
-        let authenticator = TapAuthenticate(reason: "Login into tap account")
-        if authenticator.type != .none {
-            tapActionButtonViewModel.buttonStatus = (authenticator.type == BiometricType.faceID) ? .FaceID : .TouchID
-            authenticator.delegate = self
-            authenticator.authenticate()
+        // Check the type of saved card source
+        
+        if viewModel.listSource == .GoPayListHeader {
+            // First of all deselct any selected cards in the gateways list
+            tapGatewayChipHorizontalListViewModel.deselectAll()
+            let authenticator = TapAuthenticate(reason: "Login into tap account")
+            if authenticator.type != .none {
+                tapActionButtonViewModel.buttonStatus = (authenticator.type == BiometricType.faceID) ? .FaceID : .TouchID
+                authenticator.delegate = self
+                authenticator.authenticate()
+            }
+        }else {
+            // First of all deselct any selected cards in the goPay list
+            tapGoPayChipsHorizontalListViewModel.deselectAll()
+            // perform the charge when clicking on pay button
+            tapActionButtonViewModel.buttonActionBlock = { self.startPayment(then: true) }
         }
     }
     
@@ -539,7 +586,9 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func headerRightButtonClicked(in headerType: TapHorizontalHeaderType) {
         if headerType == .GatewayListHeader {
-            showAlert(title: "Right button for Gateway Header", message: "I promise you will be able to edit these list afterwards :)")
+            showAlert(title: "Right button for Gateway Header", message: "@Hala and @Haitham i do not know what to do here :)")
+        }else if headerType == .GoPayListHeader {
+            showAlert(title: "Right button for GoPay Header", message: "@Hala and @Haitham i do not know what to do here :)")
         }
     }
     
@@ -578,10 +627,14 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
             for (index, element) in self.views.enumerated() {
                 if element == self.gatewaysListView {
+                    self.tapVerticalView.remove(view: self.views[index-1], with: TapVerticalViewAnimationType.none)
                     self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                     self.tapVerticalView.remove(view: self.views[index+1], with: TapVerticalViewAnimationType.none)
+                    self.tapVerticalView.remove(view: self.views[index+2], with: TapVerticalViewAnimationType.none)
                     self.views.remove(at: index)
                     self.views.remove(at: index)
+                    self.views.remove(at: index)
+                    self.views.remove(at: (index-1))
                     self.tapActionButtonViewModel.startLoading()
                     break
                 }
@@ -695,7 +748,7 @@ extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     }
     
     func changeBlur(to:Bool) {
-        self.tapVerticalView.backgroundColor = (to) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
+        self.tapVerticalView.showBlur = to
     }
     
     func signIn(with email: String, and password: String) {
@@ -761,7 +814,8 @@ extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
     
     func didChangeState(state: TapSwitchEnum) {
         
-        self.tapVerticalView.backgroundColor = (state != .none) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
+        
+        changeBlur(to: state != .none)
         
         self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
         

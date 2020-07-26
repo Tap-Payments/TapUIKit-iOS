@@ -249,7 +249,8 @@
         "image" : "tapHandlerImage",
         "width" : 75,
         "height" : 2,
-        "corner" : 2
+        "corner" : 2,
+        "backgroundColor": "white"
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
@@ -451,6 +452,11 @@
                 "alpha": 1
             }
         }
+    },
+    "TapVerticalView":
+    {
+        "blurBackgroundColor":"clear",
+        "defaultBackgroundColor":"whiteTwo"
     },
     "Hints":
     {

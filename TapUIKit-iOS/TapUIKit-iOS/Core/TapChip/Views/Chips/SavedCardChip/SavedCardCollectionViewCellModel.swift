@@ -16,6 +16,13 @@ import class UIKit.UICollectionViewCell
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:GenericCellChipViewModelDelegate?
     
+    @objc public var listSource:TapHorizontalHeaderType = .GatewayListHeader
+    
+    @objc public init(title: String? = nil, icon: String? = nil, listSource:TapHorizontalHeaderType = .GatewayListHeader) {
+        super.init(title: title, icon: icon)
+        self.listSource = listSource
+    }
+    
     // MARK:- Public methods
     public override func identefier() -> String {
         return "SavedCardCollectionViewCell"
