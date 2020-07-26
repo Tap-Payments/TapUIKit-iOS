@@ -356,9 +356,9 @@
             "applePayChip": {
                 "backgroundColor" : "black",
                 "applePayTitleFont": "Roboto-Regular,14",
-                "applePayTitleColor": "white",
+                "applePayTitleColor": "greyishBrown",
                 "appleLogoTitleFont": "Roboto-Regular,16",
-                "appleLogoTitleColor": "white",
+                "appleLogoTitleColor": "greyishBrown",
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",
