@@ -72,6 +72,9 @@ internal protocol TapChipHorizontalViewModelDelegate {
     func showHeader(with type:TapHorizontalHeaderType)
     /// Will be fired when teh view model thinks the attached view needs to update its  flow layout to properly render the scrolling direction
     func refreshLayout()
+    
+    /// Call this method when you want to deselct all selected items inside the horizontal list
+    func deselectAll()
 }
 
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
@@ -118,6 +121,11 @@ internal protocol TapChipHorizontalViewModelDelegate {
             self.headerType = headerType
             self.selectedChip = selectedChip
         }
+    }
+    
+    /// Call this method when you want to deselct all selected items inside the horizontal list
+    @objc public func deselectAll() {
+        cellDelegate?.deselectAll()
     }
     
     /// Creates empty view model, added for convience

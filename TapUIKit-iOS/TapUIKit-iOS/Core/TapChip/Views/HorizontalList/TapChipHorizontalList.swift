@@ -209,6 +209,10 @@ extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
     func reload(new dataSource: [GenericTapChipViewModel]) {
         reloadData()
     }
+    
+    func deselectAll() {
+        collectionView.indexPathsForSelectedItems?.forEach{ collectionView.deselectItem(at: $0, animated: true) }
+    }
 }
 
 

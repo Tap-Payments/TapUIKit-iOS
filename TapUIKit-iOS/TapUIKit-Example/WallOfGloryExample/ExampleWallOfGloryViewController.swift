@@ -530,12 +530,17 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         // Check the type of saved card source
         
         if viewModel.listSource == .GoPayListHeader {
+            // First of all deselct any selected cards in the gateways list
+            tapGatewayChipHorizontalListViewModel.deselectAll()
             let authenticator = TapAuthenticate(reason: "Login into tap account")
             if authenticator.type != .none {
                 tapActionButtonViewModel.buttonStatus = (authenticator.type == BiometricType.faceID) ? .FaceID : .TouchID
                 authenticator.delegate = self
                 authenticator.authenticate()
             }
+        }else {
+            // First of all deselct any selected cards in the goPay list
+            tapGoPayChipsHorizontalListViewModel.deselectAll()
         }
     }
     
