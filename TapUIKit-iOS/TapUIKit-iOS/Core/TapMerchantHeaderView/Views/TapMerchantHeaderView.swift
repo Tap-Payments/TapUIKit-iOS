@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import TapThemeManager2020
 import struct UIKit.CGFloat
 import Nuke
 import SimpleAnimation
@@ -29,6 +28,8 @@ import RxSwift
     @IBOutlet weak var titleLabel: UILabel!
     /// The lower label
     @IBOutlet weak var subtitleLabel: UILabel!
+    /// Used to push the merchant name a bit in Arabic language
+    @IBOutlet weak var topSpaceBetweenMerchantNameAndTitleConstraint: NSLayoutConstraint!
     
     private let disposeBag:DisposeBag = .init()
     
@@ -163,6 +164,14 @@ extension TapMerchantHeaderView {
         merchantLogoPlaceHolderInitialLabel.tap_theme_textColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderLabelColor")
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        
+        // Push the title and the merchant header a bit if arabic is being used
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        topSpaceBetweenMerchantNameAndTitleConstraint.constant += (TapLocalisationManager.shared.localisationLocale == "ar") ? 2 : 0
+        
+        layoutIfNeeded()
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
