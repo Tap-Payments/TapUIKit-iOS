@@ -25,8 +25,10 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapMerchantHeaderViewModel:TapMerchantHeaderViewModel = .init()
     var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
     var tapGatewayChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
+    var tapGoPayChipsHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var tapCurrienciesChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var gatewayChipsViewModel:[GenericTapChipViewModel] = []
+    var goPayChipsViewModel:[GenericTapChipViewModel] = []
     var currenciesChipsViewModel:[CurrencyChipViewModel] = []
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
@@ -216,16 +218,21 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapGatewayChipHorizontalListViewModel.delegate = self
         
         
+        goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 3333", icon:"https://img.icons8.com/color/2x/amex.png", listSource: .GoPayListHeader))
+        goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 4444", icon:"https://img.icons8.com/color/2x/visa.png", listSource: .GoPayListHeader))
+        goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5555", icon:"https://img.icons8.com/color/2x/mastercard-logo.png", listSource: .GoPayListHeader))
+        
+        tapGoPayChipsHorizontalListViewModel = .init(dataSource: goPayChipsViewModel, headerType: .GoPayListHeader)
+        tapGoPayChipsHorizontalListViewModel.delegate = self
+        
+        
         gatewaysListView.translatesAutoresizingMaskIntoConstraints = false
         gatewaysListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         gatewaysListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
         
-        
         goPayListView.translatesAutoresizingMaskIntoConstraints = false
         goPayListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        goPayListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
-        
-        
+        goPayListView.changeViewMode(with: tapGoPayChipsHorizontalListViewModel)
         
         currencyListView.translatesAutoresizingMaskIntoConstraints = false
         currencyListView.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -520,11 +527,15 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         //showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
         tapActionButtonViewModel.buttonStatus = .ValidPayment
         
-        let authenticator = TapAuthenticate(reason: "Login into tap account")
-        if authenticator.type != .none {
-            tapActionButtonViewModel.buttonStatus = (authenticator.type == BiometricType.faceID) ? .FaceID : .TouchID
-            authenticator.delegate = self
-            authenticator.authenticate()
+        // Check the type of saved card source
+        
+        if viewModel.listSource == .GoPayListHeader {
+            let authenticator = TapAuthenticate(reason: "Login into tap account")
+            if authenticator.type != .none {
+                tapActionButtonViewModel.buttonStatus = (authenticator.type == BiometricType.faceID) ? .FaceID : .TouchID
+                authenticator.delegate = self
+                authenticator.authenticate()
+            }
         }
     }
     
