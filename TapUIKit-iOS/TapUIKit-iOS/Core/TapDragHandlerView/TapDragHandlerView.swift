@@ -77,6 +77,7 @@ extension TapDragHandlerView {
         handlerImageView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).corner")
         changeHandlerSize(with: CGFloat(TapThemeManager.numberValue(for: "\(themePath).width")?.floatValue ?? 75),
                           and: CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 2))
+        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

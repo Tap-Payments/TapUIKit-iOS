@@ -16,6 +16,7 @@ import TapCardInputKit_iOS
 import TapCardScanner_iOS
 import AVFoundation
 import WebKit
+import TapThemeManager2020
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -585,7 +586,9 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func headerRightButtonClicked(in headerType: TapHorizontalHeaderType) {
         if headerType == .GatewayListHeader {
-            showAlert(title: "Right button for Gateway Header", message: "I promise you will be able to edit these list afterwards :)")
+            showAlert(title: "Right button for Gateway Header", message: "@Hala and @Haitham i do not know what to do here :)")
+        }else if headerType == .GoPayListHeader {
+            showAlert(title: "Right button for GoPay Header", message: "@Hala and @Haitham i do not know what to do here :)")
         }
     }
     
@@ -627,6 +630,8 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
                     self.tapVerticalView.remove(view: self.views[index-1], with: TapVerticalViewAnimationType.none)
                     self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                     self.tapVerticalView.remove(view: self.views[index+1], with: TapVerticalViewAnimationType.none)
+                    self.tapVerticalView.remove(view: self.views[index+2], with: TapVerticalViewAnimationType.none)
+                    self.views.remove(at: index)
                     self.views.remove(at: index)
                     self.views.remove(at: index)
                     self.views.remove(at: (index-1))
@@ -743,7 +748,7 @@ extension ExampleWallOfGloryViewController: TapGoPaySignInViewProtocol {
     }
     
     func changeBlur(to:Bool) {
-        self.tapVerticalView.backgroundColor = (to) ? try! UIColor(tap_hex: "#f9f9f9C6") : try! UIColor(tap_hex: "#f4f4f4")
+        self.tapVerticalView.backgroundColor = (to) ? try! UIColor(tap_hex: "#f9f9f9C6") : TapThemeManager.colorValue(for: "Hints.Default.backgroundColor")
     }
     
     func signIn(with email: String, and password: String) {
