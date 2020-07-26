@@ -323,6 +323,7 @@
 		E8861D3F249FA8C20002FEDE /* ItemCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewController.swift; sourceTree = "<group>"; };
 		E88F9E1024BB3D5300A7B470 /* TapCardScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardScannerView.swift; sourceTree = "<group>"; };
 		E88F9E1324BB40D800A7B470 /* TapCardScannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapCardScannerView.xib; sourceTree = "<group>"; };
+		E8A0566124CDA96400D54A68 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A57AA224A9B27E00C1B6CD /* TapCardPhoneBarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardPhoneBarList.swift; sourceTree = "<group>"; };
 		E8A57AA424A9B28900C1B6CD /* TapCardPhoneBarList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCardPhoneBarList.xib; sourceTree = "<group>"; };
 		E8A57AA624A9C16500C1B6CD /* TapCardPhoneBarListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardPhoneBarListViewModel.swift; sourceTree = "<group>"; };
@@ -432,6 +433,7 @@
 		A1057834EC965C7C3A18355D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E8A0566124CDA96400D54A68 /* TapApplePayKit_iOS.framework */,
 				CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */,
 				CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */,
 			);

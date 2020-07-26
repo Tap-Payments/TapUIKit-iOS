@@ -8,15 +8,7 @@
 
 import UIKit
 import TapUIKit_iOS
-import TapApplePayKit_iOS
-import CommonDataModelsKit_iOS
-import LocalisationManagerKit_iOS
-import TapCardVlidatorKit_iOS
-import TapCardInputKit_iOS
-import TapCardScanner_iOS
-import AVFoundation
-import WebKit
-import TapThemeManager2020
+
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -215,7 +207,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
         gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
         
-        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GatewayListHeader)
+        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GateWayListWithGoPayListHeader)
         tapGatewayChipHorizontalListViewModel.delegate = self
         
         
