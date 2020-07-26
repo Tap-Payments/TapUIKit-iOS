@@ -8,15 +8,17 @@
 
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
+    /// An event will be fired once the main switch state changed to off
     func removeSubSwitches()
+    /// An event will be fired once the main switch state changed to on
     func addSubSwitches()
 }
 
 /// A protocol to be used to fire functions and events in the parent view
 @objc public protocol TapSwitchViewModelDelegate {
     /**
-       An event will be fired once the main switch toggled
-    - Parameter enabled: return current switch state
+       An event will be fired once the switch state changed
+    - Parameter state: return current switch state
     */
     @objc func didChangeState(state: TapSwitchEnum)
 }
@@ -29,26 +31,46 @@ internal protocol TapSwitchViewDelegate {
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapSwitchViewModelDelegate?
     
+    /// main Switch model that holds the main switch properties
     internal var mainSwitch: TapSwitchModel
+    /// goPay Switch model that holds the goPay switch properties
     internal var goPaySwitch: TapSwitchModel?
+    /// merchant Switch model that holds the merchant switch properties
     internal var merchantSwitch: TapSwitchModel?
     
+    /// current state for switch view, default state is .none
     public var state: TapSwitchEnum = .none {
         didSet {
             self.delegate?.didChangeState(state: state)
         }
     }
     
+    /**
+     Initialize switch view with mainSwitch and goPaySwitch
+     - Parameter mainSwitch: main switch model to holde the required properties
+     - Parameter goPaySwitch: goPay switch model to holde the required properties
+     */
     public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel) {
         self.mainSwitch = mainSwitch
         self.goPaySwitch = goPaySwitch
     }
     
+    /**
+    Initialize switch view with mainSwitch and goPaySwitch
+    - Parameter mainSwitch: main switch model to holde the required properties
+    - Parameter merchantSwitch: merchant switch model to holde the required properties
+    */
     public init(mainSwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
         self.mainSwitch = mainSwitch
         self.merchantSwitch = merchantSwitch
     }
     
+    /**
+    Initialize switch view with mainSwitch and goPaySwitch
+    - Parameter mainSwitch: main switch model to holde the required properties
+    - Parameter goPaySwitch: goPay switch model to holde the required properties
+    - Parameter merchantSwitch: merchantSwitch switch model to holde the required properties
+    */
     public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
         self.mainSwitch = mainSwitch
         self.goPaySwitch = goPaySwitch
