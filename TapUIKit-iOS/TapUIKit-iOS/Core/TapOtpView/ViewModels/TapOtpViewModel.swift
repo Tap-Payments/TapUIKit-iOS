@@ -51,6 +51,7 @@ internal protocol TapOtpViewDelegate {
 }
 
 
+/// The view model that controls the tap otp view
 @objc public class TapOtpViewModel: NSObject {
     
     /// Timer to be used in counting down to update the state to expired
