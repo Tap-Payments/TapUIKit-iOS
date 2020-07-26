@@ -70,7 +70,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         
         if TapLocalisationManager.shared.localisationLocale == "ar" {
-            tapSaveCardSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."))
+            tapSaveCardSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، \nاحفظ رقم هاتفك المحمول.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."))
         }
         
         createTabBarViewModel()
