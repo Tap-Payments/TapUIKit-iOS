@@ -27,7 +27,7 @@ import TapThemeManager2020
     private var merchantSwitchControl: TapSwitchControl?
     
     /// The view model that controls the data to be displayed and the events to be fired
-    @objc public var viewModel:TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "Temp Title", subtitle: "Temp subtitle"), goPaySwitch: TapSwitchModel(title: "goPay Title", subtitle: "goPay subtitle"), merchantSwitch: TapSwitchModel(title: "merchant Title", subtitle: "merchant subtitle"))
+    @objc public var viewModel:TapSwitchViewModel = .init(with: .invalidCard)
     
     /// This contains the path of Tap Switch view theme in the theme manager
     private let themePath = "TapSwitchView"
@@ -139,6 +139,14 @@ import TapThemeManager2020
 }
 
 extension TapSwitchView: TapSwitchViewDelegate {
+    func addMainSwitch() {
+        self.mainSwitchControl.isHidden = false
+    }
+    
+    func removeMainSwitch() {
+        self.mainSwitchControl.isHidden = true
+    }
+    
     func removeSubSwitches() {
         if let goPaySwitchControl = self.goPaySwitchControl {
             if self.stackView.arrangedSubviews.contains(goPaySwitchControl) {

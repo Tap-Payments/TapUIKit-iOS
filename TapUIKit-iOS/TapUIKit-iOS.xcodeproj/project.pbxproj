@@ -15,6 +15,7 @@
 		6229B1B524C5CE600019413A /* TapSwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1B424C5CE600019413A /* TapSwitchViewModel.swift */; };
 		6229B1B824C5DEF10019413A /* TapSwitchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1B724C5DEF10019413A /* TapSwitchModel.swift */; };
 		6229B1BA24C6F1830019413A /* TapSwitchEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1B924C6F1830019413A /* TapSwitchEnum.swift */; };
+		625503DB24CEB57A00D82682 /* TapSwitchCardStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625503DA24CEB57A00D82682 /* TapSwitchCardStateEnum.swift */; };
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
@@ -209,6 +210,7 @@
 		6229B1B424C5CE600019413A /* TapSwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchViewModel.swift; sourceTree = "<group>"; };
 		6229B1B724C5DEF10019413A /* TapSwitchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchModel.swift; sourceTree = "<group>"; };
 		6229B1B924C6F1830019413A /* TapSwitchEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchEnum.swift; sourceTree = "<group>"; };
+		625503DA24CEB57A00D82682 /* TapSwitchCardStateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchCardStateEnum.swift; sourceTree = "<group>"; };
 		6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,6 +402,7 @@
 				6229B1AB24C4860D0019413A /* Views */,
 				6229B1AA24C485ED0019413A /* ViewModels */,
 				6229B1B924C6F1830019413A /* TapSwitchEnum.swift */,
+				625503DA24CEB57A00D82682 /* TapSwitchCardStateEnum.swift */,
 			);
 			path = TapSwitchView;
 			sourceTree = "<group>";
@@ -1420,6 +1423,7 @@
 				6229B1B824C5DEF10019413A /* TapSwitchModel.swift in Sources */,
 				E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */,
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
+				625503DB24CEB57A00D82682 /* TapSwitchCardStateEnum.swift in Sources */,
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
 				6225550424C8721A00A6FBDC /* TapAuthenticate.swift in Sources */,
 				E8437F7024BE16A10059F1B8 /* TapGoPayTitleViewModel.swift in Sources */,

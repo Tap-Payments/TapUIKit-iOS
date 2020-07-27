@@ -5,9 +5,14 @@
 //  Created by Kareem Ahmed on 7/20/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
+import LocalisationManagerKit_iOS
 
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
+    /// An event will be fired once the main switch card state changed to valid card or valid telecom
+    func addMainSwitch()
+    /// An event will be fired once the main switch card state changed to invalid card or invalid telecom
+    func removeMainSwitch()
     /// An event will be fired once the main switch state changed to off
     func removeSubSwitches()
     /// An event will be fired once the main switch state changed to on
@@ -21,18 +26,28 @@ internal protocol TapSwitchViewDelegate {
     - Parameter state: return current switch state
     */
     @objc func didChangeState(state: TapSwitchEnum)
+    
+    /**
+       An event will be fired once the switch card state changed
+    - Parameter cardState: return the new switch card state
+    */
+    @objc func didChangeCardState(cardState: TapSwitchCardStateEnum)
 }
 
 @objc public class TapSwitchViewModel: NSObject {
     
     /// The delegate used to fire events inside the associated view
-    internal var viewDelegate: TapSwitchViewDelegate?// TapOtpViewDelegate?
+    internal var viewDelegate: TapSwitchViewDelegate? {
+        didSet {
+            updateCardState()
+        }
+    }// TapOtpViewDelegate?
     
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapSwitchViewModelDelegate?
     
     /// main Switch model that holds the main switch properties
-    internal var mainSwitch: TapSwitchModel
+    internal var mainSwitch: TapSwitchModel = TapSwitchModel(title: "", subtitle: "")
     /// goPay Switch model that holds the goPay switch properties
     internal var goPaySwitch: TapSwitchModel?
     /// merchant Switch model that holds the merchant switch properties
@@ -45,25 +60,39 @@ internal protocol TapSwitchViewDelegate {
         }
     }
     
+    /// current state for switch view, default state is .none
+    public var cardState: TapSwitchCardStateEnum = .invalidCard {
+        didSet {
+            self.updateCardState()
+            self.delegate?.didChangeCardState(cardState: cardState)
+        }
+    }
+    
+    public init(with cardState: TapSwitchCardStateEnum) {
+        super.init()
+        self.cardState = cardState
+        self.configureSwitches()
+    }
+    
     /**
      Initialize switch view with mainSwitch and goPaySwitch
      - Parameter mainSwitch: main switch model to holde the required properties
      - Parameter goPaySwitch: goPay switch model to holde the required properties
      */
-    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel) {
-        self.mainSwitch = mainSwitch
-        self.goPaySwitch = goPaySwitch
-    }
+//    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel) {
+//        self.mainSwitch = mainSwitch
+//        self.goPaySwitch = goPaySwitch
+//    }
     
     /**
     Initialize switch view with mainSwitch and goPaySwitch
     - Parameter mainSwitch: main switch model to holde the required properties
     - Parameter merchantSwitch: merchant switch model to holde the required properties
     */
-    public init(mainSwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
-        self.mainSwitch = mainSwitch
-        self.merchantSwitch = merchantSwitch
-    }
+//    public init(mainSwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
+//        self.mainSwitch = mainSwitch
+//        self.merchantSwitch = merchantSwitch
+//    }
     
     /**
     Initialize switch view with mainSwitch and goPaySwitch
@@ -71,12 +100,23 @@ internal protocol TapSwitchViewDelegate {
     - Parameter goPaySwitch: goPay switch model to holde the required properties
     - Parameter merchantSwitch: merchantSwitch switch model to holde the required properties
     */
-    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
-        self.mainSwitch = mainSwitch
-        self.goPaySwitch = goPaySwitch
-        self.merchantSwitch = merchantSwitch
-    }
+//    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
+//        self.mainSwitch = mainSwitch
+//        self.goPaySwitch = goPaySwitch
+//        self.merchantSwitch = merchantSwitch
+//    }
     
+    // MARK: Create Switches
+    private func configureSwitches() {
+        if TapLocalisationManager.shared.localisationLocale == "ar" {
+            self.mainSwitch = TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.", subtitle: "")
+            self.goPaySwitch = TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.")
+        } else {
+            self.mainSwitch = TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: "")
+            self.goPaySwitch = TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process.")
+        }
+//        self.updateCardState()
+    }
     
     // MARK: Toggle Switch
     internal func updateMainSwitchState(isOn: Bool) {
@@ -128,6 +168,16 @@ internal protocol TapSwitchViewDelegate {
         }
     }
     
+    // MARK: Card State
+    func updateCardState() {
+        switch cardState {
+        case .invalidCard, .invalidTelecom:
+            self.viewDelegate?.removeMainSwitch()
+        case .validCard, .validTelecom:
+            self.viewDelegate?.addMainSwitch()
+        }
+    }
+    
     /**
         Creating and setup Switch View
     */
@@ -136,6 +186,7 @@ internal protocol TapSwitchViewDelegate {
         tapSwitchView.translatesAutoresizingMaskIntoConstraints = false
         tapSwitchView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         tapSwitchView.setup(with: self)
+        self.updateCardState()
         return tapSwitchView
     }
 }
