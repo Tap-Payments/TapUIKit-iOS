@@ -591,10 +591,16 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             tapActionButtonViewModel.buttonStatus = .ValidPayment
             let payAction:()->() = { self.startPayment(then:true) }
             tapActionButtonViewModel.buttonActionBlock = payAction
+            tapSaveCardSwitchViewModel.cardState = .validTelecom
         }else {
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
             tapActionButtonViewModel.buttonActionBlock = {}
+            tapSaveCardSwitchViewModel.cardState = .invalidTelecom
         }
+        
+        
+        
+        
     }
     
     func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -603,9 +609,11 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             tapActionButtonViewModel.buttonStatus = .ValidPayment
             let payAction:()->() = { self.startPayment(then:false) }
             tapActionButtonViewModel.buttonActionBlock = payAction
+            tapSaveCardSwitchViewModel.cardState = .validCard
         }else{
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
             tapActionButtonViewModel.buttonActionBlock = {}
+            tapSaveCardSwitchViewModel.cardState = .invalidCard
         }
     }
     

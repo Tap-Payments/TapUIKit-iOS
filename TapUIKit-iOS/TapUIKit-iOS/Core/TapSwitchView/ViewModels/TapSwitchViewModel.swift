@@ -107,7 +107,7 @@ internal protocol TapSwitchViewDelegate {
     
     // MARK: Create Switches
     private func configureSwitches() {
-        self.mainSwitch = TapSwitchModel(localisedSwitchKey: "main")
+        self.mainSwitch = TapSwitchModel(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
         self.goPaySwitch = TapSwitchModel(localisedSwitchKey: "goPay")
         self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant")
         
