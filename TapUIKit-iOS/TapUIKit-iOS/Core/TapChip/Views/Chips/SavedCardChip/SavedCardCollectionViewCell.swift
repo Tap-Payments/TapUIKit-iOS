@@ -185,6 +185,7 @@ extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
         }else{
             deleteCardButton.fadeOut()
         }
+        self.wiggle(on: to)
     }
     
     func changeSelection(with status: Bool) {

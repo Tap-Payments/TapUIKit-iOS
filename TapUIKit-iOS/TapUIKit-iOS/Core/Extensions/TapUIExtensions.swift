@@ -103,6 +103,24 @@ internal extension UIView {
     }
     
     
+    // MARK:- Making corner radious for certain corners
+    /**
+     Wiggle animation for the uiview
+     - Parameter on : If set then wiggle will start
+     */
+    func wiggle(on:Bool) {
+        self.layer.removeAllAnimations()
+        if on {
+            let transformAnim  = CAKeyframeAnimation(keyPath:"transform")
+            transformAnim.values  = [NSValue(caTransform3D: CATransform3DMakeRotation(0.04, 0.0, 0.0, 1.0)),NSValue(caTransform3D: CATransform3DMakeRotation(-0.04 , 0, 0, 1))]
+            transformAnim.autoreverses = true
+            transformAnim.duration  = 0.115
+            transformAnim.repeatCount = Float.infinity
+            self.layer.add(transformAnim, forKey: "transform")
+        }
+    }
+    
+    
     // MARK:- Loading a nib dynamically
     /**
      Load a XIB file into a UIView
