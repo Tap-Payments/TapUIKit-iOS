@@ -109,7 +109,7 @@ internal protocol TapSwitchViewDelegate {
     // MARK: Create Switches
     private func configureSwitches() {
         if TapLocalisationManager.shared.localisationLocale == "ar" {
-            self.mainSwitch = TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.", subtitle: "")
+            self.mainSwitch = TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.", subtitle: "")
             self.goPaySwitch = TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.")
         } else {
             self.mainSwitch = TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: "")
