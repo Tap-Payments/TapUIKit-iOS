@@ -155,7 +155,7 @@ extension ItemTableViewCell {
         
         itemQuantityView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).count.backgroundColor")
         itemQuantityView.layer.cornerRadius = itemQuantityView.frame.width / 2
-        itemQuantityLabel.tap_theme_font = .init(stringLiteral: "\(themePath).count.countLabelFont")
+        itemQuantityLabel.tap_theme_font = .init(stringLiteral: "\(themePath).count.countLabelFont",shouldLocalise:false)
         itemQuantityLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).count.countLabelColor")
     }
     

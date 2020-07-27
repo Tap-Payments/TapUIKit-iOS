@@ -148,7 +148,9 @@ class TapHorizontalHeaderView: UIView {
             (leftTitleKey,rightTitleKey) = ("","")
         }
         
-        return (sharedLocalisationManager.localisedValue(for: leftTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()),sharedLocalisationManager.localisedValue(for: rightTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()))
+        // The left title will be GOPAY always for the case of GoPayListHeader
+        return ( (self == .GoPayListHeader) ? "GOPAY" : sharedLocalisationManager.localisedValue(for: leftTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()),
+                sharedLocalisationManager.localisedValue(for: rightTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()))
         
     }
 }
