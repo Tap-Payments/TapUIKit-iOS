@@ -514,6 +514,9 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
+    
+    
+    
     func currencyChip(for viewModel: CurrencyChipViewModel) {
         
         tapItemsTableViewModel.dataSource.forEach { (genericCellModel) in
@@ -577,11 +580,14 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     }
     
     func headerRightButtonClicked(in headerType: TapHorizontalHeaderType) {
-        /*if headerType == .GatewayListHeader {
-            showAlert(title: "Right button for Gateway Header", message: "@Hala and @Haitham i do not know what to do here :)")
-        }else if headerType == .GoPayListHeader {
-            showAlert(title: "Right button for GoPay Header", message: "@Hala and @Haitham i do not know what to do here :)")
-        }*/
+        tapGatewayChipHorizontalListViewModel.editMode(changed: true)
+        tapGoPayChipsHorizontalListViewModel.editMode(changed: true)
+    }
+    
+    
+    func headerEndEditingButtonClicked(in headerType: TapHorizontalHeaderType) {
+        tapGatewayChipHorizontalListViewModel.editMode(changed: false)
+        tapGoPayChipsHorizontalListViewModel.editMode(changed: false)
     }
     
     func didSelect(item viewModel: GenericTapChipViewModel) {

@@ -382,6 +382,10 @@
                 "backgroundColor" : "white",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
+                "editMode": {
+                    "alpha": 0.8,
+                    "deleteIcon": "deleteCardIconLight"
+                },
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",

@@ -128,6 +128,10 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    func headerEndEditingButtonClicked(in headerType: TapHorizontalHeaderType) {
+        
+    }
+    
     func currencyChip(for viewModel: CurrencyChipViewModel) {
         
     }

@@ -30,6 +30,11 @@ import class TapApplePayKit_iOS.TapApplePayToken
      */
     @objc func headerRightButtonClicked(in headerType:TapHorizontalHeaderType)
     /**
+     The event will be fired when end editing button in the header if any is clicked
+     - Parameter headerType: Represents which header was clicked
+     */
+    @objc func headerEndEditingButtonClicked(in headerType:TapHorizontalHeaderType)
+    /**
      The event will be fired when a successful apple pay authorization happened
      - Parameter viewModel: Represents The attached view model
      - Parameter token: Represents Tap wrapper for the generated token
@@ -75,6 +80,11 @@ internal protocol TapChipHorizontalViewModelDelegate {
     
     /// Call this method when you want to deselct all selected items inside the horizontal list
     func deselectAll()
+    /**
+     Call this method when you want to change the diting state of the current shown header
+     - Parameter to: The new editing satus
+     */
+    func changeHeaderEditingStatus(to:Bool)
 }
 
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
@@ -126,6 +136,16 @@ internal protocol TapChipHorizontalViewModelDelegate {
     /// Call this method when you want to deselct all selected items inside the horizontal list
     @objc public func deselectAll() {
         cellDelegate?.deselectAll()
+    }
+    
+    
+    /**
+     Call this method when the editing mode status had changed and you want to reflect this on all rendered chips
+     - Parameter to: If set, then editing mode will
+     */
+    @objc public func editMode(changed to:Bool) {
+        dataSource.forEach{ $0.editMode = to }
+        cellDelegate?.changeHeaderEditingStatus(to: to)
     }
     
     /// Creates empty view model, added for convience
@@ -184,6 +204,14 @@ internal protocol TapChipHorizontalViewModelDelegate {
      */
     internal func rightButtonClicked(for header:TapHorizontalHeaderView) {
         delegate?.headerRightButtonClicked(in: header.headerType!)
+    }
+    
+    /**
+     The event will be fired when end editing button is clicked
+     - Parameter header: Represents which header was clicked
+     */
+    internal func closeEditButtonClicked(for header:TapHorizontalHeaderView) {
+        delegate?.headerEndEditingButtonClicked(in: header.headerType!)
     }
     
     /**

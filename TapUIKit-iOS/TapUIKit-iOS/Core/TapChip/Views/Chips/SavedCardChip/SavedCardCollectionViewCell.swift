@@ -19,6 +19,8 @@ import SnapKit
     var cardBrandIconImageView: UIImageView = .init()
     /// Reference to the saved card secured number
     var cardSchemeLabel: UILabel = .init()
+    /// Reference to the delete save card button
+    @IBOutlet weak var deleteCardButton: UIButton!
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
@@ -34,6 +36,10 @@ import SnapKit
     }
     
     // MARK:- Internal methods
+    
+    @IBAction func deleteButtonClicked(_ sender: Any) {
+        
+    }
     
     func identefier() -> String {
         return viewModel.identefier()
@@ -81,6 +87,8 @@ import SnapKit
     func reload() {
         loadImages()
         assignLabels()
+        // Apply the editing ui if needed
+        changedEditMode(to: viewModel.editMode)
     }
     
     func addSubViews() {
@@ -148,6 +156,8 @@ extension SavedCardCollectionViewCell {
 
         cardSchemeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
         cardSchemeLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
+        
+        deleteCardButton.tap_theme_setImage(selector: .init(keyPath: "\(themePath).editMode.deleteIcon"), forState: .normal)
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -167,6 +177,15 @@ extension SavedCardCollectionViewCell {
 
 
 extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
+    
+    
+    func changedEditMode(to: Bool) {
+        if to {
+            deleteCardButton.fadeIn()
+        }else{
+            deleteCardButton.fadeOut()
+        }
+    }
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)

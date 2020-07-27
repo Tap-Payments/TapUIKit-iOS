@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D8D6AE4B-DBD4-469E-8560-74445579F844"
+            uuid = "2CDF0527-E975-4104-B8C1-22A0026BFA2C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapChip/Views/HorizontalList/TapGatewyHorizontalHeaderView.swift"
+            filePath = "TapUIKit-iOS/Core/TapChip/Views/Chips/ApplePayChip/ApplePayChipCollectionViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "adjustRightButtonAccessory(with:)"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

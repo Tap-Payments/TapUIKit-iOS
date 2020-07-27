@@ -29,6 +29,7 @@ import SnapKit
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
+            reload()
         }
     }
     
@@ -60,6 +61,11 @@ import SnapKit
         get{
             return tapChipType().themePath()
         }
+    }
+    
+    func reload() {
+        // Apply the editing ui if needed
+        changedEditMode(to: viewModel.editMode)
     }
     
     // Mark:- Init methods
@@ -152,6 +158,12 @@ extension TapGoPayChipCollectionViewCell {
 
 
 extension TapGoPayChipCollectionViewCell:GenericCellChipViewModelDelegate {
+    
+    func changedEditMode(to: Bool) {
+        self.alpha = to ? 0.5 : 1
+        self.isUserInteractionEnabled = !to
+    }
+    
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)

@@ -73,7 +73,8 @@ import TapThemeManager2020
     
     /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
     func reload() {
-        
+        // Apply the editing ui if needed
+        changedEditMode(to: viewModel.editMode)
     }
 }
 
@@ -110,6 +111,8 @@ extension ApplePayChipCollectionViewCell {
         combination.append(applePayTitle)
         
         self.applePayTitle.attributedText = combination
+        
+        
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -129,6 +132,11 @@ extension ApplePayChipCollectionViewCell {
 
 
 extension ApplePayChipCollectionViewCell:GenericCellChipViewModelDelegate {
+    
+    func changedEditMode(to: Bool) {
+        self.contentView.alpha = to ? 0.5 : 1
+        self.isUserInteractionEnabled = !to
+    }
     
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)

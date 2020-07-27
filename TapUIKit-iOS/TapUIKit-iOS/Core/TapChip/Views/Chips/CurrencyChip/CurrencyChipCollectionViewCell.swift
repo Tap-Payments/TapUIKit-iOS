@@ -147,6 +147,11 @@ extension CurrencyChipCollectionViewCell {
 
 extension CurrencyChipCollectionViewCell:GenericCellChipViewModelDelegate {
     
+    func changedEditMode(to: Bool) {
+        // Currency chip doesn't care about this
+        return
+    }
+    
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
     }

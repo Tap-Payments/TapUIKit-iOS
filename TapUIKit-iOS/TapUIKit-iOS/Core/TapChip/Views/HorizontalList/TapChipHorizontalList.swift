@@ -183,6 +183,7 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
         let model = viewModel.viewModel(at: indexPath.row)
         let cell:GenericTapChip = viewModel.dequeuCell(in: collectionView, at: indexPath)
         cell.configureCell(with: model)
+        
         return cell
     }
     
@@ -197,6 +198,12 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
 }
 
 extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
+    func changeHeaderEditingStatus(to: Bool) {
+        if viewModel.headerType == .GoPayListHeader || viewModel.headerType == .GatewayListHeader {
+            headerView.changeEditingState(to: to)
+        }
+    }
+    
     func refreshLayout() {
         assignFlowLaout()
     }
@@ -247,12 +254,15 @@ extension TapChipHorizontalList {
 
 extension TapChipHorizontalList: TapHorizontalHeaderDelegate {
     func endEditButtonClicked(with type: TapHorizontalHeaderView) {
-        type.changeEditingState(to: false)
+        viewModel.closeEditButtonClicked(for: type)
+        //type.changeEditingState(to: false)
+        //viewModel.editMode(changed: false)
     }
     
     func rightAccessoryClicked(with type: TapHorizontalHeaderView) {
         viewModel.rightButtonClicked(for: type)
-        type.changeEditingState(to: true)
+        //type.changeEditingState(to: true)
+        //viewModel.editMode(changed: true)
     }
     
     func leftAccessoryClicked(with type: TapHorizontalHeaderView) {

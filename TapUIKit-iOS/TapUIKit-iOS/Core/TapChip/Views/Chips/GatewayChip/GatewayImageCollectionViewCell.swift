@@ -51,6 +51,9 @@ import Nuke
         }
         
         Nuke.loadImage(with: iconURL, into: gatewayIconImageView)
+        
+        // Apply the editing ui if needed
+        changedEditMode(to: viewModel.editMode)
     }
     
     override func tapChipType() -> TapChipType {
@@ -119,6 +122,12 @@ extension GatewayImageCollectionViewCell {
 
 
 extension GatewayImageCollectionViewCell:GenericCellChipViewModelDelegate{
+    
+    func changedEditMode(to: Bool) {
+        self.alpha = to ? 0.5 : 1
+        self.isUserInteractionEnabled = !to
+    }
+    
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
     }

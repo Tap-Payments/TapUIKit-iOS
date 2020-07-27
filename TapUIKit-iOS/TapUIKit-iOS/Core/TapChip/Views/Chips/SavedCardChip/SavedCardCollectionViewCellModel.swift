@@ -38,6 +38,11 @@ import class UIKit.UICollectionViewCell
        cellDelegate?.changeSelection(with: false)
     }
     
+    public override func changedEditMode(to: Bool) {
+        // When the view model get notified about the new editing mode status
+        cellDelegate?.changedEditMode(to: to)
+    }
+    
     // MARK:- Internal methods
     internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! SavedCardCollectionViewCell

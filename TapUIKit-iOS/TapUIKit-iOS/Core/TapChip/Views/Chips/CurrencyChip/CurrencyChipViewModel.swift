@@ -31,6 +31,11 @@ import class UIKit.UICollectionViewCell
     }
     
     
+    public override func changedEditMode(to: Bool) {
+        // When the view model get notified about the new editing mode status
+        cellDelegate?.changedEditMode(to: to)
+    }
+    
     public override func didSelectItem() {
         cellDelegate?.changeSelection(with: true)
         viewModelDelegate?.currencyChip(for: self)

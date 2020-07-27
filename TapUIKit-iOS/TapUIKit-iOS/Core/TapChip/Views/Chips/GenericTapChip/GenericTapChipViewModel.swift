@@ -47,6 +47,12 @@ internal protocol GenericCellChipViewModelDelegate {
      - parameter status: tTrue if it was just selected and false otherwise
      */
     func changeSelection(with status:Bool)
+    
+    /**
+     Each view model should have an interface to change its ui based on the current editing mode status
+     - parameter to: True means, the editing mode is on
+     */
+    func changedEditMode(to:Bool)
 }
 
 /// This is a superclass for all the chips view models created, this will make sure all have the same interface/output and ease the parametery type in methods
@@ -56,6 +62,12 @@ internal protocol GenericCellChipViewModelDelegate {
     @objc public var title:String?
     /// The icon if any to be displayed in the Chip cell
     @objc public var icon:String?
+    /// Indicates whether the view model should show the editing state or not
+    @objc public var editMode:Bool = false {
+        didSet{
+            changedEditMode(to:editMode)
+        }
+    }
     
     /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
     internal var viewModelDelegate:GenericChipViewModelDelegate?
@@ -85,6 +97,14 @@ internal protocol GenericCellChipViewModelDelegate {
     
     ///Each Chip View Model must have an interface to know that his assocated cell is deselected to do the needed logic
     func didDeselectItem() {
+        return
+    }
+    
+    /**
+     Each Chip View Model will be responsible udpate its UI based on the current editing status
+     - Parameter to: If set means the editing mode is on, otherwise, editing mode is off
+     */
+    func changedEditMode(to:Bool) {
         return
     }
     
