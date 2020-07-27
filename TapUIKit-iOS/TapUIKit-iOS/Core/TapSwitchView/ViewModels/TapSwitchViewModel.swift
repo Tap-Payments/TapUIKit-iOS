@@ -5,7 +5,6 @@
 //  Created by Kareem Ahmed on 7/20/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-import LocalisationManagerKit_iOS
 
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
@@ -108,13 +107,10 @@ internal protocol TapSwitchViewDelegate {
     
     // MARK: Create Switches
     private func configureSwitches() {
-        if TapLocalisationManager.shared.localisationLocale == "ar" {
-            self.mainSwitch = TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.", subtitle: "")
-            self.goPaySwitch = TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.")
-        } else {
-            self.mainSwitch = TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: "")
-            self.goPaySwitch = TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process.")
-        }
+        self.mainSwitch = TapSwitchModel(localisedSwitchKey: "main")
+        self.goPaySwitch = TapSwitchModel(localisedSwitchKey: "goPay")
+        self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant")
+        
 //        self.updateCardState()
     }
     
