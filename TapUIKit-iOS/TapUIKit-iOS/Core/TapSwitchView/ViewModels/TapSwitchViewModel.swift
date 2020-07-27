@@ -10,9 +10,9 @@ import LocalisationManagerKit_iOS
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
     /// An event will be fired once the main switch card state changed to valid card or valid telecom
-    func addMainSwitch()
+    func hideMainSwitch()
     /// An event will be fired once the main switch card state changed to invalid card or invalid telecom
-    func removeMainSwitch()
+    func showMainSwitch()
     /// An event will be fired once the main switch state changed to off
     func removeSubSwitches()
     /// An event will be fired once the main switch state changed to on
@@ -41,7 +41,7 @@ internal protocol TapSwitchViewDelegate {
         didSet {
             updateCardState()
         }
-    }// TapOtpViewDelegate?
+    }
     
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapSwitchViewModelDelegate?
@@ -172,9 +172,10 @@ internal protocol TapSwitchViewDelegate {
     func updateCardState() {
         switch cardState {
         case .invalidCard, .invalidTelecom:
-            self.viewDelegate?.removeMainSwitch()
+            self.updateMainSwitchState(isOn: false)
+            self.viewDelegate?.hideMainSwitch()
         case .validCard, .validTelecom:
-            self.viewDelegate?.addMainSwitch()
+            self.viewDelegate?.showMainSwitch()
         }
     }
     

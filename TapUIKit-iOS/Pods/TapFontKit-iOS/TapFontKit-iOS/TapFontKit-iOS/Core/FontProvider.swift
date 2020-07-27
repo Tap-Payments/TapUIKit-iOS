@@ -115,8 +115,8 @@ public class FontProvider {
             .circeLight:             .arabicHelveticaNeueLight,
             .circeRegular:             .arabicHelveticaNeueRegular,
             .circeBold:             .arabicHelveticaNeueBold,
-            .robotoThin:     .arabicTajwalLight,
-            .robotoLight:     .arabicTajwalLight,
+            .robotoThin:     .arabicTajwalRegular,
+            .robotoLight:     .arabicTajwalRegular,
             .robotoMedium:     .arabicTajwalBold,
             .robotoRegular:    .arabicTajwalMedium,
             .robotoBold:     .arabicTajwalBlack

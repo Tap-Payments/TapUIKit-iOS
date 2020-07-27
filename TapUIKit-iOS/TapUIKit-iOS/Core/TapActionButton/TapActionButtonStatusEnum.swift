@@ -86,6 +86,24 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     
     
     /**
+     Decides the color of action button title based on the traitcollection and status of the button
+     - Returns: The correct tap action button title color
+     */
+    public func buttonTitleColor() -> UIColor {
+        
+        var titleColorPath:String = ""
+        
+        switch self {
+        case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
+            titleColorPath = "actionButton.Invalid.titleLabelColor"
+        default:
+            titleColorPath = "actionButton.Valid.titleLabelColor"
+        }
+        return TapThemeManager.colorValue(for: titleColorPath) ?? .clear
+    }
+    
+    
+    /**
      Decides the title of the tap action button based on the status
      - Returns: The correct title of the tap action button basde on the given status
      */

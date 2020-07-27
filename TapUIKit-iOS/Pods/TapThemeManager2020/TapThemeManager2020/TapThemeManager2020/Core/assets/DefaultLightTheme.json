@@ -455,7 +455,7 @@
     },
     "TapVerticalView":
     {
-        "blurBackgroundColor":"clear",
+        "blurBackgroundColor":"#f9f9f9C6",
         "defaultBackgroundColor":"whiteTwo"
     },
     "Hints":
@@ -555,7 +555,6 @@
     "actionButton": {
         "Common": {
             "titleLabelFont" : "Roboto-Regular,16",
-            "titleLabelColor" : "white",
             "assets": {
                 "loading": "3sec-white-loader-2.gif",
                 "error": "white-error-mob.gif",
@@ -565,11 +564,13 @@
             }
         },
         "Invalid" : {
-            "backgroundColor" : "veryLightPinkThree"
+            "backgroundColor" : "veryLightPinkThree",
+            "titleLabelColor" : "white"
         },
         "Valid" : {
             "goLoginBackgroundColor" : "deepSkyBlue",
-            "paymentBackgroundColor" : "vibrantGreen"
+            "paymentBackgroundColor" : "vibrantGreen",
+            "titleLabelColor" : "white"
         },
         "BackgroundColor": {
             "Otp" : "clear",

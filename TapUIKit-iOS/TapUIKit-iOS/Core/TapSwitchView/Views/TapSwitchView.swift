@@ -139,12 +139,12 @@ import TapThemeManager2020
 }
 
 extension TapSwitchView: TapSwitchViewDelegate {
-    func addMainSwitch() {
-        self.mainSwitchControl.isHidden = false
+    func hideMainSwitch() {
+        self.mainSwitchControl.hideSwitch = true
     }
     
-    func removeMainSwitch() {
-        self.mainSwitchControl.isHidden = true
+    func showMainSwitch() {
+        self.mainSwitchControl.hideSwitch = false
     }
     
     func removeSubSwitches() {

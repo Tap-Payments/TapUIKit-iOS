@@ -23,6 +23,12 @@ protocol TapHorizontalHeaderDelegate {
      - Parameter type: The header view which fired the event
      */
     func leftAccessoryClicked(with type:TapHorizontalHeaderView)
+    
+    /**
+     Will be fired once the end editing button clicked
+     - Parameter type: The header view which fired the event
+     */
+    func endEditButtonClicked(with type:TapHorizontalHeaderView)
 }
 
 /// Represents a generic header view to be attached to the genetic horizontal chips list
@@ -32,6 +38,8 @@ class TapHorizontalHeaderView: UIView {
     @IBOutlet weak var leftButton: UIButton!
     /// Reference to the right accessory view
     @IBOutlet weak var rightButton: UIButton!
+    /// Reference to the close button that will cancel/stop the edit mode
+    @IBOutlet weak var closeButton: UIButton!
     /// Reference to the main XIB view
     @IBOutlet var contentView: UIView!
     /// Subscribe to this to get notified upon fired events
@@ -55,6 +63,9 @@ class TapHorizontalHeaderView: UIView {
         delegate?.rightAccessoryClicked(with: self)
     }
     
+    @IBAction func closeEditingClicked(_ sender: Any) {
+        delegate?.endEditButtonClicked(with: self)
+    }
     
     /// The path to look for theme entry in
     private var themePath:String {
@@ -74,6 +85,28 @@ class TapHorizontalHeaderView: UIView {
         commonInit()
     }
     
+    /**
+     Call this method to switch the state between the edit button and the close editing button
+     - Parameter to: If true, then editing mode will start by showing the X icons on chips and showing the close edit state. and vice versa
+     */
+    internal func changeEditingState(to:Bool) {
+        //Switch the buttons to start editing and to close editing based on the new state passed
+        adjustRightButtonAccessory(with: to)
+    }
+    
+    /**
+     Call this method to switch the state between the edit button and the close editing button
+     - Parameter to: If true, then close edit button will appear, otherwise, the edit button will appear
+     */
+    private func adjustRightButtonAccessory(with editing:Bool) {
+        if editing {
+            rightButton.fadeOut()
+            closeButton.fadeIn()
+        }else {
+            rightButton.fadeIn()
+            closeButton.fadeOut()
+        }
+    }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
@@ -89,9 +122,10 @@ class TapHorizontalHeaderView: UIView {
     
     /// Handles all required localisations for the different views insude the header
     private func localize() {
-        let (leftTitle,rightTitle) = headerType?.localizedTitles() ?? ("","")
+        let (leftTitle,rightTitle,closeEditTitle) = headerType?.localizedTitles() ?? ("","","")
         leftButton.setTitle(leftTitle, for: .normal)
         rightButton.setTitle(rightTitle, for: .normal)
+        closeButton.setTitle(closeEditTitle, for: .normal)
     }
     
     
@@ -131,24 +165,28 @@ class TapHorizontalHeaderView: UIView {
     
     /**
      Defines the localizations of left and tight accessoty based on the type
-     - Returns: (Localized Left title, Localized Right title)
+     - Returns: (Localized Left title, Localized Right title, Localized Close editing title)
      */
-    func localizedTitles() -> (String,String) {
+    func localizedTitles() -> (String,String,String) {
         
         let sharedLocalisationManager = TapLocalisationManager.shared
         
-        var (leftTitleKey,rightTitleKey) = ("","")
+        var (leftTitleKey,rightTitleKey,endEditTitleKey) = ("","","")
         
         switch self {
         case .GatewayListHeader,.GoPayListHeader:
-            (leftTitleKey,rightTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle")
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle","Common.close")
         case .GateWayListWithGoPayListHeader:
-            (leftTitleKey,rightTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","")
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","","")
         case .NoHeader:
-            (leftTitleKey,rightTitleKey) = ("","")
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("","","")
         }
         
-        return (sharedLocalisationManager.localisedValue(for: leftTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()),sharedLocalisationManager.localisedValue(for: rightTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()))
+        // The left title will be GOPAY always for the case of GoPayListHeader
+        return ( (self == .GoPayListHeader) ? "GOPAY" : sharedLocalisationManager.localisedValue(for: leftTitleKey, with:       TapCommonConstants.pathForDefaultLocalisation()),
+                sharedLocalisationManager.localisedValue(for: rightTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()),
+                sharedLocalisationManager.localisedValue(for: endEditTitleKey, with: TapCommonConstants.pathForDefaultLocalisation()).uppercased()
+        )
         
     }
 }
@@ -171,6 +209,9 @@ extension TapHorizontalHeaderView {
         
         rightButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).rightButton.labelTextFont")
         rightButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).rightButton.labelTextColor"), forState: .normal)
+        
+        closeButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).rightButton.labelTextFont")
+        closeButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).rightButton.labelTextColor"), forState: .normal)
         
         contentView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
     }

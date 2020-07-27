@@ -8,15 +8,7 @@
 
 import UIKit
 import TapUIKit_iOS
-import TapApplePayKit_iOS
-import CommonDataModelsKit_iOS
-import LocalisationManagerKit_iOS
-import TapCardVlidatorKit_iOS
-import TapCardInputKit_iOS
-import TapCardScanner_iOS
-import AVFoundation
-import WebKit
-import TapThemeManager2020
+
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -77,11 +69,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
         
-        
-        if TapLocalisationManager.shared.localisationLocale == "ar" {
-            tapSaveCardSwitchViewModel = .init(with: .invalidCard)
-//                .init(mainSwitch: TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."))
-        }
         
         createTabBarViewModel()
         createGatewaysViews()
@@ -217,7 +204,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
         gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
         
-        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GatewayListHeader)
+        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GateWayListWithGoPayListHeader)
         tapGatewayChipHorizontalListViewModel.delegate = self
         
         
@@ -587,11 +574,11 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     }
     
     func headerRightButtonClicked(in headerType: TapHorizontalHeaderType) {
-        if headerType == .GatewayListHeader {
+        /*if headerType == .GatewayListHeader {
             showAlert(title: "Right button for Gateway Header", message: "@Hala and @Haitham i do not know what to do here :)")
         }else if headerType == .GoPayListHeader {
             showAlert(title: "Right button for GoPay Header", message: "@Hala and @Haitham i do not know what to do here :)")
-        }
+        }*/
     }
     
     func didSelect(item viewModel: GenericTapChipViewModel) {

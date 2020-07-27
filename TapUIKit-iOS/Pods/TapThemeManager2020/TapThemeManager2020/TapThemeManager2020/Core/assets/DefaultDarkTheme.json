@@ -28,7 +28,7 @@
             "deepSkyBlue15":"#007aff26",
             "brownGreyFive":"#aeaeae",
             "deepSkyBlue15":"#007aff26",
-            "veryLightPinkThree": "#d7d7d7",
+            "veryLightPinkThree": "#1c1c1e",
             "azure": "#009aff",
             "brownGreySix": "#a7a7a7",
             "brownGreySeven": "#7e7e7e",
@@ -419,7 +419,7 @@
             "calculatedPriceLabelFont" : "Roboto-Light,12",
             "calculatedPriceLabelColor" : "brownGrey",
             "count": {
-                "backgroundColor": "paleLilac",
+                "backgroundColor": "whiteTwo",
                 "countLabelFont" : "Roboto-Regular,9",
                 "countLabelColor" : "greyishBrown",
             }
@@ -555,7 +555,6 @@
     "actionButton": {
         "Common": {
             "titleLabelFont" : "Roboto-Regular,16",
-            "titleLabelColor" : "white",
             "assets": {
                 "loading": "3sec-white-loader-2.gif",
                 "error": "white-error-mob.gif",
@@ -565,11 +564,13 @@
             }
         },
         "Invalid" : {
-            "backgroundColor" : "veryLightPinkThree"
+            "backgroundColor" : "veryLightPinkThree",
+            "titleLabelColor" : "brownGrey"
         },
         "Valid" : {
             "goLoginBackgroundColor" : "deepSkyBlue",
-            "paymentBackgroundColor" : "vibrantGreen"
+            "paymentBackgroundColor" : "vibrantGreen",
+            "titleLabelColor" : "greyishBrown"
         },
         "BackgroundColor": {
             "Otp" : "clear",
