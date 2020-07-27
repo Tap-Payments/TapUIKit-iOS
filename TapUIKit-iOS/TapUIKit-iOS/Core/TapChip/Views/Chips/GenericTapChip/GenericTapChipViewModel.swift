@@ -37,6 +37,12 @@ internal protocol GenericChipViewModelDelegate {
      - Parameter viewModel: Represents The attached view model
      */
     func currencyChip(for viewModel:CurrencyChipViewModel)
+    
+    /**
+     The event will be fired when the user cliks on delete icon in the chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func deleteChip(for viewModel:SavedCardCollectionViewCellModel)
 }
 
 

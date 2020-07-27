@@ -515,8 +515,6 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
     
-    
-    
     func currencyChip(for viewModel: CurrencyChipViewModel) {
         
         tapItemsTableViewModel.dataSource.forEach { (genericCellModel) in
@@ -588,6 +586,10 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     func headerEndEditingButtonClicked(in headerType: TapHorizontalHeaderType) {
         tapGatewayChipHorizontalListViewModel.editMode(changed: false)
         tapGoPayChipsHorizontalListViewModel.editMode(changed: false)
+    }
+    
+    func deleteChip(for viewModel: SavedCardCollectionViewCellModel) {
+        showAlert(title: "DELETE A CARD", message: "You wanted to delete the card \(viewModel.title ?? "")")
     }
     
     func didSelect(item viewModel: GenericTapChipViewModel) {

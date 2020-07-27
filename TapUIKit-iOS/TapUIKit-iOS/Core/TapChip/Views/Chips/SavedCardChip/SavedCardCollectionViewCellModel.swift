@@ -43,6 +43,10 @@ import class UIKit.UICollectionViewCell
         cellDelegate?.changedEditMode(to: to)
     }
     
+    func deleteChip() {
+        viewModelDelegate?.deleteChip(for: self)
+    }
+    
     // MARK:- Internal methods
     internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! SavedCardCollectionViewCell

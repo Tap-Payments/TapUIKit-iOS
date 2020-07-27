@@ -38,7 +38,7 @@ import SnapKit
     // MARK:- Internal methods
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
-        
+        viewModel.deleteChip()
     }
     
     func identefier() -> String {

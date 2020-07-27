@@ -128,6 +128,10 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    func deleteChip(for viewModel: SavedCardCollectionViewCellModel) {
+        
+    }
+    
     func headerEndEditingButtonClicked(in headerType: TapHorizontalHeaderType) {
         
     }
