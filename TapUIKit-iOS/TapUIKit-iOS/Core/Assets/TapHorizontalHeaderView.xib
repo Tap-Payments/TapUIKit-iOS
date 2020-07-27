@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="9YM-Em-YcD" id="6NL-Ct-fYZ"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="BML-cL-NuR"/>
                 <outlet property="leftButton" destination="jDi-Fw-fnO" id="aKD-m8-ry0"/>
                 <outlet property="rightButton" destination="ho1-Bg-UIV" id="oiz-2y-CvP"/>
@@ -34,15 +35,26 @@
                         <action selector="rightButtonClicked:" destination="-1" eventType="touchUpInside" id="9xt-nv-fCI"/>
                     </connections>
                 </button>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-Em-YcD">
+                    <rect key="frame" x="350" y="0.0" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="closeEditingClicked:" destination="-1" eventType="touchUpInside" id="NPS-z3-bi8"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="9YM-Em-YcD" firstAttribute="bottom" secondItem="ho1-Bg-UIV" secondAttribute="bottom" id="8Xp-uA-N2f"/>
                 <constraint firstItem="jDi-Fw-fnO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="CfJ-QV-cWn"/>
                 <constraint firstItem="ho1-Bg-UIV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HEz-8i-gSc"/>
                 <constraint firstAttribute="bottom" secondItem="ho1-Bg-UIV" secondAttribute="bottom" id="LJy-aN-HPG"/>
                 <constraint firstItem="jDi-Fw-fnO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Uk3-Ut-eXJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ho1-Bg-UIV" secondAttribute="trailing" constant="18" id="bS2-bB-MAT"/>
+                <constraint firstItem="9YM-Em-YcD" firstAttribute="trailing" secondItem="ho1-Bg-UIV" secondAttribute="trailing" id="dAj-6Z-Bpw"/>
                 <constraint firstItem="jDi-Fw-fnO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fMu-WN-Wtf"/>
+                <constraint firstItem="9YM-Em-YcD" firstAttribute="top" secondItem="ho1-Bg-UIV" secondAttribute="top" id="u3F-XU-8UZ"/>
+                <constraint firstItem="9YM-Em-YcD" firstAttribute="leading" secondItem="ho1-Bg-UIV" secondAttribute="leading" id="yiv-5a-Rpg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

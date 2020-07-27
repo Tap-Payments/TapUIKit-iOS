@@ -246,8 +246,13 @@ extension TapChipHorizontalList {
 
 
 extension TapChipHorizontalList: TapHorizontalHeaderDelegate {
+    func endEditButtonClicked(with type: TapHorizontalHeaderView) {
+        type.changeEditingState(to: false)
+    }
+    
     func rightAccessoryClicked(with type: TapHorizontalHeaderView) {
         viewModel.rightButtonClicked(for: type)
+        type.changeEditingState(to: true)
     }
     
     func leftAccessoryClicked(with type: TapHorizontalHeaderView) {
