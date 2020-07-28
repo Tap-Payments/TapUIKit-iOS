@@ -16,6 +16,8 @@ internal protocol TapSwitchViewDelegate {
     func removeSubSwitches()
     /// An event will be fired once the main switch state changed to on
     func addSubSwitches()
+    
+    func updateSwitchesText()
 }
 
 /// A protocol to be used to fire functions and events in the parent view
@@ -111,6 +113,7 @@ internal protocol TapSwitchViewDelegate {
     // MARK: Create Switches
     private func configureSwitches() {
         self.mainSwitch = TapSwitchModel(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
+        self.mainSwitch.title = cardState.mainLocalisedTitle()
         self.goPaySwitch = TapSwitchModel(localisedSwitchKey: "goPay")
         self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant", merchant: merchant)
         
@@ -172,7 +175,8 @@ internal protocol TapSwitchViewDelegate {
      Update main switch depending on the card state change
      */
     func updateCardState() {
-        self.mainSwitch.update(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
+        self.mainSwitch.title = cardState.mainLocalisedTitle()//update(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
+        self.viewDelegate?.updateSwitchesText()
         switch cardState {
         case .invalidCard, .invalidTelecom:
             self.updateMainSwitchState(isOn: false)

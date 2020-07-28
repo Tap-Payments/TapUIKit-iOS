@@ -16,4 +16,19 @@
     case validTelecom
     /// invalid telecom case
     case invalidTelecom
+    
+    func mainLocalisedTitle() -> String {
+        let sharedLocalisationManager:TapLocalisationManager = .shared
+
+        switch self {
+        case .validCard:
+            return sharedLocalisationManager.localisedValue(for: "TapSwitchView.mainCards.titleValid", with: TapCommonConstants.pathForDefaultLocalisation())
+        case .invalidCard:
+            return sharedLocalisationManager.localisedValue(for: "TapSwitchView.mainCards.titleEmpty", with: TapCommonConstants.pathForDefaultLocalisation())
+        case .validTelecom:
+            return sharedLocalisationManager.localisedValue(for: "TapSwitchView.mainTelecom.titleValid", with: TapCommonConstants.pathForDefaultLocalisation())
+        case .invalidTelecom:
+            return sharedLocalisationManager.localisedValue(for: "TapSwitchView.mainTelecom.titleEmpty", with: TapCommonConstants.pathForDefaultLocalisation())
+        }
+    }
 }

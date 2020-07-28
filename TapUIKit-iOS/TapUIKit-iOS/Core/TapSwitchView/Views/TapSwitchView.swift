@@ -170,6 +170,10 @@ extension TapSwitchView: TapSwitchViewDelegate {
         self.createMerchantSwitch()
         self.createGoPaySwitch()
     }
+    
+    func updateSwitchesText() {
+        self.configureMainSwitch()
+    }
 }
 
 extension TapSwitchView: TapSwitchControlDelegate {

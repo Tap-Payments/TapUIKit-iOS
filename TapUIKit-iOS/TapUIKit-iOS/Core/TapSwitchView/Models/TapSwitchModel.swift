@@ -18,7 +18,6 @@ public class TapSwitchModel: NSObject {
     /// is switch state is on, default state is off
     
     let sharedLocalisationManager:TapLocalisationManager = .shared
-
     
     internal var isOn: Bool
     
