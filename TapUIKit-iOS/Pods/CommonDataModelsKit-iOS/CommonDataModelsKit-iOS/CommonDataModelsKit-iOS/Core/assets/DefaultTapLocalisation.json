@@ -56,12 +56,14 @@
         },
         "TapSwitchView" : {
             "mainTelecom": {
-                "title": "For faster and easier checkout,\nsave your mobile number.",
+                "titleEmpty": "For faster and easier checkout,\nsave your mobile number.",
+                "titleValid": "For faster and easier checkout,\nsave your mobile number.",
                 "subtitle": "",
                 "notes": ""
             },
             "mainCards": {
-                "title": "For faster and easier checkout,\nsave the card for later.",
+                "titleEmpty": "For faster and easier checkout,\nuse card scanner or NFC.",
+                "titleValid": "For faster and easier checkout,\nsave the card for later.",
                 "subtitle": "",
                 "notes": ""
             },
@@ -158,12 +160,14 @@
         },
         "TapSwitchView" : {
             "mainTelecom": {
-                "title": "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.",
+                "titleEmpty": "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.",
+                "titleValid": "للدفع بشكل أسرع وأسهل ،\nاحفظ رقم هاتفك المحمول.",
                 "subtitle": "",
                 "notes": ""
             },
             "mainCards": {
-                "title": "للدفع بشكل أسرع وأسهل ،\nاحفظ كارت الدفع.",
+                "titleEmpty": "للدفع بشكل أسرع،\nبرجاء إستخدام قارئ الكروت",
+                "titleValid": "للدفع بشكل أسرع وأسهل ،\nاحفظ كارت الدفع.",
                 "subtitle": "",
                 "notes": ""
             },
