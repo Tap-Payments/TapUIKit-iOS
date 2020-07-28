@@ -69,7 +69,7 @@ internal protocol TapSwitchViewDelegate {
         }
     }
     
-    public init(with cardState: TapSwitchCardStateEnum, merchant: String = "") {
+    public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
         self.merchant = merchant
         self.cardState = cardState
         super.init()
@@ -168,7 +168,11 @@ internal protocol TapSwitchViewDelegate {
     }
     
     // MARK: Card State
+    /**
+     Update main switch depending on the card state change
+     */
     func updateCardState() {
+        self.mainSwitch.update(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
         switch cardState {
         case .invalidCard, .invalidTelecom:
             self.updateMainSwitchState(isOn: false)

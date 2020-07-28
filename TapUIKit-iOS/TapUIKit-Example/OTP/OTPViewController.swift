@@ -12,7 +12,7 @@ import TapUIKit_iOS
 class OTPViewController: UIViewController {
 
     @IBOutlet weak var otpView: TapSwitchView!//TapOtpView!
-    let otpViewModel: TapSwitchViewModel = .init(with: .invalidCard)
+    let otpViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
 //        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites."))
 //        
 //        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""),

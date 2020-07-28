@@ -40,10 +40,13 @@ public class TapSwitchModel: NSObject {
         self.isOn = isOn
     }
     
-    internal func updateTitle(localisedSwitchKey: String, merchant: String? = nil) {
+    internal func update(localisedSwitchKey: String, merchant: String? = nil) {
         self.title = sharedLocalisationManager.localisedValue(for: "TapSwitchView.\(localisedSwitchKey).title", with: TapCommonConstants.pathForDefaultLocalisation())
         if let merchant = merchant {
             self.title = String(format: self.title, merchant)
         }
+        
+        self.subtitle = sharedLocalisationManager.localisedValue(for: "TapSwitchView.\(localisedSwitchKey).subtitle", with: TapCommonConstants.pathForDefaultLocalisation())
+        self.notes = sharedLocalisationManager.localisedValue(for: "TapSwitchView.\(localisedSwitchKey).notes", with: TapCommonConstants.pathForDefaultLocalisation())
     }
 }
