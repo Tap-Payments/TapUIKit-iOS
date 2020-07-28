@@ -71,7 +71,7 @@
                 "notes": "Please check your email or SMS's in order to complete the goPay Checkout signup process."
             },
             "merchant": {
-                "title": "Save for [merchant_name] Checkouts",
+                "title": "Save for %@ Checkouts",
                 "subtitle": "",
                 "notes": ""
             }
@@ -173,7 +173,7 @@
                 "notes": "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."
             },
             "merchant": {
-                "title": "حفظ لعمليات دفع [merchant_name]",
+                "title": "حفظ لعمليات دفع %@",
                 "subtitle": "",
                 "notes": ""
             }

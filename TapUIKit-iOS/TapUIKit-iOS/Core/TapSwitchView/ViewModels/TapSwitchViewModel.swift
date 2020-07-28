@@ -51,6 +51,8 @@ internal protocol TapSwitchViewDelegate {
     internal var goPaySwitch: TapSwitchModel?
     /// merchant Switch model that holds the merchant switch properties
     internal var merchantSwitch: TapSwitchModel?
+    /// merchant Switch model that holds the merchant switch properties
+    internal var merchant: String
     
     /// current state for switch view, default state is .none
     public var state: TapSwitchEnum = .none {
@@ -67,9 +69,10 @@ internal protocol TapSwitchViewDelegate {
         }
     }
     
-    public init(with cardState: TapSwitchCardStateEnum) {
-        super.init()
+    public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
+        self.merchant = merchant
         self.cardState = cardState
+        super.init()
         self.configureSwitches()
     }
     
@@ -109,7 +112,7 @@ internal protocol TapSwitchViewDelegate {
     private func configureSwitches() {
         self.mainSwitch = TapSwitchModel(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
         self.goPaySwitch = TapSwitchModel(localisedSwitchKey: "goPay")
-        self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant")
+        self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant", merchant: merchant)
         
 //        self.updateCardState()
     }
@@ -165,7 +168,11 @@ internal protocol TapSwitchViewDelegate {
     }
     
     // MARK: Card State
+    /**
+     Update main switch depending on the card state change
+     */
     func updateCardState() {
+        self.mainSwitch.update(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
         switch cardState {
         case .invalidCard, .invalidTelecom:
             self.updateMainSwitchState(isOn: false)
