@@ -8,53 +8,117 @@
 
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
+    /// An event will be fired once the main switch card state changed to valid card or valid telecom
+    func hideMainSwitch()
+    /// An event will be fired once the main switch card state changed to invalid card or invalid telecom
+    func showMainSwitch()
+    /// An event will be fired once the main switch state changed to off
     func removeSubSwitches()
+    /// An event will be fired once the main switch state changed to on
     func addSubSwitches()
+    
+    func updateSwitchesText()
 }
 
 /// A protocol to be used to fire functions and events in the parent view
 @objc public protocol TapSwitchViewModelDelegate {
     /**
-       An event will be fired once the main switch toggled
-    - Parameter enabled: return current switch state
+       An event will be fired once the switch state changed
+    - Parameter state: return current switch state
     */
     @objc func didChangeState(state: TapSwitchEnum)
+    
+    /**
+       An event will be fired once the switch card state changed
+    - Parameter cardState: return the new switch card state
+    */
+    @objc func didChangeCardState(cardState: TapSwitchCardStateEnum)
 }
 
 @objc public class TapSwitchViewModel: NSObject {
     
     /// The delegate used to fire events inside the associated view
-    internal var viewDelegate: TapSwitchViewDelegate?// TapOtpViewDelegate?
+    internal var viewDelegate: TapSwitchViewDelegate? {
+        didSet {
+            updateCardState()
+        }
+    }
     
     /// The delegate used to fire events to the caller view
     @objc public var delegate:TapSwitchViewModelDelegate?
     
-    internal var mainSwitch: TapSwitchModel
+    /// main Switch model that holds the main switch properties
+    internal var mainSwitch: TapSwitchModel = TapSwitchModel(title: "", subtitle: "")
+    /// goPay Switch model that holds the goPay switch properties
     internal var goPaySwitch: TapSwitchModel?
+    /// merchant Switch model that holds the merchant switch properties
     internal var merchantSwitch: TapSwitchModel?
+    /// merchant Switch model that holds the merchant switch properties
+    internal var merchant: String
     
+    /// current state for switch view, default state is .none
     public var state: TapSwitchEnum = .none {
         didSet {
             self.delegate?.didChangeState(state: state)
         }
     }
     
-    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel) {
-        self.mainSwitch = mainSwitch
-        self.goPaySwitch = goPaySwitch
+    /// current state for switch view, default state is .none
+    public var cardState: TapSwitchCardStateEnum = .invalidCard {
+        didSet {
+            self.updateCardState()
+            self.delegate?.didChangeCardState(cardState: cardState)
+        }
     }
     
-    public init(mainSwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
-        self.mainSwitch = mainSwitch
-        self.merchantSwitch = merchantSwitch
+    public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
+        self.merchant = merchant
+        self.cardState = cardState
+        super.init()
+        self.configureSwitches()
     }
     
-    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
-        self.mainSwitch = mainSwitch
-        self.goPaySwitch = goPaySwitch
-        self.merchantSwitch = merchantSwitch
-    }
+    /**
+     Initialize switch view with mainSwitch and goPaySwitch
+     - Parameter mainSwitch: main switch model to holde the required properties
+     - Parameter goPaySwitch: goPay switch model to holde the required properties
+     */
+//    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel) {
+//        self.mainSwitch = mainSwitch
+//        self.goPaySwitch = goPaySwitch
+//    }
     
+    /**
+    Initialize switch view with mainSwitch and goPaySwitch
+    - Parameter mainSwitch: main switch model to holde the required properties
+    - Parameter merchantSwitch: merchant switch model to holde the required properties
+    */
+//    public init(mainSwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
+//        self.mainSwitch = mainSwitch
+//        self.merchantSwitch = merchantSwitch
+//    }
+    
+    /**
+    Initialize switch view with mainSwitch and goPaySwitch
+    - Parameter mainSwitch: main switch model to holde the required properties
+    - Parameter goPaySwitch: goPay switch model to holde the required properties
+    - Parameter merchantSwitch: merchantSwitch switch model to holde the required properties
+    */
+//    public init(mainSwitch: TapSwitchModel, goPaySwitch: TapSwitchModel, merchantSwitch: TapSwitchModel) {
+//        self.mainSwitch = mainSwitch
+//        self.goPaySwitch = goPaySwitch
+//        self.merchantSwitch = merchantSwitch
+//    }
+    
+    // MARK: Create Switches
+    private func configureSwitches() {
+        self.mainSwitch = TapSwitchModel(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
+        self.mainSwitch.title = cardState.mainLocalisedTitle()
+        self.goPaySwitch = TapSwitchModel(localisedSwitchKey: "goPay")
+        self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant", merchant: merchant)
+        
+//        self.updateCardState()
+    }
     
     // MARK: Toggle Switch
     internal func updateMainSwitchState(isOn: Bool) {
@@ -106,6 +170,22 @@ internal protocol TapSwitchViewDelegate {
         }
     }
     
+    // MARK: Card State
+    /**
+     Update main switch depending on the card state change
+     */
+    func updateCardState() {
+        self.mainSwitch.title = cardState.mainLocalisedTitle()//update(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
+        self.viewDelegate?.updateSwitchesText()
+        switch cardState {
+        case .invalidCard, .invalidTelecom:
+            self.updateMainSwitchState(isOn: false)
+            self.viewDelegate?.hideMainSwitch()
+        case .validCard, .validTelecom:
+            self.viewDelegate?.showMainSwitch()
+        }
+    }
+    
     /**
         Creating and setup Switch View
     */
@@ -114,6 +194,7 @@ internal protocol TapSwitchViewDelegate {
         tapSwitchView.translatesAutoresizingMaskIntoConstraints = false
         tapSwitchView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         tapSwitchView.setup(with: self)
+        self.updateCardState()
         return tapSwitchView
     }
 }

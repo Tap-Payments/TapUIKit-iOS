@@ -31,7 +31,8 @@ class ExampleWallOfGloryViewController: UIViewController {
     // حفظ ل goPay Checkouts
     // من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.
     // يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.
-    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
+    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
+//        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
     
     var views:[UIView] = []
     var gatewaysListView:TapChipHorizontalList = .init()
@@ -68,10 +69,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
         
-        
-        if TapLocalisationManager.shared.localisationLocale == "ar" {
-            tapSaveCardSwitchViewModel = .init(mainSwitch: TapSwitchModel(title: "للدفع بشكل أسرع وأسهل ، \nاحفظ رقم هاتفك المحمول.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "حفظ ل goPay Checkouts", subtitle: "من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.", notes: "يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout."))
-        }
         
         createTabBarViewModel()
         createGatewaysViews()
@@ -602,10 +599,16 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             tapActionButtonViewModel.buttonStatus = .ValidPayment
             let payAction:()->() = { self.startPayment(then:true) }
             tapActionButtonViewModel.buttonActionBlock = payAction
+            tapSaveCardSwitchViewModel.cardState = .validTelecom
         }else {
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
             tapActionButtonViewModel.buttonActionBlock = {}
+            tapSaveCardSwitchViewModel.cardState = .invalidTelecom
         }
+        
+        
+        
+        
     }
     
     func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -614,9 +617,11 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             tapActionButtonViewModel.buttonStatus = .ValidPayment
             let payAction:()->() = { self.startPayment(then:false) }
             tapActionButtonViewModel.buttonActionBlock = payAction
+            tapSaveCardSwitchViewModel.cardState = .validCard
         }else{
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
             tapActionButtonViewModel.buttonActionBlock = {}
+            tapSaveCardSwitchViewModel.cardState = .invalidCard
         }
     }
     
@@ -811,6 +816,10 @@ extension UIApplication {
 
 
 extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
+    func didChangeCardState(cardState: TapSwitchCardStateEnum) {
+        print("current card State: \(cardState.rawValue)")
+    }
+    
     
     func didChangeState(state: TapSwitchEnum) {
         

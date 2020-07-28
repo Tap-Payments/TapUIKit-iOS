@@ -30,6 +30,12 @@ public class TapSwitchControl: UIView {
     
     var delegate: TapSwitchControlDelegate?
     
+    public var hideSwitch: Bool = false {
+        didSet {
+            self.switchButton.isHidden = hideSwitch
+        }
+    }
+    
     public var title: String? {
         didSet {
             self.titleLabel.text = title

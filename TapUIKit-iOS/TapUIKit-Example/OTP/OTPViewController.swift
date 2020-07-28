@@ -12,12 +12,12 @@ import TapUIKit_iOS
 class OTPViewController: UIViewController {
 
     @IBOutlet weak var otpView: TapSwitchView!//TapOtpView!
-    let otpViewModel: TapSwitchViewModel =
+    let otpViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
 //        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites."))
 //        
-        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""),
-        goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."),
-        merchantSwitch: TapSwitchModel(title: "Save for [merchant_name] Checkouts", subtitle: ""))
+//        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""),
+//        goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."),
+//        merchantSwitch: TapSwitchModel(title: "Save for [merchant_name] Checkouts", subtitle: ""))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,10 @@ class OTPViewController: UIViewController {
 }
 
 extension OTPViewController: TapSwitchViewModelDelegate {
+    func didChangeCardState(cardState: TapSwitchCardStateEnum) {
+        print("current card State: \(cardState.rawValue)")
+    }
+    
     func didChangeState(state: TapSwitchEnum) {
         print("current state: \(state.rawValue)")
     }
