@@ -56,7 +56,7 @@
         },
         "TapSwitchView" : {
             "mainTelecom": {
-                "titleTelecom": "For faster and easier checkout,\nsave your mobile number.",
+                "title": "For faster and easier checkout,\nsave your mobile number.",
                 "subtitle": "",
                 "notes": ""
             },
