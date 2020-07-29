@@ -31,6 +31,12 @@ import Nuke
         }
     }
     
+    override func selectStatusChaned(with status:Bool) {
+        
+        // update the shadow for GatewayCell
+        applyTheme()
+    }
+    
     // MARK:- Internal methods
     
     func identefier() -> String {
@@ -93,13 +99,15 @@ extension GatewayImageCollectionViewCell {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
 
+        let shadowPath:String = isSelected ? "selected" : "unSelected"
+        
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
         
-        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).shadow.color")
-        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.offsetHeight")?.floatValue ?? 0))
-        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).shadow.opacity")?.floatValue ?? 0)
-        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.radius")?.floatValue ?? 0)
+        layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).\(shadowPath).shadow.color")
+        layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetHeight")?.floatValue ?? 0))
+        layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.opacity")?.floatValue ?? 0)
+        layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
         
         self.clipsToBounds = false
         self.layer.masksToBounds = false
@@ -124,7 +132,7 @@ extension GatewayImageCollectionViewCell {
 extension GatewayImageCollectionViewCell:GenericCellChipViewModelDelegate{
     
     func changedEditMode(to: Bool) {
-        self.alpha = to ? 0.5 : 1
+        self.contentView.alpha = to ? 0.5 : 1
         self.isUserInteractionEnabled = !to
     }
     

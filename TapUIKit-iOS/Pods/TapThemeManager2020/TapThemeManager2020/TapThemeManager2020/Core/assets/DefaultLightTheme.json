@@ -322,12 +322,23 @@
             },
             "gatewayChip": {
                 "backgroundColor" : "white",
-                "shadow": {
-                    "color" : "lightPeriwinkle",
-                    "radius" : 3,
-                    "offsetWidth": 0,
-                    "offsetHeight": 0,
-                    "opacity": 1
+                "selected": {
+                    "shadow": {
+                        "color" : "vibrantGreenTwo",
+                        "radius" : 3,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                },
+                "unSelected": {
+                    "shadow": {
+                        "color" : "lightPeriwinkle",
+                        "radius" : 3,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
                 }
             },
             "goPayChip": {

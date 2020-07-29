@@ -322,18 +322,29 @@
             },
             "gatewayChip": {
                 "backgroundColor" : "white",
-                "shadow": {
-                    "color" : "lightPeriwinkle",
-                    "radius" : 0,
-                    "offsetWidth": 0,
-                    "offsetHeight": 0,
-                    "opacity": 0
+                "selected": {
+                    "shadow": {
+                        "color" : "vibrantGreenTwo",
+                        "radius" : 3,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 1
+                    }
+                },
+                "unSelected": {
+                    "shadow": {
+                        "color" : "lightPeriwinkle",
+                        "radius" : 0,
+                        "offsetWidth": 0,
+                        "offsetHeight": 0,
+                        "opacity": 0
+                    }
                 }
             },
             "goPayChip": {
                 "backgroundColor" : "vibrantGreen",
                 "labelTextFont": "Roboto-Regular,12",
-                "labelTextColor": "white",
+                "labelTextColor": "greyishBrown",
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",

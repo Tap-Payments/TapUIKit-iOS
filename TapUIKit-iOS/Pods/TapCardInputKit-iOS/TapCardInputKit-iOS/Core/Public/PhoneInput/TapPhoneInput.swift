@@ -350,6 +350,12 @@ extension TapPhoneInput: UITextFieldDelegate {
         // Inform the delegat that the number is changed and a brand is detected if any
         guard let delegate = delegate else { return }
         delegate.phoneNumberChanged?(phoneNumber: phoneNumberTextField.text ?? "")
+        if let cardBrand = detectedBrand.cardBrand {
+            if cardBrand.brandSegmentIdentifier != "telecom" {
+                delegate.phoneBrandDetected?(for: .unknown, with: .init(status: .invalid))
+                return
+            }
+        }
         delegate.phoneBrandDetected?(for: detectedBrand.cardBrand ?? .unknown, with: .init(status: detectedBrand.validationState))
         
     }
