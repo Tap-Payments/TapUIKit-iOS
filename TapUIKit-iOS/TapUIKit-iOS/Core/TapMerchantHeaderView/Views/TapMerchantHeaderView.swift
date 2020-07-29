@@ -10,6 +10,9 @@ import struct UIKit.CGFloat
 import Nuke
 import SimpleAnimation
 import RxSwift
+import TapThemeManager2020
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
 
 /// A view represents the merchant header section in the checkout UI
 @objc public class TapMerchantHeaderView: UIView {
