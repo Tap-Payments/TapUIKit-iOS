@@ -127,6 +127,9 @@ import McPicker
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.contentView = setupXIB()
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: 120).isActive = true
+        layoutIfNeeded()
     }
     
     /// Apply the needed logic to reload UI and localisations upon an order from the view model

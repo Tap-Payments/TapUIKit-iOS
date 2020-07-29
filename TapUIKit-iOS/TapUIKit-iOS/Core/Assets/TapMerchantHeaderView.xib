@@ -51,6 +51,9 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsh-mW-HOs">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="a7p-bb-tj6"/>
+                    </constraints>
                     <connections>
                         <action selector="headerViewClicked:" destination="-1" eventType="touchUpInside" id="O9c-qB-qrr"/>
                     </connections>

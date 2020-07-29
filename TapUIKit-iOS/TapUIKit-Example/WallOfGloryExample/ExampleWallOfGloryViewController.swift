@@ -109,9 +109,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapItemsTableViewModel.dataSource = itemsModels
         tapItemsTableViewModel.delegate = self
-        let heightConstraint = tabItemsTableView.heightAnchor.constraint(equalToConstant: CGFloat((itemsModels.count+1) * 70))
-        heightConstraint.isActive = true
-        tapItemsTableViewModel.heightConstraint = heightConstraint
+        
         tabItemsTableView.changeViewMode(with: tapItemsTableViewModel)
         tabItemsTableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -126,27 +124,15 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         
         // The drag handler
-        dragView.translatesAutoresizingMaskIntoConstraints = false
-        dragView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         views.append(dragView)
         
         // The TapMerchantHeaderView
-        merchantHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        merchantHeaderView.heightAnchor.constraint(equalToConstant: 55).isActive = true
         views.append(merchantHeaderView)
         merchantHeaderView.changeViewModel(with: tapMerchantHeaderViewModel)
         
         // The TapAmountSectionView
-        amountSectionView.translatesAutoresizingMaskIntoConstraints = false
-        amountSectionView.heightAnchor.constraint(equalToConstant: 59).isActive = true
         views.append(amountSectionView)
         amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
-        
-        let vv:UIView = .init()
-        vv.translatesAutoresizingMaskIntoConstraints = false
-        vv.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        vv.backgroundColor = .clear
-        //views.append(vv)
         
         // The GatwayListSection
         views.append(goPayListView)
@@ -154,9 +140,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         // The tab bar section
         tapCardTelecomPaymentView.delegate = self
-        tapCardTelecomPaymentView.translatesAutoresizingMaskIntoConstraints = false
+        
         tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
-        tapCardTelecomPaymentView.heightAnchor.constraint(equalToConstant: tapCardTelecomPaymentView.requiredHeight()).isActive = true
         tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
         views.append(tapCardTelecomPaymentView)
         
@@ -217,16 +202,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapGoPayChipsHorizontalListViewModel.delegate = self
         
         
-        gatewaysListView.translatesAutoresizingMaskIntoConstraints = false
-        gatewaysListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         gatewaysListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
-        
-        goPayListView.translatesAutoresizingMaskIntoConstraints = false
-        goPayListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         goPayListView.changeViewMode(with: tapGoPayChipsHorizontalListViewModel)
-        
-        currencyListView.translatesAutoresizingMaskIntoConstraints = false
-        currencyListView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         currencyListView.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
     }
     
@@ -238,8 +215,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         let signGoPayView: TapGoPaySignInView = .init()
         signGoPayView.delegate = self
         signGoPayView.backgroundColor = .clear
-        signGoPayView.translatesAutoresizingMaskIntoConstraints = false
-        signGoPayView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        
         
         signGoPayView.setup(with: goPayBarViewModel)
         tapAmountSectionViewModel.screenChanged(to: .GoPayView)

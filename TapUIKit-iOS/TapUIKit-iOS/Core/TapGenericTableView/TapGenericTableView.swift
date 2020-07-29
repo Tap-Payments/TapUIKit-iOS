@@ -56,7 +56,12 @@ import TapThemeManager2020
      - Parameter viewModel: The view model you want to attach to the vie
      */
     public func changeViewMode(with viewModel:TapGenericTableViewModel) {
+        let heightConstraint = heightAnchor.constraint(equalToConstant: CGFloat((viewModel.numberOfRows()+1) * 70))
+        heightConstraint.isActive = true
+        viewModel.heightConstraint = heightConstraint
+        
         self.viewModel = viewModel
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     public override func layoutSubviews() {

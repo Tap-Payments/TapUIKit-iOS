@@ -148,6 +148,8 @@ import SimpleAnimation
                 UIView.animate(withDuration: 0.2, animations: {
                     self?.headerViewHeightConstraint.constant = 0
                     self?.collectionViewToHederConstraint.priority = .defaultLow
+                    self?.translatesAutoresizingMaskIntoConstraints = false
+                    self?.heightAnchor.constraint(equalToConstant: 80).isActive = true
                     self?.layoutIfNeeded()
                 },completion: { _ in
                     //self?.assignFlowLaout()
@@ -161,6 +163,7 @@ import SimpleAnimation
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.headerViewHeightConstraint.constant = 30
             self?.collectionViewToHederConstraint.priority = .required
+            self?.heightAnchor.constraint(equalToConstant: 100).isActive = true
             self?.layoutIfNeeded()
             },completion: { [weak self] _ in
                 if self?.shouldShowHeader ?? false {

@@ -154,9 +154,11 @@ import RxCocoa
             tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
             tabBarHeightConstraint.constant = 0
             tapCardPhoneListView.isHidden = true
-            layoutIfNeeded()
+        }else {
+            translatesAutoresizingMaskIntoConstraints = false
+            heightAnchor.constraint(equalToConstant: requiredHeight()).isActive = true
         }
-        
+        layoutIfNeeded()
     }
     
     /// Creates connections and listen to events and data changes reactivly from the tab bar view model
@@ -248,7 +250,7 @@ import RxCocoa
      - Returns: 45 if one brand allowed and 95 otherwise
      */
     @objc public func requiredHeight() -> CGFloat {
-        return tapCardPhoneListViewModel.dataSource.count > 1 ? 95 : 45
+        return tapCardPhoneListViewModel.dataSource.count > 1 ? 95 : 49
     }
 }
 
