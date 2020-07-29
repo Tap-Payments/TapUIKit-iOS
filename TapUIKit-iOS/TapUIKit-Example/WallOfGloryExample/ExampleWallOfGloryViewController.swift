@@ -826,7 +826,11 @@ extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
         
         changeBlur(to: state != .none)
         
-        self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
+        if state != .none {
+            self.tapActionButtonViewModel.buttonStatus = .SaveValidPayment
+        }
+        
+        //self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
         
     }
 }
