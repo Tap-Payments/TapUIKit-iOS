@@ -22,7 +22,7 @@ class TapBottomSheetExampleViewController: UIViewController {
     var showWallOfGlory:Bool = false
     var bottomSheetBackgroundColor:UIColor? = .init(white: 0, alpha: 0.5)
     var bottomSheetBlurEffect:UIBlurEffect? = nil
-    var dismissWhenClickOutSide:Bool = true
+    var dismissWhenClickOutSide:Bool = false
     var initialHeight:CGFloat = 100
     var cornerRadius:CGFloat = 12
     var bottomSheetController = TapBottomSheetDialogViewController()

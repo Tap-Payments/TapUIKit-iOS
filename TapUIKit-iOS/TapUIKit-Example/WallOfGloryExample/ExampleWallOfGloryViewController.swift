@@ -19,6 +19,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
     var tapGatewayChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var tapGoPayChipsHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
+    @IBOutlet weak var blurEffectView: UIVisualEffectView!
     var tapCurrienciesChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var gatewayChipsViewModel:[GenericTapChipViewModel] = []
     var goPayChipsViewModel:[GenericTapChipViewModel] = []
@@ -831,6 +832,18 @@ extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
         }
         
         //self.tapActionButtonViewModel.buttonStatus = (state == .none) ? .ValidPayment : .SaveValidPayment
+        
+    }
+}
+
+extension ExampleWallOfGloryViewController {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            blurEffectView.effect = UIBlurEffect(style: .dark)
+        }else {
+            blurEffectView.effect = UIBlurEffect(style: .extraLight)
+        }
         
     }
 }

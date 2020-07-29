@@ -128,7 +128,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RWd-o8-bvN">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RWd-o8-bvN">
                                 <rect key="frame" x="345" y="150" width="51" height="31"/>
                                 <connections>
                                     <action selector="dismissSwitchChanged:" destination="tKL-jM-7S4" eventType="valueChanged" id="q4l-li-z9d"/>
@@ -508,7 +508,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <blurEffect style="systemUltraThinMaterial"/>
+                                <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVq-mQ-vQh" customClass="TapVerticalView" customModule="TapUIKit_iOS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -529,6 +529,7 @@
                         <viewLayoutGuide key="safeArea" id="DGq-3B-tfj"/>
                     </view>
                     <connections>
+                        <outlet property="blurEffectView" destination="bxc-UX-gjt" id="ZC6-e7-eyz"/>
                         <outlet property="tapVerticalView" destination="oVq-mQ-vQh" id="SMe-ih-4Ad"/>
                     </connections>
                 </viewController>
