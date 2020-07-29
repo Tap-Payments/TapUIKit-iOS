@@ -5,6 +5,8 @@
 //  Created by Kareem Ahmed on 7/27/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
 
 /// Enum to define different statuses for switch view, providing info about each different status
 @objc public enum TapSwitchCardStateEnum: Int {

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 import LocalisationManagerKit_iOS
-
+import CommonDataModelsKit_iOS
 /// Tap switch model to represent the switch layer
 public class TapSwitchModel: NSObject {
     /// Switch title text
