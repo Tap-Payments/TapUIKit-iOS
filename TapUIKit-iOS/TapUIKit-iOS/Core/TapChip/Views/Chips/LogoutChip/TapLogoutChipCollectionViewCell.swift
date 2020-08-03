@@ -125,8 +125,8 @@ extension TapLogoutChipCollectionViewCell:GenericCellChipViewModelDelegate {
     
     
     func changedEditMode(to: Bool) {
-        self.contentView.alpha = to ? 0.5 : 1
-        self.isUserInteractionEnabled = !to
+        self.isHidden = !to
+        self.isUserInteractionEnabled = to
     }
     
     func changeSelection(with status: Bool) {
