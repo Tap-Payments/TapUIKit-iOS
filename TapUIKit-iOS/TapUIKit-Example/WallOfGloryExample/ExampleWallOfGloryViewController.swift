@@ -481,6 +481,22 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
             })
         }
     }
+    
+    
+    func hideGoPay() {
+        self.view.endEditing(true)
+        for (index, element) in views.enumerated() {
+            if element == goPayListView {
+                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut())
+                views.remove(at: index)
+                self.tapGatewayChipHorizontalListViewModel.editMode(changed: false)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.tapGatewayChipHorizontalListViewModel.headerType = .GatewayListHeader
+                }
+                break
+            }
+        }
+    }
 }
 
 
@@ -490,7 +506,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
     func logoutChip(for viewModel: TapLogoutChipViewModel) {
-        showAlert(title: "Logout", message: "You clicked on goPay log out icon")
+        let logoutConfirmationAlert:UIAlertController = .init(title: "Are you sure you would like to sign out?", message: "The goPay cards will be hidden from the page and you will need to login again to use any of them.", preferredStyle: .alert)
+        let confirmLogoutAction:UIAlertAction = .init(title: "Yes", style: .default) { [weak self] (_) in
+            self?.hideGoPay()
+        }
+        let cancelLogoutAction:UIAlertAction = .init(title: "No", style: .cancel, handler: nil)
+        logoutConfirmationAlert.addAction(confirmLogoutAction)
+        logoutConfirmationAlert.addAction(cancelLogoutAction)
+        present(logoutConfirmationAlert, animated: true, completion: nil)
     }
     
     

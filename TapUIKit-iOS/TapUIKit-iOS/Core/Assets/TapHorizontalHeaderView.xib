@@ -22,25 +22,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDi-Fw-fnO">
-                    <rect key="frame" x="18" y="0.0" width="46" height="30"/>
+                    <rect key="frame" x="18" y="0.0" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="fHy-3n-lLw"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
                     <connections>
                         <action selector="leftButtonClicked:" destination="-1" eventType="touchUpInside" id="Eex-DX-alh"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ho1-Bg-UIV">
-                    <rect key="frame" x="350" y="0.0" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                    <rect key="frame" x="366" y="0.0" width="30" height="30"/>
                     <connections>
                         <action selector="rightButtonClicked:" destination="-1" eventType="touchUpInside" id="9xt-nv-fCI"/>
                     </connections>
                 </button>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-Em-YcD">
-                    <rect key="frame" x="350" y="0.0" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                    <rect key="frame" x="366" y="0.0" width="30" height="30"/>
                     <connections>
                         <action selector="closeEditingClicked:" destination="-1" eventType="touchUpInside" id="NPS-z3-bi8"/>
                     </connections>
