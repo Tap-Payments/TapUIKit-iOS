@@ -62,12 +62,17 @@ import class TapApplePayKit_iOS.TapApplePayToken
      */
     @objc func currencyChip(for viewModel:CurrencyChipViewModel)
     
-    
     /**
      The event will be fired when the user cliks on delete icon in the chip
      - Parameter viewModel: Represents The attached view model
      */
     @objc func deleteChip(for viewModel:SavedCardCollectionViewCellModel)
+    
+    /**
+     The event will be fired when the user cliks on logout icon in the chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    @objc func logoutChip(for viewModel:TapLogoutChipViewModel)
 }
 
 /// This is the internal protocol for communication between the view model and its attached UIView
@@ -282,7 +287,7 @@ internal protocol TapChipHorizontalViewModelDelegate {
 
 extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
     func logoutChip(for viewModel: TapLogoutChipViewModel) {
-        print("logout called")
+        delegate?.logoutChip(for: viewModel)
     }
     
     func deleteChip(for viewModel: SavedCardCollectionViewCellModel) {
@@ -308,4 +313,5 @@ extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
     func goPay(for viewModel: TapGoPayViewModel) {
         delegate?.goPay(for: viewModel)
     }
+    
 }

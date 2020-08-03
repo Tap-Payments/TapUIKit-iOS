@@ -66,7 +66,7 @@ import class UIKit.UICollectionViewCell
      */
     func themePath() -> String {
         switch self {
-        case .GatewayChip:
+        case .GatewayChip,.LogoutChip:
             return "horizontalList.chips.gatewayChip"
         case .ApplePayChip:
             return "horizontalList.chips.applePayChip"
@@ -76,8 +76,6 @@ import class UIKit.UICollectionViewCell
             return "horizontalList.chips.currencyChip"
         case .SavedCardChip:
             return "horizontalList.chips.savedCardChip"
-        case .LogoutChip:
-            return "horizontalList.chips.logoutChip"
         }
     }
     

@@ -49,7 +49,7 @@ import SnapKit
     }
     
     override func tapChipType() -> TapChipType {
-        return .SavedCardChip
+        return .LogoutChip
     }
     
     

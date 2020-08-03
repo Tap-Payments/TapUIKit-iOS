@@ -489,6 +489,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
+    func logoutChip(for viewModel: TapLogoutChipViewModel) {
+        showAlert(title: "Logout", message: "You clicked on goPay log out icon")
+    }
+    
     
     func currencyChip(for viewModel: CurrencyChipViewModel) {
         
