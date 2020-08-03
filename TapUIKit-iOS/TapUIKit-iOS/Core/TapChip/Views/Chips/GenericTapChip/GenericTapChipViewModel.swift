@@ -43,6 +43,11 @@ internal protocol GenericChipViewModelDelegate {
      - Parameter viewModel: Represents The attached view model
      */
     func deleteChip(for viewModel:SavedCardCollectionViewCellModel)
+    /**
+     The event will be fired when the user cliks on logout icon in the chip
+     - Parameter viewModel: Represents The attached view model
+     */
+    func logoutChip(for viewModel:TapLogoutChipViewModel)
 }
 
 

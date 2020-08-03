@@ -281,6 +281,10 @@ internal protocol TapChipHorizontalViewModelDelegate {
 
 
 extension TapChipHorizontalListViewModel:GenericChipViewModelDelegate {
+    func logoutChip(for viewModel: TapLogoutChipViewModel) {
+        print("logout called")
+    }
+    
     func deleteChip(for viewModel: SavedCardCollectionViewCellModel) {
         delegate?.deleteChip(for: viewModel)
     }

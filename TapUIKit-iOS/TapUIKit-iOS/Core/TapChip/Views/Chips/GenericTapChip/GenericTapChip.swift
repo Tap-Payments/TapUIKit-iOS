@@ -56,6 +56,9 @@ import class UIKit.UICollectionViewCell
     case CurrencyChip = 4
     /// Saved card chip has the card icon and the crypted card number
     case SavedCardChip = 5
+    /// Logout chip has the logout icon
+    case LogoutChip = 6
+    
     
     /**
      Defines what is the theme path to look for to customise a cell based on its type
@@ -73,6 +76,8 @@ import class UIKit.UICollectionViewCell
             return "horizontalList.chips.currencyChip"
         case .SavedCardChip:
             return "horizontalList.chips.savedCardChip"
+        case .LogoutChip:
+            return "horizontalList.chips.logoutChip"
         }
     }
     
@@ -92,6 +97,8 @@ import class UIKit.UICollectionViewCell
             return "CurrencyChipCollectionViewCell"
         case .SavedCardChip:
             return "SavedCardCollectionViewCell"
+        case .LogoutChip:
+            return "TapLogoutChipCollectionViewCell"
         }
     }
 }

@@ -197,6 +197,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 3333", icon:"https://img.icons8.com/color/2x/amex.png", listSource: .GoPayListHeader))
         goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 4444", icon:"https://img.icons8.com/color/2x/visa.png", listSource: .GoPayListHeader))
         goPayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5555", icon:"https://img.icons8.com/color/2x/mastercard-logo.png", listSource: .GoPayListHeader))
+        goPayChipsViewModel.append(TapLogoutChipViewModel())
         
         tapGoPayChipsHorizontalListViewModel = .init(dataSource: goPayChipsViewModel, headerType: .GoPayListHeader)
         tapGoPayChipsHorizontalListViewModel.delegate = self

@@ -16,6 +16,9 @@
 		6229B1B824C5DEF10019413A /* TapSwitchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1B724C5DEF10019413A /* TapSwitchModel.swift */; };
 		6229B1BA24C6F1830019413A /* TapSwitchEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6229B1B924C6F1830019413A /* TapSwitchEnum.swift */; };
 		625503DB24CEB57A00D82682 /* TapSwitchCardStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625503DA24CEB57A00D82682 /* TapSwitchCardStateEnum.swift */; };
+		627E3CD924D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E3CD824D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift */; };
+		627E3CDB24D8256700B2E096 /* TapLogoutChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E3CDA24D8256700B2E096 /* TapLogoutChipViewModel.swift */; };
+		627E3CDD24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627E3CDC24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib */; };
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
@@ -211,6 +214,9 @@
 		6229B1B724C5DEF10019413A /* TapSwitchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchModel.swift; sourceTree = "<group>"; };
 		6229B1B924C6F1830019413A /* TapSwitchEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchEnum.swift; sourceTree = "<group>"; };
 		625503DA24CEB57A00D82682 /* TapSwitchCardStateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSwitchCardStateEnum.swift; sourceTree = "<group>"; };
+		627E3CD824D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLogoutChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		627E3CDA24D8256700B2E096 /* TapLogoutChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLogoutChipViewModel.swift; sourceTree = "<group>"; };
+		627E3CDC24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapLogoutChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -431,6 +437,15 @@
 				6229B1B724C5DEF10019413A /* TapSwitchModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		627E3CD724D824B900B2E096 /* LogoutChip */ = {
+			isa = PBXGroup;
+			children = (
+				627E3CD824D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift */,
+				627E3CDA24D8256700B2E096 /* TapLogoutChipViewModel.swift */,
+			);
+			path = LogoutChip;
 			sourceTree = "<group>";
 		};
 		A1057834EC965C7C3A18355D /* Frameworks */ = {
@@ -678,6 +693,7 @@
 				E8E69994249F6446007A32FA /* TapGenericTableCell.xib */,
 				E8861D36249F6CCE0002FEDE /* TapGenericTableView.xib */,
 				E8E69947249F49BE007A32FA /* ItemTableViewCell.xib */,
+				627E3CDC24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib */,
 				E82A56C6249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib */,
 				E82A56BE249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib */,
 				E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */,
@@ -1044,6 +1060,7 @@
 		E8CD4287249610020013AEE7 /* Chips */ = {
 			isa = PBXGroup;
 			children = (
+				627E3CD724D824B900B2E096 /* LogoutChip */,
 				E82A56C4249B8A0500E3F00D /* CurrencyChip */,
 				E82A56BC249B293600E3F00D /* ApplePayChip */,
 				E82A56AF2499ED4D00E3F00D /* SavedCardChip */,
@@ -1307,6 +1324,7 @@
 				6229B1B324C49C370019413A /* TapSwitchView.xib in Resources */,
 				E8AE0E00245B620F007AAE1F /* separator.png in Resources */,
 				E80C052B24C0C5C800B12C00 /* TapActionButton.xib in Resources */,
+				627E3CDD24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib in Resources */,
 				E8437F5E24BC93D70059F1B8 /* TapHintView.xib in Resources */,
 				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
 				E80C054024C46B8400B12C00 /* white-success-mob.gif in Resources */,
@@ -1427,6 +1445,7 @@
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
 				625503DB24CEB57A00D82682 /* TapSwitchCardStateEnum.swift in Sources */,
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
+				627E3CD924D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift in Sources */,
 				6225550424C8721A00A6FBDC /* TapAuthenticate.swift in Sources */,
 				E8437F7024BE16A10059F1B8 /* TapGoPayTitleViewModel.swift in Sources */,
 				E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */,
@@ -1452,6 +1471,7 @@
 				E88F9E1124BB3D5300A7B470 /* TapCardScannerView.swift in Sources */,
 				E80C053A24C438DD00B12C00 /* UIImageView+SwiftyGif.swift in Sources */,
 				E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */,
+				627E3CDB24D8256700B2E096 /* TapLogoutChipViewModel.swift in Sources */,
 				E8437FB524C05E3E0059F1B8 /* TapOtpController.swift in Sources */,
 				E8E92B4C248FA4DF00DD7DBB /* TapMerchantHeaderView.swift in Sources */,
 				E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */,
