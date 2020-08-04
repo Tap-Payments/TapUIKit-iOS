@@ -393,6 +393,18 @@ import TapThemeManager2020
     public func add(view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial, shouldFillHeight:Bool = false) {
         handleAddition(of: view, at: index,with: animations,and: animationSequence,shouldFillHeight: shouldFillHeight)
     }
+    
+    
+    /**
+     Adds an arranged subview to the vertical hierarchy at a certain position
+     - Parameter views: The list of views to be added
+     - Parameter animation: The animation to be applied while doing the view addition. Default is nil
+     */
+    public func add(views:[UIView], with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
+        views.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false) }
+    }
+    
+    
     /**
      Handles all the logic needed to add an arranged subview to the vertical hierarchy
      - Parameter view: The view to be added
