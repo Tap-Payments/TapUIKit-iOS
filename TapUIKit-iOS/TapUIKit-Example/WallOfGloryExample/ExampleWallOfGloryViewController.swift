@@ -34,7 +34,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     var dragView:TapDragHandlerView = .init()
     
-    var tabItemsTableView: TapGenericTableView = .init()
+    //var tapItemsTableViewModel.attachedView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
     var amountSectionView:TapAmountSectionView = .init()
     
@@ -99,11 +99,11 @@ class ExampleWallOfGloryViewController: UIViewController {
             itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency ))
         }
         
-        tapItemsTableViewModel.dataSource = itemsModels
+        tapItemsTableViewModel = .init(dataSource: itemsModels)
         tapItemsTableViewModel.delegate = self
         
-        tabItemsTableView.changeViewMode(with: tapItemsTableViewModel)
-        tabItemsTableView.translatesAutoresizingMaskIntoConstraints = false
+        //tapItemsTableViewModel.attachedView.changeViewMode(with: tapItemsTableViewModel)
+        //tapItemsTableViewModel.attachedView.translatesAutoresizingMaskIntoConstraints = false
         
         tapAmountSectionViewModel.numberOfItems = itemsModels.count
         tapAmountSectionViewModel.originalTransactionAmount = itemsModels.reduce(0.0) { (accumlator, viewModel) -> Double in
@@ -290,9 +290,9 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: (index-1))
                 //views.removeLast()
                 views.append(tapCurrienciesChipHorizontalListViewModel.attachedView)
-                views.append(tabItemsTableView)
+                views.append(tapItemsTableViewModel.attachedView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tabItemsTableView], with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
                 }
                 break
@@ -306,10 +306,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         for (index, element) in views.enumerated() {
             if element == tapCurrienciesChipHorizontalListViewModel.attachedView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
-                //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: tapItemsTableViewModel.attachedView, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: tabItemsTableView, with: TapVerticalViewAnimationType.none)
+                self.tapVerticalView.remove(view: tapItemsTableViewModel.attachedView, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
@@ -334,7 +334,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         for (index, element) in views.enumerated() {
             if let scannerElement:TapCardScannerView = element as? TapCardScannerView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
-                //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
+                //self.tapVerticalView.remove(view: tapItemsTableViewModel.attachedView, with: .fadeOut(duration: nil, delay: nil))
                 scannerElement.killScanner()
                 
                 self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)

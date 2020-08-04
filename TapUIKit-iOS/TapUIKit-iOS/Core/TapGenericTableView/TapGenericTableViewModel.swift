@@ -41,7 +41,16 @@ internal protocol TapCellGenericTableViewModelDelegate {
 /// This is the view model that adjusts and adapts the info shown in any Tap Generic TableView. It accepts and arranges different cells view models through one place
 @objc public class TapGenericTableViewModel:NSObject {
     
-    // Mark:- Variables
+    // Mark:- Private Variables
+    
+    /// Reference to the table view itself as UI that will be rendered
+    internal var tableView: TapGenericTableView?
+    
+    // Mark:- public Variables
+    /// Public Reference to the table view itself as UI that will be rendered
+    @objc public var attachedView:TapGenericTableView {
+        return tableView ?? .init()
+    }
     
     /// The data source which represents the list of view models to be displayed inside the UITableView
     @objc public var dataSource:[TapGenericTableCellViewModel] = [] {
@@ -52,6 +61,8 @@ internal protocol TapCellGenericTableViewModelDelegate {
         }
     }
     
+    
+    /// Used to change the height of the table as per the UI requirments at run time
     @objc public var heightConstraint:NSLayoutConstraint?
     
     /// Attach yourself to this delegate to start getting events fired from this view model and its attached UITableView
@@ -67,6 +78,11 @@ internal protocol TapCellGenericTableViewModelDelegate {
      */
     @objc public init(dataSource:[TapGenericTableCellViewModel]) {
         super.init()
+        // Create the attached table view instance
+        tableView = .init()
+        tableView?.translatesAutoresizingMaskIntoConstraints = false
+        // Assign self to be the delegate of the table created
+        tableView?.changeViewMode(with: self)
         defer {
             self.dataSource = dataSource
         }
