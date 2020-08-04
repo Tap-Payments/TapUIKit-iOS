@@ -103,16 +103,32 @@ internal protocol TapChipHorizontalViewModelDelegate {
 @objc public class TapChipHorizontalListViewModel:NSObject {
     
     // Mark:- Variables
+    /// Reference to the selected chip protocol to inform th cells upon selection of a cell
     @objc public var selectedChip:GenericTapChipViewModel?
+    /// Reference to the list view itself as UI that will be rendered
+    internal var listView:TapChipHorizontalList?
+    /// Public reference to the list view itself as UI that will be rendered
+    @objc public var attachedView:TapChipHorizontalList {
+        return listView ?? .init()
+    }
     
     /// The data source which represents the list of view models to be displayed inside the uicollectionview
     @objc public var dataSource:[GenericTapChipViewModel] = [] {
         didSet{
+            
+            // Assign the cell delegate
+            listView = .init()
+            self.cellDelegate = listView
+            // Instruct the list view that ME is the viewmodel of it
+            listView!.changeViewMode(with: self)
             // When it is changed, we need to inform the attached view that he needs to reload itself now
             cellDelegate?.reload(new: dataSource)
             assignModelsDelegate()
         }
     }
+    
+    
+    
     
     /// Defines what type of header shall we show in the list if any
     @objc public var headerType:TapHorizontalHeaderType = .GatewayListHeader {

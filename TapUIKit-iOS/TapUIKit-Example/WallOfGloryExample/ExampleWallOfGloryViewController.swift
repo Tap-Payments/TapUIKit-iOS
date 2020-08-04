@@ -36,12 +36,11 @@ class ExampleWallOfGloryViewController: UIViewController {
 //        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
     
     var views:[UIView] = []
-    var gatewaysListView:TapChipHorizontalList = .init()
-    var goPayListView:TapChipHorizontalList = .init()
-    var currencyListView:TapChipHorizontalList = .init()
+    
+    var dragView:TapDragHandlerView = .init()
+    
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
-    var dragView:TapDragHandlerView = .init()
     var merchantHeaderView:TapMerchantHeaderView = .init()
     var amountSectionView:TapAmountSectionView = .init()
     var tapSaveCardSwitchView:TapSwitchView = .init()
@@ -135,8 +134,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
         
         // The GatwayListSection
-        views.append(goPayListView)
-        views.append(gatewaysListView)
+        views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
+        views.append(tapGatewayChipHorizontalListViewModel.attachedView)
         
         // The tab bar section
         tapCardTelecomPaymentView.delegate = self
@@ -203,9 +202,9 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapGoPayChipsHorizontalListViewModel.delegate = self
         
         
-        gatewaysListView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
-        goPayListView.changeViewMode(with: tapGoPayChipsHorizontalListViewModel)
-        currencyListView.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
+        //tapGatewayChipHorizontalListViewModel.attachedView.changeViewMode(with: tapGatewayChipHorizontalListViewModel)
+        //tapGoPayChipsHorizontalListViewModel.attachedView.changeViewMode(with: tapGoPayChipsHorizontalListViewModel)
+        //currencyListView.changeViewMode(with: tapCurrienciesChipHorizontalListViewModel)
     }
     
     
@@ -223,7 +222,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
-            if element == gatewaysListView {
+            if element == tapGatewayChipHorizontalListViewModel.attachedView {
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
                 self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
@@ -285,7 +284,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showItemsClicked() {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
-            if element == gatewaysListView {
+            if element == tapGatewayChipHorizontalListViewModel.attachedView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.updateActionButtonVisibility(to: false)
                 self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
@@ -299,10 +298,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.remove(at: (index-1))
                 //views.removeLast()
-                views.append(currencyListView)
+                views.append(tapCurrienciesChipHorizontalListViewModel.attachedView)
                 views.append(tabItemsTableView)
                 DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(views: [self!.currencyListView,self!.tabItemsTableView], with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tabItemsTableView], with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
                 }
                 break
@@ -314,7 +313,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func closeItemsClicked() {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
-            if element == currencyListView {
+            if element == tapCurrienciesChipHorizontalListViewModel.attachedView {
                 //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.remove(view: tabItemsTableView, with: .fadeOut(duration: nil, delay: nil))
                 //self.tapVerticalView.updateActionButtonVisibility(to: true)
@@ -322,14 +321,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 self.tapVerticalView.remove(view: tabItemsTableView, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index)
-                views.append(goPayListView)
-                views.append(gatewaysListView)
+                views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
+                views.append(tapGatewayChipHorizontalListViewModel.attachedView)
                 views.append(tapCardTelecomPaymentView)
                 views.append(tapSaveCardSwitchView)
                 //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.showActionButton()
-                    self?.tapVerticalView.add(views: [self!.goPayListView,self!.gatewaysListView,self!.tapCardTelecomPaymentView,self!.tapSaveCardSwitchView], with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentView,self!.tapSaveCardSwitchView], with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -350,16 +349,16 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 views.remove(at: index-1)
-                views.append(goPayListView)
-                views.append(gatewaysListView)
+                views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
+                views.append(tapGatewayChipHorizontalListViewModel.attachedView)
                 views.append(tapCardTelecomPaymentView)
                 views.append(tapSaveCardSwitchView)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.showActionButton()
-                    self?.tapVerticalView.add(view: self!.goPayListView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
@@ -381,16 +380,16 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
                 views.remove(at: index)
                 //views.removeLast()
-                views.append(goPayListView)
-                views.append(gatewaysListView)
+                views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
+                views.append(tapGatewayChipHorizontalListViewModel.attachedView)
                 views.append(tapCardTelecomPaymentView)
                 views.append(tapSaveCardSwitchView)
                 //views.append(tapActionButton)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
-                    self?.tapVerticalView.add(view: self!.goPayListView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.gatewaysListView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
                     //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
@@ -403,7 +402,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showScanner() {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
-            if element == gatewaysListView {
+            if element == tapGatewayChipHorizontalListViewModel.attachedView {
                 self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                 self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
@@ -440,8 +439,8 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
        
         self.tapVerticalView.remove(view: merchantHeaderView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: amountSectionView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: goPayListView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: gatewaysListView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapGatewayChipHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapSaveCardSwitchView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapActionButtonViewModel.startLoading()
@@ -481,7 +480,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func hideGoPay() {
         self.view.endEditing(true)
         for (index, element) in views.enumerated() {
-            if element == goPayListView {
+            if element == tapGoPayChipsHorizontalListViewModel.attachedView {
                 self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut())
                 views.remove(at: index)
                 self.tapGatewayChipHorizontalListViewModel.editMode(changed: false)
@@ -631,7 +630,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
             for (index, element) in self.views.enumerated() {
-                if element == self.gatewaysListView {
+                if element == self.tapGatewayChipHorizontalListViewModel.attachedView {
                     self.tapVerticalView.remove(view: self.views[index-1], with: TapVerticalViewAnimationType.none)
                     self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
                     self.tapVerticalView.remove(view: self.views[index+1], with: TapVerticalViewAnimationType.none)

@@ -34,12 +34,7 @@ import SimpleAnimation
     private var shouldShowHeader:Bool = true
     
     /// The view model that controls the data to be displayed and the events to be fired
-    @objc public var viewModel:TapChipHorizontalListViewModel = .init() {
-        didSet{
-            // Whenever the view model is assigned, we delcare ourself as the cell delegate to start getting orders
-            viewModel.cellDelegate = self
-        }
-    }
+    @objc public var viewModel:TapChipHorizontalListViewModel = .init()
     
     /// Represents the theme path to look for to UI this list
     private let themePath:String = "horizontalList"
