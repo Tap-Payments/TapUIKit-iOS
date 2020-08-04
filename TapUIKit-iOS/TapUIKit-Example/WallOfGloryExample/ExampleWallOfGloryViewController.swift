@@ -61,6 +61,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
         webViewModel.delegate = self
         
+        tapSaveCardSwitchViewModel.delegate = self
+        
         createTabBarViewModel()
         createGatewaysViews()
         createItemsViewModel()
