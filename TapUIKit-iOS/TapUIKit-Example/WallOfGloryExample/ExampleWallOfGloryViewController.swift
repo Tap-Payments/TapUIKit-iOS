@@ -36,7 +36,6 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
-//    var amountSectionView:TapAmountSectionView = .init()
 
     
     var rates:[String:Double] = [:]
