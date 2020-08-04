@@ -280,6 +280,16 @@ import TapThemeManager2020
         handleDeletion(for: view, with: animation)
     }
     
+    
+    /**
+     Removes a list of arranged subview from the vertical hierarchy
+     - Parameter view: The views to be deleted
+     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
+     */
+    public func remove(views:[UIView], with animation:TapVerticalViewAnimationType? = nil) {
+        views.forEach{ handleDeletion(for: $0, with: animation) }
+    }
+    
     @objc public func getMaxAvailableHeight() -> CGFloat {
         var currentViewsHeight:CGFloat = 0
         stackView.arrangedSubviews.forEach{ currentViewsHeight += ($0.frame.height > 0) ? $0.frame.height : 45 }

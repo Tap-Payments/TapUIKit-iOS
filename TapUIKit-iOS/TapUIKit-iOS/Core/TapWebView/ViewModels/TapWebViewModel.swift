@@ -48,6 +48,15 @@ internal protocol TapWebViewDelegate {
 
 /// A view model that controlls TapWebView
 @objc public class TapWebViewModel:NSObject {
+    
+    /// Reference to the web view itself as UI that will be rendered
+    internal var webView:TapWebView = .init()
+    
+    /// Public Reference to the table view itself as UI that will be rendered
+    @objc public var attachedView:TapWebView {
+        return webView
+    }
+    
     /// Protocol to communicate between the view model and the parent view
     @objc public var delegate:TapWebViewModelDelegate?
     /// An internal protocol to communicate between the view model and the web view itself
@@ -71,6 +80,12 @@ internal protocol TapWebViewDelegate {
         viewDelegate?.stopLoading()
     }
     
+    
+    @objc override public init() {
+        super.init()
+        webView = .init()
+        webView.setup(with: self)
+    }
 }
 
 

@@ -29,12 +29,12 @@ class ExampleWallOfGloryViewController: UIViewController {
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
     var tapCardTelecomPaymentViewModel: TapCardTelecomPaymentViewModel = .init()
-    
     var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
-    var views:[UIView] = []
-    
     var dragView:TapDragHandlerView = .init()
-
+    var tapCardScannerView:TapCardScannerView = .init()
+    var signGoPayView: TapGoPaySignInView = .init()
+    var webViewModel:TapWebViewModel = .init()
+    
     
     var rates:[String:Double] = [:]
     var loadedWebPages:Int = 0
@@ -59,7 +59,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapAmountSectionViewModel.delegate = self
         
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
-        
+        webViewModel.delegate = self
         
         createTabBarViewModel()
         createGatewaysViews()
@@ -114,31 +114,10 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func addGloryViews() {
         
-        
-        // The drag handler
-        views.append(dragView)
-        
-        // The TaptapMerchantHeaderViewModel.attachedView
-        views.append(tapMerchantViewModel.attachedView)
-        
-        // The TapAmountSectionView
-        views.append(tapAmountSectionViewModel.attachedView)
-//        amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
-        
-        // The GatwayListSection
-        views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
-        views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-        
-        // The tab bar section
-        views.append(tapCardTelecomPaymentViewModel.attachedView)
-        
-        // Save Card switch view
-        tapSaveCardSwitchViewModel.delegate = self
-        views.append(tapSaveCardSwitchViewModel.attachedView)
-        
         // The button
         self.tapVerticalView.setupActionButton(with: tapActionButtonViewModel)
-        self.tapVerticalView.updateSubViews(with: views,and: .none)
+        // The initial views
+        self.tapVerticalView.add(views: [dragView,tapMerchantViewModel.attachedView,tapAmountSectionViewModel.attachedView,tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
     }
     
     
@@ -199,7 +178,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapActionButtonViewModel.buttonStatus = .InvalidNext
         
-        let signGoPayView: TapGoPaySignInView = .init()
+        signGoPayView = .init()
         signGoPayView.delegate = self
         signGoPayView.backgroundColor = .clear
         
@@ -208,27 +187,9 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapAmountSectionViewModel.screenChanged(to: .GoPayView)
         
         self.view.endEditing(true)
-        for (index, element) in views.enumerated() {
-            if element == tapGatewayChipHorizontalListViewModel.attachedView {
-                //self.tapVerticalView.updateActionButtonVisibility(to: true)
-                self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
-                //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
-                views.remove(at: index)
-                views.remove(at: index)
-                views.remove(at: (index-1))
-                //views.removeLast()
-                views.append(signGoPayView)
-                //views.append(tapActionButton)
-                DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
-                }
-                break
-            }
+        self.tapVerticalView.remove(views: [tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: TapVerticalViewAnimationType.none)
+        DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.add(view: self!.signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
         }
         
     }
@@ -270,87 +231,38 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
 extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showItemsClicked() {
         self.view.endEditing(true)
-        for (index, element) in views.enumerated() {
-            if element == tapGatewayChipHorizontalListViewModel.attachedView {
-                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
-                //self.tapVerticalView.updateActionButtonVisibility(to: false)
-                self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.hideActionButton()
-                //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
-                views.remove(at: index)
-                views.remove(at: index)
-                views.remove(at: (index-1))
-                //views.removeLast()
-                views.append(tapCurrienciesChipHorizontalListViewModel.attachedView)
-                views.append(tapItemsTableViewModel.attachedView)
-                DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
-                }
-                break
-            }
+        self.tapVerticalView.remove(views: [tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: TapVerticalViewAnimationType.none)
+        DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+            self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
         }
     }
     
     
     func closeItemsClicked() {
         self.view.endEditing(true)
-        for (index, element) in views.enumerated() {
-            if element == tapCurrienciesChipHorizontalListViewModel.attachedView {
-                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
-                //self.tapVerticalView.remove(view: tapItemsTableViewModel.attachedView, with: .fadeOut(duration: nil, delay: nil))
-                //self.tapVerticalView.updateActionButtonVisibility(to: true)
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: tapItemsTableViewModel.attachedView, with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
-                views.remove(at: index)
-                views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
-                views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-                views.append(tapCardTelecomPaymentViewModel.attachedView)
-                views.append(tapSaveCardSwitchViewModel.attachedView)
-                //views.append(tapActionButton)
-                DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.showActionButton()
-                    self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
-                }
-                break
+        self.tapVerticalView.remove(views: [tapCurrienciesChipHorizontalListViewModel.attachedView,tapItemsTableViewModel.attachedView], with: TapVerticalViewAnimationType.none)
+        
+            DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.showActionButton()
+            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
             }
-        }
     }
+    
     func amountSectionClicked() {
         showAlert(title: "Amount Section", message: "The user clicked on the amount section, do you want me to do anything?")
     }
     
     func closeScannerClicked() {
         self.view.endEditing(true)
-        for (index, element) in views.enumerated() {
-            if let scannerElement:TapCardScannerView = element as? TapCardScannerView {
-                //self.tapVerticalView.remove(view: element, with: .fadeOut(duration: nil, delay: nil))
-                //self.tapVerticalView.remove(view: tapItemsTableViewModel.attachedView, with: .fadeOut(duration: nil, delay: nil))
-                scannerElement.killScanner()
-                
-                self.tapVerticalView.remove(view: scannerElement, with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
-                views.remove(at: index-1)
-                views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
-                views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-                views.append(tapCardTelecomPaymentViewModel.attachedView)
-                views.append(tapSaveCardSwitchViewModel.attachedView)
-                tapAmountSectionViewModel.screenChanged(to: .DefaultView)
-                DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.removeAllHintViews()
-                    self?.tapVerticalView.showActionButton()
-                    self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                }
-                break
-            }
+        
+        tapCardScannerView.killScanner()
+        self.tapVerticalView.remove(view: tapCardScannerView, with: TapVerticalViewAnimationType.none)
+        tapAmountSectionViewModel.screenChanged(to: .DefaultView)
+        DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.removeAllHintViews()
+            self?.tapVerticalView.showActionButton()
+            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
         }
     }
     
@@ -359,100 +271,53 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.view.endEditing(true)
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
         self.changeBlur(to: false)
-        for (index, element) in views.enumerated() {
-            if let goPayElement:TapGoPaySignInView = element as? TapGoPaySignInView {
-                goPayElement.stopOTPTimers()
-                //self.tapVerticalView.updateActionButtonVisibility(to: true)
-                self.tapVerticalView.remove(view: goPayElement, with: TapVerticalViewAnimationType.none)
-                //self.tapVerticalView.remove(view: tapActionButton, with: TapVerticalViewAnimationType.none)
-                views.remove(at: index)
-                //views.removeLast()
-                views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
-                views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-                views.append(tapCardTelecomPaymentViewModel.attachedView)
-                views.append(tapSaveCardSwitchViewModel.attachedView)
-                //views.append(tapActionButton)
-                tapAmountSectionViewModel.screenChanged(to: .DefaultView)
-                DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.removeAllHintViews()
-                    self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
-                }
-                break
-            }
+        signGoPayView.stopOTPTimers()
+        self.tapVerticalView.remove(view: signGoPayView, with: TapVerticalViewAnimationType.none)
+        
+        tapAmountSectionViewModel.screenChanged(to: .DefaultView)
+        DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.removeAllHintViews()
+            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
         }
     }
     
     func showScanner() {
         self.view.endEditing(true)
-        for (index, element) in views.enumerated() {
-            if element == tapGatewayChipHorizontalListViewModel.attachedView {
-                self.tapVerticalView.remove(view: views[index-1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+1], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.remove(view: views[index+2], with: TapVerticalViewAnimationType.none)
-                self.tapVerticalView.hideActionButton()
-                let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
-                let hintView:TapHintView = hintViewModel.createHintView()
-                let tapCardScannerView:TapCardScannerView = .init()
-                tapCardScannerView.delegate = self
-                tapCardScannerView.configureScanner()
-                views.remove(at: index)
-                views.remove(at: index)
-                views.remove(at: index)
-                views.remove(at: (index-1))
-                views.append(hintView)
-                views.append(tapCardScannerView)
-                tapAmountSectionViewModel.screenChanged(to: .ScannerView)
-                DispatchQueue.main.async{ [weak self] in
-                    self?.tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
-                    self?.tapVerticalView.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
-                }
-                break
-            }
+        self.tapVerticalView.remove(views: [tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: TapVerticalViewAnimationType.none)
+        self.tapVerticalView.hideActionButton()
+        let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
+        let hintView:TapHintView = hintViewModel.createHintView()
+        tapCardScannerView = .init()
+        tapCardScannerView.delegate = self
+        tapCardScannerView.configureScanner()
+        tapAmountSectionViewModel.screenChanged(to: .ScannerView)
+        DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
+            self?.tapVerticalView.add(view: self!.tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
         }
     }
     
     func showWebView(with url:URL) {
        
-        let webViewModel:TapWebViewModel = .init()
-        webViewModel.delegate = self
+        self.tapVerticalView.remove(views: [tapMerchantViewModel.attachedView,tapAmountSectionViewModel.attachedView,tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: TapVerticalViewAnimationType.none)
         
-        let webView:TapWebView = .init()
-        webView.setup(with: webViewModel)
-       
-        self.tapVerticalView.remove(view: tapAmountSectionViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapMerchantViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapGatewayChipHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapCardTelecomPaymentViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapSaveCardSwitchViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapActionButtonViewModel.startLoading()
-        views = []
-        views.append(webView)
+        webViewModel = .init()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
             self?.tapVerticalView.hideActionButton()
-            self?.tapVerticalView.add(view: webView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
-            webViewModel.load(with: url)
+            self?.tapVerticalView.add(view: self!.webViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
+            self?.webViewModel.load(with: url)
         }
     }
     
     
     func closeWebView() {
         self.view.endEditing(true)
-        for (_, element) in views.enumerated() {
-            if element.isKind(of: TapWebView.self) {
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut())
-                self.tapVerticalView.showActionButton()
-            }
-            break
-        }
+        self.tapVerticalView.remove(view: webViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.showActionButton()
+        
         self.tapActionButtonViewModel.startLoading()
-        views = []
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
             self?.tapActionButtonViewModel.endLoading(with: true, completion: {
@@ -466,16 +331,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func hideGoPay() {
         self.view.endEditing(true)
-        for (index, element) in views.enumerated() {
-            if element == tapGoPayChipsHorizontalListViewModel.attachedView {
-                self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.fadeOut())
-                views.remove(at: index)
-                self.tapGatewayChipHorizontalListViewModel.editMode(changed: false)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    self.tapGatewayChipHorizontalListViewModel.headerType = .GatewayListHeader
-                }
-                break
-            }
+        self.tapVerticalView.remove(view: signGoPayView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapGatewayChipHorizontalListViewModel.editMode(changed: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.tapGatewayChipHorizontalListViewModel.headerType = .GatewayListHeader
         }
     }
 }
@@ -591,10 +450,6 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             tapActionButtonViewModel.buttonActionBlock = {}
             tapSaveCardSwitchViewModel.cardState = .invalidTelecom
         }
-        
-        
-        
-        
     }
     
     func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -613,24 +468,8 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func startPayment(then success:Bool) {
         view.endEditing(true)
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
-            for (index, element) in self.views.enumerated() {
-                if element == self.tapGatewayChipHorizontalListViewModel.attachedView {
-                    self.tapVerticalView.remove(view: self.views[index-1], with: TapVerticalViewAnimationType.none)
-                    self.tapVerticalView.remove(view: element, with: TapVerticalViewAnimationType.none)
-                    self.tapVerticalView.remove(view: self.views[index+1], with: TapVerticalViewAnimationType.none)
-                    self.tapVerticalView.remove(view: self.views[index+2], with: TapVerticalViewAnimationType.none)
-                    self.views.remove(at: index)
-                    self.views.remove(at: index)
-                    self.views.remove(at: index)
-                    self.views.remove(at: (index-1))
-                    self.tapActionButtonViewModel.startLoading()
-                    break
-                }
-            }
-        }
+        self.tapVerticalView.remove(views: [tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: TapVerticalViewAnimationType.none)
+        self.tapActionButtonViewModel.startLoading()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3500)) {
             self.tapActionButtonViewModel.endLoading(with: success, completion: {
