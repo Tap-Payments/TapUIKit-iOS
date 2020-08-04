@@ -28,14 +28,12 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
+    var tapCardTelecomPaymentViewModel: TapCardTelecomPaymentViewModel = .init()
     
     var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
     var views:[UIView] = []
     
     var dragView:TapDragHandlerView = .init()
-    
-    //var tapItemsTableViewModel.attachedView: TapGenericTableView = .init()
-    var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
 
     
     var rates:[String:Double] = [:]
@@ -78,6 +76,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardPhoneListDataSource.append(.init(associatedCardBrand: .zain, tapCardPhoneIconUrl: "https://i.ibb.co/mvkJXwF/zain-3x.png"))
         
         tapCardPhoneListViewModel.dataSource = tapCardPhoneListDataSource
+        tapCardTelecomPaymentViewModel = .init(with: tapCardPhoneListViewModel, and: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+        tapCardTelecomPaymentViewModel.delegate = self
     }
     
     func createItemsViewModel() {
@@ -130,11 +130,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         views.append(tapGatewayChipHorizontalListViewModel.attachedView)
         
         // The tab bar section
-        tapCardTelecomPaymentView.delegate = self
-        
-        tapCardTelecomPaymentView.tapCardPhoneListViewModel = tapCardPhoneListViewModel
-        tapCardTelecomPaymentView.tapCountry = .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)
-        views.append(tapCardTelecomPaymentView)
+        views.append(tapCardTelecomPaymentViewModel.attachedView)
         
         // Save Card switch view
         tapSaveCardSwitchViewModel.delegate = self
@@ -314,12 +310,12 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index)
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
                 views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-                views.append(tapCardTelecomPaymentView)
+                views.append(tapCardTelecomPaymentViewModel.attachedView)
                 views.append(tapSaveCardSwitchViewModel.attachedView)
                 //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.showActionButton()
-                    self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -342,7 +338,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.remove(at: index-1)
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
                 views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-                views.append(tapCardTelecomPaymentView)
+                views.append(tapCardTelecomPaymentViewModel.attachedView)
                 views.append(tapSaveCardSwitchViewModel.attachedView)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
@@ -350,7 +346,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                     self?.tapVerticalView.showActionButton()
                     self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
@@ -373,7 +369,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 //views.removeLast()
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
                 views.append(tapGatewayChipHorizontalListViewModel.attachedView)
-                views.append(tapCardTelecomPaymentView)
+                views.append(tapCardTelecomPaymentViewModel.attachedView)
                 views.append(tapSaveCardSwitchViewModel.attachedView)
                 //views.append(tapActionButton)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
@@ -381,7 +377,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                     self?.tapVerticalView.removeAllHintViews()
                     self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapSaveCardSwitchViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
@@ -432,7 +428,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.tapVerticalView.remove(view: tapMerchantViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGatewayChipHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapCardTelecomPaymentViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapSaveCardSwitchViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapActionButtonViewModel.startLoading()
         views = []
@@ -603,7 +599,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
         if validation == .Valid,
-            tapCardTelecomPaymentView.decideHintStatus() == nil {
+            tapCardTelecomPaymentViewModel.decideHintStatus() == .None {
             tapActionButtonViewModel.buttonStatus = .ValidPayment
             let payAction:()->() = { self.startPayment(then:false) }
             tapActionButtonViewModel.buttonActionBlock = payAction
@@ -724,7 +720,7 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) { [weak self] in
             self?.closeScannerClicked()
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
-                self?.tapCardTelecomPaymentView.setCard(with: tapCard)
+                self?.tapCardTelecomPaymentViewModel.setCard(with: tapCard)
             }
         }
     }

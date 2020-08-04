@@ -26,6 +26,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case GoPayPassword = 6
     /// The feedback aout the number the OTP sent to
     case GoPayOtp = 7
+    /// The feedback aout the number the OTP sent to
+    case None = 8
     
     /**
      The theme path that has the UI info for each case
@@ -43,6 +45,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return "Hints.Scanned"
         case .GoPayOtp,.GoPayPassword:
             return "Hints.GoPayLogin"
+        default:
+            return ""
         }
     }
     
@@ -69,6 +73,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.GoPayLogin.password", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.GoPayLogin.password"
         case .GoPayOtp:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.GoPayLogin.otp", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.GoPayLogin.otp"
+        default:
+            return ""
         }
     }
     
