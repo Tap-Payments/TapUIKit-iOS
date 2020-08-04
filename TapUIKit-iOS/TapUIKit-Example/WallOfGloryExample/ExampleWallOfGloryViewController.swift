@@ -42,7 +42,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
     var merchantHeaderView:TapMerchantHeaderView = .init()
-    var amountSectionView:TapAmountSectionView = .init()
+//    var amountSectionView:TapAmountSectionView = .init()
     
     var rates:[String:Double] = [:]
     var loadedWebPages:Int = 0
@@ -129,8 +129,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         merchantHeaderView.changeViewModel(with: tapMerchantHeaderViewModel)
         
         // The TapAmountSectionView
-        views.append(amountSectionView)
-        amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
+        views.append(tapAmountSectionViewModel.attachedView)
+//        amountSectionView.changeViewModel(with: tapAmountSectionViewModel)
         
         // The GatwayListSection
         views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
@@ -436,7 +436,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         webView.setup(with: webViewModel)
        
         self.tapVerticalView.remove(view: merchantHeaderView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: amountSectionView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapAmountSectionViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGatewayChipHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
