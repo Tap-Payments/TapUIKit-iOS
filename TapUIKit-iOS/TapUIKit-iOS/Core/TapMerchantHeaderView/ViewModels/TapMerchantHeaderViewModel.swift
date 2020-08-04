@@ -28,8 +28,16 @@ import RxCocoa
     internal var subTitleObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
     /// The url to load the merchant's logo from
     internal var iconObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    /// Reference to the merchant header view itself as UI that will be rendered
+    internal var merchantHeaderView:TapMerchantHeaderView?
+    
     
     // MARK:- Public normal swift variables
+    /// Public reference to the merchant header view itself as UI that will be rendered
+    @objc public var attachedView:TapMerchantHeaderView {
+        return merchantHeaderView ?? .init()
+    }
+    
     /// The text to be displayed in the title label
     @objc public var title:String? {
         willSet{
@@ -75,6 +83,8 @@ import RxCocoa
             self.title = title ?? sharedLocalisationManager.localisedValue(for: "\(localizationPath).paymentFor", with: TapCommonConstants.pathForDefaultLocalisation())
             self.subTitle = subTitle
             self.iconURL = iconURL
+            self.merchantHeaderView = .init()
+            self.merchantHeaderView?.changeViewModel(with: self)
         }
         
     }

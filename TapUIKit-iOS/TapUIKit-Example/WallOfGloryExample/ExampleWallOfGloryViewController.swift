@@ -15,7 +15,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     var delegate:ToPresentAsPopupViewControllerDelegate?
     @IBOutlet weak var tapVerticalView: TapVerticalView!
     var tapItemsTableViewModel:TapGenericTableViewModel = .init()
-    var tapMerchantHeaderViewModel:TapMerchantHeaderViewModel = .init()
+    var tapMerchantViewModel:TapMerchantHeaderViewModel = .init()
     var tapAmountSectionViewModel:TapAmountSectionViewModel = .init()
     var tapGatewayChipHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
     var tapGoPayChipsHorizontalListViewModel:TapChipHorizontalListViewModel = .init()
@@ -28,20 +28,14 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
-    // للدفع بشكل أسرع وأسهل ، احفظ رقم هاتفك المحمول.
-    // حفظ ل goPay Checkouts
-    // من خلال تمكين goPay ، سيتم حفظ رقم هاتفك المحمول مع Tap Payments للحصول على عمليات دفع أسرع وأكثر أمانًا في تطبيقات ومواقع ويب متعددة.
-    // يُرجى التحقق من بريدك الإلكتروني أو رسالة SMS لإكمال عملية تسجيل goPay Checkout.
-    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
-//        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.", notes: "Please check your email or SMS’s in order to complete the goPay Checkout signup process."))
     
+    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
     var views:[UIView] = []
     
     var dragView:TapDragHandlerView = .init()
     
     var tabItemsTableView: TapGenericTableView = .init()
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
-    var merchantHeaderView:TapMerchantHeaderView = .init()
     var amountSectionView:TapAmountSectionView = .init()
     
     var rates:[String:Double] = [:]
@@ -50,7 +44,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tapVerticalView.delegate = self
-        // Do any additional setup after loading the view.
+        // Do any additional setup after  the view.
         tapVerticalView.updateKeyBoardHandling(with: true)
         createDefaultViewModels()
         // Setting up the number of lines and doing a word wrapping
@@ -60,10 +54,10 @@ class ExampleWallOfGloryViewController: UIViewController {
     }
     
     func createDefaultViewModels() {
-        tapMerchantHeaderViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
+        tapMerchantViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
         tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, numberOfItems: 10)
         
-        tapMerchantHeaderViewModel.delegate = self
+        tapMerchantViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
         
         tapActionButtonViewModel.buttonStatus = .InvalidPayment
@@ -124,9 +118,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         // The drag handler
         views.append(dragView)
         
-        // The TapMerchantHeaderView
-        views.append(merchantHeaderView)
-        merchantHeaderView.changeViewModel(with: tapMerchantHeaderViewModel)
+        // The TaptapMerchantHeaderViewModel.attachedView
+        views.append(tapMerchantViewModel.attachedView)
         
         // The TapAmountSectionView
         views.append(amountSectionView)
@@ -435,7 +428,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         let webView:TapWebView = .init()
         webView.setup(with: webViewModel)
        
-        self.tapVerticalView.remove(view: merchantHeaderView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapMerchantViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: amountSectionView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGatewayChipHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
