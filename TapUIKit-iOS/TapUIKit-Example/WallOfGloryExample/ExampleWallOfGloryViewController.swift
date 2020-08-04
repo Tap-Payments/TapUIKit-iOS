@@ -43,7 +43,6 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapCardTelecomPaymentView: TapCardTelecomPaymentView = .init()
     var merchantHeaderView:TapMerchantHeaderView = .init()
     var amountSectionView:TapAmountSectionView = .init()
-    var tapSaveCardSwitchView:TapSwitchView = .init()
     
     var rates:[String:Double] = [:]
     var loadedWebPages:Int = 0
@@ -145,9 +144,8 @@ class ExampleWallOfGloryViewController: UIViewController {
         views.append(tapCardTelecomPaymentView)
         
         // Save Card switch view
-        views.append(tapSaveCardSwitchView)
         tapSaveCardSwitchViewModel.delegate = self
-        tapSaveCardSwitchView.setup(with: tapSaveCardSwitchViewModel, adjustConstraints: true)
+        views.append(tapSaveCardSwitchViewModel.attachedView)
         
         // The button
         self.tapVerticalView.setupActionButton(with: tapActionButtonViewModel)
@@ -324,11 +322,11 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
                 views.append(tapGatewayChipHorizontalListViewModel.attachedView)
                 views.append(tapCardTelecomPaymentView)
-                views.append(tapSaveCardSwitchView)
+                views.append(tapSaveCardSwitchViewModel.attachedView)
                 //views.append(tapActionButton)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.showActionButton()
-                    self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentView,self!.tapSaveCardSwitchView], with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -352,7 +350,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
                 views.append(tapGatewayChipHorizontalListViewModel.attachedView)
                 views.append(tapCardTelecomPaymentView)
-                views.append(tapSaveCardSwitchView)
+                views.append(tapSaveCardSwitchViewModel.attachedView)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
                     self?.tapVerticalView.removeAllHintViews()
@@ -360,7 +358,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                     self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
             }
@@ -383,7 +381,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                 views.append(tapGoPayChipsHorizontalListViewModel.attachedView)
                 views.append(tapGatewayChipHorizontalListViewModel.attachedView)
                 views.append(tapCardTelecomPaymentView)
-                views.append(tapSaveCardSwitchView)
+                views.append(tapSaveCardSwitchViewModel.attachedView)
                 //views.append(tapActionButton)
                 tapAmountSectionViewModel.screenChanged(to: .DefaultView)
                 DispatchQueue.main.async{ [weak self] in
@@ -391,7 +389,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
                     self?.tapVerticalView.add(view: self!.tapGoPayChipsHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapGatewayChipHorizontalListViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     self?.tapVerticalView.add(view: self!.tapCardTelecomPaymentView, with: [TapVerticalViewAnimationType.fadeIn()])
-                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchView, with: [TapVerticalViewAnimationType.fadeIn()])
+                    self?.tapVerticalView.add(view: self!.tapSaveCardSwitchViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()])
                     //self?.tapVerticalView.add(view: self!.tapActionButton, with: [TapVerticalViewAnimationType.fadeIn()])
                 }
                 break
@@ -442,7 +440,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapGatewayChipHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapVerticalView.remove(view: tapCardTelecomPaymentView, with: TapVerticalViewAnimationType.fadeOut())
-        self.tapVerticalView.remove(view: tapSaveCardSwitchView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapSaveCardSwitchViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapActionButtonViewModel.startLoading()
         views = []
         views.append(webView)
