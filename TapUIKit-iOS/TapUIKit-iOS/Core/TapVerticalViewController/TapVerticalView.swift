@@ -309,6 +309,86 @@ import TapThemeManager2020
     }
     
     
+    public func showGoPaySignInForm(with delegate:TapGoPaySignInViewProtocol,and goPayBarViewModel:TapGoPayLoginBarViewModel) {
+        tapActionButton.viewModel?.buttonStatus = .InvalidNext
+        
+        let signGoPayView:TapGoPaySignInView = .init()
+        signGoPayView.delegate = delegate
+        signGoPayView.backgroundColor = .clear
+        
+        
+        signGoPayView.setup(with: goPayBarViewModel)
+        
+        changeTapAmountSectionStatus(to: .GoPayView)
+        
+        endEditing(true)
+        remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        DispatchQueue.main.async{ [weak self] in
+            self?.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
+        }
+    }
+    
+    
+    public func closeGoPaySignInForm() {
+        endEditing(true)
+        
+        tapActionButton.viewModel?.buttonStatus = .InvalidPayment
+        showBlur = false
+        // Make sure we have a valid sign in form shown already
+        let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapGoPaySignInView.self)}
+        guard filteredViews.count > 0, let signGoPayView:TapGoPaySignInView = filteredViews[0] as? TapGoPaySignInView else { return }
+        
+        signGoPayView.stopOTPTimers()
+        remove(view: signGoPayView, with: TapVerticalViewAnimationType.none)
+        
+        changeTapAmountSectionStatus(to: .DefaultView)
+        removeAllHintViews()
+    }
+    
+    
+    
+    public func showScanner(with delegate:TapInlineScannerProtocl) {
+        endEditing(true)
+        remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        hideActionButton()
+        
+        let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
+        let hintView:TapHintView = hintViewModel.createHintView()
+        
+        let tapCardScannerView:TapCardScannerView = .init()
+        tapCardScannerView.delegate = delegate
+        tapCardScannerView.configureScanner()
+        
+        changeTapAmountSectionStatus(to: .ScannerView)
+        
+        DispatchQueue.main.async{ [weak self] in
+            self?.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
+            self?.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
+        }
+    }
+    
+    
+    public func closeScanner() {
+        endEditing(true)
+        
+        // Make sure we have a valid sign in form shown already
+        let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapCardScannerView.self)}
+        guard filteredViews.count > 0, let scannerView:TapCardScannerView = filteredViews[0] as? TapCardScannerView else { return }
+        
+        scannerView.killScanner()
+        remove(view: scannerView, with: TapVerticalViewAnimationType.none)
+        
+        changeTapAmountSectionStatus(to: .DefaultView)
+        removeAllHintViews()
+        showActionButton()
+    }
+    
+    func changeTapAmountSectionStatus(to newStatus:AmountSectionCurrentState) {
+        if let tapAmountSectionView:TapAmountSectionView = stackView.arrangedSubviews.filter({ $0.isKind(of: TapAmountSectionView.self) })[0] as? TapAmountSectionView {
+            tapAmountSectionView.viewModel?.screenChanged(to: newStatus)
+        }
+    }
+    
     /**
      Removes a list of arranged subview from the vertical hierarchy
      - Parameter view: The views to be deleted

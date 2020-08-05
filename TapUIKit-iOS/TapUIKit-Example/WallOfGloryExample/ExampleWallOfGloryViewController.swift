@@ -35,8 +35,6 @@ class ExampleWallOfGloryViewController: UIViewController {
     var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
     var dragView:TapDragHandlerView = .init()
     
-    var tapCardScannerView:TapCardScannerView = .init()
-    var signGoPayView: TapGoPaySignInView = .init()
     var webViewModel:TapWebViewModel = .init()
     
     var rates:[String:Double] = [:]
@@ -180,23 +178,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     
     func showGoPay() {
-        
-        tapActionButtonViewModel.buttonStatus = .InvalidNext
-        
-        signGoPayView = .init()
-        signGoPayView.delegate = self
-        signGoPayView.backgroundColor = .clear
-        
-        
-        signGoPayView.setup(with: goPayBarViewModel)
-        tapAmountSectionViewModel.screenChanged(to: .GoPayView)
-        
-        self.view.endEditing(true)
-        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
-        DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.add(view: self!.signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
-        }
-        
+        tapVerticalView.showGoPaySignInForm(with: self, and: goPayBarViewModel)
     }
     /*
      // MARK: - Navigation
@@ -260,48 +242,23 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     }
     
     func closeScannerClicked() {
-        self.view.endEditing(true)
-        
-        tapCardScannerView.killScanner()
-        self.tapVerticalView.remove(view: tapCardScannerView, with: TapVerticalViewAnimationType.none)
-        tapAmountSectionViewModel.screenChanged(to: .DefaultView)
+        tapVerticalView.closeScanner()
         DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.removeAllHintViews()
-            self?.tapVerticalView.showActionButton()
             self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
         }
     }
     
     
     func closeGoPayClicked() {
-        self.view.endEditing(true)
-        tapActionButtonViewModel.buttonStatus = .InvalidPayment
-        self.changeBlur(to: false)
-        signGoPayView.stopOTPTimers()
-        self.tapVerticalView.remove(view: signGoPayView, with: TapVerticalViewAnimationType.none)
+        tapVerticalView.closeGoPaySignInForm()
         
-        tapAmountSectionViewModel.screenChanged(to: .DefaultView)
         DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.removeAllHintViews()
             self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
         }
     }
     
     func showScanner() {
-        self.view.endEditing(true)
-        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
-        
-        self.tapVerticalView.hideActionButton()
-        let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
-        let hintView:TapHintView = hintViewModel.createHintView()
-        tapCardScannerView = .init()
-        tapCardScannerView.delegate = self
-        tapCardScannerView.configureScanner()
-        tapAmountSectionViewModel.screenChanged(to: .ScannerView)
-        DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
-            self?.tapVerticalView.add(view: self!.tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
-        }
+       tapVerticalView.showScanner(with: self)
     }
     
     func showWebView(with url:URL) {
@@ -338,7 +295,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func hideGoPay() {
         self.view.endEditing(true)
-        self.tapVerticalView.remove(view: signGoPayView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
         self.tapGatewayChipHorizontalListViewModel.editMode(changed: false)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.tapGatewayChipHorizontalListViewModel.headerType = .GatewayListHeader
