@@ -407,8 +407,14 @@ import TapThemeManager2020
         showActionButton()
     }
     
+    /**
+     Internal helper method to change the amount section status
+     - Parameter newStatus: The new amoutn section status to be assigned
+     */
     func changeTapAmountSectionStatus(to newStatus:AmountSectionCurrentState) {
+        // Make sure there is a valid Amount section rendered and visible on the screen..
         if let tapAmountSectionView:TapAmountSectionView = stackView.arrangedSubviews.filter({ $0.isKind(of: TapAmountSectionView.self) })[0] as? TapAmountSectionView {
+            // If yes, then assign the new status to it
             tapAmountSectionView.viewModel?.screenChanged(to: newStatus)
         }
     }
