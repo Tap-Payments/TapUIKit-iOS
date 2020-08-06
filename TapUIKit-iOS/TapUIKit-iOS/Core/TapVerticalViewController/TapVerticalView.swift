@@ -366,6 +366,7 @@ import TapThemeManager2020
         endEditing(true)
         // Remove all non needed views preparing for showing the scanner afterwards
         remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        // Hide the action button as it is required to hide it nby the design for this scenario
         hideActionButton()
         // Create the hint view that shws the status of the scanner
         let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
@@ -386,19 +387,23 @@ import TapThemeManager2020
         }
     }
     
-    
+    /// Handles closing the scanner view by removing non required and adding required views
     public func closeScanner() {
         endEditing(true)
         
-        // Make sure we have a valid sign in form shown already
+        // Make sure we have a valid scanner view already
         let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapCardScannerView.self)}
         guard filteredViews.count > 0, let scannerView:TapCardScannerView = filteredViews[0] as? TapCardScannerView else { return }
         
+        // Kill the camera and garbage collect anything leaking from the scanner activity
         scannerView.killScanner()
+        // Remove the scanner view
         remove(view: scannerView, with: TapVerticalViewAnimationType.none)
-        
+        // Inform the amount section that now we are showing the default view, hence it changes the title and the action of the amount's action button
         changeTapAmountSectionStatus(to: .DefaultView)
+        // Remove any hints view that were visible because of the scanner view if any
         removeAllHintViews()
+        // Reveal back the action button
         showActionButton()
     }
     
