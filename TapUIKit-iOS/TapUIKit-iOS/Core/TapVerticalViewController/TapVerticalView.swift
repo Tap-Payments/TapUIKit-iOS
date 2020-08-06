@@ -308,22 +308,31 @@ import TapThemeManager2020
         remove(views: toBeDeletedViews, with: animation)
     }
     
-    
+    /**
+     Handles showing the GoPay sign in form by removing non required and adding required views
+     - Parameter delegate: The delegate that will listen to the events fired from the GoPay sign in view/ viewmodel
+     - Parameter goPayBarViewModel: The view model that will control the goPay sign view
+     */
     public func showGoPaySignInForm(with delegate:TapGoPaySignInViewProtocol,and goPayBarViewModel:TapGoPayLoginBarViewModel) {
+        // First declare the button state
         tapActionButton.viewModel?.buttonStatus = .InvalidNext
         
+        // Create the GoPay sign in view and assign the delegate
         let signGoPayView:TapGoPaySignInView = .init()
         signGoPayView.delegate = delegate
         signGoPayView.backgroundColor = .clear
         
-        
+        // Attach the view model to th just created view
         signGoPayView.setup(with: goPayBarViewModel)
         
+        // Inform the amount section that now we are showing the gopay view, hence it changes the title and the action of the amount's action button
         changeTapAmountSectionStatus(to: .GoPayView)
         
         endEditing(true)
+        // Remove from the stack view all the non needed view to prepare for showing the goPay sign in view
         remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
         DispatchQueue.main.async{ [weak self] in
+            // Lastly.. add the goPay sign in view
             self?.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
         }
     }
