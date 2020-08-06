@@ -337,20 +337,23 @@ import TapThemeManager2020
         }
     }
     
-    
+    /// Handles closing the GoPay sign in form by removing non required and adding required views
     public func closeGoPaySignInForm() {
         endEditing(true)
-        
+        // Inform the action button that now we will come back o the checkout reen hence, it will show invalid payment status
         tapActionButton.viewModel?.buttonStatus = .InvalidPayment
+        // Once we finished the password/OTP views of goPay we have to make sure that the blur view is now invisible
         showBlur = false
-        // Make sure we have a valid sign in form shown already
+        // Make sure we have a valid sign in form shown already.. Defensive coding
         let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapGoPaySignInView.self)}
         guard filteredViews.count > 0, let signGoPayView:TapGoPaySignInView = filteredViews[0] as? TapGoPaySignInView else { return }
-        
+        // Expire and invalidate any OTP running timers, so it won't fire even after closing the goPay OTP view
         signGoPayView.stopOTPTimers()
+        // Remove the goPay sign in view
         remove(view: signGoPayView, with: TapVerticalViewAnimationType.none)
-        
+        // Tell the amount section that we are no in teh default view so it will change the action and the title of its button
         changeTapAmountSectionStatus(to: .DefaultView)
+        // Remove any hints view that were visible because of the signIn view if any
         removeAllHintViews()
     }
     
