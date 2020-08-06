@@ -358,23 +358,30 @@ import TapThemeManager2020
     }
     
     
-    
+    /**
+     Handles showing the card scanner  by removing non required and adding required views
+     - Parameter delegate: The delegate that will listen to the events fired from the scanner in view/ viewmodel
+     */
     public func showScanner(with delegate:TapInlineScannerProtocl) {
         endEditing(true)
+        // Remove all non needed views preparing for showing the scanner afterwards
         remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
         hideActionButton()
-        
+        // Create the hint view that shws the status of the scanner
         let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
         let hintView:TapHintView = hintViewModel.createHintView()
-        
+        // Create the scanner view
         let tapCardScannerView:TapCardScannerView = .init()
+        // And assign the delegate
         tapCardScannerView.delegate = delegate
         tapCardScannerView.configureScanner()
-        
+        // Inform the amount section that now we are showing the scanner view, hence it changes the title and the action of the amount's action button
         changeTapAmountSectionStatus(to: .ScannerView)
         
         DispatchQueue.main.async{ [weak self] in
+            // Show the scanner hint view
             self?.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
+            // Show the scanner view itself
             self?.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
         }
     }
