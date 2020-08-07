@@ -286,8 +286,9 @@ import TapThemeManager2020
      - Parameter view: The view to be deleted
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      - Parameter deleteAfterViews: If true, all views below the mentioned view will be deleted
+     - Parameter skipSelf: If true, then the mentioned view WILL not be deleted and all views below the mentioned view will be deleted
      */
-    public func remove(viewType:AnyClass, with animation:TapVerticalViewAnimationType? = nil, and deleteAfterViews:Bool = false) {
+    public func remove(viewType:AnyClass, with animation:TapVerticalViewAnimationType? = nil, and deleteAfterViews:Bool = false,skipSelf:Bool = false) {
         // This will declare if we need to remove the current view in the loop iteration
         var shallDeleteView:Bool = false
         // List of views to be deleted afterwards
@@ -295,7 +296,9 @@ import TapThemeManager2020
         stackView.arrangedSubviews.forEach { arrangedView in
             // Check if the current view class type is the same as the required class
             if arrangedView.isKind(of: viewType) {
-                toBeDeletedViews.append(arrangedView)
+                if !skipSelf {
+                    toBeDeletedViews.append(arrangedView)
+                }
                 // Check if the user wants o deleted the views below it
                 if deleteAfterViews {
                     shallDeleteView = true
