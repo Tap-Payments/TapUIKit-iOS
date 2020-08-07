@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+import TapCardInputKit_iOS
+import CommonDataModelsKit_iOS
 /// External protocol to allow the TapCardInput to pass back data and events to the parent UIViewController
 @objc public protocol TapCardTelecomPaymentProtocol {
     /**
