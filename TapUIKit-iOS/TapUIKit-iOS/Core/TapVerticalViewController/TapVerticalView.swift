@@ -42,11 +42,15 @@ import TapCardScanner_iOS
         }
     }
     private var newSizeTimer:Timer?
+    /// Used to handle keyboard events and get the keyboard frame at run time
     private let keyboardHelper = KeyboardHelper()
+    /// Used to hide show the action button
     @IBOutlet weak var tapActionButtonHeightConstraint: NSLayoutConstraint!
+    /// Used to push and pull the whole views above the keybaod when it is shown or dimissed
     @IBOutlet weak var tapActionButtonBottomConstraint: NSLayoutConstraint!
+    /// Reference to the tap action button
     @IBOutlet weak var tapActionButton: TapActionButton!
-    
+    /// Saves the current keyboard height when it is visible
     internal var keyboardPadding:CGFloat = 0
     internal var delaySizeChange:Bool = true
     
@@ -76,6 +80,7 @@ import TapCardScanner_iOS
         scrollView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         scrollView.addSubview(stackView)
         
+        /// Adjust the stack view layout to fill in the super view
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
@@ -92,31 +97,15 @@ import TapCardScanner_iOS
     public func setupActionButton(with viewModel:TapActionButtonViewModel) {
         tapActionButton.setup(with: viewModel)
     }
-    
+    /**
+     Computes the needed size to show all the views inside the scroll view
+     - Returns: The needed size to show all teh renered views + the action button size and keyboard padding if any
+     */
     internal func neededSize() -> CGSize {
         var contentSize = scrollView.contentSize
         contentSize.height += tapActionButtonHeightConstraint.constant
         return contentSize
     }
-    
-    
-    /// Shows the action button fade in + height increase
-    public func showActionButton() {
-        tapActionButton.fadeIn()
-        tapActionButtonHeightConstraint.constant = 74
-        tapActionButton.updateConstraints()
-        layoutIfNeeded()
-    }
-    
-    /// Hide the action button fade out + height decrease
-    public func hideActionButton() {
-        tapActionButtonHeightConstraint.constant = 0
-        tapActionButton.updateConstraints()
-        layoutIfNeeded()
-    }
-    
-    
-    
     
     /// It is overriden to listen to the change in size of the scroll view
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -152,7 +141,7 @@ import TapCardScanner_iOS
     }
     
     
-    @objc private func publishNewContentSize(timer: Timer) {//to newSize:CGSize, with frame:CGRect) {
+    @objc private func publishNewContentSize(timer: Timer) {
         
         guard itemsBeingAdded == 0 else {
             
@@ -176,183 +165,26 @@ import TapCardScanner_iOS
         self.containerView.frame = bounds
     }
     
-    
+    /**
+     Use this method to tell the SDK if it needs to handle itself and deal with the keybord shown/dismissed events.
+     - Parameter newStatus: If set, then SDK will deal with the keyboard events and pushes itself above the keyboard. If not set, then it is your responsibility to deal with this
+     */
     @objc public func updateKeyBoardHandling(with newStatus:Bool = false) {
         if newStatus {
+            // If we have to deal with it, then we listen to keboard shown and dismissed events and updates our UI accordingly
             keyboardHelper.onKeyboardWillBeShown = {[weak self] keyboardRect in
                 print("KEYBOARD SHOW : \(keyboardRect)")
-                self?.addKeyboardSpaceView(with: keyboardRect)
+                self?.addSpaceView(with: keyboardRect)
             }
             keyboardHelper.onKeyboardWillBeHidden = { [weak self] keyboardRect in
                 self?.removeAllHintViews()
-                self?.removeKeyboardSpaceView(with: keyboardRect)
+                self?.removeSpaceView(with: keyboardRect)
             }
         }else{
+            // If the user will deal with it. We deactivate listening to keyboard events
             keyboardHelper.onKeyboardWillBeShown = nil
             keyboardHelper.onKeyboardWillBeHidden = nil
         }
-    }
-    
-    internal func addKeyboardSpaceView(with keyboardRect:CGRect) {
-        tapActionButtonBottomConstraint.constant = keyboardRect.height
-       
-        keyboardPadding = keyboardRect.height
-        
-        var currentContentSize = scrollView.contentSize
-        currentContentSize.height -= 1
-        
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            self.tapActionButton.updateConstraints()
-            //scrollView.layoutIfNeeded()
-            self.layoutIfNeeded()
-        }) { _ in
-            
-        }
-        
-        self.delaySizeChange = false
-        self.scrollView.contentSize = currentContentSize
-    }
-    
-    internal func removeKeyboardSpaceView(with keyboardRect:CGRect) {
-        
-        
-        tapActionButtonBottomConstraint.constant = 0
-        
-        keyboardPadding = 0
-        
-        var currentContentSize = scrollView.contentSize
-        currentContentSize.height -= 1
-        
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            self.tapActionButton.updateConstraints()
-            //scrollView.layoutIfNeeded()
-            self.layoutIfNeeded()
-        }) { _ in
-            
-        }
-        
-        self.delaySizeChange = false
-        self.scrollView.contentSize = currentContentSize
-    }
-    
-    internal func addSpaceView(with keyboardRect:CGRect) {
-        removeSpaceViews()
-        let space:SpaceView = .init()
-        space.backgroundColor = .clear
-        space.translatesAutoresizingMaskIntoConstraints = false
-        space.heightAnchor.constraint(equalToConstant: keyboardRect.height).isActive = true
-        add(view: space, with: [.none])
-    }
-    
-    internal func removeSpaceViews() {
-        let spaceViews:[SpaceView] = stackView.arrangedSubviews.filter{ $0.isKind(of: SpaceView.self) } as? [SpaceView] ?? []
-        guard spaceViews.count > 0 else { return }
-        spaceViews.forEach { spaceView in
-            remove(view: spaceView, with: TapVerticalViewAnimationType.none)
-        }
-    }
-    
-    
-    
-    /**
-     Handles showing the GoPay sign in form by removing non required and adding required views
-     - Parameter delegate: The delegate that will listen to the events fired from the GoPay sign in view/ viewmodel
-     - Parameter goPayBarViewModel: The view model that will control the goPay sign view
-     */
-    public func showGoPaySignInForm(with delegate:TapGoPaySignInViewProtocol,and goPayBarViewModel:TapGoPayLoginBarViewModel) {
-        // First declare the button state
-        tapActionButton.viewModel?.buttonStatus = .InvalidNext
-        
-        // Create the GoPay sign in view and assign the delegate
-        let signGoPayView:TapGoPaySignInView = .init()
-        signGoPayView.delegate = delegate
-        signGoPayView.backgroundColor = .clear
-        
-        // Attach the view model to th just created view
-        signGoPayView.setup(with: goPayBarViewModel)
-        
-        // Inform the amount section that now we are showing the gopay view, hence it changes the title and the action of the amount's action button
-        changeTapAmountSectionStatus(to: .GoPayView)
-        
-        endEditing(true)
-        // Remove from the stack view all the non needed view to prepare for showing the goPay sign in view
-        remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
-        DispatchQueue.main.async{ [weak self] in
-            // Lastly.. add the goPay sign in view
-            self?.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
-        }
-    }
-    
-    /// Handles closing the GoPay sign in form by removing non required and adding required views
-    public func closeGoPaySignInForm() {
-        endEditing(true)
-        // Inform the action button that now we will come back o the checkout reen hence, it will show invalid payment status
-        tapActionButton.viewModel?.buttonStatus = .InvalidPayment
-        // Once we finished the password/OTP views of goPay we have to make sure that the blur view is now invisible
-        showBlur = false
-        // Make sure we have a valid sign in form shown already.. Defensive coding
-        let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapGoPaySignInView.self)}
-        guard filteredViews.count > 0, let signGoPayView:TapGoPaySignInView = filteredViews[0] as? TapGoPaySignInView else { return }
-        // Expire and invalidate any OTP running timers, so it won't fire even after closing the goPay OTP view
-        signGoPayView.stopOTPTimers()
-        // Remove the goPay sign in view
-        remove(view: signGoPayView, with: TapVerticalViewAnimationType.none)
-        // Tell the amount section that we are no in teh default view so it will change the action and the title of its button
-        changeTapAmountSectionStatus(to: .DefaultView)
-        // Remove any hints view that were visible because of the signIn view if any
-        removeAllHintViews()
-    }
-    
-    
-    /**
-     Handles showing the card scanner  by removing non required and adding required views
-     - Parameter delegate: The delegate that will listen to the events fired from the scanner in view/ viewmodel
-     */
-    public func showScanner(with delegate:TapInlineScannerProtocl) {
-        endEditing(true)
-        // Remove all non needed views preparing for showing the scanner afterwards
-        remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
-        // Hide the action button as it is required to hide it nby the design for this scenario
-        hideActionButton()
-        // Create the hint view that shws the status of the scanner
-        let hintViewModel:TapHintViewModel = .init(with: .ReadyToScan)
-        let hintView:TapHintView = hintViewModel.createHintView()
-        // Create the scanner view
-        let tapCardScannerView:TapCardScannerView = .init()
-        // And assign the delegate
-        tapCardScannerView.delegate = delegate
-        tapCardScannerView.configureScanner()
-        // Inform the amount section that now we are showing the scanner view, hence it changes the title and the action of the amount's action button
-        changeTapAmountSectionStatus(to: .ScannerView)
-        
-        DispatchQueue.main.async{ [weak self] in
-            // Show the scanner hint view
-            self?.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
-            // Show the scanner view itself
-            self?.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
-        }
-    }
-    
-    /// Handles closing the scanner view by removing non required and adding required views
-    public func closeScanner() {
-        endEditing(true)
-        
-        // Make sure we have a valid scanner view already
-        let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapCardScannerView.self)}
-        guard filteredViews.count > 0, let scannerView:TapCardScannerView = filteredViews[0] as? TapCardScannerView else { return }
-        
-        // Kill the camera and garbage collect anything leaking from the scanner activity
-        scannerView.killScanner()
-        // Remove the scanner view
-        remove(view: scannerView, with: TapVerticalViewAnimationType.none)
-        // Inform the amount section that now we are showing the default view, hence it changes the title and the action of the amount's action button
-        changeTapAmountSectionStatus(to: .DefaultView)
-        // Remove any hints view that were visible because of the scanner view if any
-        removeAllHintViews()
-        // Reveal back the action button
-        showActionButton()
     }
     
     /**
@@ -366,7 +198,6 @@ import TapCardScanner_iOS
             tapAmountSectionView.viewModel?.screenChanged(to: newStatus)
         }
     }
-    
     
     /**
      Calculates the max space that a view can be added in the sheet with respect to the current height of the views added + the maximum availble height given tor the sheet
@@ -388,45 +219,7 @@ import TapCardScanner_iOS
         stackView.removeArrangedSubview(view)
         itemsBeingRemoved = false
     }
-    
-    /**
-     Adds a hint view below a given view
-     - Parameter hintView: The hint view to be added
-     - Parameter to: The type of the view you want to show the hint below it
-     - Parameter animations: A boolean to indicate whether you want to show the hint with animation or right away
-     */
-    
-    @objc public func attach(hintView:TapHintView,to:AnyClass,with animations:Bool = false) {
-        // First we remove all hints
-        removeAllHintViews()
-        // Then we check that there is already a view with the passed type
-        let filteredViews:[UIView] = stackView.arrangedSubviews.filter{ $0.isKind(of: to) }
-        guard  filteredViews.count > 0 else { return }
-        
-        // Fetch the index of the view we will attach the hint
-        guard let attachToViewIndex:Int = stackView.arrangedSubviews.firstIndex(of: filteredViews[0]) else { return }
-        // All good now we can add, but let us determine the animations first
-        let requiredAnimations:[TapVerticalViewAnimationType] = animations ? [.fadeIn()] : []
-        // Insert at the hint view at the correct index
-        if attachToViewIndex == stackView.arrangedSubviews.count - 1 {
-            // The attaching to view is already the last element, hence we add at the end normally as we usually do
-            add(view: hintView, with: requiredAnimations)
-        }else {
-            add(view: hintView,at: (attachToViewIndex+1), with: requiredAnimations)
-        }
-    }
-    
-    /// Call this method to remove all the shown hint views in the TAP bottom sheet
-    @objc public func removeAllHintViews() {
-        // Fetch all the hint views from the stack view first
-        let hintViews:[TapHintView] = stackView.arrangedSubviews.filter{ $0.isKind(of: TapHintView.self) } as? [TapHintView] ?? []
-        guard hintViews.count > 0 else { return }
-        // For each one, apply the deletion method
-        hintViews.forEach { hintView in
-            remove(view: hintView, with: TapVerticalViewAnimationType.none)
-        }
-    }
-    
+   
     internal func adjustAnimationList(view:UIView, for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
         // Create mutable instance of the animation list to be able to change the required values
         var delayUpToCurrentAnimation:Double = 0

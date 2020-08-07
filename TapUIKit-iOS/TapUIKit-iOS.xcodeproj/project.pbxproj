@@ -141,6 +141,7 @@
 		E8BE3FAC24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8BE3FAB24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib */; };
 		E8BE3FB024B60F6D00F15C41 /* TapCardTelecomPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE3FAF24B60F6D00F15C41 /* TapCardTelecomPaymentView.swift */; };
 		E8BF40A524DD6AE300B38D38 /* TapVerticalView+AddRemoveViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF40A424DD6AE300B38D38 /* TapVerticalView+AddRemoveViews.swift */; };
+		E8BF40A724DD6E7600B38D38 /* TapVerticalView+ShowHideTapViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF40A624DD6E7600B38D38 /* TapVerticalView+ShowHideTapViews.swift */; };
 		E8C590932490A27000E03424 /* ExampleWallOfGloryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590922490A27000E03424 /* ExampleWallOfGloryViewController.swift */; };
 		E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590FA24922AF600E03424 /* TapAmountSectionViewModel.swift */; };
 		E8C590FF249293E200E03424 /* TapAmountSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C590FE249293E200E03424 /* TapAmountSectionView.swift */; };
@@ -346,6 +347,7 @@
 		E8BE3FAB24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapCardTelecomPaymentView.xib; sourceTree = "<group>"; };
 		E8BE3FAF24B60F6D00F15C41 /* TapCardTelecomPaymentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapCardTelecomPaymentView.swift; sourceTree = "<group>"; };
 		E8BF40A424DD6AE300B38D38 /* TapVerticalView+AddRemoveViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapVerticalView+AddRemoveViews.swift"; sourceTree = "<group>"; };
+		E8BF40A624DD6E7600B38D38 /* TapVerticalView+ShowHideTapViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapVerticalView+ShowHideTapViews.swift"; sourceTree = "<group>"; };
 		E8C590922490A27000E03424 /* ExampleWallOfGloryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleWallOfGloryViewController.swift; sourceTree = "<group>"; };
 		E8C590FA24922AF600E03424 /* TapAmountSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionViewModel.swift; sourceTree = "<group>"; };
 		E8C590FE249293E200E03424 /* TapAmountSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapAmountSectionView.swift; sourceTree = "<group>"; };
@@ -1200,6 +1202,7 @@
 			children = (
 				E8F779AE248CD7C600215403 /* TapVerticalView.swift */,
 				E8BF40A424DD6AE300B38D38 /* TapVerticalView+AddRemoveViews.swift */,
+				E8BF40A624DD6E7600B38D38 /* TapVerticalView+ShowHideTapViews.swift */,
 			);
 			path = TapVerticalViewController;
 			sourceTree = "<group>";
@@ -1487,6 +1490,7 @@
 				E88F9E1124BB3D5300A7B470 /* TapCardScannerView.swift in Sources */,
 				E80C053A24C438DD00B12C00 /* UIImageView+SwiftyGif.swift in Sources */,
 				E82A56C7249B8A2100E3F00D /* CurrencyChipCollectionViewCell.swift in Sources */,
+				E8BF40A724DD6E7600B38D38 /* TapVerticalView+ShowHideTapViews.swift in Sources */,
 				627E3CDB24D8256700B2E096 /* TapLogoutChipViewModel.swift in Sources */,
 				E8437FB524C05E3E0059F1B8 /* TapOtpController.swift in Sources */,
 				E8E92B4C248FA4DF00DD7DBB /* TapMerchantHeaderView.swift in Sources */,
