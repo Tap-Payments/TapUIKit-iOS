@@ -235,23 +235,6 @@ import TapCardScanner_iOS
         
         self.delaySizeChange = false
         self.scrollView.contentSize = currentContentSize
-        
-        
-        
-        /*DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
-            
-            self.keyboardPadding = 0
-            var currentContentSize = self.scrollView.contentSize
-            currentContentSize.height += 1
-            self.scrollView.contentSize = currentContentSize
-            
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                self.tapActionButtonBottomConstraint.constant = 0
-                self.tapActionButton.updateConstraints()
-                self.scrollView.layoutIfNeeded()
-            }
-        }*/
-       
     }
     
     internal func addSpaceView(with keyboardRect:CGRect) {
@@ -271,45 +254,7 @@ import TapCardScanner_iOS
         }
     }
     
-    /**
-     Removes an arranged subview from the vertical hierarchy
-     - Parameter view: The view to be deleted
-     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
-     */
-    public func remove(view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
-        handleDeletion(for: view, with: animation)
-    }
     
-    
-    /**
-     Removes an arranged subview from the vertical hierarchy
-     - Parameter view: The view to be deleted
-     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
-     - Parameter deleteAfterViews: If true, all views below the mentioned view will be deleted
-     - Parameter skipSelf: If true, then the mentioned view WILL not be deleted and all views below the mentioned view will be deleted
-     */
-    public func remove(viewType:AnyClass, with animation:TapVerticalViewAnimationType? = nil, and deleteAfterViews:Bool = false,skipSelf:Bool = false) {
-        // This will declare if we need to remove the current view in the loop iteration
-        var shallDeleteView:Bool = false
-        // List of views to be deleted afterwards
-        var toBeDeletedViews:[UIView] = []
-        stackView.arrangedSubviews.forEach { arrangedView in
-            // Check if the current view class type is the same as the required class
-            if arrangedView.isKind(of: viewType) {
-                if !skipSelf {
-                    toBeDeletedViews.append(arrangedView)
-                }
-                // Check if the user wants o deleted the views below it
-                if deleteAfterViews {
-                    shallDeleteView = true
-                }
-            } else if shallDeleteView {
-                toBeDeletedViews.append(arrangedView)
-            }
-        }
-        // Time to remove all the grabbed views
-        remove(views: toBeDeletedViews, with: animation)
-    }
     
     /**
      Handles showing the GoPay sign in form by removing non required and adding required views
@@ -422,81 +367,27 @@ import TapCardScanner_iOS
         }
     }
     
-    /**
-     Removes a list of arranged subview from the vertical hierarchy
-     - Parameter view: The views to be deleted
-     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
-     */
-    public func remove(views:[UIView], with animation:TapVerticalViewAnimationType? = nil) {
-        views.forEach{ handleDeletion(for: $0, with: animation) }
-    }
     
+    /**
+     Calculates the max space that a view can be added in the sheet with respect to the current height of the views added + the maximum availble height given tor the sheet
+     - Returns: The space that can be filled with respect to the crrent views heights + the maximum height the sheet can expand to
+     */
     @objc public func getMaxAvailableHeight() -> CGFloat {
+        // Calculate the current views' height firs
         var currentViewsHeight:CGFloat = 0
         stackView.arrangedSubviews.forEach{ currentViewsHeight += ($0.frame.height > 0) ? $0.frame.height : 45 }
         return TapConstantManager.maxAllowedHeight - currentViewsHeight
     }
     
     /**
-     Removes an arranged subview from the vertical hierarchy
-     - Parameter index: The index of the view to be deleted
-     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
-     */
-    public func remove(at index:Int, with animation:TapVerticalViewAnimationType? = nil) {
-        let subViews = stackView.arrangedSubviews
-        guard subViews.count > index else { return }
-        
-        handleDeletion(for: subViews[index], with: animation)
-    }
-    
-    /**
-     Handles all the logic needed to remove an arranged subview from the vertical hierarchy
+     Deletes a certain view from with Fadeout animation from the stack view
      - Parameter view: The view to be deleted
-     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    private func handleDeletion(for view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
-        
-        // Check if there is an animation we need to do
-        guard let animation:TapVerticalViewAnimationType = animation, animation != .none  else {
-            itemsBeingRemoved = false
-            view.isHidden = true
-            stackView.removeArrangedSubview(view)
-            return
-        }
-        
-        
-        itemsBeingRemoved = true
-        
-        switch animation {
-        case .bounceIn(let direction,_,_):
-            view.bounceIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .bounceOut(let direction,_,_):
-            view.bounceOut(to: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .fadeIn:
-            view.fadeIn(completion: {_ in self.removeFromStackView(view:view)})
-        case .fadeOut(let duration,_):
-            view.fadeOut(duration:duration,completion: {_ in self.removeFromStackView(view:view)})
-        case .slideIn(let direction,_,_):
-            view.slideIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .slideOut(let direction,let duration,_):
-            view.slideOut(to: direction.animationKitDirection(),duration:duration,completion: {_ in self.removeFromStackView(view:view)})
-        case .popIn:
-            view.popIn()
-        case .popOut:
-            view.popOut()
-        case .none:
-            break
-        }
-        
-    }
-    
-    
-    private func removeFromStackView(view:UIView) {
+    internal func removeFromStackView(view:UIView) {
         view.fadeOut(duration:0)
         stackView.removeArrangedSubview(view)
         itemsBeingRemoved = false
     }
-    
     
     /**
      Adds a hint view below a given view
@@ -525,90 +416,18 @@ import TapCardScanner_iOS
         }
     }
     
-    
+    /// Call this method to remove all the shown hint views in the TAP bottom sheet
     @objc public func removeAllHintViews() {
+        // Fetch all the hint views from the stack view first
         let hintViews:[TapHintView] = stackView.arrangedSubviews.filter{ $0.isKind(of: TapHintView.self) } as? [TapHintView] ?? []
         guard hintViews.count > 0 else { return }
+        // For each one, apply the deletion method
         hintViews.forEach { hintView in
             remove(view: hintView, with: TapVerticalViewAnimationType.none)
         }
     }
     
-    /**
-     Adds an arranged subview to the vertical hierarchy at a certain position
-     - Parameter view: The view to be added
-     - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
-     - Parameter animation: The animation to be applied while doing the view addition. Default is nil
-     - Parameter shouldFillHeight: If true, then this view will expand the available height from the previous view to fill in the screen
-     */
-    public func add(view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial, shouldFillHeight:Bool = false) {
-        handleAddition(of: view, at: index,with: animations,and: animationSequence,shouldFillHeight: shouldFillHeight)
-    }
-    
-    
-    /**
-     Adds an arranged subview to the vertical hierarchy at a certain position
-     - Parameter views: The list of views to be added
-     - Parameter animation: The animation to be applied while doing the view addition. Default is nil
-     */
-    public func add(views:[UIView], with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
-        views.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false) }
-    }
-    
-    
-    /**
-     Handles all the logic needed to add an arranged subview to the vertical hierarchy
-     - Parameter view: The view to be added
-     - Parameter index: The index to add the view in, skip to add at the end of the vertical heirarchy
-     - Parameter animation: The animation to be applied while doing the view removal. Default is nil
-     shouldFillHeight:Bool = false
-     */
-    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial,shouldFillHeight:Bool = false) {
-  
-        // Check if should fill in max height, then set its height to the maxium availble
-        if shouldFillHeight {
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.heightAnchor.constraint(equalToConstant: getMaxAvailableHeight()).isActive = true
-            view.layoutIfNeeded()
-        }
-        
-        itemsBeingAdded += 1
-        
-        // If the index is not defined, then we just add it to the end
-        if let index = index {
-            stackView.insertArrangedSubview(view, at: index)
-        }else{
-            stackView.addArrangedSubview(view)
-        }
-        
-        DispatchQueue.main.async { [weak self] in
-            
-            
-            // Make sure there are some animations passed
-            guard animations.count > 0 else {
-                self?.itemsBeingAdded -= 1
-                return
-            }
-            // We need to apply the animations passed to the passed view with the required sequence
-            view.alpha = 0
-            // First case, we have only 1 animation then the sequence will not differ whether serial or parallel
-            guard animations.count > 1 else {
-                self?.animate(view: view, with: animations[0],and:{
-                    self?.itemsBeingAdded -= 1
-                })
-                return
-            }
-            
-            // Second case, we have more than 1 animation, hence we need to consider the sequence type
-            self?.adjustAnimationList(view: view, for: animations, with: animationSequence,then: {
-                self?.itemsBeingAdded -= 1
-            })
-        }
-    }
-    
-    
-    
-    private func adjustAnimationList(view:UIView, for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
+    internal func adjustAnimationList(view:UIView, for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
         // Create mutable instance of the animation list to be able to change the required values
         var delayUpToCurrentAnimation:Double = 0
         
@@ -631,7 +450,7 @@ import TapCardScanner_iOS
         
     }
     
-    private func animate(view:UIView,with animation:TapVerticalViewAnimationType,after delay:TimeInterval = 0, and completion:@escaping () -> () = {  }) {
+    internal func animate(view:UIView,with animation:TapVerticalViewAnimationType,after delay:TimeInterval = 0, and completion:@escaping () -> () = {  }) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(delay * 1000))) {
             switch animation {
             case .bounceIn(let direction,let duration,let delay):
@@ -714,27 +533,6 @@ import TapCardScanner_iOS
                 subView.fadeOut{ [weak self] _ in
                     self?.stackView.removeArrangedSubview(subView)
                 }
-            }
-        }
-    }
-    
-    private func add(subViews:[UIView], animationSequence:TapVerticalUpdatesAnimationSequence, delay:Int = 0) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) { [weak self] in
-            subViews.forEach{self?.stackView.addArrangedSubview($0)}
-            // Make sure they are of the same order now!
-            for (_, newView) in subViews.enumerated() {
-                if animationSequence != .none {
-                    newView.slideIn(from: .bottom)
-                }
-                /*let oldIndex = self?.stackView.arrangedSubviews.firstIndex(of: newView)
-                if oldIndex != newIndex {
-                    self?.stackView.removeArrangedSubview(newView)
-                    self?.stackView.insertArrangedSubview(newView, at: newIndex)
-                    if animationSequence != .none {
-                        newView.bounceIn(from: .bottom)
-                    }
-                }*/
             }
         }
     }
