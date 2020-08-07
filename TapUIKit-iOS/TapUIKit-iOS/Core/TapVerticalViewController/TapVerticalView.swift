@@ -8,7 +8,7 @@
 
 import SimpleAnimation
 import TapThemeManager2020
-
+import TapCardScanner_iOS
 /// The protocol for the delegates and notifications fired from the TapVerticalView
 @objc public protocol TapVerticalViewDelegate {
     /**
