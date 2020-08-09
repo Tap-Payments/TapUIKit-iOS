@@ -9,26 +9,25 @@
 import UIKit
 import TapThemeManager2020
 
+/// Represents the Tap Switch View
 @objc public class TapSwitchView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet weak private var containerView: UIView!
-    
     /// The stack view that holds all the switch views
     @IBOutlet weak private var stackView: UIStackView!
-    
-    ///
+    /// Represents the main switch control that controls the enabling / disabling goPay and merchant switches
     @IBOutlet weak private var mainSwitchControl: TapSwitchControl!
-    
+    /// Represents the bottom corners round masks
     internal var tapBottomSheetRadiousCorners:CACornerMask = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+    /// Represents the corner radius value
     internal var tapBottomSheetControllerRadious:CGFloat = 8
-
+    /// Represents goPay switch control view
     private var goPaySwitchControl: TapSwitchControl?
+    /// Represents merchant switch control view
     private var merchantSwitchControl: TapSwitchControl?
-    
     /// The view model that controls the data to be displayed and the events to be fired
     @objc public var viewModel:TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
-    
     /// This contains the path of Tap Switch view theme in the theme manager
     private let themePath = "TapSwitchView"
     
@@ -85,6 +84,7 @@ import TapThemeManager2020
     }
     
     // MARK: Configure Switches
+    /// Configures the mains swtich view and set delegate if not set yet
     internal func configureMainSwitch() {
         self.mainSwitchControl.configure(with: self.viewModel.mainSwitch)
         if self.mainSwitchControl.delegate == nil {
@@ -92,7 +92,8 @@ import TapThemeManager2020
         }
     }
     
-    internal func createMerchantSwitch() {
+    /// Configure the merchant switch view and display it on the view
+    internal func showMerchantSwitch() {
         if let merchantSwitch = viewModel.merchantSwitch {
             if self.merchantSwitchControl == nil {
                 self.merchantSwitchControl = .init()
@@ -112,8 +113,8 @@ import TapThemeManager2020
             self.merchantSwitchControl?.isOn = true
         }
     }
-    
-    internal func createGoPaySwitch() {
+    /// Configure the go pay switch view and display it on the view
+    internal func showGoPaySwitch() {
         if let goPaySwitch = viewModel.goPaySwitch {
             if self.goPaySwitchControl == nil {
                 self.goPaySwitchControl = .init()
@@ -133,7 +134,8 @@ import TapThemeManager2020
     }
     
     // MARK: Bottom Curved View
-    func createCurvedSeparatorView() {
+    /// Configure the main switch view to have a curved bottom corners
+    func showCurvedSeparatorView() {
         self.mainSwitchControl.tapRoundCorners(corners: tapBottomSheetRadiousCorners, radius: tapBottomSheetControllerRadious)
     }
 }
@@ -166,12 +168,12 @@ extension TapSwitchView: TapSwitchViewDelegate {
     }
     
     func addSubSwitches() {
-        self.createCurvedSeparatorView()
-        self.createMerchantSwitch()
-        self.createGoPaySwitch()
+        self.showCurvedSeparatorView()
+        self.showMerchantSwitch()
+        self.showGoPaySwitch()
     }
     
-    func updateSwitchesText() {
+    func reloadUI() {
         self.configureMainSwitch()
     }
 }
