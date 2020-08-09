@@ -15,7 +15,7 @@ protocol TapSwitchControlDelegate {
     func switchDidChange(sender: TapSwitchControl, isOn: Bool)
 }
 
-public class TapSwitchControl: UIView {
+@objc public class TapSwitchControl: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet weak internal var containerView: UIView!
@@ -30,91 +30,91 @@ public class TapSwitchControl: UIView {
     
     var delegate: TapSwitchControlDelegate?
     
-    public var hideSwitch: Bool = false {
+    @objc public var hideSwitch: Bool = false {
         didSet {
             self.switchButton.isHidden = hideSwitch
         }
     }
     
-    public var title: String? {
+    @objc public var title: String? {
         didSet {
             self.titleLabel.text = title
         }
     }
     
-    public var subtitle: String? {
+    @objc public var subtitle: String? {
         didSet {
             self.subtitleLabel.text = subtitle
         }
     }
     
-    public var notes: String? {
+    @objc public var notes: String? {
         didSet {
             self.notesLabel.text = notes
         }
     }
     
-    public var titleFont: UIFont = .systemFont(ofSize: 12) {
+    @objc public var titleFont: UIFont = .systemFont(ofSize: 12) {
         didSet {
             self.titleLabel.font = titleFont
         }
     }
     
-    public var subtitleFont: UIFont = .systemFont(ofSize: 12) {
+    @objc public var subtitleFont: UIFont = .systemFont(ofSize: 12) {
         didSet {
             self.subtitleLabel.font = subtitleFont
         }
     }
     
-    public var notesFont: UIFont = .systemFont(ofSize: 12) {
+    @objc public var notesFont: UIFont = .systemFont(ofSize: 12) {
         didSet {
             self.notesLabel.font = notesFont
         }
     }
     
-    public var titleTextColor: UIColor = .white {
+    @objc public var titleTextColor: UIColor = .white {
         didSet {
             self.titleLabel.textColor = titleTextColor
         }
     }
     
-    public var subtitleTextColor: UIColor = .white {
+    @objc public var subtitleTextColor: UIColor = .white {
         didSet {
             self.subtitleLabel.textColor = subtitleTextColor
         }
     }
     
-    public var notesTextColor: UIColor = .white {
+    @objc public var notesTextColor: UIColor = .white {
         didSet {
             self.notesLabel.textColor = notesTextColor
         }
     }
     
-    public var isOn: Bool = false {
+    @objc public var isOn: Bool = false {
         didSet {
             self.switchButton.isOn = isOn
         }
     }
     
-    public var switchOnColor: UIColor? {
+    @objc public var switchOnColor: UIColor? {
         didSet {
             self.switchButton.onTintColor = switchOnColor
         }
     }
     
-    public var switchOffColor: UIColor? {
+    @objc public var switchOffColor: UIColor? {
         didSet {
             self.switchButton.thumbTintColor = switchOnColor
         }
     }
     
-    public var showSeparator: Bool = false {
+    @objc public var showSeparator: Bool = false {
         didSet {
             self.separator.isHidden = !self.showSeparator
         }
     }
     
-    public override func awakeFromNib() {
+    @objc public override func awakeFromNib() {
         superview?.awakeFromNib()
 //        self.configure()
     }
@@ -140,12 +140,12 @@ public class TapSwitchControl: UIView {
     }
     
     /// Updates the container view frame to the parent view bounds
-    public override func layoutSubviews() {
+    @objc public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = bounds
     }
 
-    public func configure(with switchModel: TapSwitchModel) {
+    @objc public func configure(with switchModel: TapSwitchModel) {
         self.title = switchModel.title
         self.subtitle = switchModel.subtitle
         self.isOn = switchModel.isOn

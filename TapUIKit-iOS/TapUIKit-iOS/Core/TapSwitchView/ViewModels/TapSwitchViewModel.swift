@@ -70,21 +70,21 @@ internal protocol TapSwitchViewDelegate {
     internal var merchant: String
     
     /// current state for switch view, default state is .none
-    public var state: TapSwitchEnum = .none {
+    @objc public var state: TapSwitchEnum = .none {
         didSet {
             self.delegate?.didChangeState(state: state)
         }
     }
     
     /// current state for switch view, default state is .none
-    public var cardState: TapSwitchCardStateEnum = .invalidCard {
+    @objc public var cardState: TapSwitchCardStateEnum = .invalidCard {
         didSet {
             self.updateCardState()
             self.delegate?.didChangeCardState(cardState: cardState)
         }
     }
     
-    public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
+    @objc public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
         self.merchant = merchant
         self.cardState = cardState
         super.init()

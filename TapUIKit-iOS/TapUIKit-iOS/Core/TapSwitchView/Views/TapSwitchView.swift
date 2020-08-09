@@ -50,7 +50,7 @@ import TapThemeManager2020
         }
         
         /// Updates the container view frame to the parent view bounds
-        public override func layoutSubviews() {
+        @objc public override func layoutSubviews() {
             super.layoutSubviews()
             self.containerView.frame = bounds
         }
@@ -196,7 +196,7 @@ extension TapSwitchView: TapSwitchControlDelegate {
 // Mark:- Theme methods
 extension TapSwitchView {
     /// Consolidated one point to apply all needed theme methods
-    public func applyTheme() {
+    @objc public func applyTheme() {
         matchThemeAttributes()
     }
     
@@ -253,7 +253,7 @@ extension TapSwitchView {
     
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    @objc override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()

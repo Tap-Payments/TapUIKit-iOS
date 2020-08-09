@@ -8,7 +8,7 @@
 import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
 /// Tap switch model to represent the switch layer
-public class TapSwitchModel: NSObject {
+@objc public class TapSwitchModel: NSObject {
     /// Switch title text
     internal var title: String
     /// Switch subtitle text
@@ -21,14 +21,14 @@ public class TapSwitchModel: NSObject {
     
     internal var isOn: Bool
     
-    public init(title: String, subtitle: String, isOn: Bool = false, notes: String = "") {
+    @objc public init(title: String, subtitle: String, isOn: Bool = false, notes: String = "") {
         self.title = title
         self.subtitle = subtitle
         self.notes = notes
         self.isOn = isOn
     }
     
-    public init(localisedSwitchKey: String, isOn: Bool = false, merchant: String? = nil) {
+    @objc public init(localisedSwitchKey: String, isOn: Bool = false, merchant: String? = nil) {
 
         self.title = sharedLocalisationManager.localisedValue(for: "TapSwitchView.\(localisedSwitchKey).title", with: TapCommonConstants.pathForDefaultLocalisation())
         if let merchant = merchant {
