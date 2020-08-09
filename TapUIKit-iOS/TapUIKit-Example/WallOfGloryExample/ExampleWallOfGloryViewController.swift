@@ -120,7 +120,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         // The button
         self.tapVerticalView.setupActionButton(with: tapActionButtonViewModel)
         // The initial views
-        self.tapVerticalView.add(views: [dragView,tapMerchantViewModel.attachedView,tapAmountSectionViewModel.attachedView,tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+        self.tapVerticalView.add(views: [dragView,tapMerchantViewModel.attachedView,tapAmountSectionViewModel.attachedView,tapGoPayChipsHorizontalListViewModel.attachedView,tapGatewayChipHorizontalListViewModel.attachedView,tapCardTelecomPaymentViewModel.attachedView,tapSaveCardSwitchViewModel.attachedView], with: [.init(for: .fadeIn)])
     }
     
     
@@ -218,10 +218,10 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
 extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func showItemsClicked() {
         self.view.endEditing(true)
-        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         
         DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+            self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [.init(for: .fadeIn)])
             self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
         }
     }
@@ -229,11 +229,11 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func closeItemsClicked() {
         self.view.endEditing(true)
-        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         
             DispatchQueue.main.async{ [weak self] in
             self?.tapVerticalView.showActionButton()
-            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [.init(for: .fadeIn)])
             }
     }
     
@@ -244,7 +244,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     func closeScannerClicked() {
         tapVerticalView.closeScanner()
         DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [.init(for: .fadeIn)])
         }
     }
     
@@ -253,7 +253,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         tapVerticalView.closeGoPaySignInForm()
         
         DispatchQueue.main.async{ [weak self] in
-            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [TapVerticalViewAnimationType.fadeIn()])
+            self?.tapVerticalView.add(views: [self!.tapGoPayChipsHorizontalListViewModel.attachedView,self!.tapGatewayChipHorizontalListViewModel.attachedView,self!.tapCardTelecomPaymentViewModel.attachedView,self!.tapSaveCardSwitchViewModel.attachedView], with: [.init(for: .fadeIn)])
         }
     }
     
@@ -263,14 +263,14 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func showWebView(with url:URL) {
        
-        self.tapVerticalView.remove(viewType: TapMerchantHeaderView.self, with: TapVerticalViewAnimationType.none, and: true)
+        self.tapVerticalView.remove(viewType: TapMerchantHeaderView.self, with: .init(), and: true)
         
         self.tapActionButtonViewModel.startLoading()
         webViewModel = .init()
         webViewModel.delegate = self
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
             self?.tapVerticalView.hideActionButton()
-            self?.tapVerticalView.add(view: self!.webViewModel.attachedView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
+            self?.tapVerticalView.add(view: self!.webViewModel.attachedView, with: [.init(for: .fadeIn)],shouldFillHeight: true)
             self?.webViewModel.load(with: url)
         }
     }
@@ -278,7 +278,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func closeWebView() {
         self.view.endEditing(true)
-        self.tapVerticalView.remove(view: webViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: webViewModel.attachedView, with: .init(for: .fadeOut))
         self.tapVerticalView.showActionButton()
         
         self.tapActionButtonViewModel.startLoading()
@@ -295,7 +295,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     
     func hideGoPay() {
         self.view.endEditing(true)
-        self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: TapVerticalViewAnimationType.fadeOut())
+        self.tapVerticalView.remove(view: tapGoPayChipsHorizontalListViewModel.attachedView, with: .init(for: .fadeOut))
         self.tapGatewayChipHorizontalListViewModel.editMode(changed: false)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.tapGatewayChipHorizontalListViewModel.headerType = .GatewayListHeader
@@ -432,7 +432,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func startPayment(then success:Bool) {
         view.endEditing(true)
-        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         self.tapActionButtonViewModel.startLoading()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3500)) {

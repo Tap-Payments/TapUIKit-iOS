@@ -220,7 +220,7 @@ import TapCardScanner_iOS
         itemsBeingRemoved = false
     }
    
-    internal func adjustAnimationList(view:UIView, for animations:[TapVerticalViewAnimationType], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
+    internal func adjustAnimationList(view:UIView, for animations:[TapSheetAnimation], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
         // Create mutable instance of the animation list to be able to change the required values
         var delayUpToCurrentAnimation:Double = 0
         
@@ -243,45 +243,9 @@ import TapCardScanner_iOS
         
     }
     
-    internal func animate(view:UIView,with animation:TapVerticalViewAnimationType,after delay:TimeInterval = 0, and completion:@escaping () -> () = {  }) {
+    internal func animate(view:UIView,with animation:TapSheetAnimation,after delay:TimeInterval = 0, and completion:@escaping () -> () = {  }) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(Int(delay * 1000))) {
-            switch animation {
-            case .bounceIn(let direction,let duration,let delay):
-                view.bounceIn(from: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
-                    completion()
-                })
-            case .bounceOut(let direction,let duration,let delay):
-                view.bounceOut(to: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
-                    completion()
-                })
-            case .fadeIn(let duration,let delay):
-                view.fadeIn(duration:duration, delay:delay , completion: { _ in
-                    completion()
-                })
-            case .fadeOut(let duration,let delay):
-                view.fadeOut(duration:duration, delay:delay , completion: { _ in
-                    completion()
-                })
-            case .slideIn(let direction,let duration,let delay):
-                view.slideIn(from: direction.animationKitDirection(),x:0,y:400, duration:duration, delay:delay, completion: { _ in
-                    completion()
-                })
-            case .slideOut(let direction,let duration,let delay):
-                view.slideOut(to: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
-                    completion()
-                })
-            case .popIn(let duration,let delay):
-                view.popIn(duration:duration, delay:delay, completion: { _ in
-                    completion()
-                })
-            case .popOut(let duration,let delay):
-                view.popOut(duration:duration, delay:delay, completion: { _ in
-                    completion()
-                })
-            case .none:
-                completion()
-                break
-            }
+            animation.applyAnimation(to: view, with: completion)
         }
     }
     
@@ -331,39 +295,97 @@ import TapCardScanner_iOS
     }
 }
 
+
 /// Defines the type and the configuration of the needed animations
-public enum TapVerticalViewAnimationType: Equatable {
-    case bounceIn(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case bounceOut(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case slideIn(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case slideOut(TapVerticalViewAnimationDirection,duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case fadeIn(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case fadeOut(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case popIn(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case popOut(duration:Double = TapConstantManager.TapAnimationDuration, delay:Double = 0)
-    case none
+@objc public class TapSheetAnimation : NSObject {
+    /// The duration required to performt the animation
+    var duration:Double = TapConstantManager.TapAnimationDuration
+    /// The delay before performing the animatijn
+    var delay:Double = 0
+    /// The direction to perform the animation from/to
+    var direction:TapVerticalViewAnimationDirection = .bottom
+    /// Which animation you want to perform
+    var animation:TapVerticalViewAnimationType = .none
     
+    /**
+     Creates a new instance of tap sheet animation object
+     - Parameter duration: The duration required to performt the animation, default is TapConstantManager.TapAnimationDuration
+     - Parameter delay:  The delay before performing the animatijn, default is 0
+     - Parameter direction: The direction to perform the animation from/to, default is bottom
+     - Parameter animation: Which anumation you want to perform, default is none
+     */
+    @objc public init(for animation:TapVerticalViewAnimationType = .none, with duration:Double = TapConstantManager.TapAnimationDuration,and direction:TapVerticalViewAnimationDirection = .bottom, wait delay:Double = 0) {
+        self.duration = duration
+        self.direction = direction
+        self.animation = animation
+        self.delay = delay
+    }
+    
+    /**
+     An elegante way to get all the emebded info and data inside the Animation object
+     - Returns: Tuble of (Animation direction, duration and delay)
+     */
     internal func animationDetails() -> (TapVerticalViewAnimationDirection?,Double,Double) {
-        var detectedDirection:TapVerticalViewAnimationDirection? = nil
-        var detectedDuration:Double = TapConstantManager.TapAnimationDuration
-        var detectedDelay:Double = 0
-        switch self {
-        case .bounceIn(let direction,let duration,let delay), .bounceOut(let direction,let duration,let delay), .slideIn(let direction,let duration,let delay), .slideOut(let direction,let duration,let delay):
-            detectedDirection = direction
-            detectedDuration = duration
-            detectedDelay = delay
-        case .fadeIn(let duration,let delay), .fadeOut(let duration,let delay), .popIn(let duration,let delay), .popOut(let duration,let delay):
-            detectedDirection = nil
-            detectedDuration = duration
-            detectedDelay = delay
+        return( (self.animation == .none) ? nil : self.direction,duration,delay)
+    }
+    
+    /**
+     Perfosm a correct animation with the needed attributes to the given the view
+     - Parameter view: The UIView to perform the animation on
+     - Parameter completion: The block to exeute after finishing the animation
+     */
+    internal func applyAnimation(to view:UIView, with completion:@escaping () -> () = {  }) {
+        switch animation {
+        case .bounceIn:
+            view.bounceIn(from: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
+                completion()
+            })
+        case .bounceOut:
+            view.bounceOut(to: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
+                completion()
+            })
+        case .fadeIn:
+            view.fadeIn(duration:duration, delay:delay , completion: { _ in
+                completion()
+            })
+        case .fadeOut:
+            view.fadeOut(duration:duration, delay:delay , completion: { _ in
+                completion()
+            })
+        case .slideIn:
+            view.slideIn(from: direction.animationKitDirection(),x:0,y:400, duration:duration, delay:delay, completion: { _ in
+                completion()
+            })
+        case .slideOut:
+            view.slideOut(to: direction.animationKitDirection(), duration:duration, delay:delay, completion: { _ in
+                completion()
+            })
+        case .popIn:
+            view.popIn(duration:duration, delay:delay, completion: { _ in
+                completion()
+            })
+        case .popOut:
+            view.popOut(duration:duration, delay:delay, completion: { _ in
+                completion()
+            })
         case .none:
-            detectedDirection = nil
-            detectedDuration = 0
-            detectedDelay = 0
+            completion()
             break
         }
-        return(detectedDirection,detectedDuration,detectedDelay)
     }
+}
+
+/// Defines the animation type
+@objc public enum TapVerticalViewAnimationType: Int {
+    case bounceIn = 1
+    case bounceOut = 2
+    case slideIn = 3
+    case slideOut = 4
+    case fadeIn = 5
+    case fadeOut = 6
+    case popIn = 7
+    case popOut = 8
+    case none = 9
 }
 
 

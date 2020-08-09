@@ -15,7 +15,7 @@ extension TapVerticalView {
      - Parameter view: The view to be deleted
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    public func remove(view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
+    public func remove(view:UIView, with animation:TapSheetAnimation? = nil) {
         handleDeletion(for: view, with: animation)
     }
     
@@ -27,7 +27,7 @@ extension TapVerticalView {
      - Parameter deleteAfterViews: If true, all views below the mentioned view will be deleted
      - Parameter skipSelf: If true, then the mentioned view WILL not be deleted and all views below the mentioned view will be deleted
      */
-    public func remove(viewType:AnyClass, with animation:TapVerticalViewAnimationType? = nil, and deleteAfterViews:Bool = false,skipSelf:Bool = false) {
+    public func remove(viewType:AnyClass, with animation:TapSheetAnimation? = nil, and deleteAfterViews:Bool = false,skipSelf:Bool = false) {
         // This will declare if we need to remove the current view in the loop iteration
         var shallDeleteView:Bool = false
         // List of views to be deleted afterwards
@@ -55,7 +55,7 @@ extension TapVerticalView {
      - Parameter index: The index of the view to be deleted
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    public func remove(at index:Int, with animation:TapVerticalViewAnimationType? = nil) {
+    public func remove(at index:Int, with animation:TapSheetAnimation? = nil) {
         let subViews = stackView.arrangedSubviews
         guard subViews.count > index else { return }
         
@@ -67,7 +67,7 @@ extension TapVerticalView {
      - Parameter view: The views to be deleted
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    public func remove(views:[UIView], with animation:TapVerticalViewAnimationType? = nil) {
+    public func remove(views:[UIView], with animation:TapSheetAnimation? = nil) {
         views.forEach{ handleDeletion(for: $0, with: animation) }
     }
     
@@ -77,10 +77,10 @@ extension TapVerticalView {
      - Parameter view: The view to be deleted
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      */
-    internal func handleDeletion(for view:UIView, with animation:TapVerticalViewAnimationType? = nil) {
+    internal func handleDeletion(for view:UIView, with animation:TapSheetAnimation? = nil) {
         
         // Check if there is an animation we need to do
-        guard let animation:TapVerticalViewAnimationType = animation, animation != .none  else {
+        guard let animation:TapSheetAnimation = animation, animation.animation != .none  else {
             itemsBeingRemoved = false
             view.isHidden = true
             stackView.removeArrangedSubview(view)
@@ -90,27 +90,7 @@ extension TapVerticalView {
         
         itemsBeingRemoved = true
         
-        switch animation {
-        case .bounceIn(let direction,_,_):
-            view.bounceIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .bounceOut(let direction,_,_):
-            view.bounceOut(to: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .fadeIn:
-            view.fadeIn(completion: {_ in self.removeFromStackView(view:view)})
-        case .fadeOut(let duration,_):
-            view.fadeOut(duration:duration,completion: {_ in self.removeFromStackView(view:view)})
-        case .slideIn(let direction,_,_):
-            view.slideIn(from: direction.animationKitDirection(),completion: {_ in self.removeFromStackView(view:view)})
-        case .slideOut(let direction,let duration,_):
-            view.slideOut(to: direction.animationKitDirection(),duration:duration,completion: {_ in self.removeFromStackView(view:view)})
-        case .popIn:
-            view.popIn()
-        case .popOut:
-            view.popOut()
-        case .none:
-            break
-        }
-        
+        animation.applyAnimation(to: view) {self.removeFromStackView(view:view)}
     }
     
     
@@ -121,7 +101,7 @@ extension TapVerticalView {
      - Parameter animation: The animation to be applied while doing the view addition. Default is nil
      - Parameter shouldFillHeight: If true, then this view will expand the available height from the previous view to fill in the screen
      */
-    public func add(view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial, shouldFillHeight:Bool = false) {
+    public func add(view:UIView, at index:Int? = nil, with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial, shouldFillHeight:Bool = false) {
         handleAddition(of: view, at: index,with: animations,and: animationSequence,shouldFillHeight: shouldFillHeight)
     }
     
@@ -131,7 +111,7 @@ extension TapVerticalView {
      - Parameter views: The list of views to be added
      - Parameter animation: The animation to be applied while doing the view addition. Default is nil
      */
-    public func add(views:[UIView], with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial) {
+    public func add(views:[UIView], with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial) {
         views.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false) }
     }
     
@@ -143,7 +123,7 @@ extension TapVerticalView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      shouldFillHeight:Bool = false
      */
-    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapVerticalViewAnimationType] = [], and animationSequence:TapAnimationSequence = .serial,shouldFillHeight:Bool = false) {
+    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial,shouldFillHeight:Bool = false) {
         
         // Check if should fill in max height, then set its height to the maxium availble
         if shouldFillHeight {

@@ -18,7 +18,7 @@ extension TapVerticalView {
         guard hintViews.count > 0 else { return }
         // For each one, apply the deletion method
         hintViews.forEach { hintView in
-            remove(view: hintView, with: TapVerticalViewAnimationType.none)
+            remove(view: hintView, with: .init())
         }
     }
     
@@ -28,7 +28,7 @@ extension TapVerticalView {
      - Parameter delegate: The delegate that will listen to the events fired from the GoPay sign in view/ viewmodel
      - Parameter goPayBarViewModel: The view model that will control the goPay sign view
      */
-    public func showGoPaySignInForm(with delegate:TapGoPaySignInViewProtocol,and goPayBarViewModel:TapGoPayLoginBarViewModel) {
+    @objc public func showGoPaySignInForm(with delegate:TapGoPaySignInViewProtocol,and goPayBarViewModel:TapGoPayLoginBarViewModel) {
         // First declare the button state
         tapActionButton.viewModel?.buttonStatus = .InvalidNext
         
@@ -45,15 +45,15 @@ extension TapVerticalView {
         
         endEditing(true)
         // Remove from the stack view all the non needed view to prepare for showing the goPay sign in view
-        remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         DispatchQueue.main.async{ [weak self] in
             // Lastly.. add the goPay sign in view
-            self?.add(view: signGoPayView, with: [TapVerticalViewAnimationType.fadeIn()])
+            self?.add(view: signGoPayView, with: [.init(for: .fadeIn)])
         }
     }
     
     /// Handles closing the GoPay sign in form by removing non required and adding required views
-    public func closeGoPaySignInForm() {
+    @objc public func closeGoPaySignInForm() {
         endEditing(true)
         // Inform the action button that now we will come back o the checkout reen hence, it will show invalid payment status
         tapActionButton.viewModel?.buttonStatus = .InvalidPayment
@@ -65,7 +65,7 @@ extension TapVerticalView {
         // Expire and invalidate any OTP running timers, so it won't fire even after closing the goPay OTP view
         signGoPayView.stopOTPTimers()
         // Remove the goPay sign in view
-        remove(view: signGoPayView, with: TapVerticalViewAnimationType.none)
+        remove(view: signGoPayView, with: .init())
         // Tell the amount section that we are no in teh default view so it will change the action and the title of its button
         changeTapAmountSectionStatus(to: .DefaultView)
         // Remove any hints view that were visible because of the signIn view if any
@@ -77,10 +77,10 @@ extension TapVerticalView {
      Handles showing the card scanner  by removing non required and adding required views
      - Parameter delegate: The delegate that will listen to the events fired from the scanner in view/ viewmodel
      */
-    public func showScanner(with delegate:TapInlineScannerProtocl) {
+    @objc public func showScanner(with delegate:TapInlineScannerProtocl) {
         endEditing(true)
         // Remove all non needed views preparing for showing the scanner afterwards
-        remove(viewType: TapChipHorizontalList.self, with: TapVerticalViewAnimationType.none, and: true)
+        remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         // Hide the action button as it is required to hide it nby the design for this scenario
         hideActionButton()
         // Create the hint view that shws the status of the scanner
@@ -98,12 +98,12 @@ extension TapVerticalView {
             // Show the scanner hint view
             self?.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
             // Show the scanner view itself
-            self?.add(view: tapCardScannerView, with: [TapVerticalViewAnimationType.fadeIn()],shouldFillHeight: true)
+            self?.add(view: tapCardScannerView, with: [.init(for: .fadeIn)],shouldFillHeight: true)
         }
     }
     
     /// Handles closing the scanner view by removing non required and adding required views
-    public func closeScanner() {
+    @objc public func closeScanner() {
         endEditing(true)
         
         // Make sure we have a valid scanner view already
@@ -113,7 +113,7 @@ extension TapVerticalView {
         // Kill the camera and garbage collect anything leaking from the scanner activity
         scannerView.killScanner()
         // Remove the scanner view
-        remove(view: scannerView, with: TapVerticalViewAnimationType.none)
+        remove(view: scannerView, with: .init())
         // Inform the amount section that now we are showing the default view, hence it changes the title and the action of the amount's action button
         changeTapAmountSectionStatus(to: .DefaultView)
         // Remove any hints view that were visible because of the scanner view if any
@@ -129,7 +129,7 @@ extension TapVerticalView {
         guard spaceViews.count > 0 else { return }
         // For each space view apply the deletion method
         spaceViews.forEach { spaceView in
-            remove(view: spaceView, with: TapVerticalViewAnimationType.none)
+            remove(view: spaceView, with: .init())
         }
     }
     
@@ -182,7 +182,7 @@ extension TapVerticalView {
     }
     
     /// Shows the action button fade in + height increase
-    public func showActionButton() {
+    @objc public func showActionButton() {
         tapActionButton.fadeIn()
         tapActionButtonHeightConstraint.constant = 74
         tapActionButton.updateConstraints()
@@ -190,7 +190,7 @@ extension TapVerticalView {
     }
     
     /// Hide the action button fade out + height decrease
-    public func hideActionButton() {
+   @objc  public func hideActionButton() {
         tapActionButtonHeightConstraint.constant = 0
         tapActionButton.updateConstraints()
         layoutIfNeeded()
@@ -213,7 +213,7 @@ extension TapVerticalView {
         // Fetch the index of the view we will attach the hint
         guard let attachToViewIndex:Int = stackView.arrangedSubviews.firstIndex(of: filteredViews[0]) else { return }
         // All good now we can add, but let us determine the animations first
-        let requiredAnimations:[TapVerticalViewAnimationType] = animations ? [.fadeIn()] : []
+        let requiredAnimations:[TapSheetAnimation] = animations ? [.init(for: .fadeIn)] : []
         // Insert at the hint view at the correct index
         if attachToViewIndex == stackView.arrangedSubviews.count - 1 {
             // The attaching to view is already the last element, hence we add at the end normally as we usually do
