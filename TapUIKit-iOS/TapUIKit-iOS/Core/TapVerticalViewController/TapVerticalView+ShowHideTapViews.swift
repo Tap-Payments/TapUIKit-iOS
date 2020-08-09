@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TapCardScanner_iOS
 /// Extension to the bottom sheet that contains all the logic required for showing and dismissing Tap custom views fromt the sheet controller
 extension TapVerticalView {
 
