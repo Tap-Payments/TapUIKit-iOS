@@ -26,8 +26,10 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case GoPayPassword = 6
     /// The feedback aout the number the OTP sent to
     case GoPayOtp = 7
-    /// The feedback aout the number the OTP sent to
+    /// No hint should be shown
     case None = 8
+    /// No hint should be shown
+    case Error = 9
     
     /**
      The theme path that has the UI info for each case

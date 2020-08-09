@@ -103,7 +103,7 @@ import TapCardVlidatorKit_iOS
         
         // Check first if the card nnumber has data otherwise we are in the IDLE state
         guard let cardNumber:String = tapCard.tapCardNumber, cardNumber != "" else {
-            return .None
+            return .Error
         }
         // Let us get the validation status of the fields
         let (cardNumberValid,cardExpiryValid,cardCVVValid) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
