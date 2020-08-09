@@ -19,6 +19,10 @@ import CommonDataModelsKit_iOS
     /// invalid telecom case
     case invalidTelecom
     
+    /**
+     Get the main localised text depending on the current tap localisation
+     - Returns: localised title text
+     */
     func mainLocalisedTitle() -> String {
         let sharedLocalisationManager:TapLocalisationManager = .shared
 

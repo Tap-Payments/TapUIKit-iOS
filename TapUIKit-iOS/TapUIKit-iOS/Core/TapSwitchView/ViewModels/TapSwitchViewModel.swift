@@ -16,8 +16,8 @@ internal protocol TapSwitchViewDelegate {
     func removeSubSwitches()
     /// An event will be fired once the main switch state changed to on
     func addSubSwitches()
-    
-    func updateSwitchesText()
+    /// An evemt will be fired to reload the main switch configurations with the UI
+    func reloadUI()
 }
 
 /// A protocol to be used to fire functions and events in the parent view
@@ -35,6 +35,7 @@ internal protocol TapSwitchViewDelegate {
     @objc func didChangeCardState(cardState: TapSwitchCardStateEnum)
 }
 
+/// The view model that controls the tap switch view
 @objc public class TapSwitchViewModel: NSObject {
     
     /// The delegate used to fire events inside the associated view
@@ -83,7 +84,11 @@ internal protocol TapSwitchViewDelegate {
             self.delegate?.didChangeCardState(cardState: cardState)
         }
     }
-    
+    /**
+     Creates a view model with the provided card state and merchat name
+     - Parameter cardState: The card state of this switch
+     - Parameter merchant: The name of the merchant
+     */
     @objc public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
         self.merchant = merchant
         self.cardState = cardState
@@ -124,6 +129,7 @@ internal protocol TapSwitchViewDelegate {
 //    }
     
     // MARK: Create Switches
+    /// Configures the switches using the current card state
     private func configureSwitches() {
         self.mainSwitch = TapSwitchModel(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
         self.mainSwitch.title = cardState.mainLocalisedTitle()
@@ -134,6 +140,8 @@ internal protocol TapSwitchViewDelegate {
     }
     
     // MARK: Toggle Switch
+    /// Updates the the main switch and fire the required delegates after the state change
+    /// - Parameter isOn: The switch is on. true if its on
     internal func updateMainSwitchState(isOn: Bool) {
         self.mainSwitch.isOn = isOn
         if isOn {
@@ -150,17 +158,20 @@ internal protocol TapSwitchViewDelegate {
             self.state = .none
         }
     }
-    
+    /// Updates the the main switch and fire the required delegates after the state change
+    /// - Parameter isOn: The switch is on. true if its on
     internal func updateGoPaySwitchState(isOn: Bool) {
         self.goPaySwitch?.isOn = isOn
         self.validateState()
     }
-    
+    /// Updates the the merchant switch and fire the required delegates after the state change
+    /// - Parameter isOn: The switch is on. true if its on
     internal func updateMerchantSwitchState(isOn: Bool) {
         self.merchantSwitch?.isOn = isOn
         self.validateState()
     }
     
+    /// Updates the current state depending on the merchant and go pay states
     internal func validateState() {
         let merchantState: Bool = self.merchantSwitch?.isOn ?? false
         let goPayState: Bool = self.goPaySwitch?.isOn ?? false
@@ -184,12 +195,10 @@ internal protocol TapSwitchViewDelegate {
     }
     
     // MARK: Card State
-    /**
-     Update main switch depending on the card state change
-     */
+    ///Update main switch depending on the card state change
     func updateCardState() {
         self.mainSwitch.title = cardState.mainLocalisedTitle()//update(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
-        self.viewDelegate?.updateSwitchesText()
+        self.viewDelegate?.reloadUI()
         switch cardState {
         case .invalidCard, .invalidTelecom:
             self.updateMainSwitchState(isOn: false)
@@ -199,9 +208,7 @@ internal protocol TapSwitchViewDelegate {
         }
     }
     
-    /**
-        Creating and setup Switch View
-    */
+    /// Creating and setup Switch View
     @objc public func createSwitchView() -> TapSwitchView {
         let tapSwitchView:TapSwitchView = .init()
         tapSwitchView.translatesAutoresizingMaskIntoConstraints = false
