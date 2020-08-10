@@ -77,6 +77,11 @@ import TapThemeManager2020
     @objc optional func tapBottomSheetWillDismiss()
     
     /**
+     Will be fired just after the sheet is dismissed
+     */
+    @objc optional func tapBottomSheetDismissed()
+    
+    /**
      Will be fired if the user clicks in the dimmed area non filled by the presented controller
      */
     @objc optional func tapBottomSheetDidTapOutside()
@@ -403,6 +408,14 @@ import TapThemeManager2020
 
 
 extension TapBottomSheetDialogViewController: TapPresentableViewControllerDelegate {
+    func willDismiss() {
+        delegate?.tapBottomSheetWillDismiss?()
+    }
+    
+    func dismissed() {
+        delegate?.tapBottomSheetDismissed?()
+    }
+    
     func tapBottomSheetHeightChanged(with newHeight: CGFloat) {
         guard let delegate = delegate else { return }
         delegate.tapBottomSheetHeightChanged?(with: newHeight)

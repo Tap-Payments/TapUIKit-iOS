@@ -17,6 +17,11 @@ internal protocol TapPresentableViewControllerDelegate {
      */
     func tapBottomSheetHeightChanged(with newHeight:CGFloat)
     
+    ///Will be fired just before the sheet is dismissed
+    func willDismiss()
+    
+    ///Will be fired just after the sheet is dismissed
+    func dismissed()
 }
 
 
@@ -118,7 +123,10 @@ internal class TapPresentableViewController: PullUpController {
     
     
     private func dismissView() {
-        dismiss(animated: true, completion: nil)
+        delegate?.willDismiss()
+        dismiss(animated: true) { [weak self] in
+            self?.delegate?.dismissed()
+        }
     }
     
 }
