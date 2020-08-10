@@ -144,7 +144,12 @@ import RxCocoa
             return
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidPayment] )
-        viewModel?.delegate?.showHint(with: status)
+        if status != .None && status != .Error {
+            viewModel?.delegate?.showHint(with: status)
+        }
+        if status == .Error {
+            viewModel?.delegate?.hideHints()
+        }
     }
     
     /**
@@ -155,7 +160,7 @@ import RxCocoa
         if segment == "telecom" {
             cardInputView.fadeOut()
             phoneInputView.fadeIn()
-            hintStatus = nil
+            hintStatus = .Error
         }else if segment == "cards" {
             cardInputView.fadeIn()
             phoneInputView.fadeOut()
