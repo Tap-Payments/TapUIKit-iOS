@@ -39,6 +39,8 @@ import SimpleAnimation
     /// Represents the theme path to look for to UI this list
     private let themePath:String = "horizontalList"
     
+    private var myHeightAnchor:NSLayoutConstraint?
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,6 +73,8 @@ import SimpleAnimation
         // First thing we load the XIB file and attach it to the curren view
         self.contentView = setupXIB()
         translatesAutoresizingMaskIntoConstraints = false
+        myHeightAnchor = heightAnchor.constraint(equalToConstant: 100)
+        self.addConstraint(myHeightAnchor!)
         // Second, theme it please!
         applyTheme()
         // Third, we do all the configurations needed as one time setup to our collection view
@@ -145,7 +149,7 @@ import SimpleAnimation
                     self?.headerViewHeightConstraint.constant = 0
                     self?.collectionViewToHederConstraint.priority = .defaultLow
                     self?.translatesAutoresizingMaskIntoConstraints = false
-                    self?.heightAnchor.constraint(equalToConstant: 80).isActive = true
+                    self?.myHeightAnchor?.constant = 80
                     self?.layoutIfNeeded()
                 },completion: { _ in
                     //self?.assignFlowLaout()
@@ -159,7 +163,8 @@ import SimpleAnimation
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.headerViewHeightConstraint.constant = 30
             self?.collectionViewToHederConstraint.priority = .required
-            self?.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            self?.translatesAutoresizingMaskIntoConstraints = false
+            self?.myHeightAnchor?.constant = 100
             self?.layoutIfNeeded()
             },completion: { [weak self] _ in
                 if self?.shouldShowHeader ?? false {

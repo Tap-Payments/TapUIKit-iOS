@@ -59,8 +59,8 @@
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="e3d-wB-6KC" secondAttribute="bottom" id="Y51-UL-AFJ"/>
                 <constraint firstItem="e3d-wB-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aFZ-ut-m4b"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="750" id="aph-Ul-z9G"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WLy-hc-NaI" secondAttribute="trailing" constant="17" id="m6E-yk-tuB"/>
-                <constraint firstItem="WLy-hc-NaI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="mBf-EW-FWK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WLy-hc-NaI" secondAttribute="trailing" priority="750" constant="17" id="m6E-yk-tuB"/>
+                <constraint firstItem="WLy-hc-NaI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="17" id="mBf-EW-FWK"/>
                 <constraint firstItem="e3d-wB-6KC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rpM-Kb-qPx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
