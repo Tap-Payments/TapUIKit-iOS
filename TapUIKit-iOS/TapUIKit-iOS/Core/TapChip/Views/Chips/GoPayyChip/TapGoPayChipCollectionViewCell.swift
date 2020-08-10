@@ -98,8 +98,8 @@ import SnapKit
         
         goPayLabel.snp.remakeConstraints { (make) in
             //make.right.equalToSuperview().offset(10)
-            make.left.equalToSuperview().offset(41)
-            make.right.equalToSuperview().offset(-18)
+            make.left.equalToSuperview().offset(41).priority(.high)
+            make.right.equalToSuperview().offset(-18).priority(.high)
             make.centerY.equalTo(tapBrandIconImageView.snp.centerY)
         }
         
