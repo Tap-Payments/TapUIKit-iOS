@@ -18,22 +18,13 @@ protocol TapOtpControllerDelegate: class {
 public class TapOtpController: UIView, UITextFieldDelegate {
     
     @IBOutlet weak private var textField1: BottomLineTextField!
-    @IBOutlet weak private var textField2: UnTouchableTextField!
-    @IBOutlet weak private var textField3: UnTouchableTextField!
-    @IBOutlet weak private var textField4: UnTouchableTextField!
-    @IBOutlet weak private var textField5: UnTouchableTextField!
-    @IBOutlet weak private var textField6: UnTouchableTextField!
-    
+    @IBOutlet private var untouchableTextField: [UnTouchableTextField]!
     
     /// Set text color of textField digits
     public var textColor: UIColor = .white {
         didSet {
             self.textField1.textColor = self.textColor
-            self.textField2.textColor = self.textColor
-            self.textField3.textColor = self.textColor
-            self.textField4.textColor = self.textColor
-            self.textField5.textColor = self.textColor
-            self.textField6.textColor = self.textColor
+            self.untouchableTextField.forEach { $0.textColor = self.textColor }
         }
     }
     
@@ -43,11 +34,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     public var bottomLineColor: UIColor = .white {
         didSet {
             self.textField1.bottomLine.backgroundColor = self.bottomLineColor.cgColor
-            self.textField2.bottomLine.backgroundColor = self.bottomLineColor.cgColor
-            self.textField3.bottomLine.backgroundColor = self.bottomLineColor.cgColor
-            self.textField4.bottomLine.backgroundColor = self.bottomLineColor.cgColor
-            self.textField5.bottomLine.backgroundColor = self.bottomLineColor.cgColor
-            self.textField6.bottomLine.backgroundColor = self.bottomLineColor.cgColor
+            self.untouchableTextField.forEach { $0.bottomLine.backgroundColor = self.bottomLineColor.cgColor }
         }
     }
     
@@ -55,11 +42,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     public var font: UIFont = .systemFont(ofSize: 12) {
         didSet {
             self.textField1.font = self.font
-            self.textField2.font = self.font
-            self.textField3.font = self.font
-            self.textField4.font = self.font
-            self.textField5.font = self.font
-            self.textField6.font = self.font
+            self.untouchableTextField.forEach { $0.font = self.font }
         }
     }
     /// Set the bottom line color when the textField is active
@@ -110,46 +93,24 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     // MARK:- configure
-    /**
-     Configures the textfields properties to make the view ready for user interaction
-     */
+    /// Configures the textfields properties to make the view ready for user interaction
     func configure() {
         
         setTextFieldsDelegate()
         
-        
         self.textField1.textColor = self.textColor
-        self.textField2.textColor = self.textColor
-        self.textField3.textColor = self.textColor
-        self.textField4.textColor = self.textColor
-        self.textField5.textColor = self.textColor
-        self.textField6.textColor = self.textColor
+        self.untouchableTextField.forEach { $0.textColor = self.textColor }
         
         self.textField1.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
-        self.textField2.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
-        self.textField3.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
-        self.textField4.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
-        self.textField5.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
-        self.textField6.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
-        
+        self.untouchableTextField.forEach { $0.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor) }
+
+        self.untouchableTextField.forEach { $0.keyboardType = .numberPad }
         self.textField1.keyboardType = .numberPad
-        self.textField2.keyboardType = .numberPad
-        self.textField3.keyboardType = .numberPad
-        self.textField4.keyboardType = .numberPad
-        self.textField5.keyboardType = .numberPad
-        self.textField6.keyboardType = .numberPad
-        
     }
-    /**
-     Set the textFields delegates
-     */
+    /// Set the textFields delegates
     fileprivate func setTextFieldsDelegate() {
         self.textField1.delegate = self
-        self.textField2.delegate = self
-        self.textField3.delegate = self
-        self.textField4.delegate = self
-        self.textField5.delegate = self
-        self.textField6.delegate = self
+        self.untouchableTextField.forEach { $0.delegate = self }
     }
     
     // MARK: UITextFieldDelegate
@@ -168,26 +129,14 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     /**
      Update the digits list depending on textField value change
      - Parameter textField: the updated textField
+     - Parameter index: index of textField to update digits array
      */
     private func updateDigits(_ textField: UITextField) {
         print("updateDigits: value: \(String(describing: textField.text))")
-        switch textField {
-        case textField1:
-            digits[0] = textField.text!
-        case textField2:
-            digits[1] = textField.text!
-        case textField3:
-            digits[2] = textField.text!
-        case textField4:
-            digits[3] = textField.text!
-        case textField5:
-            digits[4] = textField.text!
-        case textField6:
-            digits[5] = textField.text!
-                
-        default: break
-        }
+        let index = textField.tag - 1
+        digits[index] = textField.text!
         /// Callback the delegate with the changed digits
+        print("current digits: \(digits)")
         self.delegate?.digitsDidChange(newDigits: digits.joined())
     }
     
@@ -229,27 +178,12 @@ public class TapOtpController: UIView, UITextFieldDelegate {
                 self.resignAllTextFields()
                 break
             }
-            switch index {
-            case 0:
+            if index > 0 {
+                self.untouchableTextField[index].text = "\(char)"
+                self.updateDigits(self.untouchableTextField[index])
+            } else {
                 self.textField1.text = "\(char)"
                 self.updateDigits(textField1)
-            case 1:
-                self.textField2.text = "\(char)"
-                self.updateDigits(textField2)
-            case 2:
-                self.textField3.text = "\(char)"
-                self.updateDigits(textField3)
-            case 3:
-                self.textField4.text = "\(char)"
-                self.updateDigits(textField4)
-            case 4:
-                self.textField5.text = "\(char)"
-                self.updateDigits(textField5)
-                
-            case 5:
-                self.textField6.text = "\(char)"
-                self.updateDigits(textField6)
-            default: break
             }
         }
     }
@@ -260,29 +194,15 @@ public class TapOtpController: UIView, UITextFieldDelegate {
      - Parameter textField: the current active textField
      */
     fileprivate func moveToNextTextField(_ textField: UITextField) {
-        if textField == textField1 {
-            textField2.becomeFirstResponder()
-        }
+        let currentTag = textField.tag
         
-        if textField == textField2 {
-            textField3.becomeFirstResponder()
+        if currentTag == self.untouchableTextField.count + 1 {
+            textField.resignFirstResponder()
+            return
         }
+        let currentIndex = currentTag == 1 ? -1 : currentTag - 2
         
-        if textField == textField3 {
-            textField4.becomeFirstResponder()
-        }
-        
-        if textField == textField4 {
-            textField5.becomeFirstResponder()
-        }
-        
-        if textField == textField5 {
-            textField6.becomeFirstResponder()
-        }
-        
-        if textField == textField6 {
-            textField6.resignFirstResponder()
-        }
+        self.untouchableTextField[currentIndex + 1].becomeFirstResponder()
     }
     
     /**
@@ -290,25 +210,13 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     - Parameter textField: the current active textField
     */
     fileprivate func moveToPreviousTextField(_ textField: UITextField) {
-        if textField == textField6 {
-            textField5.becomeFirstResponder()
-        }
-        
-        if textField == textField5 {
-            textField4.becomeFirstResponder()
-        }
-        
-        if textField == textField4 {
-            textField3.becomeFirstResponder()
-        }
-        
-        if textField == textField3 {
-            textField2.becomeFirstResponder()
-        }
-        
-        if textField == textField2 {
+        let currentTag = textField.tag
+        if currentTag <= 2 {
             textField1.becomeFirstResponder()
+            return
         }
+
+        self.untouchableTextField[currentTag - 2].becomeFirstResponder()
     }
     
     // MARK: ResetAllTextFields
@@ -317,11 +225,7 @@ public class TapOtpController: UIView, UITextFieldDelegate {
      */
     fileprivate func resignAllTextFields() {
         self.textField1.resignFirstResponder()
-        self.textField2.resignFirstResponder()
-        self.textField3.resignFirstResponder()
-        self.textField4.resignFirstResponder()
-        self.textField5.resignFirstResponder()
-        self.textField6.resignFirstResponder()
+        self.untouchableTextField.forEach{ $0.resignFirstResponder() }
     }
     
     /**
@@ -330,12 +234,9 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     public func resetAll() {
         self.digits = ["", "", "", "", "", ""]
         self.textField1.text = ""
-        self.textField2.text = ""
-        self.textField3.text = ""
-        self.textField4.text = ""
-        self.textField5.text = ""
-        self.textField6.text = ""
-        
+        self.untouchableTextField.forEach {
+            $0.text = ""
+        }
         resignAllTextFields()
     }
 }

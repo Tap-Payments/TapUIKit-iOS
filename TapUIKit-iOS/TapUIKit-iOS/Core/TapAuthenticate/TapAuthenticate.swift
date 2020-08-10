@@ -38,7 +38,6 @@ import LocalAuthentication
     private var error: NSError?
     /// Reason of using face id and touch id authentication, it will be shown to the user while asking the user for authentication
     private var reason: String
-    
     /// Returns the available biometric type in the current device, .none if not available
     public var type: BiometricType {
         if self.authenticationEnabled() {
@@ -65,15 +64,14 @@ import LocalAuthentication
     
     /**
      Check if authentication is available in the current device
-     - Returns if authentication is enabled, returns true
+     - Returns: returns true authentication is enabled
      */
     internal func authenticationEnabled() -> Bool {
         return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
     }
     
-    /**
-        Start authentication process
-     */
+        
+    /// Start authentication process
     public func authenticate() {
         if self.authenticationEnabled() {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
