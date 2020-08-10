@@ -51,7 +51,7 @@
                 <constraint firstItem="or1-yo-2AD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0kr-te-KwP"/>
                 <constraint firstItem="m1l-HA-Sjs" firstAttribute="leading" secondItem="4iO-6k-uJn" secondAttribute="leading" id="BYd-UH-ZjJ"/>
                 <constraint firstItem="m1l-HA-Sjs" firstAttribute="bottom" secondItem="4iO-6k-uJn" secondAttribute="bottom" id="IYP-qC-mW5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" id="Lo4-0C-Jxa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" priority="750" id="Lo4-0C-Jxa"/>
                 <constraint firstItem="4iO-6k-uJn" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="bottom" id="NcE-B9-R5n"/>
                 <constraint firstItem="m1l-HA-Sjs" firstAttribute="trailing" secondItem="4iO-6k-uJn" secondAttribute="trailing" id="fbW-BJ-FUH"/>
                 <constraint firstItem="lCg-68-EoW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hFC-oV-9o7"/>
@@ -59,7 +59,7 @@
                 <constraint firstAttribute="bottom" secondItem="4iO-6k-uJn" secondAttribute="bottom" id="mbu-8a-4c4"/>
                 <constraint firstItem="m1l-HA-Sjs" firstAttribute="top" secondItem="4iO-6k-uJn" secondAttribute="top" id="qzf-iG-7ht"/>
                 <constraint firstAttribute="bottom" secondItem="lCg-68-EoW" secondAttribute="bottom" id="wAz-4E-pTb"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xyV-UW-vhT"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" id="xyV-UW-vhT"/>
                 <constraint firstItem="4iO-6k-uJn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yAu-pZ-vAl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
