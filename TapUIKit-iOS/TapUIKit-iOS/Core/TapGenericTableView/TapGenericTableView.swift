@@ -94,7 +94,7 @@ import TapThemeManager2020
             tableView.updateConstraints()
             self?.updateConstraints()
         }
-        print("TABLE : \(tableView.contentSize)   \(tableView.frame)")
+        //print("TABLE : \(tableView.contentSize)   \(tableView.frame)")
     }
     
     /// All the configurations needed as one time setup to our table view
