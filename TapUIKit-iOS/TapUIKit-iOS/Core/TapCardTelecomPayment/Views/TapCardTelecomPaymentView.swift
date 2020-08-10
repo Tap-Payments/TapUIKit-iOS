@@ -147,6 +147,9 @@ import RxCocoa
         if status != .None && status != .Error {
             viewModel?.delegate?.showHint(with: status)
         }
+        if status == .Error {
+            viewModel?.delegate?.hideHints()
+        }
     }
     
     /**
