@@ -133,7 +133,7 @@ import LocalisationManagerKit_iOS
         
         // Selet the first tab by default
         guard let dataSource = self.viewModel?.dataSource, dataSource.count > 0 else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350)) {
             // Give it time to render and bind observables
             self.viewModel?.select(segment: dataSource[0].associatedCardBrand.brandSegmentIdentifier)
         }
