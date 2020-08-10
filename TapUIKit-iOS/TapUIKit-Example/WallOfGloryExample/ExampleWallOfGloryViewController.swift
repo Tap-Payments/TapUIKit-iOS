@@ -199,7 +199,7 @@ extension ExampleWallOfGloryViewController: TapVerticalViewDelegate {
         print("DELEGATE CALL BACK WITH SIZE \(newSize) and Frame of :\(frame)")
         guard let delegate = delegate else { return }
         
-        delegate.changeHeight(to: newSize.height + frame.origin.y + view.safeAreaBottom)
+        delegate.changeHeight(to: newSize.height)
     }
     
 }
@@ -221,6 +221,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         self.tapVerticalView.remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         
         DispatchQueue.main.async{ [weak self] in
+            self?.tapVerticalView.hideActionButton()
             self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [.init(for: .fadeIn)])
             self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
         }
