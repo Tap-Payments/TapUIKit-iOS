@@ -108,9 +108,9 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" constant="19" id="AZx-tL-oOS"/>
+                <constraint firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" priority="750" constant="19" id="AZx-tL-oOS"/>
                 <constraint firstItem="vsh-mW-HOs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ehc-Vn-IN6"/>
-                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="IvH-V0-pjR"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" constant="19" id="IvH-V0-pjR"/>
                 <constraint firstItem="vsh-mW-HOs" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Jnt-HN-adQ"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>

@@ -70,6 +70,7 @@ import SimpleAnimation
     private func commonInit() {
         // First thing we load the XIB file and attach it to the curren view
         self.contentView = setupXIB()
+        translatesAutoresizingMaskIntoConstraints = false
         // Second, theme it please!
         applyTheme()
         // Third, we do all the configurations needed as one time setup to our collection view
