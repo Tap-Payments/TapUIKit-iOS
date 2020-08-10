@@ -127,13 +127,13 @@
                             <constraint firstItem="Y7w-Xp-Wmc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VBo-xJ-RLL" secondAttribute="trailing" constant="8" id="OTx-TS-dum"/>
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="centerY" secondItem="nP3-lz-60X" secondAttribute="centerY" id="RLK-J9-gkQ"/>
                             <constraint firstItem="VBo-xJ-RLL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nP3-lz-60X" secondAttribute="top" constant="11" id="Vo4-VN-gdb"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Zik-jL-n3t"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="60" id="Zik-jL-n3t"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VBo-xJ-RLL" secondAttribute="bottom" constant="11" id="hLm-mG-CAI"/>
-                            <constraint firstAttribute="trailing" secondItem="Y7w-Xp-Wmc" secondAttribute="trailing" constant="16" id="lbm-5a-g16"/>
-                            <constraint firstItem="VBo-xJ-RLL" firstAttribute="leading" secondItem="nP3-lz-60X" secondAttribute="leading" constant="16" id="zdt-Le-TVh"/>
+                            <constraint firstAttribute="trailing" secondItem="Y7w-Xp-Wmc" secondAttribute="trailing" priority="750" constant="16" id="lbm-5a-g16"/>
+                            <constraint firstItem="VBo-xJ-RLL" firstAttribute="leading" secondItem="nP3-lz-60X" secondAttribute="leading" priority="750" constant="16" id="zdt-Le-TVh"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ioR-i0-gR8">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ioR-i0-gR8">
                         <rect key="frame" x="0.0" y="77" width="320" height="192"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdm-my-YpN">
