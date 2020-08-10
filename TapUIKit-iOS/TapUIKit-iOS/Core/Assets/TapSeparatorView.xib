@@ -32,8 +32,8 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="j0K-Si-gFc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Iuz-9M-Ppx"/>
-                <constraint firstAttribute="trailing" secondItem="j0K-Si-gFc" secondAttribute="trailing" id="JAb-MO-pSg"/>
+                <constraint firstItem="j0K-Si-gFc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" id="Iuz-9M-Ppx"/>
+                <constraint firstAttribute="trailing" secondItem="j0K-Si-gFc" secondAttribute="trailing" priority="750" id="JAb-MO-pSg"/>
                 <constraint firstItem="j0K-Si-gFc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g68-JL-AGV"/>
                 <constraint firstItem="j0K-Si-gFc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kir-ZK-jlM"/>
             </constraints>
