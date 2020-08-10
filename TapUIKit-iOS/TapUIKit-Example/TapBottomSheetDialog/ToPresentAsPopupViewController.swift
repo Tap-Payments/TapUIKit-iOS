@@ -162,7 +162,7 @@ class ToPresentAsPopupViewController: UIViewController {
 extension ToPresentAsPopupViewController: TapVerticalViewDelegate {
     
     func innerSizeChanged(to newSize: CGSize, with frame: CGRect) {
-        print("DELEGATE CALL BACK WITH SIZE \(newSize) and Frame of :\(frame)")
+        //print("DELEGATE CALL BACK WITH SIZE \(newSize) and Frame of :\(frame)")
         guard let delegate = delegate else { return }
         delegate.changeHeight(to: newSize.height + frame.origin.y)
     }
