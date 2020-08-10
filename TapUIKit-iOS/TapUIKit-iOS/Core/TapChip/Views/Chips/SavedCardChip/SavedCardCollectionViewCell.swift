@@ -16,9 +16,9 @@ import SnapKit
     // MARK:- Variables
     
     /// Reference to the saved card icon image view
-    var cardBrandIconImageView: UIImageView = .init()
+    @IBOutlet weak var cardBrandIconImageView: UIImageView!
     /// Reference to the saved card secured number
-    var cardSchemeLabel: UILabel = .init()
+    @IBOutlet weak var cardSchemeLabel: UILabel!
     /// Reference to the delete save card button
     @IBOutlet weak var deleteCardButton: UIButton!
     /// Holds the last style theme applied
@@ -78,8 +78,6 @@ import SnapKit
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
-        addSubViews()
-        setupConstraints()
         applyTheme()
     }
     
@@ -90,30 +88,6 @@ import SnapKit
         // Apply the editing ui if needed
         changedEditMode(to: viewModel.editMode)
     }
-    
-    func addSubViews() {
-        addSubview(cardBrandIconImageView)
-        addSubview(cardSchemeLabel)
-    }
-    func setupConstraints() {
-        cardBrandIconImageView.snp.remakeConstraints { (make) in
-            //make.left.equalToSuperview().offset(15)
-            make.left.equalToSuperview().offset(15)
-            make.width.equalTo(18)
-            make.height.equalTo(18)
-            make.right.equalTo(self.cardSchemeLabel.snp.left).offset(-12)
-            make.centerY.equalToSuperview()
-        }
-        
-        cardSchemeLabel.snp.remakeConstraints { (make) in
-            //make.right.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.centerY.equalTo(cardBrandIconImageView.snp.centerY)
-        }
-        
-        layoutIfNeeded()
-    }
-    
     
     /// Responsible for all logic needed to load all images in the cell
     private func loadImages() {
