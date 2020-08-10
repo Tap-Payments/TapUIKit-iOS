@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapOtpController" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="textField1" destination="FfX-cI-OTB" id="RO6-Hy-3Hx"/>
-                <outlet property="textField2" destination="8F5-5v-ph6" id="pd2-69-j1w"/>
-                <outlet property="textField3" destination="zJ0-DK-glA" id="3S6-oF-er3"/>
-                <outlet property="textField4" destination="q5G-D9-C2d" id="iMe-QI-rtq"/>
-                <outlet property="textField5" destination="wNo-bf-9dx" id="rET-i6-1D3"/>
-                <outlet property="textField6" destination="BeY-wH-5h5" id="iCV-3f-u7k"/>
+                <outletCollection property="untouchableTextField" destination="8F5-5v-ph6" collectionClass="NSMutableArray" id="bRk-75-y6s"/>
+                <outletCollection property="untouchableTextField" destination="zJ0-DK-glA" collectionClass="NSMutableArray" id="zqI-Zk-B1n"/>
+                <outletCollection property="untouchableTextField" destination="q5G-D9-C2d" collectionClass="NSMutableArray" id="zSB-PH-j5L"/>
+                <outletCollection property="untouchableTextField" destination="wNo-bf-9dx" collectionClass="NSMutableArray" id="dU8-9d-wYf"/>
+                <outletCollection property="untouchableTextField" destination="BeY-wH-5h5" collectionClass="NSMutableArray" id="bqH-D4-YeL"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-cI-OTB" customClass="BottomLineTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-cI-OTB" customClass="BottomLineTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="59" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -32,7 +32,7 @@
                         <outlet property="delegate" destination="-1" id="xE8-nm-JOe"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8F5-5v-ph6" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8F5-5v-ph6" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="68" y="0.0" width="59" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -41,7 +41,7 @@
                         <outlet property="delegate" destination="-1" id="BDI-cZ-vfR"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJ0-DK-glA" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJ0-DK-glA" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="136" y="0.0" width="59" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -50,7 +50,7 @@
                         <outlet property="delegate" destination="-1" id="vSE-Kf-EBm"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q5G-D9-C2d" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q5G-D9-C2d" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="219" y="0.0" width="59" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -59,7 +59,7 @@
                         <outlet property="delegate" destination="-1" id="N5K-QB-lis"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNo-bf-9dx" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNo-bf-9dx" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="287" y="0.0" width="59" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -68,7 +68,7 @@
                         <outlet property="delegate" destination="-1" id="VKW-5t-j91"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BeY-wH-5h5" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BeY-wH-5h5" customClass="UnTouchableTextField" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="355" y="0.0" width="59" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
