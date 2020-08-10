@@ -52,6 +52,7 @@ import SimpleAnimation
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.containerView = setupXIB()
+        translatesAutoresizingMaskIntoConstraints = false
         applyTheme()
     }
     

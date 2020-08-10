@@ -85,7 +85,7 @@
                     <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="N1r-s8-8cc" secondAttribute="trailing" constant="5" id="EqF-Na-kxO"/>
-                        <constraint firstAttribute="width" constant="70" id="PkG-ro-wTr"/>
+                        <constraint firstAttribute="width" priority="750" constant="70" id="PkG-ro-wTr"/>
                         <constraint firstItem="N1r-s8-8cc" firstAttribute="top" secondItem="j2W-ua-sQI" secondAttribute="top" constant="5" id="Qn2-HI-1nc"/>
                         <constraint firstItem="N1r-s8-8cc" firstAttribute="leading" secondItem="j2W-ua-sQI" secondAttribute="leading" constant="5" id="ZYs-Cs-pPM"/>
                         <constraint firstAttribute="bottom" secondItem="FM5-Gu-0ji" secondAttribute="bottom" id="cZM-1Z-TQI"/>
@@ -106,7 +106,7 @@
                 <constraint firstItem="Xsi-ku-Cc3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="VX4-kJ-sGf"/>
                 <constraint firstAttribute="trailing" secondItem="j2W-ua-sQI" secondAttribute="trailing" constant="20" id="XaN-eB-fI6"/>
                 <constraint firstItem="3vv-9J-pFa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Z41-4d-uSy"/>
-                <constraint firstItem="K7h-ib-Lxc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ZGv-AC-eGB"/>
+                <constraint firstItem="K7h-ib-Lxc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="16" id="ZGv-AC-eGB"/>
                 <constraint firstItem="K7h-ib-Lxc" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="g3i-ju-Bk6"/>
                 <constraint firstItem="3vv-9J-pFa" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="iP5-oR-Tmk"/>
                 <constraint firstItem="3vv-9J-pFa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nOU-Fy-wPG"/>

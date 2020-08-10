@@ -17,7 +17,7 @@ internal class FlurryLogger {
         Flurry.startSession("B82BXTBQPVHDJXNYRR6Z", with: FlurrySessionBuilder
                .init()
                .withCrashReporting(true)
-               .withLogLevel(FlurryLogLevelAll))
+               .withLogLevel(FlurryLogLevelNone))
     }
     
     /**
