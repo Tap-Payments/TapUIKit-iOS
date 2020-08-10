@@ -60,20 +60,20 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KuF-3l-7hP">
                     <rect key="frame" x="254" y="16" width="51" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="49" id="S9o-wz-qxF"/>
+                        <constraint firstAttribute="width" priority="750" constant="49" id="S9o-wz-qxF"/>
                     </constraints>
                 </switch>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="dpC-fG-mgk" firstAttribute="leading" secondItem="RvW-9L-cJg" secondAttribute="leading" id="3mb-A1-Txw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" constant="17" id="3qX-wp-2MD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KuF-3l-7hP" secondAttribute="trailing" priority="750" constant="17" id="3qX-wp-2MD"/>
                 <constraint firstItem="dpC-fG-mgk" firstAttribute="top" secondItem="WNY-jS-5Ck" secondAttribute="bottom" constant="8" id="9YS-fi-LwY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lqa-he-XHj" secondAttribute="trailing" constant="13" id="Fmz-Jw-hrh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lqa-he-XHj" secondAttribute="trailing" priority="750" constant="13" id="Fmz-Jw-hrh"/>
                 <constraint firstItem="KuF-3l-7hP" firstAttribute="leading" secondItem="WNY-jS-5Ck" secondAttribute="trailing" constant="8" id="GFC-tS-fnN"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dpC-fG-mgk" secondAttribute="bottom" constant="2" id="LsR-IM-kfC"/>
-                <constraint firstItem="lqa-he-XHj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="NFq-oL-M9o"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dpC-fG-mgk" secondAttribute="trailing" constant="34" id="RlK-cg-2DX"/>
+                <constraint firstItem="lqa-he-XHj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="13" id="NFq-oL-M9o"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dpC-fG-mgk" secondAttribute="trailing" priority="750" constant="34" id="RlK-cg-2DX"/>
                 <constraint firstItem="WNY-jS-5Ck" firstAttribute="top" secondItem="RvW-9L-cJg" secondAttribute="bottom" constant="3" id="S9d-XU-W5j"/>
                 <constraint firstItem="KuF-3l-7hP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="XfG-GB-ef0"/>
                 <constraint firstItem="RvW-9L-cJg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15.5" id="dKj-kh-EIq"/>
