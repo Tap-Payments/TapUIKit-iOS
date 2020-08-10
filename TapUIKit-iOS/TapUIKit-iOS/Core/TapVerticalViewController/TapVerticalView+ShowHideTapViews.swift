@@ -192,6 +192,7 @@ extension TapVerticalView {
     
     /// Hide the action button fade out + height decrease
    @objc  public func hideActionButton() {
+        tapActionButtonHeightConstraint.priority = .required
         tapActionButtonHeightConstraint.constant = 0
         tapActionButton.updateConstraints()
         layoutIfNeeded()
