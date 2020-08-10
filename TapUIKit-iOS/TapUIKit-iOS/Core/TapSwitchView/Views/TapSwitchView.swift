@@ -126,7 +126,7 @@ import TapThemeManager2020
                 self.goPaySwitchControl?.isHidden.toggle()
             } else {
                 self.goPaySwitchControl?.translatesAutoresizingMaskIntoConstraints = false
-                self.goPaySwitchControl?.heightAnchor.constraint(equalToConstant: 150).isActive = true
+                self.goPaySwitchControl?.heightAnchor.constraint(equalToConstant: 120).isActive = true
                 self.stackView.addArrangedSubview(self.goPaySwitchControl!)
             }
             self.goPaySwitchControl?.isOn = true
