@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -40,10 +40,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="1uI-oi-8Dg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4H3-wQ-Zu3"/>
-                <constraint firstItem="1uI-oi-8Dg" firstAttribute="top" secondItem="DK2-Wu-MF0" secondAttribute="bottom" id="GIH-nY-pE2"/>
+                <constraint firstItem="1uI-oi-8Dg" firstAttribute="top" secondItem="DK2-Wu-MF0" secondAttribute="bottom" priority="750" identifier="$button_top$" id="GIH-nY-pE2"/>
                 <constraint firstAttribute="trailing" secondItem="1uI-oi-8Dg" secondAttribute="trailing" id="JST-Xn-S0r"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="K3E-KX-xbz"/>
-                <constraint firstAttribute="bottom" secondItem="1uI-oi-8Dg" secondAttribute="bottom" id="Mwj-Zr-qek"/>
+                <constraint firstAttribute="bottom" secondItem="1uI-oi-8Dg" secondAttribute="bottom" identifier="$button_bottom$" id="Mwj-Zr-qek"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OXd-OT-gRw"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ljk-Lz-kif"/>
             </constraints>
