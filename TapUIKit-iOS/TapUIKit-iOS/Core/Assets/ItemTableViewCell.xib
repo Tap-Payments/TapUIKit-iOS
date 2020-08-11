@@ -151,7 +151,7 @@
                                     <constraint firstItem="9cN-OB-6ES" firstAttribute="leading" secondItem="mdm-my-YpN" secondAttribute="leading" constant="16" id="1om-de-2Co"/>
                                     <constraint firstItem="9cN-OB-6ES" firstAttribute="top" secondItem="mdm-my-YpN" secondAttribute="top" id="3fF-Zx-6Gp"/>
                                     <constraint firstAttribute="bottom" secondItem="9cN-OB-6ES" secondAttribute="bottom" id="AyT-ww-b1h"/>
-                                    <constraint firstAttribute="trailing" secondItem="9cN-OB-6ES" secondAttribute="trailing" constant="16" id="M26-S2-Ebd"/>
+                                    <constraint firstAttribute="trailing" secondItem="9cN-OB-6ES" secondAttribute="trailing" priority="750" constant="16" id="M26-S2-Ebd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMm-Hy-33v" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
