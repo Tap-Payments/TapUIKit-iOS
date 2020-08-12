@@ -10,6 +10,7 @@ import TapThemeManager2020
 import SimpleAnimation
 import LocalisationManagerKit_iOS
 
+/// Represents the item table view cell that will show the items inside the items table view screen
 @objc public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
     @IBOutlet weak var itemDescriptionLabel: UILabel!
@@ -42,6 +43,8 @@ import LocalisationManagerKit_iOS
     func identefier() -> String {
         return viewModel.identefier()
     }
+    
+    /// The method will be fires when the user clicks on show and hide description button
     @IBAction func showDescriptionClicked(_ sender: Any) {
         viewModel.toggleDiscriptionStatus()
     }
@@ -54,6 +57,7 @@ import LocalisationManagerKit_iOS
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        // Apply the correct logic based on the selection state and inform the view model
         if selected {
             viewModel.didSelectItem()
         }else{
@@ -62,38 +66,25 @@ import LocalisationManagerKit_iOS
         // Configure the view for the selected state
     }
     
-    
+    /// Reload the cell view with new data coming in
     internal func reload() {
-        
+        // Fade oit the item price label
         itemPriceLabel.fadeOut()
         itemDiscountPriceLabel.fadeOut(duration: 0.2){ [weak self] (_) in
+            // Now it is time to how the new data after fading in
             self?.itemPriceLabel.fadeIn()
             self?.itemDiscountPriceLabel.fadeIn()
             self?.itemDiscountPriceLabel.attributedText = self?.viewModel.itemDiscount(with: self!.itemDiscountPriceLabel.font, and: self!.itemDiscountPriceLabel.textColor)
             self?.itemPriceLabel.text = self?.viewModel.itemPrice()
         }
-        
+        // Now let the values be attached to the labels and the views
         itemTitleLabel.text = viewModel.itemTitle()
         itemDescriptionLabel.text = viewModel.itemDesctiptionButtonTitle()
         itemQuantityLabel.text = viewModel.itemQuantity()
         itemDescLabel.text = viewModel.itemDescription()
         itemDescLabel.sizeToFit()
         self.layoutIfNeeded()
-        
-        adjustViews()
     }
-    
-    
-    private func adjustViews() {
-        /*if itemDescriptionLabel.text != "" {
-            if !itemInfoStackView.arrangedSubviews.contains(itemDescriptionLabel) {
-                itemInfoStackView.addArrangedSubview(itemDescriptionLabel)
-            }
-        }else {
-            itemInfoStackView.removeArrangedSubview(itemDescriptionLabel)
-        }*/
-    }
-    
     
     override func tapCellType() -> TapGenericCellType {
         return .ItemTableCell
@@ -187,13 +178,11 @@ extension ItemTableViewCell:TapCellViewModelDelegate {
 
 
 extension ItemTableViewCell:ItemCellViewModelDelegate {
+    
     func reloadDescription(with state: DescriptionState) {
-        //itemDescLabel.text = viewModel.itemDescription()
-        //itemDescLabel.sizeToFit()
-        //layoutIfNeeded()
         guard let tableView:UITableView = self.superview as? UITableView,
             let indexPath:IndexPath = tableView.indexPath(for: self) else { return }
-        
+        // Reload the expanded/collapsed the 
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
             tableView.reloadRows(at: [indexPath], with: .none)
         }
