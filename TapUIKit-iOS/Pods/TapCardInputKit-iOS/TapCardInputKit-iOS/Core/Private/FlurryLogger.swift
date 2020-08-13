@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Flurry_iOS_SDK
+/*import Flurry_iOS_SDK
 
 /// This class is a singleton class responsible for dealing with Flurry SDK
 internal class FlurryLogger {
@@ -17,7 +17,7 @@ internal class FlurryLogger {
         Flurry.startSession("B82BXTBQPVHDJXNYRR6Z", with: FlurrySessionBuilder
                .init()
                .withCrashReporting(true)
-               .withLogLevel(FlurryLogLevelNone))
+               .withLogLevel(FlurryLogLevelAll))
     }
     
     /**
@@ -60,3 +60,4 @@ internal extension Dictionary {
         }
     }
 }
+*/

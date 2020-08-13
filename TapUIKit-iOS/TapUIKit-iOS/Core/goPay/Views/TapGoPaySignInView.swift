@@ -168,6 +168,7 @@ import McPicker
         // Show the phone view
         goPayOTPView.fadeIn(duration: animationDuration)
         goPayOTPView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
+        changeHeight(with: 41)
         goPayOTPView.otpAction()
     }
     
@@ -322,6 +323,7 @@ extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
         goPayOTPView.slideOut(to:.bottom,duration:animationDuration)
         goPayOTPView.fadeOut(duration:animationDuration)
         stopOTPTimers()
+        changeHeight(with: -41)
     }
     
     public func otpStateExpired() {

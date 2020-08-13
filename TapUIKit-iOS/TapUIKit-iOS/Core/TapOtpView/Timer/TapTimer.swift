@@ -52,7 +52,7 @@ class TapTimer {
     
     /// Called by the timer every second to fire the callback deleagate events
     @objc private func didUpdateTime() {
-        print("time now: \(self.seconds)")
+        //print("time now: \(self.seconds)")
         if seconds < 1 {
             self.reset()
             self.delegate?.onTimeFinish()

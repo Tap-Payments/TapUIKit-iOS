@@ -199,7 +199,6 @@ fi
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Capable/Capable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LocalisationManagerKit-iOS/LocalisationManagerKit_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SheetyColors/SheetyColors.framework"
@@ -208,7 +207,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapFontKit-iOS/TapFontKit_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixes/TapSwiftFixes.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurryAds-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework"
   install_framework "${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework"
@@ -224,7 +222,6 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Capable/Capable.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LocalisationManagerKit-iOS/LocalisationManagerKit_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SheetyColors/SheetyColors.framework"
@@ -233,7 +230,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/TapFontKit-iOS/TapFontKit_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapSwiftFixes/TapSwiftFixes.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Flurry-iOS-SDK-FlurryAds-FlurrySDK/Flurry_iOS_SDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework"
   install_framework "${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework"

@@ -106,7 +106,7 @@ import TapCardVlidatorKit_iOS
     internal func setupConstraints() {
         
         icon.snp.remakeConstraints { (make) in
-            make.centerY.equalToSuperview().priority(.high)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(29)
             make.height.equalTo(24)
             make.width.equalTo(18)
@@ -117,21 +117,21 @@ import TapCardVlidatorKit_iOS
             make.width.equalTo(24)
             make.trailing.equalToSuperview().offset(-26)
             make.height.equalTo(24)
-            make.centerY.equalToSuperview().priority(.high)
+            make.centerY.equalToSuperview()
         }
         
         countryCodeTextField.snp.remakeConstraints {(make) in
-            make.centerY.equalTo(icon.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? 4 : 0).priority(.high)
-            make.leading.equalToSuperview().offset(65).priority(.high)
+            make.centerY.equalTo(icon.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? 4 : 0)
+            make.leading.equalToSuperview().offset(65)
             make.width.equalTo(countryCodeTextField.textWidth(text: "\(tapCountry?.code ?? "999")9"))
-            make.height.equalToSuperview().priority(.high)
+            make.height.equalToSuperview()
         }
         
         phoneNumberTextField.snp.remakeConstraints {(make) in
             make.centerY.equalTo(countryCodeTextField.snp.centerY)
-            make.leading.equalTo(countryCodeTextField.snp.trailing).priority(.high)
-            make.trailing.equalTo(clearButton.snp.leading).offset(11).priority(.high)
-            make.height.equalToSuperview().priority(.high)
+            make.leading.equalTo(countryCodeTextField.snp.trailing)
+            make.trailing.equalTo(clearButton.snp.leading).offset(10)
+            make.height.equalToSuperview()
         }
         
         
@@ -350,12 +350,6 @@ extension TapPhoneInput: UITextFieldDelegate {
         // Inform the delegat that the number is changed and a brand is detected if any
         guard let delegate = delegate else { return }
         delegate.phoneNumberChanged?(phoneNumber: phoneNumberTextField.text ?? "")
-        if let cardBrand = detectedBrand.cardBrand {
-            if cardBrand.brandSegmentIdentifier != "telecom" {
-                delegate.phoneBrandDetected?(for: .unknown, with: .init(status: .invalid))
-                return
-            }
-        }
         delegate.phoneBrandDetected?(for: detectedBrand.cardBrand ?? .unknown, with: .init(status: detectedBrand.validationState))
         
     }
