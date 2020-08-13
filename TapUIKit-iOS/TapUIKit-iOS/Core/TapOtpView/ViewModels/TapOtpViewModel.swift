@@ -107,7 +107,9 @@ internal protocol TapOtpViewDelegate {
     - Parameter seconds: number of seconds until the otp expire
     */
     @objc public func updateTimer(minutes: Int, seconds: Int) {
-        self.timer = TapTimer(minutes: minutes, seconds: seconds)
+        if timer == nil {
+            self.timer = TapTimer(minutes: minutes, seconds: seconds)
+        }
         if self.timer?.delegate == nil {
             self.timer?.delegate = self
         }
@@ -141,7 +143,9 @@ internal protocol TapOtpViewDelegate {
             self.delegate?.otpStateExpired()
             
         case .empty:
-            self.timer?.start()
+            if let timer = timer {
+                timer.start()
+            }
             self.updateMessageViewDelegate()
             self.viewDelegate?.enableOtpEditing()
         }
@@ -197,8 +201,9 @@ internal protocol TapOtpViewDelegate {
      */
     @objc public func close() {
         self.viewDelegate?.resetUI()
-        self.timer?.reset()
         self.timer?.delegate = nil
+        self.timer?.reset()
+        self.timer = nil
         self.delegate = nil
         self.viewDelegate = nil
     }
