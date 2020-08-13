@@ -10,24 +10,21 @@ import  UIKit
 
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapOtpViewDelegate {
-    
     /// A method to instruc the view to show / hide message label on the view
     func updateMessageVisibility(hide: Bool)
-    
     /// A method to instruc the view to update status message
     func updateMessage()
-    
     /**
      A method to instruc update the timer
      - Parameter currentTime: The remaining time until the OTP get expired
      */
     func updateTimer(currentTime: String)
-    
     /// A method to instruc the view to update view on otp state becomes expired
     func otpExpired()
-    
     /// A method to instruc the view to enable editing otp view on state becomes empty
     func enableOtpEditing()
+    /// A method to instruc the view to reset all the UI
+    func resetUI()
 }
 
 /// A protocol to be used to fire functions and events in the parent view
@@ -199,6 +196,7 @@ internal protocol TapOtpViewDelegate {
      Invalidate OTP timer and reset all properties and delegates
      */
     @objc public func close() {
+        self.viewDelegate?.resetUI()
         self.timer?.reset()
         self.timer?.delegate = nil
         self.delegate = nil

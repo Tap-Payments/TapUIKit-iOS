@@ -86,6 +86,10 @@ extension TapOtpView: TapOtpViewDelegate {
     public func enableOtpEditing() {
         self.otpController.enabled = true
     }
+    
+    public func resetUI() {
+        self.otpController.resetAll()
+    }
 }
 
 extension TapOtpView: TapOtpControllerDelegate {

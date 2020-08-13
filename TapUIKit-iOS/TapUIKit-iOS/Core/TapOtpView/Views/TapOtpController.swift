@@ -49,7 +49,11 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     public var bottomLineActiveColor: UIColor = .blue
     
     /// Delegate to fire events on otp digits change
-    weak var delegate: TapOtpControllerDelegate?
+    weak var delegate: TapOtpControllerDelegate? {
+        didSet {
+            self.moveKeyboardToFirstTextField()
+        }
+    }
     
     private var contentView: UIView?
     
@@ -217,6 +221,11 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
 
         self.untouchableTextField[currentTag - 2].becomeFirstResponder()
+    }
+    
+    // MARK: - MoveToFirstTextField
+    func moveKeyboardToFirstTextField() {
+        self.textField1.becomeFirstResponder()
     }
     
     // MARK: ResetAllTextFields
