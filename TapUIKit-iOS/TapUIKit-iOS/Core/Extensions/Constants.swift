@@ -13,7 +13,7 @@ import class UIKit.UIScreen
 public class TapConstantManager {
     
     static let TapBottomSheetContainerTag:Int = 100
-    static let TapBottomSheetMinimumHeight:CGFloat = 50
+    static let TapBottomSheetMinimumHeight:CGFloat = 150
     static let TapBottomSheetMinimumYPoint:CGFloat = 50
     public static let TapActionSheetStatusNotification:String = "ActionButtonStatusChanged"
     public static let TapActionSheetBlockNotification:String = "ActionButtonBlockChanged"

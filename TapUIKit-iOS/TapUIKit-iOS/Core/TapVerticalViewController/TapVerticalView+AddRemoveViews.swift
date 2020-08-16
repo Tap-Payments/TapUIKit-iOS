@@ -137,6 +137,7 @@ extension TapVerticalView {
         // If the index is not defined, then we just add it to the end
         if let index = index {
             stackView.insertArrangedSubview(view, at: index)
+            view.layoutIfNeeded()
         }else{
             stackView.addArrangedSubview(view)
         }

@@ -18,8 +18,9 @@ extension TapVerticalView {
         let hintViews:[TapHintView] = stackView.arrangedSubviews.filter{ $0.isKind(of: TapHintView.self) } as? [TapHintView] ?? []
         guard hintViews.count > 0 else { return }
         // For each one, apply the deletion method
-        hintViews.forEach { hintView in
-            remove(view: hintView, with: .init(for:.fadeOut))
+        hintViews.forEach { [weak self] hintView in
+            self?.stackView.removeArrangedSubview(hintView)
+            hintView.isHidden = true
         }
     }
     

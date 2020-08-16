@@ -77,6 +77,15 @@ import TapCardVlidatorKit_iOS
         super.init()
     }
     
+    
+    
+    /**
+     Call this method when scanner is closed to reset the scanning icon
+     */
+    @objc public func scanerClosed() {
+        tapCardTelecomPaymentView?.cardInputView.scannerClosed()
+    }
+    
     /**
      Call this method when you  need to fill in the text fields with data.
      - Parameter tapCard: The TapCard that holds the data needed to be filled into the textfields
