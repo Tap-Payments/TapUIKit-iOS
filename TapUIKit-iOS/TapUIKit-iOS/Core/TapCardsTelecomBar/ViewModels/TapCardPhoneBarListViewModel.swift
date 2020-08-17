@@ -21,7 +21,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
      */
     func animateBar(to x:CGFloat,with width:CGFloat)
     /**
-        Asks the view to provide the dynamically calculated space between tabs
+     Asks the view to provide the dynamically calculated space between tabs
      - Returns: The actual computed width between tabs
      */
     func calculatedSpacing() -> CGFloat
@@ -47,6 +47,10 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     /// The data source which is the list if tab view models that we need to render
     @objc public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
+            dataSourceObserver = .init(value: [])
+            segmentSelectionObserver = .init(value: [:])
+            selectedSegmentObserver = .init(value:"")
+            selectedIconValidatedObserver = .init(value:false)
             // Once set, we need to wire up the observables with their subscribers
             configureDataSource()
             // We need to fire an event that a new data source is here
@@ -66,7 +70,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     
     // MARK:- Private methods
     /**
-        Generates the list if tab views from the list of tab view models
+     Generates the list if tab views from the list of tab view models
      - Parameter maxWidth: The tab layout will try to spread the tabs with full screen width but spacing will not go beyond the provided max width
      - Returns: List of TapCardPhoneIconView, where each view represents  tab view with its tab view model
      */
@@ -84,7 +88,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     }
     
     /**
-        Comutes the frame where the underline should go to, whether the whole frame of a segment or the frame of a specific tab inside the segment
+     Comutes the frame where the underline should go to, whether the whole frame of a segment or the frame of a specific tab inside the segment
      - Parameter segment: Defines the segment ID to get the correct underline frame regarding to
      - Returns: The frame of the underline that covers the whole segment if no tab is selected inside the segment or the frame of the specific tab inside the segment if any
      */
@@ -234,13 +238,16 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         
     }
     
-    
+    /**
+     This method will select a certain segment as a group
+     - Parameter segmentID: The id of the segment to be selcted
+     */
     @objc public func select(segment segmentID:String) {
         // Fire a notification of a new selected segment
         selectedSegmentObserver.accept(segmentID)
         // Fire a notification of a new selection validation
         selectedIconValidatedObserver.accept(false)
-      
+        
         var currentSelection = segmentSelectionObserver.value
         currentSelection[segmentID] = nil
         segmentSelectionObserver.accept(currentSelection)
@@ -251,7 +258,9 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         iconIsSelected(with: relatedModels[0])
     }
     
-    
+    /**
+     This method will deselct all selected segments if any
+     */
     @objc public func resetCurrentSegment() {
         let currentSelectedSegment:String = selectedSegmentObserver.value
         guard currentSelectedSegment != "" else { return }
@@ -277,6 +286,12 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         // Fetch the frame for the selected tab
         let segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
+        guard segmentFrame.width > 0 else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
+                self?.iconIsSelected(with: viewModel)
+            }
+            return
+        }
         // Add half of the spacing to its width
         //segmentFrame.size.width += abs((viewDelegate?.calculatedSpacing() ?? 0))
         // Change the underline to the computed frame

@@ -17,7 +17,7 @@ import RxCocoa
 
 /// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
 @objc public class TapCardTelecomPaymentView: UIView {
-
+    
     // MARK:- Internal variables
     /// last reported tap card
     internal var lastReportedTapCard:TapCard = .init()
@@ -126,15 +126,18 @@ import RxCocoa
     private func bindObserverbales() {
         // We need to know when a new segment is selected in the tab bar payment list, then we need to decide which input field should be shown
         tapCardPhoneListViewModel.selectedSegmentObserver
+            .share()
+            .filter{ $0 != "" }
             .distinctUntilChanged()
+            .filter{ $0 != "" }
             .subscribe(onNext: { [weak self] (newSegmentID) in
                 self?.showInputFor(for: newSegmentID)
             }).disposed(by: disposeBag)
     }
     
     /**
-        Decides which delegate function about hint status to be called
-        - Parameter status: The hint status to be reported. If nill, then we will insntruct the delegate to hide all the statuses
+     Decides which delegate function about hint status to be called
+     - Parameter status: The hint status to be reported. If nill, then we will insntruct the delegate to hide all the statuses
      */
     internal func reportHintStatus(with status:TapHintViewStatusEnum?) {
         // Check if there is a status to show, or we need to hide the hint view
@@ -176,7 +179,7 @@ import RxCocoa
         cardInputView.setup(for: .InlineCardInput, allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand }.filter{ $0.brandSegmentIdentifier == "cards" }.map{ $0.rawValue }, cardIconUrl: brandIconUrl)
         // Reset any selection done on the bar layout
         tapCardPhoneListViewModel.resetCurrentSegment()
-        
+        lastReportedTapCard = .init()
         viewModel?.delegate?.brandDetected(for: .unknown, with: .Invalid)
     }
     

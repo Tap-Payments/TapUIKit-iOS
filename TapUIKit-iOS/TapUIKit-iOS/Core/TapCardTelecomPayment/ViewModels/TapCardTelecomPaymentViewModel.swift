@@ -54,6 +54,19 @@ import TapCardVlidatorKit_iOS
         return tapCardTelecomPaymentView ?? .init()
     }
     
+    @objc public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel? {
+        didSet{
+            // Assign the list view model to it
+            // Create the attached view
+            tapCardTelecomPaymentView = nil
+            tapCardTelecomPaymentView = .init()
+            tapCardTelecomPaymentView?.lastReportedTapCard = .init()
+            tapCardTelecomPaymentView?.tapCardPhoneListViewModel = tapCardPhoneListViewModel!
+            // Assign the view delegate to self
+            tapCardTelecomPaymentView?.viewModel = self
+        }
+    }
+    
     /// The delegate that wants to hear from the view on new data and events
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     
@@ -64,26 +77,20 @@ import TapCardVlidatorKit_iOS
      */
     @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry?) {
         super.init()
-        // Create the attached view
-        tapCardTelecomPaymentView = .init()
-        // Assign the list view model to it
-        tapCardTelecomPaymentView?.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        self.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentView?.tapCountry = tapCountry
-        // Assign the view delegate to self
-        tapCardTelecomPaymentView?.viewModel = self
+    }
+    
+    /**
+     Changes the country of the telecom operatorrs list
+     - Parameter tapCountry: Represents the country that telecom options are being shown for, used to handle country code and correct phone length
+     */
+    @objc public func changeTapCountry(to tapCountry:TapCountry?) {
+        tapCardTelecomPaymentView?.tapCountry = tapCountry
     }
     
     @objc override public init() {
         super.init()
-    }
-    
-    
-    
-    /**
-     Call this method when scanner is closed to reset the scanning icon
-     */
-    @objc public func scanerClosed() {
-        tapCardTelecomPaymentView?.cardInputView.scannerClosed()
     }
     
     /**
@@ -93,6 +100,14 @@ import TapCardVlidatorKit_iOS
     @objc public func setCard(with card:TapCard) {
         tapCardTelecomPaymentView?.lastReportedTapCard = card
         tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card)
+    }
+    
+    
+    /**
+     Call this method when scanner is closed to reset the scanning icon
+     */
+    @objc public func scanerClosed() {
+        tapCardTelecomPaymentView?.cardInputView.scannerClosed()
     }
     
     
