@@ -65,7 +65,7 @@ import Foundation
      Holds the logic to calculate the final price of the item based on price, quantity and discount
      - Returns: The total price of the item as follows : (itemPrice-discount) * quantity
      */
-    internal func itemFinalPrice() -> Double {
+    public func itemFinalPrice() -> Double {
         
         // Defensive coding, make sure all values are set
         guard let price = price else { return 0 }

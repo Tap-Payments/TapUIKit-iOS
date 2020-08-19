@@ -89,14 +89,14 @@ internal extension UIImage {
 
 // MARK:- UIView extensions
 
-internal extension UIView {
+public extension UIView {
     // MARK:- Making corner radious for certain corners
     /**
     Assigns a radious value to certain corners
     - Parameter corners: The  corners we want to apply the radious to
     - Parameter radius: The radius value we want  to apply
     */
-    func tapRoundCorners(corners:CACornerMask, radius: CGFloat) {
+    internal func tapRoundCorners(corners:CACornerMask, radius: CGFloat) {
         self.layer.cornerRadius = CGFloat(radius)
         self.clipsToBounds = true
         self.layer.maskedCorners = corners
@@ -108,7 +108,7 @@ internal extension UIView {
      Wiggle animation for the uiview
      - Parameter on : If set then wiggle will start
      */
-    func wiggle(on:Bool) {
+    internal func wiggle(on:Bool) {
         self.layer.removeAllAnimations()
         if on {
             let transformAnim  = CAKeyframeAnimation(keyPath:"transform")
