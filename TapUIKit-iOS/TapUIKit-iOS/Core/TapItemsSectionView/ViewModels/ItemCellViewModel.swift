@@ -115,7 +115,7 @@ internal protocol ItemCellViewModelDelegate {
     public func itemPrice() -> String {
         // Check if we have a valid price, then format it based on the currency
         guard let itemModel = itemModel, convertCurrency != .undefined else { return "" }
-        let itemPrice = convertCurrency.convert(from: originalCurrency, for: itemModel.itemFinalPrice())
+        let itemPrice = itemModel.itemFinalPrice(convertFromCurrency: originalCurrency, convertToCurrenct: convertCurrency)
         let formatter = TapAmountedCurrencyFormatter { [weak self] in
             $0.currency = self?.convertCurrency ?? .USD
             $0.locale = CurrencyLocale.englishUnitedStates
