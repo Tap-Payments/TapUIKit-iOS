@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapUIKit-iOS"
-  spec.version      = "1.0.23"
+  spec.version      = "1.0.24"
   spec.summary      = "A collection of inner Tap UI components generically developed to fit into any of Tap's apps."
 
   # This description is used to generate tags and improve search results.
