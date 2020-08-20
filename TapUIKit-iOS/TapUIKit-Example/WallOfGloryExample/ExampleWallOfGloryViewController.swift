@@ -79,8 +79,9 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardPhoneListDataSource.append(.init(associatedCardBrand: .zain, tapCardPhoneIconUrl: "https://i.ibb.co/mvkJXwF/zain-3x.png"))
         
         tapCardPhoneListViewModel.dataSource = tapCardPhoneListDataSource
-        tapCardTelecomPaymentViewModel = .init(with: tapCardPhoneListViewModel, and: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
         tapCardTelecomPaymentViewModel.delegate = self
+        tapCardTelecomPaymentViewModel.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        tapCardTelecomPaymentViewModel.changeTapCountry(to: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
     }
     
     func createItemsViewModel() {
