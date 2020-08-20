@@ -67,6 +67,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         createTabBarViewModel()
         createGatewaysViews()
         createItemsViewModel()
+        dragView.delegate = self
     }
     
     func createTabBarViewModel() {
@@ -652,5 +653,13 @@ extension ExampleWallOfGloryViewController:TapWebViewModelDelegate {
     
     func didFail(with error: Error, for url: URL?) {
         
+    }
+}
+
+
+extension ExampleWallOfGloryViewController:TapDragHandlerViewDelegate {
+    
+    func closeButtonClicked() {
+        delegate?.dismissMySelfClicked()
     }
 }

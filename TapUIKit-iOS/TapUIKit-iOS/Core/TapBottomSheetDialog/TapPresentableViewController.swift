@@ -76,7 +76,7 @@ internal class TapPresentableViewController: PullUpController {
        // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
         // Check if the new point is lower than the dismiss Y threshold
         if changedBefore && point <= TapConstantManager.TapBottomSheetMinimumYPoint {
-            dismissView()
+            //dismissView()
         }
         
         

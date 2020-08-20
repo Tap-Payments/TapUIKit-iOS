@@ -7,6 +7,13 @@
 //
 
 import TapThemeManager2020
+
+/// Represents the public protocol to listen to the notifications fired from the TapDragHandler
+@objc public protocol TapDragHandlerViewDelegate {
+    /// Will be fired once the close button is clicked
+    @objc func closeButtonClicked()
+}
+
 /// Represents a standalone configurable view to show a drag handler at the top of the bottom sheet
 @objc public class TapDragHandlerView: UIView {
 
@@ -20,6 +27,10 @@ import TapThemeManager2020
     @IBOutlet weak var handlerImageViewHeightConstraint: NSLayoutConstraint!
     /// The path to look for theme entry in
     private let themePath = "tapDragHandler"
+    /// Represents the public protocol to listen to the notifications fired from the TapDragHandler
+    public var delegate:TapDragHandlerViewDelegate?
+    /// The button that will dismiss the whole TAP sheet
+    @IBOutlet weak var cancelButton: UIButton!
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -65,6 +76,10 @@ import TapThemeManager2020
             layoutIfNeeded()
         }
     }
+    
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+        delegate?.closeButtonClicked()
+    }
 }
 
 // Mark:- Theme methods
@@ -81,6 +96,8 @@ extension TapDragHandlerView {
         changeHandlerSize(with: CGFloat(TapThemeManager.numberValue(for: "\(themePath).width")?.floatValue ?? 75),
                           and: CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 2))
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        cancelButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).cancelButton.titleLabelColor"), forState: .normal)
+        cancelButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).cancelButton.titleLabelFont")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
