@@ -7,6 +7,8 @@
 //
 
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
 
 /// Represents the public protocol to listen to the notifications fired from the TapDragHandler
 @objc public protocol TapDragHandlerViewDelegate {
@@ -16,7 +18,7 @@ import TapThemeManager2020
 
 /// Represents a standalone configurable view to show a drag handler at the top of the bottom sheet
 @objc public class TapDragHandlerView: UIView {
-
+    
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The image view to show the drag handler
@@ -71,7 +73,7 @@ import TapThemeManager2020
         if animated {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
                 self?.layoutIfNeeded()
-            }, completion: nil)
+                }, completion: nil)
         }else{
             layoutIfNeeded()
         }
@@ -91,6 +93,9 @@ extension TapDragHandlerView {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
+        
+        cancelButton.setTitle(TapLocalisationManager.shared.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation()), for: .normal)
+        
         handlerImageView.tap_theme_image = .init(keyPath: "\(themePath).image")
         handlerImageView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).corner")
         changeHandlerSize(with: CGFloat(TapThemeManager.numberValue(for: "\(themePath).width")?.floatValue ?? 75),
