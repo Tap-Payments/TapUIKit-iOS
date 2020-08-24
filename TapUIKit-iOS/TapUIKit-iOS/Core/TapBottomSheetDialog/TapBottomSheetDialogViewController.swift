@@ -349,7 +349,7 @@ import TapThemeManager2020
         //delegate?.tapBottomSheetWillDismiss?()
         DispatchQueue.main.async { [weak self] in
             // Check first if we have a pull up controller, we remove it first then we dismiss
-            guard let modalController = self?.addedPullUpController  else {
+            guard let _ = self?.addedPullUpController  else {
                 // Otherwise, we dismiss ourselves directly
                 self?.dismiss(animated: true, completion: nil)
                 return
