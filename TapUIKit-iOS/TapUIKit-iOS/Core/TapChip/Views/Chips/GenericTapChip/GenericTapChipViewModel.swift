@@ -54,7 +54,7 @@ internal protocol GenericChipViewModelDelegate {
 /// A protocl of methods to be applied to all generated chip cells to infom the view model with needed events
 internal protocol GenericCellChipViewModelDelegate {
     /**
-        Each view model should have an interface to know his cell is selected or nt. Fired from the cell itself
+     Each view model should have an interface to know his cell is selected or nt. Fired from the cell itself
      - parameter status: tTrue if it was just selected and false otherwise
      */
     func changeSelection(with status:Bool)
@@ -67,7 +67,7 @@ internal protocol GenericCellChipViewModelDelegate {
 }
 
 /// This is a superclass for all the chips view models created, this will make sure all have the same interface/output and ease the parametery type in methods
-@objc public class GenericTapChipViewModel:NSObject {
+@objc public class GenericTapChipViewModel:NSObject,Codable {
     
     /// The title to be displayed if any in the Chip cell
     @objc public var title:String?
@@ -85,7 +85,7 @@ internal protocol GenericCellChipViewModelDelegate {
     
     /**
      Creates a view model with the provided data
-      - Parameter title: The title to be displayed if any in the Chip cell default is nil
+     - Parameter title: The title to be displayed if any in the Chip cell default is nil
      - Parameter icon:The icon if any to be displayed in the Chip cell default is nil
      */
     @objc public init(title:String? = nil, icon:String? = nil) {
@@ -125,6 +125,17 @@ internal protocol GenericCellChipViewModelDelegate {
      */
     func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case icon = "icon"
+    }
+    
+    required public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.title = try values.decodeIfPresent(String.self, forKey: .title)
+        self.icon = try values.decodeIfPresent(String.self, forKey: .icon)
     }
     
 }

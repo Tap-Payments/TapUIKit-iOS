@@ -23,6 +23,10 @@ import class UIKit.UICollectionViewCell
         self.listSource = listSource
     }
     
+    required public init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
+    }
+    
     // MARK:- Public methods
     public override func identefier() -> String {
         return "SavedCardCollectionViewCell"
@@ -35,7 +39,7 @@ import class UIKit.UICollectionViewCell
     }
     
     public override func didDeselectItem() {
-       cellDelegate?.changeSelection(with: false)
+        cellDelegate?.changeSelection(with: false)
     }
     
     public override func changedEditMode(to: Bool) {

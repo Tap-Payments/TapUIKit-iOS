@@ -25,6 +25,10 @@ import class UIKit.UICollectionViewCell
         self.currency = currency
     }
     
+    required public init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
+    }
+    
     // MARK:- Public methods
     public override func identefier() -> String {
         return "CurrencyChipCollectionViewCell"

@@ -50,6 +50,9 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         self.tapApplePayRequest = tapApplePayRequest
     }
     
+    required public init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
+    }
     /**
      Configure the apple pay request attached to the apple pay chip, wil be used to pass it to the PassKit when clicked
      - Parameter countryCode: The country the transaction is occurign in
