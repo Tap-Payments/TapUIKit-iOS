@@ -107,6 +107,10 @@ import RxCocoa
         self.contentView.frame = bounds
     }
     
+    @objc override func shouldShowTapView() -> Bool {
+        return viewModel?.shouldShow ?? false
+    }
+    
     /// Decides whether we show the tab bar or not depending on number of payment options == 1 or > 1
     private func configureTabBarHeight() {
         

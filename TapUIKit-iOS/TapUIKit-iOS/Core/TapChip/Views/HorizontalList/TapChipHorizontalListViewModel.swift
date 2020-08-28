@@ -112,6 +112,9 @@ internal protocol TapChipHorizontalViewModelDelegate {
         return listView ?? .init()
     }
     
+    /// Represents if the attached view should be visible or not, based on the existence of items inside the list
+    @objc public var shouldShow:Bool = false
+    
     /// The data source which represents the list of view models to be displayed inside the uicollectionview
     @objc public var dataSource:[GenericTapChipViewModel] = [] {
         didSet{
@@ -124,6 +127,7 @@ internal protocol TapChipHorizontalViewModelDelegate {
             // When it is changed, we need to inform the attached view that he needs to reload itself now
             cellDelegate?.reload(new: dataSource)
             assignModelsDelegate()
+            shouldShow = dataSource.count > 0
         }
     }
     

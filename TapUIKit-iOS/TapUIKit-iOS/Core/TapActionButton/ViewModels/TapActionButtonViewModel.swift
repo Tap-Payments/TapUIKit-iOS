@@ -37,7 +37,7 @@ internal protocol TapActionButtonViewDelegate {
 }
 
 /// Represents the view model that controls the events and the look and feel for the Tap Action Button View
-@objc public class TapActionButtonViewModel:NSObject {
+@objc open class TapActionButtonViewModel:NSObject {
     
     /// Represents the status of the action button
     @objc public var buttonStatus:TapActionButtonStatusEnum = .InvalidPayment{

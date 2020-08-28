@@ -112,7 +112,8 @@ extension TapVerticalView {
      - Parameter animation: The animation to be applied while doing the view addition. Default is nil
      */
     public func add(views:[UIView], with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial) {
-        views.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false) }
+        // Filter out the sections that shouldn't be visible
+        views.filter{$0.shouldShowTapView()}.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false) }
     }
     
     

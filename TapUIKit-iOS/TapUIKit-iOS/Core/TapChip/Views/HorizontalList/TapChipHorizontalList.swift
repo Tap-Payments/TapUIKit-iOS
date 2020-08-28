@@ -62,6 +62,10 @@ import SimpleAnimation
         self.viewModel = viewModel
     }
     
+    @objc override func shouldShowTapView() -> Bool {
+        return viewModel.shouldShow
+    }
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.frame = bounds

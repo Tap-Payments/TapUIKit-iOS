@@ -53,6 +53,8 @@ import TapCardVlidatorKit_iOS
     @objc public var attachedView:TapCardTelecomPaymentView {
         return tapCardTelecomPaymentView ?? .init()
     }
+    /// Represents if the attached view should be visible or not, based on the existence of items inside the list
+    @objc public var shouldShow:Bool = false
     
     @objc public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel? {
         didSet{
@@ -64,6 +66,7 @@ import TapCardVlidatorKit_iOS
             tapCardTelecomPaymentView?.tapCardPhoneListViewModel = tapCardPhoneListViewModel!
             // Assign the view delegate to self
             tapCardTelecomPaymentView?.viewModel = self
+            shouldShow =  tapCardTelecomPaymentView?.tapCardPhoneListViewModel.dataSource.count ?? 0 > 0
         }
     }
     

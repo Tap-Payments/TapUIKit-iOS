@@ -120,6 +120,14 @@ public extension UIView {
         }
     }
     
+    /**
+     Determines if the view should be visible inside the tap checkout screen or not. Each viewmodel will override this method to correctly determine its status
+     - Returns: If true, then this view has met the conditions needed to be visible otherwise, it should be hidden
+     */
+    @objc internal func shouldShowTapView() -> Bool {
+        return true
+    }
+    
     
     // MARK:- Loading a nib dynamically
     /**
