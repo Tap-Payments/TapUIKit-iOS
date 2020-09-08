@@ -2,7 +2,7 @@ PODS:
   - Capable/Colors (1.1.4)
   - CommonDataModelsKit-iOS (1.0.31)
   - LocalisationManagerKit-iOS (1.0.2)
-  - McPicker (3.0.0)
+  - McPicker (2.0.1)
   - MOLH (1.4.1)
   - Nuke (9.1.2)
   - PayCardsRecognizer (1.1.7)
@@ -47,7 +47,7 @@ PODS:
 DEPENDENCIES:
   - CommonDataModelsKit-iOS
   - LocalisationManagerKit-iOS
-  - McPicker
+  - McPicker (~> 2.0.1)
   - MOLH
   - Nuke
   - PullUpController
@@ -90,7 +90,7 @@ SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   CommonDataModelsKit-iOS: 4b1a33cd07686bcd8117f1f1ebe18373bda16af5
   LocalisationManagerKit-iOS: cd702915c67faba899d4613d44ceb00cefccec6e
-  McPicker: ba38be56a8194faa5249eca4226c364eed628044
+  McPicker: a0a6b8ece8f1642e05401a29867463aba501188b
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   Nuke: dd2e6be6a34c042a7861e190632781d11f253026
   PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
@@ -109,6 +109,6 @@ SPEC CHECKSUMS:
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
   TapThemeManager2020: 220c39eb0170fc28e96bb11e941ec44781ecb601
 
-PODFILE CHECKSUM: c5c95c3764477c3cd68efe44aa7556b5599639d1
+PODFILE CHECKSUM: de37fadbc524e56a04c94cad01e2eabfc9ae6ae3
 
 COCOAPODS: 1.9.3
