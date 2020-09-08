@@ -204,7 +204,7 @@ import TapThemeManager2020
         if let delegate = delegate {
             delegate.tapBottomSheetWillDismiss?()
         }
-        guard let nonNullPullUpController = addedPullUpController else { return }
+        //guard let nonNullPullUpController = addedPullUpController else { return }
         //self.removePullUpController(nonNullPullUpController, animated: false)
     }
     
