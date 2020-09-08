@@ -78,7 +78,7 @@ internal class TapPresentableViewController: PullUpController {
     override func pullUpControllerWillMove(to point: CGFloat) {
         // print("POINT WILL MOVE TO : \(point) - With Frame \(self.view.frame.origin.y)")
         // Check if the new point is lower than the dismiss Y threshold
-        if (delegate?.shallSwipeToDismiss() ?? false) && changedBefore && point <= 280 {
+        if changedBefore && point <= 280 {
             dismissView()
         }
         
@@ -127,9 +127,6 @@ internal class TapPresentableViewController: PullUpController {
     
     private func dismissView() {
         delegate?.willDismiss()
-        dismiss(animated: true) { [weak self] in
-            self?.delegate?.dismissed()
-        }
     }
     
 }

@@ -205,7 +205,7 @@ import TapThemeManager2020
             delegate.tapBottomSheetWillDismiss?()
         }
         guard let nonNullPullUpController = addedPullUpController else { return }
-        self.removePullUpController(nonNullPullUpController, animated: false)
+        //self.removePullUpController(nonNullPullUpController, animated: false)
     }
     
     /// Call this method when you need the bottom controller to update its look based in reloading th configurations from the data source again
@@ -242,8 +242,6 @@ import TapThemeManager2020
         // Set the background color o use the theme manager one
         if let backgroundColor = backgroundColor {
             backgroundView?.backgroundColor = backgroundColor
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            }
         }else {
             applyTheme()
         }
@@ -312,10 +310,11 @@ import TapThemeManager2020
                 nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true,completion: {
                     guard let delegate = self?.delegate else { return }
                     delegate.tapBottomSheetPresented?()
-                    UIView.animate(withDuration: 0.25, delay: 0.5, options: .curveEaseInOut, animations: { [weak self] in
-                        self?.backgroundView?.alpha = 1
-                        }, completion: { (_) in
-                    })
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+                        UIView.animate(withDuration: 0.25,animations: { [weak self] in
+                            self?.backgroundView?.alpha = 1
+                        })
+                    }
                 })
             }
         })
@@ -365,16 +364,21 @@ import TapThemeManager2020
         delegate.tapBottomSheetDidTapOutside?()
     }
     /// This method is responsible for the dismissal logic
-    @objc private func dismissBottomSheet() {
+    @objc private func dismissBottomSheet(animationDuration:Double = 0.25) {
         //delegate?.tapBottomSheetWillDismiss?()
         DispatchQueue.main.async { [weak self] in
             // Check first if we have a pull up controller, we remove it first then we dismiss
-            guard let modalController = self?.addedPullUpController  else {
-                // Otherwise, we dismiss ourselves directly
-                self?.dismiss(animated: true, completion: nil)
-                return
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: animationDuration,animations: { [weak self] in
+                    self?.backgroundView?.alpha = 0
+                    //modalController.view.alpha = 0
+                    },completion: { _ in
+                        self?.dismiss(animated: true, completion: {
+                            self?.delegate?.tapBottomSheetDismissed?()
+                        })
+                })
             }
-            self?.dismiss(animated: true, completion: nil)
+            //self?.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -431,10 +435,11 @@ extension TapBottomSheetDialogViewController: TapPresentableViewControllerDelega
     }
     
     func willDismiss() {
-        UIView.animate(withDuration: 0.15) {
-            self.view.alpha = 0
-        }
         delegate?.tapBottomSheetWillDismiss?()
+        if let modalController = addedPullUpController {
+            modalController.view.alpha = 0
+        }
+        dismissBottomSheet(animationDuration: 0.5)
     }
     
     func dismissed() {
