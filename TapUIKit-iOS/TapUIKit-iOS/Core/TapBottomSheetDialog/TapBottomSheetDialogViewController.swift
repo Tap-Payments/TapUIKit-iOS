@@ -121,6 +121,9 @@ import TapThemeManager2020
     /// The button that will fill the un filled area, will be used to listen to clicking outside the modal view to dismiss it if the caller asked for this
     private var dismissButton:UIButton = .init()
     
+    /// A view that will show the background color abode the checkout sheet to  Fade out the dimming background to show it as fade in fade out as requested
+    private var backgroundView:UIView?
+    
     // MARK: Default values for needed variables
     /// This defines in which path should we look into the theme based on the card input mode
     internal var themePath:String = "tapBottomSheet"
@@ -185,7 +188,13 @@ import TapThemeManager2020
     // MARK: Override methods
     public final override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Fade out the dimming background to show it as fade in fade out as requested
+        view.backgroundColor = .clear
+        backgroundView = .init(frame: self.view.frame)
+        backgroundView?.backgroundColor = .clear
+        backgroundView?.alpha = 0
+        view.addSubview(backgroundView!)
+        view.sendSubviewToBack(backgroundView!)
         // First thing to do is to apply the customisation data from the data source
         reloadDataSource()
     }
@@ -232,7 +241,9 @@ import TapThemeManager2020
         
         // Set the background color o use the theme manager one
         if let backgroundColor = backgroundColor {
-            view.backgroundColor = backgroundColor
+            backgroundView?.backgroundColor = backgroundColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            }
         }else {
             applyTheme()
         }
@@ -248,7 +259,7 @@ import TapThemeManager2020
     
     
     internal func applyTheme() {
-        view.tap_theme_backgroundColor = .init(keyPath: "\(themePath).dimmedColor")
+        backgroundView?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).dimmedColor")
     }
     
     /**
@@ -301,6 +312,10 @@ import TapThemeManager2020
                 nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true,completion: {
                     guard let delegate = self?.delegate else { return }
                     delegate.tapBottomSheetPresented?()
+                    UIView.animate(withDuration: 0.25, delay: 0.5, options: .curveEaseInOut, animations: { [weak self] in
+                        self?.backgroundView?.alpha = 1
+                        }, completion: { (_) in
+                    })
                 })
             }
         })
