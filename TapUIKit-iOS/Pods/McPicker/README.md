@@ -121,8 +121,8 @@ McPicker's `doneHandler` passes back `selections: [Int : String]` as an argument
 
 ## Requirements
 - iOS 8+
-- Swift 4.0
-- Xcode 9
+- Swift 5.2
+- Xcode 12
 
 > __Note__: Starting in 0.5.1 McPicker uses the Swift 4 Compiler. [Ensure the correct compiler is set in your project.](https://github.com/kmcgill88/McPicker-iOS/issues/23). If you'd like to use Swift 3 use version <=0.5.0.
 
@@ -133,6 +133,11 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod "McPicker"
+```
+
+### Xcode 12+ - Swift 5.2 Support
+```ruby
+pod 'McPicker', '~> 3.0.0'
 ```
 
 ### Swift 4.2 Support
