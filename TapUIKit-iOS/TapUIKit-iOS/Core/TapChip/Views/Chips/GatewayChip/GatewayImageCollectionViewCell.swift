@@ -70,6 +70,8 @@ import Nuke
         // Defensive coding it is the correct view model type
         guard let correctTypeModel:GatewayChipViewModel = viewModel as? GatewayChipViewModel else { return }
         self.viewModel = correctTypeModel
+        // Apply the editing ui if needed
+        changedEditMode(to: viewModel.editMode)
     }
     
     /// The path to look for theme entry in
