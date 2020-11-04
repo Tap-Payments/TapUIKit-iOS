@@ -18,7 +18,7 @@ import Foundation
     /// The type of the applied discount whether fixed or percentage
     let type : DiscountType?
     /// The value of the discount itself
-	let value : Double?
+	public let value : Double?
 
     /**
      - Parameter type: The type of the applied discount whether fixed or percentage
