@@ -11,7 +11,7 @@ import SimpleAnimation
 
 /// Represents Tap representation of Chip horizontal list view
 @objc public class TapChipHorizontalList: UIView {
-
+    
     // Mark:- Variables
     
     /// The reference to the backbone uicollectionview used to display the horizontal items
@@ -27,6 +27,7 @@ import SimpleAnimation
     /// Refernce to the header height, to animate it in hide and showing if needed
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewToHederConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewToHeaderConstraintLowPriority: NSLayoutConstraint!
     //@IBOutlet weak var collectionViewCenterConstraint: NSLayoutConstraint!
     
     /// Keeps track of the last applied theme value
@@ -114,7 +115,11 @@ import SimpleAnimation
         flowLayout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.setCollectionViewLayout(flowLayout, animated: false)
         // Give it a chance to breath and layout to correctly render the new assigned flow layout
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+        var delay = 2500
+        if #available(iOS 13, *) {
+            delay = 500
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
             self.collectionView.layoutIfNeeded()
             self.collectionView.reloadData()
         }
@@ -122,7 +127,7 @@ import SimpleAnimation
     
     /// The method handles the logic needed to update the displayed items and their statuses upon request
     private func reloadData() {
-         collectionView.reloadSections([0])
+        collectionView.reloadSections([0])
     }
     
     /**
@@ -146,12 +151,16 @@ import SimpleAnimation
     
     /// Animate hiding the header view
     internal func hideHeaderView() {
-        
         headerView.fadeOut{ (_) in
             DispatchQueue.main.async { [weak self] in
                 UIView.animate(withDuration: 0.2, animations: {
                     self?.headerViewHeightConstraint.constant = 0
-                    self?.collectionViewToHederConstraint.priority = .defaultLow
+                    if #available(iOS 13, *) {
+                        self?.collectionViewToHederConstraint.priority = .defaultLow
+                        self?.collectionViewToHeaderConstraintLowPriority.isActive = false
+                    } else {
+                        self?.collectionViewToHederConstraint.isActive = false
+                    }
                     self?.translatesAutoresizingMaskIntoConstraints = false
                     self?.myHeightAnchor?.constant = 80
                     self?.layoutIfNeeded()
@@ -170,11 +179,11 @@ import SimpleAnimation
             self?.translatesAutoresizingMaskIntoConstraints = false
             self?.myHeightAnchor?.constant = 100
             self?.layoutIfNeeded()
-            },completion: { [weak self] _ in
-                if self?.shouldShowHeader ?? false {
-                    self?.headerView.fadeIn()
-                    //self?.assignFlowLaout()
-                }
+        },completion: { [weak self] _ in
+            if self?.shouldShowHeader ?? false {
+                self?.headerView.fadeIn()
+                //self?.assignFlowLaout()
+            }
         })
     }
     

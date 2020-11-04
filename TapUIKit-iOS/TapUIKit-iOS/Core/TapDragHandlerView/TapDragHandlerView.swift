@@ -34,6 +34,8 @@ import CommonDataModelsKit_iOS
     /// The button that will dismiss the whole TAP sheet
     @IBOutlet weak var cancelButton: UIButton!
     
+    private var closeButtonState:CheckoutCloseButtonEnum = .icon
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,7 +51,7 @@ import CommonDataModelsKit_iOS
     private func commonInit() {
         self.containerView = setupXIB()
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 30).isActive = true
         self.layoutIfNeeded()
         handlerImageView.translatesAutoresizingMaskIntoConstraints = false
         applyTheme()
@@ -73,10 +75,21 @@ import CommonDataModelsKit_iOS
         if animated {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut], animations: { [weak self] in
                 self?.layoutIfNeeded()
-                }, completion: nil)
+            }, completion: nil)
         }else{
             layoutIfNeeded()
         }
+    }
+    
+    @objc public func changeCloseButton(to closeButtonState:CheckoutCloseButtonEnum) {
+        if closeButtonState == .title {
+            cancelButton.setTitle(TapLocalisationManager.shared.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation()).uppercased(), for: .normal)
+            cancelButton.setImage(nil, for: .normal)
+        }else{
+            cancelButton.setTitle("", for: .normal)
+            cancelButton.setImage(TapThemeManager.imageValue(for: "merchantHeaderView.closeCheckoutIcon"), for: .normal)
+        }
+        self.closeButtonState = closeButtonState
     }
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -94,7 +107,9 @@ extension TapDragHandlerView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        cancelButton.setTitle(TapLocalisationManager.shared.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation()), for: .normal)
+        //cancelButton.setTitle(TapLocalisationManager.shared.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation()), for: .normal)
+        
+        changeCloseButton(to: closeButtonState)
         
         handlerImageView.tap_theme_image = .init(keyPath: "\(themePath).image")
         handlerImageView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).corner")
@@ -102,6 +117,7 @@ extension TapDragHandlerView {
                           and: CGFloat(TapThemeManager.numberValue(for: "\(themePath).height")?.floatValue ?? 2))
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         cancelButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).cancelButton.titleLabelColor"), forState: .normal)
+        cancelButton.tap_theme_tintColor = .init(keyPath: "\(themePath).cancelButton.titleLabelColor")
         cancelButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).cancelButton.titleLabelFont")
     }
     
@@ -113,3 +129,11 @@ extension TapDragHandlerView {
     }
 }
 
+
+/// Defines the style of the checkout close button
+@objc public enum CheckoutCloseButtonEnum:Int {
+    /// Will show a close button icon only
+    case icon = 1
+    /// Will show the word "CLOSE" as a title only
+    case title = 2
+}

@@ -170,6 +170,7 @@
 		E8E92B52248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E92B51248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift */; };
 		E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F779AE248CD7C600215403 /* TapVerticalView.swift */; };
 		E8F779B1248CD7D300215403 /* TapVerticalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8F779B0248CD7D300215403 /* TapVerticalView.xib */; };
+		E8FBC8DF250FD7A200975BC3 /* logout_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E8FBC8DE250FD7A100975BC3 /* logout_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -376,6 +377,7 @@
 		E8E92B51248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapMerchantHeaderViewModel.swift; sourceTree = "<group>"; };
 		E8F779AE248CD7C600215403 /* TapVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapVerticalView.swift; sourceTree = "<group>"; };
 		E8F779B0248CD7D300215403 /* TapVerticalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapVerticalView.xib; sourceTree = "<group>"; };
+		E8FBC8DE250FD7A100975BC3 /* logout_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout_icon.png; sourceTree = "<group>"; };
 		F994CF54E35C96648139E52F /* Pods-TapUIKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -709,6 +711,7 @@
 				E8C59100249293EA00E03424 /* TapAmountSectionView.xib */,
 				E8E92B4D248FA4E900DD7DBB /* TapMerchantHeaderView.xib */,
 				E8E92B43248F7ACA00DD7DBB /* TapDragHandlerView.xib */,
+				E8FBC8DE250FD7A100975BC3 /* logout_icon.png */,
 				E8E92B3B248F5C9700DD7DBB /* TapSeparatorView.xib */,
 				E8F779B0248CD7D300215403 /* TapVerticalView.xib */,
 				E8670CC02498AFCB003F87D8 /* goPayIcon.pdf */,
@@ -1319,6 +1322,7 @@
 				E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */,
 				E8437F7E24BEC7A70059F1B8 /* TapGoPayLoginBarView.xib in Resources */,
 				E87B3C6624C704C900F1005A /* TapWebView.xib in Resources */,
+				E8FBC8DF250FD7A200975BC3 /* logout_icon.png in Resources */,
 				E82A56BB249A401400E3F00D /* TapHorizontalHeaderView.xib in Resources */,
 				E87DC5DD24C967BC001896DA /* tap.png in Resources */,
 				E8437F7424BE19320059F1B8 /* TapGoPayTitleView.xib in Resources */,

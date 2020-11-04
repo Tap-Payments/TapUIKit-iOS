@@ -12,7 +12,7 @@ import RxSwift
 import SimpleAnimation
 
 @objc public class TapAmountSectionView: UIView {
-
+    
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The label that will display the total amount of the transaction
@@ -68,16 +68,21 @@ import SimpleAnimation
         guard let viewModel = viewModel else { return }
         
         // Bind the amount, converted and items count
-        viewModel.originalAmountLabelObserver.distinctUntilChanged()
-            .asDriver(onErrorJustReturn: "KD0.000")
-            .drive(amountLabel.rx.text).disposed(by: disposeBag)
         
-        viewModel.convertedAmountLabelObserver.distinctUntilChanged()
-            .asDriver(onErrorJustReturn: "KD0.000")
-            .drive(onNext: { [weak self] convertedAmount in
-                self?.convertedAmountLabel.text = convertedAmount
-                self?.showHide(for: self!.convertedAmountLabel, show: (convertedAmount != ""), at: 1)
-            }).disposed(by: disposeBag)
+        
+        viewModel.originalAmountLabelObserver.concat(viewModel.originalAmountLabelObserver).subscribe ({ [weak self] (newAmount) in
+            let originalAmount:String = viewModel.originalAmountLabelObserver.value
+            let convertedAmount:String = viewModel.convertedAmountLabelObserver.value
+            if convertedAmount == "" {
+                self?.amountLabel.text = originalAmount
+                self?.showHide(for: self!.convertedAmountLabel, show: false, at: 1)
+            }else{
+                self?.convertedAmountLabel.text = originalAmount
+                self?.amountLabel.text = convertedAmount
+                self?.showHide(for: self!.convertedAmountLabel, show: true, at: 1)
+            }
+        }).disposed(by: disposeBag)
+        
         
         viewModel.itemsLabelObserver.distinctUntilChanged()
             .asDriver(onErrorJustReturn: "1 ITEM")

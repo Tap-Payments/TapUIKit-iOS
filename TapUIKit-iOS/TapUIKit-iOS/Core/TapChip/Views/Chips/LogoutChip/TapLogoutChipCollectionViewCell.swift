@@ -42,7 +42,7 @@ import SnapKit
         self.viewModel = correctTypeModel
     }
     
-     override func selectStatusChaned(with status:Bool) {
+    override func selectStatusChaned(with status:Bool) {
         
         // update the shadow for GoPayCell
         applyTheme()
@@ -100,6 +100,8 @@ extension TapLogoutChipCollectionViewCell {
         layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetHeight")?.floatValue ?? 0))
         layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.opacity")?.floatValue ?? 0)
         layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
+        logoutIconImageView.image = TapThemeManager.imageValue(for: "\(themePath).logoutIcon",from: Bundle(for: type(of: self)))
+        
         self.clipsToBounds = false
         self.layer.masksToBounds = false
         

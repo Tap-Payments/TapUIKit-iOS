@@ -224,7 +224,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
         
         DispatchQueue.main.async{ [weak self] in
             self?.tapVerticalView.hideActionButton()
-            self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [.init(for: .fadeIn)])
+            self?.tapVerticalView.add(views: [self!.tapCurrienciesChipHorizontalListViewModel.attachedView,self!.tapItemsTableViewModel.attachedView], with: [.init(for: .slideIn)])
             self?.tapCurrienciesChipHorizontalListViewModel.refreshLayout()
         }
     }

@@ -9,6 +9,7 @@
 import SimpleAnimation
 import TapThemeManager2020
 import TapCardScanner_iOS
+import Spring
 /// The protocol for the delegates and notifications fired from the TapVerticalView
 @objc public protocol TapVerticalViewDelegate {
     /**
@@ -353,6 +354,7 @@ import TapCardScanner_iOS
                 completion()
             })
         case .slideIn:
+            
             view.slideIn(from: direction.animationKitDirection(),x:0,y:400, duration:duration, delay:delay, completion: { _ in
                 completion()
             })

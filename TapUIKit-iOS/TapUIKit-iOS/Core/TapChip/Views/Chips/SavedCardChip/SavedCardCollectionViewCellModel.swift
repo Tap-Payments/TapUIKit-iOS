@@ -44,7 +44,8 @@ import class UIKit.UICollectionViewCell
     
     public override func changedEditMode(to: Bool) {
         // When the view model get notified about the new editing mode status
-        cellDelegate?.changedEditMode(to: to)
+        // When it is a goPay saved card, we do not show the delete option from Checkout SDK :)
+        cellDelegate?.changedEditMode(to: (listSource == .GoPayListHeader) ? false : to)
     }
     
     func deleteChip() {

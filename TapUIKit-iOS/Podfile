@@ -33,4 +33,5 @@ target 'TapUIKit-iOS' do
   pod 'TapCardInputKit-iOS'
   pod 'TapCardScanner-iOS'
   pod 'McPicker', '~>2.0.1'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 end

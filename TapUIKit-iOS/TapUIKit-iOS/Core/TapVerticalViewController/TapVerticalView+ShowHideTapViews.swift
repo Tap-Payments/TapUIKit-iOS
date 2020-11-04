@@ -50,7 +50,7 @@ extension TapVerticalView {
         remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
         DispatchQueue.main.async{ [weak self] in
             // Lastly.. add the goPay sign in view
-            self?.add(view: signGoPayView, with: [.init(for: .fadeIn)])
+            self?.add(view: signGoPayView, with: [.init(for: .slideIn)])
         }
     }
     
@@ -144,6 +144,9 @@ extension TapVerticalView {
         tapActionButtonBottomConstraint.constant = spaceRect.height
         // Save the current pushing padding height
         keyboardPadding = spaceRect.height
+        if #available(iOS 13.0, *) {}else {
+            keyboardPadding = 0
+        }
         // Adjust the content size of the current tap sheet to fire a notification that the size changed
         var currentContentSize = scrollView.contentSize
         currentContentSize.height -= 1
