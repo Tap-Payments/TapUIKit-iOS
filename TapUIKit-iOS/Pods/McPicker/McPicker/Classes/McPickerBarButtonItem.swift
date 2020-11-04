@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2018 Kevin McGill <kevin@mcgilldevtech.com>
+ Copyright (c) 2017-2020 Kevin McGill <kevin@mcgilldevtech.com>
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,6 @@ open class McPickerBarButtonItem: UIBarButtonItem {
         if let buttonTitle = title {
             return self.init(title: buttonTitle, style: .plain, target: mcPicker, action: #selector(McPicker.done))
         }
-
         return self.init(barButtonSystemItem: barButtonSystemItem, target: mcPicker, action: #selector(McPicker.done))
     }
 
@@ -56,11 +55,10 @@ open class McPickerBarButtonItem: UIBarButtonItem {
         if let buttonTitle = title {
             return self.init(title: buttonTitle, style: .plain, target: mcPicker, action: #selector(McPicker.cancel))
         }
-
         return self.init(barButtonSystemItem: barButtonSystemItem, target: mcPicker, action: #selector(McPicker.cancel))
     }
 
-    public override class func flexibleSpace() -> McPickerBarButtonItem {
+    public override class func flexibleSpace() -> Self {
         return self.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     }
 
