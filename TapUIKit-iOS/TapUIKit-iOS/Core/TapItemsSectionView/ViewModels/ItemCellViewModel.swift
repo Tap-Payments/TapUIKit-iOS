@@ -141,7 +141,7 @@ internal protocol ItemCellViewModelDelegate {
      */
     public func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
         // Check if we have a valid discount OR the quantity is more than 1, then format it based on the currency
-        guard let itemModel = itemModel,  let price = itemModel.price, convertCurrency != .undefined else { return NSAttributedString.init(string: "") }
+        guard let itemModel = itemModel, let quantity = itemModel.quantity, let price = itemModel.price , convertCurrency != .undefined else { return NSAttributedString.init(string: "") }
         guard itemModel.quantity ?? 0 > 1  || itemModel.discount?.value ?? 0 > 0 else { return NSAttributedString.init(string: "") }
         
         // In this case, then we will show a discount/single amount string
@@ -150,7 +150,7 @@ internal protocol ItemCellViewModelDelegate {
             $0.locale = CurrencyLocale.englishUnitedStates
         }
         // Create the default value which will be the case of having only quantity, hence displaying the single item price
-        let toBeDisplayedPrice:Double = price
+        let toBeDisplayedPrice:Double = (price * Double(quantity))
         let attributedText : NSMutableAttributedString =  NSMutableAttributedString(string: formatter.string(from: toBeDisplayedPrice) ?? "KD0.000")
         attributedText.addAttributes([
             NSAttributedString.Key.font : font,
