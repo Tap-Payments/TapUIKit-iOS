@@ -259,13 +259,16 @@ internal protocol TapChipHorizontalViewModelDelegate {
      Fire the event and handle the logic of selecting a certain cell
      - Parameter index: The position of the cell the user selected
      */
-    internal func didSelectItem(at index:Int) {
+    @objc public func didSelectItem(at index:Int,selectCell:Bool = false) {
         let selectedViewModel = viewModel(at: index)
         // Inform the view model of the selected cell that he is selected, hence, he will pass this value to his attached UIView
         selectedViewModel.didSelectItem()
         // Inform the main (outer) delegate, that an item had been selected
         delegate?.didSelect(item: selectedViewModel)
         selectedChip = selectedViewModel
+        if selectCell {
+            self.attachedView.collectionView.selectItem(at: .init(row: index, section: 0), animated: false, scrollPosition: .bottom)
+        }
     }
     
     /**
