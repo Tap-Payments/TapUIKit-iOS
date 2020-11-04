@@ -19,7 +19,7 @@ PODS:
   - SnapKit (5.0.1)
   - TapApplePayKit-iOS (1.0.5):
     - CommonDataModelsKit-iOS (~> 1.0.1)
-  - TapCardInputKit-iOS (1.0.22):
+  - TapCardInputKit-iOS (1.0.23):
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - MOLH
@@ -27,11 +27,11 @@ PODS:
     - SnapKit
     - TapCardVlidatorKit-iOS
     - TapThemeManager2020
-  - TapCardScanner-iOS (1.0.9):
+  - TapCardScanner-iOS (1.0.11):
     - CommonDataModelsKit-iOS (~> 1.0.1)
     - PayCardsRecognizer (~> 1.1.7)
   - TapCardVlidatorKit-iOS (1.0.11)
-  - TapFontKit-iOS (0.0.6):
+  - TapFontKit-iOS (0.0.7):
     - TapSwiftFixes
   - TapSwiftFixes (1.0.9):
     - TapSwiftFixes/CoreGraphics (= 1.0.9)
@@ -40,7 +40,7 @@ PODS:
   - TapSwiftFixes/CoreGraphics (1.0.9)
   - TapSwiftFixes/Exceptions (1.0.9)
   - TapSwiftFixes/Threading (1.0.9)
-  - TapThemeManager2020 (1.0.43):
+  - TapThemeManager2020 (1.0.44):
     - LocalisationManagerKit-iOS
     - TapFontKit-iOS
 
@@ -102,13 +102,13 @@ SPEC CHECKSUMS:
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   TapApplePayKit-iOS: 3dfb3c8155cdf393ef3f00640a317c5147749306
-  TapCardInputKit-iOS: dba2f3617cd02e6638519d3aeb1db4924ed86930
-  TapCardScanner-iOS: b76229bf85071779a0a8631da76d933da608fb97
+  TapCardInputKit-iOS: 26c52bde9285c79e1a58144c67dd45dde2a010df
+  TapCardScanner-iOS: 3edd14a48acce8e9e663a816f5e1b146b668aadd
   TapCardVlidatorKit-iOS: ebdd38a2bef618f9eb09dc909d7bd6fcfdfd56c2
-  TapFontKit-iOS: 0c6ce54ee313299b7d5cc7adf18ac5ed84f61f91
+  TapFontKit-iOS: 7eba5c8159f5ec22b8bfc8bf8718928ceb758323
   TapSwiftFixes: db2aeb21942dd81ee051a31ed319dab0d03547a2
-  TapThemeManager2020: 220c39eb0170fc28e96bb11e941ec44781ecb601
+  TapThemeManager2020: f85ddb5a1d5aaaf33c7917b28f48accf69231ceb
 
-PODFILE CHECKSUM: c5c95c3764477c3cd68efe44aa7556b5599639d1
+PODFILE CHECKSUM: 97ac3834423ebf438a8a068db6429b45d8d8d8fa
 
 COCOAPODS: 1.9.3

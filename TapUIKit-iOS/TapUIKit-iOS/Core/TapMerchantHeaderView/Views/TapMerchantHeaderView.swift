@@ -127,10 +127,10 @@ import CommonDataModelsKit_iOS
         //let options = ImageLoadingOptions(
           //  transition: .fadeIn(duration: 0.25)
         //)
-        Nuke.loadImage(with: iconURL, into: merchantLogoImageView) { [weak self] _ in
+        Nuke.loadImage(with: iconURL, into: merchantLogoImageView, completion:  { [weak self] _ in
             self?.merchantLogoImageView.fadeIn()
             self?.merchantLogoPlaceHolderView.fadeOut()
-        }
+        })
     }
     
     /// Inform the viewmodel that the user clicked view
