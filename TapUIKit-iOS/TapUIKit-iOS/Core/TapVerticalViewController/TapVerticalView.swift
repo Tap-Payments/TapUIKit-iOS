@@ -52,7 +52,9 @@ import TapCardScanner_iOS
     @IBOutlet weak var tapActionButton: TapActionButton!
     /// Saves the current keyboard height when it is visible
     internal var keyboardPadding:CGFloat = 0
+    /// Indicates if we need to wait until we perfom the change siz enotification so all views are correctly rendered, based on how old the device + how old the iOS.
     internal var delaySizeChange:Bool = true
+    private var getGiftGestureRecognizer:UITapGestureRecognizer?
     
     
     
@@ -64,6 +66,13 @@ import TapCardScanner_iOS
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    @objc private func scrollViewTouched() {
+        endEditing(true)
+        if let gesture = getGiftGestureRecognizer {
+            scrollView.removeGestureRecognizer(gesture)
+        }
     }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
@@ -116,9 +125,9 @@ import TapCardScanner_iOS
         // Inform the delegate if any, that the view has new size
         // Take in consideration the safe margins :)
         /*var bottomPadding:CGFloat = 0.0
-        if let window = UIApplication.shared.keyWindow {
-            bottomPadding = window.safeAreaInsets.bottom
-        }*/
+         if let window = UIApplication.shared.keyWindow {
+         bottomPadding = window.safeAreaInsets.bottom
+         }*/
         let contentSize = scrollView.contentSize
         var newSize = contentSize
         //newSize.height += bottomPadding
@@ -173,17 +182,41 @@ import TapCardScanner_iOS
         if newStatus {
             // If we have to deal with it, then we listen to keboard shown and dismissed events and updates our UI accordingly
             keyboardHelper.onKeyboardWillBeShown = {[weak self] keyboardRect in
+                // Add the tap gesture to the scroll view, so when the user clicks on the outside of the keyboard it will be dismissed
+                self?.getGiftGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self?.scrollViewTouched))
+                if let gesture = self?.getGiftGestureRecognizer {
+                    self?.scrollView.removeGestureRecognizer(gesture)
+                    self?.scrollView.addGestureRecognizer(gesture)
+                }
+                
                 print("KEYBOARD SHOW : \(keyboardRect)")
                 self?.addSpaceView(with: keyboardRect)
             }
             keyboardHelper.onKeyboardWillBeHidden = { [weak self] keyboardRect in
+                // Remove the tap gesture
+                if let gesture = self?.getGiftGestureRecognizer {
+                    self?.scrollView.removeGestureRecognizer(gesture)
+                }
                 self?.removeAllHintViews()
                 self?.removeSpaceView(with: keyboardRect)
             }
         }else{
             // If the user will deal with it. We deactivate listening to keyboard events
-            keyboardHelper.onKeyboardWillBeShown = nil
-            keyboardHelper.onKeyboardWillBeHidden = nil
+            // If we have to deal with it, then we listen to keboard shown and dismissed events and updates our UI accordingly
+            keyboardHelper.onKeyboardWillBeShown = {[weak self] keyboardRect in
+                // Add the tap gesture to the scroll view, so when the user clicks on the outside of the keyboard it will be dismissed
+                self?.getGiftGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self?.scrollViewTouched))
+                if let gesture = self?.getGiftGestureRecognizer {
+                    self?.scrollView.removeGestureRecognizer(gesture)
+                    self?.scrollView.addGestureRecognizer(gesture)
+                }
+            }
+            keyboardHelper.onKeyboardWillBeHidden = { [weak self] keyboardRect in
+                // Remove the tap gesture
+                if let gesture = self?.getGiftGestureRecognizer {
+                    self?.scrollView.removeGestureRecognizer(gesture)
+                }
+            }
         }
     }
     
@@ -219,7 +252,7 @@ import TapCardScanner_iOS
         stackView.removeArrangedSubview(view)
         itemsBeingRemoved = false
     }
-   
+    
     internal func adjustAnimationList(view:UIView, for animations:[TapSheetAnimation], with sequence:TapAnimationSequence, then completion:@escaping () -> () = {  }) {
         // Create mutable instance of the animation list to be able to change the required values
         var delayUpToCurrentAnimation:Double = 0

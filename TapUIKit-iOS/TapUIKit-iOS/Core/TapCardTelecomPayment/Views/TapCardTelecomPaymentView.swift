@@ -119,6 +119,8 @@ import RxCocoa
             tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
             tabBarHeightConstraint.constant = 0
             tapCardPhoneListView.isHidden = true
+            translatesAutoresizingMaskIntoConstraints = false
+            heightAnchor.constraint(equalToConstant: 45).isActive = true
         }else {
             translatesAutoresizingMaskIntoConstraints = false
             heightAnchor.constraint(equalToConstant: requiredHeight()).isActive = true
