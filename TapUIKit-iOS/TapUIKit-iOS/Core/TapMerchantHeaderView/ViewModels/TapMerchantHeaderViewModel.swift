@@ -8,7 +8,6 @@
 
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 import class CommonDataModelsKit_iOS.TapCommonConstants
-import RxCocoa
 
 /// The protocl that informs the subscriber of any events happened/fired from the HeaderView
 @objc public protocol TapMerchantHeaderViewDelegate {
@@ -21,13 +20,27 @@ import RxCocoa
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
 @objc public class TapMerchantHeaderViewModel:NSObject {
     
-    // MARK:- RX Internal Observables
+    // MARK:- Internal CallBacks Observables
     /// The text to be displayed in the title label
-    internal var titleObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    internal var titleObservable:((String?)->()) = { _ in } {
+        didSet{
+            titleObservable(title)
+        }
+    }
     /// The text to be displayed in the subtitle label
-    internal var subTitleObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    internal var subTitleObservable:((String?)->()) = { _ in } {
+        didSet{
+            subTitleObservable(subTitle)
+        }
+    }
+    
     /// The url to load the merchant's logo from
-    internal var iconObservable:BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    internal var iconObservable:((String?)->()) = { _ in } {
+        didSet{
+            iconObservable(iconURL)
+        }
+    }
+    
     /// Reference to the merchant header view itself as UI that will be rendered
     internal var merchantHeaderView:TapMerchantHeaderView?
     
@@ -41,19 +54,19 @@ import RxCocoa
     /// The text to be displayed in the title label
     @objc public var title:String? {
         willSet{
-            titleObservable.accept(newValue ?? "")
+            titleObservable(newValue)
         }
     }
     /// The text to be displayed in the subtitle label
     @objc public var subTitle:String? {
         willSet{
-            subTitleObservable.accept(newValue ?? "")
+            subTitleObservable(newValue)
         }
     }
     /// The url to load the merchant's logo from
     @objc public var iconURL:String? {
         willSet{
-            iconObservable.accept(newValue ?? "")
+            iconObservable(newValue)
         }
     }
     
@@ -106,7 +119,7 @@ import RxCocoa
      */
     @objc public func getMerchantPlaceHolder() -> String {
         // Make sure we have a merchant name of length > 0
-        guard let merchantName = subTitle,merchantName.count > 0 else { return "" }        
+        guard let merchantName = subTitle,merchantName.count > 0 else { return "" }
         return merchantName.prefix(1).uppercased()
     }
     

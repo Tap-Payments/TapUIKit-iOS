@@ -9,14 +9,13 @@
 import struct UIKit.CGFloat
 import Nuke
 import SimpleAnimation
-import RxSwift
 import TapThemeManager2020
 import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
 
 /// A view represents the merchant header section in the checkout UI
 @objc public class TapMerchantHeaderView: UIView {
-
+    
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The containter view for the area of merchant place holder and real icon image
@@ -33,8 +32,6 @@ import CommonDataModelsKit_iOS
     @IBOutlet weak var subtitleLabel: UILabel!
     /// Used to push the merchant name a bit in Arabic language
     @IBOutlet weak var topSpaceBetweenMerchantNameAndTitleConstraint: NSLayoutConstraint!
-    
-    private let disposeBag:DisposeBag = .init()
     
     @objc public var viewModel:TapMerchantHeaderViewModel? {
         didSet{
@@ -67,30 +64,26 @@ import CommonDataModelsKit_iOS
         guard let viewModel = viewModel else { return }
         
         // Bind the title label to the title observable
-        viewModel.titleObservable
-            .distinctUntilChanged()
-            .asDriver(onErrorJustReturn: "")
-            .drive(titleLabel.rx.text).disposed(by: disposeBag)
+        viewModel.titleObservable = { newTitle in
+            self.titleLabel.text = newTitle
+        }
         
         // Bind the subtitle label and merchant initial label to the subtitle observable
-        viewModel.subTitleObservable.map{ $0.uppercased() }
-            .distinctUntilChanged()
-            .map{($0,viewModel.merchantPlaceHolder)}
-            .subscribe(onNext: { [weak self] (merchantName, merchantPlaceHolder) in
-                self?.subtitleLabel.text = merchantName
-                self?.merchantLogoPlaceHolderInitialLabel.text = merchantPlaceHolder
-            }).disposed(by: disposeBag)
+        
+        viewModel.subTitleObservable = { subTitle in
+            self.subtitleLabel.text = subTitle?.uppercased()
+            self.merchantLogoPlaceHolderInitialLabel.text = self.viewModel?.merchantPlaceHolder
+        }
     }
     
     ///Updates all the labels with the corresponding values in the view model
     private func bindImages() {
         guard let viewModel = viewModel else { return }
         // Bind the icon image to the iconURL observable
-        viewModel.iconObservable
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] iconURL in
-                self?.loadMerchantLogo(with: iconURL)
-            }).disposed(by: disposeBag)
+        viewModel.iconObservable = { iconURL in
+            guard let iconURL = iconURL else { return }
+            self.loadMerchantLogo(with: iconURL)
+        }
     }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
@@ -125,7 +118,7 @@ import CommonDataModelsKit_iOS
         
         // load the image from the URL
         //let options = ImageLoadingOptions(
-          //  transition: .fadeIn(duration: 0.25)
+        //  transition: .fadeIn(duration: 0.25)
         //)
         Nuke.loadImage(with: iconURL, into: merchantLogoImageView, completion:  { [weak self] _ in
             self?.merchantLogoImageView.fadeIn()
