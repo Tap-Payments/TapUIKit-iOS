@@ -11,8 +11,6 @@ import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
 import SimpleAnimation
-import RxSwift
-import RxCocoa
 
 
 /// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
@@ -45,9 +43,6 @@ import RxCocoa
             clearViews()
         }
     }
-    
-    /// Used to collect any reactive garbage
-    internal let disposeBag:DisposeBag = .init()
     
     /// The view model that controls the wrapper view
     internal var viewModel:TapCardTelecomPaymentViewModel?
@@ -131,14 +126,10 @@ import RxCocoa
     /// Creates connections and listen to events and data changes reactivly from the tab bar view model
     private func bindObserverbales() {
         // We need to know when a new segment is selected in the tab bar payment list, then we need to decide which input field should be shown
-        tapCardPhoneListViewModel.selectedSegmentObserver
-            .share()
-            .filter{ $0 != "" }
-            .distinctUntilChanged()
-            .filter{ $0 != "" }
-            .subscribe(onNext: { [weak self] (newSegmentID) in
-                self?.showInputFor(for: newSegmentID)
-            }).disposed(by: disposeBag)
+        tapCardPhoneListViewModel.selectedSegmentObserver = { [weak self] newSegmentID in
+            guard newSegmentID != "" else { return }
+            self?.showInputFor(for: newSegmentID)
+        }
     }
     
     /**

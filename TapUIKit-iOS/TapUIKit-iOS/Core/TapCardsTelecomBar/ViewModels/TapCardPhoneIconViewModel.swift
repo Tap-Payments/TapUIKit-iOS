@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import RxCocoa
-import RxSwift
 import enum TapCardVlidatorKit_iOS.CardBrand
 
 /// Protocol to communicate between the parenr viewmodel (The bar list view model) and this view model
@@ -18,11 +16,6 @@ internal protocol TapCardPhoneIconDelegate {
      - Parameter viewModel: The TapCardPhoneIconViewModel related to the selected icon
      */
     func iconIsSelected(with viewModel:TapCardPhoneIconViewModel)
-    /**
-     Interface to access the reactive observables thaare used to fire events from the BarListViewModel so this view model updates itself accordingly
-     - Returns: (Observable of current selected brands in each segment, Observable of the name of the current selected segment, Observable indicates whether the selected tab is validated or not)
-     */
-    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>, Observable<Bool>)
 }
 
 /// Protocol to communicate between the view controlled by this view model ad the view model itself
@@ -37,22 +30,28 @@ internal protocol TapCardPhoneIconViewDelegate {
 
 /// View model that controls the actions and the ui of the card/phone bar inner icon
 @objc public class TapCardPhoneIconViewModel:NSObject {
-   
+    
     // MARK:- RX Internal Observables
     
     /// Represent the icon state
-    internal var tapCardPhoneIconStatusObserver:BehaviorRelay<TapCardPhoneIconStatus> = .init(value: .selected)
+    internal var tapCardPhoneIconStatusObserver:(TapCardPhoneIconStatus)->() = { _ in } {
+        didSet{
+            tapCardPhoneIconStatusObserver(tapCardPhoneIconStatus)
+        }
+    }
     /// Represent the url for the image to be loaded inside this icon
-    internal var tapCardPhoneIconUrlObserver:BehaviorRelay<String> = .init(value: "")
-    /// A dispose bag used to garbage collect all registered observables subscriptions
-    internal let disposeBag:DisposeBag = .init()
+    internal var tapCardPhoneIconUrlObserver:(String)->() = { _ in } {
+        didSet{
+            tapCardPhoneIconUrlObserver(tapCardPhoneIconUrl)
+        }
+    }
     
     // MARK:- Public normal swift variables
     /// Represent the icon state
     @objc public var tapCardPhoneIconStatus:TapCardPhoneIconStatus = .selected {
         didSet{
             // Update the observabe with the new state
-            tapCardPhoneIconStatusObserver.accept(tapCardPhoneIconStatus)
+            tapCardPhoneIconStatusObserver(tapCardPhoneIconStatus)
         }
     }
     
@@ -60,7 +59,7 @@ internal protocol TapCardPhoneIconViewDelegate {
     @objc public var tapCardPhoneIconUrl:String = "" {
         didSet{
             // Update the observabe with the new url
-            tapCardPhoneIconUrlObserver.accept(tapCardPhoneIconUrl)
+            tapCardPhoneIconUrlObserver(tapCardPhoneIconUrl)
         }
     }
     
@@ -89,16 +88,16 @@ internal protocol TapCardPhoneIconViewDelegate {
     /// Used to bind all the needed reactive observables to its matching logic and functions
     internal func bindObservables() {
         // Defensive coding to check we have a proper delegate first
-        guard let delegate = delegate else { return }
-        // Fetch the observables from the delegate
-        let (segmentSelection , selectedSegment, selectedValidated) = delegate.selectionObservers()
-        
-        // Listen to inner segment selection status coupled with selected segment value and the validty of the selection
-        Observable.combineLatest(segmentSelection.distinctUntilChanged(), selectedSegment.distinctUntilChanged(), selectedValidated.distinctUntilChanged())
-            .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String, selectedValidated:Bool) in
-                // Everytime any of the observables changes, we need to recompite our selection lofic for this specific view model and its attached view
-                self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment, with: selectedValidated )
-            }).disposed(by: disposeBag)
+        /*guard let delegate = delegate else { return }
+         // Fetch the observables from the delegate
+         let (segmentSelection , selectedSegment, selectedValidated) = delegate.selectionObservers()
+         
+         // Listen to inner segment selection status coupled with selected segment value and the validty of the selection
+         Observable.combineLatest(segmentSelection.distinctUntilChanged(), selectedSegment.distinctUntilChanged(), selectedValidated.distinctUntilChanged())
+         .subscribe(onNext: { [weak self] (segmentsSelections:[String:CardBrand?], selectedSegment:String, selectedValidated:Bool) in
+         // Everytime any of the observables changes, we need to recompite our selection lofic for this specific view model and its attached view
+         self?.computeSelectionLogic(for: segmentsSelections, and: selectedSegment, with: selectedValidated )
+         }).disposed(by: disposeBag)*/
     }
     
     /**

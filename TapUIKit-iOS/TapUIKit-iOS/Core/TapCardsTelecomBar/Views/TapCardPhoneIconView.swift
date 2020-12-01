@@ -7,7 +7,6 @@
 //
 
 import TapThemeManager2020
-import RxSwift
 import Nuke
 import SimpleAnimation
 
@@ -36,8 +35,6 @@ import SimpleAnimation
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// The path to look for theme entry in
     private let themePath = "cardPhoneList.icon"
-    /// The disposing bag for all reactive observables
-    private var disposeBag:DisposeBag = .init()
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -62,13 +59,19 @@ import SimpleAnimation
         // Defensive coding to make sure there is a view model
         guard let viewModel = viewModel else { return }
         // Icon url change and Tab status change callbacks
-        Observable.combineLatest(viewModel.tapCardPhoneIconUrlObserver, viewModel.tapCardPhoneIconStatusObserver)
-            .subscribe(onNext: { [weak self] (iconURL, iconStatus) in
-                // once the icon is changed, we need to load the icon
-                self?.loadIcon(from: iconURL, with: iconStatus)
-                // once the status is changed we need to update the theme
-                self?.applyTheme()
-            }).disposed(by: disposeBag)
+        viewModel.tapCardPhoneIconStatusObserver = { [weak self] iconStatus in
+            // once the icon is changed, we need to load the icon
+            self?.loadIcon(from: viewModel.tapCardPhoneIconUrl, with: iconStatus)
+            // once the status is changed we need to update the theme
+            self?.applyTheme()
+        }
+        
+        viewModel.tapCardPhoneIconUrlObserver = { [weak self] iconURL in
+            // once the icon is changed, we need to load the icon
+            self?.loadIcon(from: iconURL, with: viewModel.tapCardPhoneIconStatus)
+            // once the status is changed we need to update the theme
+            self?.applyTheme()
+        }
     }
     
     /**
@@ -84,13 +87,13 @@ import SimpleAnimation
             transition: .fadeIn(duration: 0.2)
         )
         // Time to load the image iconf rom the given URL
-        Nuke.loadImage(with: iconURL,options:options, into: iconImageView) { [weak self] _ in
+        Nuke.loadImage(with: iconURL,options:options, into: iconImageView, completion:  { [weak self] _ in
             // Then based on the status we see, we will use teh icon as is or we will convert to black and white version
             if status == .otherIconIsSelectedVerified {
                 // Another icon is specifically chosen, hence we need to show all others as grayscale
                 self?.iconImageView.image = self?.iconImageView.image?.toGrayScale()
             }
-        }
+        })
     }
     
     

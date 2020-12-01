@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import RxCocoa
-import RxSwift
 import SnapKit
 import enum TapCardVlidatorKit_iOS.CardBrand
 import LocalisationManagerKit_iOS
@@ -32,13 +30,58 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     
     // MARK:- Private RX observables
     /// An observable to fire an event once the list of icon vire models to be rendered changed
-    internal var dataSourceObserver:BehaviorRelay<[TapCardPhoneIconViewModel]> = .init(value: [])
+    internal var dataSourceObserver:([TapCardPhoneIconViewModel])->() = { _ in } {
+        didSet{
+            dataSourceObserver(dataSource)
+        }
+    }
     /// An observable to fire an event once a sepcific icon inside a segment is selected
-    internal var segmentSelectionObserver:BehaviorRelay<[String:CardBrand?]> = .init(value: [:])
+    internal var segmentSelectionObserver:([String:CardBrand?])->() = { _ in } {
+        didSet{
+            segmentSelectionObserver(segmentSelectionObserverValue)
+        }
+    }
+    
+    /// An observable to fire an event once a sepcific icon inside a segment is selected
+    internal var segmentSelectionObserverValue:[String:CardBrand?] = [:] {
+        didSet {
+            guard oldValue != segmentSelectionObserverValue else { return }
+            segmentSelectionObserver(segmentSelectionObserverValue)
+            dataSource.forEach{ $0.computeSelectionLogic(for: segmentSelectionObserverValue, and: selectedSegmentObserverValue, with: selectedIconValidatedObserverValue) }
+        }
+    }
+    
     /// An observable to fire an event once a new segment is selected
-    internal var selectedSegmentObserver:BehaviorRelay<String> = .init(value:"")
+    internal var selectedSegmentObserver:(String)->() = { _ in } {
+        didSet{
+            selectedSegmentObserver(selectedSegmentObserverValue)
+        }
+    }
+    
+    /// An observable to fire an event once a new segment is selected
+    internal var selectedSegmentObserverValue:String = "" {
+        didSet{
+            guard oldValue != selectedSegmentObserverValue else { return }
+            selectedSegmentObserver(selectedSegmentObserverValue)
+            dataSource.forEach{ $0.computeSelectionLogic(for: segmentSelectionObserverValue, and: selectedSegmentObserverValue, with: selectedIconValidatedObserverValue) }
+        }
+    }
+    
     /// An observable to fire an event once the validity of the seleced tab changed
-    internal var selectedIconValidatedObserver:BehaviorRelay<Bool> = .init(value:false)
+    internal var selectedIconValidatedObserver:(Bool)->() = { _ in } {
+        didSet{
+            selectedIconValidatedObserver(selectedIconValidatedObserverValue)
+        }
+    }
+    
+    /// An observable to fire an event once the validity of the seleced tab changed
+    internal var selectedIconValidatedObserverValue:Bool = false {
+        didSet{
+            guard oldValue != selectedIconValidatedObserverValue else { return }
+            selectedIconValidatedObserver(selectedIconValidatedObserverValue)
+            dataSource.forEach{ $0.computeSelectionLogic(for: segmentSelectionObserverValue, and: selectedSegmentObserverValue, with: selectedIconValidatedObserverValue) }
+        }
+    }
     
     /// Delegate to communicate between the view controlled by this view model ad the view model itself
     internal var viewDelegate:TapCardPhoneBarListViewModelDelegate?
@@ -47,14 +90,14 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     /// The data source which is the list if tab view models that we need to render
     @objc public var dataSource:[TapCardPhoneIconViewModel] = [] {
         didSet{
-            dataSourceObserver = .init(value: [])
-            segmentSelectionObserver = .init(value: [:])
-            selectedSegmentObserver = .init(value:"")
-            selectedIconValidatedObserver = .init(value:false)
+            segmentSelectionObserverValue = [:]
+            selectedSegmentObserverValue = ""
+            selectedIconValidatedObserverValue = false
             // Once set, we need to wire up the observables with their subscribers
             configureDataSource()
             // We need to fire an event that a new data source is here
-            dataSourceObserver.accept(dataSource)
+            dataSourceObserver(dataSource)
+            dataSource.forEach{ $0.computeSelectionLogic(for: segmentSelectionObserverValue, and: selectedSegmentObserverValue, with: selectedIconValidatedObserverValue) }
         }
     }
     
@@ -105,7 +148,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         var resultRect:CGRect = filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero
         
         // Now we need to decide shall we highlight the whole segment or there is an already selected tab within this segment
-        guard let selectedBrand:CardBrand = segmentSelectionObserver.value[segment] as? CardBrand else {
+        guard let selectedBrand:CardBrand = segmentSelectionObserverValue[segment] as? CardBrand else {
             // Meaning, there is no selected icon inside this segment, hence we highlight the whole segment
             return computeSegmentGroupRect(for: filteredViewModel, and: resultRect)
         }
@@ -204,13 +247,13 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         dataSource.forEach{ $0.delegate = self }
         
         // Create an empty segment selection state
-        segmentSelectionObserver.accept([:])
+        segmentSelectionObserverValue = [:]
         
         // With new dataSource, we will not keep a segment selected
-        selectedSegmentObserver.accept("")
+        selectedSegmentObserverValue = ""
         
         // No valid selection now
-        selectedIconValidatedObserver.accept(false)
+        selectedIconValidatedObserverValue = false
     }
     
     
@@ -222,13 +265,13 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
      */
     @objc public func select(brand cardBrand:CardBrand, with validity:Bool) {
         // Fire a notification of a new selected segment
-        selectedSegmentObserver.accept(cardBrand.brandSegmentIdentifier)
+        selectedSegmentObserverValue = cardBrand.brandSegmentIdentifier
         // Fire a notification of a new selection validation
-        selectedIconValidatedObserver.accept(validity)
+        selectedIconValidatedObserverValue = validity
         // Fire a notification of a new selected tab inside the segment
-        var currentSelection = segmentSelectionObserver.value
+        var currentSelection = segmentSelectionObserverValue
         currentSelection[cardBrand.brandSegmentIdentifier] = cardBrand
-        segmentSelectionObserver.accept(currentSelection)
+        segmentSelectionObserverValue = currentSelection
         
         // After firing the required events, we need to move the bar to the selected tab associated to the brand
         let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand == cardBrand}
@@ -244,13 +287,13 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
      */
     @objc public func select(segment segmentID:String) {
         // Fire a notification of a new selected segment
-        selectedSegmentObserver.accept(segmentID)
+        selectedSegmentObserverValue = segmentID
         // Fire a notification of a new selection validation
-        selectedIconValidatedObserver.accept(false)
+        selectedIconValidatedObserverValue = false
         
-        var currentSelection = segmentSelectionObserver.value
+        var currentSelection = segmentSelectionObserverValue
         currentSelection[segmentID] = nil
-        segmentSelectionObserver.accept(currentSelection)
+        segmentSelectionObserverValue = currentSelection
         
         // After firing the required events, we need to move the bar to the selected tab associated to the brand
         let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand.brandSegmentIdentifier == segmentID}
@@ -262,14 +305,14 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
      This method will deselct all selected segments if any
      */
     @objc public func resetCurrentSegment() {
-        let currentSelectedSegment:String = selectedSegmentObserver.value
+        let currentSelectedSegment:String = selectedSegmentObserverValue
         guard currentSelectedSegment != "" else { return }
         
-        selectedIconValidatedObserver.accept(false)
+        selectedIconValidatedObserverValue = false
         
-        var currentSelection = segmentSelectionObserver.value
+        var currentSelection = segmentSelectionObserverValue
         currentSelection[currentSelectedSegment] = nil
-        segmentSelectionObserver.accept(currentSelection)
+        segmentSelectionObserverValue = currentSelection
         
         // After firing the required events, we need to move the bar to the selected tab associated to the brand
         let relatedModels:[TapCardPhoneIconViewModel] = dataSource.filter{ $0.associatedCardBrand.brandSegmentIdentifier == currentSelectedSegment}
@@ -279,9 +322,6 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
 }
 
 extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
-    func selectionObservers() -> (Observable<[String : CardBrand?]>, Observable<String>, Observable<Bool>) {
-        return (segmentSelectionObserver.share(),selectedSegmentObserver.share(), selectedIconValidatedObserver.share())
-    }
     
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         // Fetch the frame for the selected tab
@@ -296,6 +336,6 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
         //segmentFrame.size.width += abs((viewDelegate?.calculatedSpacing() ?? 0))
         // Change the underline to the computed frame
         viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
-        selectedSegmentObserver.accept(viewModel.associatedCardBrand.brandSegmentIdentifier)
+        selectedSegmentObserverValue = viewModel.associatedCardBrand.brandSegmentIdentifier
     }
 }

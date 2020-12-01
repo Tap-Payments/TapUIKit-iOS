@@ -7,7 +7,6 @@
 //
 
 import TapThemeManager2020
-import RxSwift
 import SimpleAnimation
 import LocalisationManagerKit_iOS
 
@@ -50,8 +49,6 @@ import LocalisationManagerKit_iOS
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// The path to look for theme entry in
     private let themePath = "cardPhoneList"
-    /// The disposing bag for all reactive observables
-    private var disposeBag:DisposeBag = .init()
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,21 +71,17 @@ import LocalisationManagerKit_iOS
         // Defensive coding to make sure there is a view model
         guard let viewModel = viewModel else { return }
         // Listen to the change in the data source (the tabs to be rendered)
-        viewModel.dataSourceObserver
-            .distinctUntilChanged()
-            .filter{ $0.count > 0 }
-            .subscribe(onNext: { [weak self] (dataSource) in
-                // On a new data sourec, we need to reload our data
+        viewModel.dataSourceObserver = { [weak self] dataSource in
+            if dataSource.count > 0 {
                 self?.relodData(with: viewModel.generateViews(with: self?.maxWidth ?? 60))
-        }).disposed(by: disposeBag)
+            }
+        }
         
         // Listen to the change of the validation result of the selected tab
-        viewModel.selectedIconValidatedObserver.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] (validated) in
-                // When the validation of the selection changes, we need to re theme our underline view
-                self?.themeBar(selectionValid: validated)
-                self?.isUserInteractionEnabled = !validated
-            }).disposed(by: disposeBag)
+        viewModel.selectedIconValidatedObserver = { [weak self] validated in
+            self?.themeBar(selectionValid: validated)
+            self?.isUserInteractionEnabled = !validated
+        }
     }
     
     /**
