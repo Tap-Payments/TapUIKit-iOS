@@ -10,7 +10,6 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
 import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
-import RxCocoa
 
 /// The protocl that informs the subscriber of any events happened/fired from the Amount Section View
 @objc public protocol TapAmountSectionViewModelDelegate {
@@ -31,15 +30,35 @@ import RxCocoa
     // MARK:- RX Internal Observables
     
     /// Represent the original transaction total amount
-    internal var originalAmountLabelObserver:BehaviorRelay<String> = .init(value: "")
+    internal var originalAmountLabelObserver:((String?)->()) = { _ in } {
+        didSet {
+            originalAmountLabelObserver(currencyFormatted(amount: originalTransactionAmount, currencyCode: originalTransactionCurrency))
+        }
+    }
     /// Represent the converted transaction total amount if any
-    internal var convertedAmountLabelObserver:BehaviorRelay<String> = .init(value: "")
+    internal var convertedAmountLabelObserver:((String?)->()) = { _ in } {
+        didSet {
+            convertedAmountLabelObserver(currencyFormatted(amount: convertedTransactionAmount, currencyCode: convertedTransactionCurrency))
+        }
+    }
     /// Represent the number of items in the current transaction
-    internal var itemsLabelObserver:BehaviorRelay<String> = .init(value: "")
+    internal var itemsLabelObserver:((String?)->()) = { _ in } {
+        didSet {
+            itemsLabelObserver(itemsLabel)
+        }
+    }
     /// Indicates if the number of items should be shown
-    internal var showItemsObserver:BehaviorRelay<Bool> = .init(value: true)
+    internal var showItemsObserver:((Bool)->()) = { _ in } {
+        didSet {
+            showItemsObserver(shouldShowItems)
+        }
+    }
     /// Indicates if the amount labels should be shown
-    internal var showAmount:BehaviorRelay<Bool> = .init(value: true)
+    internal var showAmount:((Bool)->()) = { _ in } {
+        didSet {
+            showAmount(shouldShowAmount)
+        }
+    }
     /// Reference to the amount section view itself as UI that will be rendered
     internal var amountSectionView: TapAmountSectionView?
     /// Public reference to the list view itself as UI that will be rendered
@@ -72,10 +91,15 @@ import RxCocoa
         }
     }
     
+    /// Represent the original transaction total amount
+    @objc public var originalTransactionAmountFormated:String  {
+        return currencyFormatted(amount: originalTransactionAmount,currencyCode: originalTransactionCurrency)
+    }
+    
     /// Represent the title that should be displayed inside the SHOW ITEMS/CLOSE button
     @objc public var itemsLabel:String = "" {
         didSet {
-            itemsLabelObserver.accept(itemsLabel)
+            itemsLabelObserver(itemsLabel)
         }
     }
     
@@ -91,6 +115,12 @@ import RxCocoa
             updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
         }
     }
+    
+    // Represent the original transaction total amount
+    @objc public var convertedTransactionAmountFormated:String  {
+        return currencyFormatted(amount: convertedTransactionAmount,currencyCode: convertedTransactionCurrency)
+    }
+    
     /// Represent the converted transaction currenc code if any
     @objc public var convertedTransactionCurrency:TapCurrencyCode = .undefined {
         didSet {
@@ -112,13 +142,13 @@ import RxCocoa
     /// Indicates if the number of items should be shown
     @objc public var shouldShowItems:Bool = true {
         didSet {
-            showItemsObserver.accept(shouldShowItems)
+            showItemsObserver(shouldShowItems)
         }
     }
     /// Indicates if the amount labels should be shown
     @objc public var shouldShowAmount:Bool = true {
         didSet {
-            showAmount.accept(shouldShowAmount)
+            showAmount(shouldShowAmount)
         }
     }
     /// Indicates to show the currency symbol or the currency code
@@ -165,10 +195,19 @@ import RxCocoa
         currentStateView = state
     }
     
-    private func updateAmountObserver(for amount:Double, with currencyCode:TapCurrencyCode?, on observer:BehaviorRelay<String>) {
+    private func updateAmountObserver(for amount:Double, with currencyCode:TapCurrencyCode?, on observer:((String)->())) {
+        observer(currencyFormatted(amount: amount, currencyCode: currencyCode))
+    }
+    
+    /**
+     Computes a formatted currency localized string representation for a given amount
+     - Parameter amount: The double amount want to be formatted
+     - Parameter currencyCode: The currency code we want to format with
+     - Returns: A formatted localized currency paired string
+     */
+    private func currencyFormatted(amount:Double,currencyCode:TapCurrencyCode?) -> String {
         guard let currencyCode = currencyCode, currencyCode != .undefined  else {
-            observer.accept("")
-            return
+            return ""
         }
         let weakTapCurrencyFormatterSymbol = tapCurrencyFormatterSymbol
         
@@ -181,7 +220,7 @@ import RxCocoa
                 $0.localizeCurrencySymbol = true
             }
         }
-        observer.accept(formatter.string(from: amount) ?? "KD0.000")
+        return formatter.string(from: amount) ?? "KD0.000"
     }
     
     // MARK:- Internal methods to let the view talks with the delegate

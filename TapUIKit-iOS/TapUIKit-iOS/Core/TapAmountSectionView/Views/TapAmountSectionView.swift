@@ -8,7 +8,6 @@
 
 import UIKit
 import TapThemeManager2020
-import RxSwift
 import SimpleAnimation
 
 @objc public class TapAmountSectionView: UIView {
@@ -25,8 +24,6 @@ import SimpleAnimation
     @IBOutlet weak var itemsNumberLabel: UILabel!
     /// The vertical containter for the amount + the converted amount of any to make sure they are always correctly aligned and centered
     @IBOutlet weak var amountsStackView: UIStackView!
-    
-    private let disposeBag:DisposeBag = .init()
     
     @objc public var viewModel:TapAmountSectionViewModel? {
         didSet{
@@ -69,10 +66,9 @@ import SimpleAnimation
         
         // Bind the amount, converted and items count
         
-        
-        viewModel.originalAmountLabelObserver.concat(viewModel.originalAmountLabelObserver).subscribe ({ [weak self] (newAmount) in
-            let originalAmount:String = viewModel.originalAmountLabelObserver.value
-            let convertedAmount:String = viewModel.convertedAmountLabelObserver.value
+        viewModel.originalAmountLabelObserver = { [weak self] originalAmount in
+            guard let originalAmount:String = originalAmount else { return }
+            let convertedAmount:String = viewModel.convertedTransactionAmountFormated
             if convertedAmount == "" {
                 self?.amountLabel.text = originalAmount
                 self?.showHide(for: self!.convertedAmountLabel, show: false, at: 1)
@@ -81,12 +77,11 @@ import SimpleAnimation
                 self?.amountLabel.text = convertedAmount
                 self?.showHide(for: self!.convertedAmountLabel, show: true, at: 1)
             }
-        }).disposed(by: disposeBag)
+        }
         
-        
-        viewModel.itemsLabelObserver.distinctUntilChanged()
-            .asDriver(onErrorJustReturn: "1 ITEM")
-            .drive(itemsNumberLabel.rx.text).disposed(by: disposeBag)
+        viewModel.itemsLabelObserver = { itemsCount in
+            self.itemsNumberLabel.text = itemsCount
+        }
     }
     
     
@@ -94,17 +89,14 @@ import SimpleAnimation
     private func bindVisibilities() {
         guard let viewModel = viewModel else { return }
         // hide the amounts view if the view model says so
-        viewModel.showAmount.distinctUntilChanged()
-            .map{!$0}
-            .asDriver(onErrorJustReturn: false)
-            .drive(amountsStackView.rx.isHidden).disposed(by: disposeBag)
-        
+        viewModel.showAmount = { shouldShowAmount in
+            self.amountsStackView.isHidden = !shouldShowAmount
+        }
         
         // hide the items count view if the view model says so
-        viewModel.showItemsObserver.distinctUntilChanged()
-            .map{!$0}
-            .asDriver(onErrorJustReturn: false)
-            .drive(itemsHolderView.rx.isHidden).disposed(by: disposeBag)
+        viewModel.showItemsObserver = { shouldShowItems in
+            self.itemsHolderView.isHidden = !shouldShowItems
+        }
     }
     
     private func showHide(for label:UILabel, show:Bool, at position:Int) {
