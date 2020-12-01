@@ -26,8 +26,6 @@ target 'TapUIKit-iOS' do
   pod 'PullUpController'
   pod "SimpleAnimation"
   pod 'Nuke'
-  pod 'RxSwift'
-  pod 'RxCocoa'
   pod 'TapApplePayKit-iOS'
   pod 'TapCardVlidatorKit-iOS'
   pod 'TapCardInputKit-iOS'
