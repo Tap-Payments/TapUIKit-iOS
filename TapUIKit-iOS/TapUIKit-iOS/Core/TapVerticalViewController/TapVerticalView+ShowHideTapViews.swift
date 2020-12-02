@@ -47,10 +47,10 @@ extension TapVerticalView {
         
         endEditing(true)
         // Remove from the stack view all the non needed view to prepare for showing the goPay sign in view
-        remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
+        remove(viewType: TapChipHorizontalList.self, with: .init(for:.fadeOut, with:0.3), and: true)
         DispatchQueue.main.async{ [weak self] in
             // Lastly.. add the goPay sign in view
-            self?.add(view: signGoPayView, with: [.init(for: .slideIn)])
+            self?.add(view: signGoPayView, with: [.init(for: .fadeIn,wait:0.2)])
         }
     }
     
@@ -67,7 +67,7 @@ extension TapVerticalView {
         // Expire and invalidate any OTP running timers, so it won't fire even after closing the goPay OTP view
         signGoPayView.stopOTPTimers()
         // Remove the goPay sign in view
-        remove(view: signGoPayView, with: .init())
+        remove(view: signGoPayView, with: .init(for:.fadeOut, with: 0.3))
         // Tell the amount section that we are no in teh default view so it will change the action and the title of its button
         changeTapAmountSectionStatus(to: .DefaultView)
         // Remove any hints view that were visible because of the signIn view if any
@@ -187,8 +187,12 @@ extension TapVerticalView {
     }
     
     /// Shows the action button fade in + height increase
-    @objc public func showActionButton() {
-        tapActionButton.fadeIn()
+    @objc public func showActionButton(fadeInDuation:Double = 0, fadeInDelay:Double = 0) {
+        if fadeInDuation != 0 {
+            tapActionButton.fadeIn(duration: fadeInDuation, delay: fadeInDelay)
+        }else{
+            tapActionButton.fadeIn()
+        }
         tapActionButtonHeightConstraint.constant = 74
         tapActionButton.updateConstraints()
         layoutIfNeeded()
