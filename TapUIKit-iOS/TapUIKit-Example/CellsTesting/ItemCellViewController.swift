@@ -17,7 +17,7 @@ class ItemCellViewController: UIViewController {
     var itemPrice:Double = 1500
     var itemQuantity:Int = 1
     var itemDiscountValue:Double = 0
-    var itemDiscount:DiscountModel? = nil
+    var itemDiscount:AmountModificatorModel? = nil
     
     var tapTableViewModel:TapGenericTableViewModel = .init()
     
@@ -73,12 +73,13 @@ class ItemCellViewController: UIViewController {
     }
     private func configureTheViewModel() {
         if discountValueSlider.isUserInteractionEnabled {
-            let discountType:DiscountType = discountTypeSegmern.selectedSegmentIndex == 0 ? .Fixed : .Percentage
+            let discountType:AmountModificationType = discountTypeSegmern.selectedSegmentIndex == 0 ? .Fixed : .Percentage
             itemDiscount = .init(type: discountType, value: Double(discountValueSlider.value))
         }else{
             itemDiscount = nil
         }
-        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount)
+        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount, totalAmount: 0)
+        itemModel.itemFinalPrice()
         //try! .init(from: ["title":itemTitle,"description":itemDescriptio
             //,"price":itemPrice,"quantity":itemQuantity])
         let itemCellViewModel:ItemCellViewModel = .init(itemModel: itemModel, originalCurrency: .KWD)

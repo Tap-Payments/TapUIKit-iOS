@@ -96,11 +96,11 @@ class ExampleWallOfGloryViewController: UIViewController {
             let itemPrice:Double = Double.random(in: 10..<4000)
             let itemQuantity:Int = Int.random(in: 1..<10)
             let itemDiscountValue:Double = Double.random(in: 0..<itemPrice)
-            var itemDiscount:DiscountModel? = .init(type: .Fixed, value: itemDiscountValue)
+            var itemDiscount:AmountModificatorModel? = .init(type: .Fixed, value: itemDiscountValue)
             if i % 5 == 2 {
                 itemDiscount = nil
             }
-            let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount)
+            let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount,totalAmount: 0)
             itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency ))
         }
         

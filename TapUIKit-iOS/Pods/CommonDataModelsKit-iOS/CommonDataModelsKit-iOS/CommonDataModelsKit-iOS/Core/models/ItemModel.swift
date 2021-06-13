@@ -86,7 +86,7 @@ import Foundation
         // First apply the discount if any
         let discountedItemPrice:Double = price - (discount?.caluclateActualModificationValue(with: price) ?? 0)
         // Secondly apply the taxes if any
-        var discountedWithTaxesPrice:Double = taxes.reduce(0) { $0 + $1.amount.caluclateActualModificationValue(with: discountedItemPrice) }
+        var discountedWithTaxesPrice:Double = taxes.reduce(discountedItemPrice) { $0 + $1.amount.caluclateActualModificationValue(with: discountedItemPrice) }
         // Put in the quantity in action
         discountedWithTaxesPrice = discountedWithTaxesPrice * Double(quantity ?? 1)
         
