@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
+import CommonDataModelsKit_iOS
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 
 import class UIKit.UIColor
