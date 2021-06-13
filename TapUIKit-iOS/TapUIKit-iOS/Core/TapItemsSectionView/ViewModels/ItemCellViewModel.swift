@@ -10,6 +10,7 @@ import class CommonDataModelsKit_iOS.TapAmountedCurrencyFormatter
 import enum CommonDataModelsKit_iOS.CurrencyLocale
 import enum CommonDataModelsKit_iOS.TapCurrencyCode
 import class CommonDataModelsKit_iOS.TapCommonConstants
+import class CommonDataModelsKit_iOS.ItemModel
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 
 import class UIKit.UIColor

@@ -222,8 +222,8 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
                 resultRect.origin.x = UIScreen.main.bounds.size.width
             }else if dataSource.firstIndex(of: selectedViewModel) == dataSource.count - 1 {
                 // If the last tab, hence we need the width to cover the whole screen till the end
-                resultRect.size.width = resultRect.origin.x + resultRect.maxX
-                resultRect.origin.x = resultRect.size.width
+                //resultRect.size.width = resultRect.origin.x + resultRect.maxX
+                resultRect.origin.x += resultRect.size.width
             }else {
                 resultRect.origin.x += resultRect.size.width
             }
@@ -326,8 +326,8 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         // Fetch the frame for the selected tab
         let segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
-        guard segmentFrame.width > 0 else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
+        guard segmentFrame.width > 0 && segmentFrame.height > 0 else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(550)) { [weak self] in
                 self?.iconIsSelected(with: viewModel)
             }
             return

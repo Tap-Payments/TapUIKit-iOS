@@ -1,6 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.31)
+  - CommonDataModelsKit-iOS (1.0.33)
   - LocalisationManagerKit-iOS (1.0.2)
   - McPicker (3.0.0)
   - MOLH (1.4.3)
@@ -77,7 +77,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: 4b1a33cd07686bcd8117f1f1ebe18373bda16af5
+  CommonDataModelsKit-iOS: 683339f75469f2eca12bd177ea12b5164c303f55
   LocalisationManagerKit-iOS: cd702915c67faba899d4613d44ceb00cefccec6e
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
@@ -97,4 +97,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6468557cbe50f1f5ad1821b7d1041cccec03348f
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

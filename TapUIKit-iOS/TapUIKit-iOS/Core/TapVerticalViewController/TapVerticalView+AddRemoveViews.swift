@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LocalisationManagerKit_iOS
 /// Extension to the bottom sheet that contains all the logic required for adding and removing views fromt the sheet controller
 extension TapVerticalView {
     
@@ -131,6 +132,14 @@ extension TapVerticalView {
             view.translatesAutoresizingMaskIntoConstraints = false
             view.heightAnchor.constraint(equalToConstant: getMaxAvailableHeight()).isActive = true
             view.layoutIfNeeded()
+        }
+        
+        if let horizontalList:TapChipHorizontalList = view as? TapChipHorizontalList, TapLocalisationManager.shared.localisationLocale ?? "en" == "ar" {
+            let horizontalListViewModel = horizontalList.viewModel
+            let delay:Int = 200//Int((self!.fadeInAnimationDuration - 0.5) * 1000)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
+                horizontalListViewModel.refreshLayout()
+            }
         }
         
         itemsBeingAdded += 1

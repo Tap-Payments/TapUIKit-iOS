@@ -8,6 +8,7 @@
 
 import TapThemeManager2020
 import SimpleAnimation
+import LocalisationManagerKit_iOS
 
 /// Represents Tap representation of Chip horizontal list view
 @objc public class TapChipHorizontalList: UIView {
@@ -117,11 +118,31 @@ import SimpleAnimation
         // Give it a chance to breath and layout to correctly render the new assigned flow layout
         var delay = 2500
         if #available(iOS 13, *) {
-            delay = 500
+            delay = 300
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
+            self.adjustArabicLayout(delay: delay)
+            if #available(iOS 13, *) {
+                if TapLocalisationManager.shared.localisationLocale ?? "en" == "ar" {
+                    self.adjustArabicLayout(delay: 500)
+                    self.adjustArabicLayout(delay: 900)
+                }
+            }
+        }
+    }
+    
+    private func adjustArabicLayout(delay:Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(delay)) {
             self.collectionView.layoutIfNeeded()
+            var selectedIndex:Int = -1
+            if let selectedIndecies = self.collectionView.indexPathsForSelectedItems, selectedIndecies.count > 0 {
+                selectedIndex = selectedIndecies[0].row
+            }
             self.collectionView.reloadData()
+            if TapLocalisationManager.shared.localisationLocale ?? "en" == "ar" && selectedIndex != -1 {
+                self.collectionView.selectItem(at: .init(row: selectedIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+            }
         }
     }
     

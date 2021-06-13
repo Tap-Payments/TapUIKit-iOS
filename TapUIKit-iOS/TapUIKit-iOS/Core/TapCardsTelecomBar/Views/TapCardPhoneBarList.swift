@@ -12,7 +12,7 @@ import LocalisationManagerKit_iOS
 
 /// Represent the view of tab bar list
 @objc public class TapCardPhoneBarList: UIView {
-
+    
     /// Determine the current locale
     let sharedLocalisationManager:TapLocalisationManager = .shared
     /// Represents the content view that holds all the subviews
@@ -196,11 +196,13 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
         self.underLineLeadingConstraint.constant = (sharedLocalisationManager.localisationLocale == "ar") ? (frame.width - x) : x
         self.underLineWidthConstraint.constant = width
         
+        // Fix the issue of one segment, Arabic where we need to cover the whole tab length
+        
         UIView.animate(withDuration: 0.3, animations: {
-                        self.underLineBar.alpha = 1
-                        self.underLineBar.layoutIfNeeded()
-                        self.underLineBar.updateConstraints()
-                        self.layoutIfNeeded()
+            self.underLineBar.alpha = 1
+            self.underLineBar.layoutIfNeeded()
+            self.underLineBar.updateConstraints()
+            self.layoutIfNeeded()
         }, completion: {_ in
             print(self.underLineBar.frame)
         })

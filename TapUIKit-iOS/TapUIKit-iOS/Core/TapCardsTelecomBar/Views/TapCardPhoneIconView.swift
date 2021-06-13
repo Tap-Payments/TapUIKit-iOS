@@ -154,7 +154,7 @@ extension TapCardPhoneIconView {
 extension TapCardPhoneIconView:TapCardPhoneIconViewDelegate {
     
     func viewFrame() -> CGRect {
-        return self.frame
+        return  (self.superview?.convert(self.frame, to: nil)) ?? self.frame
     }
     
     

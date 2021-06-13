@@ -12,10 +12,9 @@
  */
 
 import Foundation
-import enum CommonDataModelsKit_iOS.TapCurrencyCode
 
 /// Represent the model of an ITEM inside an order/transaction
-@objc public class ItemModel : NSObject, Codable {
+@objcMembers public class ItemModel : NSObject, Codable {
     
     /// The title of the item
     public let title : String?
@@ -26,8 +25,11 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     /// The quantity added to this item
     public let quantity : Int?
     /// The discount applied to the item's price
-    public let discount : DiscountModel?
-    
+    public let discount : AmountModificatorModel?
+    /// The list of Taxes to be applied to the item's price after discount
+    public let taxes : [Tax]
+    /// The price final amount after applyig discount & taxes
+    public var totalAmount:Double
     
     /**
      - Parameter title: The title of the item
@@ -35,23 +37,28 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
      - Parameter price: The raw original price in the original currency
      - Parameter quantity: The quantity added to this item
      - Parameter discount: The discount applied to the item's price
-     
+     - Parameter taxes: The list of Taxs to be applied to the item's price after discount
+     - Parameter totalAmount: The price final amount after applyig discount & taxes
      */
-    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Int = 0, discount: DiscountModel?) {
+    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Int = 0, discount: AmountModificatorModel?,taxes:[Tax] = [],totalAmount:Double) {
         self.title = title
         self.itemDescription = description
         self.price = price
         self.quantity = quantity
         self.discount = discount
+        self.taxes = taxes
+        self.totalAmount = totalAmount
     }
     
     enum CodingKeys: String, CodingKey {
         
-        case title = "title"
-        case itemDescription = "description"
-        case price = "price"
-        case quantity = "quantity"
-        case discount = "discount"
+        case title              = "name"
+        case itemDescription    = "description"
+        case quantity           = "quantity"
+        case price              = "amount_per_unit"
+        case discount           = "discount"
+        case taxes              = "taxes"
+        case totalAmount        = "total_amount"
     }
     
     required public init(from decoder: Decoder) throws {
@@ -60,14 +67,16 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         itemDescription = try values.decodeIfPresent(String.self, forKey: .itemDescription)
         price = try values.decodeIfPresent(Double.self, forKey: .price)
         quantity = try values.decodeIfPresent(Int.self, forKey: .quantity)
-        discount = try values.decodeIfPresent(DiscountModel.self, forKey: .discount)
+        discount = try values.decodeIfPresent(AmountModificatorModel.self, forKey: .discount)
+        taxes = try values.decodeIfPresent([Tax].self, forKey: .taxes) ?? []
+        totalAmount = try values.decodeIfPresent(Double.self, forKey: .price) ?? 0
     }
     
     /**
      Holds the logic to calculate the final price of the item based on price, quantity and discount
      - Parameter convertFromCurrency: The original currency if needed to convert from
      - Parameter convertToCurrenct: The new currency if needed to convert to
-     - Returns: The total price of the item as follows : (itemPrice-discount) * quantity
+     - Returns: The total price of the item as follows : (itemPrice-discount+taxes) * quantity
      */
     public func itemFinalPrice(convertFromCurrency:TapCurrencyCode? = nil,convertToCurrenct:TapCurrencyCode? = nil) -> Double {
         
@@ -75,18 +84,19 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         guard let price = price else { return 0 }
         
         // First apply the discount if any
-        var discountedItemPrice:Double = discount?.caluclateActualDiscountedValue(with: price) ?? price
-        
+        let discountedItemPrice:Double = price - (discount?.caluclateActualModificationValue(with: price) ?? 0)
+        // Secondly apply the taxes if any
+        var discountedWithTaxesPrice:Double = taxes.reduce(0) { $0 + $1.amount.caluclateActualModificationValue(with: discountedItemPrice) }
         // Put in the quantity in action
-        discountedItemPrice = discountedItemPrice * Double(quantity ?? 1)
+        discountedWithTaxesPrice = discountedWithTaxesPrice * Double(quantity ?? 1)
         
         // Check if the caller wants to make a conversion to a certain currency
         guard let originalCurrency = convertFromCurrency, let conversionCurrency = convertToCurrenct,
             originalCurrency != .undefined, conversionCurrency !=  .undefined else {
-                return discountedItemPrice
+                return discountedWithTaxesPrice
         }
         
-        return conversionCurrency.convert(from: originalCurrency, for: discountedItemPrice)
+        return conversionCurrency.convert(from: originalCurrency, for: discountedWithTaxesPrice)
     }
     
 }
