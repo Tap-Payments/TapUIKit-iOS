@@ -28,7 +28,7 @@ class TapAmountSectionViewController: UIViewController {
             viewModel.originalTransactionAmount = oiginalAmount
         }
     }
-    var oiginalCurrency:TapCurrencyCode = .USD {
+    var oiginalCurrency:AmountedCurrency = .init(.USD, 10000, "") {
         didSet {
             viewModel.originalTransactionCurrency = oiginalCurrency
         }
@@ -38,7 +38,7 @@ class TapAmountSectionViewController: UIViewController {
             viewModel.convertedTransactionAmount = convertedAmount
         }
     }
-    var convertedCurrency:TapCurrencyCode = .KWD {
+    var convertedCurrency:AmountedCurrency = .init(.KWD, 3333.333, ""){
         didSet {
             viewModel.convertedTransactionCurrency = convertedCurrency
         }
@@ -66,7 +66,7 @@ class TapAmountSectionViewController: UIViewController {
     
     
     func createDefaultViewModel() {
-        viewModel = .init(originalTransactionAmount: oiginalAmount, originalTransactionCurrency: oiginalCurrency, convertedTransactionAmount: convertedAmount, convertedTransactionCurrency: convertedCurrency, numberOfItems: numberOfItems)
+        viewModel = TapAmountSectionViewModel.init(originalTransactionAmount: oiginalAmount, originalTransactionCurrency: oiginalCurrency, convertedTransactionAmount: convertedAmount, convertedTransactionCurrency: convertedCurrency, numberOfItems: numberOfItems)
     }
     
     @IBAction func currencySelectionClicked(_ sender: Any) {
@@ -87,9 +87,9 @@ class TapAmountSectionViewController: UIViewController {
         editRadiusAlert.setValue(vc, forKey: "contentViewController")
         editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [weak self] _ in
             if tag == 1 {
-                self?.oiginalCurrency = allCurriences[pickerView.selectedRow(inComponent: 0)]
+                self?.oiginalCurrency = .init(allCurriences[pickerView.selectedRow(inComponent: 0)], self!.oiginalAmount, "")
             }else if tag == 2 {
-                self?.convertedCurrency = allCurriences[pickerView.selectedRow(inComponent: 0)]
+                self?.convertedCurrency = .init(allCurriences[pickerView.selectedRow(inComponent: 0)], self!.convertedAmount, "")
             }
         }))
         editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -104,7 +104,7 @@ class TapAmountSectionViewController: UIViewController {
         }else if swtch == itemsSwitch {
             viewModel.shouldShowItems = swtch.isOn
         }else if swtch == convertSwitch {
-            convertedCurrency = swtch.isOn ? convertedCurrency : .undefined
+            convertedCurrency = swtch.isOn ? convertedCurrency : .init(.undefined, 0, "")
             convertedAmount = swtch.isOn ? ( convertedAmount > 0 ? convertedAmount : 3333.333) : 0
             convertedTextField.isUserInteractionEnabled = swtch.isOn
             convertedCurrencyButton.isUserInteractionEnabled = swtch.isOn

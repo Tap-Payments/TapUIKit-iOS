@@ -54,7 +54,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createDefaultViewModels() {
         tapMerchantViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
-        tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .USD, numberOfItems: 10)
+        tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .init(.USD, 10000, "https://sandbox.payments.tap.company/images/currency/USD.svg"), numberOfItems: 10)
         
         tapMerchantViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
@@ -335,7 +335,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             }
         }
         
-        tapAmountSectionViewModel.convertedTransactionCurrency = viewModel.currency.currency
+        tapAmountSectionViewModel.convertedTransactionCurrency = viewModel.currency
     }
     
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {
