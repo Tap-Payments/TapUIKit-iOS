@@ -1,5 +1,8 @@
 PODS:
   - Capable/Colors (1.1.4)
+  - CocoaLumberjack (3.7.2):
+    - CocoaLumberjack/Core (= 3.7.2)
+  - CocoaLumberjack/Core (3.7.2)
   - CommonDataModelsKit-iOS (1.0.37):
     - TapAdditionsKitV2
   - LocalisationManagerKit-iOS (1.0.2)
@@ -8,10 +11,16 @@ PODS:
   - Nuke (9.5.0)
   - PayCardsRecognizer (1.1.7)
   - PullUpController (0.8.0)
+  - SDWebImage/Core (5.11.1)
+  - SDWebImageSVGKitPlugin (1.3.0):
+    - SDWebImage/Core (~> 5.10)
+    - SVGKit (>= 2.1)
   - SheetyColors (1.2.1):
     - Capable/Colors (~> 1.1)
   - SimpleAnimation (0.4.2)
   - SnapKit (5.0.1)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
   - TapAdditionsKitV2 (0.0.8):
     - TapSwiftFixesV2
   - TapApplePayKit-iOS (1.0.5):
@@ -55,6 +64,7 @@ DEPENDENCIES:
   - MOLH
   - Nuke
   - PullUpController
+  - SDWebImageSVGKitPlugin
   - SheetyColors
   - SimpleAnimation
   - SnapKit
@@ -67,6 +77,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Capable
+    - CocoaLumberjack
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - McPicker
@@ -74,9 +85,12 @@ SPEC REPOS:
     - Nuke
     - PayCardsRecognizer
     - PullUpController
+    - SDWebImage
+    - SDWebImageSVGKitPlugin
     - SheetyColors
     - SimpleAnimation
     - SnapKit
+    - SVGKit
     - TapAdditionsKitV2
     - TapApplePayKit-iOS
     - TapCardInputKit-iOS
@@ -89,6 +103,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   CommonDataModelsKit-iOS: e33cf7bc315e533449a76709051f77f34e25ad97
   LocalisationManagerKit-iOS: cd702915c67faba899d4613d44ceb00cefccec6e
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
@@ -96,9 +111,12 @@ SPEC CHECKSUMS:
   Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
   PayCardsRecognizer: 2e4d1b2fdd5f1528fb56064a91e1d58a1af7a2db
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SDWebImageSVGKitPlugin: 8797e1c9b9baf80bd50d28e673e16a12359af1c9
   SheetyColors: a0273d30ec5ee02536bb43960ba36d58619ae719
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 3dfb3c8155cdf393ef3f00640a317c5147749306
   TapCardInputKit-iOS: 26c52bde9285c79e1a58144c67dd45dde2a010df
@@ -109,6 +127,6 @@ SPEC CHECKSUMS:
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
   TapThemeManager2020: 3a642e05b2868f613ffb0623725ea5a6a0fa71c5
 
-PODFILE CHECKSUM: a8ecf2f86b7ba3e559ce92c69bb01159bd74f9f2
+PODFILE CHECKSUM: 1a7f234502b8558562c45d554268edaa1afa9cc8
 
 COCOAPODS: 1.10.1

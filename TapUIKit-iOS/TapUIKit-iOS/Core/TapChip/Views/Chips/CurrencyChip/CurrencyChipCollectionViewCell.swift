@@ -93,7 +93,7 @@ import Nuke
         let options = ImageLoadingOptions(
             transition: .fadeIn(duration: 0.2)
         )
-        Nuke.loadImage(with: iconURL,options:options, into: countryIconImageView)
+        countryIconImageView.downloadImage(with: iconURL, nukeOptions: options)
     }
     
     /// Responsible for all logic needed to assign the textual info into the corresponding labels

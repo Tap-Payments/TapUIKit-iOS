@@ -16,11 +16,25 @@ import struct UIKit.CACornerMask
 import class UIKit.UIApplication
 import class UIKit.UICollectionViewFlowLayout
 import  LocalisationManagerKit_iOS
+import Nuke
+import SDWebImageSVGKitPlugin
 // MARK:- UIImageView extensions
 
 internal typealias SimpleClosure = (() -> ())
 private var actionKey : UInt8 = 1
 internal extension UIImageView {
+    
+    func downloadImage(with url:URL,nukeOptions:ImageLoadingOptions? = nil) {
+        // check if it is a SVG image
+        if(url.absoluteString.contains("svg")) {
+            let svgCoder = SDImageSVGKCoder.shared
+            SDImageCodersManager.shared.addCoder(svgCoder)
+            self.sd_setImage(with: url)
+        }else{
+            Nuke.loadImage(with: url,options:nukeOptions ?? ImageLoadingOptions.shared, into: self)
+        }
+    }
+    
     // MARK:- Making the image view tappable extension
     // The callback function that will be set when the caller wants to make it as clickable
     var callback: SimpleClosure {
