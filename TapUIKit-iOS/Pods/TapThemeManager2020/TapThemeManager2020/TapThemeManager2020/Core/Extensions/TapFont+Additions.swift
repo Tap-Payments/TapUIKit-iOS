@@ -39,5 +39,4 @@ extension TapFontKit_iOS.TapFont: Decodable {
 		"helvetica-neue-regular-ar":	.arabicHelveticaNeueRegular,
 		"helvetica-neue-bold-ar": 		.arabicHelveticaNeueBold,
 	]
-}
-*/
+}*/

@@ -9,6 +9,7 @@ target 'TapUIKit-Example' do
   pod 'SheetyColors'
   pod 'TapApplePayKit-iOS'
   pod 'TapCardVlidatorKit-iOS'
+  pod 'CommonDataModelsKit-iOS'
   # Pods for TapUIKit-Example
 
 end

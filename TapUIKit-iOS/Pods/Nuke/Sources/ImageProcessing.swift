@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2020 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -138,15 +138,15 @@ extension ImageProcessors {
         /// Resizes the image to the given width preserving aspect ratio.
         ///
         /// - parameter unit: Unit of the target size, `.points` by default.
-        public init(width: CGFloat, unit: ImageProcessingOptions.Unit = .points, crop: Bool = false, upscale: Bool = false) {
-            self.init(size: CGSize(width: width, height: 4096), unit: unit, contentMode: .aspectFit, crop: crop, upscale: upscale)
+        public init(width: CGFloat, unit: ImageProcessingOptions.Unit = .points, upscale: Bool = false) {
+            self.init(size: CGSize(width: width, height: 9999), unit: unit, contentMode: .aspectFit, crop: false, upscale: upscale)
         }
 
         /// Resizes the image to the given height preserving aspect ratio.
         ///
         /// - parameter unit: Unit of the target size, `.points` by default.
-        public init(height: CGFloat, unit: ImageProcessingOptions.Unit = .points, crop: Bool = false, upscale: Bool = false) {
-            self.init(size: CGSize(width: 4096, height: height), unit: unit, contentMode: .aspectFit, crop: crop, upscale: upscale)
+        public init(height: CGFloat, unit: ImageProcessingOptions.Unit = .points, upscale: Bool = false) {
+            self.init(size: CGSize(width: 9999, height: height), unit: unit, contentMode: .aspectFit, crop: false, upscale: upscale)
         }
 
         public func process(_ image: PlatformImage) -> PlatformImage? {
@@ -510,9 +510,10 @@ private struct ImageProcessingExtensions {
         guard let cgImage = image.cgImage else {
             return nil
         }
-        let scale = contentMode == .aspectFill ?
-            cgImage.size.scaleToFill(targetSize) :
-            cgImage.size.scaleToFit(targetSize)
+        #if os(iOS) || os(tvOS) || os(watchOS)
+        let targetSize = targetSize.rotatedForOrientation(image.imageOrientation)
+        #endif
+        let scale = cgImage.size.getScale(targetSize: targetSize, contentMode: contentMode)
         guard scale < 1 || upscale else {
             return image // The image doesn't require scaling
         }
@@ -526,9 +527,11 @@ private struct ImageProcessingExtensions {
         guard let cgImage = image.cgImage else {
             return nil
         }
-
-        let imageSize = cgImage.size
-        let scaledSize = imageSize.scaled(by: cgImage.size.scaleToFill(targetSize))
+        #if os(iOS) || os(tvOS) || os(watchOS)
+        let targetSize = targetSize.rotatedForOrientation(image.imageOrientation)
+        #endif
+        let scale = cgImage.size.getScale(targetSize: targetSize, contentMode: .aspectFill)
+        let scaledSize = cgImage.size.scaled(by: scale)
         let drawRect = scaledSize.centeredInRectWithSize(targetSize)
         return image.draw(inCanvasWithSize: targetSize, drawRect: drawRect)
     }
@@ -674,17 +677,32 @@ private extension CGSize {
     }
 }
 
-extension CGSize {
-    func scaleToFill(_ targetSize: CGSize) -> CGFloat {
-        let scaleHor = targetSize.width / width
-        let scaleVert = targetSize.height / height
-        return max(scaleHor, scaleVert)
+#if os(iOS) || os(tvOS) || os(watchOS)
+private extension CGSize {
+    func rotatedForOrientation(_ imageOrientation: UIImage.Orientation) -> CGSize {
+        switch imageOrientation {
+        case .left, .leftMirrored, .right, .rightMirrored:
+            return CGSize(width: height, height: width) // Rotate 90 degrees
+        case .up, .upMirrored, .down, .downMirrored:
+            return self
+        @unknown default:
+            return self
+        }
     }
+}
+#endif
 
-    func scaleToFit(_ targetSize: CGSize) -> CGFloat {
+extension CGSize {
+    func getScale(targetSize: CGSize, contentMode: ImageProcessors.Resize.ContentMode) -> CGFloat {
         let scaleHor = targetSize.width / width
         let scaleVert = targetSize.height / height
-        return min(scaleHor, scaleVert)
+
+        switch contentMode {
+        case .aspectFill:
+            return max(scaleHor, scaleVert)
+        case .aspectFit:
+            return min(scaleHor, scaleVert)
+        }
     }
 
     /// Calculates a rect such that the output rect will be in the center of
@@ -812,15 +830,17 @@ extension Color {
 
 private extension CGContext {
     static func make(_ image: CGImage, size: CGSize, alphaInfo: CGImageAlphaInfo? = nil) -> CGContext? {
+        let alphaInfo: CGImageAlphaInfo = alphaInfo ?? (image.isOpaque ? .noneSkipLast : .premultipliedLast)
+
         // Create the context which matches the input image.
         if let ctx = CGContext(
             data: nil,
             width: Int(size.width),
             height: Int(size.height),
-            bitsPerComponent: image.bitsPerComponent,
+            bitsPerComponent: 8,
             bytesPerRow: 0,
             space: image.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
-            bitmapInfo: alphaInfo?.rawValue ?? image.bitmapInfo.rawValue
+            bitmapInfo: alphaInfo.rawValue
         ) {
             return ctx
         }
@@ -830,7 +850,6 @@ private extension CGContext {
         // - Quartz 2D Programming Guide
         // - https://github.com/kean/Nuke/issues/35
         // - https://github.com/kean/Nuke/issues/57
-        let alphaInfo: CGImageAlphaInfo = image.isOpaque ? .noneSkipLast : .premultipliedLast
         return CGContext(
             data: nil,
             width: Int(size.width), height: Int(size.height),

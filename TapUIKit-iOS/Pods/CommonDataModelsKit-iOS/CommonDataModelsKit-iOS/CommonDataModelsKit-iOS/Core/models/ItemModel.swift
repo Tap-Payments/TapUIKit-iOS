@@ -23,14 +23,22 @@ import Foundation
     /// The raw original price in the original currency
     public let price : Double?
     /// The quantity added to this item
-    public let quantity : Int?
+    internal let quantityy : Quantity
     /// The discount applied to the item's price
     public let discount : AmountModificatorModel?
     /// The list of Taxes to be applied to the item's price after discount
-    public let taxes : [Tax]
+    public let taxes : [Tax]?
     /// The price final amount after applyig discount & taxes
-    public var totalAmount:Double
+    public var totalAmount:Double {
+        didSet {
+            // Check if we need to auto compute it
+            if totalAmount == 0 { totalAmount = itemFinalPrice() }
+        }
+    }
     
+    public var quantity : Int? {
+        return Int(quantityy.value)
+    }
     /**
      - Parameter title: The title of the item
      - Parameter description: A description of the item
@@ -40,21 +48,25 @@ import Foundation
      - Parameter taxes: The list of Taxs to be applied to the item's price after discount
      - Parameter totalAmount: The price final amount after applyig discount & taxes
      */
-    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Int = 0, discount: AmountModificatorModel?,taxes:[Tax] = [],totalAmount:Double) {
+    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Quantity = .init(value: 0, unitOfMeasurement: .units), discount: AmountModificatorModel?,taxes:[Tax]? = nil,totalAmount:Double = 0) {
         self.title = title
         self.itemDescription = description
         self.price = price
-        self.quantity = quantity
+        self.quantityy = quantity
         self.discount = discount
         self.taxes = taxes
         self.totalAmount = totalAmount
+        super.init()
+        defer {
+            self.totalAmount = totalAmount
+        }
     }
     
     enum CodingKeys: String, CodingKey {
         
         case title              = "name"
         case itemDescription    = "description"
-        case quantity           = "quantity"
+        case quantityy          = "quantity"
         case price              = "amount_per_unit"
         case discount           = "discount"
         case taxes              = "taxes"
@@ -66,7 +78,7 @@ import Foundation
         title = try values.decodeIfPresent(String.self, forKey: .title)
         itemDescription = try values.decodeIfPresent(String.self, forKey: .itemDescription)
         price = try values.decodeIfPresent(Double.self, forKey: .price)
-        quantity = try values.decodeIfPresent(Int.self, forKey: .quantity)
+        quantityy = try values.decode(Quantity.self, forKey: .quantityy)
         discount = try values.decodeIfPresent(AmountModificatorModel.self, forKey: .discount)
         taxes = try values.decodeIfPresent([Tax].self, forKey: .taxes) ?? []
         totalAmount = try values.decodeIfPresent(Double.self, forKey: .price) ?? 0
@@ -86,14 +98,14 @@ import Foundation
         // First apply the discount if any
         let discountedItemPrice:Double = price - (discount?.caluclateActualModificationValue(with: price) ?? 0)
         // Secondly apply the taxes if any
-        var discountedWithTaxesPrice:Double = taxes.reduce(discountedItemPrice) { $0 + $1.amount.caluclateActualModificationValue(with: discountedItemPrice) }
+        var discountedWithTaxesPrice:Double = taxes?.reduce(discountedItemPrice) { $0 + $1.amount.caluclateActualModificationValue(with: discountedItemPrice) } ?? discountedItemPrice
         // Put in the quantity in action
-        discountedWithTaxesPrice = discountedWithTaxesPrice * Double(quantity ?? 1)
+        discountedWithTaxesPrice = discountedWithTaxesPrice * quantityy.value
         
         // Check if the caller wants to make a conversion to a certain currency
         guard let originalCurrency = convertFromCurrency, let conversionCurrency = convertToCurrenct,
-            originalCurrency != .undefined, conversionCurrency !=  .undefined else {
-                return discountedWithTaxesPrice
+              originalCurrency != .undefined, conversionCurrency !=  .undefined else {
+            return discountedWithTaxesPrice
         }
         
         return conversionCurrency.convert(from: originalCurrency, for: discountedWithTaxesPrice)

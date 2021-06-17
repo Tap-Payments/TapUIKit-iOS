@@ -8,31 +8,90 @@
 
 import Foundation
 /// Represent an enum to decide all the possible amount modifications types
-@objc public enum AmountModificationType: Int,RawRepresentable,Encodable {
-    /// Meaning, the modification will be a percentage of the item's price
-    case Percentage = 1
-    /// Meaning, the modification will be a fixed value to be deducted as is
-    case Fixed = 2
+@objc public enum AmountModificationType: Int, CaseIterable {
     
-    public typealias RawValue = String
+    /// Percent-based modification.
+    @objc(Percents) case Percentage
     
-    public var rawValue: RawValue {
+    /// Fixed amount modification.
+    @objc(FixedAmount) case Fixed
+    
+    // MARK: - Private -
+    
+    private struct Constants {
+        
+        fileprivate static let percentBasedKey  = "P"
+        fileprivate static let fixedAmountKey   = "F"
+        
+        //@available(*, unavailable) private init() { }
+    }
+    
+    // MARK: Properties
+    
+    private var stringValue: String {
+        
         switch self {
-        case .Percentage:
-            return "percentage"
-        case .Fixed:
-            return "fixed"
+        
+        case .Percentage:           return Constants.percentBasedKey
+        case .Fixed:          return Constants.fixedAmountKey
+            
         }
     }
     
-    public init?(rawValue: RawValue) {
-        switch rawValue {
-        case "percentage":
-            self = .Percentage
-        case "fixed":
-            self = .Fixed
+    // MARK: Methods
+    
+    private init(string: String) throws {
+        
+        switch string {
+        
+        case Constants.percentBasedKey: self = .Percentage
+        case Constants.fixedAmountKey:  self = .Fixed
+            
         default:
-            return nil
+            
+            let userInfo = [ErrorConstants.UserInfoKeys.amountModificatorType: string]
+            let underlyingError = NSError(domain: ErrorConstants.internalErrorDomain, code: InternalError.invalidAmountModificatorType.rawValue, userInfo: userInfo)
+            throw TapSDKKnownError(type: .internal, error: underlyingError, response: nil, body: nil)
         }
+    }
+}
+
+// MARK: - CustomStringConvertible
+extension AmountModificationType: CustomStringConvertible {
+    
+    public var description: String {
+        
+        switch self {
+        
+        case .Fixed:        return "Fixed amount"
+        case .Percentage:   return "Percents"
+            
+        }
+    }
+}
+
+// MARK: - Decodable
+extension AmountModificationType: Decodable {
+    
+    public init(from decoder: Decoder) throws {
+        
+        let container = try decoder.singleValueContainer()
+        
+        let string = try container.decode(String.self)
+        try self.init(string: string)
+    }
+}
+
+// MARK: - Encodable
+extension AmountModificationType: Encodable {
+    
+    /// Encodes the contents of the receiver.
+    ///
+    /// - Parameter encoder: Encoder.
+    /// - Throws: EncodingError
+    public func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.singleValueContainer()
+        try container.encode(self.stringValue)
     }
 }

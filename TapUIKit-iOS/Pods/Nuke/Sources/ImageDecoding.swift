@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2020 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
 
 #if !os(macOS)
 import UIKit
@@ -110,7 +110,7 @@ public extension ImageDecoders {
         }
 
         public func decode(_ data: Data) -> ImageContainer? {
-            return container ?? _decode(data)
+            container ?? _decode(data)
         }
 
         private func _decode(_ data: Data) -> ImageContainer? {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2020 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -33,12 +33,16 @@ public struct ImageRequest: CustomStringConvertible {
         }
     }
 
+    var urlString: String? {
+        ref.urlString
+    }
+
     /// The execution priority of the request. The priority affects the order in which the image
     /// requests are executed.
     public enum Priority: Int, Comparable {
         case veryLow = 0, low, normal, high, veryHigh
 
-        var queuePriority: Operation.QueuePriority {
+        var taskPriority: TaskPriority {
             switch self {
             case .veryLow: return .veryLow
             case .low: return .low
@@ -159,6 +163,12 @@ public struct ImageRequest: CustomStringConvertible {
         var options: ImageRequestOptions
         var processors: [ImageProcessing]
 
+        deinit {
+            #if TRACK_ALLOCATIONS
+            Allocations.decrement("ImageRequest.Container")
+            #endif
+        }
+
         /// Creates a resource with a default processor.
         init(resource: Resource, processors: [ImageProcessing], cachePolicy: CachePolicy, priority: Priority, options: ImageRequestOptions) {
             self.resource = resource
@@ -166,6 +176,10 @@ public struct ImageRequest: CustomStringConvertible {
             self.cachePolicy = cachePolicy
             self.priority = priority
             self.options = options
+
+            #if TRACK_ALLOCATIONS
+            Allocations.increment("ImageRequest.Container")
+            #endif
         }
 
         /// Creates a copy.
@@ -176,6 +190,10 @@ public struct ImageRequest: CustomStringConvertible {
             self.cachePolicy = ref.cachePolicy
             self.priority = ref.priority
             self.options = ref.options
+
+            #if TRACK_ALLOCATIONS
+            Allocations.increment("ImageRequest.Container")
+            #endif
         }
 
         var preferredURLString: String {
@@ -305,7 +323,7 @@ extension ImageRequest {
     // MARK: - Load Keys
 
     /// A key for deduplicating operations for fetching the processed image.
-    func makeLoadKeyForFinalImage() -> AnyHashable {
+    func makeLoadKeyForFinalImage() -> LoadKeyForProcessedImage {
         LoadKeyForProcessedImage(
             cacheKey: makeCacheKeyForFinalImage(),
             loadKey: makeLoadKeyForOriginalImage()
@@ -313,11 +331,8 @@ extension ImageRequest {
     }
 
     /// A key for deduplicating operations for fetching the original image.
-    func makeLoadKeyForOriginalImage() -> AnyHashable {
-        if let loadKey = self.options.loadKey {
-            return loadKey
-        }
-        return LoadKeyForOriginalImage(request: self)
+    func makeLoadKeyForOriginalImage() -> LoadKeyForOriginalImage {
+        LoadKeyForOriginalImage(request: self)
     }
 
     // MARK: - Internals (Keys)
@@ -344,23 +359,49 @@ extension ImageRequest {
     }
 
     // Uniquely identifies a task of retrieving the processed image.
-    private struct LoadKeyForProcessedImage: Hashable {
+    struct LoadKeyForProcessedImage: Hashable {
         let cacheKey: CacheKey
         let loadKey: AnyHashable
     }
 
-    private struct LoadKeyForOriginalImage: Hashable {
-        let urlString: String?
-        let requestCachePolicy: CachePolicy
-        let cachePolicy: URLRequest.CachePolicy
-        let allowsCellularAccess: Bool
+    // Uniquely identifies a task of retrieving the original image.
+    struct LoadKeyForOriginalImage: Hashable {
+        let request: ImageRequest
 
-        init(request: ImageRequest) {
-            self.urlString = request.ref.urlString
-            let urlRequest = request.urlRequest
-            self.requestCachePolicy = request.cachePolicy
-            self.cachePolicy = urlRequest.cachePolicy
-            self.allowsCellularAccess = urlRequest.allowsCellularAccess
+        func hash(into hasher: inout Hasher) {
+            if let customKey = request.ref.options.loadKey {
+                hasher.combine(customKey)
+            } else {
+                hasher.combine(request.ref.preferredURLString)
+            }
+        }
+
+        static func == (lhs: LoadKeyForOriginalImage, rhs: LoadKeyForOriginalImage) -> Bool {
+            let (lhs, rhs) = (lhs.request, rhs.request)
+            if lhs.options.loadKey != nil || rhs.options.loadKey != nil {
+                return lhs.options.loadKey == rhs.options.loadKey
+            }
+            return Parameters(lhs) == Parameters(rhs)
+        }
+
+        private struct Parameters: Hashable {
+            let urlString: String?
+            let requestCachePolicy: CachePolicy
+            let cachePolicy: URLRequest.CachePolicy
+            let allowsCellularAccess: Bool
+
+            init(_ request: ImageRequest) {
+                self.urlString = request.ref.urlString
+                self.requestCachePolicy = request.cachePolicy
+                switch request.ref.resource {
+                case .url:
+                    self.cachePolicy = .useProtocolCachePolicy
+                    self.allowsCellularAccess = true
+                case let .urlRequest(urlRequest):
+                    self.cachePolicy = urlRequest.cachePolicy
+                    self.allowsCellularAccess = urlRequest.allowsCellularAccess
+                }
+            }
         }
     }
 }

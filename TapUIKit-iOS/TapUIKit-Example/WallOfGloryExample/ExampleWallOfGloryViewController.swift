@@ -100,8 +100,8 @@ class ExampleWallOfGloryViewController: UIViewController {
             if i % 5 == 2 {
                 itemDiscount = nil
             }
-            let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount,totalAmount: 0)
-            itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency ))
+            let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: .init(value: Double(itemQuantity), unitOfMeasurement: .units), discount: itemDiscount,totalAmount: 0)
+            itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency.currency ))
         }
         
         tapItemsTableViewModel = .init(dataSource: itemsModels)
@@ -135,7 +135,10 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     
     func createGatewaysViews() {
-        currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .USD),CurrencyChipViewModel.init(currency: .AED),CurrencyChipViewModel.init(currency: .SAR),CurrencyChipViewModel.init(currency: .KWD),CurrencyChipViewModel.init(currency: .BHD),CurrencyChipViewModel.init(currency: .QAR),CurrencyChipViewModel.init(currency: .OMR),CurrencyChipViewModel.init(currency: .EGP),CurrencyChipViewModel.init(currency: .JOD)]
+        
+        
+        currenciesChipsViewModel = [CurrencyChipViewModel.init(currency: .init(.USD, 0, "https://sandbox.payments.tap.company/images/currency/USD.svg")),CurrencyChipViewModel.init(currency: .init(.KWD, 0, "https://sandbox.payments.tap.company/images/currency/KWD.svg")),CurrencyChipViewModel.init(currency: .init(.SAR, 0, "https://sandbox.payments.tap.company/images/currency/SAR.svg")),CurrencyChipViewModel.init(currency: .init(.OMR, 0, "https://sandbox.payments.tap.company/images/currency/OMR.svg")),CurrencyChipViewModel.init(currency: .init(.QAR, 0, "https://sandbox.payments.tap.company/images/currency/QAR.svg")),CurrencyChipViewModel.init(currency: .init(.BHD, 0, "https://sandbox.payments.tap.company/images/currency/BHD.svg")),CurrencyChipViewModel.init(currency: .init(.AED, 0, "https://sandbox.payments.tap.company/images/currency/AED.svg")),CurrencyChipViewModel.init(currency: .init(.EGP, 0, "https://sandbox.payments.tap.company/images/currency/EGP.svg")),CurrencyChipViewModel.init(currency: .init(.JOD, 0, "https://sandbox.payments.tap.company/images/currency/JOD.svg"))]
+        
         tapCurrienciesChipHorizontalListViewModel = .init(dataSource: currenciesChipsViewModel, headerType: .NoHeader,selectedChip: currenciesChipsViewModel[0])
         tapCurrienciesChipHorizontalListViewModel.delegate = self
         
@@ -328,11 +331,11 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         
         tapItemsTableViewModel.dataSource.forEach { (genericCellModel) in
             if let itemViewModel:ItemCellViewModel = genericCellModel as? ItemCellViewModel {
-                itemViewModel.convertCurrency = viewModel.currency
+                itemViewModel.convertCurrency = viewModel.currency.currency
             }
         }
         
-        tapAmountSectionViewModel.convertedTransactionCurrency = viewModel.currency
+        tapAmountSectionViewModel.convertedTransactionCurrency = viewModel.currency.currency
     }
     
     func applePayAuthoized(for viewModel: ApplePayChipViewCellModel, with token: TapApplePayToken) {

@@ -78,7 +78,7 @@ class ItemCellViewController: UIViewController {
         }else{
             itemDiscount = nil
         }
-        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: itemQuantity, discount: itemDiscount, totalAmount: 0)
+        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: .init(value: Double(itemQuantity), unitOfMeasurement: .units), discount: itemDiscount, totalAmount: 0)
         itemModel.itemFinalPrice()
         //try! .init(from: ["title":itemTitle,"description":itemDescriptio
             //,"price":itemPrice,"quantity":itemQuantity])

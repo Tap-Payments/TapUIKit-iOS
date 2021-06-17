@@ -248,7 +248,7 @@
     "tapDragHandler": {
         "image" : "tapHandlerImage",
         "width" : 75,
-        "height" : 2,
+        "height" : 4,
         "corner" : 2,
         "backgroundColor": "white",
         "cancelButton": {
