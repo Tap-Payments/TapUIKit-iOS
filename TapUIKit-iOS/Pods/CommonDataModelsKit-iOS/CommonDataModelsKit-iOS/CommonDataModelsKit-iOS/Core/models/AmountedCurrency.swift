@@ -25,7 +25,7 @@
     
     /// Conversion factor to transaction currency from baclend
     public var rate: Double?
-        
+    
     // MARK: Methods
     
     @objc public convenience init(_ currency: TapCurrencyCode, _ amount: Double, _ flag: String) {
