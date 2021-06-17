@@ -25,7 +25,7 @@ class TapAmountSectionViewController: UIViewController {
     
     var oiginalAmount:Double = 10000 {
         didSet {
-            viewModel.originalTransactionAmount = oiginalAmount
+            viewModel.originalTransactionCurrency = .init(viewModel.originalTransactionCurrency.currency, oiginalAmount, viewModel.originalTransactionCurrency.flag)
         }
     }
     var oiginalCurrency:AmountedCurrency = .init(.USD, 10000, "") {
@@ -35,7 +35,7 @@ class TapAmountSectionViewController: UIViewController {
     }
     var convertedAmount:Double = 3333.333 {
         didSet {
-            viewModel.convertedTransactionAmount = convertedAmount
+            viewModel.originalTransactionCurrency = .init(viewModel.convertedTransactionCurrency.currency, convertedAmount, viewModel.convertedTransactionCurrency.flag)
         }
     }
     var convertedCurrency:AmountedCurrency = .init(.KWD, 3333.333, ""){
@@ -66,7 +66,7 @@ class TapAmountSectionViewController: UIViewController {
     
     
     func createDefaultViewModel() {
-        viewModel = TapAmountSectionViewModel.init(originalTransactionAmount: oiginalAmount, originalTransactionCurrency: oiginalCurrency, convertedTransactionAmount: convertedAmount, convertedTransactionCurrency: convertedCurrency, numberOfItems: numberOfItems)
+        viewModel = TapAmountSectionViewModel.init(originalTransactionCurrency: oiginalCurrency, convertedTransactionCurrency: convertedCurrency, numberOfItems: numberOfItems)
     }
     
     @IBAction func currencySelectionClicked(_ sender: Any) {

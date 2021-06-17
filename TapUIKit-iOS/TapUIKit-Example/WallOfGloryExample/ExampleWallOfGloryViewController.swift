@@ -54,7 +54,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     
     func createDefaultViewModels() {
         tapMerchantViewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
-        tapAmountSectionViewModel = .init(originalTransactionAmount: 10000, originalTransactionCurrency: .init(.USD, 10000, "https://sandbox.payments.tap.company/images/currency/USD.svg"), numberOfItems: 10)
+        tapAmountSectionViewModel = .init(originalTransactionCurrency: .init(.USD, 10000, "https://sandbox.payments.tap.company/images/currency/USD.svg"), numberOfItems: 10)
         
         tapMerchantViewModel.delegate = self
         tapAmountSectionViewModel.delegate = self
@@ -111,9 +111,10 @@ class ExampleWallOfGloryViewController: UIViewController {
         //tapItemsTableViewModel.attachedView.translatesAutoresizingMaskIntoConstraints = false
         
         tapAmountSectionViewModel.numberOfItems = itemsModels.count
-        tapAmountSectionViewModel.originalTransactionAmount = itemsModels.reduce(0.0) { (accumlator, viewModel) -> Double in
+        let amount = itemsModels.reduce(0.0) { (accumlator, viewModel) -> Double in
             return accumlator + viewModel.itemPrice()
         }
+        tapAmountSectionViewModel.originalTransactionCurrency = .init(.USD, amount, "https://sandbox.payments.tap.company/images/currency/USD.svg")
     }
     
     

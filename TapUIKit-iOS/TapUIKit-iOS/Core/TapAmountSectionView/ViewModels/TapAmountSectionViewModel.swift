@@ -86,10 +86,8 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     }
     
     /// Represent the original transaction total amount
-    @objc public var originalTransactionAmount:Double = 0 {
-        didSet {
-            updateAmountObserver(for: originalTransactionAmount, with: originalTransactionCurrency, on: originalAmountLabelObserver)
-        }
+    @objc public var originalTransactionAmount:Double  {
+        return originalTransactionCurrency.amount
     }
     
     /// Represent the original transaction total amount
@@ -111,10 +109,8 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         }
     }
     /// Represent the converted transaction total amount if any
-    @objc public var convertedTransactionAmount:Double = 0 {
-        didSet {
-            updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
-        }
+    @objc public var convertedTransactionAmount:Double {
+        return convertedTransactionCurrency.amount
     }
     
     // Represent the original transaction total amount
@@ -127,9 +123,6 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         didSet {
             if convertedTransactionCurrency == originalTransactionCurrency || convertedTransactionCurrency.currency == .undefined {
                 convertedTransactionCurrency = .init(.undefined, 0, "")
-                convertedTransactionAmount = 0
-            }else {
-                convertedTransactionAmount = convertedTransactionCurrency.amount
             }
             //updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
         }
@@ -155,8 +148,8 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     /// Indicates to show the currency symbol or the currency code
     @objc public var tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO {
         didSet {
-            originalTransactionAmount = originalTransactionAmount + 0
-            convertedTransactionAmount = convertedTransactionAmount + 0
+            updateAmountObserver(for: convertedTransactionAmount, with: convertedTransactionCurrency, on: convertedAmountLabelObserver)
+            updateAmountObserver(for: originalTransactionAmount, with: originalTransactionCurrency, on: originalAmountLabelObserver)
         }
     }
     
@@ -167,21 +160,17 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
    
     /**
      Creates a view model to handle the displayed data and interactions for an associated TapAmountSectionView
-     - Parameter originalTransactionAmount:Represent the original transaction total amount
      - Parameter originalTransactionCurrency:Represent the original transaction total amount
-     - Parameter convertedTransactionAmount:Represent the original transaction total amount
      - Parameter convertedTransactionCurrency:Represent the original transaction total amount
      - Parameter numberOfItems:Represent the original transaction total amount
      - Parameter shouldShowItems:Represent the original transaction total amount
      - Parameter shouldShowAmount:Represent the original transaction total amount
      - Parameter tapCurrencyFormatterSymbol:Indicates to show the currency symbol or the currency code
      */
-    @objc public init(originalTransactionAmount: Double = 0, originalTransactionCurrency: AmountedCurrency = .init(.undefined, 0, ""), convertedTransactionAmount: Double = 0, convertedTransactionCurrency: AmountedCurrency = .init(.undefined, 0, ""), numberOfItems: Int = 0, shouldShowItems: Bool = true, shouldShowAmount: Bool = true,tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO) {
+    @objc public init(originalTransactionCurrency: AmountedCurrency = .init(.undefined, 0, ""), convertedTransactionCurrency: AmountedCurrency = .init(.undefined, 0, ""), numberOfItems: Int = 0, shouldShowItems: Bool = true, shouldShowAmount: Bool = true,tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO) {
         super.init()
         defer {
-            self.originalTransactionAmount = originalTransactionAmount
             self.originalTransactionCurrency = originalTransactionCurrency
-            self.convertedTransactionAmount = convertedTransactionAmount
             self.convertedTransactionCurrency = convertedTransactionCurrency
             self.numberOfItems = numberOfItems
             self.shouldShowItems = shouldShowItems
