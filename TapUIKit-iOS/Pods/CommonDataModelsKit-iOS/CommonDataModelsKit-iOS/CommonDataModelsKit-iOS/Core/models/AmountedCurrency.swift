@@ -51,8 +51,7 @@
         case flag           = "flag"
     }
     
-    public static func == (lhs: AmountedCurrency, rhs: AmountedCurrency) -> Bool {
-        
-        return lhs.currency == rhs.currency && lhs.amount == rhs.amount
+    public override func isEqual(_ object: Any?) -> Bool {
+        return currency.appleRawValue == (object as? AmountedCurrency)?.currency.appleRawValue
     }
 }

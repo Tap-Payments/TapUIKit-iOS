@@ -28,7 +28,7 @@ internal protocol ItemCellViewModelDelegate {
     internal var delegate:ItemCellViewModelDelegate?
     
     /// The original currency, the item is created with
-    private var originalCurrency:TapCurrencyCode?
+    private var originalCurrency:AmountedCurrency?
     private let sharedLocalisationManager = TapLocalisationManager.shared
     internal var descriptionState:DescriptionState = .hidden {
         didSet {
@@ -45,7 +45,7 @@ internal protocol ItemCellViewModelDelegate {
     
     // MARK:- Public Variables
     /// The new currency the user wants to convert to
-    @objc public var convertCurrency:TapCurrencyCode = .undefined {
+    @objc public var convertCurrency:AmountedCurrency = .init(.undefined, 0, "") {
         didSet{
             cellDelegate?.reloadData()
         }
@@ -65,7 +65,7 @@ internal protocol ItemCellViewModelDelegate {
      - Parameter itemModel: The item model to be represented by this view model
      - Parameter originalCurrency: The original currency, the item is created with
      */
-    @objc public init(itemModel:ItemModel, originalCurrency:TapCurrencyCode) {
+    @objc public init(itemModel:ItemModel, originalCurrency:AmountedCurrency) {
         self.itemModel = itemModel
         self.originalCurrency = originalCurrency
         self.convertCurrency = originalCurrency
@@ -111,10 +111,10 @@ internal protocol ItemCellViewModelDelegate {
     /// Returns the formatted Item price to be displayed
     public func itemPrice() -> String {
         // Check if we have a valid price, then format it based on the currency
-        guard let itemModel = itemModel, convertCurrency != .undefined else { return "" }
+        guard let itemModel = itemModel, convertCurrency.currency != .undefined else { return "" }
         let itemPrice = itemModel.itemFinalPrice(convertFromCurrency: originalCurrency, convertToCurrenct: convertCurrency)
         let formatter = TapAmountedCurrencyFormatter { [weak self] in
-            $0.currency = self?.convertCurrency ?? .USD
+            $0.currency = self?.convertCurrency.currency ?? .USD
             $0.locale = CurrencyLocale.englishUnitedStates
         }
         return formatter.string(from: itemPrice) ?? "KD0.000"
@@ -138,12 +138,12 @@ internal protocol ItemCellViewModelDelegate {
      */
     public func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
         // Check if we have a valid discount OR the quantity is more than 1, then format it based on the currency
-        guard let itemModel = itemModel, let quantity = itemModel.quantity, let price = itemModel.price , convertCurrency != .undefined else { return NSAttributedString.init(string: "") }
+        guard let itemModel = itemModel, let quantity = itemModel.quantity, let price = itemModel.price , convertCurrency.currency != .undefined else { return NSAttributedString.init(string: "") }
         guard itemModel.quantity ?? 0 > 1  || itemModel.discount?.value ?? 0 > 0 else { return NSAttributedString.init(string: "") }
         
         // In this case, then we will show a discount/single amount string
         let formatter = TapAmountedCurrencyFormatter { [weak self] in
-            $0.currency = self?.convertCurrency ?? .USD
+            $0.currency = self?.convertCurrency.currency ?? .USD
             $0.locale = CurrencyLocale.englishUnitedStates
         }
         // Create the default value which will be the case of having only quantity, hence displaying the single item price

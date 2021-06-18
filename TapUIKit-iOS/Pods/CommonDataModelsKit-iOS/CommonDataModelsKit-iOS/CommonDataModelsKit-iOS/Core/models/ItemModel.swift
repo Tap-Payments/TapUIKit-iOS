@@ -90,7 +90,7 @@ import Foundation
      - Parameter convertToCurrenct: The new currency if needed to convert to
      - Returns: The total price of the item as follows : (itemPrice-discount+taxes) * quantity
      */
-    public func itemFinalPrice(convertFromCurrency:TapCurrencyCode? = nil,convertToCurrenct:TapCurrencyCode? = nil) -> Double {
+    public func itemFinalPrice(convertFromCurrency:AmountedCurrency? = nil,convertToCurrenct:AmountedCurrency? = nil) -> Double {
         
         // Defensive coding, make sure all values are set
         guard let price = price else { return 0 }
@@ -104,11 +104,11 @@ import Foundation
         
         // Check if the caller wants to make a conversion to a certain currency
         guard let originalCurrency = convertFromCurrency, let conversionCurrency = convertToCurrenct,
-              originalCurrency != .undefined, conversionCurrency !=  .undefined else {
+              originalCurrency.currency != .undefined, conversionCurrency.currency !=  .undefined else {
             return discountedWithTaxesPrice
         }
         
-        return conversionCurrency.convert(from: originalCurrency, for: discountedWithTaxesPrice)
+        return discountedWithTaxesPrice * (conversionCurrency.rate ?? 1)
     }
     
 }

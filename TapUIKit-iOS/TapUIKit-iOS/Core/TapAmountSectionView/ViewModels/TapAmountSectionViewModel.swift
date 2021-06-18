@@ -157,7 +157,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     internal var localizationPath = "TapMerchantSection"
     /// Configure the localisation Manager
     internal let sharedLocalisationManager = TapLocalisationManager.shared
-   
+    
     /**
      Creates a view model to handle the displayed data and interactions for an associated TapAmountSectionView
      - Parameter originalTransactionCurrency:Represent the original transaction total amount
@@ -218,14 +218,14 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     internal func itemsClicked() {
         // Determine which method should we execute
         switch currentStateView {
-            // Meaning, currently we are showing the normal view and we need to show the items list
-            case .DefaultView:
-                showItems()
-                break
-            // Meaning currently we are showing the list items and we need to go back to the normal view
-            case .ItemsView:
-                closeItems()
-                break
+        // Meaning, currently we are showing the normal view and we need to show the items list
+        case .DefaultView:
+            showItems()
+            break
+        // Meaning currently we are showing the list items and we need to go back to the normal view
+        case .ItemsView:
+            closeItems()
+            break
         // Meaning currently we are showing the scanner and we need to go back to the normal view
         case .ScannerView:
             closeScanner()

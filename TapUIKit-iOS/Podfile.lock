@@ -3,7 +3,7 @@ PODS:
   - CocoaLumberjack (3.7.2):
     - CocoaLumberjack/Core (= 3.7.2)
   - CocoaLumberjack/Core (3.7.2)
-  - CommonDataModelsKit-iOS (1.0.38):
+  - CommonDataModelsKit-iOS (1.0.39):
     - TapAdditionsKitV2
   - LocalisationManagerKit-iOS (1.0.2)
   - McPicker (3.0.0)
@@ -104,7 +104,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  CommonDataModelsKit-iOS: 9556effbb2d4ba93d96e4c44474fd3902f841e7d
+  CommonDataModelsKit-iOS: 68cbbeb6deba089aefe4be1fd1613354b2c0e7a9
   LocalisationManagerKit-iOS: cd702915c67faba899d4613d44ceb00cefccec6e
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
