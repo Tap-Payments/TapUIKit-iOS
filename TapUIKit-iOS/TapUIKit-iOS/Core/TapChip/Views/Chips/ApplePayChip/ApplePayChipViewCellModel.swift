@@ -45,8 +45,8 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
      - Parameter icon: The icon to be used inside the apple pay button
      - Parameter tapApplePayRequest: The Tap Apple pay request to pass to the PassKit apple pay library
      */
-    @objc public init(title: String? = nil, icon: String? = nil, tapApplePayRequest:TapApplePayRequest = .init()) {
-        super.init(title: title, icon: icon)
+    @objc public init(title: String? = nil, icon: String? = nil, tapApplePayRequest:TapApplePayRequest = .init(), paymentOptionIdentifier:String = "") {
+        super.init(title: title, icon: icon, paymentOptionIdentifier: paymentOptionIdentifier)
         self.tapApplePayRequest = tapApplePayRequest
     }
     

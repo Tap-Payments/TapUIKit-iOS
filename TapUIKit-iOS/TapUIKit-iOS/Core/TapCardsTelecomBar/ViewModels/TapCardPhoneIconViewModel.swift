@@ -5,7 +5,6 @@
 //  Created by Osama Rabie on 6/28/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
 import Foundation
 import enum TapCardVlidatorKit_iOS.CardBrand
 
@@ -65,6 +64,9 @@ internal protocol TapCardPhoneIconViewDelegate {
     
     /// Represent the associated payment brand this cell is linked to
     @objc public var associatedCardBrand:CardBrand = .visa
+    
+    /// Unique identifier for the object.
+    @objc public var paymentOptionIdentifier: String = ""
     
     // MARK:- Private methods
     
@@ -141,12 +143,13 @@ internal protocol TapCardPhoneIconViewDelegate {
      - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
      this icon
      */
-    @objc public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "") {
+    @objc public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "", paymentOptionIdentifier:String = "") {
         super.init()
         defer{
-            self.tapCardPhoneIconStatus = tapCardPhoneIconStatus
-            self.tapCardPhoneIconUrl = tapCardPhoneIconUrl
-            self.associatedCardBrand = associatedCardBrand
+            self.tapCardPhoneIconStatus     = tapCardPhoneIconStatus
+            self.tapCardPhoneIconUrl        = tapCardPhoneIconUrl
+            self.associatedCardBrand        = associatedCardBrand
+            self.paymentOptionIdentifier    = paymentOptionIdentifier
         }
     }
 }

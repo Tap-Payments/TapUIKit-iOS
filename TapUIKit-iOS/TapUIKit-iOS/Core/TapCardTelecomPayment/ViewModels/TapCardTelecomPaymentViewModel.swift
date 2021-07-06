@@ -5,7 +5,6 @@
 //  Created by Osama Rabie on 8/4/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
 import Foundation
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
@@ -37,6 +36,12 @@ import TapCardVlidatorKit_iOS
     
     ///This method will be called whenever there is no need to show ay hints views
     @objc func hideHints()
+    
+    /**This method will be called whenever the user tries to enter new digits inside the card number, then we need to the delegate to tell us if we can complete the card number.
+     - Parameter with cardNumber: The card number after changes.
+     - Returns: True if the entered card number till now less than 6 digits or the prefix matches the allowed types (credit or debit)
+     */
+    @objc func shouldAllowChange(with cardNumber:String) -> Bool
 }
 
 /// Represents a view model to control the wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
@@ -99,10 +104,11 @@ import TapCardVlidatorKit_iOS
     /**
      Call this method when you  need to fill in the text fields with data.
      - Parameter tapCard: The TapCard that holds the data needed to be filled into the textfields
+     - Parameter then focusCardNumber: Indicate whether we need to focus the card number after setting the card data
      */
-    @objc public func setCard(with card:TapCard) {
+    @objc public func setCard(with card:TapCard,then focusCardNumber:Bool,shouldRemoveCurrentCard:Bool = true) {
         tapCardTelecomPaymentView?.lastReportedTapCard = card
-        tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card)
+        tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card, then: focusCardNumber,shouldRemoveCurrentCard:shouldRemoveCurrentCard)
     }
     
     

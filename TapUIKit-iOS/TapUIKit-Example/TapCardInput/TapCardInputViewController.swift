@@ -54,6 +54,10 @@ class TapCardInputViewController: UIViewController {
 }
 
 extension TapCardInputViewController: TapCardInputProtocol {
+    func shouldAllowChange(with cardNumber: String) -> Bool {
+        return true
+    }
+    
     
     func dataChanged(tapCard: TapCard) {
         

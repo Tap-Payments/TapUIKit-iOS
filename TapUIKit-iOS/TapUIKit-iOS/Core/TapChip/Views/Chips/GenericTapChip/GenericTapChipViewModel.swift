@@ -5,7 +5,6 @@
 //  Created by Osama Rabie on 6/14/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
 import class TapApplePayKit_iOS.TapApplePayToken
 
 /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
@@ -80,6 +79,9 @@ internal protocol GenericCellChipViewModelDelegate {
         }
     }
     
+    /// Unique identifier for the object.
+    @objc public var paymentOptionIdentifier: String
+    
     /// A protocl of methods to be applied to all chips viewmodel to infom the view model with needed events
     internal var viewModelDelegate:GenericChipViewModelDelegate?
     
@@ -87,10 +89,12 @@ internal protocol GenericCellChipViewModelDelegate {
      Creates a view model with the provided data
      - Parameter title: The title to be displayed if any in the Chip cell default is nil
      - Parameter icon:The icon if any to be displayed in the Chip cell default is nil
+     - Parameter paymentOptionIdentifier:Unique identifier for the object.
      */
-    @objc public init(title:String? = nil, icon:String? = nil) {
+    @objc public init(title:String? = nil, icon:String? = nil, paymentOptionIdentifier:String = "") {
         self.title = title
         self.icon = icon
+        self.paymentOptionIdentifier = paymentOptionIdentifier
     }
     
     /**
@@ -128,14 +132,16 @@ internal protocol GenericCellChipViewModelDelegate {
     }
     
     enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case icon = "icon"
+        case title                      = "title"
+        case icon                       = "icon"
+        case paymentOptionIdentifier    = "paymentOptionIdentifier"
     }
     
     required public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.title = try values.decodeIfPresent(String.self, forKey: .title)
-        self.icon = try values.decodeIfPresent(String.self, forKey: .icon)
+        let values                      = try decoder.container(keyedBy: CodingKeys.self)
+        self.title                      = try values.decodeIfPresent(String.self, forKey: .title)
+        self.icon                       = try values.decodeIfPresent(String.self, forKey: .icon)
+        self.paymentOptionIdentifier    = try values.decodeIfPresent(String.self, forKey: .paymentOptionIdentifier) ?? ""
     }
     
 }

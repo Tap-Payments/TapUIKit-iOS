@@ -82,7 +82,7 @@ class ItemCellViewController: UIViewController {
         itemModel.itemFinalPrice()
         //try! .init(from: ["title":itemTitle,"description":itemDescriptio
             //,"price":itemPrice,"quantity":itemQuantity])
-        let itemCellViewModel:ItemCellViewModel = .init(itemModel: itemModel, originalCurrency: .KWD)
+        let itemCellViewModel:ItemCellViewModel = .init(itemModel: itemModel, originalCurrency: .init(.KWD, itemModel.itemFinalPrice(), ""))
         tapTableViewModel.dataSource = [itemCellViewModel]
         tabGenericTable.changeViewMode(with: tapTableViewModel)
     }

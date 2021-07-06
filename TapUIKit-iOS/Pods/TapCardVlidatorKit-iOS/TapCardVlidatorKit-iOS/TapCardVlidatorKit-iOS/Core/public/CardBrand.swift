@@ -4,7 +4,6 @@
 //
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
-
 /// Card Brand.
 import Foundation
 
@@ -76,7 +75,7 @@ import Foundation
             .unionPay           : RawValues.unionPay,
             .verve              : RawValues.verve,
             .visa               : RawValues.visa,
-            .visaElectron        : RawValues.visaElectron,
+            .visaElectron       : RawValues.visaElectron,
             .viva               : RawValues.viva,
             .wataniya           : RawValues.wataniya,
             .zain               : RawValues.zain,
@@ -103,14 +102,14 @@ import Foundation
         private static let masterCard       = ["MASTERCARD"]
         private static let naps             = ["NAPS"]
         private static let nspkMir          = ["NSPK"]
-        private static let omanNet          = ["OMAN_NET"]
+        private static let omanNet          = ["OMAN_NET","OMANNET"]
         private static let sadad            = ["SADAD_ACCOUNT"]
         private static let tap              = ["TAP"]
         private static let uatp             = ["UATP"]
         private static let unionPay         = ["UNION_PAY", "UNIONPAY"]
         private static let verve            = ["VERVE"]
         private static let visa             = ["VISA"]
-        private static let visaElectron        = ["VISA_ELECTRON"]
+        private static let visaElectron     = ["VISA_ELECTRON"]
         private static let viva             = ["Viva PAY"]
         private static let wataniya         = ["Wataniya PAY"]
         private static let zain             = ["Zain PAY"]

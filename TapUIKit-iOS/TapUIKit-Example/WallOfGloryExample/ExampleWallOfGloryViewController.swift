@@ -32,7 +32,7 @@ class ExampleWallOfGloryViewController: UIViewController {
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
     var tapCardTelecomPaymentViewModel: TapCardTelecomPaymentViewModel = .init()
-    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways")
+    var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways", whichSwitchesToShow: .all)
     var dragView:TapDragHandlerView = .init()
     
     var webViewModel:TapWebViewModel = .init()
@@ -101,7 +101,7 @@ class ExampleWallOfGloryViewController: UIViewController {
                 itemDiscount = nil
             }
             let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: .init(value: Double(itemQuantity), unitOfMeasurement: .units), discount: itemDiscount,totalAmount: 0)
-            itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency.currency ))
+            itemsModels.append(.init(itemModel: itemModel, originalCurrency:(tapCurrienciesChipHorizontalListViewModel.selectedChip as! CurrencyChipViewModel).currency ))
         }
         
         tapItemsTableViewModel = .init(dataSource: itemsModels)
@@ -332,7 +332,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
         
         tapItemsTableViewModel.dataSource.forEach { (genericCellModel) in
             if let itemViewModel:ItemCellViewModel = genericCellModel as? ItemCellViewModel {
-                itemViewModel.convertCurrency = viewModel.currency.currency
+                itemViewModel.convertCurrency = viewModel.currency
             }
         }
         
@@ -469,6 +469,10 @@ extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    func shouldAllowChange(with cardNumber: String) -> Bool {
+        return true
+    }
+    
    
     func showHint(with status: TapHintViewStatusEnum) {
         let hintViewModel:TapHintViewModel = .init(with: status)
@@ -530,7 +534,7 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) { [weak self] in
             self?.closeScannerClicked()
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
-                self?.tapCardTelecomPaymentViewModel.setCard(with: tapCard)
+                self?.tapCardTelecomPaymentViewModel.setCard(with: tapCard, then: false)
             }
         }
     }

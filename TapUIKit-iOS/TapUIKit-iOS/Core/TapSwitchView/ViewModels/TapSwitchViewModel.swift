@@ -5,7 +5,6 @@
 //  Created by Kareem Ahmed on 7/20/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
     /// An event will be fired once the main switch card state changed to valid card or valid telecom
@@ -44,6 +43,10 @@ internal protocol TapSwitchViewDelegate {
             updateCardState()
         }
     }
+    
+    /// Decides which save card switch to show goPay or Merchant or both
+    internal var whichSwitchesToShow:TapSwitchEnum = .all
+    
     /// Reference to the switch view itself as UI that will be rendered
     internal var switchView: TapSwitchView?
     /// Public reference to the list view itself as UI that will be rendered
@@ -87,14 +90,28 @@ internal protocol TapSwitchViewDelegate {
             self.delegate?.didChangeCardState(cardState: cardState)
         }
     }
+    
+    
+    /// Determines whether the user enabled save card for merchant
+    @objc public var isMerchantSaveAllowed:Bool {
+        return mainSwitch.isOn && ( merchantSwitch?.isOn ?? false )
+    }
+    
+    /// Determines whether the user enabled save card for GoPay system
+    @objc public var isGoPaySaveAllowed:Bool {
+        return mainSwitch.isOn && ( goPaySwitch?.isOn ?? false )
+    }
+    
     /**
      Creates a view model with the provided card state and merchat name
      - Parameter cardState: The card state of this switch
      - Parameter merchant: The name of the merchant
+     - Parameter whichSwitchesToShow: Decides which save card switch to show goPay or Merchant or both
      */
-    @objc public init(with cardState: TapSwitchCardStateEnum, merchant: String) {
+    @objc public init(with cardState: TapSwitchCardStateEnum, merchant: String,whichSwitchesToShow:TapSwitchEnum) {
         self.merchant = merchant
         self.cardState = cardState
+        self.whichSwitchesToShow = whichSwitchesToShow
         super.init()
         self.configureSwitches()
     }
@@ -136,8 +153,8 @@ internal protocol TapSwitchViewDelegate {
     private func configureSwitches() {
         self.mainSwitch = TapSwitchModel(localisedSwitchKey: (cardState == .validCard || cardState == .invalidCard) ? "mainCards" : "mainTelecom")
         self.mainSwitch.title = cardState.mainLocalisedTitle()
-        self.goPaySwitch = TapSwitchModel(localisedSwitchKey: "goPay")
-        self.merchantSwitch = TapSwitchModel(localisedSwitchKey: "merchant", merchant: merchant)
+        self.goPaySwitch = (whichSwitchesToShow == .goPay || whichSwitchesToShow == .all) ? TapSwitchModel(localisedSwitchKey: "goPay") : nil
+        self.merchantSwitch = (whichSwitchesToShow == .merchant || whichSwitchesToShow == .all) ? TapSwitchModel(localisedSwitchKey: "merchant", merchant: merchant) : nil
         
         //        self.updateCardState()
     }

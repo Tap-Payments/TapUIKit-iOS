@@ -5,7 +5,6 @@
 //  Created by Osama Rabie on 8/7/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
 import Foundation
 import TapCardScanner_iOS
 /// Extension to the bottom sheet that contains all the logic required for showing and dismissing Tap custom views fromt the sheet controller
@@ -202,6 +201,7 @@ extension TapVerticalView {
     @objc  public func hideActionButton() {
         tapActionButtonHeightConstraint.priority = .required
         tapActionButtonHeightConstraint.constant = 0
+        tapActionButton.fadeOut()
         tapActionButton.updateConstraints()
         layoutIfNeeded()
     }

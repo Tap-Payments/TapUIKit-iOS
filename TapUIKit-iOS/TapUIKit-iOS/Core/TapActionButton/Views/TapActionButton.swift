@@ -5,12 +5,11 @@
 //  Created by Osama Rabie on 7/16/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
-
 import TapThemeManager2020
 
 /// Represents the Tap Action Button View
 @objc public class TapActionButton: UIView {
-
+    
     /// the main holder view
     @IBOutlet weak var contentView: UIView!
     /// The image used to show the laoder, success and failure animations
@@ -55,7 +54,10 @@ import TapThemeManager2020
     @objc public func setup(with viewModel:TapActionButtonViewModel) {
         self.viewModel = viewModel
         self.viewModel?.viewDelegate = self
-        
+        guard let _ = TapThemeManager.currentTheme else {
+            TapThemeManager.setDefaultTapTheme()
+            return
+        }
     }
     
     
@@ -135,9 +137,11 @@ extension TapActionButton:TapActionButtonViewDelegate {
         if(success) {
             loaderGif.delegate = self
         }else {
-            viewHolder.fadeColor(toColor: .systemGray, duration: 1, completion: { _ in
-                completion()
-            })
+            DispatchQueue.main.async {[weak self] in
+                self?.viewHolder.fadeColor(toColor: .systemGray, duration: 1, completion: { _ in
+                    completion()
+                })
+            }
         }
     }
     
@@ -217,4 +221,3 @@ extension TapActionButton:SwiftyGifDelegate {
     
     
 }
-
