@@ -5,6 +5,7 @@
 //  Created by Osama Rabie on 6/17/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
+
 import class UIKit.UICollectionViewCell
 
 /// The view model that controlls the SavedCard cell
@@ -16,10 +17,12 @@ import class UIKit.UICollectionViewCell
     internal var cellDelegate:GenericCellChipViewModelDelegate?
     
     @objc public var listSource:TapHorizontalHeaderType = .GatewayListHeader
+    @objc public var savedCardID:String? = nil
     
-    @objc public init(title: String? = nil, icon: String? = nil, listSource:TapHorizontalHeaderType = .GatewayListHeader, paymentOptionIdentifier:String = "") {
+    @objc public init(title: String? = nil, icon: String? = nil, listSource:TapHorizontalHeaderType = .GatewayListHeader, paymentOptionIdentifier:String = "", savedCardID:String? = nil) {
         super.init(title: title, icon: icon, paymentOptionIdentifier: paymentOptionIdentifier)
         self.listSource = listSource
+        self.savedCardID = savedCardID
     }
     
     required public init(from decoder: Decoder) throws {
@@ -34,6 +37,7 @@ import class UIKit.UICollectionViewCell
     
     public override func didSelectItem() {
         cellDelegate?.changeSelection(with: true)
+        
         viewModelDelegate?.savedCard(for: self)
     }
     

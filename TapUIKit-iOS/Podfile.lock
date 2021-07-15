@@ -3,7 +3,7 @@ PODS:
   - CocoaLumberjack (3.7.2):
     - CocoaLumberjack/Core (= 3.7.2)
   - CocoaLumberjack/Core (3.7.2)
-  - CommonDataModelsKit-iOS (1.0.40):
+  - CommonDataModelsKit-iOS (1.0.41):
     - TapAdditionsKitV2
   - LocalisationManagerKit-iOS (1.0.2)
   - McPicker (3.0.0)
@@ -23,7 +23,7 @@ PODS:
     - CocoaLumberjack (~> 3.0)
   - TapAdditionsKitV2 (0.0.8):
     - TapSwiftFixesV2
-  - TapApplePayKit-iOS (1.0.5):
+  - TapApplePayKit-iOS (1.0.6):
     - CommonDataModelsKit-iOS (~> 1.0.1)
   - TapCardInputKit-iOS (1.0.24):
     - CommonDataModelsKit-iOS
@@ -104,7 +104,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  CommonDataModelsKit-iOS: c4392945b966121339183ba8099015a841a2cbf2
+  CommonDataModelsKit-iOS: ad416463eb9076cea71df5f2fd9d64e45a32e66f
   LocalisationManagerKit-iOS: cd702915c67faba899d4613d44ceb00cefccec6e
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
@@ -118,7 +118,7 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
-  TapApplePayKit-iOS: 3dfb3c8155cdf393ef3f00640a317c5147749306
+  TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
   TapCardInputKit-iOS: fc3bd4fbac14b22fd315437ca2c8930d87cc8dcf
   TapCardScanner-iOS: baba47bff7daa3db8cb9e86e60fc412f1322fbc6
   TapCardVlidatorKit-iOS: d92675984d683a6c1afca77a1cce43c4a8451726

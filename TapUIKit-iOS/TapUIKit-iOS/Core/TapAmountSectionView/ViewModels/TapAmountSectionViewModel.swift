@@ -153,6 +153,9 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         }
     }
     
+    /// Indicates whether this view should be displayed or not.
+    @objc public var shouldShow:Bool = true
+    
     /// Localisation kit keypath
     internal var localizationPath = "TapMerchantSection"
     /// Configure the localisation Manager

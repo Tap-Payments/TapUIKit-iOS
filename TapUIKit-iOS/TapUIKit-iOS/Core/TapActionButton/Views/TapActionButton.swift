@@ -5,6 +5,7 @@
 //  Created by Osama Rabie on 7/16/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
+
 import TapThemeManager2020
 
 /// Represents the Tap Action Button View
@@ -118,7 +119,9 @@ import TapThemeManager2020
 
 
 extension TapActionButton:TapActionButtonViewDelegate {
-    func startLoading(completion: () -> ()?) {
+    func startLoading(completion: @escaping () -> () = {}) {
+        // Save the callback we need to do after showing the result
+        afterLoadingCallback = completion
         // load the gif loading image
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
         let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
@@ -221,3 +224,4 @@ extension TapActionButton:SwiftyGifDelegate {
     
     
 }
+

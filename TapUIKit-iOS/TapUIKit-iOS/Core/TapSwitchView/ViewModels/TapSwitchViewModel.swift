@@ -5,6 +5,7 @@
 //  Created by Kareem Ahmed on 7/20/20.
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
+
 /// A protocol to be used to fire functions and events in the associated view
 internal protocol TapSwitchViewDelegate {
     /// An event will be fired once the main switch card state changed to valid card or valid telecom

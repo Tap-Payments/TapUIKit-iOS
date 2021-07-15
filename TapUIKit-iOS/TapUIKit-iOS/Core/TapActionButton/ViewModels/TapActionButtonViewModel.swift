@@ -17,7 +17,7 @@ internal protocol TapActionButtonViewDelegate {
     /** Instructs the button view to start with the loading animation
      - Parameter completion: A block to be called once the collapsing is done
      */
-    func startLoading(completion:()->()?)
+    func startLoading(completion: @escaping ()->())
     
     /**
      Instructs the button to end loading with a given result
@@ -52,7 +52,7 @@ internal protocol TapActionButtonViewDelegate {
     /** Instructs the button view to start with the loading animation
      - Parameter completion: A block to be called once the collapsing is done
      */
-    @objc public func startLoading(completion:()->() = {}) {
+    @objc public func startLoading(completion: @escaping ()->() = {}) {
         viewDelegate?.startLoading(completion: completion)
     }
     
@@ -63,14 +63,14 @@ internal protocol TapActionButtonViewDelegate {
         // Register for notifications to allow changing the status and the action block at run time form anywhere in the app
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetStatusNotification), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetBlockNotification), object: nil)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetStatusNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetBlockNotification), object: nil)
     }
     
     /**
      Handles the logic needed to recieve the notifiations from other parts in the SDK to change the status and the action block of the button
-      - Parameter notification: The recieved notification object from the dispatcher object
+     - Parameter notification: The recieved notification object from the dispatcher object
      */
     @objc func StnNotificationExist(_ notification:NSNotification)
     {
@@ -121,7 +121,7 @@ internal protocol TapActionButtonViewDelegate {
     @objc public func expandButton() {
         viewDelegate?.expand()
     }
-
+    
     
     
     

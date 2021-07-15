@@ -85,6 +85,10 @@ import SimpleAnimation
     }
     
     
+    @objc override func shouldShowTapView() -> Bool {
+        return viewModel?.shouldShow ?? true
+    }
+    
     ///Updates all the views that can be shown or hidden based on change of observables
     private func bindVisibilities() {
         guard let viewModel = viewModel else { return }

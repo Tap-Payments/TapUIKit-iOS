@@ -29,6 +29,13 @@
             "cancel": "Cancel",
             "confirm": "Confirm"
         },
+        "DeleteCard":
+        {
+            "title": "Delete Card",
+            "message": "Are you sure you would like to card %@?",
+            "cancel": "Cancel",
+            "confirm": "Delete"
+        },
         "Hints":
         {
             "Warning":
@@ -148,6 +155,13 @@
             "message": "سوف تتم إضافة  %@ لهذا النوع العملية، إجمالي المبلغ المطلوب   %@",
             "cancel": "إلغاء",
             "confirm": "تأكيد"
+        },
+        "DeleteCard":
+        {
+            "title": "مسح البطاقة",
+            "message": "هل أنت متأكد من مسح البطاقة %@؟",
+            "cancel": "إلغاء",
+            "confirm": "مسح"
         },
         "Hints":
         {

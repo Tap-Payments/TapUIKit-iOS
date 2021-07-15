@@ -20,7 +20,7 @@ internal protocol TapGoPayLoginBarViewDelegate {
      */
     func animateBar(to x:CGFloat,with width:CGFloat)
     
-     /**
+    /**
      Asks the view to change its validation state of the selected tab
      - Parameter validationState: The new validation state
      */
@@ -59,19 +59,23 @@ internal protocol TapGoPayLoginBarViewDelegate {
     // MARK:- Public normal swift variables
     /// Porotocl to communicate with the outer parent to inform him about events
     @objc public var delegate:TapGoPayLoginBarViewModelDelegate?
-    
+    /// The hint label to be shown above the OTP view
     @objc public var hintLabelText:String {
         return TapLocalisationManager.shared.localisedValue(for: "GoPay.HintLabel", with: TapCommonConstants.pathForDefaultLocalisation())
     }
+    /// Represents the phone the otp has been sent to, will be used in the case where the otp is sent from the backend not through the phone the user enetred while logging in to goPay
+    @objc public var otpSentToNumber:String = ""
     
     /**
      Creates a new instance of the TapGoPayLoginBarViewModel
      - Parameter delegate: The delegate which listenes to our events
      - Parameter countries: The countries which the user is allowed to login with it, should have at least 1 country
+     - Parameter otpSentToNumber : Represents the phone the otp has been sent to, will be used in the case where the otp is sent from the backend not through the phone the user enetred while logging in to goPay
      */
-    @objc public init(delegate:TapGoPayLoginBarViewModelDelegate? = nil,countries:[TapCountry]) {
+    @objc public init(delegate:TapGoPayLoginBarViewModelDelegate? = nil,countries:[TapCountry], otpSentToNumber:String = "") {
         super.init()
         self.delegate = delegate
+        self.otpSentToNumber = otpSentToNumber
         guard countries.count > 0 else {
             fatalError("The countries the user can login with should have at least 1 country")
         }
@@ -86,7 +90,7 @@ internal protocol TapGoPayLoginBarViewDelegate {
         dataSource.forEach{ $0.delegate = self }
         // On load, select the first option :)
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
-            // Give it a little time to render the labels (so if an option has LONG title, then bar will fit nicely) 
+            // Give it a little time to render the labels (so if an option has LONG title, then bar will fit nicely)
             self?.select(option: self!.dataSource[0].titleSegment, with: false)
         }
         

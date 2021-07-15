@@ -26,10 +26,12 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case GoPayPassword = 6
     /// The feedback aout the number the OTP sent to
     case GoPayOtp = 7
+    /// The fsaved card case the number the OTP sent to
+    case SavedCardOTP = 8
     /// No hint should be shown
-    case None = 8
+    case None = 9
     /// No hint should be shown
-    case Error = 9
+    case Error = 10
     
     /**
      The theme path that has the UI info for each case
@@ -45,7 +47,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return "Hints.Default"
         case .Scanned:
             return "Hints.Scanned"
-        case .GoPayOtp,.GoPayPassword:
+        case .GoPayOtp,.GoPayPassword,.SavedCardOTP:
             return "Hints.GoPayLogin"
         default:
             return ""
@@ -73,7 +75,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Scanned.successFullScan", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Scanned.successFullScan"
         case .GoPayPassword:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.GoPayLogin.password", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.GoPayLogin.password"
-        case .GoPayOtp:
+        case .GoPayOtp,.SavedCardOTP:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.GoPayLogin.otp", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.GoPayLogin.otp"
         default:
             return ""
@@ -101,7 +103,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
      */
     func shouldShowActionButton() -> Bool {
         switch self {
-            case .GoPayOtp,.GoPayPassword:
+        case .GoPayOtp,.GoPayPassword:
             return true
         default:
             return false

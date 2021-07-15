@@ -130,6 +130,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         }
     }
     
+    
     /**
      Comutes the frame where the underline should go to, whether the whole frame of a segment or the frame of a specific tab inside the segment
      - Parameter segment: Defines the segment ID to get the correct underline frame regarding to

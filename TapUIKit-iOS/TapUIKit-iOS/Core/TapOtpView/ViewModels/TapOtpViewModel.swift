@@ -30,7 +30,7 @@ internal protocol TapOtpViewDelegate {
 /// A protocol to be used to fire functions and events in the parent view
 @objc public protocol TapOtpViewModelDelegate {
     /**
-    An event will be fired once the user enter all the otp digits
+     An event will be fired once the user enter all the otp digits
      - Parameter otpValue: the OTP value entered by user
      */
     @objc func otpStateReadyToValidate(otpValue: String)
@@ -91,21 +91,21 @@ internal protocol TapOtpViewDelegate {
     }
     
     /**
-    Creates a view model with the phone number and showing message flag
-    - Parameter phoneNo: The phone number
-    - Parameter showMessage: should show message lebel, set to true to show the message
-    */
+     Creates a view model with the phone number and showing message flag
+     - Parameter phoneNo: The phone number
+     - Parameter showMessage: should show message lebel, set to true to show the message
+     */
     public init(phoneNo: String, showMessage: Bool) {
         self.phoneNo = phoneNo
         self.showMessage = showMessage
     }
-
+    
     // MARK: UpdateTimer
     /**
-    Initialize the timer and set the delegate with the required minutes and seconds until otp expire
-    - Parameter minutes: number of minutes until the otp expire
-    - Parameter seconds: number of seconds until the otp expire
-    */
+     Initialize the timer and set the delegate with the required minutes and seconds until otp expire
+     - Parameter minutes: number of minutes until the otp expire
+     - Parameter seconds: number of seconds until the otp expire
+     */
     @objc public func updateTimer(minutes: Int, seconds: Int) {
         if timer == nil {
             self.timer = TapTimer(minutes: minutes, seconds: seconds)
@@ -117,10 +117,10 @@ internal protocol TapOtpViewDelegate {
     
     // MARK: Message
     /**
-    Returns NSAttributedString with the message using mainColor and secondColor
-    - Parameter mainColor: default text color to be used in the formatted text
-    - Parameter secondaryColor: second text color to be set for the mobile number text
-    */
+     Returns NSAttributedString with the message using mainColor and secondColor
+     - Parameter mainColor: default text color to be used in the formatted text
+     - Parameter secondaryColor: second text color to be set for the mobile number text
+     */
     func messageAttributed(mainColor: UIColor, secondaryColor: UIColor) -> NSAttributedString {
         return self.state.message(mobileNo: phoneNo, mainColor: mainColor, secondaryColor: secondaryColor)
     }
@@ -128,12 +128,14 @@ internal protocol TapOtpViewDelegate {
     // MARK: State Change
     /**
      This method apply the required functionality and delegates on state change
-    */
+     */
     func stateDidChange() {
+        // First inform the view that we need to change the message shown based on the setup
         self.viewDelegate?.updateMessageVisibility(hide: !showMessage)
+        // Based on the state changd we will decide what to do
         switch self.state {
         case .ready:
-            self.delegate?.otpStateReadyToValidate(otpValue: self.otpValue)
+            self.delegate?.otpStateReadyToValidate(otpValue: otpValue)
             
         case .invalid:
             self.updateMessageViewDelegate()
@@ -154,7 +156,7 @@ internal protocol TapOtpViewDelegate {
     }
     /**
      This function update the state on otp digits change
-    */
+     */
     func updateState() {
         if self.otpValue.count == 6 {
             // all otp digits got filled
@@ -170,7 +172,7 @@ internal protocol TapOtpViewDelegate {
     
     /**
      Create OTP view and prepare the view to be ready
-    */
+     */
     @objc public func createOtpView() -> TapOtpView {
         let tapOtpView:TapOtpView = .init()
         tapOtpView.translatesAutoresizingMaskIntoConstraints = false
@@ -180,7 +182,7 @@ internal protocol TapOtpViewDelegate {
     }
     
     /**
-        This method calls the viewDelegate to update the message view
+     This method calls the viewDelegate to update the message view
      */
     func updateMessageViewDelegate() {
         if self.showMessage {
@@ -211,8 +213,8 @@ internal protocol TapOtpViewDelegate {
 
 extension TapOtpViewModel: TapTimerDelegate {
     /**
-    This function is being called on the remaining time reach to zero seconds
-    */
+     This function is being called on the remaining time reach to zero seconds
+     */
     func onTimeFinish() {
         self.state = .expired
     }

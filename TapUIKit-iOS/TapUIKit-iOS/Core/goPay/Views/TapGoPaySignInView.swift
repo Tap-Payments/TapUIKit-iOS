@@ -57,12 +57,22 @@ import McPicker
     @objc optional func signIn(phone:String, and otp:String)
     
     
+    /**
+     This method will be called whenever the user wants to verify the otp he entered while using a saved card to pay with
+     - Parameter for otpAuthorizeID: The OTP authorization id in reference
+     - Parameter otp:   the otp entered by the user
+     */
+    @objc optional func verifyAuthentication(for otpAuthorizeID:String, with otp:String)
+    
+    /// Indicates to the delegate to close the gopay sign in view
+    @objc optional func closeGoPaySignView()
+    
     @objc optional func changeBlur(to:Bool)
     
 }
 /// Represents the GoPaySignInView where all needed logic and transistions between GoPayViews are encapsulated
 @objc public class TapGoPaySignInView: UIView {
-
+    
     /// The animatin duration used to switch between different gopay views
     let animationDuration:Double = 0.5
     /// The content view where it holds all the sub views
@@ -75,6 +85,15 @@ import McPicker
     }
     /// Will be used to save the original height of the view, so we can get back to it when we dismiss the country picker
     internal var originalHeight:CGFloat = 0
+    
+    /// Will be used to decide the otp expiration in seconds
+    internal var otpExpiresInSeconds:Int = 180
+    
+    /// Decides The theme, title and action button shown on the top of the OTP view based on the type
+    internal var OTPHintBarMode:TapHintViewStatusEnum = .GoPayOtp
+    
+    /// Activate this variable if you want to have a reference to an authorization object at your end before showing the OTP View
+    internal var otpAuthenticationID:String? = nil
     
     /// Represents the View that shows the password t=step after signing in with the email
     @IBOutlet weak var goPayPasswordView: TapGoPayPasswordView! {
@@ -112,9 +131,18 @@ import McPicker
     /**
      Seup the hint view according to the view model
      - Parameter viewModel: The new required view model to attach the view to
+     - Parameter OTPHintBarMode: Decides The theme, title and action button shown on the top of the OTP view based on the type
+     - Parameter otpExpiresInSeconds: Will be used to decide the otp expiration in seconds
      */
-    @objc public func setup(with viewModel:TapGoPayLoginBarViewModel) {
+    @objc public func setup(with viewModel:TapGoPayLoginBarViewModel,OTPHintBarMode:TapHintViewStatusEnum = .GoPayOtp,authenticationID:String = "",otpExpiresInSeconds:Int = 180) {
         goPayLoginOptionsView.tapGoPayLoginBarViewModel = viewModel
+        self.OTPHintBarMode = OTPHintBarMode
+        self.otpExpiresInSeconds = otpExpiresInSeconds
+        self.otpAuthenticationID = authenticationID
+        // Decide if we need to show the OTP view or leave the default gopay signin view
+        if OTPHintBarMode == .SavedCardOTP {
+            phoneReturned(with: viewModel.otpSentToNumber)
+        }
     }
     
     /// Call this method upon hiding the view to make sure OTP is being invalidated and won't be fired when expired
@@ -161,10 +189,10 @@ import McPicker
      Used to show the otp view with the correct animation
      - Parameter phone: The phone the user used in the previous step
      */
-    internal func showOtpView(with phone:String) {
+    public func showOtpView(with phone:String) {
         // Show the phone in the hint view
         delegate?.changeBlur?(to: true)
-        goPayOTPView.setup(with: phone,expires: 20)
+        goPayOTPView.setup(with: phone,expires: otpExpiresInSeconds,hintViewStatus: OTPHintBarMode)
         // Show the phone view
         goPayOTPView.fadeIn(duration: animationDuration)
         goPayOTPView.slideIn(from: .bottom, x:0, y: 250, duration: animationDuration, delay: 0)
@@ -208,7 +236,7 @@ import McPicker
         self.endEditing(true)
         // Check if we have more than one country to show
         guard let countries:[TapCountry] = goPayLoginOptionsView.tapGoPayLoginBarViewModel?.allowedCountries,
-            countries.count > 1 else { return }
+              countries.count > 1 else { return }
         
         // Show the picker just after the animation of height changed
         changeHeight(with: 250)
@@ -223,8 +251,8 @@ import McPicker
                 self?.changeHeight(with: -250)
                 let countryNameSelected:String = Selection[0] ?? ""
                 self?.changePhoneCountry(with: countries[data[0].firstIndex(of:countryNameSelected) ?? 0])
-                }, cancelHandler: { [weak self] in
-                    self?.changeHeight(with: -250)
+            }, cancelHandler: { [weak self] in
+                self?.changeHeight(with: -250)
             }) { (Selections, Index) in
                 
             }
@@ -311,9 +339,12 @@ extension TapGoPaySignInView: TapGoPayPasswordViewProtocol {
 
 
 extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
-   
-    public func validateOTP(with otp: String, for phone: String) {
-        delegate?.signIn?(phone: phone, and: otp)
+    
+    public func validateGoPayOTP(with otp: String, for phone: String) {}
+    
+    
+    public func validateAuthenticationOTP(with otp: String) {
+        delegate?.verifyAuthentication?(for: otpAuthenticationID ?? "", with: otp)
     }
     
     
@@ -326,8 +357,15 @@ extension TapGoPaySignInView: TapGoPayOTPViewProtocol {
         changeHeight(with: -41)
     }
     
-    public func otpStateExpired() {
-        changePhoneClicked()
+    public func otpStateExpired(with otpType:TapHintViewStatusEnum) {
+        // Depending on the otp type we decide what shall we do
+        if otpType == .GoPayOtp {
+            // If it is the gopayotp and it is expired, then we need to go back to renter the phone number
+            changePhoneClicked()
+        }else if otpType == .SavedCardOTP {
+            // In case it is a saved card otp, then we just need to go back to the payment options checkout screen
+            delegate?.closeGoPaySignView?()
+        }
     }
     
     
