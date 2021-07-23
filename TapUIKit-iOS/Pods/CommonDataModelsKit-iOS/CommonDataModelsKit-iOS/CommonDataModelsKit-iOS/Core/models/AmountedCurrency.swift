@@ -21,7 +21,7 @@
     public let currencySymbol: String
     
     /// Currency flag icon url.
-    public let flag: String
+    public var flag: String
     
     /// Conversion factor to transaction currency from baclend
     public var rate: Double?

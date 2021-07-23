@@ -25,6 +25,11 @@ import class UIKit.UICollectionViewCell
         self.currency = currency
     }
     
+    @objc public init(currency:AmountedCurrency = .init(.KWD,0,"https://sandbox.payments.tap.company/images/currency/KWD.svg"), icon:String) {
+        currency.flag = icon
+        super.init(title: currency.currencySymbol, icon: icon)
+        self.currency = currency
+    }
     
     required public init(from decoder: Decoder) throws {
         try super.init(from: decoder)
