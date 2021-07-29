@@ -9,14 +9,14 @@
 import TapThemeManager2020
 
 @objc class ApplePayChipCollectionViewCell: GenericTapChip {
-
+    
     // MARK:- Variables
     
     /// Reference to the saved card icon image view
     @IBOutlet weak var applePayContainerView: UIView!
     /// Reference to the saved card icon image view
     @IBOutlet weak var applePayTitle: UILabel!
-//    private var tapApplePayButton:TapApplePayButton?
+    //    private var tapApplePayButton:TapApplePayButton?
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// view model that will control the cell view
@@ -95,7 +95,7 @@ extension ApplePayChipCollectionViewCell {
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
-
+        
         layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).\(shadowPath).shadow.color")
         layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.offsetHeight")?.floatValue ?? 0))
         layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.opacity")?.floatValue ?? 0)
@@ -108,7 +108,12 @@ extension ApplePayChipCollectionViewCell {
         
         let applePayTitle = NSAttributedString(string: "Pay", attributes: [ NSAttributedString.Key.foregroundColor: TapThemeManager.colorValue(for: "\(themePath).applePayTitleColor") ?? .white, NSAttributedString.Key.font: TapThemeManager.fontValue(for: "\(themePath).applePayTitleFont",shouldLocalise: false)!])
         
+        let setupApplePayTitle = NSAttributedString(string: "Setup ", attributes: [ NSAttributedString.Key.foregroundColor: TapThemeManager.colorValue(for: "\(themePath).applePayTitleColor") ?? .white, NSAttributedString.Key.font: TapThemeManager.fontValue(for: "\(themePath).applePayTitleFont",shouldLocalise: false)!])
+        
         let combination = NSMutableAttributedString()
+        if(viewModel.applePayButtonType == .SetupApplePay) {
+            combination.append(setupApplePayTitle)
+        }
         combination.append(applePayLogo)
         combination.append(applePayTitle)
         
