@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapUIKit-iOS"
-  spec.version      = "1.0.45"
+  spec.version      = "1.0.46"
   spec.summary      = "A collection of inner Tap UI components generically developed to fit into any of Tap's apps."
 
   # This description is used to generate tags and improve search results.
@@ -140,11 +140,9 @@ Pod::Spec.new do |spec|
   spec.dependency "Nuke"
   spec.dependency "TapApplePayKit-iOS"
   spec.dependency "TapCardVlidatorKit-iOS"
-  spec.dependency "EasyAnimation"
   spec.dependency "TapCardInputKit-iOS"
   spec.dependency "TapCardScanner-iOS"
   spec.dependency 'McPicker'
-  spec.dependency 'SDWebImageSVGKitPlugin'
 
   spec.pod_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'

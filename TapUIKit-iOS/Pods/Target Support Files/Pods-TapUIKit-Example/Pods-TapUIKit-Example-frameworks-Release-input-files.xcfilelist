@@ -11,14 +11,10 @@ ${BUILT_PRODUCTS_DIR}/TapFontKit-iOS/TapFontKit_iOS.framework
 ${BUILT_PRODUCTS_DIR}/TapSwiftFixes/TapSwiftFixes.framework
 ${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework
 ${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework
-${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework
 ${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework
 ${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
 ${PODS_ROOT}/PayCardsRecognizer/Source/PayCardsRecognizer.framework
 ${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework
-${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
-${BUILT_PRODUCTS_DIR}/SDWebImageSVGKitPlugin/SDWebImageSVGKitPlugin.framework
-${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework
 ${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/TapCardInputKit-iOS/TapCardInputKit_iOS.framework

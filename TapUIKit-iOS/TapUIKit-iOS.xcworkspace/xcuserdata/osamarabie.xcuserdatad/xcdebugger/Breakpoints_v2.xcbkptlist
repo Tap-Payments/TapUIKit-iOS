@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "51C732E0-2320-40F1-8A5E-544DC2F63927"
+            uuid = "C5335C0C-3FD1-4C17-AE1C-895AE3242EAC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TapUIKit-iOS/Core/Extensions/TapUIExtensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "downloadImage(with:nukeOptions:)"
             landmarkType = "7">
          </BreakpointContent>

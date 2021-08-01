@@ -12,13 +12,13 @@
     // MARK: Properties
     
     /// Currency.
-    public let currency: TapCurrencyCode
+    public var currency: TapCurrencyCode
     
     /// Amount.
-    public let amount: Double
+    public var amount: Double
     
     /// Currency symbol.
-    public let currencySymbol: String
+    public var currencySymbol: String
     
     /// Currency flag icon url.
     public var flag: String
