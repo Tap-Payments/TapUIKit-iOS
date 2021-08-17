@@ -102,6 +102,12 @@ internal protocol TapChipHorizontalViewModelDelegate {
      - Parameter at index: The index of the cell to be deleted
      */
     func deleteCell(at index:Int)
+    
+    /**
+     Will be fired you want to hide or show the right button accessory
+     - Parameter show: Indicate whether to show the button or hide it
+     */
+    func shouldShowRightButton(show:Bool)
 }
 
 /// This is the view model that adjusts and adapts the info shown in any GenericTapHorizontal list. It accepts and arranges different chips view models through one place
@@ -123,12 +129,13 @@ internal protocol TapChipHorizontalViewModelDelegate {
     /// The data source which represents the list of view models to be displayed inside the uicollectionview
     @objc public var dataSource:[GenericTapChipViewModel] = [] {
         didSet{
-            
-            // Assign the cell delegate
-            listView = .init()
-            self.cellDelegate = listView
+            if listView == nil {
+                listView = .init()
+                // Assign the cell delegate
+                self.cellDelegate = listView
+            }
             // Instruct the list view that ME is the viewmodel of it
-            listView!.changeViewMode(with: self)
+            listView?.changeViewMode(with: self)
             // When it is changed, we need to inform the attached view that he needs to reload itself now
             cellDelegate?.reload(new: dataSource)
             assignModelsDelegate()
@@ -139,17 +146,20 @@ internal protocol TapChipHorizontalViewModelDelegate {
     /**
      Deletes a certain cell
      - Parameter viewModel:The view model we want to remove its cell
+     - Parameter shouldHideRightButton: If true, the edit button on the right will be invisible after deleting the mentioned chip
      */
-    @objc public func deleteCell(with viewModel:GenericTapChipViewModel) {
+    @objc public func deleteCell(with viewModel:GenericTapChipViewModel, shouldShowRightButton:Bool) {
         // make sure the passed view model is part of the data source
         guard dataSource.contains(viewModel),
               let index = dataSource.index(of: viewModel) else { return }
         // Inform the view to perform UI deletion
-        cellDelegate?.deleteCell(at: index)
+        //cellDelegate?.deleteCell(at: index)
+        // Inform the view to perform UI visibility logic for the right button accessory (e.g. the edit button we may remove it if there is nothing else to remove.)
+        cellDelegate?.shouldShowRightButton(show: shouldShowRightButton)
+        
         // Delete it from the data source
         dataSource.remove(at: index)
     }
-    
     
     /// Defines what type of header shall we show in the list if any
     @objc public var headerType:TapHorizontalHeaderType = .GatewayListHeader {
@@ -187,6 +197,14 @@ internal protocol TapChipHorizontalViewModelDelegate {
         cellDelegate?.deselectAll()
     }
     
+    
+    /**
+     Will be fired you want to hide or show the right button accessory
+     - Parameter show: Indicate whether to show the button or hide it
+     */
+    @objc public func shouldShowRightButton(show:Bool) {
+        cellDelegate?.shouldShowRightButton(show: show)
+    }
     
     /**
      Call this method when the editing mode status had changed and you want to reflect this on all rendered chips

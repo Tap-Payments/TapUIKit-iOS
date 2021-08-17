@@ -236,17 +236,21 @@ extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDeleg
 }
 
 extension TapChipHorizontalList:TapChipHorizontalViewModelDelegate {
+    
+    func shouldShowRightButton(show: Bool) {
+        headerView.shouldShowRightButton(show: show)
+    }
+    
     func deleteCell(at index: Int) {
         // perform the deletion by a simple animation
         let indexPath = IndexPath(item: index, section: 0)
+        self.collectionView.deleteItems(at:[indexPath])
         // Fade out the needed cell then delete it
-        collectionView.cellForItem(at: indexPath)?.fadeOut(duration: 0.25, delay: 0, completion: { (_) in
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.performBatchUpdates({
-                    self?.collectionView.deleteItems(at:[indexPath])
-                }, completion:nil)
-            }
-        })
+        /*collectionView.cellForItem(at: indexPath)?.fadeOut(duration: 0.25, delay: 0, completion: { (_) in
+         DispatchQueue.main.async { [weak self] in
+         self?.collectionView.deleteItems(at:[indexPath])
+         }
+         })*/
         
     }
     

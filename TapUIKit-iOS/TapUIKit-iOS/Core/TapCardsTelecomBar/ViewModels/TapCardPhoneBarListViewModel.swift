@@ -16,8 +16,9 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
      Asks the view to move the underline regarding the provided coordinates
      - Parameter x: The starting point of the new position
      - Parameter width: The width of the new position
+     - Parameter shouldHide: If true the bar will be invisible and false otherwise
      */
-    func animateBar(to x:CGFloat,with width:CGFloat)
+    func animateBar(to x:CGFloat,with width:CGFloat, shouldHide:Bool)
     /**
      Asks the view to provide the dynamically calculated space between tabs
      - Returns: The actual computed width between tabs
@@ -134,16 +135,16 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     /**
      Comutes the frame where the underline should go to, whether the whole frame of a segment or the frame of a specific tab inside the segment
      - Parameter segment: Defines the segment ID to get the correct underline frame regarding to
-     - Returns: The frame of the underline that covers the whole segment if no tab is selected inside the segment or the frame of the specific tab inside the segment if any
+     - Returns: The frame of the underline that covers the whole segment if no tab is selected inside the segment or the frame of the specific tab inside the segment if any. Also, if we need to select the whole segment and there is no other segment, so we don;t have to highlight it we will return a false with the rect
      */
-    internal func frame(for segment:String) -> CGRect {
+    internal func frame(for segment:String) -> (CGRect,Bool) {
         
         // now we need to move the segment to the selected segment, but first we need to know if we will move it to cover the whole segment or the previously selected icon inside this segment
         
         // Filter all view models that lies within the provided segment
         let filteredViewModel:[TapCardPhoneIconViewModel] = dataSource.filter{ return $0.associatedCardBrand.brandSegmentIdentifier == segment }
         // Defensive coding to make sure theere is at least 1 tab associated with the given segment id
-        guard filteredViewModel.count > 0 else { return .zero }
+        guard filteredViewModel.count > 0 else { return (.zero,false) }
         
         // Get the frame of the FIRST tab within the segment
         var resultRect:CGRect = filteredViewModel[0].viewDelegate?.viewFrame() ?? .zero
@@ -151,7 +152,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         // Now we need to decide shall we highlight the whole segment or there is an already selected tab within this segment
         guard let selectedBrand:CardBrand = segmentSelectionObserverValue[segment] as? CardBrand else {
             // Meaning, there is no selected icon inside this segment, hence we highlight the whole segment
-            return computeSegmentGroupRect(for: filteredViewModel, and: resultRect)
+            return (computeSegmentGroupRect(for: filteredViewModel, and: resultRect),false)
         }
         
         // Meaning there is a sepcic icon selected in this segment, we need to highlight it alone
@@ -162,7 +163,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         // Get its frame
         resultRect = selectedViewModel.viewDelegate?.viewFrame() ?? .zero
         
-        return computeIconRect(for: selectedViewModel, within: filteredViewModel, and: resultRect)
+        return (computeIconRect(for: selectedViewModel, within: filteredViewModel, and: resultRect),true)
     }
     
     /**
@@ -174,12 +175,19 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         let sharedLocalisationManager:TapLocalisationManager = .shared
         var resultRect = initialRect
         
+        // if this is the only segment, then we don't need to highlight it
+        guard dataSource.filter({ $0.associatedCardBrand.brandSegmentIdentifier != filteredViewModel.first?.associatedCardBrand.brandSegmentIdentifier }).count > 0 else {
+            // This means no other options with a different segment id, hence it is only segment and we don't need to show a bar beneath.
+            return resultRect
+        }
+        
         // If it is the first segment, we need to start from X = 0
         // If the last segment, hence we need the width to cover the whole screen till the end
         
         if sharedLocalisationManager.localisationLocale == "ar" {
             // RTL computations
             if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                // if the first segment then we cover from the end of the screen till the end of the group
                 resultRect.size.width = UIScreen.main.bounds.size.width - (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).minX
                 resultRect.origin.x = UIScreen.main.bounds.size.width
             }else {
@@ -191,6 +199,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         }else {
             // LTR computations
             if dataSource.firstIndex(of: filteredViewModel[0]) == 0 {
+                // if the first segment then we cover from the start of the screen till the end of the group
                 resultRect.origin.x = 0
                 resultRect.size.width = (filteredViewModel.last?.viewDelegate?.viewFrame() ?? .zero).maxX - resultRect.minX
             }else {
@@ -206,7 +215,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
     
     
     /**
-     Comutes the frame to cover a segment based on the current localisation. Will set the correct X and correct width
+     Comutes the frame to cover a selected segment based on the current localisation. Will set the correct X and correct width
      - Parameter selectedViewModel: The view model we want to cover
      - Parameter filteredViewModel: The view models that are covered within the required segment to get its frame
      - Parameter initialRect: The intial computed frame
@@ -219,6 +228,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         if sharedLocalisationManager.localisationLocale == "ar" {
             // RTL computations
             if dataSource.firstIndex(of: selectedViewModel) == 0 {
+                // if the first segment then we cover from the end of the screen till the end of the selected icon
                 resultRect.size.width += (UIScreen.main.bounds.size.width - resultRect.maxX)
                 resultRect.origin.x = UIScreen.main.bounds.size.width
             }else if dataSource.firstIndex(of: selectedViewModel) == dataSource.count - 1 {
@@ -231,11 +241,12 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         }else {
             // LTR computations
             if dataSource.firstIndex(of: selectedViewModel) == 0 {
+                // if the first segment then we cover from the start of the screen till the end of the selected icon
                 resultRect.size.width += resultRect.origin.x
                 resultRect.origin.x = 0
             }else if dataSource.firstIndex(of: selectedViewModel) == dataSource.count - 1 {
                 // If the last tab, hence we need the width to cover the whole screen till the end
-                resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
+                //resultRect.size.width = UIScreen.main.bounds.size.width - resultRect.origin.x + 10
             }
         }
         
@@ -326,7 +337,8 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
     
     func iconIsSelected(with viewModel: TapCardPhoneIconViewModel) {
         // Fetch the frame for the selected tab
-        let segmentFrame:CGRect = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
+        let (segmentFrame,hideBar) = frame(for: viewModel.associatedCardBrand.brandSegmentIdentifier)
+        
         guard segmentFrame.width > 0 && segmentFrame.height > 0 else {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(550)) { [weak self] in
                 self?.iconIsSelected(with: viewModel)
@@ -336,7 +348,7 @@ extension TapCardPhoneBarListViewModel:TapCardPhoneIconDelegate {
         // Add half of the spacing to its width
         //segmentFrame.size.width += abs((viewDelegate?.calculatedSpacing() ?? 0))
         // Change the underline to the computed frame
-        viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width)
+        viewDelegate?.animateBar(to: segmentFrame.origin.x, with: segmentFrame.width,shouldHide: hideBar)
         selectedSegmentObserverValue = viewModel.associatedCardBrand.brandSegmentIdentifier
     }
 }

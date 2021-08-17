@@ -189,7 +189,7 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
         return ((stackView.arrangedSubviews[1].frame.minX - stackView.arrangedSubviews[0].frame.maxX) / 2) + 2
         
     }
-    func animateBar(to x: CGFloat, with width: CGFloat) {
+    func animateBar(to x: CGFloat, with width: CGFloat, shouldHide:Bool) {
         
         underLineBar.layoutIfNeeded()
         underLineBar.updateConstraints()
@@ -199,7 +199,7 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
         // Fix the issue of one segment, Arabic where we need to cover the whole tab length
         
         UIView.animate(withDuration: 0.3, animations: {
-            self.underLineBar.alpha = 1
+            self.underLineBar.alpha = shouldHide ? 1 : 0
             self.underLineBar.layoutIfNeeded()
             self.underLineBar.updateConstraints()
             self.layoutIfNeeded()
