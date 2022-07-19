@@ -97,7 +97,7 @@ import TapThemeManager2020
     
     /// Configure the merchant switch view and display it on the view
     internal func showMerchantSwitch() {
-        if let merchantSwitch = viewModel.merchantSwitch {
+        if let merchantSwitch = viewModel.merchantSwitch, let _ = viewModel.goPaySwitch {
             if self.merchantSwitchControl == nil {
                 self.merchantSwitchControl = .init()
                 applyTheme()

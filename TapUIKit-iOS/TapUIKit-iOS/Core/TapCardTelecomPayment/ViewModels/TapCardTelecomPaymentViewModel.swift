@@ -140,7 +140,7 @@ import TapCardVlidatorKit_iOS
             return .Error
         }
         // Let us get the validation status of the fields
-        let (cardNumberValid,cardExpiryValid,cardCVVValid) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
+        let (cardNumberValid,cardExpiryValid,cardCVVValid,cardNameValid) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
         
         // Firs we check the validation result of the card number (has the highest priority)
         if !cardNumberValid {
@@ -152,6 +152,8 @@ import TapCardVlidatorKit_iOS
                 newStatus = .WarningExpiryCVV
             }else if !cardCVVValid {
                 newStatus = .WarningCVV
+            }else if !cardNameValid {
+                newStatus = .WarningName
             }
         }
         return newStatus

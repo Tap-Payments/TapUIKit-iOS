@@ -1,9 +1,21 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 import Combine
+
+#if os(iOS) || os(tvOS) || os(watchOS)
+import UIKit
+#endif
+
+#if os(watchOS)
+import WatchKit
+#endif
+
+#if os(macOS)
+import Cocoa
+#endif
 
 // MARK: - ImageRequest
 
@@ -53,7 +65,7 @@ public struct ImageRequest: CustomStringConvertible {
 
     /// Processor to be applied to the image. Empty by default.
     public var processors: [ImageProcessing] {
-        get { ref.processors ?? [] }
+        get { ref.processors }
         set { mutate { $0.processors = newValue } }
     }
 
@@ -106,6 +118,14 @@ public struct ImageRequest: CustomStringConvertible {
         /// The image scale to be used. By default, the scale matches the scale
         /// of the current display.
         public static let scaleKey: ImageRequest.UserInfoKey = "github.com/kean/nuke/scale"
+        
+        /// Specifies whether the pipeline should retreive or generate a thumbnail
+        /// instead of a full image. The thumbnail creation is generally significantly
+        /// more efficient, especially in terms of memory usage, than image resizing
+        /// (`ImageProcessors.Resize`).
+        ///
+        /// - note: You must be using the default image decoder to make it work.
+        public static let thumbnailKey: ImageRequest.UserInfoKey = "github.com/kean/nuke/thumbmnailKey"
     }
 
     // MARK: Initializers
@@ -113,7 +133,7 @@ public struct ImageRequest: CustomStringConvertible {
     /// Initializes a request with the given URL.
     ///
     /// - parameter url: The request URL.
-    /// - parameter processors: Processors to be apply to the image. `nil` by default.
+    /// - parameter processors: Processors to be apply to the image. `[]` by default.
     /// - parameter priority: The priority of the request, `.normal` by default.
     /// - parameter options: Image loading options. `[]` by default.
     /// - parameter userInfo: Custom info passed alongside the request. `nil` by default.
@@ -126,7 +146,7 @@ public struct ImageRequest: CustomStringConvertible {
     /// )
     /// ```
     public init(url: URL?,
-                processors: [ImageProcessing]? = nil,
+                processors: [ImageProcessing] = [],
                 priority: Priority = .normal,
                 options: Options = [],
                 userInfo: [UserInfoKey: Any]? = nil) {
@@ -142,7 +162,7 @@ public struct ImageRequest: CustomStringConvertible {
     /// Initializes a request with the given request.
     ///
     /// - parameter urlRequest: The URLRequest describing the image request.
-    /// - parameter processors: Processors to be apply to the image. `nil` by default.
+    /// - parameter processors: Processors to be apply to the image. `[]` by default.
     /// - parameter priority: The priority of the request, `.normal` by default.
     /// - parameter options: Image loading options. `[]` by default.
     /// - parameter userInfo: Custom info passed alongside the request. `nil` by default.
@@ -155,7 +175,7 @@ public struct ImageRequest: CustomStringConvertible {
     /// )
     /// ```
     public init(urlRequest: URLRequest,
-                processors: [ImageProcessing]? = nil,
+                processors: [ImageProcessing] = [],
                 priority: Priority = .normal,
                 options: Options = [],
                 userInfo: [UserInfoKey: Any]? = nil) {
@@ -172,7 +192,7 @@ public struct ImageRequest: CustomStringConvertible {
     ///
     /// - parameter id: Uniquely identifies the image data.
     /// - parameter data: A data publisher to be used for fetching image data.
-    /// - parameter processors: Processors to be apply to the image. `nil` by default.
+    /// - parameter processors: Processors to be apply to the image. `[]` by default.
     /// - parameter priority: The priority of the request, `.normal` by default.
     /// - parameter options: Image loading options. `[]` by default.
     /// - parameter userInfo: Custom info passed alongside the request. `nil` by default.
@@ -192,7 +212,7 @@ public struct ImageRequest: CustomStringConvertible {
     /// You can also disable it dynamically using `ImagePipelineDelegate`.
     @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
     public init<P>(id: String, data: P,
-                   processors: [ImageProcessing]? = nil,
+                   processors: [ImageProcessing] = [],
                    priority: Priority = .normal,
                    options: Options = [],
                    userInfo: [UserInfoKey: Any]? = nil) where P: Publisher, P.Output == Data {
@@ -248,6 +268,60 @@ public struct ImageRequest: CustomStringConvertible {
         /// Use existing cache data and fail if no cached data is available.
         public static let returnCacheDataDontLoad = Options(rawValue: 1 << 4)
     }
+    
+    /// Thumbnail options.
+    ///
+    /// For more info, see https://developer.apple.com/documentation/imageio/cgimagesource/image_source_option_dictionary_keys
+    public struct ThumbnailOptions: Hashable {
+        /// The maximum width and height in pixels of a thumbnail. If this key
+        /// is not specified, the width and height of a thumbnail is not limited
+        /// and thumbnails may be as big as the image itself.
+        public var maxPixelSize: CGFloat
+                
+        /// Whether a thumbnail should be automatically created for an image if
+        /// a thumbnail isn't present in the image source file. The thumbnail is
+        /// created from the full image, subject to the limit specified by
+        /// `maxPixelSize`.
+        ///
+        /// By default, `true`.
+        public var createThumbnailFromImageIfAbsent = true
+        
+        /// Whether a thumbnail should be created from the full image even if a
+        /// thumbnail is present in the image source file. The thumbnail is created
+        /// from the full image, subject to the limit specified by
+        /// `maxPixelSize`.
+        ///
+        /// By default, `true`.
+        public var createThumbnailFromImageAlways = true
+        
+        /// Whether the thumbnail should be rotated and scaled according to the
+        /// orientation and pixel aspect ratio of the full image.
+        ///
+        /// By default, `true`.
+        public var createThumbnailWithTransform = true
+    
+        /// Specifies whether image decoding and caching should happen at image
+        /// creation time.
+        ///
+        /// By default, `true`.
+        public var shouldCacheImmediately = true
+        
+        public init(maxPixelSize: CGFloat,
+                    createThumbnailFromImageIfAbsent: Bool = true,
+                    createThumbnailFromImageAlways: Bool = true,
+                    createThumbnailWithTransform: Bool = true,
+                    shouldCacheImmediately: Bool = true) {
+            self.maxPixelSize = maxPixelSize
+            self.createThumbnailFromImageIfAbsent = createThumbnailFromImageIfAbsent
+            self.createThumbnailFromImageAlways = createThumbnailFromImageAlways
+            self.createThumbnailWithTransform = createThumbnailWithTransform
+            self.shouldCacheImmediately = shouldCacheImmediately
+        }
+        
+        var identifier: String {
+            "com.github/kean/nuke/thumbnail?mxs=\(maxPixelSize),options=\(createThumbnailFromImageIfAbsent)\(createThumbnailFromImageAlways)\(createThumbnailWithTransform)\(shouldCacheImmediately)"
+        }
+    }
 
     // MARK: Internal
 
@@ -269,7 +343,7 @@ public struct ImageRequest: CustomStringConvertible {
         let resource: Resource
         fileprivate(set) var priority: Priority
         fileprivate(set) var options: Options
-        fileprivate(set) var processors: [ImageProcessing]?
+        fileprivate(set) var processors: [ImageProcessing]
         fileprivate(set) var userInfo: [UserInfoKey: Any]?
         // After trimming down the request size, it is no longer
         // as beneficial using CoW for ImageRequest, but there
@@ -282,7 +356,7 @@ public struct ImageRequest: CustomStringConvertible {
         }
 
         /// Creates a resource with a default processor.
-        init(resource: Resource, processors: [ImageProcessing]?, priority: Priority, options: Options, userInfo: [UserInfoKey: Any]?) {
+        init(resource: Resource, processors: [ImageProcessing], priority: Priority, options: Options, userInfo: [UserInfoKey: Any]?) {
             self.resource = resource
             self.processors = processors
             self.priority = priority
@@ -338,6 +412,17 @@ public struct ImageRequest: CustomStringConvertible {
             return imageId
         }
         return imageId ?? ""
+    }
+    
+    var thubmnail: ThumbnailOptions? {
+        ref.userInfo?[.thumbnailKey] as? ThumbnailOptions
+    }
+    
+    var scale: CGFloat? {
+        guard let scale = ref.userInfo?[.scaleKey] as? NSNumber else {
+            return nil
+        }
+        return CGFloat(scale.floatValue)
     }
 
     var publisher: DataPublisher? {

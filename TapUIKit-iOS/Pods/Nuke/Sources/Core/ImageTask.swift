@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -48,6 +48,8 @@ public final class ImageTask: Hashable, CustomStringConvertible {
     var isCancelled: Bool { _isCancelled.pointee == 1 }
     private let _isCancelled: UnsafeMutablePointer<Int32>
 
+    var onCancel: (() -> Void)?
+    
     deinit {
         self._isCancelled.deallocate()
         #if TRACK_ALLOCATIONS

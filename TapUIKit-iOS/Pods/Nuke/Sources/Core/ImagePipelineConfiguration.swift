@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 import os
@@ -62,7 +62,7 @@ extension ImagePipeline {
         #endif
 
         // MARK: - Options
-
+        
         /// A queue on which all callbacks, like `progress` and `completion`
         /// callbacks are called. `.main` by default.
         public var callbackQueue = DispatchQueue.main
@@ -209,7 +209,7 @@ extension ImagePipeline {
         private var isCustomImageCacheProvided = false
 
         var debugIsSyncImageEncoding = false
-
+        
         // MARK: - Initializer
 
         /// Instantiates a default pipeline configuration.

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -40,9 +40,8 @@ public final class ImagePipeline {
 
     private let tasksLoadData: TaskPool<ImageLoadKey, (Data, URLResponse?), Error>
     private let tasksLoadImage: TaskPool<ImageLoadKey, ImageResponse, Error>
-    private let tasksFetchDecodedImage: TaskPool<DataLoadKey, ImageResponse, Error>
+    private let tasksFetchDecodedImage: TaskPool<DecodedImageLoadKey, ImageResponse, Error>
     private let tasksFetchOriginalImageData: TaskPool<DataLoadKey, (Data, URLResponse?), Error>
-    private let tasksFetchWithPublisher: TaskPool<DataLoadKey, (Data, URLResponse?), Error>
     private let tasksProcessImage: TaskPool<ImageProcessingKey, ImageResponse, Swift.Error>
 
     // The queue on which the entire subsystem is synchronized.
@@ -78,7 +77,6 @@ public final class ImagePipeline {
         self.tasksLoadImage = TaskPool(isCoalescingEnabled)
         self.tasksFetchDecodedImage = TaskPool(isCoalescingEnabled)
         self.tasksFetchOriginalImageData = TaskPool(isCoalescingEnabled)
-        self.tasksFetchWithPublisher = TaskPool(isCoalescingEnabled)
         self.tasksProcessImage = TaskPool(isCoalescingEnabled)
 
         self._nextTaskId = UnsafeMutablePointer<Int64>.allocate(capacity: 1)
@@ -146,11 +144,15 @@ public final class ImagePipeline {
         isConfined: Bool,
         queue: DispatchQueue?,
         progress: ((_ response: ImageResponse?, _ completed: Int64, _ total: Int64) -> Void)?,
+        onCancel: (() -> Void)? = nil,
         completion: ((_ result: Result<ImageResponse, Error>) -> Void)?
     ) -> ImageTask {
         let request = configuration.inheritOptions(request)
         let task = ImageTask(taskId: nextTaskId, request: request, isDataTask: false)
         task.pipeline = self
+        if let onCancel = onCancel {
+            task.onCancel = { [weak self] in self?.dispatchCallback(to: queue, onCancel) }
+        }
         if isConfined {
             self.startImageTask(task, callbackQueue: queue, progress: progress, completion: completion)
         } else {
@@ -331,6 +333,7 @@ public final class ImagePipeline {
         if !task.isDataTask {
             self.send(.cancelled, task)
         }
+        task.onCancel?()
         subscription.unsubscribe()
     }
 
@@ -374,31 +377,31 @@ public final class ImagePipeline {
     // and `loadData()` with the same request, only on `TaskFetchOriginalImageData`
     // is created. The work is split between tasks to minimize any duplicated work.
 
-    func makeTaskLoadImage(for request: ImageRequest) -> Task<ImageResponse, Error>.Publisher {
+    func makeTaskLoadImage(for request: ImageRequest) -> AsyncTask<ImageResponse, Error>.Publisher {
         tasksLoadImage.publisherForKey(request.makeImageLoadKey()) {
             TaskLoadImage(self, request)
         }
     }
 
-    func makeTaskLoadData(for request: ImageRequest) -> Task<(Data, URLResponse?), Error>.Publisher {
+    func makeTaskLoadData(for request: ImageRequest) -> AsyncTask<(Data, URLResponse?), Error>.Publisher {
         tasksLoadData.publisherForKey(request.makeImageLoadKey()) {
             TaskLoadData(self, request)
         }
     }
 
-    func makeTaskProcessImage(key: ImageProcessingKey, process: @escaping () -> ImageResponse?) -> Task<ImageResponse, Swift.Error>.Publisher {
+    func makeTaskProcessImage(key: ImageProcessingKey, process: @escaping () -> ImageResponse?) -> AsyncTask<ImageResponse, Swift.Error>.Publisher {
         tasksProcessImage.publisherForKey(key) {
             OperationTask(self, configuration.imageProcessingQueue, process)
         }
     }
 
-    func makeTaskFetchDecodedImage(for request: ImageRequest) -> Task<ImageResponse, Error>.Publisher {
-        tasksFetchDecodedImage.publisherForKey(request.makeDataLoadKey()) {
+    func makeTaskFetchDecodedImage(for request: ImageRequest) -> AsyncTask<ImageResponse, Error>.Publisher {
+        tasksFetchDecodedImage.publisherForKey(request.makeDecodedImageLoadKey()) {
             TaskFetchDecodedImage(self, request)
         }
     }
 
-    func makeTaskFetchOriginalImageData(for request: ImageRequest) -> Task<(Data, URLResponse?), Error>.Publisher {
+    func makeTaskFetchOriginalImageData(for request: ImageRequest) -> AsyncTask<(Data, URLResponse?), Error>.Publisher {
         tasksFetchOriginalImageData.publisherForKey(request.makeDataLoadKey()) {
             request.publisher == nil ?
                 TaskFetchOriginalImageData(self, request) :

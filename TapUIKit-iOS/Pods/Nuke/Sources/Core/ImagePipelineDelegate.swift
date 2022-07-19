@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -96,7 +96,7 @@ public enum ImageTaskEvent {
 }
 
 extension ImageTaskEvent {
-    init(_ event: Task<ImageResponse, ImagePipeline.Error>.Event) {
+    init(_ event: AsyncTask<ImageResponse, ImagePipeline.Error>.Event) {
         switch event {
         case let .error(error):
             self = .completed(result: .failure(error))

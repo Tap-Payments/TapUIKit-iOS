@@ -59,7 +59,10 @@ public final class CardValidator {
             }
         }
         
-        if binRange.cardNumberLengths.contains(number.count) {
+        if number.count > binRange.cardNumberLengths.max()! {
+            
+            return DefinedCardBrand(.invalid, cardBrand)
+        }else if binRange.cardNumberLengths.contains(number.count) {
             
             // Based on the brand type, we decide which validating route we will take
             if cardBrand.brandSegmentIdentifier == "cards" {
@@ -70,19 +73,15 @@ public final class CardValidator {
                 }
                 else {
                     
-                    return DefinedCardBrand(.invalid, cardBrand)
+                    return DefinedCardBrand(.incomplete, cardBrand)
                 }
             }else if cardBrand.brandSegmentIdentifier == "telecom" {
                 // Telecom is considered valid if starts with the range and have the correct length
                 return DefinedCardBrand(.valid, cardBrand)
             }else{
                 // Default case
-                return DefinedCardBrand(.invalid, cardBrand)
+                return DefinedCardBrand(.incomplete, cardBrand)
             }
-        }
-        else if number.count > binRange.cardNumberLengths.max()! {
-            
-            return DefinedCardBrand(.invalid, cardBrand)
         }
         else {
             

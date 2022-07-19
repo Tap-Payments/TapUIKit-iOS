@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import SwiftUI
 import Combine
@@ -68,9 +68,9 @@ public final class FetchImage: ObservableObject, Identifiable {
 
     public var pipeline: ImagePipeline = .shared
 
-    /// Image processors to be applied unless the processors are provided in the request.
-    /// `nil` by default.
-    public var processors: [ImageProcessing]?
+    /// Image processors to be applied unless the processors are provided in the
+    /// request. `[]` by default.
+    public var processors: [ImageProcessing] = []
 
     private var imageTask: ImageTask?
 
@@ -93,11 +93,11 @@ public final class FetchImage: ObservableObject, Identifiable {
         reset()
 
         guard var request = request?.asImageRequest() else {
-            handle(result: .failure(FetchImageError.sourceEmpty), isSync: true)
+            handle(result: .failure(FetchImageError.sourceEmpty))
             return
         }
 
-        if let processors = self.processors, !processors.isEmpty && request.processors.isEmpty {
+        if !processors.isEmpty && request.processors.isEmpty {
             request.processors = processors
         }
         if let priority = self.priority {
@@ -110,7 +110,7 @@ public final class FetchImage: ObservableObject, Identifiable {
                 imageContainer = image // Display progressive image
             } else {
                 let response = ImageResponse(container: image, cacheType: .memory)
-                handle(result: .success(response), isSync: true)
+                handle(result: .success(response))
                 return
             }
         }
@@ -133,7 +133,7 @@ public final class FetchImage: ObservableObject, Identifiable {
             completion: { [weak self] result in
                 guard let self = self else { return }
                 withAnimation(self.animation) {
-                    self.handle(result: result.mapError { $0 }, isSync: false)
+                    self.handle(result: result.mapError { $0 })
                 }
             }
         )
@@ -146,7 +146,7 @@ public final class FetchImage: ObservableObject, Identifiable {
         self.imageContainer = preview.container
     }
 
-    private func handle(result: Result<ImageResponse, Error>, isSync: Bool) {
+    private func handle(result: Result<ImageResponse, Error>) {
         isLoading = false
 
         if case .success(let response) = result {
@@ -191,7 +191,7 @@ public final class FetchImage: ObservableObject, Identifiable {
             self.imageContainer = response.container
         })
     }
-
+    
     // MARK: Cancel
 
     /// Marks the request as being cancelled. Continues to display a downloaded
@@ -203,11 +203,8 @@ public final class FetchImage: ObservableObject, Identifiable {
 
         // publisher-based
         cancellable = nil
-
-        // common
-        if isLoading { isLoading = false }
     }
-
+    
     /// Resets the `FetchImage` instance by cancelling the request and removing
     /// all of the state including the loaded image.
     public func reset() {

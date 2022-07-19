@@ -112,6 +112,7 @@ internal protocol ItemCellViewModelDelegate {
     public func itemPrice() -> String {
         // Check if we have a valid price, then format it based on the currency
         guard let itemModel = itemModel, convertCurrency.currency != .undefined else { return "" }
+        
         let itemPrice = itemModel.itemFinalPrice(convertFromCurrency: originalCurrency, convertToCurrenct: convertCurrency)
         let formatter = TapAmountedCurrencyFormatter { [weak self] in
             $0.currency = self?.convertCurrency.currency ?? .USD
@@ -146,8 +147,16 @@ internal protocol ItemCellViewModelDelegate {
             $0.currency = self?.convertCurrency.currency ?? .USD
             $0.locale = CurrencyLocale.englishUnitedStates
         }
+        // We need to calculate which price will show in the sub label.
+        // Whether we will show the original price for one item, in case we only have quntity
+        var correctPrice:Double = price
+        // Or we will show the quantity*original price before discount
+        if let _ = itemModel.discount {
+            correctPrice = price * Double(quantity)
+        }
+        
         // Create the default value which will be the case of having only quantity, hence displaying the single item price
-        let toBeDisplayedPrice:Double = (price * Double(quantity))
+        let toBeDisplayedPrice:Double = convertCurrency.currency.convert(from: originalCurrency?.currency, for:correctPrice)
         let attributedText : NSMutableAttributedString =  NSMutableAttributedString(string: formatter.string(from: toBeDisplayedPrice) ?? "KD0.000")
         attributedText.addAttributes([
             NSAttributedString.Key.font : font,

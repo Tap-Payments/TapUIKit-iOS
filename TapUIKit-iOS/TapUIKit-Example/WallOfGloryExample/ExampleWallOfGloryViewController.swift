@@ -616,6 +616,10 @@ extension UIApplication {
 
 
 extension ExampleWallOfGloryViewController: TapSwitchViewModelDelegate {
+    func didChangeState(state: TapSwitchEnum, enabledSwitches: TapSwitchEnum) {
+        print("current card State: \(state.rawValue)")
+    }
+    
     func didChangeCardState(cardState: TapSwitchCardStateEnum) {
         print("current card State: \(cardState.rawValue)")
     }

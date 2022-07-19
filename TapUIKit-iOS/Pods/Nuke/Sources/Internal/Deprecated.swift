@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2021 Alexander Grebenyuk (github.com/kean).
+// Copyright (c) 2015-2022 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
 
@@ -298,3 +298,13 @@ public typealias ImageDecoder = ImageDecoders.Default
 // Deprecated in 10.0.0
 @available(*, deprecated, message: "Please use ImageEncoders.Default directly")
 public typealias ImageEncoder = ImageEncoders.Default
+
+// Deprecated in 10.5.0
+@available(*, deprecated, message: "Please use AssetType instead")
+public typealias ImageType = AssetType
+
+extension ImageDecoders.Empty {
+    public init(imageType: AssetType, isProgressive: Bool = false) {
+        self = .init(assetType: imageType, isProgressive: isProgressive)
+    }
+}

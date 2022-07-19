@@ -32,6 +32,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case None = 9
     /// No hint should be shown
     case Error = 10
+    /// Warning case missing name
+    case WarningName = 11
     
     /**
      The theme path that has the UI info for each case
@@ -39,7 +41,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
      */
     func themePath() -> String {
         switch self {
-        case .WarningCVV,.WarningExpiryCVV:
+        case .WarningCVV,.WarningExpiryCVV,.WarningName:
             return "Hints.Warning"
         case .ErrorCardNumber:
             return "Hints.Error"
@@ -67,6 +69,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingExpiryCVV", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingExpiryCVV"
         case .WarningCVV:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingCVV", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingCVV"
+        case .WarningName:
+            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingName", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingName"
         case .ErrorCardNumber:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Error.wrongCardNumber", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Error.wrongCardNumber"
         case .ReadyToScan:

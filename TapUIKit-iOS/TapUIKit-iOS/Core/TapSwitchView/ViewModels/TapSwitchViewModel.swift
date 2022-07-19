@@ -25,8 +25,9 @@ internal protocol TapSwitchViewDelegate {
     /**
      An event will be fired once the switch state changed
      - Parameter state: return current switch state
+     - Parameter enabledSwitches: return the current switches enabled for the save card (merchant, goPay or all.)
      */
-    @objc func didChangeState(state: TapSwitchEnum)
+    @objc func didChangeState(state: TapSwitchEnum, enabledSwitches:TapSwitchEnum)
     
     /**
      An event will be fired once the switch card state changed
@@ -80,7 +81,7 @@ internal protocol TapSwitchViewDelegate {
     /// current state for switch view, default state is .none
     @objc public var state: TapSwitchEnum = .none {
         didSet {
-            self.delegate?.didChangeState(state: state)
+            self.delegate?.didChangeState(state: state, enabledSwitches: whichSwitchesToShow)
         }
     }
     
