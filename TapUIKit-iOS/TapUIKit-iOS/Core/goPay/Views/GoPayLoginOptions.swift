@@ -53,7 +53,7 @@ import LocalisationManagerKit_iOS
 
 /// Represents the viw which holds the GoPay login tab bar + the input fields
 class GoPayLoginOptions: UIView {
-
+    
     /// The view that holds everything
     @IBOutlet var contentView: UIView!
     /// The tab bar that holds the different login options
@@ -100,8 +100,13 @@ class GoPayLoginOptions: UIView {
         didSet{
             // When changed we need to re theme the underline bar
             tapGoPayLoginBarViewModel?.changeSelectionValidation(to: validationStatus)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(validationStatus) ? TapActionButtonStatusEnum.ValidNext : .InvalidNext] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:(validationStatus) ? TapActionButtonStatusEnum.ValidNext : invalidButtonStatus] )
         }
+    }
+    
+    /// Computes which invalid button shall we display based on the current scenario for showing OTP, goPay or Saved card
+    var invalidButtonStatus: TapActionButtonStatusEnum {
+        return tapGoPayLoginBarViewModel?.hintViewStatus == .SavedCardOTP ? .InvalidConfirm : .InvalidNext
     }
     
     /**
@@ -113,11 +118,11 @@ class GoPayLoginOptions: UIView {
         case .Email:
             emailInput.focus()
             emailActionBlock()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidNext] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:invalidButtonStatus] )
         case .Phone:
             phoneInput.focus()
             phoneActionBlock()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidNext] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:invalidButtonStatus] )
         }
     }
     

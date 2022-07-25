@@ -34,8 +34,9 @@ extension TapVerticalView {
      */
     @objc public func showGoPaySignInForm(with delegate:TapGoPaySignInViewProtocol,and goPayBarViewModel:TapGoPayLoginBarViewModel,hintViewStatus:TapHintViewStatusEnum = .GoPayOtp,for authenticationID:String = "") {
         // First declare the button state
-        tapActionButton.viewModel?.buttonStatus = .InvalidNext
-        
+        tapActionButton.viewModel?.buttonStatus = (hintViewStatus == .SavedCardOTP) ? .InvalidConfirm : .InvalidNext
+        // Save the otp type to the view model
+        goPayBarViewModel.hintViewStatus = hintViewStatus
         // Create the GoPay sign in view and assign the delegate
         let signGoPayView:TapGoPaySignInView = .init()
         signGoPayView.delegate = delegate

@@ -49,6 +49,9 @@ internal protocol TapGoPayLoginBarViewDelegate {
         }
     }
     
+    /// Tells which OTP we are in, goPay or saved card
+    internal var hintViewStatus:TapHintViewStatusEnum = .GoPayOtp
+    
     /// The countries which the user is allowed to login with it, should have at least 1 country
     internal var allowedCountries:[TapCountry] = [] {
         didSet {
