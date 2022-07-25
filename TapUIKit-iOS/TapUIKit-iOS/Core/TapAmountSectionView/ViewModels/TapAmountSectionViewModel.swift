@@ -245,7 +245,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     internal func configureItemsLabel() {
         switch currentStateView{
         case .DefaultView:
-            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
+            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: (numberOfItems < 2) ? "Common.item" : "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
         case .ItemsView,.ScannerView,.GoPayView:
             itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
         }
