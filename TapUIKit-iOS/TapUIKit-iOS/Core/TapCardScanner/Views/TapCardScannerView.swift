@@ -13,7 +13,7 @@ import TapCardScanner_iOS
 
     @IBOutlet var contentView: UIView!
     @IBOutlet var previewView: UIView!
-    lazy var tapInlineScanner:TapInlineCardScanner = .init()
+    lazy var tapInlineScanner:TapInlineCardScanner = .init(dataSource: nil)
     @objc public var delegate:TapInlineScannerProtocl?
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -39,8 +39,15 @@ import TapCardScanner_iOS
     }
     
     
-    @objc public func configureScanner() {
+    /// - Parameter dataSource: A data source to inform the scanner to accept scanning certain brands if needed
+    @objc public func configureScannerObjc() {
+        configureScanner(dataSource: nil)
+    }
+    
+    /// - Parameter dataSource: A data source to inform the scanner to accept scanning certain brands if needed
+    public func configureScanner(dataSource:TapScannerDataSource?) {
         do{
+            tapInlineScanner = .init(dataSource: dataSource)
             tapInlineScanner.pauseScanner(stopCamera: true)
             try tapInlineScanner.startScanning(in: previewView,blurBackground: true,showTapCorners: true)
             tapInlineScanner.delegate = self.delegate

@@ -81,7 +81,16 @@ extension TapVerticalView {
      Handles showing the card scanner  by removing non required and adding required views
      - Parameter delegate: The delegate that will listen to the events fired from the scanner in view/ viewmodel
      */
-    @objc public func showScanner(with delegate:TapInlineScannerProtocl) {
+    @objc public func showScannerObjC(with delegate:TapInlineScannerProtocl) {
+        showScanner(with: delegate, for: nil)
+    }
+    
+    /**
+     Handles showing the card scanner  by removing non required and adding required views
+     - Parameter delegate: The delegate that will listen to the events fired from the scanner in view/ viewmodel
+     - Parameter dataSource: To pass the allowed card brands for the scanners if needed
+     */
+    public func showScanner(with delegate:TapInlineScannerProtocl,for dataSource:TapScannerDataSource?) {
         endEditing(true)
         // Remove all non needed views preparing for showing the scanner afterwards
         remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
@@ -94,7 +103,7 @@ extension TapVerticalView {
         let tapCardScannerView:TapCardScannerView = .init()
         // And assign the delegate
         tapCardScannerView.delegate = delegate
-        tapCardScannerView.configureScanner()
+        tapCardScannerView.configureScanner(dataSource: dataSource)
         // Inform the amount section that now we are showing the scanner view, hence it changes the title and the action of the amount's action button
         changeTapAmountSectionStatus(to: .ScannerView)
         

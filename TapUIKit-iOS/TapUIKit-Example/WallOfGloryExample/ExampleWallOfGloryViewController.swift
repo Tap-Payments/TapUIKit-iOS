@@ -265,7 +265,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
     }
     
     func showScanner() {
-       tapVerticalView.showScanner(with: self)
+        tapVerticalView.showScanner(with: self,for: self)
     }
     
     func showWebView(with url:URL) {
@@ -521,7 +521,14 @@ extension ExampleWallOfGloryViewController:TapGenericTableViewModelDelegate {
     }
 }
 
-extension ExampleWallOfGloryViewController:TapInlineScannerProtocl {
+extension ExampleWallOfGloryViewController:TapInlineScannerProtocl, TapScannerDataSource {
+    func allowedCardBrands() -> [CardBrand] {
+        return CardBrand.allCases
+    }
+    
+    
+    
+    
     func tapFullCardScannerDimissed() {
         
     }

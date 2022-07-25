@@ -23,8 +23,9 @@ PODS:
     - SnapKit
     - TapCardVlidatorKit-iOS
     - TapThemeManager2020
-  - TapCardScanner-iOS (1.0.16):
+  - TapCardScanner-iOS (1.0.18):
     - CommonDataModelsKit-iOS
+    - TapCardVlidatorKit-iOS
   - TapCardVlidatorKit-iOS (1.0.16)
   - TapFontKit-iOS (0.0.9):
     - TapSwiftFixesV2
@@ -90,7 +91,7 @@ SPEC CHECKSUMS:
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
   TapCardInputKit-iOS: 57e119b29a49d61a6dca60e90ce1fce77080ffb8
-  TapCardScanner-iOS: ee8cdbd643885bd6214a0838dcf96155c07bd4a6
+  TapCardScanner-iOS: 15032e60efb67a5f9661461c63d1d758f1341563
   TapCardVlidatorKit-iOS: c89d510445a159d9f6967923096115783dcd1cdb
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
