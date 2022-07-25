@@ -211,6 +211,8 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
             if weakTapCurrencyFormatterSymbol == .LocalSymbol {
                 $0.currencySymbol = currencyCode.symbolRawValue
                 $0.localizeCurrencySymbol = true
+            }else{
+                $0.currencySymbol = currencyCode.appleRawValue
             }
         }
         return formatter.string(from: amount) ?? "KD0.000"

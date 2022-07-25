@@ -117,6 +117,7 @@ internal protocol ItemCellViewModelDelegate {
         let formatter = TapAmountedCurrencyFormatter { [weak self] in
             $0.currency = self?.convertCurrency.currency ?? .USD
             $0.locale = CurrencyLocale.englishUnitedStates
+            $0.currencySymbol = self!.convertCurrency.currency.appleRawValue
         }
         return formatter.string(from: itemPrice) ?? "KD0.000"
     }
@@ -146,6 +147,7 @@ internal protocol ItemCellViewModelDelegate {
         let formatter = TapAmountedCurrencyFormatter { [weak self] in
             $0.currency = self?.convertCurrency.currency ?? .USD
             $0.locale = CurrencyLocale.englishUnitedStates
+            $0.currencySymbol = self!.convertCurrency.currency.appleRawValue
         }
         // We need to calculate which price will show in the sub label.
         // Whether we will show the original price for one item, in case we only have quntity

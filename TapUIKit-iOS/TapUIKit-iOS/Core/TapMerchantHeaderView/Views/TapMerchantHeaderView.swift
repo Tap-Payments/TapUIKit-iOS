@@ -71,7 +71,7 @@ import CommonDataModelsKit_iOS
         // Bind the subtitle label and merchant initial label to the subtitle observable
         
         viewModel.subTitleObservable = { subTitle in
-            self.subtitleLabel.text = subTitle?.uppercased()
+            self.subtitleLabel.text = subTitle
             self.merchantLogoPlaceHolderInitialLabel.text = self.viewModel?.merchantPlaceHolder
         }
     }
