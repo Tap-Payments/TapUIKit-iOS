@@ -18,9 +18,9 @@ class UnTouchableTextField: BottomLineTextField {
 }
 
 /**
-Custom TexitField with ability to add a bottom line to the field
-*/
-class BottomLineTextField: UITextField {
+ Custom TexitField with ability to add a bottom line to the field
+ */
+class BottomLineTextField: MyTextField {
     /// This hold the bottom line to give the ability to update the line attributes
     let bottomLine = CALayer()
     /**
@@ -33,9 +33,9 @@ class BottomLineTextField: UITextField {
         bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - lineWidth, width:  self.frame.size.width, height: lineWidth)
         bottomLine.backgroundColor = color.cgColor
         self.borderStyle = UITextField.BorderStyle.none
-
+        
         self.layer.addSublayer(bottomLine)
         self.layer.masksToBounds = true
     }
-
+    
 }

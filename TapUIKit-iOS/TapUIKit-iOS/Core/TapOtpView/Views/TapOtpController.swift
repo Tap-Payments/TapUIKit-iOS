@@ -15,7 +15,7 @@ protocol TapOtpControllerDelegate: class {
     func digitsDidChange(newDigits: String)
 }
 
-public class TapOtpController: UIView, UITextFieldDelegate {
+public class TapOtpController: UIView, MyTextFieldDelegate,UITextFieldDelegate {
     
     @IBOutlet weak private var textField1: BottomLineTextField!
     @IBOutlet private var untouchableTextField: [UnTouchableTextField]!
@@ -107,14 +107,18 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         
         self.textField1.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor)
         self.untouchableTextField.forEach { $0.addBottomLine(lineWidth: bottomLineWidth, color: bottomLineColor) }
-
+        
         self.untouchableTextField.forEach { $0.keyboardType = .numberPad }
         self.textField1.keyboardType = .numberPad
     }
     /// Set the textFields delegates
     fileprivate func setTextFieldsDelegate() {
+        self.textField1.myDelegate = self
         self.textField1.delegate = self
-        self.untouchableTextField.forEach { $0.delegate = self }
+        self.untouchableTextField.forEach {
+            $0.myDelegate = self
+            $0.delegate = self
+        }
     }
     
     // MARK: UITextFieldDelegate
@@ -144,13 +148,22 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         self.delegate?.digitsDidChange(newDigits: digits.joined())
     }
     
+    
+    func textFieldDidDelete(_ textField:UITextField) {
+        moveToPreviousTextField(textField)
+        textField.text = ""
+        self.updateDigits(textField)
+    }
+    
+    
+    
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if let pasteValue = UIPasteboard.general.string {
-//
-//           print("paste: \(pasteValue)")
-//            self.paste(value: pasteValue)
-//            return false
-//        }
+        //        if let pasteValue = UIPasteboard.general.string {
+        //
+        //           print("paste: \(pasteValue)")
+        //            self.paste(value: pasteValue)
+        //            return false
+        //        }
         
         print("string : \(string)")
         if textField.text!.count < 1 && string.count > 0 {
@@ -210,17 +223,17 @@ public class TapOtpController: UIView, UITextFieldDelegate {
     }
     
     /**
-    Decide the previous textField to become active
-    - Parameter textField: the current active textField
-    */
+     Decide the previous textField to become active
+     - Parameter textField: the current active textField
+     */
     fileprivate func moveToPreviousTextField(_ textField: UITextField) {
         let currentTag = textField.tag
         if currentTag <= 2 {
             textField1.becomeFirstResponder()
             return
         }
-
-        self.untouchableTextField[currentTag - 2].becomeFirstResponder()
+        //textField.resignFirstResponder()
+        self.untouchableTextField[currentTag - 3].becomeFirstResponder()
     }
     
     // MARK: - MoveToFirstTextField
@@ -248,4 +261,22 @@ public class TapOtpController: UIView, UITextFieldDelegate {
         }
         resignAllTextFields()
     }
+}
+
+
+
+
+internal protocol MyTextFieldDelegate: AnyObject {
+    func textFieldDidDelete(_ textField:UITextField)
+}
+
+internal class MyTextField: UITextField {
+    
+    weak var myDelegate: MyTextFieldDelegate?
+    
+    override func deleteBackward() {
+        super.deleteBackward()
+        myDelegate?.textFieldDidDelete(self)
+    }
+    
 }
