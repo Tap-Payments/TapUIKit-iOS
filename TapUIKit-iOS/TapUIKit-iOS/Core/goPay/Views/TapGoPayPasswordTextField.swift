@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 import CommonDataModelsKit_iOS
-import SimpleAnimation
+// import SimpleAnimation
 import LocalisationManagerKit_iOS
 /// External protocol to allow the TapGoPayPasswordTextField to pass back data and events to the parent UIViewController
 @objc public protocol TapGoPayPasswordTextFieldProtocol {

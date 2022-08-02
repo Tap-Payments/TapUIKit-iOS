@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 import Nuke
-import SimpleAnimation
+// import SimpleAnimation
 
 /// Represent the icon cell inside the horizontal bar of cards and telecom operators
 @objc public class TapCardPhoneIconView: UIView {

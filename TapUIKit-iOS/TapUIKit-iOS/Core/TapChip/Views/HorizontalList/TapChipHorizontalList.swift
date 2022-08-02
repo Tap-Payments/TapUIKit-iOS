@@ -7,7 +7,7 @@
 //
 
 import TapThemeManager2020
-import SimpleAnimation
+// import SimpleAnimation
 import LocalisationManagerKit_iOS
 
 /// Represents Tap representation of Chip horizontal list view

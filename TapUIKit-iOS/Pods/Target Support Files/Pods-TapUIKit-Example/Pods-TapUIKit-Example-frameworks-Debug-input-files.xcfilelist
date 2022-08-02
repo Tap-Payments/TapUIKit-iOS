@@ -13,7 +13,6 @@ ${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework
 ${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework
 ${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
 ${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework
-${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/TapCardInputKit-iOS/TapCardInputKit_iOS.framework
 ${BUILT_PRODUCTS_DIR}/TapCardScanner-iOS/TapCardScanner_iOS.framework

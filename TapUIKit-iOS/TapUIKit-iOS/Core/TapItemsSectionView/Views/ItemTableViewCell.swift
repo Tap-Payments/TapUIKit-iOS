@@ -7,7 +7,7 @@
 //
 
 import TapThemeManager2020
-import SimpleAnimation
+// import SimpleAnimation
 import LocalisationManagerKit_iOS
 
 /// Represents the item table view cell that will show the items inside the items table view screen

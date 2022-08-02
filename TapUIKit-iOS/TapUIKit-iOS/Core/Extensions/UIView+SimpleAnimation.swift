@@ -16,7 +16,7 @@ import UIKit
   - left: involves the left edge of the parent
   - right: involves the right edge of the parent
  */
-public enum SimpleAnimationEdge {
+internal enum SimpleAnimationEdge {
   case none
   case top
   case bottom
@@ -27,7 +27,7 @@ public enum SimpleAnimationEdge {
 /**
   A UIView extension that makes adding basic animations, like fades and bounces, simple.
  */
-public extension UIView {
+internal extension UIView {
   /**
     Fades this view in. This method can be chained with other animations to combine a fade with
     the other animation, for instance:

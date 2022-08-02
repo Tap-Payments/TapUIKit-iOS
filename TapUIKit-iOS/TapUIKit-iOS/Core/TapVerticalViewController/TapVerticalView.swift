@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tap Payments. All rights reserved.
 //
 
-import SimpleAnimation
+// import SimpleAnimation
 import TapThemeManager2020
 import TapCardScanner_iOS
 /// The protocol for the delegates and notifications fired from the TapVerticalView

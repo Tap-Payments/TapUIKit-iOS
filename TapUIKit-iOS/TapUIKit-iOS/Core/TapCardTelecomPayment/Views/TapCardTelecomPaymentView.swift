@@ -9,7 +9,7 @@ import UIKit
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
-import SimpleAnimation
+// import SimpleAnimation
 
 
 /// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input

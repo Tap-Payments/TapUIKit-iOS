@@ -25,7 +25,6 @@ target 'TapUIKit-iOS' do
   pod 'LocalisationManagerKit-iOS'
   pod 'CommonDataModelsKit-iOS'
   pod 'PullUpController'
-  pod "SimpleAnimation"
   pod 'Nuke'
   pod 'TapApplePayKit-iOS'
   pod 'TapCardVlidatorKit-iOS'

@@ -8,7 +8,7 @@
 
 
 import TapThemeManager2020
-import SimpleAnimation
+// import SimpleAnimation
 import SnapKit
 
 /// Represents the GoPay chip cell

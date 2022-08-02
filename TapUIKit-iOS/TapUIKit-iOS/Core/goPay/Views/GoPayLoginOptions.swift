@@ -9,7 +9,7 @@
 import TapThemeManager2020
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
-import SimpleAnimation
+// import SimpleAnimation
 import LocalisationManagerKit_iOS
 /// External protocol to allow the GoPayLoginOptions to pass back data and events to the parent UIViewController
 @objc internal protocol GoPayLoginOptionsPorotocl {

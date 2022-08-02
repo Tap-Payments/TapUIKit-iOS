@@ -8,7 +8,7 @@
 
 import struct UIKit.CGFloat
 import Nuke
-import SimpleAnimation
+// import SimpleAnimation
 import TapThemeManager2020
 import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS

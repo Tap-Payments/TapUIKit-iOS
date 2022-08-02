@@ -7,7 +7,7 @@
 //
 
 import TapThemeManager2020
-import SimpleAnimation
+// import SimpleAnimation
 import LocalisationManagerKit_iOS
 
 /// Represent the view of tab bar list

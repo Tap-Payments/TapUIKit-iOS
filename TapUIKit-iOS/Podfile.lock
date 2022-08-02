@@ -9,13 +9,12 @@ PODS:
   - PullUpController (0.8.0)
   - SheetyColors (1.2.1):
     - Capable/Colors (~> 1.1)
-  - SimpleAnimation (0.4.2)
   - SnapKit (5.6.0)
   - TapAdditionsKitV2 (0.0.8):
     - TapSwiftFixesV2
   - TapApplePayKit-iOS (1.0.6):
     - CommonDataModelsKit-iOS (~> 1.0.1)
-  - TapCardInputKit-iOS (1.0.28):
+  - TapCardInputKit-iOS (1.0.31):
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - MOLH
@@ -23,7 +22,7 @@ PODS:
     - SnapKit
     - TapCardVlidatorKit-iOS
     - TapThemeManager2020
-  - TapCardScanner-iOS (1.0.18):
+  - TapCardScanner-iOS (1.0.21):
     - CommonDataModelsKit-iOS
     - TapCardVlidatorKit-iOS
   - TapCardVlidatorKit-iOS (1.0.16)
@@ -48,7 +47,6 @@ DEPENDENCIES:
   - Nuke
   - PullUpController
   - SheetyColors
-  - SimpleAnimation
   - SnapKit
   - TapApplePayKit-iOS
   - TapCardInputKit-iOS
@@ -66,7 +64,6 @@ SPEC REPOS:
     - Nuke
     - PullUpController
     - SheetyColors
-    - SimpleAnimation
     - SnapKit
     - TapAdditionsKitV2
     - TapApplePayKit-iOS
@@ -86,17 +83,16 @@ SPEC CHECKSUMS:
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   SheetyColors: a0273d30ec5ee02536bb43960ba36d58619ae719
-  SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
-  TapCardInputKit-iOS: cd3dc5f6cb2d3beb7d049573565b2d93815f4c21
-  TapCardScanner-iOS: 15032e60efb67a5f9661461c63d1d758f1341563
+  TapCardInputKit-iOS: a8cbd7dbc93629acbaf7c9d3b90f1e7d85c06cdd
+  TapCardScanner-iOS: 4fe77bad44d216353ea083eaf3fb6dd6ff6dbdc8
   TapCardVlidatorKit-iOS: c89d510445a159d9f6967923096115783dcd1cdb
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
   TapThemeManager2020: d27a89804a3e950eae889033dcf40fe3a2cde187
 
-PODFILE CHECKSUM: bc442d40d4ff2e7d1fc1151d6e2e57c246803e74
+PODFILE CHECKSUM: 163ba460d4227d2c0a16675265a585584a0ad7f9
 
 COCOAPODS: 1.11.2

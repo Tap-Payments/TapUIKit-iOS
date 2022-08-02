@@ -8,7 +8,7 @@
 
 import UIKit
 import TapThemeManager2020
-import SimpleAnimation
+// import SimpleAnimation
 
 @objc public class TapAmountSectionView: UIView {
     

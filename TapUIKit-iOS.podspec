@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapUIKit-iOS"
-  spec.version      = "1.0.53"
+  spec.version      = "1.0.54"
   spec.summary      = "A collection of inner Tap UI components generically developed to fit into any of Tap's apps."
 
   # This description is used to generate tags and improve search results.
@@ -136,7 +136,6 @@ Pod::Spec.new do |spec|
   spec.dependency "LocalisationManagerKit-iOS"
   spec.dependency "CommonDataModelsKit-iOS"
   spec.dependency "PullUpController"
-  spec.dependency "SimpleAnimation"
   spec.dependency "Nuke"
   spec.dependency "TapApplePayKit-iOS"
   spec.dependency "TapCardVlidatorKit-iOS"
