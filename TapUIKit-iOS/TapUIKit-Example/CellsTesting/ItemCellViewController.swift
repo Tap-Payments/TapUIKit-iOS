@@ -79,7 +79,7 @@ class ItemCellViewController: UIViewController {
             itemDiscount = nil
         }
         let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: .init(value: Double(itemQuantity), unitOfMeasurement: .units), discount: itemDiscount, totalAmount: 0)
-        itemModel.itemFinalPrice()
+        //itemModel.itemFinalPrice()
         //try! .init(from: ["title":itemTitle,"description":itemDescriptio
             //,"price":itemPrice,"quantity":itemQuantity])
         let itemCellViewModel:ItemCellViewModel = .init(itemModel: itemModel, originalCurrency: .init(.KWD, itemModel.itemFinalPrice(), ""))
