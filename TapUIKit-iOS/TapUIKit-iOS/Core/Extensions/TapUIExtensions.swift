@@ -171,6 +171,7 @@ public extension UIView {
         if addAsSubView {
             addSubview(newContainerView)
         }
+        newContainerView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
         return newContainerView
     }
 }

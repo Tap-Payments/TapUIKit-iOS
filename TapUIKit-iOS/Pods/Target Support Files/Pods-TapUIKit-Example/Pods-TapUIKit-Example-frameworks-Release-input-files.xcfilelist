@@ -2,7 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example-fr
 ${BUILT_PRODUCTS_DIR}/Capable/Capable.framework
 ${BUILT_PRODUCTS_DIR}/CommonDataModelsKit-iOS/CommonDataModelsKit_iOS.framework
 ${BUILT_PRODUCTS_DIR}/LocalisationManagerKit-iOS/LocalisationManagerKit_iOS.framework
-${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework
 ${BUILT_PRODUCTS_DIR}/SheetyColors/SheetyColors.framework
 ${BUILT_PRODUCTS_DIR}/TapAdditionsKitV2/TapAdditionsKitV2.framework
 ${BUILT_PRODUCTS_DIR}/TapApplePayKit-iOS/TapApplePayKit_iOS.framework
@@ -10,6 +9,7 @@ ${BUILT_PRODUCTS_DIR}/TapCardVlidatorKit-iOS/TapCardVlidatorKit_iOS.framework
 ${BUILT_PRODUCTS_DIR}/TapFontKit-iOS/TapFontKit_iOS.framework
 ${BUILT_PRODUCTS_DIR}/TapSwiftFixesV2/TapSwiftFixesV2.framework
 ${BUILT_PRODUCTS_DIR}/TapThemeManager2020/TapThemeManager2020.framework
+${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework
 ${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework
 ${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework
 ${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework

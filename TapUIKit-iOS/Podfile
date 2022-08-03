@@ -4,7 +4,6 @@ platform :ios, '13.0'
 target 'TapUIKit-Example' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'MOLH'
   pod 'TapThemeManager2020'
   pod 'SheetyColors'
   pod 'TapApplePayKit-iOS'
@@ -21,7 +20,6 @@ target 'TapUIKit-iOS' do
   # Pods for TapUIKit-iOS
   pod 'SnapKit'
   pod 'TapThemeManager2020'
-  pod 'MOLH'
   pod 'LocalisationManagerKit-iOS'
   pod 'CommonDataModelsKit-iOS'
   pod 'PullUpController'

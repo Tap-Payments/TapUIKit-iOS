@@ -44,9 +44,10 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        MOLH.setLanguageTo("en")
+        //MOLH.setLanguageTo("en")
+        
         TapLocalisationManager.shared.localisationLocale = "en"
-        MOLH.reset()
+        //MOLH.reset()
     }
 }
 
@@ -70,7 +71,7 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
             if dataSource[indexPath.row]["lang"] == "1" {
                 showLanguageSelection { (selectedLanguage) in
                     TapLocalisationManager.shared.localisationLocale = selectedLanguage
-                    MOLH.setLanguageTo(selectedLanguage)
+                    //MOLH.setLanguageTo(selectedLanguage)
                     TapThemeManager.setDefaultTapTheme()
                     self.showController(contoller: destnationVC, push: self.dataSource[indexPath.row]["push"] == "1")
                 }
@@ -78,11 +79,11 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
                 TapThemeManager.setDefaultTapTheme()
                 if let gloryExample:TapBottomSheetExampleViewController = destnationVC as? TapBottomSheetExampleViewController, indexPath.row == (dataSource.count - 1) {
                     TapLocalisationManager.shared.localisationLocale = "ar"
-                    MOLH.setLanguageTo("ar")
+                    //MOLH.setLanguageTo("ar")
                     gloryExample.showWallOfGlory = true
                 }else if let gloryExample:TapBottomSheetExampleViewController = destnationVC as? TapBottomSheetExampleViewController, indexPath.row == (dataSource.count - 2) {
                     TapLocalisationManager.shared.localisationLocale = "en"
-                    MOLH.setLanguageTo("en")
+                    //MOLH.setLanguageTo("en")
                     gloryExample.showWallOfGlory = true
                 }
                 showController(contoller: destnationVC, push: dataSource[indexPath.row]["push"] == "1")
