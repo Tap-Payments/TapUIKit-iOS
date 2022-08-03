@@ -106,6 +106,7 @@ import LocalisationManagerKit_iOS
     
     /// This method assigns the correct flippable layout with the scrolling direction + the item sizing
     private func assignFlowLaout() {
+        collectionView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
         let itemSpacing:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).itemSpacing")?.floatValue ?? 0)
         //let sectionMargins:CGFloat = CGFloat(TapThemeManager.numberValue(for: "\(themePath).margin")?.floatValue ?? 0)
         let flowLayout: flippableCollectionLayout = flippableCollectionLayout()
