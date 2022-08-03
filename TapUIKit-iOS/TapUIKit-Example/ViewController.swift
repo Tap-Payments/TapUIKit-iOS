@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         dataSource.append(["title":"Chips","subtitle":"Displays the Tap Amount section view","navigationID":"ChipsTestingViewController","lang":"1","push":"0"])
         dataSource.append(["title":"Item Cell","subtitle":"Displays the Tap Item Cell view","navigationID":"ItemCellViewController","lang":"1","push":"0"])
         dataSource.append(["title":"CardPhone Icon","subtitle":"Displays the Icon in the cards and telecom icons bar","navigationID":"TapCardPhoneIconViewController","lang":"0","push":"0"])
-        dataSource.append(["title":"CardPhone List","subtitle":"Displays the Card Phone List component","navigationID":"TapCardPhoneBarListViewController","lang":"0","push":"0"])
+        dataSource.append(["title":"CardPhone List","subtitle":"Displays the Card Phone List component","navigationID":"TapCardPhoneBarListViewController","lang":"1","push":"0"])
         dataSource.append(["title":"Card Input View","subtitle":"Displays the Card Input component","navigationID":"TapCardInputViewController","lang":"0","push":"0"])
         dataSource.append(["title":"goPay Login Tab","subtitle":"Displays tab options for gopay login tab bar","navigationID":"GoPayLoginTabSegmentViewController","lang":"0","push":"0"])
         dataSource.append(["title":"goPay Login Tab Bar","subtitle":"Displays tab bar with options for gopay","navigationID":"GoPayLoginTabBarViewController","lang":"0","push":"0"])

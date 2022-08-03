@@ -63,6 +63,7 @@ import LocalisationManagerKit_iOS
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.contentView = setupXIB()
+        stackView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
         applyTheme()
     }
     

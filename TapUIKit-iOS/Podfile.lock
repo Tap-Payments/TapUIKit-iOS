@@ -1,8 +1,8 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.51):
+  - CommonDataModelsKit-iOS (1.0.52):
     - TapAdditionsKitV2
-  - LocalisationManagerKit-iOS (1.0.3)
+  - LocalisationManagerKit-iOS (1.0.4)
   - McPicker (3.0.0)
   - MOLH (1.4.3)
   - Nuke (10.7.1)
@@ -14,7 +14,7 @@ PODS:
     - TapSwiftFixesV2
   - TapApplePayKit-iOS (1.0.6):
     - CommonDataModelsKit-iOS (~> 1.0.1)
-  - TapCardInputKit-iOS (1.0.31):
+  - TapCardInputKit-iOS (1.0.33):
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - MOLH
@@ -75,8 +75,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: d51cd068caead60719749cef3af2d00b86fc85b4
-  LocalisationManagerKit-iOS: a779efa4d2eeeed959c07c9d6fd6568df87089a3
+  CommonDataModelsKit-iOS: 3cb22d52f6fd82a89bab65b557e92ead545cef12
+  LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
@@ -85,7 +85,7 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
-  TapCardInputKit-iOS: a8cbd7dbc93629acbaf7c9d3b90f1e7d85c06cdd
+  TapCardInputKit-iOS: 09b57ce17e5d66f501c29bb99e608f68c7c7d638
   TapCardScanner-iOS: 4fe77bad44d216353ea083eaf3fb6dd6ff6dbdc8
   TapCardVlidatorKit-iOS: c89d510445a159d9f6967923096115783dcd1cdb
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
