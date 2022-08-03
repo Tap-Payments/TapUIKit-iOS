@@ -7,6 +7,7 @@
 //
 
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
 
 /// The view  that renders a tap hint view
 @objc public class TapHintView: UIView {

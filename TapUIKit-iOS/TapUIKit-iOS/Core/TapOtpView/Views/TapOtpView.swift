@@ -8,6 +8,7 @@
 
 import UIKit
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
 
 /// The view  that renders a tap otp view
 @objc public class TapOtpView: UIView {
