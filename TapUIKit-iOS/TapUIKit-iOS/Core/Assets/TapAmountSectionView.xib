@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,13 +34,13 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7h-ib-Lxc">
                     <rect key="frame" x="16" y="0.0" width="300" height="58"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SR1000,000.000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEs-uL-kzq">
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SR1000,000.000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEs-uL-kzq">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="38"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                             <color key="textColor" red="0.29411764705882354" green="0.28235294117647058" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KD1000,000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMZ-L9-q9o">
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KD1000,000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMZ-L9-q9o">
                             <rect key="frame" x="0.0" y="20" width="300" height="38"/>
                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                             <color key="textColor" red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -51,13 +51,13 @@
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsi-ku-Cc3" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="56.666666666666664" width="414" height="1.3333333333333357"/>
+                    <viewLayoutGuide key="safeArea" id="B0d-u1-6BX"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1.5" id="QML-ap-8f6"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="B0d-u1-6BX"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vv-9J-pFa">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vv-9J-pFa">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="58" id="ZNB-7w-K9g"/>
@@ -75,7 +75,7 @@
                             <color key="textColor" red="0.29411764709999999" green="0.28235294119999998" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM5-Gu-0ji">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM5-Gu-0ji">
                             <rect key="frame" x="0.0" y="0.0" width="70" height="20"/>
                             <connections>
                                 <action selector="itemsClicked:" destination="-1" eventType="touchUpInside" id="ltt-Fv-zjk"/>
@@ -97,6 +97,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="K7h-ib-Lxc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CxV-eQ-hP9"/>
@@ -114,7 +115,6 @@
                 <constraint firstItem="Xsi-ku-Cc3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="zVy-fK-OmM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.44565217391306"/>
         </view>
     </objects>

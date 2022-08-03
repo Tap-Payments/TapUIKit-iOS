@@ -60,7 +60,7 @@ import TapThemeManager2020
         bindVisibilities()
     }
     
-    ///Updates all the labels with the corresponding values in the view model
+    ///Updates all the labels with the corresponding values in the view modelt
     private func bindLabels() {
         guard let viewModel = viewModel else { return }
         
