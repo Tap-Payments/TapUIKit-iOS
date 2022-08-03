@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MOLH
+
 import TapThemeManager2020
 import LocalisationManagerKit_iOS
 

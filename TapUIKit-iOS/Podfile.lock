@@ -4,7 +4,6 @@ PODS:
     - TapAdditionsKitV2
   - LocalisationManagerKit-iOS (1.0.4)
   - McPicker (3.0.0)
-  - MOLH (1.4.3)
   - Nuke (10.7.1)
   - PullUpController (0.8.0)
   - SheetyColors (1.2.1):
@@ -14,10 +13,9 @@ PODS:
     - TapSwiftFixesV2
   - TapApplePayKit-iOS (1.0.6):
     - CommonDataModelsKit-iOS (~> 1.0.1)
-  - TapCardInputKit-iOS (1.0.33):
+  - TapCardInputKit-iOS (1.0.36):
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
-    - MOLH
     - Nuke
     - SnapKit
     - TapCardVlidatorKit-iOS
@@ -59,7 +57,6 @@ SPEC REPOS:
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - McPicker
-    - MOLH
     - Nuke
     - PullUpController
     - SheetyColors
@@ -78,14 +75,13 @@ SPEC CHECKSUMS:
   CommonDataModelsKit-iOS: 3cb22d52f6fd82a89bab65b557e92ead545cef12
   LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
-  MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   SheetyColors: a0273d30ec5ee02536bb43960ba36d58619ae719
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
-  TapCardInputKit-iOS: 09b57ce17e5d66f501c29bb99e608f68c7c7d638
+  TapCardInputKit-iOS: 69b20fad404c48b8e2cdcd8c6a88f42c69f3ed92
   TapCardScanner-iOS: 4fe77bad44d216353ea083eaf3fb6dd6ff6dbdc8
   TapCardVlidatorKit-iOS: c89d510445a159d9f6967923096115783dcd1cdb
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
