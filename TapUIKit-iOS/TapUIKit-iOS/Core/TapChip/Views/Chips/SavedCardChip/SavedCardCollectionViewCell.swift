@@ -54,9 +54,10 @@ import SnapKit
         changedEditMode(to: viewModel.editMode)
     }
     
-     override func selectStatusChaned(with status:Bool) {
+    override func selectStatusChaned(with status:Bool) {
         
         // update the shadow for GoPayCell
+        guard !viewModel.editMode else { return }
         applyTheme()
     }
     
@@ -130,7 +131,7 @@ extension SavedCardCollectionViewCell {
         layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).\(shadowPath).shadow.radius")?.floatValue ?? 0)
         self.clipsToBounds = false
         self.layer.masksToBounds = false
-
+        
         cardSchemeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
         cardSchemeLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
         

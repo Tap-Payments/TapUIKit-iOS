@@ -296,6 +296,10 @@ internal protocol TapChipHorizontalViewModelDelegate {
      */
     @objc public func didSelectItem(at index:Int,selectCell:Bool = false) {
         let selectedViewModel = viewModel(at: index)
+        // Make sure we are not in editing mode
+        guard !selectedViewModel.editMode else{
+            return
+        }
         // Inform the view model of the selected cell that he is selected, hence, he will pass this value to his attached UIView
         selectedViewModel.didSelectItem()
         // Inform the main (outer) delegate, that an item had been selected
