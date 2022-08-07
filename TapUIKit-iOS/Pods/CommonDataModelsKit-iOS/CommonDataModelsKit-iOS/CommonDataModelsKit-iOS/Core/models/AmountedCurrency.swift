@@ -33,7 +33,6 @@
     public var displaybaleSymbol:String {
         return currencySymbol.count == 1 ? currencySymbol : currency.appleRawValue
     }
-    
     // MARK: Methods
     
     @objc public convenience init(_ currency: TapCurrencyCode, _ amount: Double, _ flag: String, _ decimalDigits: Int = 2) {

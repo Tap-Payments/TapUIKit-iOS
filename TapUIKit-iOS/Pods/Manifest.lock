@@ -1,7 +1,10 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.54):
+  - CommonDataModelsKit-iOS (1.0.60):
+    - SwiftyRSA
     - TapAdditionsKitV2
+    - TapCardVlidatorKit-iOS
+    - TapKeychain
   - LocalisationManagerKit-iOS (1.0.4)
   - McPicker (3.0.0)
   - Nuke (10.7.1)
@@ -9,6 +12,9 @@ PODS:
   - SheetyColors (1.2.1):
     - Capable/Colors (~> 1.1)
   - SnapKit (5.6.0)
+  - SwiftyRSA (1.7.0):
+    - SwiftyRSA/ObjC (= 1.7.0)
+  - SwiftyRSA/ObjC (1.7.0)
   - TapAdditionsKitV2 (0.0.8):
     - TapSwiftFixesV2
   - TapApplePayKit-iOS (1.0.6):
@@ -20,12 +26,13 @@ PODS:
     - SnapKit
     - TapCardVlidatorKit-iOS
     - TapThemeManager2020
-  - TapCardScanner-iOS (1.0.22):
+  - TapCardScanner-iOS (1.0.23):
     - CommonDataModelsKit-iOS
     - TapCardVlidatorKit-iOS
   - TapCardVlidatorKit-iOS (1.0.16)
   - TapFontKit-iOS (0.0.9):
     - TapSwiftFixesV2
+  - TapKeychain (1.0.5)
   - TapSwiftFixesV2 (1.0.0):
     - TapSwiftFixesV2/CoreGraphics (= 1.0.0)
     - TapSwiftFixesV2/Exceptions (= 1.0.0)
@@ -61,30 +68,34 @@ SPEC REPOS:
     - PullUpController
     - SheetyColors
     - SnapKit
+    - SwiftyRSA
     - TapAdditionsKitV2
     - TapApplePayKit-iOS
     - TapCardInputKit-iOS
     - TapCardScanner-iOS
     - TapCardVlidatorKit-iOS
     - TapFontKit-iOS
+    - TapKeychain
     - TapSwiftFixesV2
     - TapThemeManager2020
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: aa3b8a0781187142b9f777f9c253602ab32d27c4
+  CommonDataModelsKit-iOS: 3887770b6ba449722652568a9093a48560f64707
   LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   SheetyColors: a0273d30ec5ee02536bb43960ba36d58619ae719
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
   TapCardInputKit-iOS: 69b20fad404c48b8e2cdcd8c6a88f42c69f3ed92
-  TapCardScanner-iOS: 280e6cf4a34dba74e4822fae5205762a0612b859
+  TapCardScanner-iOS: c3c5fa5aa88ac879166f8cc6dbf4b5b76201727b
   TapCardVlidatorKit-iOS: c89d510445a159d9f6967923096115783dcd1cdb
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
+  TapKeychain: 143aa70bb2d1b094e0298e944660264034c79849
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
   TapThemeManager2020: d27a89804a3e950eae889033dcf40fe3a2cde187
 
