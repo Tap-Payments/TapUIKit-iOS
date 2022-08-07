@@ -131,6 +131,14 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
         }
     }
     
+    /**
+     Generates a list of urls for the defined card brands upon setup
+     */
+    internal func generateBrandsWithIcons() -> [CardBrand.RawValue:String] {
+        var result:[CardBrand.RawValue:String] = [:]
+        dataSource.forEach{ result[$0.associatedCardBrand.rawValue] = $0.tapCardPhoneIconUrl }
+        return result
+    }
     
     /**
      Comutes the frame where the underline should go to, whether the whole frame of a segment or the frame of a specific tab inside the segment
