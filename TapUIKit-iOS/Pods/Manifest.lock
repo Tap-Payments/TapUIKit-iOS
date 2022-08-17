@@ -1,6 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.61):
+  - CommonDataModelsKit-iOS (1.0.62):
     - SwiftyRSA
     - TapAdditionsKitV2
     - TapCardVlidatorKit-iOS
@@ -19,7 +19,7 @@ PODS:
     - TapSwiftFixesV2
   - TapApplePayKit-iOS (1.0.6):
     - CommonDataModelsKit-iOS (~> 1.0.1)
-  - TapCardInputKit-iOS (1.0.37):
+  - TapCardInputKit-iOS (1.0.38):
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - Nuke
@@ -29,7 +29,7 @@ PODS:
   - TapCardScanner-iOS (1.0.23):
     - CommonDataModelsKit-iOS
     - TapCardVlidatorKit-iOS
-  - TapCardVlidatorKit-iOS (1.0.16)
+  - TapCardVlidatorKit-iOS (1.0.17)
   - TapFontKit-iOS (0.0.9):
     - TapSwiftFixesV2
   - TapKeychain (1.0.5)
@@ -81,7 +81,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: 6000c5874a6e37dab4c758bedf99b5fc6e541167
+  CommonDataModelsKit-iOS: 5a955f36da20d4af0dd74c7a041e5e40e0bbb26d
   LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
@@ -91,9 +91,9 @@ SPEC CHECKSUMS:
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
   TapAdditionsKitV2: ba369802e9575c3475ce6d5af228cf60c68edfc9
   TapApplePayKit-iOS: 940ab0575100d21e6080d17851cfe6c36bfebc24
-  TapCardInputKit-iOS: c5f66bb6f125623bfde1278a48cc148bbf7fcd75
+  TapCardInputKit-iOS: cf1ba3c67d1f5a35075c248714c25e7bb8fafc38
   TapCardScanner-iOS: c3c5fa5aa88ac879166f8cc6dbf4b5b76201727b
-  TapCardVlidatorKit-iOS: c89d510445a159d9f6967923096115783dcd1cdb
+  TapCardVlidatorKit-iOS: 42c357a5dab0c372f22a49827bfb16d03ce50c5d
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
   TapKeychain: 143aa70bb2d1b094e0298e944660264034c79849
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800

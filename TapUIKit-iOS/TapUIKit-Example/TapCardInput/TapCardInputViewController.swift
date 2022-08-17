@@ -36,7 +36,7 @@ class TapCardInputViewController: UIViewController {
         guard let uiSwitch:UISwitch = sender as? UISwitch else { return }
         cardInput.reset()
         if uiSwitch.isOn {
-            cardInput.setup(for: .InlineCardInput,allowedCardBrands: [CardBrand.visa.rawValue],cardIconUrl: "https://img.icons8.com/color/2x/visa.png")
+            cardInput.setup(for: .InlineCardInput,allowedCardBrands: [CardBrand.visa.rawValue],cardsIconsUrls: [CardBrand.visa.rawValue:"https://img.icons8.com/color/2x/visa.png"])
         }else {
             cardInput.setup(for: .InlineCardInput)
         }
