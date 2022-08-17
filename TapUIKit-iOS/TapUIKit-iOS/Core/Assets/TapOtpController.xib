@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,6 +85,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="8F5-5v-ph6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="06t-a1-yu3"/>
@@ -116,8 +117,27 @@
                 <constraint firstItem="8F5-5v-ph6" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xWn-Kn-S3j"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.59999999999999" y="-99.850074962518747"/>
         </view>
     </objects>
+    <designables>
+        <designable name="8F5-5v-ph6">
+            <size key="intrinsicContentSize" width="6" height="31.5"/>
+        </designable>
+        <designable name="BeY-wH-5h5">
+            <size key="intrinsicContentSize" width="6" height="31.5"/>
+        </designable>
+        <designable name="FfX-cI-OTB">
+            <size key="intrinsicContentSize" width="6" height="31.5"/>
+        </designable>
+        <designable name="q5G-D9-C2d">
+            <size key="intrinsicContentSize" width="6" height="31.5"/>
+        </designable>
+        <designable name="wNo-bf-9dx">
+            <size key="intrinsicContentSize" width="6" height="31.5"/>
+        </designable>
+        <designable name="zJ0-DK-glA">
+            <size key="intrinsicContentSize" width="6" height="31.5"/>
+        </designable>
+    </designables>
 </document>

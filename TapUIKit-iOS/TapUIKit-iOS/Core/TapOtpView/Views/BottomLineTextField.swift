@@ -12,9 +12,7 @@ import UIKit
  Custom TexitField with disabling touch event
  */
 class UnTouchableTextField: BottomLineTextField {
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        return nil
-    }
+    
 }
 
 /**

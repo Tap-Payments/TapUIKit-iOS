@@ -11,8 +11,8 @@ import TapUIKit_iOS
 
 class OTPViewController: UIViewController {
 
-    @IBOutlet weak var otpView: TapSwitchView!//TapOtpView!
-    let otpViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways", whichSwitchesToShow: .all)
+    @IBOutlet weak var otpView: TapOtpView!//TapOtpView!
+    let otpViewModel: TapOtpViewModel = .init(phoneNo: "00201009366361", showMessage: false)
 //        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""), goPaySwitch: TapSwitchModel(title: "Save for goPay Checkouts", subtitle: "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites."))
 //        
 //        .init(mainSwitch: TapSwitchModel(title: "For faster and easier checkout,save your mobile number.", subtitle: ""),
@@ -48,16 +48,18 @@ class OTPViewController: UIViewController {
 
 }
 
-extension OTPViewController: TapSwitchViewModelDelegate {
-    func didChangeState(state: TapSwitchEnum, enabledSwitches: TapSwitchEnum) {
-        print("current card State: \(state.rawValue)")
+extension OTPViewController: TapOtpViewModelDelegate {
+    func otpStateReadyToValidate(otpValue: String) {
+        print(otpValue)
     }
     
-    func didChangeCardState(cardState: TapSwitchCardStateEnum) {
-        print("current card State: \(cardState.rawValue)")
+    func otpState(changed to: TapOTPStateEnum) {
+        print(to)
     }
     
-    func didChangeState(state: TapSwitchEnum) {
-        print("current state: \(state.rawValue)")
+    func otpStateExpired() {
+        
     }
+    
+   
 }
