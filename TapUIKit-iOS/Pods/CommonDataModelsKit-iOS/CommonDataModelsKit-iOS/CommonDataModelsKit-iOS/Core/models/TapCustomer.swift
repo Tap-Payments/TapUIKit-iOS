@@ -46,6 +46,9 @@ import Foundation
     /// Customer's first name.
     public var firstName: String?
     
+    /// Customer's address
+    public var address: Address?
+    
     /// Customer's middle name.
     public var middleName: String?
     
@@ -170,12 +173,12 @@ import Foundation
         }
         
         return
-            
-            self.firstName      == otherCustomer.firstName      &&
-            self.middleName     == otherCustomer.middleName     &&
-            self.lastName       == otherCustomer.lastName       &&
-            self.emailAddress   == otherCustomer.emailAddress   &&
-            self.phoneNumber    == otherCustomer.phoneNumber
+        
+        self.firstName      == otherCustomer.firstName      &&
+        self.middleName     == otherCustomer.middleName     &&
+        self.lastName       == otherCustomer.lastName       &&
+        self.emailAddress   == otherCustomer.emailAddress   &&
+        self.phoneNumber    == otherCustomer.phoneNumber
     }
     
     /// Checks if 2 objects are equal.

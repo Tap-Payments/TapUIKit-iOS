@@ -140,8 +140,10 @@ internal protocol ItemCellViewModelDelegate {
      */
     public func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
         // Check if we have a valid discount OR the quantity is more than 1, then format it based on the currency
-        guard let itemModel = itemModel, let quantity = itemModel.quantity, let price = itemModel.price , convertCurrency.currency != .undefined else { return NSAttributedString.init(string: "") }
-        guard itemModel.quantity ?? 0 > 1  || itemModel.discount?.value ?? 0 > 0 else { return NSAttributedString.init(string: "") }
+        guard let itemModel = itemModel, let price = itemModel.price , convertCurrency.currency != .undefined else { return NSAttributedString.init(string: "") }
+        guard itemModel.quantity > 1  || itemModel.discount?.value ?? 0 > 0 else { return NSAttributedString.init(string: "") }
+        
+        let quantity = itemModel.quantity
         
         // In this case, then we will show a discount/single amount string
         let formatter = TapAmountedCurrencyFormatter { [weak self] in

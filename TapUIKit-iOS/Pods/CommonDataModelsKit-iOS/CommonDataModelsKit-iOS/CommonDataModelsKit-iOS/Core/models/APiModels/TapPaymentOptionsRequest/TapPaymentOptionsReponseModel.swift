@@ -18,9 +18,6 @@ public struct TapPaymentOptionsReponseModel: IdentifiableWithString {
     /// Object identifier.
     public let identifier: String
     
-    /// Order identifier.
-    public private(set) var orderIdentifier: String?
-    
     /// Object type.
     internal let object: String
     
@@ -39,6 +36,9 @@ public struct TapPaymentOptionsReponseModel: IdentifiableWithString {
     /// Saved cards.
     public var savedCards: [SavedCard]?
     
+    /// Order data
+    public var order: Order?
+    
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
@@ -49,31 +49,33 @@ public struct TapPaymentOptionsReponseModel: IdentifiableWithString {
         case paymentOptions             = "payment_methods"
         case supportedCurrenciesAmounts = "supported_currencies"
         
-        case orderIdentifier            = "order_id"
+        
         case savedCards                 = "cards"
         
         case merchantCountryCode        = "country"
+        
+        case order                      = "order"
     }
     
     // MARK: Methods
     
     public init(identifier:                        String,
-                orderIdentifier:                   String?,
                 object:                            String,
                 paymentOptions:                    [PaymentOption],
                 currency:                          TapCurrencyCode,
                 supportedCurrenciesAmounts:        [AmountedCurrency],
                 savedCards:                        [SavedCard]?,
-                merchantCountryCode:               String?) {
+                merchantCountryCode:               String?,
+                order:                             Order?) {
         
         self.identifier                     = identifier
-        self.orderIdentifier                = orderIdentifier
         self.object                         = object
         self.paymentOptions                 = paymentOptions
         self.currency                       = currency
         self.supportedCurrenciesAmounts     = supportedCurrenciesAmounts
         self.savedCards                     = savedCards
         self.merchantCountryCode            = merchantCountryCode
+        self.order                          = order
     }
 }
 
@@ -85,13 +87,13 @@ extension TapPaymentOptionsReponseModel: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let identifier                      = try container.decode(String.self, forKey: .identifier)
-        let orderIdentifier                 = try container.decodeIfPresent(String.self, forKey: .orderIdentifier)
         let object                          = try container.decode(String.self, forKey: .object)
         var paymentOptions                  = try container.decode([PaymentOption].self, forKey: .paymentOptions)
         let currency                        = try container.decode(TapCurrencyCode.self, forKey: .currency)
         let supportedCurrenciesAmounts      = try container.decode([AmountedCurrency].self, forKey: .supportedCurrenciesAmounts)
         var savedCards                      = try container.decodeIfPresent([SavedCard].self, forKey: .savedCards)
         let merchantCountryCode             = try container.decodeIfPresent(String.self, forKey: .merchantCountryCode)
+        let order                           = try container.decodeIfPresent(Order.self, forKey: .order)
         
         
         paymentOptions = paymentOptions.sorted(by: { $0.orderBy < $1.orderBy })
@@ -111,14 +113,14 @@ extension TapPaymentOptionsReponseModel: Decodable {
         let merchnantAllowedCards = SharedCommongDataModels.sharedCommongDataModels.allowedCardTypes
         savedCards = savedCards?.filter { (merchnantAllowedCards.contains($0.cardType ?? CardType(cardType: .All))) }
         
-        self.init(identifier:                    identifier,
-                  orderIdentifier:                orderIdentifier,
-                  object:                        object,
-                  paymentOptions:                paymentOptions,
-                  currency:                        currency,
-                  supportedCurrenciesAmounts:    supportedCurrenciesAmounts,
-                  savedCards:                    savedCards,
-                  merchantCountryCode:          merchantCountryCode)
+        self.init(identifier:                   identifier,
+                  object:                       object,
+                  paymentOptions:               paymentOptions,
+                  currency:                     currency,
+                  supportedCurrenciesAmounts:   supportedCurrenciesAmounts,
+                  savedCards:                   savedCards,
+                  merchantCountryCode:          merchantCountryCode,
+                  order:                        order)
     }
 }
 
