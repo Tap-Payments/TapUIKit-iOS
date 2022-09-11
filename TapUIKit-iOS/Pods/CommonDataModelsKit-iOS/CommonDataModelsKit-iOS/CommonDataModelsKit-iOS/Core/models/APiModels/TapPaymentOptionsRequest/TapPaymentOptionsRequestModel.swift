@@ -20,7 +20,7 @@ public struct TapPaymentOptionsRequestModel {
     public var items: [ItemModel]?
     
     /// Items shippings.
-    public var shipping: [Shipping]?
+    public var shipping: Shipping?
     
     /// Taxes.
     public var taxes: [Tax]?
@@ -59,7 +59,7 @@ public struct TapPaymentOptionsRequestModel {
     public init(transactionMode:      TransactionMode?,
                 amount:               Double?,
                 items:                [ItemModel]?,
-                shipping:             [Shipping]?,
+                shipping:             Shipping?,
                 taxes:                [Tax]?,
                 currency:             TapCurrencyCode?,
                 merchantID:           String?,
@@ -101,11 +101,15 @@ public struct TapPaymentOptionsRequestModel {
         self.totalAmount = totalAmount
         
         // Create the order object with the payment options request data
-        self.order = .init(transactionMode: transactionMode, amount: self.totalAmount, items: self.items, shipping: self.shipping, taxes: self.taxes, currency: self.currency, merchantID: self.merchantID, customer: self.customer?.identifier, destinationGroup: self.destinationGroup, paymentType: self.paymentType, topup: self.topup, reference: self.reference)
+        self.order = .init(transactionMode: transactionMode, amount: self.totalAmount, items: self.items, shipping: self.shipping, taxes: self.taxes, currency: self.currency, merchantID: self.merchantID, customer: self.customer, destinationGroup: self.destinationGroup, paymentType: self.paymentType, topup: self.topup, reference: self.reference)
         // We will stop passing items in the payment options and pass it in order object only
         self.items = []
         // We will not be sending customr info in the payment types anymore
         self.customer = nil
+        // We will not be sending shipping info in the payment types anymore
+        self.shipping = nil
+        // We will not be sending tax info in the payment types anymore
+        self.taxes = nil
     }
     
     // MARK: - Private -
@@ -149,11 +153,7 @@ extension TapPaymentOptionsRequestModel: Encodable {
         try container.encodeIfPresent(self.reference, forKey: .reference)
         try container.encodeIfPresent(self.paymentType, forKey: .paymentType)
         try container.encodeIfPresent(self.order, forKey: .order)
-        
-        if self.shipping?.count ?? 0 > 0 {
-            
-            try container.encodeIfPresent(self.shipping, forKey: .shipping)
-        }
+        try container.encodeIfPresent(self.shipping, forKey: .shipping)
         
         if self.taxes?.count ?? 0 > 0 {
             

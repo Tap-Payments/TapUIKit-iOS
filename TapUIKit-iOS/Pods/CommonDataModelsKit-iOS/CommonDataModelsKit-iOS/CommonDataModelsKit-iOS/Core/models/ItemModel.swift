@@ -35,7 +35,15 @@ import Foundation
     /// The item's vendor
     public var vendor: Vendor?
     /// Payment item shiping
-    public var requiresShipping: Bool
+    public var requiresShipping: Bool {
+        didSet {
+            if requiresShipping {
+                category = "PHYSICAL_GOODS"
+            }else{
+                category = "DIGITAL_GOODS"
+            }
+        }
+    }
     /// The raw original price in the original currency
     public var price : Double? {
         didSet {
@@ -43,7 +51,7 @@ import Foundation
         }
     }
     /// The discount applied to the item's price
-    public let discount : AmountModificatorModel?
+    public let discount : [AmountModificatorModel]?
     /// The list of Taxes to be applied to the item's price after discount
     public let taxes : [Tax]?
     /// The price final amount after applyig discount & taxes
@@ -65,25 +73,25 @@ import Foundation
      - Parameter description: A description of the item
      - Parameter price: The raw original price in the original currency
      - Parameter quantity: The quantity added to this item
-     - Parameter discount: The discount applied to the item's price
+     - Parameter discount: The discounts applied to the item's price
      - Parameter taxes: The list of Taxs to be applied to the item's price after discount
      - Parameter totalAmount: The price final amount after applyig discount & taxes
      - Parameter currency: Item currency
      */
-    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Double = 0, discount: AmountModificatorModel?,taxes:[Tax]? = nil,totalAmount:Double = 0,currency:TapCurrencyCode = .undefined,productID:String? = "", category:String? = "", vendor:Vendor? = nil, fulfillmentService:String? = "", requiresShipping:Bool = false, itemCode:String? = "", accountCode:String? = "", tags:String? = "" ) {
+    @objc public init(title: String?, description: String?, price: Double = 0, quantity: Double = 0, discount: [AmountModificatorModel]?,taxes:[Tax]? = nil,totalAmount:Double = 0,currency:TapCurrencyCode = .undefined,productID:String? = "", category:String? = "", vendor:Vendor? = nil, fulfillmentService:String? = "", requiresShipping:Bool = false, itemCode:String? = "", accountCode:String? = "", tags:String? = "" ) {
         self.title = title
         self.itemDescription = description
         self.price = price
         self.quantity = quantity
         self.discount = discount
         self.taxes = taxes
+        self.requiresShipping = requiresShipping
         self.totalAmount = totalAmount
         self.currency = currency
         self.productID = productID
         self.category = category
         self.fulfillmentService = fulfillmentService
         self.vendor = vendor
-        self.requiresShipping = requiresShipping
         self.itemCode = itemCode
         self.accountCode = accountCode
         self.tags = tags
@@ -92,6 +100,7 @@ import Foundation
         super.init()
         defer {
             self.totalAmount = totalAmount
+            self.requiresShipping = requiresShipping
         }
     }
     
@@ -121,7 +130,7 @@ import Foundation
         price = try values.decodeIfPresent(Double.self, forKey: .price)
         quantity = try values.decode(Double.self, forKey: .quantity)
         
-        discount = try values.decodeIfPresent(AmountModificatorModel.self, forKey: .discount)
+        discount = try values.decodeIfPresent([AmountModificatorModel].self, forKey: .discount)
         taxes = try values.decodeIfPresent([Tax].self, forKey: .taxes)
         itemCode = try values.decodeIfPresent (String.self            , forKey: .itemCode        )
         accountCode = try values.decodeIfPresent (String.self            , forKey: .accountCode        )
@@ -145,7 +154,9 @@ import Foundation
         guard let price = price else { return 0 }
         
         // First apply the discount if any
-        let discountedItemPrice:Double = price - (discount?.caluclateActualModificationValue(with: price) ?? 0)
+        let discountedItemPrice:Double = discount?.reduce(price){ $0 - $1.caluclateActualModificationValue(with: price) } ?? price
+        
+        //price - (discount?.caluclateActualModificationValue(with: price) ?? 0)
         // Secondly apply the taxes if any
         var discountedWithTaxesPrice:Double = taxes?.reduce(discountedItemPrice) { $0 + $1.amount.caluclateActualModificationValue(with: discountedItemPrice) } ?? discountedItemPrice
         // Put in the quantity in action
