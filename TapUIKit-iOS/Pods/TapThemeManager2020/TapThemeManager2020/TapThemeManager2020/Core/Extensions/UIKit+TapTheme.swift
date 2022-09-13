@@ -348,6 +348,17 @@ import class UIKit.UIButton
         get { return self.themeSelector(for:  SelectorsConstants.setShadowColorSelector) as? ThemeCgColorSelector }
         set { self.setThemeSelector(with:  SelectorsConstants.setShadowColorSelector, for: newValue) }
     }
+    
+    var tap_theme_shadowRadius: ThemeCGFloatSelector? {
+        get { return self.themeSelector(for:  SelectorsConstants.setShadowRadiusSelector) as? ThemeCGFloatSelector }
+        set { self.setThemeSelector(with:  SelectorsConstants.setShadowRadiusSelector, for: newValue) }
+    }
+    
+    var tap_theme_shadowOpacity: ThemeCGFloatSelector? {
+        get { return self.themeSelector(for:  SelectorsConstants.setShadowOpacitySelector) as? ThemeCGFloatSelector }
+        set { self.setThemeSelector(with:  SelectorsConstants.setShadowOpacitySelector, for: newValue) }
+    }
+    
     var tap_theme_strokeColor: ThemeCgColorSelector? {
         get { return self.themeSelector(for:  SelectorsConstants.setStrokeColorSelector) as? ThemeCgColorSelector }
         set { self.setThemeSelector(with:  SelectorsConstants.setStrokeColorSelector, for: newValue) }

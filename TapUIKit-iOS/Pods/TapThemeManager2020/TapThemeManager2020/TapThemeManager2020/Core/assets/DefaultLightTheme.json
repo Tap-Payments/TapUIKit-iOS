@@ -256,6 +256,15 @@
             "titleLabelColor" : "greyishBrown"
         }
     },
+    "loyaltyView" : {
+      "cardView": {
+          "backgroundColor" : "white",
+          "radius": 8,
+          "shadowColor":"#00000027",
+          "shadowRadius":26,
+          "shadowOpacity":1
+      }
+    },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
         "titleLabelColor" : "lightPeach",

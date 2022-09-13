@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TapThemeManager2020
 
 /// A view represents the loyalty points view used while paying
 @objc public class TapLoyaltyView: UIView {
@@ -54,12 +55,13 @@ extension TapLoyaltyView {
         
         backgroundColor = .clear
         containerView.backgroundColor = .clear
-        cardView.layer.cornerRadius = 20.0
-        cardView.layer.shadowColor = UIColor.gray.cgColor
+        cardView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).cardView.radius")
+        cardView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).cardView.shadowColor")
         cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        cardView.layer.shadowRadius = 12.0
-        cardView.layer.shadowOpacity = 0.7
-        
+        cardView.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).cardView.shadowRadius")
+        cardView.layer.shadowOpacity =
+        TapThemeManager.numberValue(for: "\(themePath).cardView.shadowRadius")?.floatValue ?? 0
+        cardView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).cardView.backgroundColor")
         
         /*titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont")
         titleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).titleLabelColor")
