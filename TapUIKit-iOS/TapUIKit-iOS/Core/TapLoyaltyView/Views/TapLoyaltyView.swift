@@ -21,7 +21,7 @@ import TapThemeManager2020
     /// The path to look for theme entry in
     private let themePath = "loyaltyView"
     
-    // Mark:- Init methods
+    // MARK: Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -38,6 +38,35 @@ import TapThemeManager2020
         translatesAutoresizingMaskIntoConstraints = false
         //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
         applyTheme()
+    }
+    
+    
+    // MARK: Private
+    internal func loadLabels() {
+        
+    }
+    
+    internal func loadImages() {
+        
+    }
+    
+    // MARK: Public
+    
+    @objc public var viewModel:TapLoyaltyViewModel? {
+        didSet{
+            refresh()
+        }
+    }
+    
+    /// Updates the view with the new view model
+    public func changeViewModel(with viewModel:TapLoyaltyViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    /// Call to refresh the UI if any data changed
+    @objc public func refresh() {
+        loadLabels()
+        loadImages()
     }
 }
 
@@ -62,25 +91,6 @@ extension TapLoyaltyView {
         cardView.layer.shadowOpacity =
         TapThemeManager.numberValue(for: "\(themePath).cardView.shadowRadius")?.floatValue ?? 0
         cardView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).cardView.backgroundColor")
-        
-        /*titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont")
-        titleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).titleLabelColor")
-        
-        subtitleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).subTitleLabelFont")
-        subtitleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).subTitleLabelColor")
-        
-        merchantLogoContainerView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).merchantLogoCorner")
-        merchantLogoPlaceHolderView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderColor")
-        merchantLogoPlaceHolderInitialLabel.tap_theme_font = .init(stringLiteral: "\(themePath).merchantLogoPlaceHolderFont")
-        merchantLogoPlaceHolderInitialLabel.tap_theme_textColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderLabelColor")
-        
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
-        
-        // Push the title and the merchant header a bit if arabic is being used
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        topSpaceBetweenMerchantNameAndTitleConstraint.constant += (TapLocalisationManager.shared.localisationLocale == "ar") ? 2 : 0*/
         
         layoutIfNeeded()
     }

@@ -10,19 +10,21 @@ import Foundation
 /// Tap loyalty model.
 public struct TapLoyaltyModel : Codable {
     /// The id of teh loyalty programe
-    let id :String?
+    public let id :String?
     /// The bank identifier to match it with the bin response
-    let bankName: String?
+    public let bankName: String?
     /// The icon of the loyalty program owner
-    let bankLogo: String?
+    public let bankLogo: String?
     /// The name of the loyalty programe to be used in the header title
-    let loyaltyProgramName: String?
+    public let loyaltyProgramName: String?
     /// The name of the used shceme (ADCB Points, Fawry Values, etc.)
-    let loyaltyPointsName: String?
+    public let loyaltyPointsName: String?
     /// A link to open the T&C of the loyalty scheme
-    let termsConditionsLink: String?
+    public let termsConditionsLink: String?
     /// The list of supported currencies each with the conversion rate
-    let supportedCurrencies: [LoyaltySupportedCurrency]?
+    public let supportedCurrencies: [LoyaltySupportedCurrency]?
+    /// The name of the used shceme (ADCB Points, Fawry Values, etc.)
+    public let transactionsCount: String?
 }
 
 // MARK: Welcome convenience initializers and mutators
@@ -58,6 +60,7 @@ public extension TapLoyaltyModel {
      - Parameter loyaltyPointsName: The name of the used shceme (ADCB Points, Fawry Values, etc.)
      - Parameter termsConditionsLink: A link to open the T&C of the loyalty scheme
      - Parameter supportedCurrencies: The list of supported currencies each with the conversion rate
+     - Parameter transactionsCount: The name of the used shceme (ADCB Points, Fawry Values, etc.)
      */
     func with(
         id: String? = nil,
@@ -66,6 +69,7 @@ public extension TapLoyaltyModel {
         loyaltyProgramName: String? = nil,
         loyaltyPointsName: String? = nil,
         termsConditionsLink: String? = nil,
+        transactionsCount: String? = nil,
         supportedCurrencies: [LoyaltySupportedCurrency]? = nil
     ) -> TapLoyaltyModel {
         return TapLoyaltyModel(
@@ -75,7 +79,8 @@ public extension TapLoyaltyModel {
             loyaltyProgramName: loyaltyProgramName ?? self.loyaltyProgramName,
             loyaltyPointsName: loyaltyPointsName ?? self.loyaltyPointsName,
             termsConditionsLink: termsConditionsLink ?? self.termsConditionsLink,
-            supportedCurrencies: supportedCurrencies ?? self.supportedCurrencies
+            supportedCurrencies: supportedCurrencies ?? self.supportedCurrencies,
+            transactionsCount: transactionsCount ?? self.transactionsCount
         )
     }
     
@@ -95,9 +100,11 @@ public extension TapLoyaltyModel {
 /// The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
 public struct LoyaltySupportedCurrency: Codable {
     /// The rate to convert amount to loyalty points using this currency
-    let rate: Double?
+    public let rate: Double?
     /// The currency itself
-    let currency: TapCurrencyCode?
+    public let currency: TapCurrencyCode?
+    /// Balance in this currency
+    public let balanceAmount:Double?
 }
 
 // MARK: SupportedCurrency convenience initializers and mutators
@@ -136,14 +143,17 @@ public extension LoyaltySupportedCurrency {
      The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
      - Parameter rate: The rate to convert amount to loyalty points using this currency
      - Parameter currency: The currency itself
+     - Parameter balance: The balane in this currency
      */
     func with(
         rate: Double? = nil,
-        currency: TapCurrencyCode? = nil
+        currency: TapCurrencyCode? = nil,
+        balance: Double? = nil
     ) -> LoyaltySupportedCurrency {
         return LoyaltySupportedCurrency(
             rate: rate ?? self.rate,
-            currency: currency ?? self.currency
+            currency: currency ?? self.currency,
+            balanceAmount: balance ?? self.balanceAmount
         )
     }
     
