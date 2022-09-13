@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapLoyaltyView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="cardView" destination="qYb-mP-ppT" id="Ihe-bV-2vg"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="9gi-4K-A3e"/>
             </connections>
         </placeholder>
@@ -18,8 +19,20 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="358" height="159"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYb-mP-ppT">
+                    <rect key="frame" x="16" y="1" width="326" height="157"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qYb-mP-ppT" secondAttribute="bottom" constant="1" id="IfQ-gw-jpO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qYb-mP-ppT" secondAttribute="trailing" constant="16" id="Lmw-8K-VYL"/>
+                <constraint firstItem="qYb-mP-ppT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="VJp-X0-8fi"/>
+                <constraint firstItem="qYb-mP-ppT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="nss-i7-Blz"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139" y="151"/>
         </view>

@@ -9,13 +9,14 @@
 import UIKit
 
 /// A view represents the loyalty points view used while paying
-class TapLoyaltyView: UIView {
+@objc public class TapLoyaltyView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     
-
-    
+    /// The actual container view that holds everything from the XIB
+    @IBOutlet var cardView: UIView!
+        
     /// The path to look for theme entry in
     private let themePath = "loyaltyView"
     
@@ -50,6 +51,15 @@ extension TapLoyaltyView {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
+        
+        backgroundColor = .clear
+        containerView.backgroundColor = .clear
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.shadowColor = UIColor.gray.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        cardView.layer.shadowRadius = 12.0
+        cardView.layer.shadowOpacity = 0.7
+        
         
         /*titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont")
         titleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).titleLabelColor")
