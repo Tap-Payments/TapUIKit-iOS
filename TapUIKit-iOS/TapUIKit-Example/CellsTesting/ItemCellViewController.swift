@@ -72,13 +72,17 @@ class ItemCellViewController: UIViewController {
         }
     }
     private func configureTheViewModel() {
+        var discounts:[AmountModificatorModel]? = nil
+        
         if discountValueSlider.isUserInteractionEnabled {
             let discountType:AmountModificationType = discountTypeSegmern.selectedSegmentIndex == 0 ? .Fixed : .Percentage
             itemDiscount = .init(type: discountType, value: Double(discountValueSlider.value))
+            discounts = [itemDiscount!]
         }else{
             itemDiscount = nil
+            discounts = nil
         }
-        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: .init(value: Double(itemQuantity), unitOfMeasurement: .units), discount: itemDiscount, totalAmount: 0)
+        let itemModel:ItemModel = .init(title: itemTitle, description: itemDescriptio, price: itemPrice, quantity: Double(itemQuantity), discount: discounts, totalAmount: 0)
         //itemModel.itemFinalPrice()
         //try! .init(from: ["title":itemTitle,"description":itemDescriptio
             //,"price":itemPrice,"quantity":itemQuantity])
