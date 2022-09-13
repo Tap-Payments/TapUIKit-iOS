@@ -509,6 +509,7 @@
 		E80AFDF72626C48C5733F43C870686BB /* UIHexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDC1451C7E5CE308969B07395EFE32 /* UIHexColor.swift */; };
 		E887737D976704D5C57E9C89F1D06A5A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B343D34FFE94816157EF72A860A542B /* CameraView.swift */; };
 		E8C3A4CEABEB603F13D3EC0742F936B8 /* Shipping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA25ACD4990CA56149B5ECA1A329403 /* Shipping.swift */; };
+		E8CD347E28D080E70093DA26 /* TapLoyaltyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD347D28D080E60093DA26 /* TapLoyaltyModel.swift */; };
 		E98DC8FB2578E76A812E0C94BA10E1B1 /* ConstraintDirectionalInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E132315271CBEEBEA81711887BF63860 /* ConstraintDirectionalInsets.swift */; };
 		EB251E76D497419C54ABE9323C81A719 /* URLSession+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A1A9333EF47C165C12A55E329FFC5 /* URLSession+Additions.swift */; };
 		EB562D3E5AD9C37B353B90760AC22D61 /* TaskLoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796DDA08A6C8351EED88EAEFB5BBB41 /* TaskLoadData.swift */; };
@@ -1526,6 +1527,7 @@
 		E7425A113982645E98682F654EA878D2 /* Pods-TapUIKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapUIKit-iOS.modulemap"; sourceTree = "<group>"; };
 		E81F24E7F7E55A2AAAA3F5B1B4A93412 /* LocalisationManagerKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "LocalisationManagerKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E85A94E8D24867EA4AB1DEF74F6CC314 /* HexTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HexTextField.swift; path = SheetyColors/Classes/Common/Views/HexTextField.swift; sourceTree = "<group>"; };
+		E8CD347D28D080E60093DA26 /* TapLoyaltyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLoyaltyModel.swift; sourceTree = "<group>"; };
 		E8F90C8C97D05864729FB295201BDF82 /* AVPlayer+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AVPlayer+Additions.swift"; path = "TapAdditionsKitV2/TapAdditionsKitV2/AVFoundation/AVPlayer+Additions.swift"; sourceTree = "<group>"; };
 		E904434ACA76C09DBF3CD00635580839 /* Locale+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Locale+Additions.swift"; path = "TapAdditionsKitV2/TapAdditionsKitV2/Foundation/Locale+Additions.swift"; sourceTree = "<group>"; };
 		EA4ED642064D95DD9EE07DC3E261D6CE /* FontProps.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProps.swift; path = Source/Colors/Models/FontProps.swift; sourceTree = "<group>"; };
@@ -2175,6 +2177,7 @@
 				2F66E448C24EA56B2E101656CE3569BA /* Transfer.swift */,
 				599FCECDB5723F3737082B62266ED619 /* URLStatus.swift */,
 				C3B8FD31B49DEB002202A3F51C970987 /* Volume.swift */,
+				E8CD347D28D080E60093DA26 /* TapLoyaltyModel.swift */,
 				958A824FDD94B4C8390BC07FDD4F36F6 /* Resources */,
 				5C7BF3058DE724507886F337E5EDE441 /* Support Files */,
 			);
@@ -3977,6 +3980,7 @@
 				B9037A7CFE9B5994FE6FC58B97CA867D /* TapNetworkPath.swift in Sources */,
 				E48CA775BE96D4ED57D0A93E643450DC /* TapPaymentOption.swift in Sources */,
 				8D76F92DC022AC873ED5EDDE1E00CDF6 /* TapPaymentOptionsReponseModel.swift in Sources */,
+				E8CD347E28D080E70093DA26 /* TapLoyaltyModel.swift in Sources */,
 				62F5C023CB433DC2FB645258A840B7B6 /* TapPaymentOptionsRequestModel.swift in Sources */,
 				1327A8A35A2636F63A8AA208752B779B /* TapPaymentType.swift in Sources */,
 				CEE180FFFC2CA5DC09B15D11994558AD /* TapPhone.swift in Sources */,
