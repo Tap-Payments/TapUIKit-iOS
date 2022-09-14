@@ -26,6 +26,8 @@ import CommonDataModelsKit_iOS
     internal var amount:Double
     /// The currency being used
     internal var currency:TapCurrencyCode
+    /// Indicates the current status of enablind/gisabling the loyalty program
+    @objc public var isEnabled:Bool = true
     
     // MARK: - Public normal swift variables
     /// Public reference to the loyalty view itself as UI that will be rendered
@@ -115,7 +117,10 @@ extension TapLoyaltyViewModel: TapLoyaltyHeaderDelegate {
     }
     
     func enableLoyaltySwitch(enable: Bool) {
-        
+        // save it for firther access
+        isEnabled = enable
+        // instructs the loyalty view to update its ui based on the new selectoin
+        tapLoyaltyView?.changeState(to: enable)
     }
     
 }

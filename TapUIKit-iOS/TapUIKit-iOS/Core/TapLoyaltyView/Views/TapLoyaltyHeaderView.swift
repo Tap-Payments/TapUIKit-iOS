@@ -95,11 +95,15 @@ internal class TapLoyaltyHeaderView: UIView {
     
     
     // MARK: UI Fired Functions
+    /// Indicates the user clicked on terms and conditions clicked
     @IBAction func termsButtonClicked(_ sender: Any) {
+        // Infom the delegate
         delegate?.termsAndConditionsClicked()
     }
-    
+    /// Indicates the user changes the state of the enablement switch
     @IBAction func enablementSwitchChanged(_ sender: Any) {
+        // Infom the delegate
+        delegate?.enableLoyaltySwitch(enable: loyaltyHeaderEnableSwitch.isOn)
     }
     
 }
