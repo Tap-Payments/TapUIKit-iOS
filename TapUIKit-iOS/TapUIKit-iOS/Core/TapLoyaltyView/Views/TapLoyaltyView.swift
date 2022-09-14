@@ -15,11 +15,17 @@ import TapThemeManager2020
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     
-    /// The actual container view that holds everything from the XIB
+    /// The actual card view that holds everything from the XIB
     @IBOutlet var cardView: UIView!
+    
+    /// The actual container view that holds everything from the XIB
+    @IBOutlet var stackView: UIStackView!
         
     /// The path to look for theme entry in
     private let themePath = "loyaltyView"
+    
+    /// The header view part in the loyalty widget
+    @IBOutlet weak var headerView: TapLoyaltyHeaderView!
     
     // MARK: Init methods
     override init(frame: CGRect) {
@@ -42,14 +48,14 @@ import TapThemeManager2020
     
     
     // MARK: Private
-    internal func loadLabels() {
+    /// Used to refresh the data rendered inside the header view of the loyalty widget
+    internal func reloadHeaderView() {
+        // Set the UI data
+        headerView.setup(with: viewModel?.loyaltyIcon, headerText: viewModel?.headerTitleText, subtitleText: viewModel?.headerSubTitleText, isEnabled: true, termsAndConditionsEnabled: viewModel?.shouldShowTermsButton ?? false)
+        // Set the delegate
+        headerView.delegate = viewModel
         
     }
-    
-    internal func loadImages() {
-        
-    }
-    
     // MARK: Public
     
     @objc public var viewModel:TapLoyaltyViewModel? {
@@ -65,8 +71,7 @@ import TapThemeManager2020
     
     /// Call to refresh the UI if any data changed
     @objc public func refresh() {
-        loadLabels()
-        loadImages()
+        reloadHeaderView()
     }
 }
 
@@ -84,14 +89,18 @@ extension TapLoyaltyView {
         
         backgroundColor = .clear
         containerView.backgroundColor = .clear
-        cardView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).cardView.radius")
+        cardView.layer.tap_theme_cornerRadious  = .init(keyPath: "\(themePath).cardView.radius")
+        stackView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).cardView.radius")
         cardView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).cardView.shadowColor")
         cardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         cardView.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).cardView.shadowRadius")
+        
         cardView.layer.shadowOpacity =
         TapThemeManager.numberValue(for: "\(themePath).cardView.shadowRadius")?.floatValue ?? 0
         cardView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).cardView.backgroundColor")
+        stackView.clipsToBounds = true
         
+        //cardView.masksToBounds = false
         layoutIfNeeded()
     }
     

@@ -58,7 +58,7 @@ import CommonDataModelsKit_iOS
     
     /// Computes the header subtitle text for the Loyalty view. Format is : Balance: AED 520.00 (81,500 TouchPoints)
     internal var headerSubTitleText: String {
-        return "Balance: \(currency.symbolRawValue) \(balance(forCurrency: currency)) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
+        return "Balance: \(currency.appleRawValue) \(balance(forCurrency: currency)) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
     }
     
     /// Decides what is the url if any to open for T&C for this specific loyalty. Returns nil if no link provided or malformed
@@ -69,6 +69,12 @@ import CommonDataModelsKit_iOS
             return nil
         }
         return nonNullTermsAndConditionsURL
+    }
+    
+    /// Checks if we have to show the terms button or not
+    internal var shouldShowTermsButton:Bool {
+        guard let _ = termsAndConditions else { return false }
+        return true
     }
     
     /// Decides what is the url to load the loyalty icon and nil otehrwise
@@ -94,5 +100,22 @@ import CommonDataModelsKit_iOS
         return loyaltyModel.supportedCurrencies?.first{$0.currency == forCurrency}?.balanceAmount ?? 0
     }
     
+    
+}
+
+
+// MARK: Extensions and delegates
+extension TapLoyaltyViewModel: TapLoyaltyHeaderDelegate {
+    
+    func termsAndConditionsClicked() {
+        // Defensive code to make sure URL exists and valid
+        if let url = termsAndConditions {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func enableLoyaltySwitch(enable: Bool) {
+        
+    }
     
 }

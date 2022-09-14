@@ -9,6 +9,30 @@ import Foundation
 
 /// Tap loyalty model.
 public struct TapLoyaltyModel : Codable {
+    
+    /**
+     Tap loyalty model.
+     - Parameter id: The id of teh loyalty programe
+     - Parameter bankName: The bank identifier to match it with the bin response
+     - Parameter bankLogo: The icon of the loyalty program owner
+     - Parameter loyaltyProgramName: The name of the loyalty programe to be used in the header title
+     - Parameter loyaltyPointsName: The name of the used shceme (ADCB Points, Fawry Values, etc.)
+     - Parameter termsConditionsLink: A link to open the T&C of the loyalty scheme
+     - Parameter supportedCurrencies: The list of supported currencies each with the conversion rate
+     - Parameter transactionsCount: The name of the used shceme (ADCB Points, Fawry Values, etc.)
+     */
+    
+    public init(id: String?, bankName: String? = nil , bankLogo: String? = nil , loyaltyProgramName: String? = nil , loyaltyPointsName: String? = nil , termsConditionsLink: String? = nil, supportedCurrencies: [LoyaltySupportedCurrency]? = nil, transactionsCount: String? = nil) {
+        self.id = id
+        self.bankName = bankName
+        self.bankLogo = bankLogo
+        self.loyaltyProgramName = loyaltyProgramName
+        self.loyaltyPointsName = loyaltyPointsName
+        self.termsConditionsLink = termsConditionsLink
+        self.supportedCurrencies = supportedCurrencies
+        self.transactionsCount = transactionsCount
+    }
+    
     /// The id of teh loyalty programe
     public let id :String?
     /// The bank identifier to match it with the bin response
@@ -51,39 +75,6 @@ public extension TapLoyaltyModel {
         try self.init(data: try Data(contentsOf: url))
     }
     
-    /**
-     Tap loyalty model.
-     - Parameter id: The id of teh loyalty programe
-     - Parameter bankName: The bank identifier to match it with the bin response
-     - Parameter bankLogo: The icon of the loyalty program owner
-     - Parameter loyaltyProgramName: The name of the loyalty programe to be used in the header title
-     - Parameter loyaltyPointsName: The name of the used shceme (ADCB Points, Fawry Values, etc.)
-     - Parameter termsConditionsLink: A link to open the T&C of the loyalty scheme
-     - Parameter supportedCurrencies: The list of supported currencies each with the conversion rate
-     - Parameter transactionsCount: The name of the used shceme (ADCB Points, Fawry Values, etc.)
-     */
-    func with(
-        id: String? = nil,
-        bankName: String? = nil,
-        bankLogo: String? = nil,
-        loyaltyProgramName: String? = nil,
-        loyaltyPointsName: String? = nil,
-        termsConditionsLink: String? = nil,
-        transactionsCount: String? = nil,
-        supportedCurrencies: [LoyaltySupportedCurrency]? = nil
-    ) -> TapLoyaltyModel {
-        return TapLoyaltyModel(
-            id: id ?? self.id,
-            bankName: bankName ?? self.bankName,
-            bankLogo: bankLogo ?? self.bankLogo,
-            loyaltyProgramName: loyaltyProgramName ?? self.loyaltyProgramName,
-            loyaltyPointsName: loyaltyPointsName ?? self.loyaltyPointsName,
-            termsConditionsLink: termsConditionsLink ?? self.termsConditionsLink,
-            supportedCurrencies: supportedCurrencies ?? self.supportedCurrencies,
-            transactionsCount: transactionsCount ?? self.transactionsCount
-        )
-    }
-    
     /// Encodes the model into Data
     func jsonData() throws -> Data {
         return try newJSONEncoder().encode(self)
@@ -99,12 +90,30 @@ public extension TapLoyaltyModel {
 // MARK: - SupportedCurrency
 /// The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
 public struct LoyaltySupportedCurrency: Codable {
+    
+    /**
+     The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
+     - Parameter rate: The rate to convert amount to loyalty points using this currency
+     - Parameter currency: The currency itself
+     - Parameter balance: The balane in this currency
+     - Parameter minimumAmount: Minimum redemption value in this currency
+     */
+    
+    public init(rate: Double?, currency: TapCurrencyCode?, balanceAmount: Double?, minimumAmount: Double?) {
+        self.rate = rate
+        self.currency = currency
+        self.balanceAmount = balanceAmount
+        self.minimumAmount = minimumAmount
+    }
+    
     /// The rate to convert amount to loyalty points using this currency
     public let rate: Double?
     /// The currency itself
     public let currency: TapCurrencyCode?
     /// Balance in this currency
     public let balanceAmount:Double?
+    /// minimum redemption value in this currency
+    public let minimumAmount:Double?
 }
 
 // MARK: SupportedCurrency convenience initializers and mutators
@@ -132,29 +141,9 @@ public extension LoyaltySupportedCurrency {
     
     /**
      The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
-     - Parameter rate: The rate to convert amount to loyalty points using this currency
-     - Parameter currency: The currency itself
      */
     init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
-    }
-    
-    /**
-     The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
-     - Parameter rate: The rate to convert amount to loyalty points using this currency
-     - Parameter currency: The currency itself
-     - Parameter balance: The balane in this currency
-     */
-    func with(
-        rate: Double? = nil,
-        currency: TapCurrencyCode? = nil,
-        balance: Double? = nil
-    ) -> LoyaltySupportedCurrency {
-        return LoyaltySupportedCurrency(
-            rate: rate ?? self.rate,
-            currency: currency ?? self.currency,
-            balanceAmount: balance ?? self.balanceAmount
-        )
     }
     
     /// Encodes the model into Data

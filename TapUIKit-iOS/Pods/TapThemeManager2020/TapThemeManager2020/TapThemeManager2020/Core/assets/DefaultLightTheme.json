@@ -263,6 +263,14 @@
           "shadowColor":"#00000027",
           "shadowRadius":26,
           "shadowOpacity":1
+      },
+      "headerView": {
+          "backgroundColor" : "clear",
+          "switchOnTintColor" : "deepSkyBlue",
+          "titleTextColor" : "greyishBrown",
+          "subTitleTextColor" : "brownGreySeven",
+          "titleFont" : "Roboto-Regular,12",
+          "subTitleFont" : "Roboto-Regular,10"
       }
     },
     "merchantHeaderView": {
