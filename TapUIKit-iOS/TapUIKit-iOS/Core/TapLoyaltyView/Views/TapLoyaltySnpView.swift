@@ -107,6 +107,8 @@ import SnapKit
         // The header view
         headerView.snp.makeConstraints { make in
             make.height.equalTo(44)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
             make.top.equalToSuperview()
         }
 
