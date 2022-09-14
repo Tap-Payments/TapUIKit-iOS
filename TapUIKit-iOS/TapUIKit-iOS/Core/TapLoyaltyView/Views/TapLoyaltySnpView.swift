@@ -32,6 +32,9 @@ import SnapKit
     }
     
     internal func commonInit() {
+        
+        rtlSupport()
+        
         addSubViews()
         applyTheme()
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) { [weak self] in
@@ -147,7 +150,6 @@ extension TapLoyaltyView {
         
         backgroundColor = .clear
         containterView.layer.tap_theme_cornerRadious  = .init(keyPath: "\(themePath).cardView.radius")
-        containterView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).cardView.radius")
         containterView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).cardView.shadowColor")
         containterView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         containterView.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).cardView.shadowRadius")

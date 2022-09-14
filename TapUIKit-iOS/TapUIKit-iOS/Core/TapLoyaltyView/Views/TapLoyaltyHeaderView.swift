@@ -41,6 +41,8 @@ internal class TapLoyaltyHeaderView: UIView {
     /// A protocol to listen to UI events fired from the loyalty header view
     internal var delegate:TapLoyaltyHeaderDelegate?
     
+    @IBOutlet var toBeLocalisedViews: [UIView]!
+    
     /// The path to look for theme entry in
     private let themePath = "loyaltyView.headerView"
     
@@ -59,7 +61,9 @@ internal class TapLoyaltyHeaderView: UIView {
     private func commonInit() {
         self.containerView = setupXIB()
         translatesAutoresizingMaskIntoConstraints = false
-        //handlerImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        toBeLocalisedViews.forEach{ $0.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight }
+        
         applyTheme()
     }
     

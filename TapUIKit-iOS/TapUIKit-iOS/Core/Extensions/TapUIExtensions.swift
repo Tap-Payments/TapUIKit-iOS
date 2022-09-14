@@ -171,11 +171,15 @@ public extension UIView {
         if addAsSubView {
             addSubview(newContainerView)
         }
-        newContainerView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
-        localizeUILabelsIn(view:newContainerView)
+        newContainerView.rtlSupport()
         return newContainerView
     }
     
+    
+    internal func rtlSupport() {
+        semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
+        localizeUILabelsIn(view:self)
+    }
     
     private func getLabelsInView(view: UIView) -> [UILabel] {
         var results = [UILabel]()
