@@ -166,7 +166,11 @@ extension TapLoyaltyAmountView: UITextFieldDelegate {
             // Otherwise let us check he didn't type a non decimal value
             guard let decimalInput : Decimal = Decimal(string: newString, locale: Locale(identifier: "en_US")) else { return false }
             // Don't accept any more decimals than the allowed placed by the currency
-            guard decimalInput.significantFractionalDecimalDigits <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.currency?.decimalDigits ?? 0 else { return false }
+            // We don't accept a value bigger than the max balance for the user with this currency
+            guard decimalInput.significantFractionalDecimalDigits <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.currency?.decimalDigits ?? 0,
+                  NSDecimalNumber(decimal: decimalInput).doubleValue  <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.balanceAmount ?? 0
+            else { return false }
+            // We don't accept a value bigger than the max balance for the user with this currency
             
             // Apply a soft limit on the length of the amount
             return newString.count <= 8
