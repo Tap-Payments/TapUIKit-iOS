@@ -29,8 +29,10 @@ class TapLoyaltyAmountView: UIView {
     internal var viewModel:TapLoyaltyViewModel?
     
     /// A shortcut to get the current amoutnt
-    internal var amount:Double {
-        return Double(amountTextField.text ?? "0") ?? 0
+    internal var amount:Double = 0 {
+        didSet {
+            postAmountUpdated()
+        }
     }
     
     // MARK: Init methods
@@ -65,6 +67,8 @@ class TapLoyaltyAmountView: UIView {
         self.viewModel = viewModel
         // reset any data we have
         amountTextField.text = ""
+        // save the initial amount
+        amount = initialAmount
         // put the initial amount if any
         if initialAmount > 0 { amountTextField.text = "\(initialAmount)" }
         reloadData()
@@ -86,6 +90,21 @@ class TapLoyaltyAmountView: UIView {
     /// Assigns all needed delegates for different views
     internal func configureDelegates() {
         amountTextField.delegate = self
+        amountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    
+    /// Handles the logic needed to be done once the amount is changed
+    internal func postAmountUpdated() {
+        // reload the text data in points deeduction basde on new amount
+        reloadData()
+    }
+    
+    /// Will catch the event when the user changed the text in the amonut field with an accepted value
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        // Save the amount
+        amount = Double(amountTextField.text ?? "0") ?? 0
+        
     }
 }
 
@@ -143,14 +162,14 @@ extension TapLoyaltyAmountView: UITextFieldDelegate {
             let newString = currentString.replacingCharacters(in: Range(range, in:currentString)!, with: string)
             // If the user cleared it is fine up to him
             guard newString != "" else { return true }
+            
             // Otherwise let us check he didn't type a non decimal value
             guard let decimalInput : Decimal = Decimal(string: newString, locale: Locale(identifier: "en_US")) else { return false }
             // Don't accept any more decimals than the allowed placed by the currency
             guard decimalInput.significantFractionalDecimalDigits <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.currency?.decimalDigits ?? 0 else { return false }
             
             // Apply a soft limit on the length of the amount
-            return newString.count < 15
-            
+            return newString.count <= 8
         }
         return true
     }
