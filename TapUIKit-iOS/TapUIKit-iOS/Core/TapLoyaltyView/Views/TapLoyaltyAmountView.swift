@@ -41,10 +41,15 @@ class TapLoyaltyAmountView: UIView {
     private func commonInit() {
         self.containerView = setupXIB()
         translatesAutoresizingMaskIntoConstraints = false
-        
+        configureDelegates()
         //toBeLocalisedViews.forEach{ $0.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight }
         
         applyTheme()
+    }
+    
+    /// Assigns all needed delegates for different views
+    internal func configureDelegates() {
+        amountTextField.delegate = self
     }
 }
 
@@ -81,4 +86,31 @@ extension TapLoyaltyAmountView {
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
     }
+}
+
+
+extension TapLoyaltyAmountView: UITextFieldDelegate {
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.amountTextField {
+            // We will need to accept only decimal digits into the amount field
+            
+            // So first we need to check that the new string containts only numbers and .
+            let aSet = NSCharacterSet(charactersIn:"0123456789.").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            guard string == numberFiltered else { return false }
+            
+            // Then we need to make sure that the string will be parsable as decimal number
+            let currentString:String = textField.text ?? ""
+            let newString = currentString.replacingCharacters(in: Range(range, in:currentString)!, with: string)
+            guard let _ : Double = Double(newString) else { return false }
+
+            return true
+            
+        }
+        return true
+    }
+    
 }
