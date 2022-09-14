@@ -40,7 +40,7 @@ internal class TapLoyaltyHeaderView: UIView {
     @IBOutlet weak var termsAndConditionsButton: UIButton!
     /// A protocol to listen to UI events fired from the loyalty header view
     internal var delegate:TapLoyaltyHeaderDelegate?
-    
+    /// list of views that needs to be forceable RTL support if needed
     @IBOutlet var toBeLocalisedViews: [UIView]!
     
     /// The path to look for theme entry in

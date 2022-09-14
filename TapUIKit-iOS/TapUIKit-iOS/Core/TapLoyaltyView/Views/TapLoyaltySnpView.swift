@@ -18,7 +18,8 @@ import SnapKit
     private let themePath = "loyaltyView"
     /// The header view part in the loyalty widget
     lazy var headerView:TapLoyaltyHeaderView = TapLoyaltyHeaderView()
-    
+    /// The amount view part in the loyalty widget
+    lazy var amountView:TapLoyaltyAmountView = TapLoyaltyAmountView()
     
     // Mark:- Init methods
     public override init(frame: CGRect) {
@@ -83,6 +84,7 @@ import SnapKit
     internal func addSubViews() {
         addSubview(containterView)
         containterView.addSubview(headerView)
+        containterView.addSubview(amountView)
     }
     
     /// creates the needed constraints to make sure the views are correctly laid out
@@ -112,6 +114,13 @@ import SnapKit
             make.top.equalToSuperview()
         }
 
+        // The amount view
+        amountView.snp.makeConstraints { make in
+            make.height.equalTo(44)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.top.equalTo(headerView.snp.bottom)
+        }
         layoutIfNeeded()
         
     }
