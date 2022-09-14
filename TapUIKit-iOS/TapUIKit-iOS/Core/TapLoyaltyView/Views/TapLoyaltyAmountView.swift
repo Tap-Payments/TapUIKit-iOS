@@ -25,6 +25,13 @@ class TapLoyaltyAmountView: UIView {
     @IBOutlet weak var tapSeparator: TapSeparatorView!
     /// The path to look for theme entry in
     private let themePath = "loyaltyView.amountView"
+    /// The current selected currency data
+    internal var viewModel:TapLoyaltyViewModel?
+    
+    /// A shortcut to get the current amoutnt
+    internal var amount:Double {
+        return Double(amountTextField.text ?? "0") ?? 0
+    }
     
     // MARK: Init methods
     override init(frame: CGRect) {
@@ -45,6 +52,35 @@ class TapLoyaltyAmountView: UIView {
         //toBeLocalisedViews.forEach{ $0.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight }
         
         applyTheme()
+    }
+    
+    
+    /**
+     Will stup the content of the view with the given data
+     - Parameter with currency: The currenct loyalty supported currency used
+     - Parameter initialAmount: The initial amount to display if any
+     */
+    internal func setup(with viewModel:TapLoyaltyViewModel, initialAmount:Double = 0) {
+        // save the viewModel
+        self.viewModel = viewModel
+        // reset any data we have
+        amountTextField.text = ""
+        // put the initial amount if any
+        if initialAmount > 0 { amountTextField.text = "\(initialAmount)" }
+        reloadData()
+        
+    }
+    
+    /// Call it to reload the textual content of the amount view when a change happens (like selected currency.)
+    internal func reloadData() {
+        guard let nonNullCurrency = viewModel?.currency,
+              let nonNullLoyalCurrency = viewModel?.loyaltyCurrency(forCurrency: nonNullCurrency),
+              let rate = nonNullLoyalCurrency.currency?.rate else { return }
+        
+        // Set the currency label
+        currencyLabel.text = nonNullLoyalCurrency.currency?.displaybaleSymbol
+        // Set the redemption points based on the amount and the rate
+        pointsLabel.text = " = \(amount*rate) \(viewModel?.loyaltyModel.loyaltyPointsName ?? "")"
     }
     
     /// Assigns all needed delegates for different views
@@ -105,9 +141,15 @@ extension TapLoyaltyAmountView: UITextFieldDelegate {
             // Then we need to make sure that the string will be parsable as decimal number
             let currentString:String = textField.text ?? ""
             let newString = currentString.replacingCharacters(in: Range(range, in:currentString)!, with: string)
-            guard let _ : Double = Double(newString) else { return false }
-
-            return true
+            // If the user cleared it is fine up to him
+            guard newString != "" else { return true }
+            // Otherwise let us check he didn't type a non decimal value
+            guard let decimalInput : Decimal = Decimal(string: newString, locale: Locale(identifier: "en_US")) else { return false }
+            // Don't accept any more decimals than the allowed placed by the currency
+            guard decimalInput.significantFractionalDecimalDigits <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.currency?.decimalDigits ?? 0 else { return false }
+            
+            // Apply a soft limit on the length of the amount
+            return newString.count < 15
             
         }
         return true

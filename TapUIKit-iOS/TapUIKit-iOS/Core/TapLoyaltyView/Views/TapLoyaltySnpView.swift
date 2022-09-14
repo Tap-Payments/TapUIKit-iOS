@@ -54,6 +54,14 @@ import SnapKit
     }
     
     
+    /// Used to refresh the data rendered inside the header view of the loyalty widget
+    internal func reloadAmountView() {
+        // Set the UI data
+        guard let nonNullViewModel = self.viewModel else { return }
+        amountView.setup(with: nonNullViewModel, initialAmount: nonNullViewModel.amount)
+    }
+    
+    
     
     /// Will change the UI state enable/disable based on the provided valye
     /// - Parameter to enabled: If true then it is enabled and clickable and expanded. Otehrwise, will be shrunk and disbaled
@@ -143,6 +151,7 @@ import SnapKit
     /// Call to refresh the UI if any data changed
     @objc public func refresh() {
         reloadHeaderView()
+        reloadAmountView()
     }
 
 }

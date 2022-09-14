@@ -93,23 +93,19 @@ public struct LoyaltySupportedCurrency: Codable {
     
     /**
      The model of the loyalty supported currencies. Each one will have the the rating + the currency itself
-     - Parameter rate: The rate to convert amount to loyalty points using this currency
      - Parameter currency: The currency itself
      - Parameter balance: The balane in this currency
      - Parameter minimumAmount: Minimum redemption value in this currency
      */
     
-    public init(rate: Double?, currency: TapCurrencyCode?, balanceAmount: Double?, minimumAmount: Double?) {
-        self.rate = rate
+    public init(currency: AmountedCurrency?, balanceAmount: Double?, minimumAmount: Double?) {
         self.currency = currency
         self.balanceAmount = balanceAmount
         self.minimumAmount = minimumAmount
     }
     
-    /// The rate to convert amount to loyalty points using this currency
-    public let rate: Double?
     /// The currency itself
-    public let currency: TapCurrencyCode?
+    public let currency: AmountedCurrency?
     /// Balance in this currency
     public let balanceAmount:Double?
     /// minimum redemption value in this currency

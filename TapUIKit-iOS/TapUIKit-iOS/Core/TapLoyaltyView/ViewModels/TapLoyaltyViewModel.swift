@@ -60,7 +60,7 @@ import CommonDataModelsKit_iOS
     
     /// Computes the header subtitle text for the Loyalty view. Format is : Balance: AED 520.00 (81,500 TouchPoints)
     internal var headerSubTitleText: String {
-        return "Balance: \(currency.appleRawValue) \(balance(forCurrency: currency)) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
+        return "Balance: \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
     }
     
     /// Decides what is the url if any to open for T&C for this specific loyalty. Returns nil if no link provided or malformed
@@ -91,18 +91,15 @@ import CommonDataModelsKit_iOS
     
     
     
-    
     /**
-     Fetches the balance for the user for a given currency
-     - Parameter forCurrency: The currency you want the balance for
-     - Returns the user's balance in the currency and 0 as a fallback
+     Fetches the supporte loyaly csurrency
+     - Parameter forCurrency: The currency you want the loyalty model for
+     - Returns the loyalty model currency
      */
-    internal func balance(forCurrency:TapCurrencyCode) -> Double {
-        // We filter the supported currencies to get the currency code we are looking for and then fetch the balance amount
-        return loyaltyModel.supportedCurrencies?.first{$0.currency == forCurrency}?.balanceAmount ?? 0
+    internal func loyaltyCurrency(forCurrency:TapCurrencyCode?) -> LoyaltySupportedCurrency? {
+        // We filter the supported currencies to get the currency code we are looking for and then fetch it
+        return loyaltyModel.supportedCurrencies?.first{$0.currency?.currency == forCurrency}
     }
-    
-    
 }
 
 

@@ -18,7 +18,7 @@ import class UIKit.UICollectionViewFlowLayout
 import  LocalisationManagerKit_iOS
 import Nuke
 //import SDWebImageSVGKitPlugin
-// MARK:- UIImageView extensions
+// MARK: - UIImageView extensions
 
 internal typealias SimpleClosure = (() -> ())
 private var actionKey : UInt8 = 1
@@ -35,7 +35,7 @@ internal extension UIImageView {
         }
     }
     
-    // MARK:- Making the image view tappable extension
+    // MARK: - Making the image view tappable extension
     // The callback function that will be set when the caller wants to make it as clickable
     var callback: SimpleClosure {
         get {
@@ -74,10 +74,10 @@ internal extension UIImageView {
     }
 }
 
-// MARK:- UIImage extensions
+// MARK: - UIImage extensions
 
 internal extension UIImage {
-    // MARK:- Loading UIImage from a given class's bundle
+    // MARK: - Loading UIImage from a given class's bundle
     /**
      Load an Image asset from a dynamic bundle based on the caller class type
      - Parameter name: The name of theimage you want to load
@@ -89,7 +89,7 @@ internal extension UIImage {
     }
     
     
-    // MARK:- Black and White
+    // MARK: - Black and White
      ///Convert the image into a grayscale one
     func toGrayScale() -> UIImage {
         let blackWhite = TapBlackWhiteImage()
@@ -101,10 +101,10 @@ internal extension UIImage {
 
 
 
-// MARK:- UIView extensions
+// MARK: - UIView extensions
 
 public extension UIView {
-    // MARK:- Making corner radious for certain corners
+    // MARK: - Making corner radious for certain corners
     /**
     Assigns a radious value to certain corners
     - Parameter corners: The  corners we want to apply the radious to
@@ -117,7 +117,7 @@ public extension UIView {
     }
     
     
-    // MARK:- Making corner radious for certain corners
+    // MARK: - Making corner radious for certain corners
     /**
      Wiggle animation for the uiview
      - Parameter on : If set then wiggle will start
@@ -143,7 +143,7 @@ public extension UIView {
     }
     
     
-    // MARK:- Loading a nib dynamically
+    // MARK: - Loading a nib dynamically
     /**
      Load a XIB file into a UIView
      - Parameter bundle: The bundle to load the XIB from, default is the XIB containing the UIView
@@ -200,19 +200,27 @@ public extension UIView {
     }
 }
 
-// MARK:- Encodable extensions
+// MARK: - Decimal extensions
+internal extension Decimal {
+    // counts how many decimal points do we have
+    var significantFractionalDecimalDigits: Int {
+        return max(-exponent, 0)
+    }
+}
+
+// MARK: - Encodable extensions
 
 extension Encodable {
-    // MARK:- Convert an Encodable to Dictionary
+    // MARK: - Convert an Encodable to Dictionary
     var dictionary: [String: Any]? {
         guard let data = try? JSONEncoder().encode(self) else { return nil }
         return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
     }
 }
 
-// MARK:- Decodable extensions
+// MARK: - Decodable extensions
 extension Decodable {
-    // MARK:- Create from Dictionary or array
+    // MARK: - Create from Dictionary or array
     init(from: Any) throws {
         let data = try JSONSerialization.data(withJSONObject: from, options: .prettyPrinted)
         let decoder = JSONDecoder()
@@ -221,10 +229,10 @@ extension Decodable {
 }
 
 
-// MARK:- String extensions
+// MARK: - String extensions
 
 extension String {
-    // MARK:- Check if a string is a valid URL
+    // MARK: - Check if a string is a valid URL
     ///Check if a string is a valid URL
     func isValidURL () -> Bool {
         if let url = NSURL(string: self) {
@@ -247,7 +255,7 @@ internal class flippableCollectionLayout:UICollectionViewFlowLayout{
     }
 }
 
-// MARK:- Application extensions
+// MARK: - Application extensions
 internal extension UIApplication {
     static var topSafeAreaHeight: CGFloat {
         var topSafeAreaHeight: CGFloat = 0
