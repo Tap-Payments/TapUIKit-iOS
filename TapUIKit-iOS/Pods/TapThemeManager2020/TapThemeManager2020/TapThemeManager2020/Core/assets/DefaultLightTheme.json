@@ -271,6 +271,16 @@
           "subTitleTextColor" : "brownGreySeven",
           "titleFont" : "Roboto-Regular,12",
           "subTitleFont" : "Roboto-Regular,10"
+      },
+      "amountView": {
+          "titleTextColor" : "#9F9F9F",
+          "titleFont" : "Roboto-Regular,10",
+          "currencyTextColor" : "greyishBrown",
+          "currencyFont" : "Roboto-Regular,16",
+          "amountTextColor" : "greyishBrown",
+          "amountFont" : "Roboto-Regular,16",
+          "pointsTextColor" : "greyishBrown",
+          "pointsFont" : "Roboto-Regular,12"
       }
     },
     "merchantHeaderView": {

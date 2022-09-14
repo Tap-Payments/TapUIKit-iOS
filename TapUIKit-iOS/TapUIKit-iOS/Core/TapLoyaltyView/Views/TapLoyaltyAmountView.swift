@@ -12,8 +12,19 @@ class TapLoyaltyAmountView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
+    /// The title label
+    @IBOutlet weak var titleLabel: UILabel!
     /// list of views that needs to be forceable RTL support if needed
     @IBOutlet var toBeLocalisedViews: [UIView]!
+    /// Displays how many points will the user redeem
+    @IBOutlet weak var pointsLabel: UILabel!
+    /// Allows the user to type in a specific amount he wants to redeem
+    @IBOutlet weak var amountTextField: UITextField!
+    /// Displays the currently being used currency
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var tapSeparator: TapSeparatorView!
+    /// The path to look for theme entry in
+    private let themePath = "loyaltyView.amountView"
     
     // MARK: Init methods
     override init(frame: CGRect) {
@@ -46,7 +57,21 @@ extension TapLoyaltyAmountView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
-        //backgroundColor = .clear
+        backgroundColor = .clear
+        containerView.backgroundColor = .clear
+        
+        titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleFont")
+        titleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).titleTextColor")
+        
+        pointsLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
+        pointsLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
+        
+        currencyLabel.tap_theme_font = .init(stringLiteral: "\(themePath).currencyFont")
+        currencyLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).currencyTextColor")
+        
+        amountTextField.tap_theme_font = .init(stringLiteral: "\(themePath).amountFont")
+        amountTextField.tap_theme_textColor = .init(stringLiteral: "\(themePath).amountTextColor")
+        
         layoutIfNeeded()
     }
     
