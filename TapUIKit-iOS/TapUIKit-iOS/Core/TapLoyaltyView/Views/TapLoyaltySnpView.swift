@@ -13,13 +13,15 @@ import SnapKit
 @objc public class TapLoyaltyView: UIView {
 
     /// The container view that holds everything from the XIB
-    lazy var containterView:UIView = UIView()
+    internal lazy var containterView:UIView = UIView()
     /// The path to look for theme entry in
     private let themePath = "loyaltyView"
     /// The header view part in the loyalty widget
-    lazy var headerView:TapLoyaltyHeaderView = TapLoyaltyHeaderView()
+    internal lazy var headerView:TapLoyaltyHeaderView = TapLoyaltyHeaderView()
     /// The amount view part in the loyalty widget
-    lazy var amountView:TapLoyaltyAmountView = TapLoyaltyAmountView()
+    internal lazy var amountView:TapLoyaltyAmountView = TapLoyaltyAmountView()
+    /// Holds all views that will be removed/added based on changing the enablement of the loyalty widget
+    internal lazy var enablementEffectedViews:[UIView] = []
     
     // Mark:- Init methods
     public override init(frame: CGRect) {
@@ -48,7 +50,7 @@ import SnapKit
     /// Used to refresh the data rendered inside the header view of the loyalty widget
     internal func reloadHeaderView() {
         // Set the UI data
-        headerView.setup(with: viewModel?.loyaltyIcon, headerText: viewModel?.headerTitleText, subtitleText: viewModel?.headerSubTitleText, isEnabled: true, termsAndConditionsEnabled: viewModel?.shouldShowTermsButton ?? false)
+        headerView.setup(with: viewModel?.loyaltyIcon, headerText: viewModel?.headerTitleText, subtitleText: viewModel?.headerSubTitleText, isEnabled: viewModel?.isEnabled ?? false, termsAndConditionsEnabled: viewModel?.shouldShowTermsButton ?? false)
         // Set the delegate
         headerView.delegate = viewModel
     }
@@ -62,15 +64,31 @@ import SnapKit
     }
     
     
+    /// Handles the logic to get the amount section back to its original data
+    internal func resetData() {
+        // hide the keyboard if any
+        amountView.amountTextField.resignFirstResponder()
+        // Reset the amount section data
+        reloadAmountView()
+    }
     
     /// Will change the UI state enable/disable based on the provided valye
     /// - Parameter to enabled: If true then it is enabled and clickable and expanded. Otehrwise, will be shrunk and disbaled
     internal func changeState(to enabled:Bool) {
+        // In all cases we will need to reset the data
+        resetData()
         if enabled {
-            // let us add all the sub views again
-            
+            // let us show all the sub views again
+            enablementEffectedViews.forEach{ view in
+                view.fadeIn()
+                view.isUserInteractionEnabled = true
+            }
         }else{
             // let us remove all sub views except the header
+            enablementEffectedViews.forEach{ view in
+                view.fadeOut()
+                view.isUserInteractionEnabled = false
+            }
         }
         // In all cases, we will need to re adjust our stack's height
         adjustHeight()
@@ -93,6 +111,9 @@ import SnapKit
         addSubview(containterView)
         containterView.addSubview(headerView)
         containterView.addSubview(amountView)
+        
+        // Mark the views that will change its visibility based in the enabelement of the loyalty widget
+        enablementEffectedViews.append(amountView)
     }
     
     /// creates the needed constraints to make sure the views are correctly laid out
