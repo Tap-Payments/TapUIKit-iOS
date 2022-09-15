@@ -19,6 +19,10 @@
             },
             "amountView": {
                 "title" : "Amount to redeem"
+            },
+            "footerView": {
+                "points": "Remaining",
+                "amount": "Remaining amount to pay"
             }
         },
         "HorizontalHeaders": {
@@ -150,6 +154,10 @@
             },
             "amountView": {
                 "title" : "المبلغ المستبدل"
+            },
+            "footerView": {
+                "points": "متبقي",
+                "amount": "متبقي القيمة للدفع"
             }
         },
         "HorizontalHeaders": {

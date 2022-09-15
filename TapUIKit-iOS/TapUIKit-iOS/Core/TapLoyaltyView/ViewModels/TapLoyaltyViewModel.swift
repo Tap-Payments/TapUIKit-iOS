@@ -99,14 +99,24 @@ import CommonDataModelsKit_iOS
     }
     
     
-    /// Computes the remaining points after redemption
+    /// Computes the remaining points localisation
     internal var pointsRemaningText: String {
-        return "Remaining \(loyaltyModel.loyaltyPointsName ?? ""): \(loyaltyModel.numericTransactionCount - usedPoints)"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.footerView.points", with: TapCommonConstants.pathForDefaultLocalisation())) " //\(loyaltyModel.loyaltyPointsName ?? ""): \(loyaltyModel.numericTransactionCount - usedPoints)"
+    }
+    
+    /// The points program name
+    internal var pointsNameText:String {
+        return "\(loyaltyModel.loyaltyPointsName ?? "") : "
+    }
+    
+    /// Computes the remaining points after redeeming the current amount
+    internal var remainingPoints:String {
+        return "\(loyaltyModel.numericTransactionCount - usedPoints)"
     }
     
     /// Computes the remaining amount to pay after redemption
     internal var amountRemaningText: String {
-        return "Remaining amount to pay: \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(transactionTotalAmount - amount)"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.footerView.amount", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(transactionTotalAmount - amount)"
     }
     
     /// Decides what is the url if any to open for T&C for this specific loyalty. Returns nil if no link provided or malformed

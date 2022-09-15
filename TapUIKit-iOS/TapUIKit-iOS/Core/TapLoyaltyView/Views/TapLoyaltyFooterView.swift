@@ -14,6 +14,9 @@ internal class TapLoyaltyFooterView: UIView {
     @IBOutlet var conentView: UIView!
     /// Displays the remaining points after redemeption
     @IBOutlet weak var remainingPointsLabel: UILabel!
+    @IBOutlet weak var pointsNameLabel: UILabel!
+    @IBOutlet weak var remaningPointsCountLabel: UILabel!
+    
     /// Displays the amount remaining to pay after redemption
     @IBOutlet weak var remainingAmountLabel: UILabel!
     /// The current selected currency data
@@ -52,6 +55,8 @@ internal class TapLoyaltyFooterView: UIView {
     /// Set the textual contents based on latest values in the view model
     internal func reloadData() {
         remainingPointsLabel.text = viewModel?.pointsRemaningText
+        pointsNameLabel.text = viewModel?.pointsNameText
+        remaningPointsCountLabel.text = viewModel?.remainingPoints
         remainingAmountLabel.text = viewModel?.amountRemaningText
     }
 
@@ -73,6 +78,12 @@ extension TapLoyaltyFooterView {
         
         remainingPointsLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
         remainingPointsLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
+        
+        pointsNameLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
+        pointsNameLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
+        
+        remaningPointsCountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
+        remaningPointsCountLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
         
         remainingAmountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).amountFont")
         remainingAmountLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).amountTextColor")
