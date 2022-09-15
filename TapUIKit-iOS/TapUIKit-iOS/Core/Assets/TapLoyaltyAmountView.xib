@@ -14,9 +14,17 @@
                 <outlet property="amountTextField" destination="tEd-Vk-I1r" id="4xq-eK-rMa"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="7TJ-3t-xft"/>
                 <outlet property="currencyLabel" destination="SY8-Oq-JDh" id="UbF-eF-yIq"/>
-                <outlet property="pointsLabel" destination="29i-09-BXX" id="t7D-x0-oEX"/>
+                <outlet property="pointsLabel" destination="K8O-lt-3Uk" id="8Oe-0v-fh2"/>
+                <outlet property="pointsProgramNameLabel" destination="Ggo-0l-beA" id="giM-Ql-B7w"/>
                 <outlet property="tapSeparator" destination="zL0-YU-2aX" id="P7l-63-v8n"/>
                 <outlet property="titleLabel" destination="fol-e1-Uus" id="WRC-Bw-9cm"/>
+                <outletCollection property="toBeLocalisedViews" destination="fol-e1-Uus" collectionClass="NSMutableArray" id="zzs-9n-r4C"/>
+                <outletCollection property="toBeLocalisedViews" destination="zuf-KW-FdL" collectionClass="NSMutableArray" id="6W5-eY-Ng7"/>
+                <outletCollection property="toBeLocalisedViews" destination="SY8-Oq-JDh" collectionClass="NSMutableArray" id="OgK-oz-1r6"/>
+                <outletCollection property="toBeLocalisedViews" destination="tEd-Vk-I1r" collectionClass="NSMutableArray" id="UXT-Uc-LbN"/>
+                <outletCollection property="toBeLocalisedViews" destination="29i-09-BXX" collectionClass="NSMutableArray" id="nJT-qx-War"/>
+                <outletCollection property="toBeLocalisedViews" destination="K8O-lt-3Uk" collectionClass="NSMutableArray" id="Fu9-M3-NAO"/>
+                <outletCollection property="toBeLocalisedViews" destination="Ggo-0l-beA" collectionClass="NSMutableArray" id="2No-2E-pOX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -43,19 +51,31 @@
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zuf-KW-FdL">
                     <rect key="frame" x="16" y="16" width="382" height="28"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SY8-Oq-JDh">
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SY8-Oq-JDh">
                             <rect key="frame" x="0.0" y="4.5" width="35" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEd-Vk-I1r">
-                            <rect key="frame" x="35" y="5" width="221" height="18.5"/>
+                        <textField opaque="NO" tag="101010" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEd-Vk-I1r">
+                            <rect key="frame" x="35" y="5" width="227.5" height="18.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" = 34,500 TouchPoints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29i-09-BXX">
-                            <rect key="frame" x="256" y="7" width="126" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" =" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29i-09-BXX">
+                            <rect key="frame" x="262.5" y="7" width="11" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34,500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8O-lt-3Uk">
+                            <rect key="frame" x="273.5" y="7" width="40" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TouchPoints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggo-0l-beA">
+                            <rect key="frame" x="313.5" y="7" width="68.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

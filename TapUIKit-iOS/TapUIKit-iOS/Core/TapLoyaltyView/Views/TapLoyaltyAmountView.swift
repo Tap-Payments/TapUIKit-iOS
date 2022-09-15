@@ -18,6 +18,8 @@ class TapLoyaltyAmountView: UIView {
     @IBOutlet var toBeLocalisedViews: [UIView]!
     /// Displays how many points will the user redeem
     @IBOutlet weak var pointsLabel: UILabel!
+    /// Displays the name of the points in the scheme (e.g. Loyaltpoint, touchpoints etc.)
+    @IBOutlet weak var pointsProgramNameLabel: UILabel!
     /// Allows the user to type in a specific amount he wants to redeem
     @IBOutlet weak var amountTextField: UITextField!
     /// Displays the currently being used currency
@@ -51,7 +53,7 @@ class TapLoyaltyAmountView: UIView {
         self.containerView = setupXIB()
         translatesAutoresizingMaskIntoConstraints = false
         configureDelegates()
-        //toBeLocalisedViews.forEach{ $0.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight }
+        toBeLocalisedViews.forEach{ $0.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight }
         
         applyTheme()
     }
@@ -84,7 +86,9 @@ class TapLoyaltyAmountView: UIView {
         // Set the currency label
         currencyLabel.text = nonNullLoyalCurrency.currency?.displaybaleSymbol
         // Set the redemption points based on the amount and the rate
-        pointsLabel.text = " = \(amount*rate) \(viewModel?.loyaltyModel.loyaltyPointsName ?? "")"
+        pointsLabel.text = " \(amount*rate) "
+        // Set the points name
+        pointsProgramNameLabel.text = "\(viewModel?.loyaltyModel.loyaltyPointsName ?? "")"
     }
     
     /// Assigns all needed delegates for different views
@@ -123,14 +127,18 @@ extension TapLoyaltyAmountView {
         titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleFont")
         titleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).titleTextColor")
         
-        pointsLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
+        pointsLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont", shouldLocalise: false)
         pointsLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
+        
+        pointsProgramNameLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
+        pointsProgramNameLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
         
         currencyLabel.tap_theme_font = .init(stringLiteral: "\(themePath).currencyFont")
         currencyLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).currencyTextColor")
         
         amountTextField.tap_theme_font = .init(stringLiteral: "\(themePath).amountFont")
         amountTextField.tap_theme_textColor = .init(stringLiteral: "\(themePath).amountTextColor")
+        amountTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
         
         layoutIfNeeded()
     }
