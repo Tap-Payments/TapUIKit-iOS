@@ -11,6 +11,13 @@
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
         },
+        "TapLoyaltySection": {
+            "headerView": {
+               "tc": "T&C",
+               "redeem": "Redeem",
+               "balance": "Balance"
+            }
+        },
         "HorizontalHeaders": {
             "GatewayHeader":{
                 "leftTitle": "SELECT",
@@ -131,6 +138,13 @@
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"
+        },
+        "TapLoyaltySection": {
+            "headerView": {
+                "tc": "شروط",
+                "redeem": "استخدام",
+                "balance": "الرصيد"
+            }
         },
         "HorizontalHeaders": {
             "GatewayHeader":{

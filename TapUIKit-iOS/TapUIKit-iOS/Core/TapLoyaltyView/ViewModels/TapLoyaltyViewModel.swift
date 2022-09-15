@@ -90,12 +90,12 @@ import CommonDataModelsKit_iOS
     }
     /// Computes the header title text for the Loyalty view. Format is : Redeem ADCB TouchPoints
     internal var headerTitleText: String {
-        return "Redeem \(loyaltyModel.loyaltyProgramName ?? "")"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.redeem", with: TapCommonConstants.pathForDefaultLocalisation())) \(loyaltyModel.loyaltyProgramName ?? "")"
     }
     
     /// Computes the header subtitle text for the Loyalty view. Format is : Balance: AED 520.00 (81,500 TouchPoints)
     internal var headerSubTitleText: String {
-        return "Balance: \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.balance", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
     }
     
     
