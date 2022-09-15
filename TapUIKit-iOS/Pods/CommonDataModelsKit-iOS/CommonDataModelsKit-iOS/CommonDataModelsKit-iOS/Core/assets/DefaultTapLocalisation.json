@@ -16,6 +16,9 @@
                "tc": "T&C",
                "redeem": "Redeem",
                "balance": "Balance"
+            },
+            "amountView": {
+                "title" : "Amount to redeem"
             }
         },
         "HorizontalHeaders": {
@@ -144,6 +147,9 @@
                 "tc": "شروط",
                 "redeem": "استخدام",
                 "balance": "الرصيد"
+            },
+            "amountView": {
+                "title" : "المبلغ المستبدل"
             }
         },
         "HorizontalHeaders": {
