@@ -98,6 +98,17 @@ import CommonDataModelsKit_iOS
         return "Balance: \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
     }
     
+    
+    /// Computes the remaining points after redemption
+    internal var pointsRemaningText: String {
+        return "Remaining \(loyaltyModel.loyaltyPointsName ?? ""): \(loyaltyModel.numericTransactionCount - usedPoints)"
+    }
+    
+    /// Computes the remaining amount to pay after redemption
+    internal var amountRemaningText: String {
+        return "Remaining amount to pay: \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(transactionTotalAmount - amount)"
+    }
+    
     /// Decides what is the url if any to open for T&C for this specific loyalty. Returns nil if no link provided or malformed
     internal var termsAndConditions: URL? {
         // Check if the backend passed a link for t&c and it is a valid url
@@ -133,7 +144,7 @@ import CommonDataModelsKit_iOS
         // If not enabled, we only show the first row, which is the header
         guard isEnabled else { return rowHeight }
         // Now, we have three constant views always : Header, Amount and Footer. At some points, we will show a hint view as well.
-        return (rowHeight*3) + (shouldShowHint ? rowHeight : 0)
+        return ((rowHeight*3) + (shouldShowHint ? rowHeight : 0)) + 32
     }
     
     
@@ -151,6 +162,11 @@ import CommonDataModelsKit_iOS
     internal func loyaltyCurrency(forCurrency:TapCurrencyCode?) -> LoyaltySupportedCurrency? {
         // We filter the supported currencies to get the currency code we are looking for and then fetch it
         return loyaltyModel.supportedCurrencies?.first{$0.currency?.currency == forCurrency}
+    }
+    
+    /// Computes the current used points, but converting the plain amount into points using the conversion rate
+    internal var usedPoints: Double {
+        return amount * (loyaltyCurrency(forCurrency: currency)?.currency?.rate ?? 0)
     }
 }
 
@@ -187,6 +203,8 @@ extension TapLoyaltyViewModel: TapLoyaltyAmountViewDelegate {
         delegate?.changeLoyaltyAmount(to: newAmount)
         // inform the view to show/hide the minimum amount warning
         tapLoyaltyView?.adjustHintViewConstraints()
+        // inform the footer to change the consumed points and remaining amount
+        tapLoyaltyView?.footerView.reloadData()
     }
     
 }

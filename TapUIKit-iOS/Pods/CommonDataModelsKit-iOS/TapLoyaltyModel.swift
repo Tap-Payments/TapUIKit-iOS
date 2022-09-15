@@ -19,7 +19,7 @@ public struct TapLoyaltyModel : Codable {
      - Parameter loyaltyPointsName: The name of the used shceme (ADCB Points, Fawry Values, etc.)
      - Parameter termsConditionsLink: A link to open the T&C of the loyalty scheme
      - Parameter supportedCurrencies: The list of supported currencies each with the conversion rate
-     - Parameter transactionsCount: The name of the used shceme (ADCB Points, Fawry Values, etc.)
+     - Parameter transactionsCount: The total number of availle points
      */
     
     public init(id: String?, bankName: String? = nil , bankLogo: String? = nil , loyaltyProgramName: String? = nil , loyaltyPointsName: String? = nil , termsConditionsLink: String? = nil, supportedCurrencies: [LoyaltySupportedCurrency]? = nil, transactionsCount: String? = nil) {
@@ -47,8 +47,12 @@ public struct TapLoyaltyModel : Codable {
     public let termsConditionsLink: String?
     /// The list of supported currencies each with the conversion rate
     public let supportedCurrencies: [LoyaltySupportedCurrency]?
-    /// The name of the used shceme (ADCB Points, Fawry Values, etc.)
+    /// The total number of availle points as a string formatted as it comes from backend
     public let transactionsCount: String?
+    /// The total number of availle points in a numeric format for numbers processing
+    public var numericTransactionCount: Double {
+        return Double(transactionsCount?.filter("0123456789".contains) ?? "0") ?? 0
+    }
 }
 
 // MARK: Welcome convenience initializers and mutators

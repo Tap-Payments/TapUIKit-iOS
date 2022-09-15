@@ -135,6 +135,8 @@
 		E893B77328D1C939000E0348 /* TapLoyaltySnpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893B77228D1C939000E0348 /* TapLoyaltySnpView.swift */; };
 		E893B77528D1ED7E000E0348 /* TapLoyaltyAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893B77428D1ED7E000E0348 /* TapLoyaltyAmountView.swift */; };
 		E893B77728D1ED8B000E0348 /* TapLoyaltyAmountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E893B77628D1ED8B000E0348 /* TapLoyaltyAmountView.xib */; };
+		E893B77928D314A1000E0348 /* TapLoyaltyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893B77828D314A0000E0348 /* TapLoyaltyFooterView.swift */; };
+		E893B77B28D314AA000E0348 /* TapLoyaltyFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E893B77A28D314AA000E0348 /* TapLoyaltyFooterView.xib */; };
 		E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A57AA224A9B27E00C1B6CD /* TapCardPhoneBarList.swift */; };
 		E8A57AA524A9B28900C1B6CD /* TapCardPhoneBarList.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A57AA424A9B28900C1B6CD /* TapCardPhoneBarList.xib */; };
 		E8A57AA724A9C16500C1B6CD /* TapCardPhoneBarListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A57AA624A9C16500C1B6CD /* TapCardPhoneBarListViewModel.swift */; };
@@ -347,6 +349,8 @@
 		E893B77228D1C939000E0348 /* TapLoyaltySnpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLoyaltySnpView.swift; sourceTree = "<group>"; };
 		E893B77428D1ED7E000E0348 /* TapLoyaltyAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLoyaltyAmountView.swift; sourceTree = "<group>"; };
 		E893B77628D1ED8B000E0348 /* TapLoyaltyAmountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapLoyaltyAmountView.xib; sourceTree = "<group>"; };
+		E893B77828D314A0000E0348 /* TapLoyaltyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLoyaltyFooterView.swift; sourceTree = "<group>"; };
+		E893B77A28D314AA000E0348 /* TapLoyaltyFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapLoyaltyFooterView.xib; sourceTree = "<group>"; };
 		E8A0566124CDA96400D54A68 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A57AA224A9B27E00C1B6CD /* TapCardPhoneBarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardPhoneBarList.swift; sourceTree = "<group>"; };
 		E8A57AA424A9B28900C1B6CD /* TapCardPhoneBarList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCardPhoneBarList.xib; sourceTree = "<group>"; };
@@ -762,6 +766,7 @@
 				E87B3C6524C704C900F1005A /* TapWebView.xib */,
 				E893B77028D102C5000E0348 /* TapLoyaltyHeaderView.xib */,
 				E893B77628D1ED8B000E0348 /* TapLoyaltyAmountView.xib */,
+				E893B77A28D314AA000E0348 /* TapLoyaltyFooterView.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1081,6 +1086,7 @@
 				E893B76E28D0F969000E0348 /* TapLoyaltyHeaderView.swift */,
 				E893B77228D1C939000E0348 /* TapLoyaltySnpView.swift */,
 				E893B77428D1ED7E000E0348 /* TapLoyaltyAmountView.swift */,
+				E893B77828D314A0000E0348 /* TapLoyaltyFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1385,6 +1391,7 @@
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8E69996249F6446007A32FA /* TapGenericTableCell.xib in Resources */,
 				E8437F9F24BF3F180059F1B8 /* TapGoPayPasswordView.xib in Resources */,
+				E893B77B28D314AA000E0348 /* TapLoyaltyFooterView.xib in Resources */,
 				E8E92B4E248FA4E900DD7DBB /* TapMerchantHeaderView.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
 				E8437F8924BEF7920059F1B8 /* TapGoPaySignInView.xib in Resources */,
@@ -1580,6 +1587,7 @@
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
 				E8437F6A24BE07900059F1B8 /* SpaceView.swift in Sources */,
 				E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */,
+				E893B77928D314A1000E0348 /* TapLoyaltyFooterView.swift in Sources */,
 				E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */,
 				E8E69998249F645A007A32FA /* TapGenericTableCellViewModel.swift in Sources */,
 			);

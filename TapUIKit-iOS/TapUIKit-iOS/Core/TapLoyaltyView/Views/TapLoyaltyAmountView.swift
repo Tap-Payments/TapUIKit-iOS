@@ -18,7 +18,7 @@ internal protocol TapLoyaltyAmountViewDelegate {
     func loyaltyRedemptionAmountChanged(with newAmount:Double)
     
 }
-
+/// Represents the amount sub view in the loyalty widget
 internal class TapLoyaltyAmountView: UIView {
 
     /// The container view that holds everything from the XIB
@@ -73,7 +73,7 @@ internal class TapLoyaltyAmountView: UIView {
     
     /**
      Will stup the content of the view with the given data
-     - Parameter with currency: The currenct loyalty supported currency used
+     - Parameter with viewModel: The view model
      - Parameter initialAmount: The initial amount to display if any
      */
     internal func setup(with viewModel:TapLoyaltyViewModel, initialAmount:Double = 0) {
@@ -93,12 +93,12 @@ internal class TapLoyaltyAmountView: UIView {
     internal func reloadData() {
         guard let nonNullCurrency = viewModel?.currency,
               let nonNullLoyalCurrency = viewModel?.loyaltyCurrency(forCurrency: nonNullCurrency),
-              let rate = nonNullLoyalCurrency.currency?.rate else { return }
+              let usedPoints = viewModel?.usedPoints else { return }
         
         // Set the currency label
         currencyLabel.text = nonNullLoyalCurrency.currency?.displaybaleSymbol
         // Set the redemption points based on the amount and the rate
-        pointsLabel.text = " \(amount*rate) "
+        pointsLabel.text = " \(usedPoints) "
         // Set the points name
         pointsProgramNameLabel.text = "\(viewModel?.loyaltyModel.loyaltyPointsName ?? "")"
     }

@@ -20,6 +20,8 @@ import SnapKit
     internal lazy var headerView:TapLoyaltyHeaderView = TapLoyaltyHeaderView()
     /// The amount view part in the loyalty widget
     internal lazy var amountView:TapLoyaltyAmountView = TapLoyaltyAmountView()
+    /// The footer view part in the loyalty widget
+    internal lazy var footerView:TapLoyaltyFooterView = TapLoyaltyFooterView()
     /// The warning hint view to be displayed whenever a warning is needed
     internal lazy var warningHintView:TapHintView = TapHintView()
     /// Holds all views that will be removed/added based on changing the enablement of the loyalty widget
@@ -65,6 +67,14 @@ import SnapKit
         amountView.setup(with: nonNullViewModel, initialAmount: nonNullViewModel.amount)
         // Set the delegate
         amountView.delegate = viewModel
+    }
+    
+    
+    // Used to refresh the data rendered inside the header view of the loyalty widget
+    internal func reloadFooterView() {
+        // Set the UI data
+        guard let nonNullViewModel = self.viewModel else { return }
+        footerView.setup(with: nonNullViewModel)
     }
     
     
@@ -116,9 +126,11 @@ import SnapKit
         containterView.addSubview(headerView)
         containterView.addSubview(amountView)
         containterView.addSubview(warningHintView)
+        containterView.addSubview(footerView)
         // Mark the views that will change its visibility based in the enabelement of the loyalty widget
         enablementEffectedViews.append(amountView)
         enablementEffectedViews.append(warningHintView)
+        enablementEffectedViews.append(footerView)
     }
     
     /// creates the needed constraints to make sure the views are correctly laid out
@@ -162,6 +174,15 @@ import SnapKit
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview()
             make.top.equalTo(amountView.snp.bottom)
+        }
+        
+        
+        // The footer view
+        footerView.snp.makeConstraints { make in
+            make.height.equalTo(44)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.top.equalTo(warningHintView.snp.bottom)
         }
         
         layoutIfNeeded()
@@ -212,6 +233,7 @@ import SnapKit
     @objc public func refresh() {
         reloadHeaderView()
         reloadAmountView()
+        reloadFooterView()
     }
 
 }
