@@ -74,7 +74,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
                     TapLocalisationManager.shared.localisationLocale = selectedLanguage
                     //MOLH.setLanguageTo(selectedLanguage)
                     TapThemeManager.setDefaultTapTheme()
-                    self.showController(contoller: destnationVC, push: self.dataSource[indexPath.row]["push"] == "1")
+                    let ctr:UIViewController = (self.storyboard?.instantiateViewController(withIdentifier: self.dataSource[indexPath.row]["navigationID"]!))!
+                    self.showController(contoller: ctr, push: self.dataSource[indexPath.row]["push"] == "1")
                 }
             }else {
                 TapThemeManager.setDefaultTapTheme()

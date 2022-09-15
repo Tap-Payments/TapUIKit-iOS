@@ -23,6 +23,9 @@
             "footerView": {
                 "points": "Remaining",
                 "amount": "Remaining amount to pay"
+            },
+            "hintView": {
+                "minimumWarning": "Minimum redemption is"
             }
         },
         "HorizontalHeaders": {
@@ -158,6 +161,9 @@
             "footerView": {
                 "points": "متبقي",
                 "amount": "متبقي القيمة للدفع"
+            },
+            "hintView": {
+                "minimumWarning": "أقل قيمة للإستبدال"
             }
         },
         "HorizontalHeaders": {

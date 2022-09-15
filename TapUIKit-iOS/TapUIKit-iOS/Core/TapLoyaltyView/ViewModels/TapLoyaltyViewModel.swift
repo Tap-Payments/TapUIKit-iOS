@@ -86,7 +86,7 @@ import CommonDataModelsKit_iOS
     // MARK: - Internal
     /// Computes the minimum redemeption amount warning textual content
     internal var hintWarningTitle: String {
-        return "Minimum redemption is \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(loyaltyCurrency(forCurrency: currency)?.minimumAmount ?? 0)"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.hintView.minimumWarning", with: TapCommonConstants.pathForDefaultLocalisation())) \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(loyaltyCurrency(forCurrency: currency)?.minimumAmount ?? 0)"
     }
     /// Computes the header title text for the Loyalty view. Format is : Redeem ADCB TouchPoints
     internal var headerTitleText: String {
