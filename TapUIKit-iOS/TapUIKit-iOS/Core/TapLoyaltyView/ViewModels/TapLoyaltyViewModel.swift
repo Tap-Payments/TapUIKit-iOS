@@ -10,6 +10,23 @@ import Foundation
 import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
 
+/// An external delegate to listen to events fired from the whole loyalty widget
+@objc public protocol TapLoyaltyDelegate {
+    
+    /**
+     Will be fired when a user enable/disable the usage of the loyalty
+     - Parameter to: if true, then he enables it, false otherwise.
+     */
+    @objc func changeLoyaltyEnablement(to:Bool)
+    
+    /**
+     Get notified when the user changes the loyalty amount he wants to redeem
+     - Parameter to: The new amount defined by the user
+     */
+    @objc func changeLoyaltyAmount(to:Double)
+    
+}
+
 /// The view model that controlls the data shown inside a TapLoyaltyView
 @objc public class TapLoyaltyViewModel: NSObject {
     
@@ -28,7 +45,8 @@ import CommonDataModelsKit_iOS
     internal var currency:TapCurrencyCode
     /// Indicates the current status of enablind/gisabling the loyalty program
     @objc public var isEnabled:Bool = true
-    
+    /// An external delegate to listen to events fired from the whole loyalty widget
+    @objc public var delegate:TapLoyaltyDelegate?
     // MARK: - Public normal swift variables
     /// Public reference to the loyalty view itself as UI that will be rendered
     @objc public var attachedView:TapLoyaltyView {
@@ -118,6 +136,19 @@ extension TapLoyaltyViewModel: TapLoyaltyHeaderDelegate {
         isEnabled = enable
         // instructs the loyalty view to update its ui based on the new selectoin
         tapLoyaltyView?.changeState(to: enable)
+        // inform the delegae
+        delegate?.changeLoyaltyEnablement(to: enable)
+    }
+    
+}
+
+
+
+extension TapLoyaltyViewModel: TapLoyaltyAmountViewDelegate {
+    
+    func loyaltyRedemptionAmountChanged(with newAmount: Double) {
+        // inform the delegae
+        delegate?.changeLoyaltyAmount(to: newAmount)
     }
     
 }

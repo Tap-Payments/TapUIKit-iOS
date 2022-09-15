@@ -8,7 +8,18 @@
 
 import UIKit
 
-class TapLoyaltyAmountView: UIView {
+/// A delegate to listen to events fired from the TapLoyaltyAmountView
+internal protocol TapLoyaltyAmountViewDelegate {
+    
+    /**
+     Get notified when the user changes the loyalty amount he wants to redeem
+     - Parameter with newAmount: The new amount defined by the user
+     */
+    func loyaltyRedemptionAmountChanged(with newAmount:Double)
+    
+}
+
+internal class TapLoyaltyAmountView: UIView {
 
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
@@ -29,7 +40,8 @@ class TapLoyaltyAmountView: UIView {
     private let themePath = "loyaltyView.amountView"
     /// The current selected currency data
     internal var viewModel:TapLoyaltyViewModel?
-    
+    /// A delegate to listen to events fired from the TapLoyaltyAmountView
+    internal var delegate:TapLoyaltyAmountViewDelegate?
     /// A shortcut to get the current amoutnt
     internal var amount:Double = 0 {
         didSet {
@@ -102,6 +114,8 @@ class TapLoyaltyAmountView: UIView {
     internal func postAmountUpdated() {
         // reload the text data in points deeduction basde on new amount
         reloadData()
+        // Inform the delegate that amount had changed
+        delegate?.loyaltyRedemptionAmountChanged(with: amount)
     }
     
     /// Will catch the event when the user changed the text in the amonut field with an accepted value
