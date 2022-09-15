@@ -20,6 +20,8 @@ import SnapKit
     internal lazy var headerView:TapLoyaltyHeaderView = TapLoyaltyHeaderView()
     /// The amount view part in the loyalty widget
     internal lazy var amountView:TapLoyaltyAmountView = TapLoyaltyAmountView()
+    /// The warning hint view to be displayed whenever a warning is needed
+    internal lazy var warningHintView:TapHintView = TapHintView()
     /// Holds all views that will be removed/added based on changing the enablement of the loyalty widget
     internal lazy var enablementEffectedViews:[UIView] = []
     
@@ -61,6 +63,8 @@ import SnapKit
         // Set the UI data
         guard let nonNullViewModel = self.viewModel else { return }
         amountView.setup(with: nonNullViewModel, initialAmount: nonNullViewModel.amount)
+        // Set the delegate
+        amountView.delegate = viewModel
     }
     
     
@@ -100,7 +104,7 @@ import SnapKit
     internal func adjustHeight() {
         DispatchQueue.main.async  { [weak self] in
             self?.snp.updateConstraints({ make in
-                make.height.equalTo(self?.viewModel?.isEnabled ?? false ? 132 : 44)
+                make.height.equalTo(self?.viewModel?.widgetHeight ?? 44)
             })
             self?.layoutIfNeeded()
         }
@@ -111,9 +115,10 @@ import SnapKit
         addSubview(containterView)
         containterView.addSubview(headerView)
         containterView.addSubview(amountView)
-        
+        containterView.addSubview(warningHintView)
         // Mark the views that will change its visibility based in the enabelement of the loyalty widget
         enablementEffectedViews.append(amountView)
+        enablementEffectedViews.append(warningHintView)
     }
     
     /// creates the needed constraints to make sure the views are correctly laid out
@@ -124,7 +129,7 @@ import SnapKit
         
         // The view height
         snp.remakeConstraints { make in
-            make.height.equalTo(viewModel?.isEnabled ?? false ? 132 : 44)
+            make.height.equalTo(viewModel?.widgetHeight ?? 44)
         }
         
         // The containter view itself
@@ -150,8 +155,41 @@ import SnapKit
             make.leading.equalToSuperview()
             make.top.equalTo(headerView.snp.bottom)
         }
+        
+        // The warning view
+        warningHintView.snp.makeConstraints { make in
+            make.height.equalTo(viewModel?.shouldShowHint ?? false ? 44 : 0)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.top.equalTo(amountView.snp.bottom)
+        }
+        
         layoutIfNeeded()
         
+    }
+    
+    /// Handles the logic needed to set the height/visibility of the warning hint view
+    internal func adjustHintViewConstraints() {
+        // The warning view
+        // Check if we should show it or not
+        let shouldShowIt:Bool = viewModel?.shouldShowHint ?? false
+        // check if we need to do anything
+        guard !shouldShowIt && warningHintView.frame.height == 44 || shouldShowIt && warningHintView.frame.height == 0 else { return }
+        
+        DispatchQueue.main.async  { [weak self] in
+            self?.warningHintView.snp.updateConstraints({ make in
+                make.height.equalTo(shouldShowIt ? 44 : 0)
+            })
+            if shouldShowIt && self?.warningHintView.alpha != 1 {
+                self?.warningHintView.fadeIn()
+            }
+            else if !shouldShowIt && self?.warningHintView.alpha != 0 {
+                self?.warningHintView.fadeOut()
+            }
+            self?.warningHintView.layoutIfNeeded()
+            // in all cases we will have to adjust the total height of the widget
+            self?.adjustHeight()
+        }
     }
     
     
@@ -165,6 +203,7 @@ import SnapKit
     
     /// Updates the view with the new view model
     public func changeViewModel(with viewModel:TapLoyaltyViewModel) {
+        self.warningHintView.setup(with: viewModel.hintViewModel)
         self.viewModel = viewModel
         self.viewModel?.tapLoyaltyView = self
     }

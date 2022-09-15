@@ -39,6 +39,13 @@ import CommonDataModelsKit_iOS
     internal let sharedLocalisationManager = TapLocalisationManager.shared
     /// The loylty model to use
     internal var loyaltyModel:TapLoyaltyModel
+    /// The hint view model to control the hint view in the UIView itself
+    internal var hintViewModel:TapHintViewModel = .init() {
+        didSet{
+            // Set the correct displayable title in the warning
+            hintViewModel.overrideTitle = hintWarningTitle
+        }
+    }
     /// The currenct amount
     internal var amount:Double
     /// The currency being used
@@ -66,11 +73,16 @@ import CommonDataModelsKit_iOS
         self.tapLoyaltyView = .init()
         super.init()
         defer{
+            self.hintViewModel = .init(with: .WarningCVV)
             self.tapLoyaltyView?.changeViewModel(with: self)
         }
     }
     
     // MARK: - Internal
+    /// Computes the minimum redemeption amount warning textual content
+    internal var hintWarningTitle: String {
+        return "Minimum redemption is \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(loyaltyCurrency(forCurrency: currency)?.minimumAmount ?? 0)"
+    }
     /// Computes the header title text for the Loyalty view. Format is : Redeem ADCB TouchPoints
     internal var headerTitleText: String {
         return "Redeem \(loyaltyModel.loyaltyProgramName ?? "")"
@@ -107,6 +119,23 @@ import CommonDataModelsKit_iOS
         return nonNullLogoURL
     }
     
+    
+    /// Decides the correct height for the widget
+    /// it checks if the widget is enabled or not, then if we are showing a hint or not
+    internal var widgetHeight:Double {
+        // Define the row hiehg
+        let rowHeight:Double = 44
+        // If not enabled, we only show the first row, which is the header
+        guard isEnabled else { return rowHeight }
+        // Now, we have three constant views always : Header, Amount and Footer. At some points, we will show a hint view as well.
+        return (rowHeight*3) + (shouldShowHint ? rowHeight : 0)
+    }
+    
+    
+    /// As per the UI if the user is typing in amount, that is minimum than the allowed redemption value for this currency. We need to inform him
+    internal var shouldShowHint:Bool {
+        return amount < loyaltyCurrency(forCurrency: currency)?.minimumAmount ?? 0
+    }
     
     
     /**
@@ -147,8 +176,12 @@ extension TapLoyaltyViewModel: TapLoyaltyHeaderDelegate {
 extension TapLoyaltyViewModel: TapLoyaltyAmountViewDelegate {
     
     func loyaltyRedemptionAmountChanged(with newAmount: Double) {
+        // change the view model amount
+        amount = newAmount
         // inform the delegae
         delegate?.changeLoyaltyAmount(to: newAmount)
+        // inform the view to show/hide the minimum amount warning
+        tapLoyaltyView?.adjustHintViewConstraints()
     }
     
 }
