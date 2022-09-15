@@ -45,7 +45,10 @@ import CommonDataModelsKit_iOS
             // Set the correct displayable title in the warning
             hintViewModel.overrideTitle = hintWarningTitle
         }
+    
     }
+    /// The transaction total amount
+    internal var transactionTotalAmount:Double
     /// The currenct amount
     internal var amount:Double
     /// The currency being used
@@ -64,12 +67,14 @@ import CommonDataModelsKit_iOS
      Init method with the needed data
      - Parameter loyaltyModel: The loyalty model to use to render
      - Parameter amount: The initial amount to use
+     - Parameter transactionTotalAmount: The total amount in the transaction
      - Parameter currency: The currency we will pay with
      */
-    public init(loyaltyModel:TapLoyaltyModel, amount:Double = 0, currency:TapCurrencyCode) {
+    public init(loyaltyModel:TapLoyaltyModel, amount:Double = 0, transactionTotalAmount:Double = 0, currency:TapCurrencyCode) {
         self.loyaltyModel = loyaltyModel
         self.amount = amount
         self.currency = currency
+        self.transactionTotalAmount = transactionTotalAmount
         self.tapLoyaltyView = .init()
         super.init()
         defer{
