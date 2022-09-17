@@ -100,7 +100,7 @@ internal class TapLoyaltyAmountView: UIView {
         // Set the redemption points based on the amount and the rate
         pointsLabel.text = " \(usedPoints) "
         // Set the points name
-        pointsProgramNameLabel.text = "\(viewModel?.loyaltyModel.loyaltyPointsName ?? "")"
+        pointsProgramNameLabel.text = "\(viewModel?.loyaltyModel?.loyaltyPointsName ?? "")"
         // Set the title label
         titleLabel.text = TapLocalisationManager.shared.localisedValue(for: "TapLoyaltySection.amountView.title", with: TapCommonConstants.pathForDefaultLocalisation())
     }

@@ -38,7 +38,7 @@ import CommonDataModelsKit_iOS
     /// Configure the localisation Manager
     internal let sharedLocalisationManager = TapLocalisationManager.shared
     /// The loylty model to use
-    internal var loyaltyModel:TapLoyaltyModel
+    internal var loyaltyModel:TapLoyaltyModel?
     /// The hint view model to control the hint view in the UIView itself
     internal var hintViewModel:TapHintViewModel = .init() {
         didSet{
@@ -50,7 +50,7 @@ import CommonDataModelsKit_iOS
     /// The transaction total amount
     internal var transactionTotalAmount:Double
     /// The currenct amount
-    internal var amount:Double
+    internal var amount:Double = 0
     /// The currency being used
     internal var currency:TapCurrencyCode
     /// Indicates the current status of enablind/gisabling the loyalty program
@@ -66,20 +66,22 @@ import CommonDataModelsKit_iOS
     /**
      Init method with the needed data
      - Parameter loyaltyModel: The loyalty model to use to render
-     - Parameter amount: The initial amount to use
      - Parameter transactionTotalAmount: The total amount in the transaction
      - Parameter currency: The currency we will pay with
      */
-    public init(loyaltyModel:TapLoyaltyModel, amount:Double = 0, transactionTotalAmount:Double = 0, currency:TapCurrencyCode) {
+    public init(loyaltyModel:TapLoyaltyModel? = nil, transactionTotalAmount:Double = 0, currency:TapCurrencyCode = .undefined) {
         self.loyaltyModel = loyaltyModel
-        self.amount = amount
         self.currency = currency
         self.transactionTotalAmount = transactionTotalAmount
-        self.tapLoyaltyView = .init()
         super.init()
         defer{
+            self.transactionTotalAmount = transactionTotalAmount
             self.hintViewModel = .init(with: .WarningCVV)
+            self.tapLoyaltyView = .init()
             self.tapLoyaltyView?.changeViewModel(with: self)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
+                self?.refreshData()
+            }
         }
     }
     
@@ -90,12 +92,12 @@ import CommonDataModelsKit_iOS
     }
     /// Computes the header title text for the Loyalty view. Format is : Redeem ADCB TouchPoints
     internal var headerTitleText: String {
-        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.redeem", with: TapCommonConstants.pathForDefaultLocalisation())) \(loyaltyModel.loyaltyProgramName ?? "")"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.redeem", with: TapCommonConstants.pathForDefaultLocalisation())) \(loyaltyModel?.loyaltyProgramName ?? "")"
     }
     
     /// Computes the header subtitle text for the Loyalty view. Format is : Balance: AED 520.00 (81,500 TouchPoints)
     internal var headerSubTitleText: String {
-        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.balance", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel.transactionsCount ?? "") \(loyaltyModel.loyaltyPointsName ?? ""))"
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.balance", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel?.transactionsCount ?? "") \(loyaltyModel?.loyaltyPointsName ?? ""))"
     }
     
     
@@ -106,12 +108,12 @@ import CommonDataModelsKit_iOS
     
     /// The points program name
     internal var pointsNameText:String {
-        return "\(loyaltyModel.loyaltyPointsName ?? "") : "
+        return "\(loyaltyModel?.loyaltyPointsName ?? "") : "
     }
     
     /// Computes the remaining points after redeeming the current amount
     internal var remainingPoints:String {
-        return "\(loyaltyModel.numericTransactionCount - usedPoints)"
+        return "\(loyaltyModel?.numericTransactionCount ?? 0 - usedPoints)"
     }
     
     /// Computes the remaining amount to pay after redemption
@@ -122,7 +124,7 @@ import CommonDataModelsKit_iOS
     /// Decides what is the url if any to open for T&C for this specific loyalty. Returns nil if no link provided or malformed
     internal var termsAndConditions: URL? {
         // Check if the backend passed a link for t&c and it is a valid url
-        guard let nonNullTermsAndConditionsLink:String = loyaltyModel.termsConditionsLink,
+        guard let nonNullTermsAndConditionsLink:String = loyaltyModel?.termsConditionsLink,
               let nonNullTermsAndConditionsURL:URL = URL(string: nonNullTermsAndConditionsLink) else {
             return nil
         }
@@ -138,7 +140,7 @@ import CommonDataModelsKit_iOS
     /// Decides what is the url to load the loyalty icon and nil otehrwise
     internal var loyaltyIcon: URL? {
         // Check if the backend passed a link for logo and it is a valid url
-        guard let nonNullLogoLink:String = loyaltyModel.bankLogo,
+        guard let nonNullLogoLink:String = loyaltyModel?.bankLogo,
               let nonNullLogoURL:URL = URL(string: nonNullLogoLink) else {
             return nil
         }
@@ -149,12 +151,15 @@ import CommonDataModelsKit_iOS
     /// Decides the correct height for the widget
     /// it checks if the widget is enabled or not, then if we are showing a hint or not
     internal var widgetHeight:Double {
+        // Define the margins top+bottom
+        let expandedCasemargins:Double = 48
+        let shrinkedCaseMargins:Double = 16
         // Define the row hiehg
         let rowHeight:Double = 44
         // If not enabled, we only show the first row, which is the header
-        guard isEnabled else { return rowHeight }
+        guard isEnabled else { return rowHeight + shrinkedCaseMargins }
         // Now, we have three constant views always : Header, Amount and Footer. At some points, we will show a hint view as well.
-        return ((rowHeight*3) + (shouldShowHint ? rowHeight : 0)) + 32
+        return ((rowHeight*3) + (shouldShowHint ? rowHeight : 0)) + expandedCasemargins
     }
     
     
@@ -171,12 +176,45 @@ import CommonDataModelsKit_iOS
      */
     internal func loyaltyCurrency(forCurrency:TapCurrencyCode?) -> LoyaltySupportedCurrency? {
         // We filter the supported currencies to get the currency code we are looking for and then fetch it
-        return loyaltyModel.supportedCurrencies?.first{$0.currency?.currency == forCurrency}
+        return loyaltyModel?.supportedCurrencies?.first{$0.currency?.currency == forCurrency}
     }
     
     /// Computes the current used points, but converting the plain amount into points using the conversion rate
     internal var usedPoints: Double {
         return amount * (loyaltyCurrency(forCurrency: currency)?.currency?.rate ?? 0)
+    }
+    
+    
+    // MARK: Public functions
+    /**
+     The method will do the post logic after setting the transaction amount and the selected currency.
+     Will disable if the transaction amount is less than the minimum amount.
+     Will set the initial redeem amount to the max allowed balance if transaction amount is bigger.
+     */
+    @objc public func refreshData() {
+        // get the loyalty model related to the current currency
+        
+        // Defensive code to make sure we have a currency
+        guard let nonNullLoyaltyCurrency = loyaltyCurrency(forCurrency: currency) else { return }
+        
+        // Get the max data required to make the checks
+        // The max amount for the currency
+        let maxAllowedAmountForCurrency = nonNullLoyaltyCurrency.balanceAmount ?? 0
+        // The min amount for the currency
+        let minAllowedAmountForCurrency = nonNullLoyaltyCurrency.minimumAmount ?? 0
+        
+        // We will have to disable the loyalty widget if the transaction amount is less than the minimum allowed amount to redeem
+        if minAllowedAmountForCurrency > transactionTotalAmount {
+            // Disable the widget
+            attachedView.isUserInteractionEnabled = false
+            enableLoyaltySwitch(enable: false)
+            loyaltyRedemptionAmountChanged(with: 0)
+        }else{
+            attachedView.isUserInteractionEnabled = true
+            isEnabled = true
+            // If the passed amount is bigger than the max allowed balance, we set the initial amount to the max
+            loyaltyRedemptionAmountChanged(with: min(transactionTotalAmount,maxAllowedAmountForCurrency))
+        }
     }
 }
 

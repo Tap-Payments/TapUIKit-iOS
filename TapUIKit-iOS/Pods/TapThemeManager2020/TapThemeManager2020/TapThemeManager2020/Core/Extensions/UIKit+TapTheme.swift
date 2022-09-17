@@ -159,7 +159,7 @@ import class UIKit.UIButton
         get { return self.themeSelector(for:  SelectorsConstants.setBarStyleSelector) as? ThemeBarStyleSelector }
         set { self.setThemeSelector(with:  SelectorsConstants.setBarStyleSelector, for: newValue) }
     }
-
+    
     var tap_theme_unselectedItemTintColor: ThemeUIColorSelector? {
         get { return self.themeSelector(for:  SelectorsConstants.setUnselectedItemTintColorSelector) as? ThemeUIColorSelector }
         set { self.setThemeSelector(with:  SelectorsConstants.setUnselectedItemTintColorSelector, for: newValue) }

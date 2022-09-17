@@ -13,9 +13,9 @@
         },
         "TapLoyaltySection": {
             "headerView": {
-               "tc": "T&C",
-               "redeem": "Redeem",
-               "balance": "Balance"
+                "tc": "T&C",
+                "redeem": "Redeem",
+                "balance": "Balance"
             },
             "amountView": {
                 "title" : "Amount to redeem"

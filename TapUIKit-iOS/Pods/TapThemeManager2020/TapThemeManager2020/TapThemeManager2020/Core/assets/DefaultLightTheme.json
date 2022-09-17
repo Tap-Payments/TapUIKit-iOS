@@ -257,37 +257,37 @@
         }
     },
     "loyaltyView" : {
-      "cardView": {
-          "backgroundColor" : "white",
-          "radius": 8,
-          "shadowColor":"#00000027",
-          "shadowRadius":26,
-          "shadowOpacity":1
-      },
-      "headerView": {
-          "backgroundColor" : "clear",
-          "switchOnTintColor" : "deepSkyBlue",
-          "titleTextColor" : "greyishBrown",
-          "subTitleTextColor" : "brownGreySeven",
-          "titleFont" : "Roboto-Regular,12",
-          "subTitleFont" : "Roboto-Regular,11"
-      },
-      "amountView": {
-          "titleTextColor" : "#9F9F9F",
-          "titleFont" : "Roboto-Regular,11",
-          "currencyTextColor" : "greyishBrown",
-          "currencyFont" : "Roboto-Regular,16",
-          "amountTextColor" : "greyishBrown",
-          "amountFont" : "Roboto-Regular,16",
-          "pointsTextColor" : "greyishBrown",
-          "pointsFont" : "Roboto-Regular,12"
-      },
-      "footerView": {
-          "pointsTextColor" : "#7E7E7E",
-          "pointsFont" : "Roboto-Regular,11",
-          "amountTextColor" : "#greyishBrown",
-          "amountFont" : "Roboto-Regular,11"
-      }
+        "cardView": {
+            "backgroundColor" : "white",
+            "radius": 8,
+            "shadowColor":"#00000027",
+            "shadowRadius":26,
+            "shadowOpacity":1
+        },
+        "headerView": {
+            "backgroundColor" : "clear",
+            "switchOnTintColor" : "deepSkyBlue",
+            "titleTextColor" : "greyishBrown",
+            "subTitleTextColor" : "brownGreySeven",
+            "titleFont" : "Roboto-Regular,12",
+            "subTitleFont" : "Roboto-Regular,11"
+        },
+        "amountView": {
+            "titleTextColor" : "#9F9F9F",
+            "titleFont" : "Roboto-Regular,11",
+            "currencyTextColor" : "greyishBrown",
+            "currencyFont" : "Roboto-Regular,16",
+            "amountTextColor" : "greyishBrown",
+            "amountFont" : "Roboto-Regular,16",
+            "pointsTextColor" : "greyishBrown",
+            "pointsFont" : "Roboto-Regular,12"
+        },
+        "footerView": {
+            "pointsTextColor" : "#7E7E7E",
+            "pointsFont" : "Roboto-Regular,11",
+            "amountTextColor" : "#greyishBrown",
+            "amountFont" : "Roboto-Regular,11"
+        }
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",

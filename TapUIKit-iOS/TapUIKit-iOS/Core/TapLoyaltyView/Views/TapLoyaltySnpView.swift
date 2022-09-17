@@ -84,6 +84,9 @@ import SnapKit
         amountView.amountTextField.resignFirstResponder()
         // Reset the amount section data
         reloadAmountView()
+        // Reset the header value
+        reloadHeaderView()
+        
     }
     
     /// Will change the UI state enable/disable based on the provided valye
@@ -146,7 +149,7 @@ import SnapKit
         
         // The containter view itself
         containterView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(16)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
