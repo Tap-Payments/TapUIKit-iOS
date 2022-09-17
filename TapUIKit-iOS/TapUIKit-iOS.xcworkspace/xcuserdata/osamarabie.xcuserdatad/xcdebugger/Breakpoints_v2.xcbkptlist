@@ -7,33 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B5701079-C62B-4CB1-968A-83C854BED472"
-            shouldBeEnabled = "No"
+            uuid = "9D1B1D90-02BB-4F2C-85E1-5EC632704E77"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapLoyaltyView/Views/TapLoyaltySnpView.swift"
+            filePath = "TapUIKit-iOS/Core/TapLoyaltyView/ViewModels/TapLoyaltyViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "matchThemeAttributes()"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "refreshData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7591FCA7-0FB6-4D95-8167-D536A04D4F26"
+            uuid = "DCEB465D-BDB2-4154-9B4B-0377FCC4CEFF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapUIKit-iOS/Core/TapLoyaltyView/ViewModels/TapLoyaltyViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "amountRemaningText"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "874E3215-DCE5-46CD-94DC-38518355ADA6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapLoyaltyView/Views/TapLoyaltySnpView.swift"
+            filePath = "TapUIKit-iOS/Core/TapLoyaltyView/ViewModels/TapLoyaltyViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "changeState(to:)"
-            landmarkType = "7">
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "hintWarningTitle"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -198,7 +198,10 @@ import SnapKit
         // Check if we should show it or not
         let shouldShowIt:Bool = viewModel?.shouldShowHint ?? false
         // check if we need to do anything
-        guard !shouldShowIt && warningHintView.frame.height == 44 || shouldShowIt && warningHintView.frame.height == 0 else { return }
+        //guard !shouldShowIt && warningHintView.frame.height == 44 || shouldShowIt && warningHintView.frame.height == 0 else { return }
+        
+        // Set the correct displayable title in the warning
+        warningHintView.viewModel.overrideTitle = viewModel?.hintWarningTitle
         
         DispatchQueue.main.async  { [weak self] in
             self?.warningHintView.snp.updateConstraints({ make in

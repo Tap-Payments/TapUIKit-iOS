@@ -371,20 +371,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygr-Eb-bqc" customClass="TapDragHandlerView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Vpf-hl-OcM"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animate Width &amp; Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBo-Xf-H7D">
-                                <rect key="frame" x="0.0" y="138" width="349" height="21"/>
+                                <rect key="frame" x="0.0" y="236" width="349" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jj-fd-IWA">
-                                <rect key="frame" x="357" y="133" width="51" height="31"/>
+                                <rect key="frame" x="357" y="231" width="51" height="31"/>
                                 <connections>
                                     <action selector="animateSwitch:" destination="eix-zN-OJE" eventType="valueChanged" id="R3V-il-D94"/>
                                 </connections>
@@ -422,31 +422,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTx-Ek-WDT" customClass="TapMerchantHeaderView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="64" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="53"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="Nyw-BG-U6a"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Merchant Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kVy-lE-3t4">
-                                <rect key="frame" x="20" y="139" width="374" height="34"/>
+                                <rect key="frame" x="20" y="137" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Merchant Logo URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxD-sp-StG">
-                                <rect key="frame" x="20" y="193" width="374" height="34"/>
+                                <rect key="frame" x="20" y="191" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhk-31-Xx1">
-                                <rect key="frame" x="20" y="235" width="93" height="30"/>
+                                <rect key="frame" x="20" y="233" width="93" height="30"/>
                                 <state key="normal" title="Reset Default"/>
                                 <connections>
                                     <action selector="resetDefaultClicked:" destination="ADS-In-qS1" eventType="touchUpInside" id="5e7-Si-Xlu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMu-X4-oJS">
-                                <rect key="frame" x="292" y="235" width="102" height="30"/>
+                                <rect key="frame" x="292" y="233" width="102" height="30"/>
                                 <state key="normal" title="Apply changes"/>
                                 <connections>
                                     <action selector="applyChangesClicked:" destination="ADS-In-qS1" eventType="touchUpInside" id="503-T7-0R3"/>
@@ -548,74 +548,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nC-N0-TOc" customClass="TapAmountSectionView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="64" width="414" height="58"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Uj4-UR-X4n"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfn-zv-AqU">
-                                <rect key="frame" x="20" y="135" width="89" height="21"/>
+                                <rect key="frame" x="20" y="137" width="89" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wh2-l8-hrp">
-                                <rect key="frame" x="345" y="130" width="51" height="31"/>
+                                <rect key="frame" x="345" y="132" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="SQn-gl-Od5"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Amounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kk-zL-0Dn">
-                                <rect key="frame" x="20" y="174" width="115" height="21"/>
+                                <rect key="frame" x="20" y="176" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgn-yV-Hag">
-                                <rect key="frame" x="345" y="169" width="51" height="31"/>
+                                <rect key="frame" x="345" y="171" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="2Qr-d6-S2I"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Conversions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5I-jz-lVc">
-                                <rect key="frame" x="20" y="213" width="140.5" height="21"/>
+                                <rect key="frame" x="20" y="215" width="140.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HeB-fK-iTq">
-                                <rect key="frame" x="345" y="208" width="51" height="31"/>
+                                <rect key="frame" x="345" y="210" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="bv6-Mm-rO5" eventType="valueChanged" id="H94-0E-SNy"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZS-V9-1Sa">
-                                <rect key="frame" x="20" y="281" width="147" height="30"/>
+                                <rect key="frame" x="20" y="283" width="147" height="30"/>
                                 <state key="normal" title="Set Original Currency"/>
                                 <connections>
                                     <action selector="currencySelectionClicked:" destination="bv6-Mm-rO5" eventType="touchUpInside" id="snj-tP-wQd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txX-xm-DW4">
-                                <rect key="frame" x="228" y="281" width="166" height="30"/>
+                                <rect key="frame" x="228" y="283" width="166" height="30"/>
                                 <state key="normal" title="Set Converted Currency"/>
                                 <connections>
                                     <action selector="currencySelectionClicked:" destination="bv6-Mm-rO5" eventType="touchUpInside" id="9Od-Zk-bmL"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Original Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aev-zS-Buo">
-                                <rect key="frame" x="20" y="319" width="374" height="34"/>
+                                <rect key="frame" x="20" y="321" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Converted Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cse-ap-rLP">
-                                <rect key="frame" x="20" y="373" width="374" height="34"/>
+                                <rect key="frame" x="20" y="375" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pca-69-hjh">
-                                <rect key="frame" x="20" y="242" width="374" height="32"/>
+                                <rect key="frame" x="20" y="244" width="374" height="32"/>
                                 <segments>
                                     <segment title="Currency Code"/>
                                     <segment title="Currency Symbol"/>
@@ -683,80 +683,80 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zc-r0-LnW" customClass="TapChipHorizontalList" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="52" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="95"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="0QQ-e7-Efx"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KNET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl1-1Z-O0F">
-                                <rect key="frame" x="8" y="165" width="43" height="21"/>
+                                <rect key="frame" x="8" y="160" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-y1-6Km">
-                                <rect key="frame" x="357" y="160" width="51" height="31"/>
+                                <rect key="frame" x="357" y="155" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="h09-gh-O68"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENEFIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSa-2S-lc8">
-                                <rect key="frame" x="8" y="204" width="67" height="21"/>
+                                <rect key="frame" x="8" y="199" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRY-3L-cFj">
-                                <rect key="frame" x="357" y="199" width="51" height="31"/>
+                                <rect key="frame" x="357" y="194" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="KHn-i6-lTK"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SADAD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-r0-WJa">
-                                <rect key="frame" x="8" y="243" width="56" height="21"/>
+                                <rect key="frame" x="8" y="238" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXS-g1-IQQ">
-                                <rect key="frame" x="357" y="238" width="51" height="31"/>
+                                <rect key="frame" x="357" y="233" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="vPr-eG-HP2"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoPay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qne-jh-gcl">
-                                <rect key="frame" x="8" y="282" width="50" height="21"/>
+                                <rect key="frame" x="8" y="277" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKl-Hh-mnr">
-                                <rect key="frame" x="357" y="277" width="51" height="31"/>
+                                <rect key="frame" x="357" y="272" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="Wyr-Hm-Q9g"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SavedCard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9GO-g2-Vy5">
-                                <rect key="frame" x="8" y="321" width="84" height="21"/>
+                                <rect key="frame" x="8" y="316" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DR4-B6-crP">
-                                <rect key="frame" x="357" y="316" width="51" height="31"/>
+                                <rect key="frame" x="357" y="311" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="9M2-YJ-202"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ShowHeader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjA-S9-78o">
-                                <rect key="frame" x="8" y="360" width="98" height="21"/>
+                                <rect key="frame" x="8" y="355" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUu-nY-nYB">
-                                <rect key="frame" x="357" y="355" width="51" height="31"/>
+                                <rect key="frame" x="357" y="350" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="hIi-vB-Kjv" eventType="valueChanged" id="2mY-vk-7X3"/>
                                 </connections>
@@ -1209,16 +1209,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unnamed-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="idx-Y4-aop">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5TL-F1-EnO">
+                            <visualEffectView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5TL-F1-EnO">
                                 <rect key="frame" x="0.0" y="74" width="414" height="162"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="fxk-ZW-9Db">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fxk-ZW-9Db">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-Mh-pMb">
                                             <rect key="frame" x="0.0" y="0.0" width="174" height="34"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="OyV-FX-SdD">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyV-FX-SdD">
                                                 <rect key="frame" x="0.0" y="0.0" width="174" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
@@ -1232,7 +1232,7 @@
                                 <blurEffect style="prominent"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ4-QR-pnt" customClass="TapGoPaySignInView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="0.0" y="74" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="162"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="HnQ-Xr-5i4"/>
@@ -1343,12 +1343,32 @@
                                     <constraint firstAttribute="height" priority="750" constant="44" id="FSl-3j-PtW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change currency at run time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onp-0c-URq">
+                                <rect key="frame" x="98.5" y="126" width="217" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iUU-XB-DEH">
+                                <rect key="frame" x="161.5" y="155" width="91" height="32"/>
+                                <segments>
+                                    <segment title="AED"/>
+                                    <segment title="EGP"/>
+                                </segments>
+                                <connections>
+                                    <action selector="currenctSegmentChanged:" destination="dsI-CZ-MgN" eventType="valueChanged" id="vKY-8l-aB2"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="70x-3Y-vCt"/>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9AV-cI-s2f" firstAttribute="leading" secondItem="70x-3Y-vCt" secondAttribute="leading" id="5Jx-N5-pto"/>
+                            <constraint firstItem="Onp-0c-URq" firstAttribute="top" secondItem="9AV-cI-s2f" secondAttribute="bottom" constant="8" symbolic="YES" id="9Tt-fM-RKw"/>
+                            <constraint firstItem="Onp-0c-URq" firstAttribute="centerX" secondItem="nEE-Cd-sL9" secondAttribute="centerX" id="A7n-WY-fEd"/>
                             <constraint firstItem="70x-3Y-vCt" firstAttribute="trailing" secondItem="9AV-cI-s2f" secondAttribute="trailing" id="EU2-Ut-dMW"/>
+                            <constraint firstItem="iUU-XB-DEH" firstAttribute="top" secondItem="Onp-0c-URq" secondAttribute="bottom" constant="8" symbolic="YES" id="GJ2-Jf-lNP"/>
+                            <constraint firstItem="iUU-XB-DEH" firstAttribute="centerX" secondItem="nEE-Cd-sL9" secondAttribute="centerX" id="oeR-ee-The"/>
                             <constraint firstItem="9AV-cI-s2f" firstAttribute="top" secondItem="70x-3Y-vCt" secondAttribute="top" constant="30" id="pU5-dm-P9U"/>
                         </constraints>
                     </view>

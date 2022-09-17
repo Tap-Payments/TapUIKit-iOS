@@ -186,6 +186,23 @@ import CommonDataModelsKit_iOS
     
     
     // MARK: Public functions
+    
+    /**
+     Call it to change the currency and hence, the transaction amount at run time.
+     - Parameter currency: The new currency the user is trying to pay with now
+     */
+    @objc public func change(currency:TapCurrencyCode) {
+        // Set the new currency
+        self.currency = currency
+        // Get the loyalty currency and the needed data
+        // Defensive code to make sure we have a currency
+        guard let nonNullLoyaltyCurrency = loyaltyCurrency(forCurrency: currency) else { return }
+        // Set the new transaction amount to the converted amount from the new currency
+        transactionTotalAmount = nonNullLoyaltyCurrency.currency?.amount ?? 0
+        // Time to refresh the view model + the view to reflect the new currency and the new transaction amount
+        refreshData()
+    }
+    
     /**
      The method will do the post logic after setting the transaction amount and the selected currency.
      Will disable if the transaction amount is less than the minimum amount.
@@ -207,14 +224,22 @@ import CommonDataModelsKit_iOS
         if minAllowedAmountForCurrency > transactionTotalAmount {
             // Disable the widget
             attachedView.isUserInteractionEnabled = false
-            enableLoyaltySwitch(enable: false)
-            loyaltyRedemptionAmountChanged(with: 0)
+            amount = 0
+            isEnabled = false
+            //enableLoyaltySwitch(enable: false)
+            //loyaltyRedemptionAmountChanged(with: 0)
         }else{
             attachedView.isUserInteractionEnabled = true
             isEnabled = true
+            amount = min(transactionTotalAmount,maxAllowedAmountForCurrency)
+            
+            //enableLoyaltySwitch(enable: true)
             // If the passed amount is bigger than the max allowed balance, we set the initial amount to the max
-            loyaltyRedemptionAmountChanged(with: min(transactionTotalAmount,maxAllowedAmountForCurrency))
+            //loyaltyRedemptionAmountChanged(with: min(transactionTotalAmount,maxAllowedAmountForCurrency))
         }
+        delegate?.changeLoyaltyAmount(to: amount)
+        delegate?.changeLoyaltyEnablement(to: isEnabled)
+        tapLoyaltyView?.resetData()
     }
 }
 
