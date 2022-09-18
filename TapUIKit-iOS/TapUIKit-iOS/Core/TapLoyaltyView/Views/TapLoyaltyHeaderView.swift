@@ -8,6 +8,9 @@
 
 import Foundation
 import Nuke
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
+import TapThemeManager2020
 
 /// A protocol to listen to UI events fired from the loyalty header view
 protocol TapLoyaltyHeaderDelegate {

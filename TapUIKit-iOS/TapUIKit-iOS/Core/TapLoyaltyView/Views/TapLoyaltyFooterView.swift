@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
+import TapThemeManager2020
 
 /// Represents the footer sub view in the loyalty widget
 internal class TapLoyaltyFooterView: UIView {

@@ -8,6 +8,9 @@
 
 import UIKit
 import SnapKit
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
+import TapThemeManager2020
 
 /// A view represents the loyalty points view used while paying
 @objc public class TapLoyaltyView: UIView {

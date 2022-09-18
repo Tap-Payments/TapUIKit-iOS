@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import LocalisationManagerKit_iOS
+import CommonDataModelsKit_iOS
+import TapThemeManager2020
 
 /// A delegate to listen to events fired from the TapLoyaltyAmountView
 internal protocol TapLoyaltyAmountViewDelegate {
