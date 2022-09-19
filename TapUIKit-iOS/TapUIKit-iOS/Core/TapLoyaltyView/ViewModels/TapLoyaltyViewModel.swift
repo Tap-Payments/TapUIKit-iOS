@@ -97,7 +97,11 @@ import CommonDataModelsKit_iOS
     
     /// Computes the header subtitle text for the Loyalty view. Format is : Balance: AED 520.00 (81,500 TouchPoints)
     internal var headerSubTitleText: String {
-        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.balance", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel?.transactionsCount ?? "") \(loyaltyModel?.loyaltyPointsName ?? ""))"
+        if transactionTotalAmount < loyaltyCurrency(forCurrency: currency)?.minimumAmount ?? 0 {
+            return "\(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.minimumAmount ?? 0) \(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.lessThanMinimum", with: TapCommonConstants.pathForDefaultLocalisation()))"
+        }else{
+            return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.headerView.balance", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? "") \(loyaltyCurrency(forCurrency: currency)?.balanceAmount ?? 0) (\(loyaltyModel?.transactionsCount ?? "") \(loyaltyModel?.loyaltyPointsName ?? ""))"
+        }
     }
     
     
@@ -227,13 +231,11 @@ import CommonDataModelsKit_iOS
             attachedView.isUserInteractionEnabled = false
             amount = 0
             isEnabled = false
-            //enableLoyaltySwitch(enable: false)
             //loyaltyRedemptionAmountChanged(with: 0)
         }else{
             attachedView.isUserInteractionEnabled = true
             isEnabled = true
             amount = min(transactionTotalAmount,maxAllowedAmountForCurrency)
-            
             //enableLoyaltySwitch(enable: true)
             // If the passed amount is bigger than the max allowed balance, we set the initial amount to the max
             //loyaltyRedemptionAmountChanged(with: min(transactionTotalAmount,maxAllowedAmountForCurrency))
@@ -241,6 +243,7 @@ import CommonDataModelsKit_iOS
         delegate?.changeLoyaltyAmount(to: amount)
         delegate?.changeLoyaltyEnablement(to: isEnabled)
         tapLoyaltyView?.resetData()
+        tapLoyaltyView?.changeState(to: attachedView.isUserInteractionEnabled)
     }
 }
 

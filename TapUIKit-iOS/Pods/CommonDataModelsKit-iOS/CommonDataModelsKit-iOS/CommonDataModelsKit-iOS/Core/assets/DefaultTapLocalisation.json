@@ -15,7 +15,8 @@
             "headerView": {
                 "tc": "T&C",
                 "redeem": "Redeem",
-                "balance": "Balance"
+                "balance": "Balance",
+                "lessThanMinimum": "minimum redemption."
             },
             "amountView": {
                 "title" : "Amount to redeem"
@@ -153,7 +154,8 @@
             "headerView": {
                 "tc": "شروط",
                 "redeem": "استخدام",
-                "balance": "الرصيد"
+                "balance": "الرصيد",
+                "lessThanMinimum": "أقل قيمة"
             },
             "amountView": {
                 "title" : "المبلغ المستبدل"
