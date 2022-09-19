@@ -159,4 +159,27 @@ import TapCardVlidatorKit_iOS
         return newStatus
     }
     
+    
+    /**
+     Decides if each field is a valid one or not
+     - Returns: tuble of (card number valid or not, card expiry valid or not, card cvv is valid or not, card name is valid or not)
+     */
+    public func fieldsValidationStatuses() -> (Bool,Bool,Bool, Bool) {
+        return tapCardTelecomPaymentView?.cardInputView.fieldsValidationStatuses() ?? (false,false,false,false)
+    }
+    
+    /**
+     Decides if each field is a valid one or not
+     - Returns: tuble of (card number valid or not, card expiry valid or not, card cvv is valid or not, card name is valid or not)
+     */
+    @objc public func allCardFieldsValid() -> Bool {
+        guard let tapCardTelecomPaymentView = tapCardTelecomPaymentView else {
+            return false
+        }
+        // Let us get the validation status of the fields
+        let (cardNumberValid,cardExpiryValid,cardCVVValid,cardNameValid) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
+        // Check if all fields are valid
+        return cardCVVValid && cardNameValid && cardNumberValid && cardExpiryValid
+    }
+    
 }

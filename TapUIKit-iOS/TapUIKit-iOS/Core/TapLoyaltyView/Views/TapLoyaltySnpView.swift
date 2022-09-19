@@ -14,7 +14,7 @@ import TapThemeManager2020
 
 /// A view represents the loyalty points view used while paying
 @objc public class TapLoyaltyView: UIView {
-
+    
     /// The container view that holds everything from the XIB
     internal lazy var containterView:UIView = UIView()
     /// The path to look for theme entry in
@@ -100,13 +100,13 @@ import TapThemeManager2020
         if enabled {
             // let us show all the sub views again
             enablementEffectedViews.forEach{ view in
-                view.fadeIn()
+                view.isHidden = false
                 view.isUserInteractionEnabled = true
             }
         }else{
             // let us remove all sub views except the header
             enablementEffectedViews.forEach{ view in
-                view.fadeOut()
+                view.isHidden = true
                 view.isUserInteractionEnabled = false
             }
         }
@@ -165,7 +165,7 @@ import TapThemeManager2020
             make.leading.equalToSuperview()
             make.top.equalToSuperview()
         }
-
+        
         // The amount view
         amountView.snp.makeConstraints { make in
             make.height.equalTo(44)
@@ -244,7 +244,7 @@ import TapThemeManager2020
         reloadAmountView()
         reloadFooterView()
     }
-
+    
 }
 
 

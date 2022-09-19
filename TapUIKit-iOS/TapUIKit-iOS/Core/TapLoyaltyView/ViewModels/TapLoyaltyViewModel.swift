@@ -38,14 +38,14 @@ import CommonDataModelsKit_iOS
     /// Configure the localisation Manager
     internal let sharedLocalisationManager = TapLocalisationManager.shared
     /// The loylty model to use
-    internal var loyaltyModel:TapLoyaltyModel?
+    public var loyaltyModel:TapLoyaltyModel?
     /// The hint view model to control the hint view in the UIView itself
     internal var hintViewModel:TapHintViewModel = .init() {
         didSet{
             // Set the correct displayable title in the warning
             hintViewModel.overrideTitle = hintWarningTitle
         }
-    
+        
     }
     /// The transaction total amount
     internal var transactionTotalAmount:Double
@@ -190,15 +190,16 @@ import CommonDataModelsKit_iOS
     /**
      Call it to change the currency and hence, the transaction amount at run time.
      - Parameter currency: The new currency the user is trying to pay with now
+     - Parameter transactionAmount: If you want to update the transaction amount as well. Default is 0, then we will use the previos/current one
      */
-    @objc public func change(currency:TapCurrencyCode) {
+    @objc public func change(currency:TapCurrencyCode, transactionAmount:Double = 0) {
         // Set the new currency
         self.currency = currency
         // Get the loyalty currency and the needed data
         // Defensive code to make sure we have a currency
         guard let nonNullLoyaltyCurrency = loyaltyCurrency(forCurrency: currency) else { return }
         // Set the new transaction amount to the converted amount from the new currency
-        transactionTotalAmount = nonNullLoyaltyCurrency.currency?.amount ?? 0
+        self.transactionTotalAmount = transactionAmount != 0 ? transactionAmount : nonNullLoyaltyCurrency.currency?.amount ?? 0
         // Time to refresh the view model + the view to reflect the new currency and the new transaction amount
         refreshData()
     }
