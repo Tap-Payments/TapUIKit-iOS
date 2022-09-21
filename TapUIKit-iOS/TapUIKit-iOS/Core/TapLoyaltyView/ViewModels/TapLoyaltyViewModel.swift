@@ -117,8 +117,8 @@ import CommonDataModelsKit_iOS
     
     /// Computes the remaining points after redeeming the current amount
     internal var remainingPoints:String {
-        let totalPoints:Double = loyaltyModel?.numericTransactionCount ?? 0
-        let remainingPoints:Double = totalPoints - usedPoints
+        let totalPoints:Int = loyaltyModel?.numericTransactionCount ?? 0
+        let remainingPoints:Int = Int(totalPoints - usedPoints)
         return "\(remainingPoints)"
     }
     
@@ -186,9 +186,23 @@ import CommonDataModelsKit_iOS
     }
     
     /// Computes the current used points, but converting the plain amount into points using the conversion rate
-    internal var usedPoints: Double {
-        return amount * (loyaltyCurrency(forCurrency: currency)?.currency?.rate ?? 0)
+    internal var usedPoints: Int {
+        return Int(amount * (loyaltyCurrency(forCurrency: currency)?.currency?.rate ?? 0))
     }
+    
+    /// Computes the correctly formatted amount regards the current selected currency
+    internal var formattedAmount:String {
+        // In this case, then we will show a discount/single amount string
+        let formatter = TapAmountedCurrencyFormatter { [weak self] in
+            $0.currency = self?.loyaltyCurrency(forCurrency: self?.currency)?.currency?.currency ?? .USD
+            $0.locale = CurrencyLocale.englishUnitedStates
+            $0.currencySymbol = (self?.loyaltyCurrency(forCurrency: self?.currency)?.currency?.currency ?? .USD).appleRawValue
+            $0.showCurrencySymbol = false
+            $0.hasGroupingSeparator = false
+        }
+        return formatter.string(from: amount) ?? "\(amount)"
+    }
+    
     
     
     // MARK: Public functions

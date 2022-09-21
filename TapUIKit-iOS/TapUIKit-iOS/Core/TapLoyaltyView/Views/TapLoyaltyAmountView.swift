@@ -87,7 +87,7 @@ internal class TapLoyaltyAmountView: UIView {
         // save the initial amount
         amount = initialAmount
         // put the initial amount if any
-        if initialAmount > 0 { amountTextField.text = "\(initialAmount)" }
+        if initialAmount > 0 { amountTextField.text = viewModel.formattedAmount }
         reloadData()
         
     }
@@ -232,5 +232,8 @@ extension TapLoyaltyAmountView: UITextFieldDelegate {
     }
     
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = viewModel?.formattedAmount
+    }
     
 }

@@ -50,8 +50,8 @@ public struct TapLoyaltyModel : Codable {
     /// The total number of availle points as a string formatted as it comes from backend
     public let transactionsCount: String?
     /// The total number of availle points in a numeric format for numbers processing
-    public var numericTransactionCount: Double {
-        return Double(transactionsCount?.filter("0123456789".contains) ?? "0") ?? 0
+    public var numericTransactionCount: Int {
+        return Int(transactionsCount?.filter("0123456789".contains) ?? "0") ?? 0
     }
 }
 
