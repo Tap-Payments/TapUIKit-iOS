@@ -142,7 +142,7 @@ extension TapLoyaltyHeaderView {
         let termsAndConditionsAttributedTitle = NSMutableAttributedString(string: "\(TapLocalisationManager.shared.localisedValue(for: "TapLoyaltySection.headerView.tc", with: TapCommonConstants.pathForDefaultLocalisation()))",
                                                            attributes: [
                                                             .foregroundColor : TapThemeManager.colorValue(for: "\(themePath).subTitleTextColor") ?? .gray,
-                                                            .underlineStyle : NSUnderlineStyle.thick.rawValue,
+                                                            .underlineStyle : NSUnderlineStyle.single.rawValue,
                                                             .font : TapThemeManager.fontValue(for: "\(themePath).subTitleFont") ?? .systemFont(ofSize: 11)])
         
         termsAndConditionsButton.setAttributedTitle(termsAndConditionsAttributedTitle, for: .normal)

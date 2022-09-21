@@ -82,14 +82,30 @@ import TapThemeManager2020
     
     
     /// Handles the logic to get the amount section back to its original data
-    internal func resetData() {
+    internal func resetData(forSubViews:[LoyaltySubViewsID] = [.All]) {
         // hide the keyboard if any
         amountView.amountTextField.resignFirstResponder()
-        // Reset the amount section data
-        reloadAmountView()
-        // Reset the header value
-        reloadHeaderView()
-        
+        // Decide which sub view should be reloaded based on the caller decision
+        forSubViews.forEach { loyaltySubViewsID in
+            switch loyaltySubViewsID {
+            case .Header:
+                reloadHeaderView()
+                break
+            case .Footer:
+                reloadFooterView()
+                break
+            case .Amount:
+                reloadAmountView()
+                break
+            default:
+                // Reset the amount section data
+                reloadAmountView()
+                // Reset the header value
+                reloadHeaderView()
+                // Reset the footer value
+                reloadFooterView()
+            }
+        }
     }
     
     /// Will change the UI state enable/disable based on the provided valye
@@ -277,4 +293,18 @@ extension TapLoyaltyView {
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
     }
+}
+
+
+
+/// An enum to identify which sub view will need to be refreshed based on the context
+internal enum LoyaltySubViewsID {
+    /// Refresh all the subviews
+    case All
+    /// Refresh the header view
+    case Header
+    /// Refresh the footer view
+    case Footer
+    /// Refresh the amount view
+    case Amount
 }
