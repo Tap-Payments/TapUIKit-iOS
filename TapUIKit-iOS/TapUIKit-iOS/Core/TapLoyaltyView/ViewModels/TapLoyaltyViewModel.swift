@@ -117,7 +117,9 @@ import CommonDataModelsKit_iOS
     
     /// Computes the remaining points after redeeming the current amount
     internal var remainingPoints:String {
-        return "\(loyaltyModel?.numericTransactionCount ?? 0 - usedPoints)"
+        let totalPoints:Double = loyaltyModel?.numericTransactionCount ?? 0
+        let remainingPoints:Double = totalPoints - usedPoints
+        return "\(remainingPoints)"
     }
     
     /// Computes the remaining amount to pay after redemption

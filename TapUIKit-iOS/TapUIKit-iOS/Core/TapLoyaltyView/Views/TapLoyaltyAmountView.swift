@@ -117,10 +117,10 @@ internal class TapLoyaltyAmountView: UIView {
     
     /// Handles the logic needed to be done once the amount is changed
     internal func postAmountUpdated() {
-        // reload the text data in points deeduction basde on new amount
-        reloadData()
         // Inform the delegate that amount had changed
         delegate?.loyaltyRedemptionAmountChanged(with: amount)
+        // reload the text data in points deeduction basde on new amount
+        reloadData()
     }
     
     /// Will catch the event when the user changed the text in the amonut field with an accepted value

@@ -17,9 +17,10 @@ internal class TapLoyaltyFooterView: UIView {
     @IBOutlet var conentView: UIView!
     /// Displays the remaining points after redemeption
     @IBOutlet weak var remainingPointsLabel: UILabel!
+    /// Displayss the name of the points in this loyalty program
     @IBOutlet weak var pointsNameLabel: UILabel!
+    ////// Displays the remaining points after redemeption
     @IBOutlet weak var remaningPointsCountLabel: UILabel!
-    
     /// Displays the amount remaining to pay after redemption
     @IBOutlet weak var remainingAmountLabel: UILabel!
     /// The current selected currency data
