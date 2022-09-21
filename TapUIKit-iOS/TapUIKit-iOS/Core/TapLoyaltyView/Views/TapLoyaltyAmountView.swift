@@ -23,7 +23,7 @@ internal protocol TapLoyaltyAmountViewDelegate {
 }
 /// Represents the amount sub view in the loyalty widget
 internal class TapLoyaltyAmountView: UIView {
-
+    
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The title label
@@ -132,7 +132,7 @@ internal class TapLoyaltyAmountView: UIView {
         if adjustedToBeCheckedString.hasPrefix(".") {
             adjustedToBeCheckedString = "0\(adjustedToBeCheckedString)"
         }
-         // Now check that the given string has at most 1 decimal point
+        // Now check that the given string has at most 1 decimal point
         let numberParts:[String] = adjustedToBeCheckedString.components(separatedBy: ".")
         if numberParts.count == 1 {
             // This means it has no decimal points at all

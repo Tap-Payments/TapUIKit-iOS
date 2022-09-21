@@ -124,7 +124,18 @@ import CommonDataModelsKit_iOS
     
     /// Computes the remaining amount to pay after redemption
     internal var amountRemaningText: String {
-        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.footerView.amount", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(transactionTotalAmount - amount)"
+        // let us format the remaining amount as per the currency
+        let amountRmaining:Double = transactionTotalAmount - amount
+        let formatter = TapAmountedCurrencyFormatter { [weak self] in
+            $0.currency = self?.loyaltyCurrency(forCurrency: self?.currency)?.currency?.currency ?? .USD
+            $0.locale = CurrencyLocale.englishUnitedStates
+            $0.currencySymbol = (self?.loyaltyCurrency(forCurrency: self?.currency)?.currency?.currency ?? .USD).appleRawValue
+            $0.showCurrencySymbol = false
+            $0.hasGroupingSeparator = false
+            $0.currencySymbol = ""
+        }
+        
+        return "\(sharedLocalisationManager.localisedValue(for: "TapLoyaltySection.footerView.amount", with: TapCommonConstants.pathForDefaultLocalisation())): \(loyaltyCurrency(forCurrency: currency)?.currency?.displaybaleSymbol ?? currency.appleRawValue) \(formatter.string(from: amountRmaining) ?? "\(amountRmaining)")"
     }
     
     /// Decides what is the url if any to open for T&C for this specific loyalty. Returns nil if no link provided or malformed
@@ -165,7 +176,7 @@ import CommonDataModelsKit_iOS
         // If not enabled, we only show the first row, which is the header
         guard isEnabled else { return rowHeight + shrinkedCaseMargins }
         // Now, we have three constant views always : Header, Amount and Footer. At some points, we will show a hint view as well.
-        return ((rowHeight*3) + (shouldShowHint ? rowHeight : 0)) + expandedCasemargins
+        return ((rowHeight*4)) + expandedCasemargins
     }
     
     
@@ -199,6 +210,7 @@ import CommonDataModelsKit_iOS
             $0.currencySymbol = (self?.loyaltyCurrency(forCurrency: self?.currency)?.currency?.currency ?? .USD).appleRawValue
             $0.showCurrencySymbol = false
             $0.hasGroupingSeparator = false
+            $0.currencySymbol = ""
         }
         return formatter.string(from: amount) ?? "\(amount)"
     }
@@ -230,6 +242,28 @@ import CommonDataModelsKit_iOS
      Will set the initial redeem amount to the max allowed balance if transaction amount is bigger.
      */
     @objc public func refreshData() {
+        // calculate the initial amount
+        calculateInitialAmount()
+        // decide the enablity of the loyalty view
+        
+        // We will have to disable the loyalty widget if the transaction amount is less than the minimum allowed amount to redeem
+        if amount ==  0 {
+            // Disable the widget
+            attachedView.isUserInteractionEnabled = false
+            isEnabled = false
+        }else{
+            attachedView.isUserInteractionEnabled = true
+            isEnabled = true
+        }
+        // call the delegate with the new changes
+        delegate?.changeLoyaltyAmount(to: amount)
+        delegate?.changeLoyaltyEnablement(to: isEnabled)
+        tapLoyaltyView?.resetData()
+        tapLoyaltyView?.changeState(to: attachedView.isUserInteractionEnabled)
+    }
+    
+    /// Computes the initial amount based on comparing the amx allowed balance and the total transaction amount
+    internal func calculateInitialAmount() {
         // get the loyalty model related to the current currency
         
         // Defensive code to make sure we have a currency
@@ -243,23 +277,10 @@ import CommonDataModelsKit_iOS
         
         // We will have to disable the loyalty widget if the transaction amount is less than the minimum allowed amount to redeem
         if minAllowedAmountForCurrency > transactionTotalAmount {
-            // Disable the widget
-            attachedView.isUserInteractionEnabled = false
             amount = 0
-            isEnabled = false
-            //loyaltyRedemptionAmountChanged(with: 0)
         }else{
-            attachedView.isUserInteractionEnabled = true
-            isEnabled = true
             amount = min(transactionTotalAmount,maxAllowedAmountForCurrency)
-            //enableLoyaltySwitch(enable: true)
-            // If the passed amount is bigger than the max allowed balance, we set the initial amount to the max
-            //loyaltyRedemptionAmountChanged(with: min(transactionTotalAmount,maxAllowedAmountForCurrency))
         }
-        delegate?.changeLoyaltyAmount(to: amount)
-        delegate?.changeLoyaltyEnablement(to: isEnabled)
-        tapLoyaltyView?.resetData()
-        tapLoyaltyView?.changeState(to: attachedView.isUserInteractionEnabled)
     }
 }
 

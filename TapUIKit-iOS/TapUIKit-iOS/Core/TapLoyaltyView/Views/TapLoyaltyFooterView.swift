@@ -63,7 +63,7 @@ internal class TapLoyaltyFooterView: UIView {
         remaningPointsCountLabel.text = viewModel?.remainingPoints
         remainingAmountLabel.text = viewModel?.amountRemaningText
     }
-
+    
 }
 
 
