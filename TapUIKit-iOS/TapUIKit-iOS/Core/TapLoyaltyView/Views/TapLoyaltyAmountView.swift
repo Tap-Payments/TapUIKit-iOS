@@ -149,7 +149,7 @@ extension TapLoyaltyAmountView {
         pointsLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont", shouldLocalise: false)
         pointsLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
         
-        pointsProgramNameLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont")
+        pointsProgramNameLabel.tap_theme_font = .init(stringLiteral: "\(themePath).pointsFont", shouldLocalise: false)
         pointsProgramNameLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).pointsTextColor")
         
         currencyLabel.tap_theme_font = .init(stringLiteral: "\(themePath).currencyFont")
@@ -157,6 +157,7 @@ extension TapLoyaltyAmountView {
         
         amountTextField.tap_theme_font = .init(stringLiteral: "\(themePath).amountFont")
         amountTextField.tap_theme_textColor = .init(stringLiteral: "\(themePath).amountTextColor")
+        
         amountTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
         
         layoutIfNeeded()
