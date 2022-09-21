@@ -123,6 +123,29 @@ internal class TapLoyaltyAmountView: UIView {
         reloadData()
     }
     
+    /// Checks if a given string passes the decimal allowed places
+    /// - Parameter for toBeCheckedString : The string value to check
+    /// - Parameter regards ecimalPlaces: The max allowed decimal places
+    internal func allowedDecimalPlaces(for toBeCheckedString:String, regards decimalPlaces:Int) -> Bool {
+        var adjustedToBeCheckedString = toBeCheckedString
+        // Check if the . is the begining of the number e.g. .12 add a leading zero
+        if adjustedToBeCheckedString.hasPrefix(".") {
+            adjustedToBeCheckedString = "0\(adjustedToBeCheckedString)"
+        }
+         // Now check that the given string has at most 1 decimal point
+        let numberParts:[String] = adjustedToBeCheckedString.components(separatedBy: ".")
+        if numberParts.count == 1 {
+            // This means it has no decimal points at all
+            return true
+        }else if numberParts.count == 2 {
+            // This means it has one decimal point and we need to check the count of the decimal places
+            return numberParts[1].count <= decimalPlaces
+        }else{
+            // The given string has more than 1 decimal point, hence it is not a parsable number
+            return false
+        }
+    }
+    
     /// Will catch the event when the user changed the text in the amonut field with an accepted value
     @objc func textFieldDidChange(_ textField: UITextField) {
         // Save the amount
@@ -195,7 +218,8 @@ extension TapLoyaltyAmountView: UITextFieldDelegate {
             guard let decimalInput : Decimal = Decimal(string: newString, locale: Locale(identifier: "en_US")) else { return false }
             // Don't accept any more decimals than the allowed placed by the currency
             // We don't accept a value bigger than the max balance for the user with this currency and not bigger than the total transaction amount
-            guard decimalInput.significantFractionalDecimalDigits <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.currency?.decimalDigits ?? 0,
+            
+            guard allowedDecimalPlaces(for: newString, regards: viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.currency?.decimalDigits ?? 0),
                   NSDecimalNumber(decimal: decimalInput).doubleValue  <= viewModel?.loyaltyCurrency(forCurrency: viewModel?.currency)?.balanceAmount ?? 0,
                   NSDecimalNumber(decimal: decimalInput).doubleValue  <= viewModel?.transactionTotalAmount ?? 0
             else { return false }
@@ -206,5 +230,7 @@ extension TapLoyaltyAmountView: UITextFieldDelegate {
         }
         return true
     }
+    
+    
     
 }
