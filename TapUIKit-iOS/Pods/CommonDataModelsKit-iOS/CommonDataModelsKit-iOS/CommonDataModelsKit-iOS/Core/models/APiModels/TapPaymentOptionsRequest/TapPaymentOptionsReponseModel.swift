@@ -126,7 +126,7 @@ extension TapPaymentOptionsReponseModel: Decodable {
                   savedCards:                   savedCards,
                   merchantCountryCode:          merchantCountryCode,
                   order:                        order,
-                  loyalty:                      .init(id: "", bankName: "ADCB", bankLogo: "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/78/00/ed/7800edd0-5854-b6ce-458f-dfcf75caa495/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1024x1024.jpg", loyaltyProgramName: "ADCB TouchPoints", loyaltyPointsName: "TouchPoints", termsConditionsLink: "https://www.adcb.com/en/personal/adcb-for-you/touchpoints/touchpoints-rewards.aspx", supportedCurrencies: [.init(currency: AmountedCurrency.init(.AED, 200, "", 2, 50), balanceAmount: 1000, minimumAmount: 100),.init(currency: AmountedCurrency.init(.EGP, 1000, "", 2, 10), balanceAmount: 5000, minimumAmount: 500)], transactionsCount: "25.000"))
+                  loyalty:                      .init(id: "", bankName: "ADCB", bankLogo: "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/78/00/ed/7800edd0-5854-b6ce-458f-dfcf75caa495/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1024x1024.jpg", loyaltyProgramName: "ADCB TouchPoints", loyaltyPointsName: "TouchPoints", termsConditionsLink: "https://www.adcb.com/en/personal/adcb-for-you/touchpoints/touchpoints-rewards.aspx", supportedCurrencies: [.init(currency: AmountedCurrency.init(.AED, 1000, "", 2, 50), balanceAmount: 1000, minimumAmount: 100),.init(currency: AmountedCurrency.init(.EGP, 5000, "", 2, 10), balanceAmount: 5000, minimumAmount: 500)], transactionsCount: "50.000"))
     }
 }
 
