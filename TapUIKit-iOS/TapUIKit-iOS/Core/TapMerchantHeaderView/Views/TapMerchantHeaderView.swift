@@ -155,7 +155,10 @@ extension TapMerchantHeaderView {
         subtitleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).subTitleLabelFont")
         subtitleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).subTitleLabelColor")
         
-        merchantLogoContainerView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).merchantLogoCorner")
+        merchantLogoContainerView.layer.cornerRadius = merchantLogoContainerView.frame.width / 2
+        merchantLogoPlaceHolderView.layer.shadowOpacity = 1
+        merchantLogoContainerView.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).merchantLogoShadowRadius")
+        merchantLogoPlaceHolderView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).merchantLogoShadowColor")
         merchantLogoPlaceHolderView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderColor")
         merchantLogoPlaceHolderInitialLabel.tap_theme_font = .init(stringLiteral: "\(themePath).merchantLogoPlaceHolderFont")
         merchantLogoPlaceHolderInitialLabel.tap_theme_textColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderLabelColor")

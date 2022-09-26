@@ -32,7 +32,7 @@ class TapMerchantHeaderViewController: UIViewController {
     
     
     func createDefaultViewModel() {
-        viewModel = .init(subTitle: "Tap Payments", iconURL: "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
+        viewModel = .init(subTitle: "Tap Payments")
     }
     
     @IBAction func resetDefaultClicked(_ sender: Any) {

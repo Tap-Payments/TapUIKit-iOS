@@ -74,6 +74,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="width" secondItem="LSR-b8-URD" secondAttribute="height" multiplier="1:1" id="Jew-kw-eeD"/>
                                 <constraint firstItem="V39-sF-WDu" firstAttribute="centerX" secondItem="LSR-b8-URD" secondAttribute="centerX" id="Mbe-cr-kQl"/>
                                 <constraint firstItem="V39-sF-WDu" firstAttribute="centerY" secondItem="LSR-b8-URD" secondAttribute="centerY" id="hBI-I1-er1"/>
                             </constraints>
