@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapDragHandlerView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
-                <outlet property="cancelButton" destination="fVM-Ox-XzH" id="mxk-Ca-k9f"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="glL-rZ-6yX"/>
                 <outlet property="handlerImageView" destination="xjO-eD-hmc" id="AG5-7G-7Vo"/>
                 <outlet property="handlerImageViewHeightConstraint" destination="GnK-4R-jyR" id="Cy4-1R-VwS"/>
@@ -29,23 +28,10 @@
                         <constraint firstAttribute="width" constant="75" id="KgC-Y3-ckm"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVM-Ox-XzH">
-                    <rect key="frame" x="376" y="6" width="22" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="c2C-5k-sGa"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="e4K-rn-abM"/>
-                    </constraints>
-                    <state key="normal" image="closeCheckoutIcon"/>
-                    <connections>
-                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="3qm-nc-BSp"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fVM-Ox-XzH" secondAttribute="trailing" constant="16" id="A8S-bR-dFq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fVM-Ox-XzH" secondAttribute="bottom" constant="2" id="Lql-Id-W4g"/>
                 <constraint firstItem="xjO-eD-hmc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NST-WQ-18G"/>
                 <constraint firstItem="xjO-eD-hmc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UwV-d1-gZz"/>
             </constraints>
@@ -54,7 +40,6 @@
         </view>
     </objects>
     <resources>
-        <image name="closeCheckoutIcon" width="12" height="12"/>
         <image name="tapHandlerImage" width="37.666667938232422" height="2"/>
     </resources>
 </document>

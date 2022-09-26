@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapMerchantHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="cancelButton" destination="CzY-lx-UvI" id="2Vp-LN-HWV"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="saE-Vs-exU"/>
                 <outlet property="merchantLogoContainerView" destination="LSR-b8-URD" id="Bn1-rG-aKU"/>
                 <outlet property="merchantLogoImageView" destination="ntH-9Y-XA4" id="uvl-BN-n75"/>
@@ -107,21 +108,34 @@
                         <constraint firstAttribute="bottom" secondItem="LSR-b8-URD" secondAttribute="bottom" id="yDL-cm-H2d"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzY-lx-UvI">
+                    <rect key="frame" x="366" y="4" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="mz8-yr-Duf"/>
+                    </constraints>
+                    <state key="normal" image="closeCheckoutIcon"/>
+                    <connections>
+                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="Ir5-4A-q7o"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O6B-nj-GYC" secondAttribute="trailing" constant="16" id="4af-dj-Trd"/>
+                <constraint firstItem="CzY-lx-UvI" firstAttribute="centerY" secondItem="yOw-Pk-KqX" secondAttribute="centerY" id="5Xv-sp-qR9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CzY-lx-UvI" secondAttribute="trailing" constant="16" id="7cZ-pz-IQr"/>
                 <constraint firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" priority="750" constant="19" id="AZx-tL-oOS"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ru4-Og-B3o" secondAttribute="trailing" constant="16" id="EKE-3t-adQ"/>
                 <constraint firstItem="vsh-mW-HOs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ehc-Vn-IN6"/>
                 <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" constant="19" id="IvH-V0-pjR"/>
                 <constraint firstItem="vsh-mW-HOs" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Jnt-HN-adQ"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
+                <constraint firstItem="CzY-lx-UvI" firstAttribute="width" secondItem="CzY-lx-UvI" secondAttribute="height" multiplier="1:1" id="dxu-s8-Nc8"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
                 <constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
                 <constraint firstItem="yOw-Pk-KqX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ogw-He-kAH"/>
+                <constraint firstItem="CzY-lx-UvI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6B-nj-GYC" secondAttribute="trailing" constant="16" id="sR8-Pa-2Rm"/>
                 <constraint firstItem="vsh-mW-HOs" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="szu-71-ege"/>
                 <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="tzR-Tl-aDE"/>
                 <constraint firstItem="ru4-Og-B3o" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="vD0-za-T5D"/>
@@ -131,4 +145,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="152.85326086956522"/>
         </view>
     </objects>
+    <resources>
+        <image name="closeCheckoutIcon" width="12" height="12"/>
+    </resources>
 </document>

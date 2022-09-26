@@ -72,7 +72,6 @@ class ExampleWallOfGloryViewController: UIViewController {
         createTabBarViewModel()
         createGatewaysViews()
         createItemsViewModel()
-        dragView.delegate = self
     }
     
     func createTabBarViewModel() {
@@ -228,6 +227,10 @@ extension ExampleWallOfGloryViewController:TapMerchantHeaderViewDelegate {
     }
     func merchantHeaderClicked() {
         showAlert(title: "Merchant Header", message: "The user clicked on the header section, do you want me to do anything?")
+    }
+    
+    func closeButtonClicked() {
+        delegate?.dismissMySelfClicked()
     }
 }
 
@@ -685,13 +688,5 @@ extension ExampleWallOfGloryViewController:TapWebViewModelDelegate {
     
     func didFail(with error: Error, for url: URL?) {
         
-    }
-}
-
-
-extension ExampleWallOfGloryViewController:TapDragHandlerViewDelegate {
-    
-    func closeButtonClicked() {
-        delegate?.dismissMySelfClicked()
     }
 }

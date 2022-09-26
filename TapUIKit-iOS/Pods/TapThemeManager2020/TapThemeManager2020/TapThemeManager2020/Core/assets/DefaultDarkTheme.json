@@ -250,11 +250,7 @@
         "width" : 75,
         "height" : 4,
         "corner" : 2,
-        "backgroundColor": "white",
-        "cancelButton": {
-            "titleLabelFont" : "Roboto-Light,13",
-            "titleLabelColor" : "greyishBrown"
-        }
+        "backgroundColor": "white"
     },
     "loyaltyView" : {
         "cardView": {
@@ -301,7 +297,12 @@
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
         "backgroundColor" : "white",
-        "closeCheckoutIcon": "closeCheckoutDarkIcon"
+        "closeCheckoutIcon": "closeCheckoutDarkIcon",
+        "cancelButton": {
+            "titleLabelFont" : "Roboto-Light,13",
+            "titleLabelColor" : "greyishBrown",
+            "backgroundColor" : "whiteTwo"
+        }
     },
     "amountSectionView": {
         "originalAmountLabelFont" : "Roboto-Regular,20",

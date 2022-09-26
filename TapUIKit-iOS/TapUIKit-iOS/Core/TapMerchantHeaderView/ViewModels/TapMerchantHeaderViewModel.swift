@@ -15,6 +15,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     @objc optional func iconClicked()
     /// The section view in the view is clixked by the user
     @objc optional func merchantHeaderClicked()
+    /// Will be fired once the close button is clicked
+    @objc func closeButtonClicked()
 }
 
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
@@ -112,6 +114,12 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     internal func merchantHeaderClicked() {
         delegate?.merchantHeaderClicked?()
     }
+    
+    /// Will be called when the close button is clicked
+    internal func cancelButtonClicked() {
+        delegate?.closeButtonClicked()
+    }
+    
     
     /**
      The text to be displayed in initials placeholder for merchant logo

@@ -15,7 +15,9 @@ import CommonDataModelsKit_iOS
 
 /// A view represents the merchant header section in the checkout UI
 @objc public class TapMerchantHeaderView: UIView {
-    
+
+    /// The current close button display state
+    private var closeButtonState:CheckoutCloseButtonEnum = .icon
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The containter view for the area of merchant place holder and real icon image
@@ -38,6 +40,9 @@ import CommonDataModelsKit_iOS
             createObservables()
         }
     }
+    
+    /// The button that will dismiss the whole TAP sheet
+    @IBOutlet weak var cancelButton: UIButton!
     
     /// The path to look for theme entry in
     private let themePath = "merchantHeaderView"
@@ -76,6 +81,11 @@ import CommonDataModelsKit_iOS
         }
     }
     
+    /// Will be called when the close button is clicked
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+        viewModel?.cancelButtonClicked()
+    }
+    
     ///Updates all the labels with the corresponding values in the view model
     private func bindImages() {
         guard let viewModel = viewModel else { return }
@@ -101,6 +111,21 @@ import CommonDataModelsKit_iOS
     
     @objc public func changeViewModel(with viewModel:TapMerchantHeaderViewModel) {
         self.viewModel = viewModel
+    }
+    
+    /**
+     Will change the display mode of the close button
+     - Parameter to closeButtonState: The new state the button should change to
+     */
+    @objc public func changeCloseButton(to closeButtonState:CheckoutCloseButtonEnum) {
+        if closeButtonState == .title {
+            cancelButton.setTitle(TapLocalisationManager.shared.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation()).uppercased(), for: .normal)
+            cancelButton.setImage(nil, for: .normal)
+        }else{
+            cancelButton.setTitle("", for: .normal)
+            cancelButton.setImage(TapThemeManager.imageValue(for: "merchantHeaderView.closeCheckoutIcon"), for: .normal)
+        }
+        self.closeButtonState = closeButtonState
     }
     
     /**
@@ -149,6 +174,8 @@ extension TapMerchantHeaderView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
+        changeCloseButton(to: closeButtonState)
+        
         titleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont")
         titleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).titleLabelColor")
         
@@ -171,6 +198,13 @@ extension TapMerchantHeaderView {
         
         topSpaceBetweenMerchantNameAndTitleConstraint.constant += (TapLocalisationManager.shared.localisationLocale == "ar") ? 2 : 0
         
+        
+        cancelButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).cancelButton.titleLabelColor"), forState: .normal)
+        cancelButton.tap_theme_tintColor = .init(keyPath: "\(themePath).cancelButton.titleLabelColor")
+        cancelButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).cancelButton.titleLabelFont")
+        cancelButton.layer.cornerRadius = 16
+        cancelButton.tap_theme_backgroundColor = .init(keyPath: "\(themePath).cancelButton.backgroundColor")
+        
         layoutIfNeeded()
     }
     
@@ -180,4 +214,13 @@ extension TapMerchantHeaderView {
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
     }
+}
+
+
+/// Defines the style of the checkout close button
+@objc public enum CheckoutCloseButtonEnum:Int {
+    /// Will show a close button icon only
+    case icon = 1
+    /// Will show the word "CLOSE" as a title only
+    case title = 2
 }
