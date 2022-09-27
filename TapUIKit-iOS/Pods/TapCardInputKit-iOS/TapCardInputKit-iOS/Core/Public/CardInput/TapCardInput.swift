@@ -347,7 +347,7 @@ internal protocol TapCardInputCommonProtocol {
         self.layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.shadow.radius")?.floatValue ?? 0)
         self.layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "\(themePath).commonAttributes.shadow.color")
         self.layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.shadow.offsetHeight")?.floatValue ?? 0))
-        self.layer.shadowOpacity = 0//Float(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.shadow.opacity")?.floatValue ?? 0)
+        self.layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.shadow.opacity")?.floatValue ?? 0)
         self.layer.masksToBounds = false
         
         self.spacing = CGFloat(TapThemeManager.numberValue(for: "\(themePath).commonAttributes.itemSpacing")?.floatValue ?? 0)
@@ -541,7 +541,7 @@ internal protocol TapCardInputCommonProtocol {
     
     /// Method that glows or the dims the card input view based on the shadow theme provided and if any of the fields is active
     internal func  updateShadow() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             // The final value we will animate the shadow opacity , default is 0
             var finalShadowOpacity:Float = 0.0
             // Calculate the starting valye which is the current opacity level
@@ -565,7 +565,7 @@ internal protocol TapCardInputCommonProtocol {
             shadowAnimation.duration = 0.5
             self.layer.add(shadowAnimation, forKey: "shadowOpacity")
             self.layer.shadowOpacity = finalShadowOpacity
-        }
+        }*/
     }
     
     /// The method that holds the logic needed to do when any of the card fields changed

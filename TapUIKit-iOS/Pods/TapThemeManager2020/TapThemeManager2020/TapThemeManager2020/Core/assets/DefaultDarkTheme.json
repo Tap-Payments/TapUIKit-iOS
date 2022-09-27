@@ -45,11 +45,11 @@
             "itemSpacing": 5,
             "cvvPlaceHolder": "dark-cvv",
             "shadow":{
-                "color": "clear",
-                "radius": 0,
+                "color": "white30",
+                "radius": 8,
                 "offsetWidth": 0,
                 "offsetHeight": 0,
-                "opacity": 0
+                "opacity": 1
             },
             "widthMargin": 7
         },
