@@ -50,9 +50,8 @@ extension TapCardInput {
             // We set the card expiry width to the mimimum width based on its min visible characters attribute
             make.width.equalTo(cardExpiry.calculatedWidth())
             make.height.equalToSuperview().dividedBy(2)
-            make.centerX.equalToSuperview()
             make.centerY.equalTo(cardNumber.snp.centerY)
-            //make.leading.greaterThanOrEqualTo(cardNumber.snp.trailing).offset(23)
+            make.trailing.equalTo(cardCVV.snp.leading)
         }
         
         // Defines the constrints for the card cvv field
@@ -63,7 +62,7 @@ extension TapCardInput {
             make.trailing.equalTo(scanButton.snp.leading).offset(-0)
             // For vertical center we may need to do a little shift to override the arabic font margin
             make.centerY.equalTo(cardNumber.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? -4 : 0)
-            //make.leading.greaterThanOrEqualTo(cardExpiry.snp.trailing).offset(23)
+            make.leading.equalTo(cardExpiry.snp.trailing)
         }
         
         
@@ -94,7 +93,7 @@ extension TapCardInput {
         //self.addSubview(scrollView)
         
         // Set the stack view attribtes
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.alignment = .center
         stackView.backgroundColor = .clear
         stackView.spacing = computedSpace
@@ -106,9 +105,9 @@ extension TapCardInput {
             //stackView.addArrangedSubview(field)
             addSubview(field)
         }
-        cardCVV.alignment = .right
-        cardExpiry.alpha = 0
-        cardCVV.alpha = 0
+        cardCVV.alignment = .center
+        cardExpiry.alpha = 1
+        cardCVV.alpha = 1
         cardName.alpha = 0
         // Add other fields not inside the scrolling areas
         addSubview(icon)
@@ -209,11 +208,10 @@ extension TapCardInput {
                 prefix = "•••••"
             }
             nonNullView.text = "\(prefix)\(correctNumberText.cardFormat(with: spacing))"
-            
             // Set the visibilog of cvv and expirty based on the validty of the card number
             UIView.animate(withDuration: 0.2, animations: { [weak self] in
-                self?.cardExpiry.alpha = (nonNullView.isEditing || !self!.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber)) ? 0 : 1
-                self?.cardCVV.alpha = (nonNullView.isEditing || !self!.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber)) ? 0 : 1
+                self?.cardExpiry.alpha = (nonNullView.isEditing) ? 0 : 1
+                self?.cardCVV.alpha = (nonNullView.isEditing) ? 0 : 1
                 self?.cardName.alpha = (nonNullView.isEditing || !self!.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber)) ? 0 : 1
                 self?.layoutIfNeeded()
             })

@@ -574,8 +574,20 @@ internal protocol TapCardInputCommonProtocol {
         }*/
     }
     
+    /// Enable/Disable expiry and cvv based on the validity of the card number
+    internal func adjustEnablementOfTextFields() {
+        if cardInputMode == .InlineCardInput &&
+            cardNumber.isValid() {
+            fields.forEach{ $0.isUserInteractionEnabled = true }
+        }else{
+            fields.forEach{ $0.isUserInteractionEnabled = false }
+        }
+        cardNumber.isUserInteractionEnabled = true
+    }
+    
     /// The method that holds the logic needed to do when any of the card fields changed
     internal func cardDatachanged() {
+        //adjustEnablementOfTextFields()
         adjustScanButton()
         if let nonNullDelegate = delegate {
             // If there is a delegate then we call the related method
@@ -593,8 +605,8 @@ internal protocol TapCardInputCommonProtocol {
         guard cardInputMode == .InlineCardInput else { return }
         
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.cardCVV.alpha = (self?.cardNumber.isEditing ?? false || !(self?.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber) ?? false)) ? 0 : 1
-            self?.cardExpiry.alpha = (self?.cardNumber.isEditing ?? false || !(self?.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber) ?? false)) ? 0 : 1
+            self?.cardCVV.alpha = (self?.cardNumber.isEditing ?? false) ? 0 : 1
+            self?.cardExpiry.alpha = (self?.cardNumber.isEditing ?? false) ? 0 : 1
             self?.cardName.alpha = (self?.showCardName ?? false) ? ((self?.cardNumber.isEditing ?? false || !(self?.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber) ?? false)) ? 0 : 1) : 0
         })
     }
