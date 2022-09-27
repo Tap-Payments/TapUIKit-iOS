@@ -61,7 +61,8 @@ extension TapCardInput {
             make.width.equalTo(cardCVV.calculatedWidth())
             make.height.equalToSuperview().dividedBy(2)
             make.trailing.equalTo(scanButton.snp.leading).offset(-0)
-            make.centerY.equalTo(cardNumber.snp.centerY)
+            // For vertical center we may need to do a little shift to override the arabic font margin
+            make.centerY.equalTo(cardNumber.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? -4 : 0)
             //make.leading.greaterThanOrEqualTo(cardExpiry.snp.trailing).offset(23)
         }
         
@@ -203,7 +204,11 @@ extension TapCardInput {
             
             let correctNumberText:String = nonNullView.isEditing ? (tapCard.tapCardNumber ?? "") : String(tapCard.tapCardNumber?.suffix(4) ?? "")
             let spacing = CardValidator.cardSpacing(cardNumber: correctNumberText.onlyDigits())
-            nonNullView.text = correctNumberText.cardFormat(with: spacing)
+            var prefix:String = ""
+            if !nonNullView.isEditing && cardNumber.isValid(cardNumber: tapCard.tapCardNumber) {
+                prefix = "•••••"
+            }
+            nonNullView.text = "\(prefix)\(correctNumberText.cardFormat(with: spacing))"
             
             // Set the visibilog of cvv and expirty based on the validty of the card number
             UIView.animate(withDuration: 0.2, animations: { [weak self] in

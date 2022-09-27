@@ -383,7 +383,7 @@ internal protocol TapCardInputCommonProtocol {
     internal func configureViews() {
         
         // Setup the card number field with the needed data and listeners
-        cardNumber.setup(with: 4, maxVisibleChars: 16, placeholder: "Card Number") { [weak self] (isEditing) in
+        cardNumber.setup(with: 8, maxVisibleChars: 16, placeholder: "Card Number") { [weak self] (isEditing) in
             // We will glow the shadow if needed
             self?.updateShadow()
             // We will need to adjuust the width for the field when it is being active or inactive in the Inline mode
