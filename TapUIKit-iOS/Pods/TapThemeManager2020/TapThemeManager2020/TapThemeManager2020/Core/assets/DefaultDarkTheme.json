@@ -40,7 +40,7 @@
         "commonAttributes": {
             "backgroundColor": "white",
             "borderColor": "clear",
-            "cornerRadius": 0,
+            "cornerRadius": 8,
             "borderWidth": 0,
             "itemSpacing": 5,
             "cvvPlaceHolder": "dark-cvv",
@@ -486,7 +486,7 @@
     {
         "backgroundColor": "whiteTwo",
         "maxWidth":60,
-        "insets":16,
+        "insets":0,
         "underline":{
             "unselected": {
                 "backgroundColor" : "brownGrey"
@@ -508,6 +508,10 @@
                 "backgroundColor" : "clear",
                 "alpha": 1
             }
+        },
+        "weAcceptLabel":{
+            "textFont": "Roboto,10",
+            "textColor": "greyishBrown",
         }
     },
     "TapVerticalView":

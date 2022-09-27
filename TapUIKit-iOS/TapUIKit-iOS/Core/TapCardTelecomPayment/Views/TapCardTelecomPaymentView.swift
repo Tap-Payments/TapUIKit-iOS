@@ -94,6 +94,7 @@ import TapCardVlidatorKit_iOS
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.contentView = setupXIB()
+        applyTheme()
     }
     
     public override func layoutSubviews() {
@@ -114,7 +115,7 @@ import TapCardVlidatorKit_iOS
             tabBarHeightConstraint.constant = 0
             tapCardPhoneListView.isHidden = true
             translatesAutoresizingMaskIntoConstraints = false
-            heightAnchor.constraint(equalToConstant: 45).isActive = true
+            heightAnchor.constraint(equalToConstant: 24).isActive = true
         }else {
             translatesAutoresizingMaskIntoConstraints = false
             heightAnchor.constraint(equalToConstant: requiredHeight()).isActive = true
@@ -184,7 +185,7 @@ import TapCardVlidatorKit_iOS
      - Returns: 45 if one brand allowed and 95 otherwise
      */
     @objc public func requiredHeight() -> CGFloat {
-        return tapCardPhoneListViewModel.dataSource.count > 1 ? 95 : 49
+        return tapCardPhoneListViewModel.dataSource.count > 1 ? 88 : 48
     }
 }
 
@@ -244,4 +245,28 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
         }
     }
     
+}
+
+
+extension TapCardTelecomPaymentView {
+    // Consolidated one point to apply all needed theme methods
+    public func applyTheme() {
+        matchThemeAttributes()
+    }
+    
+    /// Match the UI attributes with the correct theming entries
+    private func matchThemeAttributes() {
+        
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        
+        layoutIfNeeded()
+    }
+    
+    /// Listen to light/dark mde changes and apply the correct theme based on the new style
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        applyTheme()
+    }
 }
