@@ -22,7 +22,7 @@ extension TapCardInput {
         // Defines the constrints for the card icon image vie
         icon.snp.remakeConstraints { (make) in
             make.width.equalTo(24)
-            make.leading.equalToSuperview().offset(26)
+            make.leading.equalToSuperview().offset(12)
             make.height.equalTo(24)
             make.centerY.equalToSuperview()
         }
@@ -31,7 +31,7 @@ extension TapCardInput {
         // Defines the constrints for the scan card button
         scanButton.snp.remakeConstraints { (make) in
             make.width.equalTo(24)
-            make.trailing.equalToSuperview().offset(-26)
+            make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(24)
             make.centerY.equalToSuperview()
         }

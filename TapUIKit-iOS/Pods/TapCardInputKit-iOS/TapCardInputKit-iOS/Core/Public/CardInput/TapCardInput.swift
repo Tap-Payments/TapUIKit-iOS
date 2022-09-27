@@ -361,7 +361,10 @@ internal protocol TapCardInputCommonProtocol {
         scanButton.setTitle("", for: .normal)
         // Defines scan button icon
         scanButton.setImage(TapThemeManager.imageValue(for: "\(themePath).scanImage.image",from: Bundle(for: type(of: self))), for: .normal)
-        scanButton.imageView?.contentMode = .scaleAspectFit
+        scanButton.imageView?.contentMode = .scaleToFill
+        scanButton.contentHorizontalAlignment = .fill;
+        scanButton.contentVerticalAlignment = .fill;
+        
         scanButton.backgroundColor = .clear
         scanButton.tintColor = .clear
         scanButton.setBackgroundColor(color: .clear, forState: .highlighted)
