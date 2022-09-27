@@ -61,7 +61,7 @@ extension TapCardInput {
             make.height.equalToSuperview().dividedBy(2)
             make.trailing.equalTo(scanButton.snp.leading).offset(-0)
             // For vertical center we may need to do a little shift to override the arabic font margin
-            make.centerY.equalTo(cardNumber.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? -4 : 0)
+            make.centerY.equalTo(cardNumber.snp.centerY)
             make.leading.equalTo(cardExpiry.snp.trailing)
         }
         

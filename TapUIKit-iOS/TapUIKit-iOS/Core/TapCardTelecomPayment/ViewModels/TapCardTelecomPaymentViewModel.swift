@@ -76,6 +76,14 @@ import TapCardVlidatorKit_iOS
         }
     }
     
+    /// Decides whether to show or hide the supported brands bar. Based on the validty of the card data
+    internal func decideVisibilityOfSupportedBrandsBar() {
+        // Then we need to hide it. The user did enter a full valid card data
+        // Otherwise, We will have to show it. The user didn't yet type in a full valid card data
+        let (cardNumberValid,_,_,_) = tapCardTelecomPaymentView?.cardInputView.fieldsValidationStatuses() ?? (false,false,false,false)
+        tapCardTelecomPaymentView?.shouldShowSupportedBrands(!cardNumberValid)
+    }
+    
     /// The delegate that wants to hear from the view on new data and events
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     

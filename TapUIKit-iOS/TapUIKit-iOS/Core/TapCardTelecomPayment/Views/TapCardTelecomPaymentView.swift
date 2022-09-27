@@ -133,6 +133,32 @@ import TapCardVlidatorKit_iOS
     }
     
     /**
+     Call this method to tell the view to update the visibility of the supported brands bar
+     - Parameter with: If true, it will show up. False, otherwise
+     */
+    internal func shouldShowSupportedBrands(_ with:Bool) {
+        //tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
+        //tabBarHeightConstraint.constant = with ? 24 : 0
+        //tapCardPhoneListView.isHidden = !with
+        //translatesAutoresizingMaskIntoConstraints = false
+        //heightAnchor.constraint(equalToConstant:  with ? 88 : 48).isActive = true
+        //layoutIfNeeded()
+        tapCardPhoneListView.snp.updateConstraints { make in
+            make.height.equalTo(with ? 24 : 0)
+        }
+        
+        snp.updateConstraints { make in
+            make.height.equalTo(with ? 88 : 48)
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.layoutIfNeeded()
+            self.tapCardPhoneListView.layoutIfNeeded()
+            self.tapCardPhoneListView.alpha = with ? 1 : 0
+        }
+    }
+    
+    /**
      Decides which delegate function about hint status to be called
      - Parameter status: The hint status to be reported. If nill, then we will insntruct the delegate to hide all the statuses
      */
@@ -198,7 +224,6 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
         viewModel?.delegate?.cardDataChanged(tapCard: tapCard)
         lastReportedTapCard = tapCard
         hintStatus = viewModel?.decideHintStatus(with: tapCard)
-        
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -210,7 +235,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
         }else if validation == .Valid {
             tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
         }
-        
+        viewModel?.decideVisibilityOfSupportedBrandsBar()
         viewModel?.delegate?.brandDetected(for: cardBrand, with: validation)
     }
     

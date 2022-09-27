@@ -456,9 +456,6 @@ internal protocol TapCardInputCommonProtocol {
             }
         })
         
-        // Show dots in the CVV field as per UI
-        cardCVV.isSecureTextEntry = true
-        
         fields.forEach{ $0.textChanged = { [weak self] _ in self?.delegate?.dataChanged(tapCard: self!.tapCard) }}
         
         saveSwitch.addTarget(self, action: #selector(saveCardSwitchChanged), for: .valueChanged)
@@ -603,6 +600,19 @@ internal protocol TapCardInputCommonProtocol {
     
     internal func adjustExpiryCvv() {
         guard cardInputMode == .InlineCardInput else { return }
+        
+        cardCVV.isUserInteractionEnabled = cardNumber.isValid(cardNumber: tapCard.tapCardNumber)
+        cardExpiry.isUserInteractionEnabled = cardNumber.isValid(cardNumber: tapCard.tapCardNumber)
+        
+        // Because the CVV is secure text, the built in native dots have margins that we need to consider
+        cardCVV.snp.updateConstraints { make in
+            var offset = 0
+            if cardCVV.text != "" {
+                offset = (TapLocalisationManager.shared.localisationLocale == "ar") ? -6 : -2
+            }
+            make.centerY.equalTo(cardNumber.snp.centerY).offset(offset)
+            cardCVV.updateConstraints()
+        }
         
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.cardCVV.alpha = (self?.cardNumber.isEditing ?? false) ? 0 : 1

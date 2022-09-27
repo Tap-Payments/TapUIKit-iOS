@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5570024F-5479-4619-B0A2-5EE60C6A994C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/TapCardInputKit-iOS/TapCardInputKit-iOS/Core/Private/Views/InlineCardInput.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "setupInlineConstraints()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "11081A23-F238-4B1C-8C9F-05342884C2EC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/TapCardInputKit-iOS/TapCardInputKit-iOS/Core/Private/Views/InlineCardInput.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "setupInlineConstraints()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A3C81305-72D5-47FB-B698-AD0867C170EE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -65,6 +33,86 @@
             startingLineNumber = "130"
             endingLineNumber = "130"
             landmarkName = "calculateAutoMinWidths()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1980A6FE-3157-40C0-A609-7DD270DAC521"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapUIKit-iOS/Core/TapCardTelecomPayment/Views/TapCardTelecomPaymentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "shouldShowSupportedBrands(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1980A6FE-3157-40C0-A609-7DD270DAC521 - b14744f2545f871a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TapUIKit_iOS.TapCardTelecomPaymentView.shouldShowSupportedBrands(Swift.Bool) -&gt; ()"
+                  moduleName = "TapUIKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/Desktop/Tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCardTelecomPayment/Views/TapCardTelecomPaymentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "67">
+               </Location>
+               <Location
+                  uuid = "1980A6FE-3157-40C0-A609-7DD270DAC521 - b14744f2545f875c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TapUIKit_iOS.TapCardTelecomPaymentView.shouldShowSupportedBrands(Swift.Bool) -&gt; ()"
+                  moduleName = "TapUIKit_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/osamarabie/Desktop/Tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCardTelecomPayment/Views/TapCardTelecomPaymentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C297CC1-4504-49AD-9D9C-9C2DA4F93481"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapUIKit-iOS/Core/TapCardTelecomPayment/Views/TapCardTelecomPaymentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "dataChanged(tapCard:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F11A73AC-7418-460F-8F32-BECD74E6497E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TapUIKit-iOS/Core/TapCardTelecomPayment/Views/TapCardTelecomPaymentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "cardDataChanged(tapCard:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
