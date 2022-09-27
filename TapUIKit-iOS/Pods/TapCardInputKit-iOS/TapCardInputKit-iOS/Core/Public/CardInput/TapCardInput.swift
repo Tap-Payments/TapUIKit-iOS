@@ -456,6 +456,9 @@ internal protocol TapCardInputCommonProtocol {
             }
         })
         
+        // Show dots in the CVV field as per UI
+        cardCVV.isSecureTextEntry = true
+        
         fields.forEach{ $0.textChanged = { [weak self] _ in self?.delegate?.dataChanged(tapCard: self!.tapCard) }}
         
         saveSwitch.addTarget(self, action: #selector(saveCardSwitchChanged), for: .valueChanged)
