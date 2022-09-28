@@ -29,6 +29,9 @@ import TapThemeManager2020
         }
     }
     
+    /// The hint view to show an error/warning message to indicate to the user what does he need to do next
+    internal var hintView:TapHintView = .init()
+    
     /// The view model that has the needed payment options and data source to display the payment view
     internal var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
@@ -46,8 +49,8 @@ import TapThemeManager2020
     
     /// Used to collect any reactive garbage
     internal var hintStatus:TapHintViewStatusEnum? {
-        willSet{
-            if newValue != hintStatus {reportHintStatus(with: newValue )}
+        didSet{
+            if hintStatus != oldValue {reportHintStatus(with: hintStatus )}
         }
     }
     
@@ -148,16 +151,46 @@ import TapThemeManager2020
         // Check if there is a status to show, or we need to hide the hint view
         guard let status = status, status != .None else {
             viewModel?.delegate?.hideHints()
+            removeHintView()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
             return
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidPayment] )
         if status != .None && status != .Error {
-            viewModel?.delegate?.showHint(with: status)
+            //viewModel?.delegate?.showHint(with: status)
+            addHintView()
         }
         if status == .Error {
             viewModel?.delegate?.hideHints()
+            removeHintView()
         }
+    }
+    
+    /// Will add a warning/error hint view under the card input form to indicate to the user what does he miss
+    internal func addHintView() {
+        // We will have to update our height to reflect the addition of the hint view
+        guard let hintStatus = hintStatus else {
+            removeHintView()
+            return
+        }
+        hintView.setup(with: .init(with: hintStatus))
+        hintView.snp.remakeConstraints { make in
+            make.height.equalTo(48)
+        }
+        hintView.isHidden = false
+        stackView.addArrangedSubview(hintView)
+        updateHeight()
+    }
+    
+    /// Will remove a warning/error hint view under the card input form to indicate to the user what does he miss
+    internal func removeHintView() {
+        // We will have to update our height to reflect the removal of the hint view
+        hintView.isHidden = true
+        stackView.removeArrangedSubview(hintView)
+        hintView.snp.remakeConstraints { make in
+            make.height.equalTo(0)
+        }
+        updateHeight()
     }
     
     /**
@@ -192,8 +225,8 @@ import TapThemeManager2020
     private func updateHeight() {
         
         // Start with the height from the card input kit
-        let cardInputHeight = cardInputView.requiredHeight()
-        // Let us calcilate the total widget height
+        let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0)
+        // Let us calculate the total widget height
         let widgetHeight = cardInputHeight + 8 + tapCardPhoneListView.frame.height + headerView.frame.height
         snp.remakeConstraints { make in
             make.height.equalTo(widgetHeight)
@@ -205,6 +238,14 @@ import TapThemeManager2020
         }
         stackView.layoutIfNeeded()
         stackView.layoutSubviews()
+    }
+    
+    /// Computes if the conditions to show a hint view are met and we have to
+    private func shouldShowHintView() -> Bool {
+        guard let hintStatus = hintStatus else {
+            return false
+        }
+        return (hintStatus == .ErrorCardNumber || hintStatus == .WarningExpiryCVV || hintStatus == .WarningCVV || hintStatus == .WarningName)
     }
 }
 
@@ -294,6 +335,12 @@ extension TapCardTelecomPaymentView {
         stackView.layer.tap_theme_borderWidth = ThemeCGFloatSelector.init(keyPath: "inlineCard.commonAttributes.borderWidth")
         // The border rounded corners
         stackView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "inlineCard.commonAttributes.cornerRadius")
+        
+        stackView.layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.radius")?.floatValue ?? 0)
+        stackView.layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "inlineCard.commonAttributes.shadow.color")
+        stackView.layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.offsetHeight")?.floatValue ?? 0))
+        stackView.layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.opacity")?.floatValue ?? 0)
+        
         
         layoutIfNeeded()
     }
