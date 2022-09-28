@@ -7,7 +7,8 @@
             "cardExpiryPlaceHolder": "MM/YY",
             "cardSaveLabel": "For faster and easier checkout,\nsave the card for later.",
             "emailPlaceHolder": "email@email.com",
-            "weSupport":"WE ACCEPT"
+            "weSupport":"WE ACCEPT",
+            "cardSectionTitle": "CARD INFORMATION"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
@@ -147,7 +148,8 @@
             "cardExpiryPlaceHolder": "شش/سس",
             "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة",
             "emailPlaceHolder": "email@email.com",
-            "weSupport":"نحن ندعم"
+            "weSupport":"نحن ندعم",
+            "cardSectionTitle": "بيانات البطاقة"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"

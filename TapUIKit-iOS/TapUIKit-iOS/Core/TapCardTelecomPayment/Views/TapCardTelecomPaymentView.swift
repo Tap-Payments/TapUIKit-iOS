@@ -59,6 +59,9 @@ import TapCardVlidatorKit_iOS
     }
     
     // MARK:- Outlets
+    /// The header view that displays the title of the section
+    @IBOutlet weak var headerView: TapHorizontalHeaderView!
+    /// The stack view will carry the components : Card input, save title view, save for tap view.
     @IBOutlet weak var stackView: UIStackView!
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
@@ -172,6 +175,8 @@ import TapCardVlidatorKit_iOS
     
     /// Used to reset all segment selections and input fields upon changing the data source
     private func clearViews() {
+        // Adjust the header view
+        headerView.headerType = .CardInputTitle
         // Reset the card input
         cardInputView.reset()
         // Re init the card input
@@ -188,25 +193,17 @@ import TapCardVlidatorKit_iOS
         // Start with the height from the card input kit
         let cardInputHeight = cardInputView.requiredHeight()
         // Let us calcilate the total widget height
-        let widgetHeight = cardInputHeight + 8 + tapCardPhoneListView.frame.height
-        snp.updateConstraints { make in
+        let widgetHeight = cardInputHeight + 8 + tapCardPhoneListView.frame.height + headerView.frame.height
+        snp.remakeConstraints { make in
             make.height.equalTo(widgetHeight)
         }
         layoutIfNeeded()
         // Now update the height of the stack view and the card input view
-        stackView.snp.updateConstraints { make in
+        stackView.snp.remakeConstraints { make in
             make.height.equalTo(cardInputHeight)
         }
         stackView.layoutIfNeeded()
         stackView.layoutSubviews()
-    }
-    
-    /**
-     tells the caller the required height of this view based on the number of payment options available
-     - Returns: 45 if one brand allowed and 95 otherwise
-     */
-    @objc public func requiredHeight() -> CGFloat {
-        return tapCardPhoneListViewModel.dataSource.count > 1 ? 88 : 48
     }
 }
 
@@ -279,15 +276,7 @@ extension TapCardTelecomPaymentView {
     public func applyTheme() {
         matchThemeAttributes()
         
-        snp.makeConstraints { make in
-            make.height.equalTo(80)
-        }
-        
-        stackView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        stackView.layoutIfNeeded()
-        layoutIfNeeded()
+        updateHeight()
     }
     
     /// Match the UI attributes with the correct theming entries
