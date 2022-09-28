@@ -24,7 +24,7 @@ extension TapCardInput {
             make.width.equalTo(24)
             make.leading.equalToSuperview().offset(12)
             make.height.equalTo(24)
-            make.centerY.equalTo(cardNumber.snp.centerY)
+            make.centerY.equalTo(cardNumber.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? -3 : 0)
         }
         
         
@@ -33,7 +33,7 @@ extension TapCardInput {
             make.width.equalTo(24)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(24)
-            make.centerY.equalTo(cardNumber.snp.centerY)
+            make.centerY.equalTo(icon.snp.centerY)
         }
         
         // Defines the constrints for the card number field
@@ -42,7 +42,7 @@ extension TapCardInput {
             make.width.equalTo(cardNumber.calculatedWidth())
             make.height.equalTo(48)
             make.leading.equalTo(icon.snp.trailing).offset(10)
-            make.top.equalToSuperview().offset((TapLocalisationManager.shared.localisationLocale == "ar") ? 4 : 0)
+            make.top.equalToSuperview()
         }
         
         // Defines the constrints for the card expiry field
