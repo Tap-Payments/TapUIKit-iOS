@@ -126,15 +126,18 @@ import TapThemeManager2020
         //translatesAutoresizingMaskIntoConstraints = false
         //heightAnchor.constraint(equalToConstant:  with ? 88 : 48).isActive = true
         //layoutIfNeeded()
+        // If we are in the status of saved card, this will not be visible ever
+        let finalVisibility = with && (cardInputView.cardUIStatus == .NormalCard)
+        
         tapCardPhoneListView.snp.updateConstraints { make in
-            make.height.equalTo(with ? 24 : 0)
+            make.height.equalTo(finalVisibility ? 24 : 0)
         }
 
         UIView.animate(withDuration: 0.5) {
             self.stackView.layoutIfNeeded()
             self.layoutIfNeeded()
             self.tapCardPhoneListView.layoutIfNeeded()
-            self.tapCardPhoneListView.alpha = with ? 1 : 0
+            self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
         } completion: { finished in
             if finished {
                 self.updateHeight()
@@ -222,7 +225,7 @@ import TapThemeManager2020
     }
     
     /// Call this to claculate the required height for the view. Takes in consideration the visibility of name row, save title, save subtitle, supported brands
-    private func updateHeight() {
+    internal func updateHeight() {
         
         // Start with the height from the card input kit
         let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0)
@@ -252,18 +255,22 @@ import TapThemeManager2020
 extension TapCardTelecomPaymentView: TapCardInputProtocol {
     
     
+    public func closeSavedCard() {
+        viewModel?.delegate?.closeSavedCardClicked()
+    }
+    
     public func heightChanged() {
         updateHeight()
     }
     
     public func dataChanged(tapCard: TapCard) {
-        hintStatus = viewModel?.decideHintStatus(with: tapCard)
+        hintStatus = viewModel?.decideHintStatus(with: tapCard, and: cardInputView.cardUIStatus)
     }
     
     public func cardDataChanged(tapCard: TapCard) {
         viewModel?.delegate?.cardDataChanged(tapCard: tapCard)
         lastReportedTapCard = tapCard
-        hintStatus = viewModel?.decideHintStatus(with: tapCard)
+        hintStatus = viewModel?.decideHintStatus(with: tapCard, and: cardInputView.cardUIStatus)
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
@@ -352,3 +359,6 @@ extension TapCardTelecomPaymentView {
         applyTheme()
     }
 }
+
+
+

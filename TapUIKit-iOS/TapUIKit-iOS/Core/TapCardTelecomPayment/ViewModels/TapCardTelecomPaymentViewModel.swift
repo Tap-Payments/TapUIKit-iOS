@@ -29,6 +29,9 @@ import TapCardVlidatorKit_iOS
     /// This method will be called once the user clicks on Scan button
     @objc func scanCardClicked()
     
+    /// This method will be called once the user clicks on close saved card button
+    @objc func closeSavedCardClicked()
+    
     /**
      This method will be called whenever there is a need to show a certain hint below the card phone input form
      - Parameter status: The status of the required hint to be shown
@@ -89,6 +92,7 @@ import TapCardVlidatorKit_iOS
     /// Indicates whether or not to collect the card name in case of credit card payment
     @objc public var collectCardName:Bool = false
     
+    
     /**
      Creates a new view model to control the tabbar of payments icons + the card + the phone input view to be rendered
      - Parameter tapCardPhoneListViewModel: The view model that has the needed payment options and data source to display the payment view
@@ -117,12 +121,22 @@ import TapCardVlidatorKit_iOS
      Call this method when you  need to fill in the text fields with data.
      - Parameter tapCard: The TapCard that holds the data needed to be filled into the textfields
      - Parameter then focusCardNumber: Indicate whether we need to focus the card number after setting the card data
+     - Parameter for cardUIStatus: Indicates whether the given card is from a normal process like scanning or to show the special UI for a saved card flow
      */
-    @objc public func setCard(with card:TapCard,then focusCardNumber:Bool,shouldRemoveCurrentCard:Bool = true) {
+    @objc public func setCard(with card:TapCard,then focusCardNumber:Bool,shouldRemoveCurrentCard:Bool = true,for cardUIStatus:CardInputUIStatus) {
         tapCardTelecomPaymentView?.lastReportedTapCard = card
-        tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card, then: focusCardNumber,shouldRemoveCurrentCard:shouldRemoveCurrentCard)
+        tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card, then: focusCardNumber,shouldRemoveCurrentCard:shouldRemoveCurrentCard,for: cardUIStatus)
     }
     
+    
+    /**
+     Call this method to display the saved card details for the user and prompt him to enter the CVV
+     - Parameter savedCard: The saved card you want to validate before using
+     */
+    @objc public func setSavedCard(savedCard:SavedCard) {
+        tapCardTelecomPaymentView?.cardInputView.setSavedCard(savedCard: savedCard)
+        tapCardTelecomPaymentView?.shouldShowSupportedBrands(false)
+    }
     
     /**
      Call this method when scanner is closed to reset the scanning icon
@@ -136,7 +150,7 @@ import TapCardVlidatorKit_iOS
      Decides which hint status to be shown based on the validation statuses for the card input fields
      - Parameter tapCard: The current tap card input by the user
      */
-    @objc public func decideHintStatus(with tapCard:TapCard? = nil) -> TapHintViewStatusEnum {
+    @objc public func decideHintStatus(with tapCard:TapCard? = nil, and cardUIStatus:CardInputUIStatus = .NormalCard) -> TapHintViewStatusEnum {
         
         guard let tapCardTelecomPaymentView = tapCardTelecomPaymentView else {
             return .None
@@ -145,6 +159,15 @@ import TapCardVlidatorKit_iOS
         let tapCard:TapCard = tapCard ?? tapCardTelecomPaymentView.lastReportedTapCard
         
         var newStatus:TapHintViewStatusEnum = .None
+        
+        // If we are in saved card scenario, we only need to show hints based on CVV validty
+        if cardUIStatus == .SavedCard {
+            let (_,_,cardCVVValid,_) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
+            if !cardCVVValid {
+                newStatus = .WarningCVV
+            }
+            return newStatus
+        }
         
         // Check first if the card nnumber has data otherwise we are in the IDLE state
         guard let cardNumber:String = tapCard.tapCardNumber, cardNumber != "" else {

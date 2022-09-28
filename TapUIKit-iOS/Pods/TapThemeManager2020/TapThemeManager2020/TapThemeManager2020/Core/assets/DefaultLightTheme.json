@@ -57,6 +57,7 @@
             "image": "card",
             "width": 32
         },
+        "closeSavedCardIcon" : "closeSavedCardInputIcon",
         "scanImage": {
             "image": "scanIcon",
             "selected": "selectedScan",

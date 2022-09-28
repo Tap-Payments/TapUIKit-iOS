@@ -356,7 +356,9 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func savedCard(for viewModel: SavedCardCollectionViewCellModel) {
         //showAlert(title: "\(viewModel.title ?? "") clicked", message: "Look we know that you saved the card. We promise we will make you use it soon :)")
-        tapActionButtonViewModel.buttonStatus = .ValidPayment
+        tapCardTelecomPaymentViewModel.setSavedCard(savedCard: .init(identifier: "aasda", object: "asdasd", firstSixDigits: "424242", lastFourDigits: "4242", brand: .visa, paymentOptionIdentifier: "asdasd", expiry: nil, cardholderName: "OSAMA AHMED", fingerprint: "asdasd", currency: .USD, scheme: .init(.visa), supportedCurrencies: [.USD,.KWD], orderBy: 1, expirationMonth: 12, expirationYear: 23, cardType: .init(cardType: .Credit), image: ""))
+        
+        //tapActionButtonViewModel.buttonStatus = .ValidPayment
         
         // Check the type of saved card source
         
@@ -482,6 +484,11 @@ extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    func closeSavedCardClicked() {
+        tapGoPayChipsHorizontalListViewModel.deselectAll()
+        tapGatewayChipHorizontalListViewModel.deselectAll()
+    }
+    
     func shouldAllowChange(with cardNumber: String) -> Bool {
         return true
     }
@@ -554,7 +561,7 @@ extension ExampleWallOfGloryViewController:TapInlineScannerProtocl, TapScannerDa
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) { [weak self] in
             self?.closeScannerClicked()
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) { [weak self] in
-                self?.tapCardTelecomPaymentViewModel.setCard(with: tapCard, then: false)
+                self?.tapCardTelecomPaymentViewModel.setCard(with: tapCard, then: false,for: .NormalCard)
             }
         }
     }

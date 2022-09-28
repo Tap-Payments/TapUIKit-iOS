@@ -54,6 +54,10 @@ class TapCardInputViewController: UIViewController {
 }
 
 extension TapCardInputViewController: TapCardInputProtocol {
+    func closeSavedCard() {
+        print("CLOSE SAVED CARD")
+    }
+    
     func heightChanged() {
         
     }
