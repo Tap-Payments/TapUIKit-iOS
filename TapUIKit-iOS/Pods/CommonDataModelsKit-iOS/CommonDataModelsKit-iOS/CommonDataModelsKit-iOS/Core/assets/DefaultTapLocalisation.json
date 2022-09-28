@@ -1,12 +1,14 @@
 {
     "en": {
         "TapCardInputKit": {
-            "cardNumberPlaceHolder": "0000 0000 0000 0000",
+            "cardNumberPlaceHolder": "Card number",
             "cardNamePlaceHolder": "Card Holder Name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
             "cardSaveLabel": "For faster and easier checkout,\nsave the card for later.",
-            "emailPlaceHolder": "email@email.com"
+            "emailPlaceHolder": "email@email.com",
+            "weSupport":"WE ACCEPT",
+            "cardSectionTitle": "CARD INFORMATION"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
@@ -140,12 +142,14 @@
     },
     "ar": {
         "TapCardInputKit": {
-            "cardNumberPlaceHolder": "0000 0000 0000 0000",
+            "cardNumberPlaceHolder": "رقم البطاقة",
             "cardNamePlaceHolder": "صاحب البطاقة",
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",
             "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة",
-            "emailPlaceHolder": "email@email.com"
+            "emailPlaceHolder": "email@email.com",
+            "weSupport":"نحن ندعم",
+            "cardSectionTitle": "بيانات البطاقة"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"

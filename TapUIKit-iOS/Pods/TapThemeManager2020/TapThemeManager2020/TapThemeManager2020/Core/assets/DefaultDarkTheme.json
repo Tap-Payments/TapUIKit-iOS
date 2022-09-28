@@ -40,16 +40,16 @@
         "commonAttributes": {
             "backgroundColor": "white",
             "borderColor": "clear",
-            "cornerRadius": 0,
+            "cornerRadius": 8,
             "borderWidth": 0,
             "itemSpacing": 5,
             "cvvPlaceHolder": "dark-cvv",
             "shadow":{
-                "color": "clear",
-                "radius": 0,
+                "color": "white30",
+                "radius": 8,
                 "offsetWidth": 0,
                 "offsetHeight": 0,
-                "opacity": 0
+                "opacity": 1
             },
             "widthMargin": 7
         },
@@ -69,7 +69,7 @@
         "textFields": {
             "textColor": "greyishBrown",
             "errorTextColor": "#FF0000",
-            "font" : "Roboto-Light,17",
+            "font" : "Roboto-Light,14",
             "placeHolderColor" : "brownGreyTwo"
         },
         "saveCardOption": {
@@ -486,7 +486,7 @@
     {
         "backgroundColor": "whiteTwo",
         "maxWidth":60,
-        "insets":16,
+        "insets":0,
         "underline":{
             "unselected": {
                 "backgroundColor" : "brownGrey"
@@ -508,6 +508,10 @@
                 "backgroundColor" : "clear",
                 "alpha": 1
             }
+        },
+        "weAcceptLabel":{
+            "textFont": "Roboto,10",
+            "textColor": "greyishBrown",
         }
     },
     "TapVerticalView":

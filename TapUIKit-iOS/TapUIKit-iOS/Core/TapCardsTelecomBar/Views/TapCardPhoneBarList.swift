@@ -19,18 +19,8 @@ import LocalisationManagerKit_iOS
     @IBOutlet var contentView: UIView!
     /// Represents the holder layout for our icons horizontal bar views
     @IBOutlet weak var stackView: UIStackView!
-    /// Represents the leading constraint for the under line view
-    @IBOutlet weak var underLineLeadingConstraint: NSLayoutConstraint!
-    /// Represents the width constraint for the under line view
-    @IBOutlet weak var underLineWidthConstraint: NSLayoutConstraint!
-    /// Represents the under line view
-    @IBOutlet weak var underLineBar: UIProgressView! {
-        didSet{
-            // We need to make it changable regardless of the constraint
-            underLineBar.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
+    /// Represents the label that displays what are these icons (e.g. We accept :)
+    @IBOutlet weak var weAcceptLabel: UILabel!
     /// Represents the max width the tabs can expand to
     internal var maxWidth:CGFloat = 50
     
@@ -67,6 +57,11 @@ import LocalisationManagerKit_iOS
         applyTheme()
     }
     
+    /// Does the required localisations for labels if  any
+    private func localise() {
+        weAcceptLabel.text = sharedLocalisationManager.localisedValue(for: "TapCardInputKit.weSupport", with: TapCommonConstants.pathForDefaultLocalisation())
+    }
+    
     /// Used to bind all the needed reactive observables to its matching logic and functions
     private func bindObservables() {
         // Defensive coding to make sure there is a view model
@@ -80,7 +75,6 @@ import LocalisationManagerKit_iOS
         
         // Listen to the change of the validation result of the selected tab
         viewModel.selectedIconValidatedObserver = { [weak self] validated in
-            self?.themeBar(selectionValid: validated)
             self?.isUserInteractionEnabled = !validated
         }
     }
@@ -90,11 +84,6 @@ import LocalisationManagerKit_iOS
      - Parameter views: The list of tabs we need to draw in the tab bar list view
      */
     internal func relodData(with views:[TapCardPhoneIconView] = []) {
-        // Hide the bar
-        underLineBar.alpha = 0
-        underLineLeadingConstraint.constant = 0
-        underLineBar.updateConstraints()
-        underLineBar.layoutIfNeeded()
         // Hide the current tabs
         stackView.popOut(duration: 0.1) {[weak self] _ in
             guard let nonNullSelf = self else { return }
@@ -140,6 +129,7 @@ import LocalisationManagerKit_iOS
 extension TapCardPhoneBarList {
     /// Consolidated one point to apply all needed theme methods
     public func applyTheme() {
+        localise()
         matchThemeAttributes()
     }
     
@@ -147,22 +137,16 @@ extension TapCardPhoneBarList {
     private func matchThemeAttributes() {
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         
+        weAcceptLabel.tap_theme_font = .init(stringLiteral: "\(themePath).weAcceptLabel.textFont")
+        weAcceptLabel.tap_theme_textColor = .init(keyPath: "\(themePath).weAcceptLabel.textColor")
+        
+        
         maxWidth = (TapThemeManager.numberValue(for: "\(themePath).maxWidth") as? CGFloat) ?? 50
         
         let stackMargin:CGFloat = (TapThemeManager.numberValue(for: "\(themePath).insets") as? CGFloat) ?? 28
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: stackMargin, bottom: 0, trailing: stackMargin)
-        
-        themeBar()
-    }
-    
-    /**
-     Applies the correct theme for the underline view
-     - Parameter selectionValid: Indicates whether the current selected tab is a valid selection or not, as this affects the theme of the underline view
-     */
-    private func themeBar(selectionValid:Bool = false) {
-        let selectionThemePath:String = selectionValid ? "selected" : "unselected"
-        underLineBar.tap_theme_progressTintColor = .init(keyPath: "\(themePath).underline.\(selectionThemePath).backgroundColor")
+        stackView.spacing = 8
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -192,20 +176,5 @@ extension TapCardPhoneBarList:TapCardPhoneBarListViewModelDelegate {
     }
     func animateBar(to x: CGFloat, with width: CGFloat, shouldHide:Bool) {
         
-        underLineBar.layoutIfNeeded()
-        underLineBar.updateConstraints()
-        self.underLineLeadingConstraint.constant = (sharedLocalisationManager.localisationLocale == "ar") ? (frame.width - x) : x
-        self.underLineWidthConstraint.constant = width
-        
-        // Fix the issue of one segment, Arabic where we need to cover the whole tab length
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.underLineBar.alpha = shouldHide ? 1 : 0
-            self.underLineBar.layoutIfNeeded()
-            self.underLineBar.updateConstraints()
-            self.layoutIfNeeded()
-        }, completion: {_ in
-            print(self.underLineBar.frame)
-        })
     }
 }

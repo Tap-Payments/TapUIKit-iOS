@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,9 +13,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="IQC-RN-Vn7"/>
                 <outlet property="stackView" destination="VtN-8F-QZV" id="VPC-PI-6xM"/>
-                <outlet property="underLineBar" destination="kY4-Wy-WNR" id="eSl-I1-NKY"/>
-                <outlet property="underLineLeadingConstraint" destination="3Nx-N8-eVF" id="kT2-fV-wog"/>
-                <outlet property="underLineWidthConstraint" destination="tvw-JE-Zem" id="dML-xU-KRd"/>
+                <outlet property="weAcceptLabel" destination="vvc-YB-naG" id="Fkg-qf-bfo"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,47 +22,41 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VtN-8F-QZV">
-                    <rect key="frame" x="0.0" y="0.0" width="106" height="49"/>
+                    <rect key="frame" x="67" y="0.0" width="50" height="49"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoV-BJ-Qfx">
-                            <rect key="frame" x="28" y="0.0" width="50" height="49"/>
-                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="49"/>
+                            <color key="backgroundColor" systemColor="systemTealColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="750" constant="50" id="ezw-E7-cTA"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="28" bottom="0.0" trailing="28"/>
+                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LD-Ma-eyB" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="48" width="414" height="1"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="Dsq-mx-8Pb"/>
-                    </constraints>
-                </view>
-                <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="kY4-Wy-WNR">
-                    <rect key="frame" x="0.0" y="47.333333333333336" width="1" height="2.6666666666666643"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="1" id="tvw-JE-Zem"/>
-                    </constraints>
-                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvc-YB-naG">
+                    <rect key="frame" x="0.0" y="18.666666666666668" width="51" height="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="kY4-Wy-WNR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Nx-N8-eVF"/>
                 <constraint firstItem="VtN-8F-QZV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AZe-aT-LeE"/>
-                <constraint firstItem="1LD-Ma-eyB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="B80-wf-Amg"/>
-                <constraint firstItem="VtN-8F-QZV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CEX-yv-284"/>
-                <constraint firstAttribute="trailing" secondItem="1LD-Ma-eyB" secondAttribute="trailing" id="d9q-tF-Hds"/>
-                <constraint firstItem="1LD-Ma-eyB" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jle-Aj-fHb"/>
+                <constraint firstItem="vvc-YB-naG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cVY-CH-x76"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VtN-8F-QZV" secondAttribute="bottom" id="lOk-m4-R08"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VtN-8F-QZV" secondAttribute="trailing" id="n26-1C-ih6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kY4-Wy-WNR" secondAttribute="bottom" id="oI1-QI-JpM"/>
+                <constraint firstItem="VtN-8F-QZV" firstAttribute="leading" secondItem="vvc-YB-naG" secondAttribute="trailing" constant="16" id="t07-x0-83j"/>
+                <constraint firstItem="vvc-YB-naG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vjg-yv-D1c"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="87.635869565217405"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

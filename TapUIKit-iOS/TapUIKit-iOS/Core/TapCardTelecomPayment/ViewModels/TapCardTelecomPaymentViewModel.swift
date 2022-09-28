@@ -69,23 +69,34 @@ import TapCardVlidatorKit_iOS
             tapCardTelecomPaymentView = nil
             tapCardTelecomPaymentView = .init()
             tapCardTelecomPaymentView?.lastReportedTapCard = .init()
-            tapCardTelecomPaymentView?.tapCardPhoneListViewModel = tapCardPhoneListViewModel!
             // Assign the view delegate to self
             tapCardTelecomPaymentView?.viewModel = self
+            tapCardTelecomPaymentView?.tapCardPhoneListViewModel = tapCardPhoneListViewModel!
             shouldShow =  tapCardTelecomPaymentView?.tapCardPhoneListViewModel.dataSource.count ?? 0 > 0
         }
     }
     
+    /// Decides whether to show or hide the supported brands bar. Based on the validty of the card data
+    internal func decideVisibilityOfSupportedBrandsBar() {
+        // Then we need to hide it. The user did enter a full valid card data
+        // Otherwise, We will have to show it. The user didn't yet type in a full valid card data
+        let (cardNumberValid,_,_,_) = tapCardTelecomPaymentView?.cardInputView.fieldsValidationStatuses() ?? (false,false,false,false)
+        tapCardTelecomPaymentView?.shouldShowSupportedBrands(!cardNumberValid)
+    }
+    
     /// The delegate that wants to hear from the view on new data and events
     @objc public var delegate:TapCardTelecomPaymentProtocol?
+    /// Indicates whether or not to collect the card name in case of credit card payment
+    @objc public var collectCardName:Bool = false
     
     /**
      Creates a new view model to control the tabbar of payments icons + the card + the phone input view to be rendered
      - Parameter tapCardPhoneListViewModel: The view model that has the needed payment options and data source to display the payment view
      - Parameter tapCountry: Represents the country that telecom options are being shown for, used to handle country code and correct phone length
      */
-    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry?) {
+    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false) {
         super.init()
+        self.collectCardName = collectCardName
         self.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentView?.tapCountry = tapCountry
     }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,26 +43,16 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLy-hc-NaI" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="17" y="89" width="380" height="1"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="OAh-od-5y9"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dJF-Mr-pF9" secondAttribute="trailing" id="2rs-3f-fpq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WLy-hc-NaI" secondAttribute="bottom" id="AfB-WB-YPM"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Dgz-nv-amz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e3d-wB-6KC" secondAttribute="trailing" id="S6o-qY-4E0"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="e3d-wB-6KC" secondAttribute="bottom" id="Y51-UL-AFJ"/>
                 <constraint firstItem="e3d-wB-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aFZ-ut-m4b"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="750" id="aph-Ul-z9G"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WLy-hc-NaI" secondAttribute="trailing" priority="750" constant="17" id="m6E-yk-tuB"/>
-                <constraint firstItem="WLy-hc-NaI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="17" id="mBf-EW-FWK"/>
                 <constraint firstItem="e3d-wB-6KC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rpM-Kb-qPx"/>
                 <constraint firstItem="dJF-Mr-pF9" firstAttribute="top" secondItem="e3d-wB-6KC" secondAttribute="bottom" priority="250" id="wLf-sA-tag"/>
             </constraints>
@@ -71,9 +60,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="152.44565217391306"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

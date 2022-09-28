@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "scanIcon.png",
+      "filename" : "scanIcon@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
