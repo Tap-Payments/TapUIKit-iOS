@@ -9,7 +9,7 @@
 import TapThemeManager2020
 // import SimpleAnimation
 import LocalisationManagerKit_iOS
-
+import CommonDataModelsKit_iOS
 /// Represent the view of tab bar list
 @objc public class TapCardPhoneBarList: UIView {
     
