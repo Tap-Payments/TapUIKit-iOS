@@ -80,6 +80,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         tapCardPhoneListDataSource.append(.init(associatedCardBrand: .americanExpress, tapCardPhoneIconUrl: "https://img.icons8.com/color/2x/amex.png"))
         
         tapCardPhoneListViewModel.dataSource = tapCardPhoneListDataSource
+        tapCardTelecomPaymentViewModel.collectCardName = true
         tapCardTelecomPaymentViewModel.delegate = self
         tapCardTelecomPaymentViewModel.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentViewModel.changeTapCountry(to: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))

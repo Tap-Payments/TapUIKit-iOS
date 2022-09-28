@@ -60,6 +60,9 @@ internal protocol TapCardInputCommonProtocol {
      - Returns: True if the entered card number till now less than 6 digits or the prefix matches the allowed types (credit or debit)
      */
     @objc func shouldAllowChange(with cardNumber:String) -> Bool
+    
+    /// fires when the height of the widget changes
+    @objc func heightChanged()
 }
 
 /// This represents the custom view for card input provided by Tap
@@ -335,7 +338,7 @@ internal protocol TapCardInputCommonProtocol {
     /// Helper method to match the common theming values to the view from the theme file
     internal func setCommonUI() {
         // background color
-        self.tap_theme_backgroundColor = ThemeUIColorSelector.init(keyPath: "\(themePath).commonAttributes.backgroundColor")
+        self.backgroundColor = .clear //ThemeUIColorSelector.init(keyPath: "\(themePath).commonAttributes.backgroundColor")
         // The border color
         self.layer.tap_theme_borderColor = ThemeCgColorSelector.init(keyPath: "\(themePath).commonAttributes.borderColor")
         // The border width
@@ -618,6 +621,7 @@ internal protocol TapCardInputCommonProtocol {
             self?.cardCVV.alpha = (self?.cardNumber.isEditing ?? false) ? 0 : 1
             self?.cardExpiry.alpha = (self?.cardNumber.isEditing ?? false) ? 0 : 1
             self?.cardName.alpha = (self?.showCardName ?? false) ? ((self?.cardNumber.isEditing ?? false || !(self?.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber) ?? false)) ? 0 : 1) : 0
+            self?.delegate?.heightChanged()
         })
     }
     
@@ -881,6 +885,18 @@ extension TapCardInput:TapCardInputCommonProtocol {
         default:
             return
         }
+    }
+    
+    /**
+     Computes the required height to correctly display the card input form. Takes in consideration, the card input, the card name row, the save row.
+     - Returns: The needed height
+     */
+    public func requiredHeight() -> Double {
+        // Start with the basic height which is the card input row
+        var calculatedHeight:Double = 48.0
+        // Add to it the needed height to show the card name if any
+        calculatedHeight += (cardName.alpha == 1 && showCardName) ? 48 : 0
+        return calculatedHeight
     }
 }
 

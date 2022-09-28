@@ -24,7 +24,7 @@ extension TapCardInput {
             make.width.equalTo(24)
             make.leading.equalToSuperview().offset(12)
             make.height.equalTo(24)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(cardNumber.snp.centerY)
         }
         
         
@@ -33,23 +33,23 @@ extension TapCardInput {
             make.width.equalTo(24)
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(24)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(cardNumber.snp.centerY)
         }
         
         // Defines the constrints for the card number field
         cardNumber.snp.remakeConstraints { (make) in
             // We set the card number width to the mimimum width based on its min visible characters attribute
             make.width.equalTo(cardNumber.calculatedWidth())
-            make.height.equalToSuperview().dividedBy(2)
+            make.height.equalTo(48)
             make.leading.equalTo(icon.snp.trailing).offset(10)
-            make.centerY.equalTo(icon.snp.centerY).offset((TapLocalisationManager.shared.localisationLocale == "ar") ? 4 : 0)
+            make.top.equalToSuperview().offset((TapLocalisationManager.shared.localisationLocale == "ar") ? 4 : 0)
         }
         
         // Defines the constrints for the card expiry field
         cardExpiry.snp.remakeConstraints { (make) in
             // We set the card expiry width to the mimimum width based on its min visible characters attribute
             make.width.equalTo(cardExpiry.calculatedWidth())
-            make.height.equalToSuperview().dividedBy(2)
+            make.height.equalTo(cardNumber.snp.height)
             make.centerY.equalTo(cardNumber.snp.centerY)
             make.trailing.equalTo(cardCVV.snp.leading)
         }
@@ -58,7 +58,7 @@ extension TapCardInput {
         cardCVV.snp.remakeConstraints { (make) in
             // We set the card cvv width to the mimimum width based on its min visible characters attribute
             make.width.equalTo(cardCVV.calculatedWidth())
-            make.height.equalToSuperview().dividedBy(2)
+            make.height.equalTo(cardNumber.snp.height)
             make.trailing.equalTo(scanButton.snp.leading).offset(-0)
             // For vertical center we may need to do a little shift to override the arabic font margin
             make.centerY.equalTo(cardNumber.snp.centerY)
@@ -72,8 +72,8 @@ extension TapCardInput {
                 // We set the card cvv width to the mimimum width based on its min visible characters attribute
                 make.leading.equalTo(icon.snp.leading)
                 make.trailing.equalTo(cardCVV.snp.trailing)
-                make.height.equalToSuperview().dividedBy(2)
-                make.top.equalTo(icon.snp.bottom).offset(10)
+                make.height.equalTo(cardNumber.snp.height)
+                make.top.equalTo(cardNumber.snp.bottom)
                 //make.leading.greaterThanOrEqualTo(cardExpiry.snp.trailing).offset(23)
             }
         }
@@ -214,6 +214,7 @@ extension TapCardInput {
                 self?.cardCVV.alpha = (nonNullView.isEditing) ? 0 : 1
                 self?.cardName.alpha = (nonNullView.isEditing || !self!.cardNumber.isValid(cardNumber: self?.tapCard.tapCardNumber)) ? 0 : 1
                 self?.layoutIfNeeded()
+                self?.delegate?.heightChanged()
             })
         }
     }

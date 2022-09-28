@@ -12,51 +12,47 @@
             <connections>
                 <outlet property="cardInputView" destination="4iO-6k-uJn" id="Rga-1f-pwq"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
-                <outlet property="phoneInputView" destination="m1l-HA-Sjs" id="nRu-gJ-15c"/>
-                <outlet property="tabBarHeightConstraint" destination="A9m-vN-q3L" id="FVa-Hc-f2f"/>
+                <outlet property="stackView" destination="CZk-jP-kZU" id="9SK-eb-rzi"/>
                 <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="565" height="72"/>
+            <rect key="frame" x="0.0" y="0.0" width="565" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="or1-yo-2AD" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="16" y="48" width="533" height="24"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CZk-jP-kZU">
+                    <rect key="frame" x="16" y="0.0" width="533" height="48"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="48" translatesAutoresizingMaskIntoConstraints="NO" id="4iO-6k-uJn" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
+                            <rect key="frame" x="0.0" y="0.0" width="533" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
+                <view contentMode="scaleToFill" verticalHuggingPriority="24" translatesAutoresizingMaskIntoConstraints="NO" id="or1-yo-2AD" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="16" y="56" width="533" height="24"/>
+                    <viewLayoutGuide key="safeArea" id="J03-8L-5gb"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="A9m-vN-q3L"/>
-                    </constraints>
-                </view>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1l-HA-Sjs" customClass="TapPhoneInput" customModule="TapCardInputKit_iOS">
-                    <rect key="frame" x="16" y="0.0" width="533" height="48"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iO-6k-uJn" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
-                    <rect key="frame" x="16" y="0.0" width="533" height="48"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="ilh-a8-VMV"/>
+                        <constraint firstAttribute="height" constant="24" id="zFf-Xx-rVe"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4iO-6k-uJn" secondAttribute="trailing" constant="16" id="0gS-yy-emr"/>
-                <constraint firstItem="m1l-HA-Sjs" firstAttribute="leading" secondItem="4iO-6k-uJn" secondAttribute="leading" id="BYd-UH-ZjJ"/>
-                <constraint firstItem="4iO-6k-uJn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Hds-LQ-eOw"/>
-                <constraint firstItem="m1l-HA-Sjs" firstAttribute="bottom" secondItem="4iO-6k-uJn" secondAttribute="bottom" id="IYP-qC-mW5"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="XqJ-XD-Z2q"/>
-                <constraint firstItem="m1l-HA-Sjs" firstAttribute="trailing" secondItem="4iO-6k-uJn" secondAttribute="trailing" id="fbW-BJ-FUH"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-16" id="k1m-6j-p4x"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="nO1-N1-RGy"/>
-                <constraint firstItem="m1l-HA-Sjs" firstAttribute="top" secondItem="4iO-6k-uJn" secondAttribute="top" id="qzf-iG-7ht"/>
-                <constraint firstItem="4iO-6k-uJn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="yAu-pZ-vAl"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="bottom" priority="750" constant="8" id="5bI-D9-kXM"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="ENA-kU-aBy"/>
+                <constraint firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" constant="16" id="Fda-Gy-8NT"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="HkT-c2-1U6"/>
+                <constraint firstItem="CZk-jP-kZU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OM3-6q-VAy"/>
+                <constraint firstItem="CZk-jP-kZU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dk7-yu-fm5"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="lfc-qu-aN1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="247.10144927536234" y="147.96195652173915"/>
+            <point key="canvasLocation" x="259" y="77"/>
         </view>
     </objects>
 </document>
