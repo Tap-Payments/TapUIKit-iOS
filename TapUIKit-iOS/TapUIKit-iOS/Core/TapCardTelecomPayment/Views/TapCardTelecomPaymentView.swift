@@ -9,6 +9,7 @@ import UIKit
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
+import TapThemeManager2020
 // import SimpleAnimation
 
 
