@@ -33,6 +33,8 @@ import TapCardScanner_iOS
     internal var itemsBeingAdded:Int = 0
     /// This is the delegate variable you need to subscripe to whenver you want to listen to updates from this view
     @objc public var delegate:TapVerticalViewDelegate?
+    /// Displays the powered by tap footer
+    @IBOutlet weak var powereByTapView: PoweredByTapView!
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
     /// This informs the sheet that we need to show bg as a blurring view
@@ -56,6 +58,10 @@ import TapCardScanner_iOS
     internal var delaySizeChange:Bool = true
     private var getGiftGestureRecognizer:UITapGestureRecognizer?
     
+    /// Computes the needed bottom space margin including the button + the powered by tap view
+    internal var neededBottomSpaceMargin:Double {
+        return tapActionButtonHeightConstraint.constant + powereByTapView.frame.height
+    }
     
     
     override init(frame: CGRect) {
@@ -112,7 +118,7 @@ import TapCardScanner_iOS
      */
     internal func neededSize() -> CGSize {
         var contentSize = scrollView.contentSize
-        contentSize.height += tapActionButtonHeightConstraint.constant
+        contentSize.height += neededBottomSpaceMargin
         return contentSize
     }
     
@@ -139,7 +145,7 @@ import TapCardScanner_iOS
         if delaySizeChange {
             newSizeTimer = Timer.scheduledTimer(timeInterval: 0.1 , target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: ["newSize":newSize,"newFrame":self.frame], repeats: false)
         }else {
-            newSize.height += keyboardPadding + tapActionButtonHeightConstraint.constant
+            newSize.height += keyboardPadding + neededBottomSpaceMargin
             
             delegate?.innerSizeChanged?(to: newSize, with: frame)
         }
@@ -164,7 +170,7 @@ import TapCardScanner_iOS
               var newSize:CGSize = info["newSize"] as? CGSize,
               let frame:CGRect = info["newFrame"] as? CGRect else { return }
         
-        newSize.height += keyboardPadding + tapActionButtonHeightConstraint.constant
+        newSize.height += keyboardPadding + neededBottomSpaceMargin
         
         delegate?.innerSizeChanged?(to: newSize, with: frame)
     }

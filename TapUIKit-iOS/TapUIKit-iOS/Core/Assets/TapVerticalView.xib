@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,10 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapVerticalView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="iN0-l3-epB" id="rxe-2N-XoY"/>
+                <outlet property="powereByTapView" destination="avE-hN-55T" id="XWl-bQ-bOx"/>
                 <outlet property="scrollView" destination="DK2-Wu-MF0" id="juh-hj-KCL"/>
                 <outlet property="stackView" destination="tT2-ez-5Th" id="9hq-ma-5JH"/>
                 <outlet property="tapActionButton" destination="1uI-oi-8Dg" id="dr8-Kp-9F9"/>
-                <outlet property="tapActionButtonBottomConstraint" destination="Mwj-Zr-qek" id="42i-Rc-VDN"/>
+                <outlet property="tapActionButtonBottomConstraint" destination="Tje-dS-aHJ" id="KUA-bf-2tW"/>
                 <outlet property="tapActionButtonHeightConstraint" destination="MeX-bO-gUR" id="Xik-Su-pJg"/>
             </connections>
         </placeholder>
@@ -30,10 +31,17 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="hk3-mP-Zxp"/>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-oi-8Dg" customClass="TapActionButton" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="822" width="414" height="74"/>
+                    <rect key="frame" x="0.0" y="757" width="414" height="74"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="74" id="MeX-bO-gUR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avE-hN-55T" customClass="PoweredByTapView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="16" y="831" width="382" height="33"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="Oxd-C1-FLM"/>
                     </constraints>
                 </view>
             </subviews>
@@ -44,9 +52,12 @@
                 <constraint firstItem="1uI-oi-8Dg" firstAttribute="top" secondItem="DK2-Wu-MF0" secondAttribute="bottom" priority="750" identifier="$button_top$" id="GIH-nY-pE2"/>
                 <constraint firstAttribute="trailing" secondItem="1uI-oi-8Dg" secondAttribute="trailing" id="JST-Xn-S0r"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="K3E-KX-xbz"/>
-                <constraint firstAttribute="bottom" secondItem="1uI-oi-8Dg" secondAttribute="bottom" identifier="$button_bottom$" id="Mwj-Zr-qek"/>
+                <constraint firstItem="avE-hN-55T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="K8w-pL-1QM"/>
+                <constraint firstAttribute="bottom" secondItem="avE-hN-55T" secondAttribute="bottom" constant="32" id="O46-Kp-5WD"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OXd-OT-gRw"/>
+                <constraint firstItem="avE-hN-55T" firstAttribute="top" secondItem="1uI-oi-8Dg" secondAttribute="bottom" id="Tje-dS-aHJ"/>
                 <constraint firstItem="DK2-Wu-MF0" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ljk-Lz-kif"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="avE-hN-55T" secondAttribute="trailing" constant="16" id="qyc-We-Jqq"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
         </view>
