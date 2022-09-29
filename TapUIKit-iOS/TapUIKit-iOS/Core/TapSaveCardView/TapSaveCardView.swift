@@ -11,6 +11,15 @@ import TapThemeManager2020
 import CommonDataModelsKit_iOS
 import LocalisationManagerKit_iOS
 
+/// A delegate to listen to events fired from the save card view
+@objc public protocol TapSaveCardViewDelegate {
+    /**
+     This method will be called whenever the user change the status of the save card option
+     - Parameter enabled: Will be true if the switch is enabled and false otherwise
+     */
+    @objc func saveCardChanged(enabled:Bool)
+}
+
 /// Represents the save card for later view
 @objc public class TapSaveCardView: UIView {
     /// Represents the main holding view
@@ -19,6 +28,9 @@ import LocalisationManagerKit_iOS
     @IBOutlet weak var saveCardLabel: UILabel!
     /// The switch view where the user can decide whether he wants to save teh card or not
     @IBOutlet weak var saveCardSwitch: UISwitch!
+    /// A delegate to listen to events fired from the save card view
+    @objc public var delegate:TapSaveCardViewDelegate?
+    
     internal let themePath:String = "inlineCard"
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -29,6 +41,10 @@ import LocalisationManagerKit_iOS
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    @IBAction func saveCardSwitchChanged(_ sender: Any) {
+        delegate?.saveCardChanged(enabled: saveCardSwitch.isOn)
     }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view

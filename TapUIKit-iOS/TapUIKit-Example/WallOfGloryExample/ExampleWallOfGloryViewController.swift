@@ -484,6 +484,10 @@ extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    func saveCardChanged(enabled: Bool) {
+        print("Save card changed to: \(enabled)")
+    }
+    
     func closeSavedCardClicked() {
         tapGoPayChipsHorizontalListViewModel.deselectAll()
         tapGatewayChipHorizontalListViewModel.deselectAll()

@@ -29,6 +29,9 @@
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DzI-TI-yqW">
                     <rect key="frame" x="353" y="8.5" width="51" height="31"/>
+                    <connections>
+                        <action selector="saveCardSwitchChanged:" destination="-1" eventType="valueChanged" id="zgQ-hL-G5b"/>
+                    </connections>
                 </switch>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yyt-hb-Wdn" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>

@@ -46,6 +46,12 @@ import TapCardVlidatorKit_iOS
      - Returns: True if the entered card number till now less than 6 digits or the prefix matches the allowed types (credit or debit)
      */
     @objc func shouldAllowChange(with cardNumber:String) -> Bool
+    
+    /**
+     This method will be called whenever the user change the status of the save card option
+     - Parameter enabled: Will be true if the switch is enabled and false otherwise
+     */
+    @objc func saveCardChanged(enabled:Bool)
 }
 
 /// Represents a view model to control the wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
@@ -74,6 +80,7 @@ import TapCardVlidatorKit_iOS
             tapCardTelecomPaymentView?.lastReportedTapCard = .init()
             // Assign the view delegate to self
             tapCardTelecomPaymentView?.viewModel = self
+            tapCardTelecomPaymentView?.saveCrdView.delegate = self
             tapCardTelecomPaymentView?.tapCardPhoneListViewModel = tapCardPhoneListViewModel!
             shouldShow =  tapCardTelecomPaymentView?.tapCardPhoneListViewModel.dataSource.count ?? 0 > 0
         }
@@ -108,8 +115,7 @@ import TapCardVlidatorKit_iOS
     /// Indicates whether or not to collect the card name in case of credit card payment
     @objc public var collectCardName:Bool = false
     /// Indicates whether or not to offer the save card switch when a valid card info is filled
-    @objc public var showSaveCardOption:Bool = true
-    
+    @objc public var showSaveCardOption:Bool = false
     
     /**
      Creates a new view model to control the tabbar of payments icons + the card + the phone input view to be rendered
@@ -236,4 +242,11 @@ import TapCardVlidatorKit_iOS
         return cardCVVValid && cardNameValid && cardNumberValid && cardExpiryValid
     }
     
+}
+
+
+extension TapCardTelecomPaymentViewModel: TapSaveCardViewDelegate {
+    public func saveCardChanged(enabled: Bool) {
+        delegate?.saveCardChanged(enabled: enabled)
+    }
 }
