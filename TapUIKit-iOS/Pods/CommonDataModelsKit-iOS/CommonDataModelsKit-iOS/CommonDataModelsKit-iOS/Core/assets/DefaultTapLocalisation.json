@@ -5,7 +5,7 @@
             "cardNamePlaceHolder": "Card Holder Name",
             "cardCVVPlaceHolder": "CVV",
             "cardExpiryPlaceHolder": "MM/YY",
-            "cardSaveLabel": "For faster and easier checkout,\nsave the card for later.",
+            "cardSaveLabel": "Save card for later",
             "emailPlaceHolder": "email@email.com",
             "weSupport":"WE ACCEPT",
             "cardSectionTitle": "CARD INFORMATION"
@@ -146,7 +146,7 @@
             "cardNamePlaceHolder": "صاحب البطاقة",
             "cardCVVPlaceHolder": "الرمز الأمني",
             "cardExpiryPlaceHolder": "شش/سس",
-            "cardSaveLabel": "لشراء أسرع و أكثر أماناً،\nإحفظ البطاقة",
+            "cardSaveLabel": "لشراء أسرع إحفظ البطاقة",
             "emailPlaceHolder": "email@email.com",
             "weSupport":"نحن ندعم",
             "cardSectionTitle": "بيانات البطاقة"

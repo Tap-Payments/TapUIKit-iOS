@@ -32,6 +32,9 @@ import TapThemeManager2020
     /// The hint view to show an error/warning message to indicate to the user what does he need to do next
     internal var hintView:TapHintView = .init()
     
+    /// The view used to ask the user if he wants to save the card for later usage
+    internal var saveCrdView:TapSaveCardView = .init()
+    
     /// The view model that has the needed payment options and data source to display the payment view
     internal var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
@@ -115,24 +118,48 @@ import TapThemeManager2020
         }
     }
     
+    
+    /**
+     Call this method to tell the view to update the visibility of the save card switch view
+     - Parameter with: If true, it will show up. False, otherwise
+     */
+    internal func shouldShowSaveCardView(_ with:Bool) {
+        // If we are in the status of saved card, this will not be visible ever
+        let finalVisibility = with && (cardInputView.cardUIStatus == .NormalCard)
+        // Hide and remove fromt he stack view
+        if !with {
+            saveCrdView.isHidden = true
+            stackView.removeArrangedSubview(stackView)
+        }else{
+            // Show and add to stack view
+            saveCrdView.isHidden = false
+            stackView.addArrangedSubview(saveCrdView)
+        }
+        // change the height of the save card view based on the given visibility
+        saveCrdView.snp.updateConstraints { make in
+            make.height.equalTo(finalVisibility ? 48 : 0)
+        }
+        saveCrdView.layoutIfNeeded()
+        stackView.layoutIfNeeded()
+        layoutIfNeeded()
+        // Update the height of the total widget to reflect that
+        updateHeight()
+    }
+    
     /**
      Call this method to tell the view to update the visibility of the supported brands bar
      - Parameter with: If true, it will show up. False, otherwise
      */
     internal func shouldShowSupportedBrands(_ with:Bool) {
-        //tapCardPhoneListView.translatesAutoresizingMaskIntoConstraints = false
-        //tabBarHeightConstraint.constant = with ? 24 : 0
-        //tapCardPhoneListView.isHidden = !with
-        //translatesAutoresizingMaskIntoConstraints = false
-        //heightAnchor.constraint(equalToConstant:  with ? 88 : 48).isActive = true
-        //layoutIfNeeded()
         // If we are in the status of saved card, this will not be visible ever
         let finalVisibility = with && (cardInputView.cardUIStatus == .NormalCard)
         
+        // change the height of the supported brands list based on the given visibility
         tapCardPhoneListView.snp.updateConstraints { make in
             make.height.equalTo(finalVisibility ? 24 : 0)
         }
 
+        // Animate showing/hiding the supported brands bar
         UIView.animate(withDuration: 0.5) {
             self.stackView.layoutIfNeeded()
             self.layoutIfNeeded()
@@ -140,6 +167,7 @@ import TapThemeManager2020
             self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
         } completion: { finished in
             if finished {
+                // At the end we need to update the height of the whole widget to reflect the change in the supported bar height
                 self.updateHeight()
             }
         }
@@ -176,6 +204,7 @@ import TapThemeManager2020
             removeHintView()
             return
         }
+        // Update the hint view type and height
         hintView.setup(with: .init(with: hintStatus))
         hintView.snp.remakeConstraints { make in
             make.height.equalTo(48)
@@ -190,6 +219,7 @@ import TapThemeManager2020
         // We will have to update our height to reflect the removal of the hint view
         hintView.isHidden = true
         stackView.removeArrangedSubview(hintView)
+        // Update the hint view type and height
         hintView.snp.remakeConstraints { make in
             make.height.equalTo(0)
         }
@@ -228,7 +258,8 @@ import TapThemeManager2020
     internal func updateHeight() {
         
         // Start with the height from the card input kit
-        let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0)
+        // We add to it if we need to show HINT or the Save card switch
+        let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0) + (viewModel?.shouldShowSaveCardView() ?? false ? 48 : 0)
         // Let us calculate the total widget height
         let widgetHeight = cardInputHeight + 8 + tapCardPhoneListView.frame.height + headerView.frame.height
         snp.remakeConstraints { make in
@@ -271,6 +302,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
         viewModel?.delegate?.cardDataChanged(tapCard: tapCard)
         lastReportedTapCard = tapCard
         hintStatus = viewModel?.decideHintStatus(with: tapCard, and: cardInputView.cardUIStatus)
+        viewModel?.showHideSaveCardView()
     }
     
     public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {

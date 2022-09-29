@@ -87,20 +87,40 @@ import TapCardVlidatorKit_iOS
         tapCardTelecomPaymentView?.shouldShowSupportedBrands(!cardNumberValid)
     }
     
+    /// Computes if the conditions to show the save card switch are met and we have to
+    internal func shouldShowSaveCardView() -> Bool {
+        // Make sure that the view model enabled it and that user did enter a valid card data (all fields are valid)
+        // Also we need to make sure we are in the saved card flow already
+        guard showSaveCardOption,
+              allCardFieldsValid(),
+              attachedView.cardInputView.cardUIStatus != .SavedCard else { return false }
+        // Then yes we should show the save card view :)
+        return true
+    }
+    
+    /// Decides whether to show or hide the save card, then instructs the view to show/hide it
+    internal func showHideSaveCardView() {
+        tapCardTelecomPaymentView?.shouldShowSaveCardView(shouldShowSaveCardView())
+    }
+    
     /// The delegate that wants to hear from the view on new data and events
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     /// Indicates whether or not to collect the card name in case of credit card payment
     @objc public var collectCardName:Bool = false
+    /// Indicates whether or not to offer the save card switch when a valid card info is filled
+    @objc public var showSaveCardOption:Bool = true
     
     
     /**
      Creates a new view model to control the tabbar of payments icons + the card + the phone input view to be rendered
      - Parameter tapCardPhoneListViewModel: The view model that has the needed payment options and data source to display the payment view
      - Parameter tapCountry: Represents the country that telecom options are being shown for, used to handle country code and correct phone length
+     - Parameter showSaveCardOption: Indicates whether or not to offer the save card switch when a valid card info is filled
      */
-    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false) {
+    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false, showSaveCardOption:Bool) {
         super.init()
         self.collectCardName = collectCardName
+        self.showSaveCardOption = showSaveCardOption
         self.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentView?.tapCountry = tapCountry
     }

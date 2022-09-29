@@ -36,6 +36,13 @@
             "brownGreyFour": "#a6a6a6"
         }
     },
+    "poweredByTap": {
+        "powerLabel": {
+            "textColor": "#626262",
+            "font" : "Roboto-Light,10"
+        },
+        "tapLogo":"poweredByTapLogo"
+    },
     "inlineCard": {
         "commonAttributes": {
             "backgroundColor": "white",
@@ -74,8 +81,8 @@
             "placeHolderColor" : "brownGreyTwo"
         },
         "saveCardOption": {
-            "labelTextColor": "black",
-            "labelTextFont": "20",
+            "labelTextColor": "greyishBrown",
+            "labelTextFont": "Roboto-Light,14",
             "switchTintColor": "white",
             "switchThumbColor": "white",
             "switchOnThumbColor": "#2ACE00"
