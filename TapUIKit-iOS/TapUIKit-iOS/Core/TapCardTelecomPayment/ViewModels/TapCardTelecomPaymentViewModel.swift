@@ -71,6 +71,11 @@ import TapCardVlidatorKit_iOS
     /// Represents if the attached view should be visible or not, based on the existence of items inside the list
     @objc public var shouldShow:Bool = false
     
+    /// Indicates if the saved card switch is activated
+    @objc public var isMerchantSaveAllowed:Bool {
+        return attachedView.saveCrdView.saveCardSwitch.isOn
+    }
+    
     @objc public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel? {
         didSet{
             // Assign the list view model to it
