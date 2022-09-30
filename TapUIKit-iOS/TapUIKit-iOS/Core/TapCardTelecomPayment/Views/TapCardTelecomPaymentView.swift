@@ -35,6 +35,9 @@ import TapThemeManager2020
     /// The view used to ask the user if he wants to save the card for later usage
     internal var saveCrdView:TapSaveCardView = .init()
     
+    /// The view used to ask the user if he wants to save the card for TAP for later usage
+    internal var saveCrdForTapView:TapInternalSaveCard = .init()
+    
     /// The view model that has the needed payment options and data source to display the payment view
     internal var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
@@ -121,25 +124,43 @@ import TapThemeManager2020
     
     /**
      Call this method to tell the view to update the visibility of the save card switch view
-     - Parameter with: If true, it will show up. False, otherwise
+     - Parameter showMerchantSave: If true, it will show up save card for merchant. False, otherwise
+     - Parameter showTapSave: If true, it will show up save card for TAP. False, otherwise
      */
-    internal func shouldShowSaveCardView(_ with:Bool) {
+    internal func shouldShowSaveCardView(_ showMerchantSave:Bool, _ showTapSave:Bool) {
         // If we are in the status of saved card, this will not be visible ever
-        let finalVisibility = with && (cardInputView.cardUIStatus == .NormalCard)
-        // Hide and remove fromt he stack view
-        if !with {
-            saveCrdView.isHidden = true
-            stackView.removeArrangedSubview(stackView)
-        }else{
-            // Show and add to stack view
-            saveCrdView.isHidden = false
+        let finalMerchantVisibility = showMerchantSave && (cardInputView.cardUIStatus == .NormalCard)
+        let finalTapVisibility      = showTapSave && (cardInputView.cardUIStatus == .NormalCard)
+        
+        // Adjust visibility  the save for merchant & tap views
+        
+        saveCrdView.isHidden = !finalMerchantVisibility
+        saveCrdForTapView.isHidden = !finalTapVisibility
+        
+        // Add or remove from the stackview
+        if finalMerchantVisibility {
             stackView.addArrangedSubview(saveCrdView)
+        }else{
+            stackView.removeArrangedSubview(saveCrdView)
         }
+        
+        
+        if finalTapVisibility {
+            stackView.addArrangedSubview(saveCrdForTapView)
+        }else{
+            stackView.removeArrangedSubview(saveCrdForTapView)
+        }
+        
+        
         // change the height of the save card view based on the given visibility
         saveCrdView.snp.updateConstraints { make in
-            make.height.equalTo(finalVisibility ? 48 : 0)
+            make.height.equalTo(finalMerchantVisibility ? 48 : 0)
+        }
+        saveCrdForTapView.snp.updateConstraints { make in
+            make.height.equalTo(finalTapVisibility ? 48 : 0)
         }
         saveCrdView.layoutIfNeeded()
+        saveCrdForTapView.layoutIfNeeded()
         stackView.layoutIfNeeded()
         layoutIfNeeded()
         // Update the height of the total widget to reflect that
@@ -158,19 +179,21 @@ import TapThemeManager2020
         tapCardPhoneListView.snp.updateConstraints { make in
             make.height.equalTo(finalVisibility ? 24 : 0)
         }
-
-        // Animate showing/hiding the supported brands bar
+        self.layoutIfNeeded()
+        self.tapCardPhoneListView.layoutIfNeeded()
+        self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
+        self.updateHeight()
+        
+        /*// Animate showing/hiding the supported brands bar
         UIView.animate(withDuration: 0.5) {
             self.stackView.layoutIfNeeded()
-            self.layoutIfNeeded()
-            self.tapCardPhoneListView.layoutIfNeeded()
-            self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
+            
         } completion: { finished in
             if finished {
                 // At the end we need to update the height of the whole widget to reflect the change in the supported bar height
-                self.updateHeight()
+                
             }
-        }
+        }*/
 
     }
     
@@ -259,7 +282,10 @@ import TapThemeManager2020
         
         // Start with the height from the card input kit
         // We add to it if we need to show HINT or the Save card switch
-        let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0) + (viewModel?.shouldShowSaveCardView() ?? false ? 48 : 0)
+        let (showSaveMerchant,showSaveTap) = viewModel?.shouldShowSaveCardView() ?? (false,false)
+        let saveCardHeight:Double = (showSaveTap && showSaveMerchant) ? 86 : (showSaveTap || showSaveMerchant) ? 48 : 0
+        
+        let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0) + saveCardHeight
         // Let us calculate the total widget height
         let widgetHeight = cardInputHeight + 8 + tapCardPhoneListView.frame.height + headerView.frame.height
         snp.remakeConstraints { make in

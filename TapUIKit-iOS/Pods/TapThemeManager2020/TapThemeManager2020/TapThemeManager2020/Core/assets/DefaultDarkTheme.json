@@ -77,8 +77,15 @@
             "labelTextColor": "greyishBrown",
             "labelTextFont": "Roboto-Light,14",
             "switchTintColor": "white",
-            "switchThumbColor": "white",
+            "switchThumbColor": "greyishBrown",
             "switchOnThumbColor": "#2ACE00"
+        },
+        "saveCardForTapOption": {
+            "labelTextColor": "#7E7E7E",
+            "labelTextFont": "Roboto-Light,12",
+            "saveButtonActivatedTintColor": "azure",
+            "saveButtonDeactivatedTintColor": "#626262",
+            "infoButtonTintColor": "#626262"
         }
     },
     "phoneCard": {

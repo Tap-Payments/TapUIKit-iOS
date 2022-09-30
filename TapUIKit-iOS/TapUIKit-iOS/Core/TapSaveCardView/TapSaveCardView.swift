@@ -14,10 +14,11 @@ import LocalisationManagerKit_iOS
 /// A delegate to listen to events fired from the save card view
 @objc public protocol TapSaveCardViewDelegate {
     /**
-     This method will be called whenever the user change the status of the save card option
-     - Parameter enabled: Will be true if the switch is enabled and false otherwise
+     This method will be called whenever the user change the status of the save card option for merchant or TAP
+     - Parameter for saveCard: Defines for which save card type the action was done. Merchant or TAP
+     - Parameter to enabled: The new status
      */
-    @objc func saveCardChanged(enabled:Bool)
+    @objc func saveCardChanged(for saveCardType:SaveCardType,to enabled:Bool)
 }
 
 /// Represents the save card for later view
@@ -44,7 +45,7 @@ import LocalisationManagerKit_iOS
     }
     
     @IBAction func saveCardSwitchChanged(_ sender: Any) {
-        delegate?.saveCardChanged(enabled: saveCardSwitch.isOn)
+        delegate?.saveCardChanged(for: .Merchant,to: saveCardSwitch.isOn)
     }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view

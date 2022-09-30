@@ -5,6 +5,7 @@ PODS:
     - TapAdditionsKitV2
     - TapCardVlidatorKit-iOS
     - TapKeychain
+  - EasyTipView (2.1.0)
   - LocalisationManagerKit-iOS (1.0.4)
   - McPicker (3.0.0)
   - Nuke (10.7.1)
@@ -46,6 +47,7 @@ PODS:
 
 DEPENDENCIES:
   - CommonDataModelsKit-iOS
+  - EasyTipView
   - LocalisationManagerKit-iOS
   - McPicker
   - Nuke
@@ -62,6 +64,7 @@ SPEC REPOS:
   trunk:
     - Capable
     - CommonDataModelsKit-iOS
+    - EasyTipView
     - LocalisationManagerKit-iOS
     - McPicker
     - Nuke
@@ -82,6 +85,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
   CommonDataModelsKit-iOS: e5d0e3df789a4a95a1eb7ecf76107b6a9862113d
+  EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
   TapThemeManager2020: 6bdac997111a7c4309fa490178deb0d3c6bf4f90
 
-PODFILE CHECKSUM: 2d265dd8d73b015d8f8b254d31215aa1e31fec33
+PODFILE CHECKSUM: 787621d213e1c4a10c1ed9294a7bc5bd97d446e0
 
 COCOAPODS: 1.11.2

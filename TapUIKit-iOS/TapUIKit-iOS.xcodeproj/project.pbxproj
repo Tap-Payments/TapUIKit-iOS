@@ -109,6 +109,8 @@
 		E866AC4328E5753900D80568 /* PoweredByTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E866AC4228E5753900D80568 /* PoweredByTapView.xib */; };
 		E866AC4628E5865E00D80568 /* TapSaveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866AC4528E5865E00D80568 /* TapSaveCardView.swift */; };
 		E866AC4828E5866700D80568 /* TapSaveCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E866AC4728E5866700D80568 /* TapSaveCardView.xib */; };
+		E866AC4A28E6C50700D80568 /* TapInternalSaveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866AC4928E6C50700D80568 /* TapInternalSaveCard.swift */; };
+		E866AC4C28E6C51100D80568 /* TapInternalSaveCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E866AC4B28E6C51100D80568 /* TapInternalSaveCard.xib */; };
 		E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */; };
 		E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */; };
 		E8670CBF2498A678003F87D8 /* TapGoPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */; };
@@ -328,6 +330,8 @@
 		E866AC4228E5753900D80568 /* PoweredByTapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoweredByTapView.xib; sourceTree = "<group>"; };
 		E866AC4528E5865E00D80568 /* TapSaveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSaveCardView.swift; sourceTree = "<group>"; };
 		E866AC4728E5866700D80568 /* TapSaveCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapSaveCardView.xib; sourceTree = "<group>"; };
+		E866AC4928E6C50700D80568 /* TapInternalSaveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapInternalSaveCard.swift; sourceTree = "<group>"; };
+		E866AC4B28E6C51100D80568 /* TapInternalSaveCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapInternalSaveCard.xib; sourceTree = "<group>"; };
 		E8670CBA24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayChipCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8670CBB24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayChipCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8670CBE2498A678003F87D8 /* TapGoPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayViewModel.swift; sourceTree = "<group>"; };
@@ -779,6 +783,7 @@
 				E893B77628D1ED8B000E0348 /* TapLoyaltyAmountView.xib */,
 				E893B77A28D314AA000E0348 /* TapLoyaltyFooterView.xib */,
 				E866AC4728E5866700D80568 /* TapSaveCardView.xib */,
+				E866AC4B28E6C51100D80568 /* TapInternalSaveCard.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -918,6 +923,7 @@
 			isa = PBXGroup;
 			children = (
 				E866AC4528E5865E00D80568 /* TapSaveCardView.swift */,
+				E866AC4928E6C50700D80568 /* TapInternalSaveCard.swift */,
 			);
 			path = TapSaveCardView;
 			sourceTree = "<group>";
@@ -1405,6 +1411,7 @@
 				E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */,
 				E866AC4828E5866700D80568 /* TapSaveCardView.xib in Resources */,
 				E8670CC12498AFCB003F87D8 /* goPayIcon.pdf in Resources */,
+				E866AC4C28E6C51100D80568 /* TapInternalSaveCard.xib in Resources */,
 				E8E92B3C248F5C9700DD7DBB /* TapSeparatorView.xib in Resources */,
 				E893B77128D102C5000E0348 /* TapLoyaltyHeaderView.xib in Resources */,
 				E8437F7E24BEC7A70059F1B8 /* TapGoPayLoginBarView.xib in Resources */,
@@ -1558,6 +1565,7 @@
 				E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */,
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
 				625503DB24CEB57A00D82682 /* TapSwitchCardStateEnum.swift in Sources */,
+				E866AC4A28E6C50700D80568 /* TapInternalSaveCard.swift in Sources */,
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
 				627E3CD924D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift in Sources */,
 				E8CD347C28D07B4A0093DA26 /* TapLoyaltyViewModel.swift in Sources */,

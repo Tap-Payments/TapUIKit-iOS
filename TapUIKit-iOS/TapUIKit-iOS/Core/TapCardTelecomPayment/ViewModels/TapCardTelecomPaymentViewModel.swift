@@ -48,10 +48,11 @@ import TapCardVlidatorKit_iOS
     @objc func shouldAllowChange(with cardNumber:String) -> Bool
     
     /**
-     This method will be called whenever the user change the status of the save card option
-     - Parameter enabled: Will be true if the switch is enabled and false otherwise
+     This method will be called whenever the user change the status of the save card option for merchant or TAP
+     - Parameter for saveCard: Defines for which save card type the action was done. Merchant or TAP
+     - Parameter to enabled: The new status
      */
-    @objc func saveCardChanged(enabled:Bool)
+    @objc func saveCardChanged(for saveCardType:SaveCardType,to enabled:Bool)
 }
 
 /// Represents a view model to control the wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
@@ -71,9 +72,14 @@ import TapCardVlidatorKit_iOS
     /// Represents if the attached view should be visible or not, based on the existence of items inside the list
     @objc public var shouldShow:Bool = false
     
-    /// Indicates if the saved card switch is activated
+    /// Indicates if the saved card switch is activated for Merchant
     @objc public var isMerchantSaveAllowed:Bool {
         return attachedView.saveCrdView.saveCardSwitch.isOn
+    }
+    
+    /// Indicates if the saved card switch is activated for TAP
+    @objc public var isTapSaveAllowed:Bool {
+        return attachedView.saveCrdForTapView.isSavedCardEnabled
     }
     
     @objc public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel? {
@@ -100,27 +106,30 @@ import TapCardVlidatorKit_iOS
     }
     
     /// Computes if the conditions to show the save card switch are met and we have to
-    internal func shouldShowSaveCardView() -> Bool {
+    /// - Returns: Bool,Bool first for merchant save and second for Tap save
+    internal func shouldShowSaveCardView() -> (Bool,Bool) {
         // Make sure that the view model enabled it and that user did enter a valid card data (all fields are valid)
         // Also we need to make sure we are in the saved card flow already
-        guard showSaveCardOption,
+        guard saveCardType != .None,
               allCardFieldsValid(),
-              attachedView.cardInputView.cardUIStatus != .SavedCard else { return false }
+              attachedView.cardInputView.cardUIStatus != .SavedCard else { return (false,false) }
         // Then yes we should show the save card view :)
-        return true
+        return ((saveCardType == .All || saveCardType == .Merchant),( saveCardType == .All || saveCardType == .Tap))
+        
     }
     
     /// Decides whether to show or hide the save card, then instructs the view to show/hide it
     internal func showHideSaveCardView() {
-        tapCardTelecomPaymentView?.shouldShowSaveCardView(shouldShowSaveCardView())
+        let (showMerchantSaveCard, showTapSaveCard) = shouldShowSaveCardView()
+        tapCardTelecomPaymentView?.shouldShowSaveCardView(showMerchantSaveCard, showTapSaveCard)
     }
     
     /// The delegate that wants to hear from the view on new data and events
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     /// Indicates whether or not to collect the card name in case of credit card payment
     @objc public var collectCardName:Bool = false
-    /// Indicates whether or not to offer the save card switch when a valid card info is filled
-    @objc public var showSaveCardOption:Bool = false
+    /// Indicates whether or not to offer the save card and to which level
+    public var saveCardType:SaveCardType = .None
     
     /**
      Creates a new view model to control the tabbar of payments icons + the card + the phone input view to be rendered
@@ -128,10 +137,10 @@ import TapCardVlidatorKit_iOS
      - Parameter tapCountry: Represents the country that telecom options are being shown for, used to handle country code and correct phone length
      - Parameter showSaveCardOption: Indicates whether or not to offer the save card switch when a valid card info is filled
      */
-    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false, showSaveCardOption:Bool) {
+    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false, showSaveCardOption:SaveCardType) {
         super.init()
         self.collectCardName = collectCardName
-        self.showSaveCardOption = showSaveCardOption
+        self.saveCardType = showSaveCardOption
         self.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentView?.tapCountry = tapCountry
     }
@@ -251,7 +260,19 @@ import TapCardVlidatorKit_iOS
 
 
 extension TapCardTelecomPaymentViewModel: TapSaveCardViewDelegate {
-    public func saveCardChanged(enabled: Bool) {
-        delegate?.saveCardChanged(enabled: enabled)
+    public func saveCardChanged(for saveCardType: SaveCardType, to enabled: Bool) {
+        delegate?.saveCardChanged(for: saveCardType, to: enabled)
     }
+}
+
+/// Defines which save card should be displayed
+@objc public enum SaveCardType:Int {
+    /// Don't show the save card option at all
+    case None
+    /// Only display save card for merchant
+    case Merchant
+    /// Only display save card for TAP
+    case Tap
+    /// Display save card for merchant & TAP
+    case All
 }

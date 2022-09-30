@@ -81,6 +81,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         tapCardPhoneListViewModel.dataSource = tapCardPhoneListDataSource
         tapCardTelecomPaymentViewModel.collectCardName = false
+        tapCardTelecomPaymentViewModel.saveCardType = .All
         tapCardTelecomPaymentViewModel.delegate = self
         tapCardTelecomPaymentViewModel.tapCardPhoneListViewModel = tapCardPhoneListViewModel
         tapCardTelecomPaymentViewModel.changeTapCountry(to: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
@@ -484,7 +485,7 @@ extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
-    func saveCardChanged(enabled: Bool) {
+    func saveCardChanged(for saveCardType: SaveCardType, to enabled: Bool) {
         print("Save card changed to: \(enabled)")
     }
     
