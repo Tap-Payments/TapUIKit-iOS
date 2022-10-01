@@ -266,7 +266,7 @@ extension TapCardTelecomPaymentViewModel: TapSaveCardViewDelegate {
 }
 
 /// Defines which save card should be displayed
-@objc public enum SaveCardType:Int {
+@objc public enum SaveCardType:Int,Codable,CaseIterable {
     /// Don't show the save card option at all
     case None
     /// Only display save card for merchant
@@ -275,4 +275,18 @@ extension TapCardTelecomPaymentViewModel: TapSaveCardViewDelegate {
     case Tap
     /// Display save card for merchant & TAP
     case All
+    
+    /// Retrusn string representation for the enum
+    public func toString() -> String {
+        switch self {
+        case .None:
+            return "None"
+        case .Merchant:
+            return "Merchant"
+        case .Tap:
+            return "Tap"
+        case .All:
+            return "All"
+        }
+    }
 }
