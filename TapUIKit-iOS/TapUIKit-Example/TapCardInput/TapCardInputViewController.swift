@@ -54,6 +54,7 @@ class TapCardInputViewController: UIViewController {
 }
 
 extension TapCardInputViewController: TapCardInputProtocol {
+    
     func closeSavedCard() {
         print("CLOSE SAVED CARD")
     }
@@ -74,7 +75,7 @@ extension TapCardInputViewController: TapCardInputProtocol {
     }
     
     
-    func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+    func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum,cardStatusUI: CardInputUIStatus) {
         delegateTextView.text = "Validation status : \(validation.toString())\n\(delegateTextView.text ?? "")\n";
     }
     
@@ -84,7 +85,7 @@ extension TapCardInputViewController: TapCardInputProtocol {
     }
     
     
-    func cardDataChanged(tapCard: TapCard) {
+    func cardDataChanged(tapCard: TapCard,cardStatusUI: CardInputUIStatus) {
        delegateTextView.text = "Card Number : \(tapCard.tapCardNumber ?? "")\nCard Name : \(tapCard.tapCardName ?? "")\nCard Expiry : \(tapCard.tapCardExpiryMonth ?? "")/\(tapCard.tapCardExpiryYear ?? "")\nCard CVV : \(tapCard.tapCardCVV ?? "")\n\(delegateTextView.text ?? "")\n"
     }
     

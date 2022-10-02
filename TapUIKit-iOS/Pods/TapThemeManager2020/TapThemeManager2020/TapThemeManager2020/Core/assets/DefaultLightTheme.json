@@ -4,6 +4,7 @@
             "white" : "#FFFFFF",
             "black" : "#000000",
             "black50" : "#00000080",
+            "black15" : "#00000026",
             "lightPeach" : "#b6b6b6",
             "greyishBrown" : "#4b4847",
             "veryLightPinkTwo" : "#dfdfdf",
@@ -232,11 +233,13 @@
                     "opacity": 1
                 },
                 "glowingShadow":{
-                    "color": "#2ACE00",
+                    "color": "vibrantGreen",
                     "radius": 3,
                     "offsetWidth": 0,
                     "offsetHeight": 0,
-                    "opacity": 1
+                    "opacity": 1,
+                    "borderColor":"vibrantGreen",
+                    "borderWidth":1
                 },
                 "widthMargin": 7
             },
@@ -363,16 +366,20 @@
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 }
             },
@@ -381,20 +388,24 @@
                 "logoutIcon": "logoutIcon",
                 "selected": {
                     "shadow": {
-                        "color" : "vibrantGreenTwo",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"vibrantGreenTwo",
+                        "borderWidth":1
                     }
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 }
             },
@@ -404,20 +415,24 @@
                 "labelTextColor": "white",
                 "selected": {
                     "shadow": {
-                        "color" : "vibrantGreenTwo",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"vibrantGreenTwo",
+                        "borderWidth":1
                     }
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 }
             },
@@ -430,19 +445,23 @@
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreenTwo",
-                        "radius" : 3,
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 },
                 "unSelected": {
                     "shadow": {
                         "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 }
             },
@@ -456,20 +475,24 @@
                 },
                 "selected": {
                     "shadow": {
-                        "color" : "vibrantGreenTwo",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"vibrantGreenTwo",
+                        "borderWidth":1
                     }
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
-                        "opacity": 1
+                        "opacity": 1,
+                        "borderColor":"clear",
+                        "borderWidth":0
                     }
                 }
             }
