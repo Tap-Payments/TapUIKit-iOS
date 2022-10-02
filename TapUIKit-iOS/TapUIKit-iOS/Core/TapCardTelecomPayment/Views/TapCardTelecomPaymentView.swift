@@ -83,7 +83,7 @@ import TapThemeManager2020
             cardInputView.delegate = self
         }
     }
-   
+    
     
     
     // Mark:- Init methods
@@ -185,16 +185,16 @@ import TapThemeManager2020
         self.updateHeight()
         
         /*// Animate showing/hiding the supported brands bar
-        UIView.animate(withDuration: 0.5) {
-            self.stackView.layoutIfNeeded()
-            
-        } completion: { finished in
-            if finished {
-                // At the end we need to update the height of the whole widget to reflect the change in the supported bar height
-                
-            }
-        }*/
-
+         UIView.animate(withDuration: 0.5) {
+         self.stackView.layoutIfNeeded()
+         
+         } completion: { finished in
+         if finished {
+         // At the end we need to update the height of the whole widget to reflect the change in the supported bar height
+         
+         }
+         }*/
+        
     }
     
     /**
@@ -274,7 +274,7 @@ import TapThemeManager2020
         // Reset any selection done on the bar layout
         tapCardPhoneListViewModel.resetCurrentSegment()
         lastReportedTapCard = .init()
-        viewModel?.delegate?.brandDetected(for: .unknown, with: .Invalid)
+        viewModel?.delegate?.brandDetected(for: .unknown, with: .Invalid,cardStatusUI: .NormalCard)
     }
     
     /// Call this to claculate the required height for the view. Takes in consideration the visibility of name row, save title, save subtitle, supported brands
@@ -324,14 +324,14 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
         hintStatus = viewModel?.decideHintStatus(with: tapCard, and: cardInputView.cardUIStatus)
     }
     
-    public func cardDataChanged(tapCard: TapCard) {
-        viewModel?.delegate?.cardDataChanged(tapCard: tapCard)
+    public func cardDataChanged(tapCard: TapCard,cardStatusUI:CardInputUIStatus) {
+        viewModel?.delegate?.cardDataChanged(tapCard: tapCard, cardStatusUI:cardStatusUI)
         lastReportedTapCard = tapCard
         hintStatus = viewModel?.decideHintStatus(with: tapCard, and: cardInputView.cardUIStatus)
         viewModel?.showHideSaveCardView()
     }
     
-    public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
+    public func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum, cardStatusUI:CardInputUIStatus) {
         
         if validation == .Invalid || cardBrand == .unknown {
             tapCardPhoneListViewModel.resetCurrentSegment()
@@ -341,7 +341,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
             tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
         }
         viewModel?.decideVisibilityOfSupportedBrandsBar()
-        viewModel?.delegate?.brandDetected(for: cardBrand, with: validation)
+        viewModel?.delegate?.brandDetected(for: cardBrand, with: validation, cardStatusUI: cardStatusUI)
     }
     
     public func scanCardClicked() {
@@ -369,7 +369,7 @@ extension TapCardTelecomPaymentView: TapPhoneInputProtocol {
             tapCardPhoneListViewModel.select(brand: cardBrand, with: true)
         }
         
-        viewModel?.delegate?.brandDetected(for: cardBrand, with: validation)
+        viewModel?.delegate?.brandDetected(for: cardBrand, with: validation,cardStatusUI: .NormalCard)
         if validation == .Valid {
             endEditing(true)
         }
@@ -417,6 +417,3 @@ extension TapCardTelecomPaymentView {
         applyTheme()
     }
 }
-
-
-

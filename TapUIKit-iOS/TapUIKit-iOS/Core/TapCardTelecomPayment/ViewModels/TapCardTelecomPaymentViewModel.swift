@@ -16,14 +16,16 @@ import TapCardVlidatorKit_iOS
     /**
      This method will be called whenever the card data in the form has changed. It is being called in a live manner
      - Parameter tapCard: The TapCard model that hold sthe data the currently enetred by the user till now
+     - Parameter cardStatusUI: The current state of the card input. Saved card or normal card
      */
-    @objc func cardDataChanged(tapCard:TapCard)
+    @objc func cardDataChanged(tapCard:TapCard,cardStatusUI:CardInputUIStatus)
     /**
      This method will be called whenever the a brand is detected based on the current data typed by the user in the card form.
      - Parameter cardBrand: The detected card brand
      - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
+     - Parameter cardStatusUI: The current state of the card input. Saved card or normal card
      */
-    @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum)
+    @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum,cardStatusUI:CardInputUIStatus)
     
     
     /// This method will be called once the user clicks on Scan button
