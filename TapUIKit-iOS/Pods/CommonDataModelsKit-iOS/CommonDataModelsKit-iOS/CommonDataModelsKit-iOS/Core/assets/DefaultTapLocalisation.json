@@ -10,7 +10,8 @@
             "cardSaveForTapInfo":"Checkout everywhere in just one click.\nTap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.",
             "emailPlaceHolder": "email@email.com",
             "weSupport":"WE ACCEPT",
-            "cardSectionTitle": "CARD INFORMATION"
+            "cardSectionTitle": "CARD INFORMATION",
+            "savedCardSectionTitle": "SAVED CARD"
         },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
@@ -153,7 +154,8 @@
             "cardSaveForTapInfo":"يمكنك الدفع في كل مكان بنقرة واحدة فقط\n.يعد النقر طريقة أفضل وآمنة للدفع محليًا عبر أكثر من 100 ألف متجر. يتم تشفير بياناتك ولا يمكن الوصول إليها إلا بواسطتك. ستتلقى بريدًا إلكترونيًا للبدء وإدارة التفاصيل الخاصة بك.",
             "emailPlaceHolder": "email@email.com",
             "weSupport":"نحن ندعم",
-            "cardSectionTitle": "بيانات البطاقة"
+            "cardSectionTitle": "بيانات البطاقة",
+            "savedCardSectionTitle": "البطاقة المحفوظة"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"

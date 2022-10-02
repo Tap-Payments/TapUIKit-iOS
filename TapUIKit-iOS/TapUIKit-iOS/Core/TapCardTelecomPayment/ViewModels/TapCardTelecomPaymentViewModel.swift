@@ -168,6 +168,7 @@ import TapCardVlidatorKit_iOS
     @objc public func setCard(with card:TapCard,then focusCardNumber:Bool,shouldRemoveCurrentCard:Bool = true,for cardUIStatus:CardInputUIStatus) {
         tapCardTelecomPaymentView?.lastReportedTapCard = card
         tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card, then: focusCardNumber,shouldRemoveCurrentCard:shouldRemoveCurrentCard,for: cardUIStatus)
+        tapCardTelecomPaymentView?.headerView.headerType = (cardUIStatus == .SavedCard) ? .SaveCardInputTitle : .CardInputTitle
     }
     
     
@@ -178,6 +179,7 @@ import TapCardVlidatorKit_iOS
     @objc public func setSavedCard(savedCard:SavedCard) {
         tapCardTelecomPaymentView?.cardInputView.setSavedCard(savedCard: savedCard)
         tapCardTelecomPaymentView?.shouldShowSupportedBrands(false)
+        tapCardTelecomPaymentView?.headerView.headerType = .SaveCardInputTitle
     }
     
     /**

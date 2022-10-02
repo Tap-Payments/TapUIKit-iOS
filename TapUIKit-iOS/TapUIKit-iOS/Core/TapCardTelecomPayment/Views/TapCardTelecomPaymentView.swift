@@ -314,6 +314,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
     
     public func closeSavedCard() {
         viewModel?.delegate?.closeSavedCardClicked()
+        headerView.headerType = .CardInputTitle
     }
     
     public func heightChanged() {
