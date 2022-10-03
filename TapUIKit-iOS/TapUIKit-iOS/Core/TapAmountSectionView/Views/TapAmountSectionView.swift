@@ -22,6 +22,8 @@ import TapThemeManager2020
     @IBOutlet weak var itemsHolderView: UIView!
     /// Shows the title of the button of number of titles or CLOSE the items view
     @IBOutlet weak var itemsNumberLabel: UILabel!
+    /// Shows a drop down arrow to indicate the button is clickable
+    @IBOutlet weak var downArrowImageView: UIImageView!
     /// The vertical containter for the amount + the converted amount of any to make sure they are always correctly aligned and centered
     @IBOutlet weak var amountsStackView: UIStackView!
     
@@ -81,9 +83,25 @@ import TapThemeManager2020
         
         viewModel.itemsLabelObserver = { itemsCount in
             self.itemsNumberLabel.text = itemsCount
+            self.updateItemsButtonUI()
         }
     }
     
+    /// Handles showing/hiding the dropdown icon.
+    /// It will be visibile in case of shoowing item count only
+    internal func updateItemsButtonUI() {
+        var dropDownArrowFinalWidth:Double = 0
+        if viewModel?.currentStateView == .DefaultView {
+            dropDownArrowFinalWidth = 16
+        }
+        // Update the visibility and the size of the icon view accordingly
+        downArrowImageView.isHidden = !(viewModel?.currentStateView == .DefaultView)
+        downArrowImageView.snp.remakeConstraints { make in
+            make.width.equalTo(dropDownArrowFinalWidth)
+        }
+        downArrowImageView.layoutIfNeeded()
+        itemsNumberLabel.layoutIfNeeded()
+    }
     
     @objc override func shouldShowTapView() -> Bool {
         return viewModel?.shouldShow ?? true
@@ -163,6 +181,9 @@ extension TapAmountSectionView {
         itemsHolderView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).itemsNumberButtonCorner")
         itemsHolderView.layer.tap_theme_borderWidth = .init(keyPath: "\(themePath).itemsNumberButtonBorder.width")
         itemsHolderView.layer.tap_theme_borderColor = .init(keyPath: "\(themePath).itemsNumberButtonBorder.color")
+        
+        
+        downArrowImageView.tap_theme_image = .init(keyPath: "\(themePath).itemsButtonArrowIcon")
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         

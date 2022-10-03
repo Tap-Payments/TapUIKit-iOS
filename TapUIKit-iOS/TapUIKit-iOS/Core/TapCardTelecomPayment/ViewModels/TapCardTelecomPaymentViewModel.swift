@@ -293,4 +293,18 @@ extension TapCardTelecomPaymentViewModel: TapSaveCardViewDelegate {
             return "All"
         }
     }
+    
+    public init(stringValue:String) {
+        if stringValue.lowercased() == "none" {
+            self = .None
+        }else if stringValue.lowercased() == "merchant" {
+            self = .Merchant
+        }else if stringValue.lowercased() == "tap" {
+            self = .Tap
+        }else if stringValue.lowercased() == "all" {
+            self = .All
+        }else{
+            self = .None
+        }
+    }
 }

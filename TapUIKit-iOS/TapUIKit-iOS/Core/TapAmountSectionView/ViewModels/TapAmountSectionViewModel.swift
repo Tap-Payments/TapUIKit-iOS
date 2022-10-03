@@ -60,6 +60,17 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
             showAmount(shouldShowAmount)
         }
     }
+    
+    /// Computes the symbol of the currently used currency
+    internal var usedCurrencyCode:String  {
+        // We need to now if there is a conversion currency or we shall return the original currency code
+        if self.convertedTransactionCurrency.currency != .undefined {
+            return " | \(self.convertedTransactionCurrency.currencySymbol)"
+        }else if self.originalTransactionCurrency.currency != .undefined {
+            return " | \(self.originalTransactionCurrency.currencySymbol)"
+        }
+        return ""
+    }
     /// Reference to the amount section view itself as UI that will be rendered
     internal var amountSectionView: TapAmountSectionView?
     /// Public reference to the list view itself as UI that will be rendered
@@ -245,7 +256,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     internal func configureItemsLabel() {
         switch currentStateView{
         case .DefaultView:
-            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: (numberOfItems < 2) ? "Common.item" : "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))"
+            itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: (numberOfItems < 2) ? "Common.item" : "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))\(self.usedCurrencyCode)"
         case .ItemsView,.ScannerView,.GoPayView:
             itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
         }
