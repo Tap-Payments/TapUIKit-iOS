@@ -68,7 +68,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         case .WarningExpiryCVV:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingExpiryCVV", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingExpiryCVV"
         case .WarningCVV:
-            return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingCVV", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingCVV"
+            return localized ? String(format: sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingCVV", with: TapCommonConstants.pathForDefaultLocalisation()), 3) : "Hints.Warning.missingCVV"
         case .WarningName:
             return localized ? sharedLocalisationManager.localisedValue(for: "Hints.Warning.missingName", with: TapCommonConstants.pathForDefaultLocalisation()) : "Hints.Warning.missingName"
         case .ErrorCardNumber:

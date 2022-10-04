@@ -407,6 +407,11 @@ extension TapCardTelecomPaymentView {
         stackView.layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.offsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.offsetHeight")?.floatValue ?? 0))
         stackView.layer.shadowOpacity = Float(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.opacity")?.floatValue ?? 0)
         
+        // Round the bottom edges of the hint view
+        hintView.clipsToBounds = true
+        hintView.layer.cornerRadius = stackView.layer.cornerRadius
+        hintView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        
         
         layoutIfNeeded()
     }

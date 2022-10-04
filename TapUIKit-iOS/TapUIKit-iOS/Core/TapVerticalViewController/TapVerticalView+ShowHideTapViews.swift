@@ -153,9 +153,9 @@ extension TapVerticalView {
      */
     internal func addSpaceView(with spaceRect:CGRect) {
         // Push the action button by the required space height
-        tapActionButtonBottomConstraint.constant = spaceRect.height - 33
+        tapActionButtonBottomConstraint.constant = spaceRect.height - 150
         // Save the current pushing padding height
-        keyboardPadding = spaceRect.height
+        keyboardPadding = spaceRect.height - 100
         if #available(iOS 13.0, *) {}else {
             keyboardPadding = 0
         }

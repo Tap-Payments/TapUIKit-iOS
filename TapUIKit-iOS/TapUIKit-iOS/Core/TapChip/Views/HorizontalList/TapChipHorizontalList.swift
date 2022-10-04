@@ -79,7 +79,7 @@ import LocalisationManagerKit_iOS
         // First thing we load the XIB file and attach it to the curren view
         self.contentView = setupXIB()
         translatesAutoresizingMaskIntoConstraints = false
-        myHeightAnchor = heightAnchor.constraint(equalToConstant: 100)
+        myHeightAnchor = heightAnchor.constraint(equalToConstant: 85)
         self.addConstraint(myHeightAnchor!)
         // Second, theme it please!
         applyTheme()
@@ -199,7 +199,7 @@ import LocalisationManagerKit_iOS
             self?.headerViewHeightConstraint.constant = 30
             self?.collectionViewToHederConstraint.priority = .required
             self?.translatesAutoresizingMaskIntoConstraints = false
-            self?.myHeightAnchor?.constant = 100
+            self?.myHeightAnchor?.constant = 85
             self?.layoutIfNeeded()
         },completion: { [weak self] _ in
             if self?.shouldShowHeader ?? false {
