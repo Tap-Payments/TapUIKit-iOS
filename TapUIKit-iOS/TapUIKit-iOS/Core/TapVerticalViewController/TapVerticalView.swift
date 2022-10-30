@@ -246,7 +246,8 @@ import TapCardScanner_iOS
         // Calculate the current views' height firs
         var currentViewsHeight:CGFloat = 0
         stackView.arrangedSubviews.forEach{ currentViewsHeight += ($0.frame.height > 0) ? $0.frame.height : 45 }
-        return TapConstantManager.maxAllowedHeight - currentViewsHeight
+        
+        return TapConstantManager.maxAllowedHeight - currentViewsHeight - tapActionButton.frame.origin.y
     }
     
     /**

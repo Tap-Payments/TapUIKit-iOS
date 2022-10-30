@@ -196,6 +196,8 @@ extension TapActionButton {
         payButton.setTitleColor(status.buttonTitleColor(), for: .normal)
         payButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).Common.titleLabelFont")
         
+        viewHolder.layer.borderColor = status.buttonBorderColor().cgColor
+        viewHolder.layer.borderWidth = 1
         viewHolder.layer.cornerRadius = 20
     }
     

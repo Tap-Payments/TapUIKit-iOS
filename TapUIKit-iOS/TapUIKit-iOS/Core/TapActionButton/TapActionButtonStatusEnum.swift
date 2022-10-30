@@ -37,6 +37,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case FaceID
     /// Where we need to show a green background with faceID icon
     case TouchID
+    /// Where we need to show cancel payment button when showing a web view
+    case CancelPayment
     
     
     
@@ -57,6 +59,9 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
             break
         case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext:
             backgroundThemePath = "actionButton.Valid.goLoginBackgroundColor"
+            break
+        case .CancelPayment:
+            backgroundThemePath = "actionButton.Cancel.backgroundColor"
             break
         }
         return TapThemeManager.colorValue(for: backgroundThemePath) ?? .clear
@@ -96,8 +101,31 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         switch self {
         case .InvalidPayment,.InvalidNext,.InvalidSignIn,.InvalidConfirm:
             titleColorPath = "actionButton.Invalid.titleLabelColor"
+            break
+        case .CancelPayment:
+            titleColorPath = "actionButton.Cancel.titleLabelColor"
+            break
         default:
             titleColorPath = "actionButton.Valid.titleLabelColor"
+        }
+        return TapThemeManager.colorValue(for: titleColorPath) ?? .clear
+    }
+    
+    
+    /**
+     Decides the color of action button title based on the traitcollection and status of the button
+     - Returns: The correct tap action button title color
+     */
+    public func buttonBorderColor() -> UIColor {
+        
+        var titleColorPath:String = ""
+        
+        switch self {
+        case .CancelPayment:
+            titleColorPath = "actionButton.Cancel.borderColor"
+            break
+        default:
+            titleColorPath = "actionButton.Common.borderColor"
         }
         return TapThemeManager.colorValue(for: titleColorPath) ?? .clear
     }
@@ -109,13 +137,17 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
      */
     public func buttonTitle() -> String {
         let sharedLocalisationManager:TapLocalisationManager = .shared
-       
+        
         var localizedTitle:String = ""
         
         switch self {
         case .InvalidSignIn,.ValidSignIn:
             // These cases we need to have a SignIn title
             localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.signin", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        case .CancelPayment:
+            // These cases we need to have a SignIn title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.cancel", with: TapCommonConstants.pathForDefaultLocalisation())
             break
         case .ValidConfirm,.InvalidConfirm:
             // These cases we need to have a Confitm title

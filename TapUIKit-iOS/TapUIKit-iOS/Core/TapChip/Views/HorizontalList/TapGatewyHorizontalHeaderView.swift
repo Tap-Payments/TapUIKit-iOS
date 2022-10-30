@@ -177,6 +177,8 @@ class TapHorizontalHeaderView: UIView {
 @objc public enum TapHorizontalHeaderType:Int {
     /// Enter card information title displayed befire the card input section
     case CardInputTitle
+    /// Approve payment when paying within a web view
+    case WebViewTitle
     /// Save card information title displayed befire the card input section
     case SaveCardInputTitle
     /// The SELECT - EDIT header view for the list of payment gatewas and saved cards
@@ -189,7 +191,7 @@ class TapHorizontalHeaderView: UIView {
     /// Defines the theme entry based on the type
     func themePath() -> String {
         switch self {
-        case .GatewayListHeader,.GoPayListHeader,.GateWayListWithGoPayListHeader,.CardInputTitle,.SaveCardInputTitle:
+        case .GatewayListHeader,.GoPayListHeader,.GateWayListWithGoPayListHeader,.CardInputTitle,.SaveCardInputTitle,.WebViewTitle:
             return "horizontalList.headers.gatewayHeader"
         case .NoHeader:
             return ""
@@ -215,6 +217,8 @@ class TapHorizontalHeaderView: UIView {
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("","","")
         case .CardInputTitle:
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("TapCardInputKit.cardSectionTitle","","")
+        case .WebViewTitle:
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.webViewTitle","","")
         case .SaveCardInputTitle:
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("TapCardInputKit.savedCardSectionTitle","","")
         }
