@@ -37,7 +37,12 @@
         "HorizontalHeaders": {
             "GatewayHeader":{
                 "leftTitle": "SELECT",
-                "rightTitle": "EDIT"
+                "rightTitle": "EDIT",
+                "webViewTitle": "APPROVE PAYMENT"
+            },
+            "SaveCardHeader": {
+                "shippingSectionTitle" : "SHIPPING",
+                "contactDetailsSectionTitle" : "CONTACT DETAILS"
             }
         },
         "ItemList": {
@@ -64,7 +69,7 @@
             "Warning":
             {
                 "missingExpiryCVV": "Expiry date & CVV number are missing.",
-                "missingCVV": "CVV number is missing.",
+                "missingCVV": "Enter the %i-digits CVV (usually at the back of the card.)",
                 "missingName": "Card name should be greater than 3 charachters",
             },
             "Error":
@@ -140,7 +145,8 @@
             "confirm": "Confirm",
             "resend": "Resend OTP",
             "next": "Next",
-            "signin": "Signin"
+            "signin": "Signin",
+            "cancel":"Cancel"
         }
     },
     "ar": {
@@ -181,7 +187,12 @@
         "HorizontalHeaders": {
             "GatewayHeader":{
                 "leftTitle": "إختر",
-                "rightTitle": "تعديل"
+                "rightTitle": "تعديل",
+                "webViewTitle": "توثيق الدفع"
+            },
+            "SaveCardHeader": {
+                "shippingSectionTitle" : "العنوان",
+                "contactDetailsSectionTitle" : "بيانات الاتصال"
             }
         },
         "ItemList": {
@@ -215,7 +226,7 @@
             "Warning":
             {
                 "missingExpiryCVV": "تاريخ الإنتهاء و الرمز الأمني مطلوبين",
-                "missingCVV": "الرمز الأمني مطلوب",
+                "missingCVV": "أدخل %i-أرقام الرمز الأمني (عادة بخلف البطاقة.)",
                 "missingName": "يجب إدخال ٣ أحرف على الاقل للإسم",
             },
             "Error":
@@ -282,7 +293,8 @@
             "confirm": "تأكيد",
             "resend": "إعادة إرسال",
             "next": "التالي",
-            "signin": "دخول"
+            "signin": "دخول",
+            "cancel":"إلغاء"
         }
     }
 }
