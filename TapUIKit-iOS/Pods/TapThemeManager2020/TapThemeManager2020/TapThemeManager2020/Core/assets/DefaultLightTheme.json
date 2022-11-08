@@ -98,6 +98,23 @@
             "infoButtonTintColor": "#626262"
         }
     },
+    "customerDataCollection": {
+        "backgroundColor":"white",
+        "shadow":{
+            "color": "#00000026",
+            "radius": 8,
+            "offsetWidth": 0,
+            "offsetHeight": 0,
+            "opacity": 1
+        },
+        "textfields":{
+            "font":"Roboto-Light,14",
+            "countryCodeLabelFont":"Roboto,14",
+            "color":"greyishBrown",
+            "placeHolderColor":"#9F9F9F"
+        },
+        "cornerRadius":8
+    },
     "phoneCard": {
         "commonAttributes": {
             "backgroundColor": "white",
