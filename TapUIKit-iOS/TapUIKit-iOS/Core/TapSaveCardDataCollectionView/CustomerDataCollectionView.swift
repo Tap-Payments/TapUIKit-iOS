@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SnapKit
 /// Defines the View used to display the fields data collection for customer when saving a card for tap
 @objc public class CustomerDataCollectionView: UIView {
 
@@ -15,6 +15,8 @@ import UIKit
     @IBOutlet var contentView: UIView!
     /// The view holding the fields collecting the cutomer's contact data
     @IBOutlet weak var customerDataCollectionView: CustomerContactDataCollectionView!
+    /// The view model that controls the customer contact data collection view
+    internal var customerContactDataCollectionViewModel:CustomerContactDataCollectionViewModel?
     
     //MARK: - Init methods
     override init(frame: CGRect) {
@@ -35,8 +37,16 @@ import UIKit
         applyTheme()
     }
     
+    /// Computes the needed height for the save customer data overall view
     internal func updateHeight() {
-        
+        guard let customerContactDataCollectionViewModel = customerContactDataCollectionViewModel else { return }
+        // Get the height needed for the contact details view
+        let heightForContactDetails:CGFloat = customerContactDataCollectionViewModel.requiredHeight()
+        // Get the height needed for the shipping details view
+        snp.remakeConstraints { make in
+            make.height.equalTo(heightForContactDetails)
+        }
+        layoutIfNeeded()
     }
     
     
@@ -47,6 +57,8 @@ import UIKit
      */
     @objc public func setupView(with viewModel:CustomerContactDataCollectionViewModel) {
         customerDataCollectionView.setupView(with: viewModel)
+        customerContactDataCollectionViewModel = viewModel
+        updateHeight()
     }
 }
 

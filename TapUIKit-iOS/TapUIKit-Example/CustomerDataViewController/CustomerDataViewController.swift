@@ -12,7 +12,7 @@ import TapUIKit_iOS
 class CustomerDataViewController: UIViewController {
 
     @IBOutlet weak var customerDataCollectionViw: CustomerDataCollectionView!
-    let customerDataViewModel = CustomerContactDataCollectionViewModel.init(toBeCollectedData: [.email], allowedCountries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)], selectedCountry: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+    let customerDataViewModel = CustomerContactDataCollectionViewModel.init(toBeCollectedData: [.email,.phone], allowedCountries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8)], selectedCountry: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
     
     override func viewDidLoad() {
         super.viewDidLoad()

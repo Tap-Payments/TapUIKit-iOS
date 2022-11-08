@@ -318,7 +318,7 @@
         "footerView": {
             "pointsTextColor" : "#7E7E7E",
             "pointsFont" : "Roboto-Regular,11",
-            "amountTextColor" : "#greyishBrown",
+            "amountTextColor" : "greyishBrown",
             "amountFont" : "Roboto-Regular,11"
         }
     },

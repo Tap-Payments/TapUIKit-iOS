@@ -77,20 +77,19 @@ import SnapKit
         guard let viewModel = viewModel else {
             return
         }
-
+        
         // Height for fields
-        let heightForFields:CGFloat = viewModel.requiredHeight() + 8
-        // The header required height
-        let heightForHeader:CGFloat = 30.0
-        // The spacing we need
-        let spacingRequired:CGFloat = 8.0+16.0
+        let heightForFields:CGFloat = viewModel.requiredHeightForFieldsContainer() + 8
+        // Height for the view as a whole
+        let heightForView:CGFloat = viewModel.requiredHeight()
+        
         // If none of the fields to be displayed, then we will not show the whole section,
         // Othwerise, we will compute the needed height based on the above calculated values
         fieldsContainerView.snp.remakeConstraints { make in
             make.height.equalTo(heightForFields)
         }
         snp.remakeConstraints { make in
-            make.height.equalTo(heightForFields + spacingRequired + heightForHeader)
+            make.height.equalTo(heightForView)
         }
         fieldsContainerView.layoutIfNeeded()
         layoutIfNeeded()
@@ -112,6 +111,9 @@ import SnapKit
         contentView.semanticContentAttribute = correctSemanticContent
         // Adjust all the subviews marked to be localized based on direction
         toBeLocalizedViews.forEach{ $0.semanticContentAttribute = correctSemanticContent }
+        
+        phoneNumberTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
+        emailTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
     }
     
     /// Now time to set localized string representations for the corresponding views

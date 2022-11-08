@@ -62,8 +62,20 @@ import CommonDataModelsKit_iOS
     }
     
     /// Defines what is the height required by this view to show its elements fully
-    internal func requiredHeight() -> CGFloat {
+    internal func requiredHeightForFieldsContainer() -> CGFloat {
         // Calculate the needed height of the the text fields
         return 48.0 * CGFloat(toBeCollectedData.count)
+    }
+    
+    /// Defines what is the height required by this view to show its elements fully
+    internal func requiredHeight() -> CGFloat {
+        // Height for fields
+        let heightForFields:CGFloat = requiredHeightForFieldsContainer() + 8
+        // The header required height
+        let heightForHeader:CGFloat = 30.0
+        // The spacing we need
+        let spacingRequired:CGFloat = 8.0+16.0
+        
+        return heightForHeader + heightForFields + spacingRequired
     }
 }

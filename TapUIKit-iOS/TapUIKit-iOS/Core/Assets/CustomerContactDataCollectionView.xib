@@ -46,11 +46,12 @@
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0O4-NQ-O0J">
                             <rect key="frame" x="0.0" y="4" width="382" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" priority="750" constant="48" id="qAK-Rd-eKW"/>
+                                <constraint firstAttribute="height" priority="750" constant="48" placeholder="YES" id="qAK-Rd-eKW"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="per-hg-tie">
                             <rect key="frame" x="0.0" y="60" width="382" height="48"/>
@@ -59,7 +60,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="1"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="IfW-Ww-RsP"/>
+                                        <constraint firstAttribute="height" priority="750" constant="1" id="IfW-Ww-RsP"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+965" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xO-AM-RlQ">
@@ -104,7 +105,7 @@
                                 <constraint firstItem="8xO-AM-RlQ" firstAttribute="centerY" secondItem="per-hg-tie" secondAttribute="centerY" id="kV9-EJ-1dE"/>
                                 <constraint firstItem="X98-3Q-Vbj" firstAttribute="centerY" secondItem="8xO-AM-RlQ" secondAttribute="centerY" id="m9a-5G-5YQ"/>
                                 <constraint firstAttribute="trailing" secondItem="qF2-ho-fmS" secondAttribute="trailing" id="nib-VV-lnB"/>
-                                <constraint firstAttribute="height" constant="48" id="sOB-uB-Y5j"/>
+                                <constraint firstAttribute="height" constant="48" placeholder="YES" id="sOB-uB-Y5j"/>
                             </constraints>
                         </view>
                     </subviews>
