@@ -67,6 +67,7 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        TapThemeManager.setDefaultTapTheme()
         
         if let destnationVC:UIViewController = storyboard?.instantiateViewController(withIdentifier: dataSource[indexPath.row]["navigationID"]!) {
             destnationVC.title = dataSource[indexPath.row]["title"]

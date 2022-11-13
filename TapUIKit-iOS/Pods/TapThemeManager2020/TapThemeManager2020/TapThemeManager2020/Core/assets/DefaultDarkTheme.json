@@ -93,7 +93,7 @@
     "customerDataCollection": {
         "backgroundColor":"white",
         "shadow":{
-            "color": "#00000026",
+            "color": "#FFFFFF26",
             "radius": 8,
             "offsetWidth": 0,
             "offsetHeight": 0,
@@ -104,6 +104,16 @@
             "countryCodeLabelFont":"Roboto,14",
             "color":"greyishBrown",
             "placeHolderColor":"##9F9F9F"
+        },
+        "countryPicker": {
+            "countryCell":{
+                "backgroundColor":"clear",
+                "titleLabelFont":"Roboto,14",
+                "titleLabelColor":"greyishBrown"
+            },
+            "countryTable":{
+                "backgroundColor":"white"
+            }
         },
         "cornerRadius":8
     },

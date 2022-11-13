@@ -76,7 +76,7 @@ extension CustomerDataCollectionView {
     private func matchThemeAttributes() {
         
         backgroundColor = .clear
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         layoutIfNeeded()
     }
     

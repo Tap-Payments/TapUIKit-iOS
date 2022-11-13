@@ -8,6 +8,7 @@ PODS:
   - EasyTipView (2.1.0)
   - LocalisationManagerKit-iOS (1.0.4)
   - McPicker (3.0.0)
+  - NBBottomSheet (1.2.0)
   - Nuke (10.7.1)
   - PullUpController (0.8.0)
   - SheetyColors (1.2.1):
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - EasyTipView
   - LocalisationManagerKit-iOS
   - McPicker
+  - NBBottomSheet
   - Nuke
   - PullUpController
   - SheetyColors
@@ -67,6 +69,7 @@ SPEC REPOS:
     - EasyTipView
     - LocalisationManagerKit-iOS
     - McPicker
+    - NBBottomSheet
     - Nuke
     - PullUpController
     - SheetyColors
@@ -88,6 +91,7 @@ SPEC CHECKSUMS:
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
+  NBBottomSheet: aa7a52809b2d7b193f733247b8ce391a59904372
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
   PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   SheetyColors: a0273d30ec5ee02536bb43960ba36d58619ae719
@@ -103,6 +107,6 @@ SPEC CHECKSUMS:
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
   TapThemeManager2020: 34cb7cc0bc2071b7e27f2661ac9dd6f1554d7dd8
 
-PODFILE CHECKSUM: 787621d213e1c4a10c1ed9294a7bc5bd97d446e0
+PODFILE CHECKSUM: c5328ba503ebaae2e40b808e91b2e3dfd3737f07
 
 COCOAPODS: 1.11.2

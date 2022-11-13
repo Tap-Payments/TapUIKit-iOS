@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapUIKit-iOS"
-  spec.version      = "1.0.87"
+  spec.version      = "1.0.88"
   spec.summary      = "A collection of inner Tap UI components generically developed to fit into any of Tap's apps."
 
   # This description is used to generate tags and improve search results.
@@ -103,7 +103,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  spec.resources = "TapUIKit-iOS/TapUIKit-iOS/Core/Assets/**/*.{json,xib,pdf,png,gif}"
+  spec.resources = "TapUIKit-iOS/TapUIKit-iOS/Core/Assets/**/*.{json,xib,pdf,png,gif,storyboard}"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -142,6 +142,7 @@ Pod::Spec.new do |spec|
   spec.dependency "TapCardScanner-iOS"
   spec.dependency 'McPicker'
   spec.dependency 'EasyTipView'
+  spec.dependency 'NBBottomSheet'
 
   spec.pod_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'

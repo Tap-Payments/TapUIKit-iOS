@@ -189,13 +189,15 @@ class TapHorizontalHeaderView: UIView {
     case GateWayListWithGoPayListHeader
     /// The CONTACT DETAILS header view before collecting customer's info when saving a card for tap
     case ContactDetailsHeader
+    /// The PICK YOUR COUNTRY header view before collecting customer's phone info
+    case ContactCountryPickerHeader
     /// The SHIPPING header view before collecting customer's info when saving a card for tap
     case ShippingHeader
     case NoHeader
     /// Defines the theme entry based on the type
     func themePath() -> String {
         switch self {
-        case .GatewayListHeader,.GoPayListHeader,.GateWayListWithGoPayListHeader,.CardInputTitle,.SaveCardInputTitle,.WebViewTitle,.ShippingHeader,.ContactDetailsHeader:
+        case .GatewayListHeader,.GoPayListHeader,.GateWayListWithGoPayListHeader,.CardInputTitle,.SaveCardInputTitle,.WebViewTitle,.ShippingHeader,.ContactDetailsHeader,.ContactCountryPickerHeader:
             return "horizontalList.headers.gatewayHeader"
         case .NoHeader:
             return ""
@@ -229,6 +231,8 @@ class TapHorizontalHeaderView: UIView {
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.SaveCardHeader.shippingSectionTitle","","")
         case .ContactDetailsHeader:
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.SaveCardHeader.contactDetailsSectionTitle","","")
+        case .ContactCountryPickerHeader:
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.SaveCardHeader.contactCountryPickerHeader","","")
         }
         
         // The left title will be GOPAY always for the case of GoPayListHeader

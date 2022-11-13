@@ -42,7 +42,8 @@
             },
             "SaveCardHeader": {
                 "shippingSectionTitle" : "SHIPPING",
-                "contactDetailsSectionTitle" : "CONTACT DETAILS"
+                "contactDetailsSectionTitle" : "CONTACT DETAILS",
+                "contactCountryPickerHeader" : "PICK YOUR COUNTRY"
             }
         },
         "ItemList": {
@@ -192,7 +193,8 @@
             },
             "SaveCardHeader": {
                 "shippingSectionTitle" : "العنوان",
-                "contactDetailsSectionTitle" : "بيانات الاتصال"
+                "contactDetailsSectionTitle" : "بيانات الاتصال",
+                "contactCountryPickerHeader" : "إختر بلدك"
             }
         },
         "ItemList": {

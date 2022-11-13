@@ -19,7 +19,7 @@ import SnapKit
     /// The contact details collection section header view
     @IBOutlet weak var headerView: TapHorizontalHeaderView!
     /// The view that holds the data fields to be collected from the user
-    @IBOutlet weak var fieldsContainerView: UIView!
+    @IBOutlet weak var fieldsContainerView: UIStackView!
     /// The field responsible for collecting the email of the user
     @IBOutlet weak var emailTextField: UITextField!
     /// View that holds needed UI elements to collect the phone form the user
@@ -32,6 +32,8 @@ import SnapKit
     @IBOutlet weak var phoneCountryCodeLabel: UILabel!
     /// Holds all the textfields we will collect data with
     @IBOutlet var textFields: [UITextField]!
+    /// Popup dialog to select the country code picker
+    
     /// Holds the UIViews that needed to be RTL supported based on the selected locale
     @IBOutlet var toBeLocalizedViews: [UIView]!
     /// The theme pathe
@@ -58,8 +60,6 @@ import SnapKit
      */
     @objc public func setupView(with viewModel:CustomerContactDataCollectionViewModel) {
         self.viewModel = viewModel
-        self.viewModel?.customerContactDataCollectionView = self
-        self.viewModel?.reloadData()
     }
     
     // MARK: - Private methods
@@ -79,7 +79,7 @@ import SnapKit
         }
         
         // Height for fields
-        let heightForFields:CGFloat = viewModel.requiredHeightForFieldsContainer() + 8
+        let heightForFields:CGFloat = viewModel.requiredHeightForFieldsContainer()// + 8
         // Height for the view as a whole
         let heightForView:CGFloat = viewModel.requiredHeight()
         
@@ -93,6 +93,28 @@ import SnapKit
         }
         fieldsContainerView.layoutIfNeeded()
         layoutIfNeeded()
+    }
+    
+    
+    /// Used to reload the phone field data from the view model
+    internal func reloadPhone() {
+        guard let viewModel = viewModel,
+        let countryCode = viewModel.selectedCountry.code else {
+            return
+        }
+
+        phoneCountryCodeLabel.text = "+\(countryCode)"
+        phoneNumberTextField.text = ""
+    }
+    
+    /// Will be called once the country code picker button is clicked
+    @IBAction func countryCodePickerClicked(_ sender: Any) {
+        // Confirm there is a view model
+        guard let viewModel = viewModel else {
+            return
+        }
+        // Inform the view model abput the click event
+        viewModel.countryPickerClicked()
     }
     
     /// Used to localize and force UI directions based on the locale
@@ -140,8 +162,20 @@ import SnapKit
     
     /// Adjust the visbility of the fields to be collected
     fileprivate func UpdateViewsVisibility(_ viewModel: CustomerContactDataCollectionViewModel) {
-        emailTextField.isHidden = !viewModel.toBeCollectedData.contains(.email)
-        phoneEntryContainerView.isHidden = !viewModel.toBeCollectedData.contains(.phone)
+        /*emailTextField.isHidden = !viewModel.toBeCollectedData.contains(.email)
+        phoneEntryContainerView.isHidden = !viewModel.toBeCollectedData.contains(.phone)*/
+        
+        
+        if !viewModel.toBeCollectedData.contains(.email) {
+            fieldsContainerView.removeArrangedSubview(emailTextField)
+            emailTextField.removeFromSuperview()
+        }
+        
+        if !viewModel.toBeCollectedData.contains(.phone) {
+            fieldsContainerView.removeArrangedSubview(phoneEntryContainerView)
+            phoneEntryContainerView.removeFromSuperview()
+        }
+        
         // If phpne field is not visibile, hence we don't need the separator that splits the fields
         phoneEmailSeparator.isHidden = emailTextField.isHidden
     }
@@ -174,6 +208,7 @@ extension CustomerContactDataCollectionView {
         contentView.backgroundColor = .clear
         
         // the border radius
+        fieldsContainerView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         fieldsContainerView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
         // the shadow
         fieldsContainerView.layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadow.radius")?.floatValue ?? 0)

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CommonDataModelsKit_iOS
+import NBBottomSheet
 
 /// The view model that controls the customer contact data collection view
 @objc public class CustomerContactDataCollectionViewModel:NSObject {
@@ -43,6 +44,8 @@ import CommonDataModelsKit_iOS
         self.selectedCountry = selectedCountry
         super.init()
         defer{
+            self.customerContactDataCollectionView = .init()
+            self.customerContactDataCollectionView?.setupView(with: self)
             reloadData()
         }
     }
@@ -59,6 +62,8 @@ import CommonDataModelsKit_iOS
         customerContactDataCollectionView?.showHideViews()
         // Adjust the height of the view
         customerContactDataCollectionView?.updateHeight()
+        // Adjust the phone country text
+        customerContactDataCollectionView?.reloadPhone()
     }
     
     /// Defines what is the height required by this view to show its elements fully
@@ -78,4 +83,75 @@ import CommonDataModelsKit_iOS
         
         return heightForHeader + heightForFields + spacingRequired
     }
+    
+    /// Handles the logic needed to be done whenever the user clicks on the country code picker in the UI
+    internal func countryPickerClicked() {
+        
+        // Fetch the controller to display the country tables
+        let story:UIStoryboard = .init(name: "TapUIKitStoryboard", bundle: Bundle(for: CountryPickerViewController.self))
+        
+        guard let ctr:CountryPickerViewController = story.instantiateViewController(identifier: "CountryPickerViewController") as? CountryPickerViewController,
+              let topController:UIViewController = UIViewController.topViewController()
+        else { return }
+        
+        // Adjust the bottom sheet to display the picker
+        let configuration = NBBottomSheetConfiguration(animationDuration: 0.4, sheetSize: .fixed(countryPickerControllerHeight()))
+        let bottomSheetController = NBBottomSheetController(configuration: configuration)
+        bottomSheetController.present(ctr, on: topController)
+        
+        // Configure the view with the allowed countries
+        ctr.configure(with: self.allowedCountries, delegate: self)
+    }
+    
+    /// Computes the needed height to display the list if countries in the bottom sheet picker
+    internal func countryPickerControllerHeight() -> CGFloat {
+        // Get the required height
+        let requiredFillHeight:CGFloat = CGFloat(self.allowedCountries.count+1) * CountryCodeTableViewCell.hountryCodeTableViewCellHeight + 30
+        
+        // Return the approproate height
+        return min(requiredFillHeight, 300)
+    }
+    
+    
+    /// Creates the country picker view needed to be displaed in the popup
+    internal func createCountryPickerView() -> CountryPickerTableView {
+        // The picker view
+        let customView = CountryPickerTableView()
+        // Let the picker which countries the user can select from
+        customView.configure(with: allowedCountries)
+        return customView
+    }
+}
+
+internal extension UIViewController {
+    static func topViewController(_ viewController: UIViewController? = nil) -> UIViewController? {
+        let viewController = viewController ?? UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
+        
+        if let navigationController = viewController as? UINavigationController,
+           !navigationController.viewControllers.isEmpty
+        {
+            return self.topViewController(navigationController.viewControllers.last)
+            
+        } else if let tabBarController = viewController as? UITabBarController,
+                  let selectedController = tabBarController.selectedViewController
+        {
+            return self.topViewController(selectedController)
+            
+        } else if let presentedController = viewController?.presentedViewController {
+            return self.topViewController(presentedController)
+            
+        }
+        
+        return viewController
+    }
+}
+
+
+extension CustomerContactDataCollectionViewModel: CountryCodePickerViewControllerDelegate {
+    
+    func didSelect(country: TapCountry) {
+        selectedCountry = country
+        customerContactDataCollectionView?.reloadPhone()
+    }
+    
 }

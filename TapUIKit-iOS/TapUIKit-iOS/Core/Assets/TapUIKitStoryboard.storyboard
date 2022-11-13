@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Country Picker View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CountryPickerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="CountryPickerViewController" customModule="TapUIKit_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uGf-sA-oWS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KoI-yQ-adp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gS-G5-TLJ" customClass="CountryPickerTableView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5gS-G5-TLJ" secondAttribute="trailing" id="4mA-Um-RdC"/>
+                                    <constraint firstItem="5gS-G5-TLJ" firstAttribute="leading" secondItem="KoI-yQ-adp" secondAttribute="leading" id="9n6-Cp-uJf"/>
+                                    <constraint firstAttribute="bottom" secondItem="5gS-G5-TLJ" secondAttribute="bottom" id="NpB-wC-IIC"/>
+                                    <constraint firstItem="5gS-G5-TLJ" firstAttribute="top" secondItem="KoI-yQ-adp" secondAttribute="top" id="fMG-1b-NDX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pLO-PC-iic"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KoI-yQ-adp" firstAttribute="top" secondItem="pLO-PC-iic" secondAttribute="top" id="9DZ-y5-0Qf"/>
+                            <constraint firstAttribute="trailing" secondItem="KoI-yQ-adp" secondAttribute="trailing" id="DKE-1C-ys6"/>
+                            <constraint firstAttribute="bottom" secondItem="KoI-yQ-adp" secondAttribute="bottom" id="O4p-Qt-Do5"/>
+                            <constraint firstItem="KoI-yQ-adp" firstAttribute="leading" secondItem="uGf-sA-oWS" secondAttribute="leading" id="nJl-XU-k2n"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cuntryTableView" destination="5gS-G5-TLJ" id="awF-7H-yoO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="134.59821428571428"/>
+        </scene>
+    </scenes>
+</document>

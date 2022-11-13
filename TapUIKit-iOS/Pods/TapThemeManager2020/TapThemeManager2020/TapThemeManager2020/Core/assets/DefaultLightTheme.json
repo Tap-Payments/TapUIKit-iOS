@@ -113,6 +113,16 @@
             "color":"greyishBrown",
             "placeHolderColor":"#9F9F9F"
         },
+        "countryPicker": {
+            "countryCell":{
+                "backgroundColor":"clear",
+                "titleLabelFont":"Roboto,14",
+                "titleLabelColor":"greyishBrown"
+            },
+            "countryTable":{
+                "backgroundColor":"white"
+            }
+        },
         "cornerRadius":8
     },
     "phoneCard": {
@@ -275,7 +285,7 @@
         }
     },
     "tapBottomSheet": {
-        "dimmedColor": "black50",
+        "dimmedColor": "black50"
     },
     "tapSeparationLine": {
         "backgroundColor": "veryLightPinkTwo",
@@ -536,7 +546,7 @@
             "count": {
                 "backgroundColor": "paleLilac",
                 "countLabelFont" : "Roboto-Regular,9",
-                "countLabelColor" : "greyishBrown",
+                "countLabelColor" : "greyishBrown"
             }
         }
     },
@@ -569,7 +579,7 @@
         },
         "weAcceptLabel":{
             "textFont": "Roboto,10",
-            "textColor": "#9F9F9F",
+            "textColor": "#9F9F9F"
         }
     },
     "TapVerticalView":
@@ -630,10 +640,10 @@
             "backgroundColor" : "whiteTwo",
             "underline": {
                 "selected": {
-                    "backgroundColor" : "deepSkyBlue",
+                    "backgroundColor" : "deepSkyBlue"
                 },
                 "unselected": {
-                    "backgroundColor" : "brownGrey",
+                    "backgroundColor" : "brownGrey"
                 }
             },
             "title": {
