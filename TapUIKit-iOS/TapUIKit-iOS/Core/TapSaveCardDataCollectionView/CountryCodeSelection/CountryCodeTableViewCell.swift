@@ -9,6 +9,7 @@
 import UIKit
 import CommonDataModelsKit_iOS
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
 
 /// Represents the cell view for the country when selecting a country code when collecting user's contact information when saving a card for tap
 @objc public class CountryCodeTableViewCell: UITableViewCell {
