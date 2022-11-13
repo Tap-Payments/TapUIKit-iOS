@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import TapThemeManager2020
+
 /// Defines the View used to display the fields data collection for customer when saving a card for tap
 @objc public class CustomerDataCollectionView: UIView {
 
