@@ -26,7 +26,7 @@ import EasyTipView
     /// A delegate to listen to events fired from the save card view
     @objc public var delegate:TapSaveCardViewDelegate?
     /// Indicates whether or not the user checked the save card for Tap box
-    internal var isSavedCardEnabled:Bool = true {
+    internal var isSavedCardEnabled:Bool = false {
         didSet{
             if oldValue != isSavedCardEnabled {
                 handleSaveCardForTapChanged()

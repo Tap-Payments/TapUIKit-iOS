@@ -14,7 +14,7 @@ import TapThemeManager2020
 
 
 /// Represents a wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
-@objc public class TapCardTelecomPaymentView: UIView {
+@IBDesignable @objc public class TapCardTelecomPaymentView: UIView {
     
     // MARK:- Internal variables
     /// last reported tap card
@@ -39,7 +39,7 @@ import TapThemeManager2020
     internal var saveCrdForTapView:TapInternalSaveCard = .init()
     
     /// The view model that has the needed payment options and data source to display the payment view
-    internal var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
+    public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
             // Setup the bar view with the passed payment options list
             tapCardPhoneListView.setupView(with: tapCardPhoneListViewModel)
@@ -51,7 +51,13 @@ import TapThemeManager2020
     }
     
     /// The view model that controls the wrapper view
-    internal var viewModel:TapCardTelecomPaymentViewModel?
+    public var viewModel:TapCardTelecomPaymentViewModel?{
+        didSet{
+            viewModel?.tapCardTelecomPaymentView = self
+            cardInputView.showScanningOption = viewModel?.showScanner ?? true
+            saveCrdView.delegate = viewModel
+        }
+    }
     
     /// Used to collect any reactive garbage
     internal var hintStatus:TapHintViewStatusEnum? {
@@ -78,7 +84,7 @@ import TapThemeManager2020
     /// Represents the tab bar that holds the list of segmented availble payment options
     @IBOutlet weak var tapCardPhoneListView: TapCardPhoneBarList!
     /// Represents the card input view
-    @IBOutlet weak var cardInputView: TapCardInput! {
+    @IBOutlet public weak var cardInputView: TapCardInput! {
         didSet {
             cardInputView.delegate = self
         }
@@ -270,7 +276,7 @@ import TapThemeManager2020
         // Reset the card input
         cardInputView.reset()
         // Re init the card input
-        cardInputView.setup(for: .InlineCardInput, showCardName: viewModel?.collectCardName ?? false, showCardBrandIcon: true, allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand }.filter{ $0.brandSegmentIdentifier == "cards" }.map{ $0.rawValue }, cardsIconsUrls: tapCardPhoneListViewModel.generateBrandsWithIcons())
+        cardInputView.setup(for: .InlineCardInput, showCardName: viewModel?.collectCardName ?? false, showCardBrandIcon: true, allowedCardBrands: tapCardPhoneListViewModel.dataSource.map{ $0.associatedCardBrand }.filter{ $0.brandSegmentIdentifier == "cards" }.map{ $0.rawValue }, cardsIconsUrls: tapCardPhoneListViewModel.generateBrandsWithIcons(), preloadCardHolderName: viewModel?.preloadCardHolderName ?? "", editCardName: viewModel?.editCardName ?? true)
         // Reset any selection done on the bar layout
         tapCardPhoneListViewModel.resetCurrentSegment()
         lastReportedTapCard = .init()

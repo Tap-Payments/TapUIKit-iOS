@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCardTelecomPaymentView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
-                <outlet property="cardInputView" destination="4iO-6k-uJn" id="Rga-1f-pwq"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
-                <outlet property="headerView" destination="VLF-Re-aM8" id="ZCR-Oe-hcn"/>
-                <outlet property="stackView" destination="CZk-jP-kZU" id="9SK-eb-rzi"/>
-                <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
+                <outlet property="cardInputView" destination="912-mK-7X3" id="zmJ-9c-g1r"/>
+                <outlet property="contentView" destination="liZ-Yf-iDw" id="rCU-lo-Anf"/>
+                <outlet property="headerView" destination="ljj-rF-28M" id="qO7-eH-5mj"/>
+                <outlet property="stackView" destination="Ll0-oG-xgr" id="Naw-yC-ejf"/>
+                <outlet property="tapCardPhoneListView" destination="dIj-JK-7PN" id="g6A-YW-UNf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="liZ-Yf-iDw">
             <rect key="frame" x="0.0" y="0.0" width="565" height="232"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLF-Re-aM8" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljj-rF-28M" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="565" height="30"/>
-                    <viewLayoutGuide key="safeArea" id="DoH-H2-CMc"/>
+                    <viewLayoutGuide key="safeArea" id="a87-zn-UEX"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="v6e-BI-1AE"/>
+                        <constraint firstAttribute="height" constant="30" id="f35-js-6WB"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CZk-jP-kZU">
-                    <rect key="frame" x="16" y="30" width="533" height="170"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ll0-oG-xgr">
+                    <rect key="frame" x="16" y="34" width="533" height="166"/>
                     <subviews>
-                        <view contentMode="scaleToFill" verticalHuggingPriority="48" translatesAutoresizingMaskIntoConstraints="NO" id="4iO-6k-uJn" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
-                            <rect key="frame" x="0.0" y="0.0" width="533" height="170"/>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="48" translatesAutoresizingMaskIntoConstraints="NO" id="912-mK-7X3" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
+                            <rect key="frame" x="0.0" y="0.0" width="533" height="166"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </stackView>
-                <view contentMode="scaleToFill" verticalHuggingPriority="24" translatesAutoresizingMaskIntoConstraints="NO" id="or1-yo-2AD" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <view contentMode="scaleToFill" verticalHuggingPriority="24" translatesAutoresizingMaskIntoConstraints="NO" id="dIj-JK-7PN" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="16" y="208" width="533" height="24"/>
-                    <viewLayoutGuide key="safeArea" id="J03-8L-5gb"/>
+                    <viewLayoutGuide key="safeArea" id="hvz-oo-kYr"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="zFf-Xx-rVe"/>
+                        <constraint firstAttribute="height" constant="24" id="3ZU-bW-F6N"/>
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="pYP-Yj-nqg"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VLF-Re-aM8" secondAttribute="trailing" id="4eK-w4-mrf"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="bottom" priority="750" constant="8" id="5bI-D9-kXM"/>
-                <constraint firstItem="VLF-Re-aM8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dna-gj-QlP"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="ENA-kU-aBy"/>
-                <constraint firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" constant="16" id="Fda-Gy-8NT"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="HkT-c2-1U6"/>
-                <constraint firstItem="CZk-jP-kZU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OM3-6q-VAy"/>
-                <constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="lfc-qu-aN1"/>
-                <constraint firstItem="VLF-Re-aM8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBb-TV-koC"/>
-                <constraint firstItem="CZk-jP-kZU" firstAttribute="top" secondItem="VLF-Re-aM8" secondAttribute="bottom" id="ziM-T8-dVV"/>
+                <constraint firstItem="Ll0-oG-xgr" firstAttribute="top" secondItem="ljj-rF-28M" secondAttribute="bottom" constant="4" id="1sf-26-rAc"/>
+                <constraint firstAttribute="trailing" secondItem="Ll0-oG-xgr" secondAttribute="trailing" constant="16" id="3oG-Sr-hT3"/>
+                <constraint firstItem="pYP-Yj-nqg" firstAttribute="trailing" secondItem="ljj-rF-28M" secondAttribute="trailing" id="8wm-f4-AR0"/>
+                <constraint firstItem="dIj-JK-7PN" firstAttribute="trailing" secondItem="Ll0-oG-xgr" secondAttribute="trailing" id="924-iL-kVT"/>
+                <constraint firstItem="dIj-JK-7PN" firstAttribute="top" secondItem="Ll0-oG-xgr" secondAttribute="bottom" constant="8" id="ANg-4p-HMI"/>
+                <constraint firstItem="dIj-JK-7PN" firstAttribute="bottom" secondItem="pYP-Yj-nqg" secondAttribute="bottom" priority="750" id="HGj-07-hTS"/>
+                <constraint firstItem="Ll0-oG-xgr" firstAttribute="leading" secondItem="pYP-Yj-nqg" secondAttribute="leading" constant="16" id="OU1-l7-eNv"/>
+                <constraint firstItem="ljj-rF-28M" firstAttribute="leading" secondItem="pYP-Yj-nqg" secondAttribute="leading" id="Sn7-Mn-pch"/>
+                <constraint firstItem="dIj-JK-7PN" firstAttribute="leading" secondItem="Ll0-oG-xgr" secondAttribute="leading" id="XjK-rJ-Gax"/>
+                <constraint firstItem="ljj-rF-28M" firstAttribute="top" secondItem="liZ-Yf-iDw" secondAttribute="top" id="i6n-31-3PQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="258.69565217391306" y="126.35869565217392"/>

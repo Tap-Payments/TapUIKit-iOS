@@ -74,6 +74,12 @@ import TapCardVlidatorKit_iOS
     /// Represents if the attached view should be visible or not, based on the existence of items inside the list
     @objc public var shouldShow:Bool = false
     
+    /// Indicates whether or not to show the supported card brands list
+    @objc public var showCardBrandsBar:Bool = true
+    
+    /// Indicates whether or not to show scan a card functionality
+    @objc public var showScanner:Bool = true
+    
     /// Indicates if the saved card switch is activated for Merchant
     @objc public var isMerchantSaveAllowed:Bool {
         return attachedView.saveCrdView.saveCardSwitch.isOn
@@ -104,7 +110,7 @@ import TapCardVlidatorKit_iOS
         // Then we need to hide it. The user did enter a full valid card data
         // Otherwise, We will have to show it. The user didn't yet type in a full valid card data
         let (cardNumberValid,_,_,_) = tapCardTelecomPaymentView?.cardInputView.fieldsValidationStatuses() ?? (false,false,false,false)
-        tapCardTelecomPaymentView?.shouldShowSupportedBrands(!cardNumberValid)
+        tapCardTelecomPaymentView?.shouldShowSupportedBrands(!cardNumberValid && showCardBrandsBar)
     }
     
     /// Computes if the conditions to show the save card switch are met and we have to
@@ -130,9 +136,12 @@ import TapCardVlidatorKit_iOS
     @objc public var delegate:TapCardTelecomPaymentProtocol?
     /// Indicates whether or not to collect the card name in case of credit card payment
     @objc public var collectCardName:Bool = false
+    /// Indicates if we have to pre fill the card holder name
+    @objc public var preloadCardHolderName:String = ""
     /// Indicates whether or not to offer the save card and to which level
     public var saveCardType:SaveCardType = .None
-    
+    /// Indicates whether or not the user can edit the card holder name field. Default is true
+    @objc public var editCardName:Bool = true
     /**
      Creates a new view model to control the tabbar of payments icons + the card + the phone input view to be rendered
      - Parameter tapCardPhoneListViewModel: The view model that has the needed payment options and data source to display the payment view

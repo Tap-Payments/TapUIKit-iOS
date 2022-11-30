@@ -112,9 +112,9 @@ extension TapVerticalView {
      - Parameter views: The list of views to be added
      - Parameter animation: The animation to be applied while doing the view addition. Default is nil
      */
-    public func add(views:[UIView], with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial) {
+    public func add(views:[UIView], with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial, shouldScrollToBottom:Bool = false) {
         // Filter out the sections that shouldn't be visible
-        views.filter{$0.shouldShowTapView()}.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false) }
+        views.filter{$0.shouldShowTapView()}.forEach{ handleAddition(of: $0, at: nil,with: animations,and: animationSequence,shouldFillHeight: false, shouldScrollToBottom: shouldScrollToBottom) }
     }
     
     
@@ -125,7 +125,7 @@ extension TapVerticalView {
      - Parameter animation: The animation to be applied while doing the view removal. Default is nil
      shouldFillHeight:Bool = false
      */
-    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial,shouldFillHeight:Bool = false) {
+    private func handleAddition(of view:UIView, at index:Int? = nil, with animations:[TapSheetAnimation] = [], and animationSequence:TapAnimationSequence = .serial,shouldFillHeight:Bool = false, shouldScrollToBottom:Bool = false) {
         
         // Check if should fill in max height, then set its height to the maxium availble
         if shouldFillHeight {
@@ -175,6 +175,13 @@ extension TapVerticalView {
                 self?.itemsBeingAdded -= 1
             })
         }
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { [weak self] in
+                self?.scrollView.tap_scrollToBottom(animated: true)
+            }
+        }
+        
     }
     
     /**
