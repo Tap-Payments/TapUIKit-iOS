@@ -69,7 +69,6 @@ var myContext = 0
         self.contentView = setupXIB()
         
         webViewHeaderView.headerType = .WebViewTitle
-        
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
         let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
         let gif = try! UIImage(gifData: imageData!)
@@ -96,7 +95,7 @@ var myContext = 0
         
         if keyPath == "estimatedProgress" {
             if let progress = (change[NSKeyValueChangeKey.newKey] as AnyObject).floatValue {
-                progressView.isHidden = progress >= 0.9
+                progressView.isHidden = true //progress >= 0.9
                 loaderView.isHidden   = progress >= 0.9
                 progressView.progress = progress;
             }
@@ -107,11 +106,16 @@ var myContext = 0
     internal func reload() {
         guard let viewModel = viewModel else { return }
         webView.navigationDelegate = viewModel
+        webViewHeaderView.isHidden = !viewModel.shouldShowHeaderView
     }
 }
 
 
 extension TapWebView: TapWebViewDelegate {
+    func updateHeaderView(with visibility: Bool) {
+        webViewHeaderView.isHidden = !visibility
+    }
+    
     func reloadWebView() {
         webView.reload()
     }
@@ -122,4 +126,6 @@ extension TapWebView: TapWebViewDelegate {
     func stopLoading() {
         webView.stopLoading()
     }
+    
+    
 }

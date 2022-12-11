@@ -20,6 +20,8 @@ internal protocol TapWebViewDelegate {
     func load(with url:URL)
     /// Will be fired when the view model wants to tell the webview to stop loading
     func stopLoading()
+    /// Will be fired when the view model wants to hide/show the header view
+    func updateHeaderView(with visibility:Bool)
 }
 
 /// Protocol to communicate between the view model and the parent view
@@ -42,6 +44,9 @@ internal protocol TapWebViewDelegate {
      - Parameter error: The error that occured while loading this url
      */
     @objc func didFail(with error:Error,for url:URL?)
+    
+    /// Will be fired when the user cancels the authentication web view
+    @objc func webViewCanceled()
 
 }
 
@@ -61,7 +66,12 @@ internal protocol TapWebViewDelegate {
     @objc public var delegate:TapWebViewModelDelegate?
     /// An internal protocol to communicate between the view model and the web view itself
     var viewDelegate:TapWebViewDelegate?
-    
+    /// Indicates whetehr or not to show a header view above the web view
+    @objc public var shouldShowHeaderView:Bool = true {
+        didSet{
+            viewDelegate?.updateHeaderView(with: shouldShowHeaderView)
+        }
+    }
     /**
      Will be fired when the viewmodel wants to tell the web view to start loading a certain URL
      - Parameter url: The url to be loaded

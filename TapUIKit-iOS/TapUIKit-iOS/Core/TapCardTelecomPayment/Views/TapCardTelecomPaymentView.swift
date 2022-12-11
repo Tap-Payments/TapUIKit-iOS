@@ -78,7 +78,7 @@ import TapThemeManager2020
     /// The header view that displays the title of the section
     @IBOutlet weak var headerView: TapHorizontalHeaderView!
     /// The stack view will carry the components : Card input, save title view, save for tap view.
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet public weak var stackView: UIStackView!
     /// Represents the content view that holds all the subviews
     @IBOutlet var contentView: UIView!
     /// Represents the tab bar that holds the list of segmented availble payment options
