@@ -6,6 +6,7 @@
             "black50" : "#00000080",
             "black15" : "#00000026",
             "lightPeach" : "#b6b6b6",
+            "lightGrey": "#626262",
             "greyishBrown" : "#4b4847",
             "veryLightPinkTwo" : "#dfdfdf",
             "brownGrey" : "#a8a8a8",
@@ -40,7 +41,7 @@
     },
     "poweredByTap": {
         "powerLabel": {
-            "textColor": "#626262",
+            "textColor": "lightGrey",
             "font" : "Roboto-Light,10"
         },
         "tapLogo":"poweredByTapLogo"
@@ -64,17 +65,20 @@
         },
         "iconImage": {
             "image": "card",
-            "width": 32
+            "width": 32,
+            "tint": "lightGrey"
         },
         "closeSavedCardIcon" : "closeSavedCardInputIcon",
         "scanImage": {
             "image": "scanIcon",
             "selected": "selectedScan",
-            "width": 32
+            "width": 32,
+            "tint": "lightGrey"
         },
         "clearImage": {
             "image": "clearFormIcon",
-            "width": 32
+            "width": 32,
+            "tint": "lightGrey"
         },
         "textFields": {
             "textColor": "greyishBrown",
@@ -94,8 +98,8 @@
             "labelTextColor": "#7E7E7E",
             "labelTextFont": "Roboto-Light,12",
             "saveButtonActivatedTintColor": "azure",
-            "saveButtonDeactivatedTintColor": "#626262",
-            "infoButtonTintColor": "#626262"
+            "saveButtonDeactivatedTintColor": "lightGrey",
+            "infoButtonTintColor": "lightGrey"
         }
     },
     "customerDataCollection": {
@@ -357,7 +361,7 @@
         "convertedAmountLabelFont" : "Roboto-Light,14",
         "convertedAmountLabelColor" : "brownGrey",
         "itemsLabelFont" : "Roboto-Regular,10",
-        "itemsLabelColor" : "#626262",
+        "itemsLabelColor" : "lightGrey",
         "itemsNumberButtonBackgroundColor" : "whiteTwo",
         "itemsNumberButtonBorder" : {
             "color" : "veryLightPinkTwo",

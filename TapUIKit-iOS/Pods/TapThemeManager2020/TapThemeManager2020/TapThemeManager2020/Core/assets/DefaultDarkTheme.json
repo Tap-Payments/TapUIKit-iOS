@@ -4,6 +4,7 @@
             "white" : "#1c1c1e",
             "black" : "#000000",
             "black50" : "#00000080",
+            "black30" : "#00000026",
             "lightPeach" : "#98989f",
             "greyishBrown" : "#ffffff",
             "veryLightPinkTwo" : "#404043",
@@ -18,6 +19,7 @@
             "paleLilac":"#e4e4e5",
             "clear":"#00000000",
             "brownGreyTwo":"#b2b2b2",
+            "cardPlaceHolder":"#CFCFCF",
             "brownGreyThree":"#ababab",
             "orange":"#ea611c",
             "apricot30":"#ffbe604C",
@@ -39,14 +41,14 @@
     },
     "inlineCard": {
         "commonAttributes": {
-            "backgroundColor": "white",
+            "backgroundColor": "black",
             "borderColor": "clear",
             "cornerRadius": 8,
             "borderWidth": 0,
             "itemSpacing": 5,
             "cvvPlaceHolder": "dark-cvv",
             "shadow":{
-                "color": "white30",
+                "color": "black30",
                 "radius": 8,
                 "offsetWidth": 0,
                 "offsetHeight": 0,
@@ -56,24 +58,27 @@
         },
         "iconImage": {
             "image": "card",
-            "width": 32
+            "width": 32,
+            "tint": "cardPlaceHolder"
         },
         "closeSavedCardIcon" : "closeSavedCardInputIcon",
         "scanImage": {
             "image": "scanIcon",
             "selected": "selectedScan",
-            "width": 32
+            "width": 32,
+            "tint": "cardPlaceHolder"
         },
         "clearImage": {
             "image": "clearFormIcon",
-            "width": 32
+            "width": 32,
+            "tint": "cardPlaceHolder"
         },
         "textFields": {
             "textColor": "greyishBrown",
             "errorTextColor": "#FF0000",
             "font" : "Roboto-Light,14",
             "saveCardFontDots" : "Roboto-Bold,24",
-            "placeHolderColor" : "brownGreyTwo"
+            "placeHolderColor" : "cardPlaceHolder"
         },
         "saveCardOption": {
             "labelTextColor": "greyishBrown",
