@@ -226,13 +226,17 @@ import TapCardVlidatorKit_iOS
         guard let cardNumber:String = tapCard.tapCardNumber, cardNumber != "" else {
             return .Error
         }
+        
         // Let us get the validation status of the fields
         let (cardNumberValid,cardExpiryValid,cardCVVValid,cardNameValid) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
         
         // Firs we check the validation result of the card number (has the highest priority)
         if !cardNumberValid {
-            // If not valid, report a wrong card number hint
-            newStatus = .ErrorCardNumber
+            // If not valid, report a wrong card number hint,
+            // AS per new requirement we will only display the error message if it is invalid not in the incomplete state
+            if tapCardTelecomPaymentView.cardInputView.cardNumberValidationStatus() == .Invalid {
+                newStatus = .ErrorCardNumber
+            }
         }else {
             // Now we need to check if there is text in CVV and Expiry
             if !cardExpiryValid {

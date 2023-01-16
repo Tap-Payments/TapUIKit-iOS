@@ -40,6 +40,7 @@
 		E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */; };
 		E80EA58F24974B4900C5C5E1 /* ChipsTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */; };
 		E80EA5932497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80EA5922497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift */; };
+		E826ABAA2970235C0074E55A /* Black-loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = E826ABA92970235C0074E55A /* Black-loader.gif */; };
 		E82A56B22499ED7A00E3F00D /* SavedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56B02499ED7A00E3F00D /* SavedCardCollectionViewCell.swift */; };
 		E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */; };
 		E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A56B42499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift */; };
@@ -272,6 +273,7 @@
 		E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapPullUpWrapperViewController.xib; sourceTree = "<group>"; };
 		E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsTestingViewController.swift; sourceTree = "<group>"; };
 		E80EA5922497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipHorizontalListViewModel.swift; sourceTree = "<group>"; };
+		E826ABA92970235C0074E55A /* Black-loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Black-loader.gif"; sourceTree = "<group>"; };
 		E82A56B02499ED7A00E3F00D /* SavedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		E82A56B42499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardCollectionViewCellModel.swift; sourceTree = "<group>"; };
@@ -753,6 +755,7 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E826ABA92970235C0074E55A /* Black-loader.gif */,
 				E89B3AA5291A78C10094E1D9 /* CountryCodeTableViewCell.xib */,
 				E866AC4228E5753900D80568 /* PoweredByTapView.xib */,
 				E8437F6724BE07860059F1B8 /* SpaceView.xib */,
@@ -1511,6 +1514,7 @@
 				E8861D37249F6CCE0002FEDE /* TapGenericTableView.xib in Resources */,
 				E80C054024C46B8400B12C00 /* white-success-mob.gif in Resources */,
 				E835ADC22459815D00E55A68 /* tapLogo.png in Resources */,
+				E826ABAA2970235C0074E55A /* Black-loader.gif in Resources */,
 				E8AE0DFC245B1073007AAE1F /* TapSeparatorCollectionViewCell.xib in Resources */,
 				E8670CBD24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.xib in Resources */,
 				E8437FA424C05E370059F1B8 /* TapOtpController.xib in Resources */,

@@ -70,7 +70,7 @@ var myContext = 0
         
         webViewHeaderView.headerType = .WebViewTitle
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
-        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "Black-loader", withExtension: "gif")!)
         let gif = try! UIImage(gifData: imageData!)
         loadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: &myContext)

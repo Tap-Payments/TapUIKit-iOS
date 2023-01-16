@@ -56,6 +56,7 @@ import TapThemeManager2020
             viewModel?.tapCardTelecomPaymentView = self
             cardInputView.showScanningOption = viewModel?.showScanner ?? true
             saveCrdView.delegate = viewModel
+            saveCrdForTapView.delegate = viewModel
         }
     }
     
