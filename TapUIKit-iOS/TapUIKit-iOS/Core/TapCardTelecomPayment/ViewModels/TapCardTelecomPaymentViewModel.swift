@@ -122,7 +122,7 @@ import TapCardVlidatorKit_iOS
               allCardFieldsValid(),
               attachedView.cardInputView.cardUIStatus != .SavedCard else { return (false,false) }
         // Then yes we should show the save card view :)
-        return ((saveCardType == .All || saveCardType == .Merchant),( saveCardType == .All || saveCardType == .Tap))
+        return ((saveCardType == .All || saveCardType == .Merchant),(( saveCardType == .All || saveCardType == .Tap) && self.isMerchantSaveAllowed))
         
     }
     
@@ -278,6 +278,11 @@ import TapCardVlidatorKit_iOS
 
 extension TapCardTelecomPaymentViewModel: TapSaveCardViewDelegate {
     public func saveCardChanged(for saveCardType: SaveCardType, to enabled: Bool) {
+        // If the user switches off the save card for merchant switch, we will have to hide the save card for tap details
+        if saveCardType == .Merchant {
+            let (showSaveForMerchant,showSaveForTap) = shouldShowSaveCardView()
+            attachedView.shouldShowSaveCardView(showSaveForMerchant,showSaveForTap)
+        }
         delegate?.saveCardChanged(for: saveCardType, to: enabled)
     }
 }

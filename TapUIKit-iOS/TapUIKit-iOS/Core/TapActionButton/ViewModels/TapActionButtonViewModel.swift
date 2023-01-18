@@ -56,6 +56,15 @@ internal protocol TapActionButtonViewDelegate {
         viewDelegate?.startLoading(completion: completion)
     }
     
+    /// Add this custom string to be displayed beside the main title of the button. for example Pay FOR TAP PAYMENTS
+    @objc public var appendCustomTitle:String = "" {
+        didSet{
+            if oldValue != appendCustomTitle {
+                viewDelegate?.reload()
+            }
+        }
+    }
+    
     
     @objc public override init() {
         super.init()
@@ -94,6 +103,20 @@ internal protocol TapActionButtonViewDelegate {
             // assign the new status
             self.buttonStatus = status
         }
+    }
+    
+    /**
+     Computes the correct title to be displayed within the pay button
+     - returns: The correct displaying title given the current button status and if there is any custom string to append if passed by the owner
+     */
+    internal func buttonDisplayTitle() -> String {
+        // The base title given the status
+        var buttonTitle:String = buttonStatus.buttonTitle()
+        // Only in case of charge or authorize we consider the custom string
+        if buttonStatus == .InvalidPayment || buttonStatus == .ValidPayment {
+            buttonTitle = "\(buttonTitle) \(appendCustomTitle)"
+        }
+        return buttonTitle
     }
     
     /**

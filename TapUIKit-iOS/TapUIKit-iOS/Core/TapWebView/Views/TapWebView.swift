@@ -36,6 +36,10 @@ var myContext = 0
         }
     }
     
+    @IBOutlet weak var webViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var webViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var webViewLeadingConstraint: NSLayoutConstraint!
+    
     // Mark:- Init methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -127,5 +131,16 @@ extension TapWebView: TapWebViewDelegate {
         webView.stopLoading()
     }
     
-    
+    func updateSize(with shouldBeFullScreen: Bool) {
+        webViewHolder.translatesAutoresizingMaskIntoConstraints = false
+        webViewLeadingConstraint.constant = 0
+        webViewTrailingConstraint.constant = 0
+        webViewTopConstraint.constant = -30
+        webView.layer.cornerRadius = 0
+        
+        DispatchQueue.main.async{
+            self.webView.layoutIfNeeded()
+            self.webView.updateConstraints()
+        }
+    }
 }

@@ -81,7 +81,7 @@ import TapThemeManager2020
     
     /// Fetch the displayed title from the view model
     private func fetchData() {
-        payButton.setTitle(viewModel?.buttonStatus.buttonTitle(), for: .normal)
+        payButton.setTitle(viewModel?.buttonDisplayTitle(), for: .normal)
         payButton.isUserInteractionEnabled = viewModel?.buttonStatus.isButtonEnabled() ?? false
     }
     

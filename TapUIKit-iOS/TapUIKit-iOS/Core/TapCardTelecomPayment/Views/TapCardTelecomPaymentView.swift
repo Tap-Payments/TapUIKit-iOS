@@ -156,6 +156,7 @@ import TapThemeManager2020
             stackView.addArrangedSubview(saveCrdForTapView)
         }else{
             stackView.removeArrangedSubview(saveCrdForTapView)
+            saveCrdForTapView.isSavedCardEnabled = false
         }
         
         
