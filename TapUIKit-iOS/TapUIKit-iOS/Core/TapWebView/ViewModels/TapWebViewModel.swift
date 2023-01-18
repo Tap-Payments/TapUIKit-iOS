@@ -48,7 +48,7 @@ internal protocol TapWebViewDelegate {
     @objc func didFail(with error:Error,for url:URL?)
     
     /// Will be fired when the user cancels the authentication web view
-    @objc func webViewCanceled()
+    @objc func webViewCanceled(showingFullScreen:Bool)
     
 }
 

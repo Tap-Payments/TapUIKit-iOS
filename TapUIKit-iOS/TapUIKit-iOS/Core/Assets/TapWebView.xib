@@ -1,95 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
-    <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-    </dependencies>
-    <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapWebView" customModule="TapUIKit_iOS" customModuleProvider="target">
-            <connections>
-                <outlet property="contentView" destination="GhC-ib-zIA" id="jB3-ag-nkL"/>
-                <outlet property="loaderView" destination="lqX-dg-AzR" id="PAR-yi-i5j"/>
-                <outlet property="loadingGif" destination="xX6-qy-ncG" id="LzP-zC-hBo"/>
-                <outlet property="progressView" destination="ziA-l6-8iY" id="YeO-JU-WUF"/>
-                <outlet property="webView" destination="fhS-Te-Nn7" id="KR5-f2-frE"/>
-                <outlet property="webViewHeaderView" destination="aaW-dY-GP0" id="gK0-l0-Bf8"/>
-                <outlet property="webViewHolder" destination="74v-QA-PIj" id="6d2-5Y-Avw"/>
-                <outlet property="webViewLeadingConstraint" destination="P4F-nN-88Y" id="4kO-hy-gwZ"/>
-                <outlet property="webViewTopConstraint" destination="oc4-fi-LsF" id="Gkr-Q5-W9r"/>
-                <outlet property="webViewTrailingConstraint" destination="3Ds-v8-7FJ" id="HHR-bK-j6G"/>
-            </connections>
-        </placeholder>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="GhC-ib-zIA">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74v-QA-PIj">
-                    <rect key="frame" x="20" y="10" width="374" height="866"/>
-                    <subviews>
-                        <wkWebView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhS-Te-Nn7">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="866"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <wkWebViewConfiguration key="configuration">
-                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                <wkPreferences key="preferences"/>
-                            </wkWebViewConfiguration>
-                        </wkWebView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="fhS-Te-Nn7" secondAttribute="trailing" id="UxS-Qn-BBr"/>
-                        <constraint firstAttribute="bottom" secondItem="fhS-Te-Nn7" secondAttribute="bottom" id="oN7-xP-FhL"/>
-                        <constraint firstItem="fhS-Te-Nn7" firstAttribute="top" secondItem="74v-QA-PIj" secondAttribute="top" id="oc4-fi-LsF"/>
-                        <constraint firstItem="fhS-Te-Nn7" firstAttribute="leading" secondItem="74v-QA-PIj" secondAttribute="leading" id="owN-Wy-Gxv"/>
-                    </constraints>
-                </view>
-                <progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-l6-8iY">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
-                </progressView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqX-dg-AzR">
-                    <rect key="frame" x="193" y="434" width="28" height="28"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-qy-ncG">
-                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="xX6-qy-ncG" firstAttribute="leading" secondItem="lqX-dg-AzR" secondAttribute="leading" id="AKl-UU-63Z"/>
-                        <constraint firstAttribute="width" secondItem="lqX-dg-AzR" secondAttribute="height" multiplier="1:1" id="OF6-DD-wKU"/>
-                        <constraint firstAttribute="bottom" secondItem="xX6-qy-ncG" secondAttribute="bottom" id="Pbc-KS-lEc"/>
-                        <constraint firstItem="xX6-qy-ncG" firstAttribute="top" secondItem="lqX-dg-AzR" secondAttribute="top" id="Ymm-LI-pG0"/>
-                        <constraint firstAttribute="width" constant="28" id="cpI-BR-mNO"/>
-                        <constraint firstAttribute="trailing" secondItem="xX6-qy-ncG" secondAttribute="trailing" id="ib1-D5-pGa"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaW-dY-GP0" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                    <viewLayoutGuide key="safeArea" id="JuZ-bz-Of2"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
-            </subviews>
-            <viewLayoutGuide key="safeArea" id="z6Z-Ii-mE9"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstItem="z6Z-Ii-mE9" firstAttribute="trailing" secondItem="74v-QA-PIj" secondAttribute="trailing" constant="20" id="3Ds-v8-7FJ"/>
-                <constraint firstItem="74v-QA-PIj" firstAttribute="leading" secondItem="z6Z-Ii-mE9" secondAttribute="leading" constant="20" id="P4F-nN-88Y"/>
-                <constraint firstAttribute="bottom" secondItem="74v-QA-PIj" secondAttribute="bottom" constant="20" id="PNk-Qz-h2T"/>
-                <constraint firstAttribute="trailing" secondItem="aaW-dY-GP0" secondAttribute="trailing" id="QnU-Ta-WNw"/>
-                <constraint firstItem="lqX-dg-AzR" firstAttribute="centerY" secondItem="GhC-ib-zIA" secondAttribute="centerY" id="Ver-Gj-gBf"/>
-                <constraint firstAttribute="trailing" secondItem="ziA-l6-8iY" secondAttribute="trailing" id="YuZ-iH-daw"/>
-                <constraint firstItem="74v-QA-PIj" firstAttribute="top" secondItem="aaW-dY-GP0" secondAttribute="bottom" constant="10" id="fGg-JJ-6b3"/>
-                <constraint firstItem="aaW-dY-GP0" firstAttribute="top" secondItem="GhC-ib-zIA" secondAttribute="top" id="igW-LM-Aug"/>
-                <constraint firstItem="ziA-l6-8iY" firstAttribute="top" secondItem="GhC-ib-zIA" secondAttribute="top" id="ksp-Nq-foq"/>
-                <constraint firstItem="lqX-dg-AzR" firstAttribute="centerX" secondItem="GhC-ib-zIA" secondAttribute="centerX" id="mm9-Vb-bid"/>
-                <constraint firstItem="aaW-dY-GP0" firstAttribute="leading" secondItem="GhC-ib-zIA" secondAttribute="leading" id="vcT-ze-ETs"/>
-                <constraint firstItem="ziA-l6-8iY" firstAttribute="leading" secondItem="GhC-ib-zIA" secondAttribute="leading" id="ybD-Zy-82F"/>
-            </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
-        </view>
-    </objects>
+<device id="retina6_1" orientation="portrait" appearance="light"/>
+<dependencies>
+<deployment identifier="iOS"/>
+<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+<capability name="Safe area layout guides" minToolsVersion="9.0"/>
+<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+</dependencies>
+<objects>
+<placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapWebView" customModule="TapUIKit_iOS" customModuleProvider="target">
+<connections>
+<outlet property="cancelButton" destination="Qv2-k1-mK9" id="KLV-zE-cKX"/>
+<outlet property="contentView" destination="GhC-ib-zIA" id="jB3-ag-nkL"/>
+<outlet property="loaderView" destination="lqX-dg-AzR" id="PAR-yi-i5j"/>
+<outlet property="loadingGif" destination="xX6-qy-ncG" id="LzP-zC-hBo"/>
+<outlet property="progressView" destination="ziA-l6-8iY" id="YeO-JU-WUF"/>
+<outlet property="webView" destination="fhS-Te-Nn7" id="KR5-f2-frE"/>
+<outlet property="webViewHeaderView" destination="aaW-dY-GP0" id="gK0-l0-Bf8"/>
+<outlet property="webViewHolder" destination="74v-QA-PIj" id="6d2-5Y-Avw"/>
+<outlet property="webViewLeadingConstraint" destination="P4F-nN-88Y" id="4kO-hy-gwZ"/>
+<outlet property="webViewTopConstraint" destination="oc4-fi-LsF" id="Gkr-Q5-W9r"/>
+<outlet property="webViewTrailingConstraint" destination="3Ds-v8-7FJ" id="HHR-bK-j6G"/>
+</connections>
+</placeholder>
+<placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+<view contentMode="scaleToFill" id="GhC-ib-zIA">
+<rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74v-QA-PIj">
+<rect key="frame" x="20" y="10" width="374" height="866"/>
+<subviews>
+<wkWebView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhS-Te-Nn7">
+<rect key="frame" x="0.0" y="0.0" width="374" height="866"/>
+<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<wkWebViewConfiguration key="configuration">
+<audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+<wkPreferences key="preferences"/>
+</wkWebViewConfiguration>
+</wkWebView>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv2-k1-mK9">
+<rect key="frame" x="326" y="0.0" width="32" height="32"/>
+<constraints>
+<constraint firstAttribute="width" secondItem="Qv2-k1-mK9" secondAttribute="height" multiplier="1:1" id="54a-XH-ljJ"/>
+<constraint firstAttribute="width" constant="32" id="CLZ-wT-w2B"/>
+</constraints>
+<state key="normal" title="Button"/>
+<buttonConfiguration key="configuration" style="plain" title="X"/>
+<connections>
+<action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="gIs-Mu-Cqz"/>
+</connections>
+</button>
+</subviews>
+<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<constraints>
+<constraint firstAttribute="trailing" secondItem="Qv2-k1-mK9" secondAttribute="trailing" constant="16" id="GfK-5a-F2S"/>
+<constraint firstAttribute="trailing" secondItem="fhS-Te-Nn7" secondAttribute="trailing" id="UxS-Qn-BBr"/>
+<constraint firstAttribute="bottom" secondItem="fhS-Te-Nn7" secondAttribute="bottom" id="oN7-xP-FhL"/>
+<constraint firstItem="fhS-Te-Nn7" firstAttribute="top" secondItem="74v-QA-PIj" secondAttribute="top" id="oc4-fi-LsF"/>
+<constraint firstItem="fhS-Te-Nn7" firstAttribute="leading" secondItem="74v-QA-PIj" secondAttribute="leading" id="owN-Wy-Gxv"/>
+<constraint firstItem="Qv2-k1-mK9" firstAttribute="top" secondItem="74v-QA-PIj" secondAttribute="top" id="ySe-zf-ha9"/>
+</constraints>
+</view>
+<progressView opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-l6-8iY">
+<rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
+</progressView>
+<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqX-dg-AzR">
+<rect key="frame" x="193" y="434" width="28" height="28"/>
+<subviews>
+<imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-qy-ncG">
+<rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+</imageView>
+</subviews>
+<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<constraints>
+<constraint firstItem="xX6-qy-ncG" firstAttribute="leading" secondItem="lqX-dg-AzR" secondAttribute="leading" id="AKl-UU-63Z"/>
+<constraint firstAttribute="width" secondItem="lqX-dg-AzR" secondAttribute="height" multiplier="1:1" id="OF6-DD-wKU"/>
+<constraint firstAttribute="bottom" secondItem="xX6-qy-ncG" secondAttribute="bottom" id="Pbc-KS-lEc"/>
+<constraint firstItem="xX6-qy-ncG" firstAttribute="top" secondItem="lqX-dg-AzR" secondAttribute="top" id="Ymm-LI-pG0"/>
+<constraint firstAttribute="width" constant="28" id="cpI-BR-mNO"/>
+<constraint firstAttribute="trailing" secondItem="xX6-qy-ncG" secondAttribute="trailing" id="ib1-D5-pGa"/>
+</constraints>
+</view>
+<view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaW-dY-GP0" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
+<rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+<viewLayoutGuide key="safeArea" id="JuZ-bz-Of2"/>
+<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+</view>
+</subviews>
+<viewLayoutGuide key="safeArea" id="z6Z-Ii-mE9"/>
+<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<constraints>
+<constraint firstItem="z6Z-Ii-mE9" firstAttribute="trailing" secondItem="74v-QA-PIj" secondAttribute="trailing" constant="20" id="3Ds-v8-7FJ"/>
+<constraint firstItem="74v-QA-PIj" firstAttribute="leading" secondItem="z6Z-Ii-mE9" secondAttribute="leading" constant="20" id="P4F-nN-88Y"/>
+<constraint firstAttribute="bottom" secondItem="74v-QA-PIj" secondAttribute="bottom" constant="20" id="PNk-Qz-h2T"/>
+<constraint firstAttribute="trailing" secondItem="aaW-dY-GP0" secondAttribute="trailing" id="QnU-Ta-WNw"/>
+<constraint firstItem="lqX-dg-AzR" firstAttribute="centerY" secondItem="GhC-ib-zIA" secondAttribute="centerY" id="Ver-Gj-gBf"/>
+<constraint firstAttribute="trailing" secondItem="ziA-l6-8iY" secondAttribute="trailing" id="YuZ-iH-daw"/>
+<constraint firstItem="74v-QA-PIj" firstAttribute="top" secondItem="aaW-dY-GP0" secondAttribute="bottom" constant="10" id="fGg-JJ-6b3"/>
+<constraint firstItem="aaW-dY-GP0" firstAttribute="top" secondItem="GhC-ib-zIA" secondAttribute="top" id="igW-LM-Aug"/>
+<constraint firstItem="ziA-l6-8iY" firstAttribute="top" secondItem="GhC-ib-zIA" secondAttribute="top" id="ksp-Nq-foq"/>
+<constraint firstItem="lqX-dg-AzR" firstAttribute="centerX" secondItem="GhC-ib-zIA" secondAttribute="centerX" id="mm9-Vb-bid"/>
+<constraint firstItem="aaW-dY-GP0" firstAttribute="leading" secondItem="GhC-ib-zIA" secondAttribute="leading" id="vcT-ze-ETs"/>
+<constraint firstItem="ziA-l6-8iY" firstAttribute="leading" secondItem="GhC-ib-zIA" secondAttribute="leading" id="ybD-Zy-82F"/>
+</constraints>
+<point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+</view>
+</objects>
 </document>
