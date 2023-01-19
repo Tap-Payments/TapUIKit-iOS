@@ -46,6 +46,12 @@
         },
         "tapLogo":"poweredByTapLogo"
     },
+    "asyncView": {
+        "labelsFont":"Roboto-Regular,20",
+        "labelsColor":"greyishBrown",
+        "codeLabelFont":"Roboto-Regular,30",
+        "codeLabelColor":"greyishBrown"
+    },
     "inlineCard": {
         "commonAttributes": {
             "backgroundColor": "white",
@@ -82,7 +88,7 @@
         },
         "textFields": {
             "textColor": "greyishBrown",
-            "errorTextColor": "#FF0000",
+            "errorTextColor": "greyishBrown",
             "font" : "Roboto-Light,14",
             "saveCardFontDots" : "Roboto-Bold,24",
             "placeHolderColor" : "brownGreyTwo"

@@ -6,6 +6,12 @@
 //
 import Foundation
 
+/// A delegate to listen to events fired from tap network manager
+public protocol TapNetworkManagerDelegate {
+    /// Inform the delegate that network manager wants to log a peice of info
+    func log(string:String)
+}
+
 /// Network Manager class.
 public class TapNetworkManager {
     
@@ -26,6 +32,10 @@ public class TapNetworkManager {
     
     /// Defines if you want to enable printing to the console the api calls as it go
     public var consolePrintLoggingEnabled = false
+    
+    /// A delegate to listen to events fired from tap network manager
+    public var delegate:TapNetworkManagerDelegate? = nil
+    
     
     /// Base URL.
     public private(set) var baseURL: URL
@@ -108,6 +118,7 @@ public class TapNetworkManager {
                 }else{
                     loggString = "\(loggString)\nBody :\n-----\n{\n}\n---------------\n"
                 }
+                delegate?.log(string: loggString)
                 print(loggString)
             }
             
@@ -142,10 +153,12 @@ public class TapNetworkManager {
             let loggString:String = "Response :\n========\n\(operation.httpMethod.rawValue) \(operation.path)\nHeaders :\n------\n\(headersString)\nBody :\n-----\n\(bodySting)\n---------------\n"
             
             if self.consolePrintLoggingEnabled {
+                self.delegate?.log(string: loggString)
                 print(loggString)
             }
             
             if let nonNullError = error {
+                self.delegate?.log(string: nonNullError.debugDescription)
                 // Failure case for network/api/internal
                 tapLoggingResponseModel = .init(headers: headersString, error_code: "Network/Internal", error_message: nonNullError.localizedDescription, error_description: nonNullError.debugDescription, body: bodySting)
                 
@@ -272,7 +285,7 @@ public class TapNetworkManager {
     private func requestContentTypeHeaderValue(for dataType: TapSerializationType) -> String {
         
         switch dataType {
-        
+            
         case .json:
             
             return Constants.jsonContentTypeHeaderValue
