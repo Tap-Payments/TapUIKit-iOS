@@ -13,6 +13,16 @@
             "cardSectionTitle": "CARD INFORMATION",
             "savedCardSectionTitle": "SAVED CARD"
         },
+        "TapAsyncSection": {
+            "paymentProgressLabel": "Payment in progress",
+            "paymentRecieptLabel": "An %@ has been sent to",
+            "paymentRecieptEmail": "email",
+            "paymentRecieptSms": "sms",
+            "paymentReferenceTitleLabel": "With your %@ reference",
+            "paymentCodeTitleLabel" : "Order code",
+            "paymentExpiryTitleLabel": "Code expires on",
+            "paymentVisitBranchesLabel" : "Please visit %@ branches using the link below to complete your order"
+        },
         "TapMerchantSection": {
             "paymentFor" : "PAYMENT FOR"
         },
@@ -147,7 +157,8 @@
             "resend": "Resend OTP",
             "next": "Next",
             "signin": "Signin",
-            "cancel":"Cancel"
+            "cancel":"Cancel",
+            "close":"Close"
         }
     },
     "ar": {
@@ -163,6 +174,16 @@
             "weSupport":"نحن ندعم",
             "cardSectionTitle": "بيانات البطاقة",
             "savedCardSectionTitle": "البطاقة المحفوظة"
+        },
+        "TapAsyncSection": {
+            "paymentProgressLabel": "العملية قد التنفيذ",
+            "paymentRecieptLabel": "تم إرسال %@",
+            "paymentRecieptEmail": "بريد إلكتروني",
+            "paymentRecieptSms": "رسالة نصية",
+            "paymentReferenceTitleLabel": "لكود العملية الخاصة بـ %@",
+            "paymentCodeTitleLabel" : "كود العملية",
+            "paymentExpiryTitleLabel": "ينتهي الكود في",
+            "paymentVisitBranchesLabel" : "برجاء زيارة أحد فروع %@ من خلال الرابط أدناه لاكمال العملية"
         },
         "TapMerchantSection": {
             "paymentFor" : "سأدفع لـ"
@@ -296,7 +317,8 @@
             "resend": "إعادة إرسال",
             "next": "التالي",
             "signin": "دخول",
-            "cancel":"إلغاء"
+            "cancel":"إلغاء",
+            "close":"إنهاء الدفع",
         }
     }
 }

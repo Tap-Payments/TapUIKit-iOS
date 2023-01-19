@@ -1,6 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.93):
+  - CommonDataModelsKit-iOS (1.0.94):
     - SwiftyRSA
     - TapAdditionsKitV2
     - TapCardVlidatorKit-iOS
@@ -99,7 +99,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: d225e0379512ecdb157eb093b56cf87824497d73
+  CommonDataModelsKit-iOS: 517776a43505e32a55bf324363816d439977772d
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   LocalisationManagerKit-iOS: bd1a9d16509a06dd1aea45b9f47cf21bdfe0796c
   McPicker: ba38be56a8194faa5249eca4226c364eed628044
