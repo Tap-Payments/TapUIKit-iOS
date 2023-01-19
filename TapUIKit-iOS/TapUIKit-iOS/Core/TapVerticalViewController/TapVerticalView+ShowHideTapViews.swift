@@ -155,7 +155,7 @@ extension TapVerticalView {
         // Push the action button by the required space height
         tapActionButtonBottomConstraint.constant = spaceRect.height - 150
         // Save the current pushing padding height
-        keyboardPadding = spaceRect.height - 100
+        keyboardPadding = spaceRect.height - 80
         if #available(iOS 13.0, *) {}else {
             keyboardPadding = 0
         }
@@ -172,6 +172,7 @@ extension TapVerticalView {
         // Change the scroll view content size to reflect the adding space to show the keyboard
         self.delaySizeChange = false
         self.scrollView.contentSize = currentContentSize
+        self.scrollView.scrollToBottom()
     }
     
     
@@ -263,5 +264,14 @@ extension TapVerticalView {
         }else {
             add(view: hintView,at: (attachToViewIndex+1), with: requiredAnimations)
         }
+    }
+}
+
+
+fileprivate extension UIScrollView {
+    
+    func scrollToBottom() {
+        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
+        setContentOffset(bottomOffset, animated: true)
     }
 }

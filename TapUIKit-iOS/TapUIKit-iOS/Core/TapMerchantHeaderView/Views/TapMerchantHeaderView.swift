@@ -15,7 +15,7 @@ import CommonDataModelsKit_iOS
 
 /// A view represents the merchant header section in the checkout UI
 @objc public class TapMerchantHeaderView: UIView {
-
+    
     /// The current close button display state
     private var closeButtonState:CheckoutCloseButtonEnum = .icon
     /// The container view that holds everything from the XIB
@@ -204,6 +204,8 @@ extension TapMerchantHeaderView {
         cancelButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).cancelButton.titleLabelFont")
         cancelButton.layer.cornerRadius = 16
         cancelButton.tap_theme_backgroundColor = .init(keyPath: "\(themePath).cancelButton.backgroundColor")
+        
+        merchantLogoImageView.layer.cornerRadius = merchantLogoImageView.frame.width / 2
         
         layoutIfNeeded()
     }

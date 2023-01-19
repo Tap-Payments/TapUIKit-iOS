@@ -33,6 +33,8 @@ import EasyTipView
             }
         }
     }
+    /// The tooltip component to show info about saving a card for TAP
+    internal var ev:EasyTipView?
     
     internal let themePath:String = "inlineCard.saveCardForTapOption"
     // Mark:- Init methods
@@ -57,11 +59,8 @@ import EasyTipView
         // first of all, disable the info button so the user cannot show duplicates of the tooltip
         saveInfoButton.isUserInteractionEnabled = false
         // Theme the tool tip, localise it and show it :)
-        EasyTipView.show(forView: saveInfoButton,
-                         withinSuperview: self.superview,
-                         text: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cardSaveForTapInfo", with: TapCommonConstants.pathForDefaultLocalisation()),
-                         preferences: themeSaveCardToolTip(),
-                         delegate: self)
+        ev = EasyTipView(text: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cardSaveForTapInfo", with: TapCommonConstants.pathForDefaultLocalisation()), preferences: themeSaveCardToolTip(), delegate: self)
+        ev?.show(animated: true, forView: saveInfoButton, withinSuperview: self.superview)
     }
     
     /// Generates the right theme for the tooltip

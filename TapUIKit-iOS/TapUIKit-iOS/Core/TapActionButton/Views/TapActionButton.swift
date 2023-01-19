@@ -150,7 +150,7 @@ extension TapActionButton:TapActionButtonViewDelegate {
     
     
     func expand() {
-        payButton.fadeIn()
+        
         loaderGif.fadeOut()
         loaderGif.delegate = nil
         viewHolderWidth.constant = frame.width - 32
@@ -158,7 +158,9 @@ extension TapActionButton:TapActionButtonViewDelegate {
         UIView.animate(withDuration: 1.0, animations: { [weak self] in
             self?.viewHolder.updateConstraints()
             self?.layoutIfNeeded()
-        })
+        }) { x in
+            self.payButton?.fadeIn()
+        }
     }
     
     func shrink(with image:UIImage? = nil) {

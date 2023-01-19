@@ -100,10 +100,10 @@ import TapThemeManager2020
     /// Used to reload the phone field data from the view model
     internal func reloadPhone() {
         guard let viewModel = viewModel,
-        let countryCode = viewModel.selectedCountry.code else {
+              let countryCode = viewModel.selectedCountry.code else {
             return
         }
-
+        
         phoneCountryCodeLabel.text = "+\(countryCode)"
         phoneNumberTextField.text = ""
     }
@@ -137,6 +137,8 @@ import TapThemeManager2020
         
         phoneNumberTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
         emailTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
+        emailTextField.autocorrectionType = .no
+        emailTextField.delegate = self
     }
     
     /// Now time to set localized string representations for the corresponding views
@@ -164,7 +166,7 @@ import TapThemeManager2020
     /// Adjust the visbility of the fields to be collected
     fileprivate func UpdateViewsVisibility(_ viewModel: CustomerContactDataCollectionViewModel) {
         /*emailTextField.isHidden = !viewModel.toBeCollectedData.contains(.email)
-        phoneEntryContainerView.isHidden = !viewModel.toBeCollectedData.contains(.phone)*/
+         phoneEntryContainerView.isHidden = !viewModel.toBeCollectedData.contains(.phone)*/
         
         
         if !viewModel.toBeCollectedData.contains(.email) {
@@ -243,5 +245,17 @@ extension CustomerContactDataCollectionView {
         super.traitCollectionDidChange(previousTraitCollection)
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
+    }
+}
+
+
+extension CustomerContactDataCollectionView:UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            phoneNumberTextField.becomeFirstResponder()
+        }else if textField == phoneNumberTextField {
+            phoneNumberTextField.resignFirstResponder()
+        }
+        return true
     }
 }

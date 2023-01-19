@@ -141,6 +141,7 @@ import TapThemeManager2020
         
         // Adjust visibility  the save for merchant & tap views
         
+        saveCrdForTapView.ev?.dismiss()
         saveCrdView.isHidden = !finalMerchantVisibility
         saveCrdForTapView.isHidden = !finalTapVisibility
         
@@ -283,6 +284,7 @@ import TapThemeManager2020
         tapCardPhoneListViewModel.resetCurrentSegment()
         lastReportedTapCard = .init()
         viewModel?.delegate?.brandDetected(for: .unknown, with: .Invalid,cardStatusUI: .NormalCard)
+        saveCrdForTapView.ev?.dismiss()
     }
     
     /// Call this to claculate the required height for the view. Takes in consideration the visibility of name row, save title, save subtitle, supported brands
