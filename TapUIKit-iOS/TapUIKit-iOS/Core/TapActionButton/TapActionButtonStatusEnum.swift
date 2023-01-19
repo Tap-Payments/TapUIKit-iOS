@@ -39,6 +39,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case TouchID
     /// Where we need to show cancel payment button when showing a web view
     case CancelPayment
+    /// Where we need to show close payment button when showing async confirmation
+    case AsyncClosePayment
     
     
     
@@ -57,7 +59,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         case .ValidPayment,.SaveValidPayment,.FaceID,.TouchID:
             backgroundThemePath = "actionButton.Valid.paymentBackgroundColor"
             break
-        case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext:
+        case .ValidConfirm,.ResendOTP,.ValidSignIn,.ValidNext,.AsyncClosePayment:
             backgroundThemePath = "actionButton.Valid.goLoginBackgroundColor"
             break
         case .CancelPayment:
@@ -78,7 +80,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         
         switch self {
             // These cases we need to have a clear background to show the blur background
-        case .SaveValidPayment,.InvalidConfirm,.ValidConfirm,.ResendOTP,.InvalidSignIn,.ValidSignIn:
+        case .SaveValidPayment,.InvalidConfirm,.ValidConfirm,.ResendOTP,.InvalidSignIn,.ValidSignIn,.AsyncClosePayment:
             backgroundThemePath = "actionButton.BackgroundColor.Otp"
             break
         default:
@@ -160,6 +162,10 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         case .InvalidNext,.ValidNext:
             // These cases we need to have a Next title
             localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.next", with: TapCommonConstants.pathForDefaultLocalisation())
+            break
+        case .AsyncClosePayment:
+            // These cases we need to have a ResendOTP title
+            localizedTitle = sharedLocalisationManager.localisedValue(for: "ActionButton.close", with: TapCommonConstants.pathForDefaultLocalisation())
             break
         default:
             // These cases we need to have a PAY title
