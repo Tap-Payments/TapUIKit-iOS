@@ -94,7 +94,7 @@ extension TapVerticalView {
     public func showScanner(with delegate:TapInlineScannerProtocl,for dataSource:TapScannerDataSource?) {
         endEditing(true)
         // Remove all non needed views preparing for showing the scanner afterwards
-        remove(viewType: TapChipHorizontalList.self, with: .init(), and: true)
+        remove(viewType: TapAmountSectionView.self, with: .init(), and: true, skipSelf: true)
         // Hide the action button as it is required to hide it nby the design for this scenario
         hideActionButton()
         // Create the hint view that shws the status of the scanner
