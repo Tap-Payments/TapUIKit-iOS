@@ -333,6 +333,8 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
     
     public func dataChanged(tapCard: TapCard) {
         hintStatus = viewModel?.decideHintStatus(with: tapCard, and: cardInputView.cardUIStatus)
+        lastReportedTapCard = tapCard
+        viewModel?.showHideSaveCardView()
     }
     
     public func cardDataChanged(tapCard: TapCard,cardStatusUI:CardInputUIStatus) {

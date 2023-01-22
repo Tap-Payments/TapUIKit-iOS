@@ -143,8 +143,12 @@ import TapThemeManager2020
     
     /// Now time to set localized string representations for the corresponding views
     private func localizeTextualContent() {
-        emailTextField.placeholder = TapLocalisationManager.shared.localisedValue(for: "Common.email", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized
-        phoneNumberTextField.placeholder = "50 000 000"
+        
+        let placeHolderColor:UIColor = TapThemeManager.colorValue(for: "\(themePath).textfields.placeHolderColor") ?? .black
+        
+        emailTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "Common.email", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+        
+        phoneNumberTextField.attributedPlaceholder = .init(string: "50 000 000", attributes: [.foregroundColor : placeHolderColor])
     }
     
     /// Adjusts the height for the text fields based on the data from the view model

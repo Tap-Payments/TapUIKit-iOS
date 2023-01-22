@@ -8,6 +8,15 @@
 
 import Foundation
 import class UIKit.UIImage
+
+/// A protocol to communicate between the owner with this view model
+@objc public protocol TapActionButtonViewModelDelegate {
+    /// Fired whenever the button started loading state
+    @objc func didStartLoading()
+    /// Fired whenever the button ended the loading
+    @objc func didEndLoading()
+}
+
 /// A protocol to communicate with the view controller with this view model
 internal protocol TapActionButtonViewDelegate {
     
@@ -45,6 +54,9 @@ internal protocol TapActionButtonViewDelegate {
             buttonStatusChanged()
         }
     }
+    
+    /// A protocol to communicate between the owner with this view model
+    @objc public var delegate:TapActionButtonViewModelDelegate?
     
     /// A block representing the action to be executed when the button is clicked, please assign this accordignly based on the latest action required/fied from the main checkout screen
     @objc public var buttonActionBlock:()->() = {}

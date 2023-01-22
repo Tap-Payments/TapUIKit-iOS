@@ -168,6 +168,8 @@ extension TapActionButton:TapActionButtonViewDelegate {
         UIView.animate(withDuration: 1.0, animations: { [weak self] in
             self?.viewHolder.updateConstraints()
             self?.layoutIfNeeded()
+            self?.viewModel?.delegate?.didEndLoading()
+            self?.viewModel?.delegate?.didStartLoading()
         })
         
         guard let image = image else { return }

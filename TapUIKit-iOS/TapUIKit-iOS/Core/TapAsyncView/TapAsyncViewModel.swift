@@ -55,6 +55,21 @@ import LocalisationManagerKit_iOS
         return String(format: TapLocalisationManager.shared.localisedValue(for: "\(localizationPath).paymentRecieptLabel",with: TapCommonConstants.pathForDefaultLocalisation()), communicationMean)
     }
     
+    /// Content displayed in the paymentContactDetailsLabel
+    internal var paymentContactDetailsLabel:String {
+        // Check if it is email
+        if chargeModel?.receiptSettings?.email ?? false,
+           let emailAddres = chargeModel?.customer.emailAddress?.value {
+            return emailAddres
+        }else // Check if it is sms
+        if chargeModel?.receiptSettings?.sms ?? false,
+           let phoneNumber = chargeModel?.customer.phoneNumber?.phoneNumber,
+           let isdNumber = chargeModel?.customer.phoneNumber?.isdNumber {
+            return "\(isdNumber)\(phoneNumber)"
+        }
+        return ""
+    }
+    
     /// Content displayed in the paymentReferenceTitleLabel
     internal var paymentReferenceTitleLabel:String {
         return String(format: TapLocalisationManager.shared.localisedValue(for: "\(localizationPath).paymentReferenceTitleLabel",with: TapCommonConstants.pathForDefaultLocalisation()), merchantModel?.title ?? "")
@@ -81,7 +96,7 @@ import LocalisationManagerKit_iOS
         // Add the expiration duration to the current date
         var expirationDate = Date()
         if let expiry = chargeModel?.transactionDetails.expiry,
-            let expirationDateType = expiry.toCalendarComponent() {
+           let expirationDateType = expiry.toCalendarComponent() {
             let calendar = Calendar.current
             expirationDate = calendar.date(byAdding: expirationDateType, value: expiry.period, to: expirationDate) ?? Date()
         }

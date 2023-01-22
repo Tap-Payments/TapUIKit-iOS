@@ -10,7 +10,7 @@ import TapThemeManager2020
 
 /// A class to show the result of the async payment in a native manner
 @objc public class TapAsyncView: UIView {
-
+    
     /// The content view holding all the views
     @IBOutlet var contentView: UIView!
     /// The top view that displays the merchant logo and name
@@ -95,6 +95,7 @@ import TapThemeManager2020
     internal func localise() {
         paymentProgressLabel.text = viewModel?.paymentProgressLabel
         paymentRecieptLabel.text = viewModel?.paymentRecieptLabel
+        paymentContactDetailsLabel.text = viewModel?.paymentContactDetailsLabel
         paymentReferenceTitleLabel.text = viewModel?.paymentReferenceTitleLabel
         paymentCodeTitleLabel.text = viewModel?.paymentCodeTitleLabel
         paymentCodeLabel.text = viewModel?.paymentCodeLabel

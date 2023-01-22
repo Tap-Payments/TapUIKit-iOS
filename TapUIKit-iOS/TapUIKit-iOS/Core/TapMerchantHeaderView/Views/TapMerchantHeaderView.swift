@@ -22,8 +22,6 @@ import CommonDataModelsKit_iOS
     @IBOutlet var containerView: UIView!
     /// The containter view for the area of merchant place holder and real icon image
     @IBOutlet weak var merchantLogoContainerView: UIView!
-    /// The placeholder view we show until we load the logo image
-    @IBOutlet weak var merchantLogoPlaceHolderView: UIView!
     /// The initials labels we show as a placeholder until we load the logo image
     @IBOutlet weak var merchantLogoPlaceHolderInitialLabel: UILabel!
     /// The imageview that rendersthe merchant logo
@@ -135,7 +133,7 @@ import CommonDataModelsKit_iOS
      */
     private func loadMerchantLogo(with remoteIconUrl:String) {
         // First we show the placeholder and hide the imageview until we load it from the internet
-        merchantLogoPlaceHolderView.fadeIn()
+        merchantLogoContainerView.fadeIn()
         merchantLogoImageView.fadeOut()
         
         // Make sure we have a valid URL
@@ -147,7 +145,7 @@ import CommonDataModelsKit_iOS
         //)
         Nuke.loadImage(with: iconURL, into: merchantLogoImageView, completion:  { [weak self] _ in
             self?.merchantLogoImageView.fadeIn()
-            self?.merchantLogoPlaceHolderView.fadeOut()
+            self?.merchantLogoContainerView.fadeOut()
         })
     }
     
@@ -183,10 +181,12 @@ extension TapMerchantHeaderView {
         subtitleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).subTitleLabelColor")
         
         merchantLogoContainerView.layer.cornerRadius = merchantLogoContainerView.frame.width / 2
-        merchantLogoPlaceHolderView.layer.shadowOpacity = 1
+        merchantLogoContainerView.layer.masksToBounds = false
+        merchantLogoContainerView.clipsToBounds = false
+        merchantLogoContainerView.layer.shadowOpacity = 1
         merchantLogoContainerView.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).merchantLogoShadowRadius")
-        merchantLogoPlaceHolderView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).merchantLogoShadowColor")
-        merchantLogoPlaceHolderView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderColor")
+        merchantLogoContainerView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).merchantLogoShadowColor")
+        merchantLogoContainerView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderColor")
         merchantLogoPlaceHolderInitialLabel.tap_theme_font = .init(stringLiteral: "\(themePath).merchantLogoPlaceHolderFont")
         merchantLogoPlaceHolderInitialLabel.tap_theme_textColor = .init(keyPath: "\(themePath).merchantLogoPlaceHolderLabelColor")
         
