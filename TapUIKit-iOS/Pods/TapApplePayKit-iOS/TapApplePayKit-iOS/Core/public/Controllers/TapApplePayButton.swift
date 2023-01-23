@@ -88,8 +88,8 @@ import PassKit
         self.buttonStyle = buttonStyle
         // The minimum size accepted by Apple
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
-            self.buttonWidth = (self.frame.width >= 140) ? self.frame.width : 140
-            self.buttonHeight = (self.frame.height >= 40) ? self.frame.height : 40
+            self.buttonWidth = self.frame.width//(self.frame.width >= 140) ? self.frame.width : self.frame.width
+            self.buttonHeight = self.frame.height//(self.frame.height >= 40) ? self.frame.height : self.frame.height
             self.buttonType = buttonType
             self.configureApplePayButton()
         }

@@ -685,6 +685,10 @@ extension ExampleWallOfGloryViewController {
 }
 
 extension ExampleWallOfGloryViewController:TapWebViewModelDelegate {
+    func webViewCanceled(showingFullScreen: Bool) {
+        
+    }
+    
     func willLoad(request: URLRequest) -> WKNavigationActionPolicy {
         return .allow
     }

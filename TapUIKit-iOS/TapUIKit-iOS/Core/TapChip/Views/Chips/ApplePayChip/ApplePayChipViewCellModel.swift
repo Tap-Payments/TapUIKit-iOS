@@ -27,12 +27,22 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:GenericCellChipViewModelDelegate?
     /// Rerpesents the style of the apple pay button
-    internal var applePayButtonType:TapApplePayButtonType = .PayWithApplePay
+    internal var applePayButtonType:TapApplePayButtonType = .PayWithApplePay {
+        didSet{
+            onApplePayButtonUIChanged?()
+        }
+    }
     /// Rerpesents the style of the apple pay button
-    internal var applePayButtonStyle:TapApplePayButtonStyleOutline = .Black
+    internal var applePayButtonStyle:TapApplePayButtonStyleOutline = .Black {
+        didSet{
+            onApplePayButtonUIChanged?()
+        }
+    }
     /// Rerpesents the style of the apple pay request itself
     internal var tapApplePayRequest:TapApplePayRequest = .init()
     let tapApplePay:TapApplePay = .init()
+    /// a callback to do whenver we need to update the look & feel of the apple pay button
+    internal var onApplePayButtonUIChanged:(()->())? = nil
     
     // MARK:- Public methods
     public override func identefier() -> String {

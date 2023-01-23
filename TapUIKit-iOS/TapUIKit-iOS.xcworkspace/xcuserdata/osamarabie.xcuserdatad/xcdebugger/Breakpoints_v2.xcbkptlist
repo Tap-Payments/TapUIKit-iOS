@@ -18,38 +18,6 @@
             endingLineNumber = "153"
             landmarkName = "didSelect(country:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FEAA1D4C-CEA0-400B-B41B-403B7ACC340C - c22abc03816c3190"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TapUIKit_iOS.CustomerContactDataCollectionViewModel.didSelect(country: CommonDataModelsKit_iOS.TapCountry) -&gt; ()"
-                  moduleName = "TapUIKit_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/osamarabie/Desktop/Tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapSaveCardDataCollectionView/CustomerContactDataCollectionViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "FEAA1D4C-CEA0-400B-B41B-403B7ACC340C - c22abc03816c31b3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TapUIKit_iOS.CustomerContactDataCollectionViewModel.didSelect(country: CommonDataModelsKit_iOS.TapCountry) -&gt; ()"
-                  moduleName = "TapUIKit_iOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/osamarabie/Desktop/Tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapSaveCardDataCollectionView/CustomerContactDataCollectionViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "154"
-                  endingLineNumber = "154"
-                  offsetFromSymbolStart = "62">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

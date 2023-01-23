@@ -7,6 +7,7 @@
 //
 
 import TapThemeManager2020
+import TapApplePayKit_iOS
 
 @objc class ApplePayChipCollectionViewCell: GenericTapChip {
     
@@ -19,11 +20,17 @@ import TapThemeManager2020
     //    private var tapApplePayButton:TapApplePayButton?
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// The apple pay button
+    @IBOutlet weak var tapApplePayButton: TapApplePayButton!
     /// view model that will control the cell view
     @objc public var viewModel:ApplePayChipViewCellModel = .init() {
         didSet{
             // Upon assigning a new view model we attach ourslef as the delegate
             viewModel.cellDelegate = self
+            self.configureApplePayButton()
+            viewModel.onApplePayButtonUIChanged = {
+                print("OSAMA")
+            }
             // We reload the cell data from the view model
             reload()
         }
@@ -122,7 +129,17 @@ extension ApplePayChipCollectionViewCell {
         
         self.applePayTitle.attributedText = combination
         
-        
+        applePayContainerView.layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
+        applePayContainerView.clipsToBounds = true
+        applePayContainerView.layer.masksToBounds = true
+        configureApplePayButton()
+    }
+    
+    internal func configureApplePayButton() {
+        self.tapApplePayButton.setup(tapApplePayButtonClicked: { _ in
+            self.selectStatusChaned(with: true)
+            self.viewModel.didSelectItem()
+        }, buttonType: viewModel.applePayButtonType, buttonStyle: viewModel.applePayButtonStyle)
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

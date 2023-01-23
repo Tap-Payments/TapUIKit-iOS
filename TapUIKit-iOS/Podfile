@@ -6,7 +6,7 @@ target 'TapUIKit-Example' do
   use_frameworks!
   pod 'TapThemeManager2020'
   pod 'SheetyColors'
-  pod 'TapApplePayKit-iOS'
+  m
   pod 'TapCardVlidatorKit-iOS'
   pod 'CommonDataModelsKit-iOS'
   # Pods for TapUIKit-Example

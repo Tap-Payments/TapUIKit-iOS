@@ -276,6 +276,7 @@
 		E80E8AB024892531009AF18F /* TapPullUpWrapperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapPullUpWrapperViewController.xib; sourceTree = "<group>"; };
 		E80EA58E24974B4900C5C5E1 /* ChipsTestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsTestingViewController.swift; sourceTree = "<group>"; };
 		E80EA5922497509A00C5C5E1 /* TapChipHorizontalListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapChipHorizontalListViewModel.swift; sourceTree = "<group>"; };
+		E81F43C4297D6029007265E9 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E826ABA92970235C0074E55A /* Black-loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Black-loader.gif"; sourceTree = "<group>"; };
 		E82A56B02499ED7A00E3F00D /* SavedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E82A56B12499ED7A00E3F00D /* SavedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -519,6 +520,7 @@
 		A1057834EC965C7C3A18355D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E81F43C4297D6029007265E9 /* TapApplePayKit_iOS.framework */,
 				E8A0566124CDA96400D54A68 /* TapApplePayKit_iOS.framework */,
 				CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */,
 				CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */,

@@ -5,6 +5,7 @@
 //  Copyright © 2019 Tap Payments. All rights reserved.
 //
 import Foundation
+import CommonDataModelsKit_iOS
 
 /// A delegate to listen to events fired from tap network manager
 public protocol TapNetworkManagerDelegate {
@@ -156,7 +157,7 @@ public class TapNetworkManager {
                 self.delegate?.log(string: loggString)
                 print(loggString)
             }
-            
+            // Check if error came in
             if let nonNullError = error {
                 self.delegate?.log(string: nonNullError.debugDescription)
                 // Failure case for network/api/internal
@@ -164,20 +165,33 @@ public class TapNetworkManager {
                 
                 completion?(dataTask, nil, nonNullError)
             }else if let jsonObject = data {
-                do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .fragmentsAllowed)
-                    let decodedResponse = try JSONDecoder().decode(codableType, from: jsonData)
-                    // Success case
-                    tapLoggingResponseModel = .init(headers: headersString, error_code: nil, error_message: nil, error_description: nil, body: bodySting)
-                    DispatchQueue.main.async {
-                        completion?(dataTask, decodedResponse, error)
-                    }
-                } catch {
+                // first check if the data coming in represents the new payment types api error before trying to parse the data into the expected model
+                if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .fragmentsAllowed),
+                   let newErrorModel:NewAPIErrorModel = try? .init(data: jsonData) {
+                    // Then the backend responded with a new error model we need to fail now :)
+                    let error:Error = newErrorModel.description()
                     // Failure case serialization
                     tapLoggingResponseModel = .init(headers: headersString, error_code: "Serialization", error_message: error.localizedDescription, error_description: error.debugDescription, body: bodySting)
                     
                     DispatchQueue.main.async {
                         completion?(dataTask, jsonObject, error)
+                    }
+                }else{
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .fragmentsAllowed)
+                        let decodedResponse = try JSONDecoder().decode(codableType, from: jsonData)
+                        // Success case
+                        tapLoggingResponseModel = .init(headers: headersString, error_code: nil, error_message: nil, error_description: nil, body: bodySting)
+                        DispatchQueue.main.async {
+                            completion?(dataTask, decodedResponse, error)
+                        }
+                    } catch {
+                        // Failure case serialization
+                        tapLoggingResponseModel = .init(headers: headersString, error_code: "Serialization", error_message: error.localizedDescription, error_description: error.debugDescription, body: bodySting)
+                        
+                        DispatchQueue.main.async {
+                            completion?(dataTask, jsonObject, error)
+                        }
                     }
                 }
             }else {

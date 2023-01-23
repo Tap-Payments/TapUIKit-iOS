@@ -349,7 +349,7 @@
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
         "merchantLogoShadowRadius":12,
-        "merchantLogoShadowColor":"#00000054",
+        "merchantLogoShadowColor":"#54000000",
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
