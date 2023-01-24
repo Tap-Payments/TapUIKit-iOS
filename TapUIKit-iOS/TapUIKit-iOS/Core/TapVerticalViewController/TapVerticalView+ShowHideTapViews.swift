@@ -112,7 +112,7 @@ extension TapVerticalView {
             // Show the scanner hint view
             self?.attach(hintView: hintView, to: TapAmountSectionView.self,with: true)
             // Show the scanner view itself
-            self?.add(view: tapCardScannerView, with: [.init(for: .fadeIn)],shouldFillHeight: true)
+            self?.add(view: tapCardScannerView, with: [.init(for: .slideIn, with: 0.3, wait: 0.3)],shouldFillHeight: true)
         }
     }
     
@@ -127,7 +127,7 @@ extension TapVerticalView {
         // Kill the camera and garbage collect anything leaking from the scanner activity
         scannerView.killScanner()
         // Remove the scanner view
-        remove(view: scannerView, with: .init())
+        remove(view: scannerView, with: .init(for: .slideOut, with: 0.2))
         // Inform the amount section that now we are showing the default view, hence it changes the title and the action of the amount's action button
         changeTapAmountSectionStatus(to: .DefaultView)
         // Remove any hints view that were visible because of the scanner view if any
@@ -222,17 +222,17 @@ extension TapVerticalView {
     }
     
     /// Hide the action button fade out + height decrease
-    @objc  public func hideActionButton() {
+    @objc  public func hideActionButton(fadeInDuation:Double = 0.25, fadeInDelay:Double = 0) {
         tapActionButtonHeightConstraint.priority = .required
         tapActionButtonHeightConstraint.constant = 0
-        tapActionButton.fadeOut()
+        tapActionButton.fadeOut(duration: fadeInDuation, delay: fadeInDelay)
         tapActionButton.updateConstraints()
         
         powereByTapView.snp.remakeConstraints { make in
             make.height.equalTo(0)
         }
         
-        powereByTapView.fadeOut()
+        powereByTapView.fadeOut(duration: fadeInDuation, delay: fadeInDelay)
         powereByTapView.layoutIfNeeded()
         powereByTapView.updateConstraints()
         
