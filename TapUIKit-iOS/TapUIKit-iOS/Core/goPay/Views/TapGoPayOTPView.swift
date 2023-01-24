@@ -7,6 +7,9 @@
 //
 
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
+import TapAdditionsKitV2
+
 /// External protocol to allow the TapGoPayOTPView to pass back data and events to the parent UIViewControlle
 @objc public protocol TapGoPayOTPViewProtocol {
     /// Will be fired once the user asks to change the phone written in the previous step
@@ -73,7 +76,7 @@ import TapThemeManager2020
      */
     @objc public func setup(with phone:String,expires after:Int,hintViewStatus:TapHintViewStatusEnum = .GoPayOtp) {
         // Adjust the Hint view
-        setupHintView(with: hintViewStatus, and: phone)
+        setupHintView(with: hintViewStatus, and: TapLocalisationManager.shared.localisationLocale == "ar" ? phone.replacingOccurrences(of: " ", with: "") : phone)
         // Adjust the otpview itself
         otpViewModel.delegate = self
         otpViewModel.updateTimer(minutes: 0, seconds: after)

@@ -80,6 +80,9 @@ import TapCardVlidatorKit_iOS
     /// Indicates whether or not to show scan a card functionality
     @objc public var showScanner:Bool = true
     
+    ///  Decide whether to show the normal card header or we need to add OR before the card title
+    @objc public var cardHeaderType:TapHorizontalHeaderType = .CardInputTitle
+    
     /// Indicates if the saved card switch is activated for Merchant
     @objc public var isMerchantSaveAllowed:Bool {
         return attachedView.saveCrdView.saveCardSwitch.isOn
@@ -177,7 +180,7 @@ import TapCardVlidatorKit_iOS
     @objc public func setCard(with card:TapCard,then focusCardNumber:Bool,shouldRemoveCurrentCard:Bool = true,for cardUIStatus:CardInputUIStatus) {
         tapCardTelecomPaymentView?.lastReportedTapCard = card
         tapCardTelecomPaymentView?.cardInputView.setCardData(tapCard: card, then: focusCardNumber,shouldRemoveCurrentCard:shouldRemoveCurrentCard,for: cardUIStatus)
-        tapCardTelecomPaymentView?.headerView.headerType = (cardUIStatus == .SavedCard) ? .SaveCardInputTitle : .CardInputTitle
+        tapCardTelecomPaymentView?.headerView.headerType = (cardUIStatus == .SavedCard) ? .SaveCardInputTitle : self.cardHeaderType
     }
     
     

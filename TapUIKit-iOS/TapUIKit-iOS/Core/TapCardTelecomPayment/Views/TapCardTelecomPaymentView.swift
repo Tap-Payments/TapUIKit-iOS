@@ -275,7 +275,7 @@ import TapThemeManager2020
     /// Used to reset all segment selections and input fields upon changing the data source
     private func clearViews() {
         // Adjust the header view
-        headerView.headerType = .CardInputTitle
+        headerView.headerType = viewModel?.cardHeaderType ?? .CardInputTitle
         // Reset the card input
         cardInputView.reset()
         // Re init the card input
@@ -324,7 +324,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
     
     public func closeSavedCard() {
         viewModel?.delegate?.closeSavedCardClicked()
-        headerView.headerType = .CardInputTitle
+        headerView.headerType = viewModel?.cardHeaderType ?? .CardInputTitle
     }
     
     public func heightChanged() {
