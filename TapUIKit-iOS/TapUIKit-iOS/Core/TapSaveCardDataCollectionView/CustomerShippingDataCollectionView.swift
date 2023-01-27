@@ -20,18 +20,20 @@ import TapThemeManager2020
     @IBOutlet var contentView: UIView!
     /// The contact details collection section header view
     @IBOutlet weak var headerView: TapHorizontalHeaderView!
-    /// The view that holds the data fields to be collected from the user
-    @IBOutlet weak var fieldsContainerView: UIStackView!
-    /// The field responsible for collecting the email of the user
+    /// The view that holds the fields we will collect from the user
+    @IBOutlet weak var fieldsContainerView: UIView!
+    /// The field responsible for collecting the flat of the user
     @IBOutlet weak var flatTextField: UITextField!
-    /// View that holds needed UI elements to collect the phone form the user
-    @IBOutlet weak var phoneEntryContainerView: UIView!
-    /// The field responsible for collecting the phone of the user
-    @IBOutlet weak var phoneEmailSeparator: TapSeparatorView!
-    /// The field responsible for collecting the phone of the user
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    /// Represents the label that displays the selected country code
-    @IBOutlet weak var phoneCountryCodeLabel: UILabel!
+    /// The field responsible for collecting the additiona line of user shipping details of the user
+    @IBOutlet weak var additionalLineTextField: UITextField!
+    /// The field responsible for collecting the city of the user
+    @IBOutlet weak var cityTextField: UITextField!
+    /// Represents the label that displays the selected country name
+    @IBOutlet weak var countryNameLabel: UILabel!
+    /// Represents the label that displays the selected country flag
+    @IBOutlet weak var countryFlagImageView: UIImageView!
+    /// Indicates that the user can select from the countries list
+    @IBOutlet weak var countryDropDownArrowImageView: UIImageView!
     /// Holds all the textfields we will collect data with
     @IBOutlet var textFields: [UITextField]!
     /// Popup dialog to select the country code picker
@@ -71,52 +73,35 @@ import TapThemeManager2020
         self.contentView = setupXIB()
         applyTheme()
         localize()
-        updateHeight()
+        assignDelegates()
+        adjustHeight()
     }
     
-    /// Used to set the height of the view based on the visibility of the fields to be collected
-    internal func updateHeight() {
-        guard let viewModel = viewModel else {
-            return
+    /// Adjusts the view and the sub views heights
+    private func adjustHeight() {
+        // Assign the height for the text fields
+        textFields.forEach{ $0.snp.remakeConstraints { make in
+                make.height.equalTo(48)
+            }
         }
         
-        // Height for fields
-        let heightForFields:CGFloat = viewModel.requiredHeightForFieldsContainer()// + 8
-        // Height for the view as a whole
-        let heightForView:CGFloat = viewModel.requiredHeight()
-        
-        // If none of the fields to be displayed, then we will not show the whole section,
-        // Othwerise, we will compute the needed height based on the above calculated values
+        // Assing the height for the fields container view
         fieldsContainerView.snp.remakeConstraints { make in
-            make.height.equalTo(heightForFields)
+            make.height.equalTo(195)
         }
-        snp.remakeConstraints { make in
-            make.height.equalTo(heightForView)
+        
+        // The height for the whole view
+        snp.remakeConstraints{ make in
+            make.height.equalTo(240)
         }
+        
         fieldsContainerView.layoutIfNeeded()
         layoutIfNeeded()
     }
     
-    
-    /// Used to reload the phone field data from the view model
-    internal func reloadPhone() {
-        guard let viewModel = viewModel,
-              let countryCode = viewModel.selectedCountry.code else {
-            return
-        }
-        
-        phoneCountryCodeLabel.text = "+\(countryCode)"
-        phoneNumberTextField.text = ""
-    }
-    
-    /// Will be called once the country code picker button is clicked
-    @IBAction func countryCodePickerClicked(_ sender: Any) {
-        // Confirm there is a view model
-        guard let viewModel = viewModel else {
-            return
-        }
-        // Inform the view model abput the click event
-        viewModel.countryPickerClicked()
+    /// Assigns the text fields delegates to self
+    private func assignDelegates() {
+        textFields.forEach{ $0.delegate = self }
     }
     
     /// Used to localize and force UI directions based on the locale
@@ -135,11 +120,6 @@ import TapThemeManager2020
         contentView.semanticContentAttribute = correctSemanticContent
         // Adjust all the subviews marked to be localized based on direction
         toBeLocalizedViews.forEach{ $0.semanticContentAttribute = correctSemanticContent }
-        
-        phoneNumberTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
-        emailTextField.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
-        emailTextField.autocorrectionType = .no
-        emailTextField.delegate = self
     }
     
     /// Now time to set localized string representations for the corresponding views
@@ -147,54 +127,11 @@ import TapThemeManager2020
         
         let placeHolderColor:UIColor = TapThemeManager.colorValue(for: "\(themePath).textfields.placeHolderColor") ?? .black
         
-        emailTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "Common.email", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+        flatTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.flatPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
         
-        phoneNumberTextField.attributedPlaceholder = .init(string: "50 000 000", attributes: [.foregroundColor : placeHolderColor])
-    }
-    
-    /// Adjusts the height for the text fields based on the data from the view model
-    fileprivate func adjustFieldsHeight(_ viewModel: CustomerContactDataCollectionViewModel) {
-        // Adjust the email text field height
-        emailTextField.snp.remakeConstraints { make in
-            make.height.equalTo(viewModel.toBeCollectedData.contains(.email) ? 48 : 0)
-        }
+        additionalLineTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.additionalLinePlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
         
-        // Adjust the phone text field height
-        phoneEntryContainerView.snp.remakeConstraints { make in
-            make.height.equalTo(viewModel.toBeCollectedData.contains(.phone) ? 48 : 0)
-        }
-        
-        emailTextField.layoutIfNeeded()
-        phoneEntryContainerView.layoutIfNeeded()
-    }
-    
-    /// Adjust the visbility of the fields to be collected
-    fileprivate func UpdateViewsVisibility(_ viewModel: CustomerContactDataCollectionViewModel) {
-        /*emailTextField.isHidden = !viewModel.toBeCollectedData.contains(.email)
-         phoneEntryContainerView.isHidden = !viewModel.toBeCollectedData.contains(.phone)*/
-        
-        
-        if !viewModel.toBeCollectedData.contains(.email) {
-            fieldsContainerView.removeArrangedSubview(emailTextField)
-            emailTextField.removeFromSuperview()
-        }
-        
-        if !viewModel.toBeCollectedData.contains(.phone) {
-            fieldsContainerView.removeArrangedSubview(phoneEntryContainerView)
-            phoneEntryContainerView.removeFromSuperview()
-        }
-        
-        // If phpne field is not visibile, hence we don't need the separator that splits the fields
-        phoneEmailSeparator.isHidden = emailTextField.isHidden
-    }
-    
-    /// To be called from the view model to update the visibilty of the text fields
-    internal func showHideViews() {
-        guard let viewModel = viewModel else { return }
-        // Adjusts the height for the text fields based on the data from the view model
-        adjustFieldsHeight(viewModel)
-        // Adjust the visbility of the fields to be collected
-        UpdateViewsVisibility(viewModel)
+        cityTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cityPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
     }
     
 }
@@ -205,8 +142,7 @@ extension CustomerShippingDataCollectionView {
     // Consolidated one point to apply all needed theme methods
     public func applyTheme() {
         matchThemeAttributes()
-        updateHeight()
-        headerView.headerType = .ContactDetailsHeader
+        headerView.headerType = .ShippingHeader
     }
     
     /// Match the UI attributes with the correct theming entries
@@ -229,18 +165,16 @@ extension CustomerShippingDataCollectionView {
         textFields.forEach { textField in
             textField.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.font")
             textField.tap_theme_textColor = .init(keyPath: "\(themePath).textfields.color")
+            
+            textField.setLeftPaddingPoints(12)
+            textField.setRightPaddingPoints(12)
         }
+        // The country name label
+        countryNameLabel.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.countryCodeLabelFont")
+        countryNameLabel.tap_theme_textColor = .init(keyPath: "\(themePath).textfields.color")
         
-        // Set textual insets and margins in the text fields
-        emailTextField.setLeftPaddingPoints(12)
-        emailTextField.setRightPaddingPoints(12)
-        
-        phoneNumberTextField.setLeftPaddingPoints(8)
-        phoneNumberTextField.setRightPaddingPoints(12)
-        
-        // The phone country label
-        phoneCountryCodeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.countryCodeLabelFont")
-        phoneCountryCodeLabel.tap_theme_textColor = .init(keyPath: "\(themePath).textfields.color")
+        // country drop down arrow icon
+        countryDropDownArrowImageView.tap_theme_tintColor = .init(keyPath: "\(themePath).textfields.color")
         
         layoutIfNeeded()
     }
@@ -256,10 +190,12 @@ extension CustomerShippingDataCollectionView {
 
 extension CustomerShippingDataCollectionView:UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            phoneNumberTextField.becomeFirstResponder()
-        }else if textField == phoneNumberTextField {
-            phoneNumberTextField.resignFirstResponder()
+        if textField == flatTextField {
+            additionalLineTextField.becomeFirstResponder()
+        }else if textField == additionalLineTextField {
+            cityTextField.becomeFirstResponder()
+        }else if textField == cityTextField {
+            cityTextField.resignFirstResponder()
         }
         return true
     }

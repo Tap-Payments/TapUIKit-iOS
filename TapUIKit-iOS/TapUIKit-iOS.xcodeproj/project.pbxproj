@@ -106,6 +106,7 @@
 		E8437FB824C05FEE0059F1B8 /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437FB724C05FEE0059F1B8 /* OTPViewController.swift */; };
 		E8437FBA24C073940059F1B8 /* TapGoPayOTPView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437FB924C073940059F1B8 /* TapGoPayOTPView.xib */; };
 		E8437FBC24C074A90059F1B8 /* TapGoPayOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437FBB24C074A90059F1B8 /* TapGoPayOTPView.swift */; };
+		E863D5122983C3DB009489AC /* CustomerShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D5112983C3DB009489AC /* CustomerShippingViewController.swift */; };
 		E866AC4028E5751B00D80568 /* PoweredByTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866AC3F28E5751B00D80568 /* PoweredByTapView.swift */; };
 		E866AC4328E5753900D80568 /* PoweredByTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E866AC4228E5753900D80568 /* PoweredByTapView.xib */; };
 		E866AC4628E5865E00D80568 /* TapSaveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866AC4528E5865E00D80568 /* TapSaveCardView.swift */; };
@@ -346,6 +347,7 @@
 		E8437FB724C05FEE0059F1B8 /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		E8437FB924C073940059F1B8 /* TapGoPayOTPView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayOTPView.xib; sourceTree = "<group>"; };
 		E8437FBB24C074A90059F1B8 /* TapGoPayOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayOTPView.swift; sourceTree = "<group>"; };
+		E863D5112983C3DB009489AC /* CustomerShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerShippingViewController.swift; sourceTree = "<group>"; };
 		E866AC3F28E5751B00D80568 /* PoweredByTapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoweredByTapView.swift; sourceTree = "<group>"; };
 		E866AC4228E5753900D80568 /* PoweredByTapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoweredByTapView.xib; sourceTree = "<group>"; };
 		E866AC4528E5865E00D80568 /* TapSaveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSaveCardView.swift; sourceTree = "<group>"; };
@@ -1121,6 +1123,7 @@
 			isa = PBXGroup;
 			children = (
 				E89B3A9F2913D2630094E1D9 /* CustomerDataViewController.swift */,
+				E863D5112983C3DB009489AC /* CustomerShippingViewController.swift */,
 			);
 			path = CustomerDataViewController;
 			sourceTree = "<group>";
@@ -1743,6 +1746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8437FB824C05FEE0059F1B8 /* OTPViewController.swift in Sources */,
+				E863D5122983C3DB009489AC /* CustomerShippingViewController.swift in Sources */,
 				E8428DF82456DB3200D5A45A /* ViewController.swift in Sources */,
 				E8437F9B24BF2B5B0059F1B8 /* GoPayPasswordViewController.swift in Sources */,
 				E8861D40249FA8C20002FEDE /* ItemCellViewController.swift in Sources */,

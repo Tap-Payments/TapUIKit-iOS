@@ -11,7 +11,10 @@
             "emailPlaceHolder": "email@email.com",
             "weSupport":"WE ACCEPT",
             "cardSectionTitle": "CARD INFORMATION",
-            "savedCardSectionTitle": "SAVED CARD"
+            "savedCardSectionTitle": "SAVED CARD",
+            "flatPlaceHolder": "Flat or building number",
+            "additionalLinePlaceHolder": "Additional line",
+            "cityPlaceHolder": "City"
         },
         "TapAsyncSection": {
             "paymentProgressLabel": "Payment in progress",
@@ -173,7 +176,10 @@
             "emailPlaceHolder": "email@email.com",
             "weSupport":"نحن ندعم",
             "cardSectionTitle": "بيانات البطاقة",
-            "savedCardSectionTitle": "البطاقة المحفوظة"
+            "savedCardSectionTitle": "البطاقة المحفوظة",
+            "flatPlaceHolder": "رقم الشقة أو المبنى",
+            "additionalLinePlaceHolder": "بيانات إضافية",
+            "cityPlaceHolder": "المدينة"
         },
         "TapAsyncSection": {
             "paymentProgressLabel": "العملية قد التنفيذ",
