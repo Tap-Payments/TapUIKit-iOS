@@ -147,6 +147,8 @@
 		E893B77728D1ED8B000E0348 /* TapLoyaltyAmountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E893B77628D1ED8B000E0348 /* TapLoyaltyAmountView.xib */; };
 		E893B77928D314A1000E0348 /* TapLoyaltyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893B77828D314A0000E0348 /* TapLoyaltyFooterView.swift */; };
 		E893B77B28D314AA000E0348 /* TapLoyaltyFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E893B77A28D314AA000E0348 /* TapLoyaltyFooterView.xib */; };
+		E898450A2981030C00436499 /* CustomerShippingDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89845092981030C00436499 /* CustomerShippingDataCollectionView.swift */; };
+		E898450C2981036400436499 /* CustomerShippingDataCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E898450B2981036400436499 /* CustomerShippingDataCollectionView.xib */; };
 		E89B3A8F2911177C0094E1D9 /* CustomerDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3A8E2911177C0094E1D9 /* CustomerDataCollectionView.swift */; };
 		E89B3A91291117880094E1D9 /* CustomerDataCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B3A90291117880094E1D9 /* CustomerDataCollectionView.xib */; };
 		E89B3A95291252470094E1D9 /* CustomerContactDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3A94291252470094E1D9 /* CustomerContactDataCollectionView.swift */; };
@@ -384,6 +386,8 @@
 		E893B77628D1ED8B000E0348 /* TapLoyaltyAmountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapLoyaltyAmountView.xib; sourceTree = "<group>"; };
 		E893B77828D314A0000E0348 /* TapLoyaltyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLoyaltyFooterView.swift; sourceTree = "<group>"; };
 		E893B77A28D314AA000E0348 /* TapLoyaltyFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapLoyaltyFooterView.xib; sourceTree = "<group>"; };
+		E89845092981030C00436499 /* CustomerShippingDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerShippingDataCollectionView.swift; sourceTree = "<group>"; };
+		E898450B2981036400436499 /* CustomerShippingDataCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerShippingDataCollectionView.xib; sourceTree = "<group>"; };
 		E89B3A8E2911177C0094E1D9 /* CustomerDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDataCollectionView.swift; sourceTree = "<group>"; };
 		E89B3A90291117880094E1D9 /* CustomerDataCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerDataCollectionView.xib; sourceTree = "<group>"; };
 		E89B3A94291252470094E1D9 /* CustomerContactDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerContactDataCollectionView.swift; sourceTree = "<group>"; };
@@ -828,6 +832,7 @@
 				E89B3A96291252520094E1D9 /* CustomerContactDataCollectionView.xib */,
 				E89B3AAA291BCBCD0094E1D9 /* CountryPickerTableView.xib */,
 				E89B3AB0291CECC30094E1D9 /* TapUIKitStoryboard.storyboard */,
+				E898450B2981036400436499 /* CustomerShippingDataCollectionView.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1107,6 +1112,7 @@
 				E89B3A8E2911177C0094E1D9 /* CustomerDataCollectionView.swift */,
 				E89B3A94291252470094E1D9 /* CustomerContactDataCollectionView.swift */,
 				E89B3A9C2913C0740094E1D9 /* CustomerContactDataCollectionViewModel.swift */,
+				E89845092981030C00436499 /* CustomerShippingDataCollectionView.swift */,
 			);
 			path = TapSaveCardDataCollectionView;
 			sourceTree = "<group>";
@@ -1488,6 +1494,7 @@
 				E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */,
 				E8437F6824BE07860059F1B8 /* SpaceView.xib in Resources */,
 				E893B77728D1ED8B000E0348 /* TapLoyaltyAmountView.xib in Resources */,
+				E898450C2981036400436499 /* CustomerShippingDataCollectionView.xib in Resources */,
 				E82A56C8249B8A2100E3F00D /* CurrencyChipCollectionViewCell.xib in Resources */,
 				E8428E142457FDFC00D5A45A /* DefaultDarkTheme.json in Resources */,
 				E8E92B44248F7ACA00DD7DBB /* TapDragHandlerView.xib in Resources */,
@@ -1720,6 +1727,7 @@
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
 				E89B3AA9291BCBB20094E1D9 /* CountryPickerTableView.swift in Sources */,
 				E8437F6B24BE083E0059F1B8 /* KeyboardHelper.swift in Sources */,
+				E898450A2981030C00436499 /* CustomerShippingDataCollectionView.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
 				E8437F6A24BE07900059F1B8 /* SpaceView.swift in Sources */,
 				E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */,
