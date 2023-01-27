@@ -12,6 +12,7 @@ import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
 import SnapKit
 import TapThemeManager2020
+import FlagKit
 
 /// Defines the View used to display the fields data collection for customer when saving a card for tap
 @objc public class CustomerShippingDataCollectionView: UIView {
@@ -75,6 +76,7 @@ import TapThemeManager2020
         localize()
         assignDelegates()
         adjustHeight()
+        reloadCountryDetails()
     }
     
     /// Adjusts the view and the sub views heights
@@ -97,6 +99,15 @@ import TapThemeManager2020
         
         fieldsContainerView.layoutIfNeeded()
         layoutIfNeeded()
+    }
+    
+    /// reload the country details
+    internal func reloadCountryDetails() {
+        let country:TapCountry = .init(nameAR: "مصر", nameEN: "EGYPT", code: "+20")
+        let countryCode:TapCountryCode = .EG
+        
+        countryNameLabel.text = country.nameEN
+        countryFlagImageView.image = Flag(countryCode: countryCode.rawValue)!.originalImage
     }
     
     /// Assigns the text fields delegates to self

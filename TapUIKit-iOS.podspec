@@ -143,6 +143,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'McPicker'
   spec.dependency 'EasyTipView'
   spec.dependency 'NBBottomSheet'
+  spec.dependency 'FlagKit'
 
   spec.pod_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
