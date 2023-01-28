@@ -54,7 +54,8 @@
             "cornerRadius": 8,
             "borderWidth": 0,
             "itemSpacing": 5,
-            "cvvPlaceHolder": "dark-cvv",
+            "cvvPlaceHolder": "cvv",
+            "savedCardCvvUnderLineColor": "#CFCFCF",
             "shadow":{
                 "color": "black30",
                 "radius": 8,
@@ -69,7 +70,7 @@
             "width": 32,
             "tint": "cardPlaceHolder"
         },
-        "closeSavedCardIcon" : "closeSavedCardInputIcon",
+        "closeSavedCardIcon" : "closeSavedCardInputIconArrow",
         "scanImage": {
             "image": "scanIcon",
             "selected": "selectedScan",
@@ -723,7 +724,7 @@
         },
         "BackgroundColor": {
             "Otp" : "clear",
-            "default" : "whiteTwo"
+            "default" : "clear"
         }
     },
     "TapOtpView": {

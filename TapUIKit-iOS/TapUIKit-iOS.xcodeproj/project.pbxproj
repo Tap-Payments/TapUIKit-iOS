@@ -1155,7 +1155,6 @@
 			isa = PBXGroup;
 			children = (
 				E863D5152984FB62009489AC /* CountrySelection */,
-				E89B3AA1291A67080094E1D9 /* CountryCodeSelection */,
 				E89B3A8E2911177C0094E1D9 /* CustomerDataCollectionView.swift */,
 				E89B3A94291252470094E1D9 /* CustomerContactDataCollectionView.swift */,
 				E89B3A9C2913C0740094E1D9 /* CustomerContactDataCollectionViewModel.swift */,
@@ -1172,13 +1171,6 @@
 				E863D5112983C3DB009489AC /* CustomerShippingViewController.swift */,
 			);
 			path = CustomerDataViewController;
-			sourceTree = "<group>";
-		};
-		E89B3AA1291A67080094E1D9 /* CountryCodeSelection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CountryCodeSelection;
 			sourceTree = "<group>";
 		};
 		E8BE3FAD24B60F6D00F15C41 /* TapCardTelecomPayment */ = {
