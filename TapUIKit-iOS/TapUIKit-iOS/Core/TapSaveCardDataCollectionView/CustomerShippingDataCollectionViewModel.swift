@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 import CommonDataModelsKit_iOS
-
+import TapThemeManager2020
 
 
 /// The view model that controls the customer shipping data collection view
@@ -78,8 +78,13 @@ import CommonDataModelsKit_iOS
 
 extension CustomerShippingDataCollectionViewModel: CountryPickerDelegate {
     public func countryPicker(didSelect country: Country) {
-        selectedCountry = try? TapCountry.getCountryDetails(fromEnums: [TapCountryCode(from: country.isoCode)]).first
-        customerShippingDataCollectionView?.reloadCountryDetails()
+        do {
+            let countryModel = try TapCountry.getCountryDetails(fromEnums: [TapCountryCode(from: country.isoCode)]).first
+            selectedCountry = countryModel
+            customerShippingDataCollectionView?.reloadCountryDetails()
+        }catch{
+            
+        }
     }
     
 }
