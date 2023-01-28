@@ -31,7 +31,8 @@ class ExampleWallOfGloryViewController: UIViewController {
     let tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init()
     var tapCardPhoneListDataSource:[TapCardPhoneIconViewModel] = []
     let goPayBarViewModel:TapGoPayLoginBarViewModel = .init(countries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10),.init(nameAR: "البحرين", nameEN: "Bahrain", code: "973", phoneLength: 8)])
-    let customerDataViewModel = CustomerContactDataCollectionViewModel.init(toBeCollectedData: [.email,.phone], allowedCountries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10)], selectedCountry: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+    let customerDataViewModel = CustomerContactDataCollectionViewModel.init(toBeCollectedData: [.email,.phone], allowedCountries: [.EG,.KW,.SA,.BH,.AE,.OM,.QA,.JO,.LB], selectedCountry: .EG)
+    let customerDataShippingViewModel = CustomerShippingDataCollectionViewModel.init(allowedCountries: [.EG,.KW,.SA,.BH,.AE,.OM,.QA,.JO,.LB], selectedCountry: .EG)
     let tapActionButtonViewModel: TapActionButtonViewModel = .init()
     var tapCardTelecomPaymentViewModel: TapCardTelecomPaymentViewModel = .init()
     var tapSaveCardSwitchViewModel: TapSwitchViewModel = .init(with: .invalidCard, merchant: "jazeera airways", whichSwitchesToShow: .all)
@@ -445,7 +446,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
             let payAction:()->() = { self.startPayment(then:false) }
             tapActionButtonViewModel.buttonActionBlock = payAction
             tapSaveCardSwitchViewModel.cardState = .validCard
-            tapVerticalView.add(views: [customerDataViewModel.attachedView], with: [.init(for: .fadeIn)])
+            tapVerticalView.add(views: [customerDataViewModel.attachedView, customerDataShippingViewModel.attachedView], with: [.init(for: .fadeIn)])
         }else{
             tapActionButtonViewModel.buttonStatus = .InvalidPayment
             tapActionButtonViewModel.buttonActionBlock = {}

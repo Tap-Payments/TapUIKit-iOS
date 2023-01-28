@@ -107,6 +107,18 @@
 		E8437FBA24C073940059F1B8 /* TapGoPayOTPView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8437FB924C073940059F1B8 /* TapGoPayOTPView.xib */; };
 		E8437FBC24C074A90059F1B8 /* TapGoPayOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8437FBB24C074A90059F1B8 /* TapGoPayOTPView.swift */; };
 		E863D5122983C3DB009489AC /* CustomerShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D5112983C3DB009489AC /* CustomerShippingViewController.swift */; };
+		E863D5142984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D5132984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift */; };
+		E863D52429850AB3009489AC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D51B29850AB1009489AC /* UIView+Extension.swift */; };
+		E863D52529850AB3009489AC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D51C29850AB1009489AC /* String+Extension.swift */; };
+		E863D52629850AB3009489AC /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D51D29850AB1009489AC /* UIStackView+Extension.swift */; };
+		E863D52729850AB3009489AC /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D51E29850AB1009489AC /* CountryManager.swift */; };
+		E863D52829850AB3009489AC /* CountryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D51F29850AB2009489AC /* CountryPickerCell.swift */; };
+		E863D52929850AB3009489AC /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D52029850AB2009489AC /* Country.swift */; };
+		E863D52A29850AB3009489AC /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D52129850AB2009489AC /* CountryPickerViewController.swift */; };
+		E863D52B29850AB3009489AC /* ColorCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D52229850AB3009489AC /* ColorCompatibility.swift */; };
+		E863D52C29850AB3009489AC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D52329850AB3009489AC /* Config.swift */; };
+		E863D52E29850ADA009489AC /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = E863D52D29850ADA009489AC /* countries.json */; };
+		E863D53329850AE4009489AC /* 02Icons16X16Search.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E863D53129850AE4009489AC /* 02Icons16X16Search.pdf */; };
 		E866AC4028E5751B00D80568 /* PoweredByTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866AC3F28E5751B00D80568 /* PoweredByTapView.swift */; };
 		E866AC4328E5753900D80568 /* PoweredByTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E866AC4228E5753900D80568 /* PoweredByTapView.xib */; };
 		E866AC4628E5865E00D80568 /* TapSaveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866AC4528E5865E00D80568 /* TapSaveCardView.swift */; };
@@ -156,11 +168,8 @@
 		E89B3A97291252520094E1D9 /* CustomerContactDataCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B3A96291252520094E1D9 /* CustomerContactDataCollectionView.xib */; };
 		E89B3A9D2913C0740094E1D9 /* CustomerContactDataCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3A9C2913C0740094E1D9 /* CustomerContactDataCollectionViewModel.swift */; };
 		E89B3AA02913D2630094E1D9 /* CustomerDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3A9F2913D2630094E1D9 /* CustomerDataViewController.swift */; };
-		E89B3AA6291A78C10094E1D9 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3AA4291A78C10094E1D9 /* CountryCodeTableViewCell.swift */; };
 		E89B3AA7291A78C10094E1D9 /* CountryCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B3AA5291A78C10094E1D9 /* CountryCodeTableViewCell.xib */; };
-		E89B3AA9291BCBB20094E1D9 /* CountryPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3AA8291BCBB20094E1D9 /* CountryPickerTableView.swift */; };
 		E89B3AAB291BCBCD0094E1D9 /* CountryPickerTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89B3AAA291BCBCD0094E1D9 /* CountryPickerTableView.xib */; };
-		E89B3AAE291CE9760094E1D9 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89B3AAC291CE9760094E1D9 /* CountryPickerViewController.swift */; };
 		E89B3AB1291CECC30094E1D9 /* TapUIKitStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89B3AB0291CECC30094E1D9 /* TapUIKitStoryboard.storyboard */; };
 		E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A57AA224A9B27E00C1B6CD /* TapCardPhoneBarList.swift */; };
 		E8A57AA524A9B28900C1B6CD /* TapCardPhoneBarList.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A57AA424A9B28900C1B6CD /* TapCardPhoneBarList.xib */; };
@@ -348,6 +357,18 @@
 		E8437FB924C073940059F1B8 /* TapGoPayOTPView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapGoPayOTPView.xib; sourceTree = "<group>"; };
 		E8437FBB24C074A90059F1B8 /* TapGoPayOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGoPayOTPView.swift; sourceTree = "<group>"; };
 		E863D5112983C3DB009489AC /* CustomerShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerShippingViewController.swift; sourceTree = "<group>"; };
+		E863D5132984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerShippingDataCollectionViewModel.swift; sourceTree = "<group>"; };
+		E863D51B29850AB1009489AC /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E863D51C29850AB1009489AC /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		E863D51D29850AB1009489AC /* UIStackView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		E863D51E29850AB1009489AC /* CountryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
+		E863D51F29850AB2009489AC /* CountryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerCell.swift; sourceTree = "<group>"; };
+		E863D52029850AB2009489AC /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		E863D52129850AB2009489AC /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
+		E863D52229850AB3009489AC /* ColorCompatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCompatibility.swift; sourceTree = "<group>"; };
+		E863D52329850AB3009489AC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		E863D52D29850ADA009489AC /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		E863D53129850AE4009489AC /* 02Icons16X16Search.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 02Icons16X16Search.pdf; sourceTree = "<group>"; };
 		E866AC3F28E5751B00D80568 /* PoweredByTapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoweredByTapView.swift; sourceTree = "<group>"; };
 		E866AC4228E5753900D80568 /* PoweredByTapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoweredByTapView.xib; sourceTree = "<group>"; };
 		E866AC4528E5865E00D80568 /* TapSaveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSaveCardView.swift; sourceTree = "<group>"; };
@@ -396,11 +417,8 @@
 		E89B3A96291252520094E1D9 /* CustomerContactDataCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerContactDataCollectionView.xib; sourceTree = "<group>"; };
 		E89B3A9C2913C0740094E1D9 /* CustomerContactDataCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerContactDataCollectionViewModel.swift; sourceTree = "<group>"; };
 		E89B3A9F2913D2630094E1D9 /* CustomerDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDataViewController.swift; sourceTree = "<group>"; };
-		E89B3AA4291A78C10094E1D9 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
 		E89B3AA5291A78C10094E1D9 /* CountryCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeTableViewCell.xib; sourceTree = "<group>"; };
-		E89B3AA8291BCBB20094E1D9 /* CountryPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerTableView.swift; sourceTree = "<group>"; };
 		E89B3AAA291BCBCD0094E1D9 /* CountryPickerTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryPickerTableView.xib; sourceTree = "<group>"; };
-		E89B3AAC291CE9760094E1D9 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		E89B3AB0291CECC30094E1D9 /* TapUIKitStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TapUIKitStoryboard.storyboard; sourceTree = "<group>"; };
 		E8A0566124CDA96400D54A68 /* TapApplePayKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TapApplePayKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A57AA224A9B27E00C1B6CD /* TapCardPhoneBarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardPhoneBarList.swift; sourceTree = "<group>"; };
@@ -770,6 +788,8 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E863D53129850AE4009489AC /* 02Icons16X16Search.pdf */,
+				E863D52D29850ADA009489AC /* countries.json */,
 				E88834AF2979CCF0006225E6 /* TapAsyncView.xib */,
 				E826ABA92970235C0074E55A /* Black-loader.gif */,
 				E89B3AA5291A78C10094E1D9 /* CountryCodeTableViewCell.xib */,
@@ -962,6 +982,30 @@
 			path = OTP;
 			sourceTree = "<group>";
 		};
+		E863D5152984FB62009489AC /* CountrySelection */ = {
+			isa = PBXGroup;
+			children = (
+				E863D52229850AB3009489AC /* ColorCompatibility.swift */,
+				E863D52329850AB3009489AC /* Config.swift */,
+				E863D52029850AB2009489AC /* Country.swift */,
+				E863D51E29850AB1009489AC /* CountryManager.swift */,
+				E863D51F29850AB2009489AC /* CountryPickerCell.swift */,
+				E863D52129850AB2009489AC /* CountryPickerViewController.swift */,
+				E863D51A29850AB1009489AC /* Extensions */,
+			);
+			path = CountrySelection;
+			sourceTree = "<group>";
+		};
+		E863D51A29850AB1009489AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E863D51B29850AB1009489AC /* UIView+Extension.swift */,
+				E863D51C29850AB1009489AC /* String+Extension.swift */,
+				E863D51D29850AB1009489AC /* UIStackView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E866AC4128E5751F00D80568 /* PoweredByTapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1110,11 +1154,13 @@
 		E89B3A8D291117570094E1D9 /* TapSaveCardDataCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E863D5152984FB62009489AC /* CountrySelection */,
 				E89B3AA1291A67080094E1D9 /* CountryCodeSelection */,
 				E89B3A8E2911177C0094E1D9 /* CustomerDataCollectionView.swift */,
 				E89B3A94291252470094E1D9 /* CustomerContactDataCollectionView.swift */,
 				E89B3A9C2913C0740094E1D9 /* CustomerContactDataCollectionViewModel.swift */,
 				E89845092981030C00436499 /* CustomerShippingDataCollectionView.swift */,
+				E863D5132984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift */,
 			);
 			path = TapSaveCardDataCollectionView;
 			sourceTree = "<group>";
@@ -1131,9 +1177,6 @@
 		E89B3AA1291A67080094E1D9 /* CountryCodeSelection */ = {
 			isa = PBXGroup;
 			children = (
-				E89B3AA8291BCBB20094E1D9 /* CountryPickerTableView.swift */,
-				E89B3AA4291A78C10094E1D9 /* CountryCodeTableViewCell.swift */,
-				E89B3AAC291CE9760094E1D9 /* CountryPickerViewController.swift */,
 			);
 			path = CountryCodeSelection;
 			sourceTree = "<group>";
@@ -1493,6 +1536,7 @@
 				E8CD428B249610240013AEE7 /* GatewayImageCollectionViewCell.xib in Resources */,
 				E8CD42862495F91B0013AEE7 /* TapChipHorizontalList.xib in Resources */,
 				E80C053F24C46B8400B12C00 /* 3sec-white-loader-2.gif in Resources */,
+				E863D52E29850ADA009489AC /* countries.json in Resources */,
 				6229B1AF24C486560019413A /* TapSwitchControl.xib in Resources */,
 				E82A56B32499ED7A00E3F00D /* SavedCardCollectionViewCell.xib in Resources */,
 				E8437F6824BE07860059F1B8 /* SpaceView.xib in Resources */,
@@ -1526,6 +1570,7 @@
 				E8E92B4E248FA4E900DD7DBB /* TapMerchantHeaderView.xib in Resources */,
 				E8AE0DF6245B0160007AAE1F /* TapRecentCardCollectionViewCell.xib in Resources */,
 				E8437F8924BEF7920059F1B8 /* TapGoPaySignInView.xib in Resources */,
+				E863D53329850AE4009489AC /* 02Icons16X16Search.pdf in Resources */,
 				E8C59101249293EA00E03424 /* TapAmountSectionView.xib in Resources */,
 				E8AE0DF2245AFED3007AAE1F /* TapGoPayCollectionViewCell.xib in Resources */,
 				E82A56C0249B295A00E3F00D /* ApplePayChipCollectionViewCell.xib in Resources */,
@@ -1645,10 +1690,12 @@
 				E8861D39249F74C20002FEDE /* TapGenericTableViewModel.swift in Sources */,
 				E82A56CA249B8A3C00E3F00D /* CurrencyChipViewModel.swift in Sources */,
 				E80E8AA52487C053009AF18F /* Constants.swift in Sources */,
+				E863D52929850AB3009489AC /* Country.swift in Sources */,
 				E866AC4628E5865E00D80568 /* TapSaveCardView.swift in Sources */,
 				E80C053524C437DC00B12C00 /* TapActionButtonViewModel.swift in Sources */,
 				E8437FB324C05E3E0059F1B8 /* TapOtpView.swift in Sources */,
 				E8F779AF248CD7C600215403 /* TapVerticalView.swift in Sources */,
+				E863D52529850AB3009489AC /* String+Extension.swift in Sources */,
 				E8E92B52248FA9BE00DD7DBB /* TapMerchantHeaderViewModel.swift in Sources */,
 				E89B3A95291252470094E1D9 /* CustomerContactDataCollectionView.swift in Sources */,
 				E871BAAD24D98A960005D477 /* TapCardTelecomPaymentViewModel.swift in Sources */,
@@ -1664,24 +1711,27 @@
 				E8437F5C24BC93CF0059F1B8 /* TapHintView.swift in Sources */,
 				6229B1B824C5DEF10019413A /* TapSwitchModel.swift in Sources */,
 				E87E09E024A878BC004A7A46 /* TapCardPhoneIconView.swift in Sources */,
+				E863D52629850AB3009489AC /* UIStackView+Extension.swift in Sources */,
 				E8A57AA324A9B27E00C1B6CD /* TapCardPhoneBarList.swift in Sources */,
 				625503DB24CEB57A00D82682 /* TapSwitchCardStateEnum.swift in Sources */,
 				E866AC4A28E6C50700D80568 /* TapInternalSaveCard.swift in Sources */,
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
 				627E3CD924D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift in Sources */,
 				E8CD347C28D07B4A0093DA26 /* TapLoyaltyViewModel.swift in Sources */,
+				E863D52A29850AB3009489AC /* CountryPickerViewController.swift in Sources */,
 				6225550424C8721A00A6FBDC /* TapAuthenticate.swift in Sources */,
+				E863D52B29850AB3009489AC /* ColorCompatibility.swift in Sources */,
 				E8437F7024BE16A10059F1B8 /* TapGoPayTitleViewModel.swift in Sources */,
 				E82A56BF249B295A00E3F00D /* ApplePayChipCollectionViewCell.swift in Sources */,
 				E80C053324C423C300B12C00 /* TapActionButtonStatusEnum.swift in Sources */,
 				E8437FBC24C074A90059F1B8 /* TapGoPayOTPView.swift in Sources */,
 				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
-				E89B3AA6291A78C10094E1D9 /* CountryCodeTableViewCell.swift in Sources */,
 				E893B76F28D0F969000E0348 /* TapLoyaltyHeaderView.swift in Sources */,
 				E8437F7C24BEC79F0059F1B8 /* TapGoPayLoginBarView.swift in Sources */,
 				E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */,
 				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
 				E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */,
+				E863D52829850AB3009489AC /* CountryPickerCell.swift in Sources */,
 				E80C053924C438DD00B12C00 /* SwiftyGifManager.swift in Sources */,
 				E8CD42842495F9130013AEE7 /* TapChipHorizontalList.swift in Sources */,
 				E87E09E424A8840E004A7A46 /* TapCardPhoneIconViewModel.swift in Sources */,
@@ -1690,6 +1740,7 @@
 				E8BE3FB024B60F6D00F15C41 /* TapCardTelecomPaymentView.swift in Sources */,
 				E8437F8724BEF7840059F1B8 /* TapGoPaySignInView.swift in Sources */,
 				6229B1B524C5CE600019413A /* TapSwitchViewModel.swift in Sources */,
+				E863D52C29850AB3009489AC /* Config.swift in Sources */,
 				E82A56B52499EDA800E3F00D /* SavedCardCollectionViewCellModel.swift in Sources */,
 				6229B1AD24C486420019413A /* TapSwitchControl.swift in Sources */,
 				E8428E102457F8D900D5A45A /* TapUIExtensions.swift in Sources */,
@@ -1707,6 +1758,7 @@
 				E8A57AA724A9C16500C1B6CD /* TapCardPhoneBarListViewModel.swift in Sources */,
 				6229B1B124C49C1B0019413A /* TapSwitchView.swift in Sources */,
 				E893B77528D1ED7E000E0348 /* TapLoyaltyAmountView.swift in Sources */,
+				E863D52429850AB3009489AC /* UIView+Extension.swift in Sources */,
 				E87E09EA24A8C3BE004A7A46 /* TapBlackWhiteImage.swift in Sources */,
 				E87B3C6424C704BC00F1005A /* TapWebView.swift in Sources */,
 				E8437FB124C05E3E0059F1B8 /* TapOtpViewModel.swift in Sources */,
@@ -1721,14 +1773,14 @@
 				E8437F8B24BEFE080059F1B8 /* GoPayLoginOptions.swift in Sources */,
 				E8437F7224BE19260059F1B8 /* TapGoPayTitleView.swift in Sources */,
 				E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */,
-				E89B3AAE291CE9760094E1D9 /* CountryPickerViewController.swift in Sources */,
 				E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */,
 				E866AC4028E5751B00D80568 /* PoweredByTapView.swift in Sources */,
+				E863D52729850AB3009489AC /* CountryManager.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
+				E863D5142984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift in Sources */,
 				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,
 				E8437FB024C05E3E0059F1B8 /* TapOTPStateEnum.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
-				E89B3AA9291BCBB20094E1D9 /* CountryPickerTableView.swift in Sources */,
 				E8437F6B24BE083E0059F1B8 /* KeyboardHelper.swift in Sources */,
 				E898450A2981030C00436499 /* CustomerShippingDataCollectionView.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,

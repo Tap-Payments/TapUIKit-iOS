@@ -125,7 +125,9 @@
                 "titleLabelColor":"greyishBrown"
             },
             "countryTable":{
-                "backgroundColor":"white"
+                "backgroundColor":"white",
+                "titleFont" : "Roboto-Bold,24",
+                "titleColor" : "greyishBrown"
             }
         },
         "cornerRadius":8

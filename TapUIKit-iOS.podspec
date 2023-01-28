@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TapUIKit-iOS"
-  spec.version      = "1.0.104"
+  spec.version      = "1.0.105"
   spec.summary      = "A collection of inner Tap UI components generically developed to fit into any of Tap's apps."
 
   # This description is used to generate tags and improve search results.
@@ -142,7 +142,6 @@ Pod::Spec.new do |spec|
   spec.dependency "TapCardScanner-iOS"
   spec.dependency 'McPicker'
   spec.dependency 'EasyTipView'
-  spec.dependency 'NBBottomSheet'
   spec.dependency 'FlagKit'
 
   spec.pod_target_xcconfig = {

@@ -44,7 +44,7 @@ import FlagKit
     /// The theme pathe
     internal let themePath:String = "customerDataCollection"
     /// The view model
-    internal var viewModel:CustomerContactDataCollectionViewModel?
+    internal var viewModel:CustomerShippingDataCollectionViewModel?
     
     //MARK: - Init methods
     override init(frame: CGRect) {
@@ -63,7 +63,7 @@ import FlagKit
      Apply the needed setup and attach the passed view model
      - Parameter viewModel: The TapCardPhoneIconViewModel responsible for controlling this icon view
      */
-    @objc public func setupView(with viewModel:CustomerContactDataCollectionViewModel) {
+    @objc public func setupView(with viewModel:CustomerShippingDataCollectionViewModel) {
         self.viewModel = viewModel
     }
     
@@ -103,7 +103,7 @@ import FlagKit
     
     /// reload the country details
     internal func reloadCountryDetails() {
-        let country:TapCountry = .init(nameAR: "مصر", nameEN: "EGYPT", code: "+20")
+        guard let country:TapCountry = viewModel?.selectedCountry else { return }
         let countryCode:TapCountryCode = .EG
         
         countryNameLabel.text = country.nameEN
@@ -131,6 +131,8 @@ import FlagKit
         contentView.semanticContentAttribute = correctSemanticContent
         // Adjust all the subviews marked to be localized based on direction
         toBeLocalizedViews.forEach{ $0.semanticContentAttribute = correctSemanticContent }
+        // Adjust the text aligments
+        textFields.forEach{ $0.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left }
     }
     
     /// Now time to set localized string representations for the corresponding views
@@ -143,6 +145,16 @@ import FlagKit
         additionalLineTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.additionalLinePlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
         
         cityTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cityPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+    }
+    
+    /// Will be called once the country code picker button is clicked
+    @IBAction func countryCodePickerClicked(_ sender: Any) {
+        // Confirm there is a view model
+        guard let viewModel = viewModel else {
+            return
+        }
+        // Inform the view model abput the click event
+        viewModel.countryPickerClicked()
     }
     
 }

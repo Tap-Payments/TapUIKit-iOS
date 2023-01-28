@@ -12,11 +12,11 @@ import TapUIKit_iOS
 class CustomerShippingViewController: UIViewController {
 
     @IBOutlet weak var customerDataCollectionViw: CustomerShippingDataCollectionView!
-    //let customerDataViewModel = CustomerContactDataCollectionViewModel.init(toBeCollectedData: [.email], allowedCountries: [.init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8),.init(nameAR: "مصر", nameEN: "Egypt", code: "20", phoneLength: 10)], selectedCountry: .init(nameAR: "الكويت", nameEN: "Kuwait", code: "965", phoneLength: 8))
+    let customerDataViewModel = CustomerShippingDataCollectionViewModel.init(allowedCountries: TapCountryCode.allCases, selectedCountry: .EG)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //customerDataCollectionViw.setupView(with: customerDataViewModel)
+        customerDataCollectionViw.setupView(with: customerDataViewModel)
     }
 
     /*

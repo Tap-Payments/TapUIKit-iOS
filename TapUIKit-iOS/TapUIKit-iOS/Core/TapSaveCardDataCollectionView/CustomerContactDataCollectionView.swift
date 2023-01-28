@@ -100,7 +100,7 @@ import TapThemeManager2020
     /// Used to reload the phone field data from the view model
     internal func reloadPhone() {
         guard let viewModel = viewModel,
-              let countryCode = viewModel.selectedCountry.code else {
+              let countryCode = viewModel.selectedCountry?.code else {
             return
         }
         

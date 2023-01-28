@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="101010" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Az-ep-SXF">
-                        <rect key="frame" x="18" y="13.5" width="284" height="21"/>
+                        <rect key="frame" x="48" y="13.5" width="254" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,19 +31,29 @@
                             <constraint firstAttribute="height" constant="1" id="eaj-0V-X8u"/>
                         </constraints>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gbd-67-XrX">
+                        <rect key="frame" x="12" y="12.5" width="28" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="28" id="0Jl-on-7Ik"/>
+                            <constraint firstAttribute="height" constant="23" id="HXS-ys-ol9"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8Az-ep-SXF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CPR-qj-5Sg"/>
+                    <constraint firstItem="Gbd-67-XrX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="08c-xT-PLG"/>
+                    <constraint firstItem="8Az-ep-SXF" firstAttribute="centerY" secondItem="Gbd-67-XrX" secondAttribute="centerY" id="2kp-MK-IVZ"/>
                     <constraint firstAttribute="trailing" secondItem="8Az-ep-SXF" secondAttribute="trailing" constant="18" id="H8l-nY-itM"/>
+                    <constraint firstItem="8Az-ep-SXF" firstAttribute="leading" secondItem="Gbd-67-XrX" secondAttribute="trailing" constant="8" id="euz-R4-K4y"/>
                     <constraint firstItem="QV9-Bt-wtt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jeb-Nr-Doy"/>
-                    <constraint firstItem="8Az-ep-SXF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="nGd-UD-qsi"/>
                     <constraint firstAttribute="trailing" secondItem="QV9-Bt-wtt" secondAttribute="trailing" id="phC-bm-5gg"/>
                     <constraint firstAttribute="bottom" secondItem="QV9-Bt-wtt" secondAttribute="bottom" id="qEV-h3-qAk"/>
+                    <constraint firstItem="Gbd-67-XrX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="rtB-79-NYH"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="countryCodeLabel" destination="8Az-ep-SXF" id="DnX-UF-vhG"/>
+                <outlet property="countryFlagImageView" destination="Gbd-67-XrX" id="A9N-J6-aej"/>
                 <outlet property="separatorView" destination="QV9-Bt-wtt" id="PyY-Ik-tkz"/>
                 <outletCollection property="toBeLocalizedDirectionViews" destination="8Az-ep-SXF" collectionClass="NSMutableArray" id="CUv-Yb-cW4"/>
             </connections>

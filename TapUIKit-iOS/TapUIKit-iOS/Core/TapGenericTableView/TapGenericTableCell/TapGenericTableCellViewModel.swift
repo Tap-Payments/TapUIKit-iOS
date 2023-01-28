@@ -100,6 +100,7 @@ internal protocol TapCellViewModelDelegate {
     /// The cell that represents the items inside order/transaction
     case ItemTableCell = 0
     case CountryCodeCell = 1
+    case CountryCell = 2
     /**
      Defines what is the theme path to look for to customise a cell based on its type
      - Returns: The theme entry location inside the Theme json file
@@ -109,6 +110,8 @@ internal protocol TapCellViewModelDelegate {
         case .ItemTableCell:
             return "itemsList.item"
         case .CountryCodeCell:
+            return "itemsList.item"
+        case .CountryCell:
             return "itemsList.item"
         }
     }
@@ -123,6 +126,8 @@ internal protocol TapCellViewModelDelegate {
             return "ItemTableViewCell"
         case .CountryCodeCell:
             return "CountryCodeTableViewCell"
+        case .CountryCell:
+            return "CountryTableViewCell"
         }
     }
 }

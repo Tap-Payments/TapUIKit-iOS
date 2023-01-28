@@ -8,7 +8,7 @@
 
 import Foundation
 ///The Country Code shall contain a value as defined
-@objc public enum TapCountryCode: Int, RawRepresentable, CaseIterable {
+@objc public enum TapCountryCode: Int, RawRepresentable, CaseIterable, Codable {
    
     /// Andorra Country Code
         case AD
