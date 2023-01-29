@@ -33,6 +33,8 @@ import TapThemeManager2020
     @IBOutlet weak var phoneCountryCodeLabel: UILabel!
     /// Holds all the textfields we will collect data with
     @IBOutlet var textFields: [UITextField]!
+    /// Holds reference to the arrow dropdown image view
+    @IBOutlet weak var arrowDownImageView: UIImageView!
     /// Popup dialog to select the country code picker
     
     /// Holds the UIViews that needed to be RTL supported based on the selected locale
@@ -146,9 +148,9 @@ import TapThemeManager2020
         
         let placeHolderColor:UIColor = TapThemeManager.colorValue(for: "\(themePath).textfields.placeHolderColor") ?? .black
         
-        emailTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "Common.email", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+        emailTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "Common.email", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor, .font : TapThemeManager.fontValue(for: "\(themePath).textfields.font", shouldLocalise: true)!])
         
-        phoneNumberTextField.attributedPlaceholder = .init(string: "50 000 000", attributes: [.foregroundColor : placeHolderColor])
+        phoneNumberTextField.attributedPlaceholder = .init(string: "50 000 000", attributes: [.foregroundColor : placeHolderColor, .font : TapThemeManager.fontValue(for: "\(themePath).textfields.font", shouldLocalise: false)!])
     }
     
     /// Adjusts the height for the text fields based on the data from the view model
@@ -226,7 +228,7 @@ extension CustomerContactDataCollectionView {
         
         // The textfields
         textFields.forEach { textField in
-            textField.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.font")
+            textField.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.font", shouldLocalise: textField == phoneNumberTextField)
             textField.tap_theme_textColor = .init(keyPath: "\(themePath).textfields.color")
         }
         
@@ -238,8 +240,11 @@ extension CustomerContactDataCollectionView {
         phoneNumberTextField.setRightPaddingPoints(12)
         
         // The phone country label
-        phoneCountryCodeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.countryCodeLabelFont")
+        phoneCountryCodeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).textfields.countryCodeLabelFont", shouldLocalise: false)
         phoneCountryCodeLabel.tap_theme_textColor = .init(keyPath: "\(themePath).textfields.color")
+        
+        // country drop down arrow icon
+        arrowDownImageView.tap_theme_tintColor = .init(keyPath: "\(themePath).textfields.color")
         
         layoutIfNeeded()
     }

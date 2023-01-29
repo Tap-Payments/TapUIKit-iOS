@@ -28,8 +28,11 @@ import LocalisationManagerKit_iOS
     internal var configMaker = Config(
         countryNameTextColor: TapThemeManager.colorValue(for: "customerDataCollection.countryPicker.countryCell.titleLabelColor")!,
         countryNameTextFont: TapThemeManager.fontValue(for: "customerDataCollection.countryPicker.countryCell.titleLabelFont")!,
-        selectedCountryCodeBackgroundColor: .green, titleTextColor: TapThemeManager.colorValue(for: "customerDataCollection.countryPicker.countryTable.titleColor")!,
+        selectedCountryCodeBackgroundColor: .green,
+        closeButtonText: TapLocalisationManager.shared.localisedValue(for: "Common.cancel", with: TapCommonConstants.pathForDefaultLocalisation()),
+        titleTextColor: TapThemeManager.colorValue(for: "customerDataCollection.countryPicker.countryTable.titleColor")!,
         titleFont: TapThemeManager.fontValue(for: "customerDataCollection.countryPicker.countryTable.titleFont")!,
+        titleText: TapLocalisationManager.shared.localisedValue(for: "HorizontalHeaders.SaveCardHeader.contactCountryPickerHeader", with: TapCommonConstants.pathForDefaultLocalisation()),
         separatorColor: TapThemeManager.colorValue(for: "tapSeparationLine.backgroundColor")!
     )
     // MARK: Public variables

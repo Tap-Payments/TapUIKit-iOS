@@ -139,11 +139,11 @@ import FlagKit
         
         let placeHolderColor:UIColor = TapThemeManager.colorValue(for: "\(themePath).textfields.placeHolderColor") ?? .black
         
-        flatTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.flatPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+        flatTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.flatPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor, .font : TapThemeManager.fontValue(for: "\(themePath).textfields.font", shouldLocalise: true)!])
         
-        additionalLineTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.additionalLinePlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+        additionalLineTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.additionalLinePlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor, .font : TapThemeManager.fontValue(for: "\(themePath).textfields.font", shouldLocalise: true)!])
         
-        cityTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cityPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor])
+        cityTextField.attributedPlaceholder = .init(string: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cityPlaceHolder", with: TapCommonConstants.pathForDefaultLocalisation()).capitalized, attributes: [.foregroundColor:placeHolderColor, .font : TapThemeManager.fontValue(for: "\(themePath).textfields.font", shouldLocalise: true)!])
     }
     
     /// Will be called once the country code picker button is clicked
