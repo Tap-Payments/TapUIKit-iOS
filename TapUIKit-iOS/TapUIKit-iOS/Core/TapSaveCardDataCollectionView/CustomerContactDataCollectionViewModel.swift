@@ -112,8 +112,9 @@ import LocalisationManagerKit_iOS
 
 extension CustomerContactDataCollectionViewModel: CountryPickerDelegate {
     public func countryPicker(didSelect country: Country) {
-        if let tapCountryCode:TapCountryCode = TapCountryCode.init(rawValue: country.isoCode) {
-            selectedCountry = TapCountry.getCountryDetails(fromEnums: [tapCountryCode]).first
+        if  let countryCode:TapCountryCode = TapCountryCode(rawValue: country.isoCode),
+            let countryModel:TapCountry = TapCountry.getCountryDetails(fromEnums: [countryCode]).first {
+            selectedCountry = countryModel
             customerContactDataCollectionView?.reloadPhone()
         }
     }

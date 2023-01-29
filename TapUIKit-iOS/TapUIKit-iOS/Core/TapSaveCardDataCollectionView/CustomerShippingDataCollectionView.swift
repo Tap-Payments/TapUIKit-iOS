@@ -83,8 +83,8 @@ import FlagKit
     private func adjustHeight() {
         // Assign the height for the text fields
         textFields.forEach{ $0.snp.remakeConstraints { make in
-                make.height.equalTo(48)
-            }
+            make.height.equalTo(48)
+        }
         }
         
         // Assing the height for the fields container view
@@ -104,10 +104,9 @@ import FlagKit
     /// reload the country details
     internal func reloadCountryDetails() {
         guard let country:TapCountry = viewModel?.selectedCountry else { return }
-        let countryCode:TapCountryCode = .EG
         
         countryNameLabel.text = country.nameEN
-        countryFlagImageView.image = Flag(countryCode: countryCode.rawValue)!.originalImage
+        countryFlagImageView.image = Flag(countryCode: country.countryCode.rawValue)!.originalImage
     }
     
     /// Assigns the text fields delegates to self

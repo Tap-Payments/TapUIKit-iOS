@@ -79,12 +79,10 @@ import LocalisationManagerKit_iOS
 
 extension CustomerShippingDataCollectionViewModel: CountryPickerDelegate {
     public func countryPicker(didSelect country: Country) {
-        do {
-            let countryModel = try TapCountry.getCountryDetails(fromEnums: [TapCountryCode(from: country.isoCode)]).first
+        if  let countryCode:TapCountryCode = TapCountryCode(rawValue: country.isoCode),
+            let countryModel:TapCountry = TapCountry.getCountryDetails(fromEnums: [countryCode]).first {
             selectedCountry = countryModel
             customerShippingDataCollectionView?.reloadCountryDetails()
-        }catch{
-            
         }
     }
     
