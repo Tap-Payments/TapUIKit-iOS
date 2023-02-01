@@ -320,6 +320,10 @@ import TapThemeManager2020
 }
 
 extension TapCardTelecomPaymentView: TapCardInputProtocol {
+    public func cardFieldsAreFocused() {
+        viewModel?.delegate?.cardFieldsAreFocused()
+    }
+    
     
     
     public func closeSavedCard() {

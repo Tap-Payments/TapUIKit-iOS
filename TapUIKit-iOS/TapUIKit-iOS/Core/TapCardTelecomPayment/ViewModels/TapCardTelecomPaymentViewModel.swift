@@ -55,6 +55,9 @@ import TapCardVlidatorKit_iOS
      - Parameter to enabled: The new status
      */
     @objc func saveCardChanged(for saveCardType:SaveCardType,to enabled:Bool)
+    
+    /// Fires when one of the card fields is now focused & none of them were focused before.
+    @objc func cardFieldsAreFocused()
 }
 
 /// Represents a view model to control the wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
