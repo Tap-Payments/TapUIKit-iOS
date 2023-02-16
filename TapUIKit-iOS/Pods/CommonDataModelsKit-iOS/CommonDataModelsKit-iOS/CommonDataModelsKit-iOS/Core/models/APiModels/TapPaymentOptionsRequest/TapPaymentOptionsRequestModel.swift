@@ -83,7 +83,7 @@ public struct TapPaymentOptionsRequestModel {
         self.taxes                  = taxes
         self.currency               = currency
         self.merchantID             = merchantID
-        self.customer               = (((customer?.identifier ?? "").tap_length == 0) && ((customer?.emailAddress?.value ?? "").tap_length == 0) && ((customer?.phoneNumber?.phoneNumber ?? "").tap_length == 0) ) ? nil : customer
+        self.customer               = ((customer?.identifier ?? "").tap_length == 0) /*(((customer?.identifier ?? "").tap_length == 0) && ((customer?.emailAddress?.value ?? "").tap_length == 0) && ((customer?.phoneNumber?.phoneNumber ?? "").tap_length == 0) )*/ ? nil : customer
         self.destinationGroup       = destinationGroup
         self.paymentType            = paymentType
         self.reference = reference

@@ -12,7 +12,10 @@
             "weSupport":"WE ACCEPT",
             "cardSectionTitle": "ENTER CARD",
             "cardSectionTitleOr": "OR ENTER CARD",
-            "savedCardSectionTitle": "SAVED CARD"
+            "savedCardSectionTitle": "SAVED CARD",
+            "flatPlaceHolder": "Flat or building number",
+            "additionalLinePlaceHolder": "Additional line",
+            "cityPlaceHolder": "City"
         },
         "TapAsyncSection": {
             "paymentProgressLabel": "Payment in progress",
@@ -175,7 +178,10 @@
             "weSupport":"نحن ندعم",
             "cardSectionTitle": "أدخل بيانات البطاقة",
             "cardSectionTitleOr": "أو أدخل بيانات البطاقة",
-            "savedCardSectionTitle": "البطاقة المحفوظة"
+            "savedCardSectionTitle": "البطاقة المحفوظة",
+            "flatPlaceHolder": "رقم الشقة أو المبنى",
+            "additionalLinePlaceHolder": "بيانات إضافية",
+            "cityPlaceHolder": "المدينة"
         },
         "TapAsyncSection": {
             "paymentProgressLabel": "العملية قد التنفيذ",
@@ -308,7 +314,9 @@
             "email": "البريد",
             "phone": "الهاتف",
             "password": "كلمة السر",
-            "change": "تعديل"
+            "change": "تعديل",
+            "cancel": "إلغاء",
+            "confirm": "تأكيد"
         },
         "GoPay": {
             "HintLabel": "يمكنك الدفع بالكروت المحفوظفة في جو باي من أي مكان"

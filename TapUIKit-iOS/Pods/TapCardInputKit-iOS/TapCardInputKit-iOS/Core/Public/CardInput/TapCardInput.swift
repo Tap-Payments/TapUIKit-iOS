@@ -67,6 +67,9 @@ internal protocol TapCardInputCommonProtocol {
     
     /// fires when the height of the widget changes
     @objc func heightChanged()
+    
+    /// Fires when one of the card fields is now focused & none of them were focused before.
+    @objc func cardFieldsAreFocused()
 }
 
 /// This represents the custom view for card input provided by Tap
@@ -122,12 +125,23 @@ internal protocol TapCardInputCommonProtocol {
     }
     /// This should hold the card data entered by the user till the moment
     internal var tapCard:TapCard = .init()
+    /// This will hold the card data exisiting before displaying the saved card view to be restored when the user comes back
+    internal var cachedTapCard:TapCard = .init()
     /// Configure the localisation Manager
     internal let sharedLocalisationManager = TapLocalisationManager.shared
     /// A preloading value for the card holder name if needed
     internal var preloadCardHolderName:String = ""
     /// Indicates whether or not the user can edit the card holder name field. Default is true
     internal var editCardName:Bool = true
+    
+    /// Fires when one of the card fields is now focused & none of them were focused before.
+    internal var isCardFieldFocused:Bool = false {
+        didSet{
+            if oldValue != isCardFieldFocused, isCardFieldFocused {
+                delegate?.cardFieldsAreFocused()
+            }
+        }
+    }
     
     //MARK: Public
     /// This defines the mode required to show the card input view in whether Full or Inline
@@ -147,7 +161,10 @@ internal protocol TapCardInputCommonProtocol {
     ///Decides the UI mode of the card input
     @objc public var cardUIStatus:CardInputUIStatus = .NormalCard {
         didSet{
-            if cardUIStatus != oldValue { updateCardUI() }
+            if cardUIStatus != oldValue {
+                // Update the card ui based on the new status
+                updateCardUI()
+            }
         }
     }
     
@@ -224,8 +241,10 @@ internal protocol TapCardInputCommonProtocol {
         
         if shouldRemoveCurrentCard {
             // If there is a card number, first thing to do now is to clear the fields
-            clearButtonClicked()
+            clearButtonClicked(cardStatusUI: cardUIStatus)
         }
+        
+        self.tapCard = tapCard
         
         // Then we set the card number and check if it is valid or not
         guard cardNumber.changeText(with: providedCardNumber, setTextAfterValidation: true) else {
@@ -233,10 +252,10 @@ internal protocol TapCardInputCommonProtocol {
             return
         }
         
-        if focusCardNumber {
+        if focusCardNumber || !cardNumber.isValid(cardNumber: providedCardNumber) {
             cardNumber.becomeFirstResponder()
         }else {
-            cardNumber.resignFirstResponder()
+            //cardNumber.resignFirstResponder()
         }
         updateWidths(for: cardNumber)
         
@@ -249,7 +268,7 @@ internal protocol TapCardInputCommonProtocol {
             return
         }
         
-        cardExpiry.resignFirstResponder()
+        //cardExpiry.resignFirstResponder()
         updateWidths(for: cardExpiry)
         
         // Then check if the usder provided a correct cvv
@@ -261,8 +280,18 @@ internal protocol TapCardInputCommonProtocol {
             return
         }
         
-        cardCVV.resignFirstResponder()
+        //cardCVV.resignFirstResponder()
         updateWidths(for: cardCVV)
+        
+        // Then check if the usder provided a correct name
+        guard showCardName,
+              cardName.changeText(with: tapCard.tapCardName ?? "", setTextAfterValidation: true) else {
+            cardName.text = ""
+            if !focusCardNumber && showCardName {
+                cardName.becomeFirstResponder()
+            }
+            return
+        }
         
         if focusCardNumber {
             cardNumber.becomeFirstResponder()
@@ -272,6 +301,8 @@ internal protocol TapCardInputCommonProtocol {
             cardExpiry.becomeFirstResponder()
         }else if !cardCVV.isValid() {
             cardCVV.becomeFirstResponder()
+        }else if showCardName && !cardName.isValid() {
+            cardName.becomeFirstResponder()
         }
         
         //FlurryLogger.logEvent(with: "Tap_Card_Input_Fill_Data_Called", timed:false , params:["card_number":tapCard.tapCardNumber ?? "","card_name":tapCard.tapCardName ?? "","card_month":tapCard.tapCardExpiryMonth ?? "","card_year":tapCard.tapCardExpiryYear ?? ""])
@@ -314,6 +345,8 @@ internal protocol TapCardInputCommonProtocol {
         // declare our status to be saved card
         self.cardUIStatus = .SavedCard
         
+        self.cardDatachanged(cardStatusUI: self.cardUIStatus)
+        
     }
     
     
@@ -348,6 +381,26 @@ internal protocol TapCardInputCommonProtocol {
         matchThemeAttributes()
     }
     
+    
+    /// Update restoring/saving current card data for further usage
+    internal func restoreCachedCardData() {
+        // Let us restore the previously typed card data whenever we display the new card status coming from saved card one
+        if cardUIStatus == .NormalCard {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) { [ weak self ] in
+                self?.tapCard = .init(tapCardNumber: self?.cachedTapCard.tapCardNumber, tapCardName: self?.cachedTapCard.tapCardName, tapCardExpiryMonth: self?.cachedTapCard.tapCardExpiryMonth, tapCardExpiryYear: self?.cachedTapCard.tapCardExpiryYear, tapCardCVV: self?.cachedTapCard.tapCardCVV)
+                
+                self?.setCardData(tapCard: .init(tapCardNumber: self?.cachedTapCard.tapCardNumber, tapCardName: self?.cachedTapCard.tapCardName, tapCardExpiryMonth: self?.cachedTapCard.tapCardExpiryMonth, tapCardExpiryYear: self?.cachedTapCard.tapCardExpiryYear, tapCardCVV: self?.cachedTapCard.tapCardCVV), then: false, for: .NormalCard)
+                
+            }
+        }
+    }
+    
+    /// Will cache the current card data beore moving to saved card view
+    public func saveCardDataBeforeMovingToSavedCard() {
+        guard cardUIStatus == .NormalCard else { return }
+        cachedTapCard = .init(tapCardNumber: tapCard.tapCardNumber, tapCardName: tapCard.tapCardName, tapCardExpiryMonth: tapCard.tapCardExpiryMonth, tapCardExpiryYear: tapCard.tapCardExpiryYear, tapCardCVV: tapCard.tapCardCVV)
+    }
+    
     /// Call this method to update the UI of the card input upon changing his status from normal card to saved card and vice versa
     internal func updateCardUI() {
         // hide and show views based on the current status
@@ -361,7 +414,7 @@ internal protocol TapCardInputCommonProtocol {
         // now let us see if we have to focus the CVV if we are filling in saved card data
         if cardUIStatus == .SavedCard {
             cardCVV.isUserInteractionEnabled = true
-            cardCVV.becomeFirstResponder()
+            //cardCVV.becomeFirstResponder()
             cardCVV.cvvLength = CardValidator.cvvLength(for: savedCard?.brand)
             adjustScanButton()
         }
@@ -516,8 +569,13 @@ internal protocol TapCardInputCommonProtocol {
     /// The method is responsible for configuring and setup the card text fields
     internal func configureViews() {
         
+        // The default localisation file location
+        let defaultLocalisationFilePath:URL = TapCommonConstants.pathForDefaultLocalisation()
+        
         // Setup the card number field with the needed data and listeners
         cardNumber.setup(with: 8, maxVisibleChars: 16, placeholder: "Card Number") { [weak self] (isEditing) in
+            // Checks if any of the card fields is newly focused
+            self?.updateFousedStatus()
             // We will glow the shadow if needed
             self?.updateShadow()
             // We will need to adjuust the width for the field when it is being active or inactive in the Inline mode
@@ -530,8 +588,16 @@ internal protocol TapCardInputCommonProtocol {
             self?.tapCard.tapCardNumber = cardNumber
             self?.cardDatachanged()
             if self?.cardInputMode == .InlineCardInput, self?.cardNumber.isValid() ?? false {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    self?.cardExpiry.becomeFirstResponder()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+                    if !(self?.cardExpiry.isValid() ?? false) {
+                        self?.cardExpiry.becomeFirstResponder()
+                    }else if !(self?.cardCVV.isValid() ?? false) {
+                        self?.cardCVV.becomeFirstResponder()
+                    }else if self?.showCardName ?? false && !(self?.cardName.isValid() ?? false) {
+                        self?.cardName.becomeFirstResponder()
+                    }else{
+                        //self?.cardNumber.resignFirstResponder()
+                    }
                 }
             }
         } shouldAllowChange: { [weak self] (updatedCardNumber) -> (Bool) in
@@ -540,6 +606,8 @@ internal protocol TapCardInputCommonProtocol {
         
         // Setup the card name field with the needed data and listeners
         cardName.setup(with: 4, maxVisibleChars: 16, placeholder: "Card Holder Name", editingStatusChanged: { [weak self] (isEditing) in
+            // Checks if any of the card fields is newly focused
+            self?.updateFousedStatus()
             // We will glow the shadow if needed
             self?.updateShadow()
             // We will need to adjuust the width for the field when it is being active or inactive in the Inline mode
@@ -553,7 +621,9 @@ internal protocol TapCardInputCommonProtocol {
                        editCardName: editCardName)
         
         // Setup the card expiry field with the needed data and listeners
-        cardExpiry.setup(with: 5, placeholder: "",editingStatusChanged: {[weak self] (isEditing) in
+        cardExpiry.setup(with: sharedLocalisationManager.localisationLocale == "en" ? 5 : 7, placeholder: sharedLocalisationManager.localisedValue(for: "TapCardInputKit.cardExpiryPlaceHolder", with: defaultLocalisationFilePath),editingStatusChanged: {[weak self] (isEditing) in
+            // Checks if any of the card fields is newly focused
+            self?.updateFousedStatus()
             // We will glow the shadow if needed
             self?.updateShadow()
             // We will need to adjuust the width for the field when it is being active or inactive in the Inline mode
@@ -562,14 +632,16 @@ internal protocol TapCardInputCommonProtocol {
             // If the card expiry changed, we change the holding TapCard and we fire the logic needed to do when the card data changed
             self?.tapCard.tapCardExpiryMonth = cardMonth
             self?.tapCard.tapCardExpiryYear = cardYear
-            if self?.cardExpiry.isValid() ?? false {
+            if self?.cardExpiry.isValid() ?? false && !(self?.cardCVV.isValid() ?? false) {
                 self?.cardCVV.becomeFirstResponder()
             }
             self?.cardDatachanged()
         })
         
         // Setup the card cvv field with the needed data and listeners
-        cardCVV.setup(placeholder: "CVV",editingStatusChanged: { [weak self] (isEditing) in
+        cardCVV.setup(with:sharedLocalisationManager.localisationLocale == "en" ? 5 : 6, placeholder: "CVV",editingStatusChanged: { [weak self] (isEditing) in
+            // Checks if any of the card fields is newly focused
+            self?.updateFousedStatus()
             // We will glow the shadow if needed
             self?.updateShadow()
             // We will need to adjuust the width for the field when it is being active or inactive in the Inline mode
@@ -580,12 +652,11 @@ internal protocol TapCardInputCommonProtocol {
             self?.cardDatachanged(cardStatusUI: self?.cardUIStatus ?? .NormalCard)
             if self?.cardCVV.isValid() ?? false {
                 // Check if there is a name to collect
-                if self?.showCardName ?? false {
-                    // Then we need to move to filling the card name
-                    self?.cardName.becomeFirstResponder()
-                }else{
-                    // We finished collecting the names, let us hide the keyboard :)
+                if self?.cardUIStatus == .SavedCard || !(self?.showCardName ?? false) {
+                    // In case of saved card, after entering the CVV we are done
                     self?.cardCVV.resignFirstResponder()
+                }else if self?.showCardName ?? false && !(self?.cardName.isValid() ?? false) {// Then we need to move to filling the card name
+                    self?.cardName.becomeFirstResponder()
                 }
             }
         })
@@ -676,6 +747,11 @@ internal protocol TapCardInputCommonProtocol {
         return detectedBrandIconURL
     }
     
+    /// Checks if any of the card fields is newly focused
+    internal func  updateFousedStatus() {
+        isCardFieldFocused = fields.map{ $0.isEditing }.reduce(false){ $0 || $1 }
+    }
+    
     /// Method that glows or the dims the card input view based on the shadow theme provided and if any of the fields is active
     internal func  updateShadow() {
         /*DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -764,10 +840,16 @@ internal protocol TapCardInputCommonProtocol {
     
     /// The method that holds the logic needed to do when any of the scan button is clicked
     @objc internal func closeSavedCardButtonClicked() {
+        let delay:Int = cardCVV.isFocused ? 500 : 0
         // let us clear the data
         clearButtonClicked()
         // let us inform the delegate
         delegate?.closeSavedCard()
+        // Update restoring/saving current card data for further usage
+        //self.restoreCachedCardData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
+            self.restoreCachedCardData()
+        }
     }
     
     /// The method that holds the logic needed to do when any of the scan button is clicked
