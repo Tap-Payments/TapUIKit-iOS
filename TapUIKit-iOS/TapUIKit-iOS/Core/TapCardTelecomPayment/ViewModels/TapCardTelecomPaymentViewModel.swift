@@ -187,6 +187,11 @@ import TapCardVlidatorKit_iOS
     }
     
     
+    @objc public func cacheCard() {
+        tapCardTelecomPaymentView?.cardInputView.saveCardDataBeforeMovingToSavedCard()
+    }
+    
+    
     /**
      Call this method to display the saved card details for the user and prompt him to enter the CVV
      - Parameter savedCard: The saved card you want to validate before using
