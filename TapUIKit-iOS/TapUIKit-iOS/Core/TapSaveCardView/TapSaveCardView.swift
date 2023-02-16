@@ -44,7 +44,7 @@ import LocalisationManagerKit_iOS
         commonInit()
     }
     
-    @IBAction func saveCardSwitchChanged(_ sender: Any) {
+    @IBAction public func saveCardSwitchChanged(_ sender: Any) {
         delegate?.saveCardChanged(for: .Merchant,to: saveCardSwitch.isOn)
     }
     

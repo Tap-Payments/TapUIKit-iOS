@@ -155,6 +155,7 @@ internal protocol TapActionButtonViewDelegate {
     /// Instructs the view to expand itself again after being in a shrinked state. This will re show the title and hide the icon
     @objc public func expandButton() {
         viewDelegate?.expand()
+        delegate?.didEndLoading()
     }
     
     

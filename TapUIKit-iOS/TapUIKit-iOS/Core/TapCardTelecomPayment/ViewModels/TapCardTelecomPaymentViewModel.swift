@@ -187,10 +187,54 @@ import TapCardVlidatorKit_iOS
     }
     
     
+    /// Saves the current card data before resetting if there will be a need to restore it afterwards
     @objc public func cacheCard() {
         tapCardTelecomPaymentView?.cardInputView.saveCardDataBeforeMovingToSavedCard()
     }
     
+    /**
+     Will adjust the enablement of the card form baed on the given value.
+     - Parameter to: If true, the card will be dimmed & if false it will look normal again
+     - Parameter doPostLogic: If true, the card component will handle its ui and logic based on enabling the card. Otherwise, means it will be handled by the caller
+     */
+    @objc public func changeEnableStatus(to:Bool = true, doPostLogic:Bool = false) {
+        // Check if it is neccessary
+        guard (to && self.attachedView.alpha != 1) || (!to && self.attachedView.alpha != 0) else { return }
+        
+        UIView.animate(withDuration: 0.2) {
+            if !to {
+                self.attachedView.alpha = 0.3
+            }else{
+                self.attachedView.alpha = 1
+            }
+        } completion: { done in
+            if to {
+                //self.tapCardTelecomPaymentView?.cardInputView.cardChan
+            }
+        }
+        
+        // If we need to update post logic details based on enable settings
+        if doPostLogic {
+            postChangingEnablementLogic(enabled: to)
+        }
+    }
+    
+    /// If we need to update post logic details based on enable settings
+    internal func postChangingEnablementLogic(enabled:Bool) {
+        // If we are disabling the card view
+        if !enabled {
+            // then we will have to hide the saved card component as well
+            attachedView.saveCrdView.saveCardSwitch.setOn(false, animated: true)
+            attachedView.saveCrdView.saveCardSwitchChanged(attachedView.saveCrdView.saveCardSwitch)
+            
+            // let us store the current card data
+            attachedView.cardInputView.saveCardDataBeforeMovingToSavedCard()
+        }else{
+            // If we are showing the card view
+            // let us restore the state of the card
+            attachedView.cardInputView.restoreCachedCardData()
+        }
+    }
     
     /**
      Call this method to display the saved card details for the user and prompt him to enter the CVV
