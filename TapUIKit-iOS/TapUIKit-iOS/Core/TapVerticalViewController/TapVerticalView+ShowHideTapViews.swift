@@ -77,6 +77,12 @@ extension TapVerticalView {
         removeAllHintViews()
     }
     
+    @objc public func stopOTPTimers() {
+        let filteredViews = stackView.arrangedSubviews.filter{ $0.isKind(of: TapGoPaySignInView.self)}
+        guard filteredViews.count > 0, let signGoPayView:TapGoPaySignInView = filteredViews[0] as? TapGoPaySignInView else { return }
+        // Expire and invalidate any OTP running timers, so it won't fire even after closing the goPay OTP view
+        signGoPayView.stopOTPTimers()
+    }
     
     /**
      Handles showing the card scanner  by removing non required and adding required views

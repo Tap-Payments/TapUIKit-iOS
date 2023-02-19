@@ -248,7 +248,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
             closeScanner()
             break
             // Meaning currently we are showing the GoPay Login and we need to go back to the normal view
-        case .GoPayView:
+        case .GoPayView, .SavedCardView:
             closeGoPay()
             break
         }
@@ -258,9 +258,13 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         switch currentStateView{
         case .DefaultView:
             itemsLabel = "\(numberOfItems) \(sharedLocalisationManager.localisedValue(for: (numberOfItems < 2) ? "Common.item" : "Common.items", with: TapCommonConstants.pathForDefaultLocalisation()))\(self.usedCurrencyCode)"
-        case .ItemsView,.ScannerView,.GoPayView:
+        case .ItemsView:
+            itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.confirm", with: TapCommonConstants.pathForDefaultLocalisation()).uppercased()
+        case .ScannerView,.GoPayView, .SavedCardView:
             itemsLabel = sharedLocalisationManager.localisedValue(for: "Common.close", with: TapCommonConstants.pathForDefaultLocalisation())
         }
+        
+        attachedView.itemsHolderView.isHidden = (currentStateView == .SavedCardView)
     }
     
     /// Handles the logic for transitioning between the normal view and show the items view
@@ -321,4 +325,6 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     case ScannerView
     /// Means, the current screen displays the GoPay
     case GoPayView
+    /// Means, the current screen displays the inline 3ds screen for saved card
+    case SavedCardView
 }
