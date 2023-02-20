@@ -24,8 +24,9 @@ import TapCardVlidatorKit_iOS
      - Parameter cardBrand: The detected card brand
      - Parameter validation: Tells the validity of the detected brand, whether it is invalid, valid or still incomplete
      - Parameter cardStatusUI: The current state of the card input. Saved card or normal card
+     - Parameter isCVVFocused: Will tell the focusing state of the CVV, will be used not to show CVV hint if the field is focused in the saved card view
      */
-    @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum,cardStatusUI:CardInputUIStatus)
+    @objc func brandDetected(for cardBrand:CardBrand,with validation:CrardInputTextFieldStatusEnum,cardStatusUI:CardInputUIStatus,isCVVFocused:Bool)
     
     
     /// This method will be called once the user clicks on Scan button
@@ -145,7 +146,11 @@ import TapCardVlidatorKit_iOS
     /// Indicates if we have to pre fill the card holder name
     @objc public var preloadCardHolderName:String = ""
     /// Indicates whether or not to offer the save card and to which level
-    public var saveCardType:SaveCardType = .None
+    @objc public var saveCardType:SaveCardType = .None
+    /// Defines if the card info textfields should support RTL in Arabic mode or not
+    @objc public var shouldFlip:Bool = true
+    /// Indicates if the card form shall have its own background theming or it should be clear and reflect whatever is behind it
+    @objc public var shouldThemeSelf:Bool = false
     /// Indicates whether or not the user can edit the card holder name field. Default is true
     @objc public var editCardName:Bool = true
     /**
@@ -153,12 +158,16 @@ import TapCardVlidatorKit_iOS
      - Parameter tapCardPhoneListViewModel: The view model that has the needed payment options and data source to display the payment view
      - Parameter tapCountry: Represents the country that telecom options are being shown for, used to handle country code and correct phone length
      - Parameter showSaveCardOption: Indicates whether or not to offer the save card switch when a valid card info is filled
+     - Parameter shouldFlip: Defines if the card info textfields should support RTL in Arabic mode or not
+     - Parameter shouldThemeSelf:ndicates if the card form shall have its own background theming or it should be clear and reflect whatever is behind it
      */
-    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false, showSaveCardOption:SaveCardType) {
+    @objc public init(with tapCardPhoneListViewModel:TapCardPhoneBarListViewModel, and tapCountry:TapCountry? = nil,collectCardName:Bool = false, showSaveCardOption:SaveCardType, shouldFlip:Bool, shouldThemeSelf:Bool) {
         super.init()
         self.collectCardName = collectCardName
         self.saveCardType = showSaveCardOption
+        self.shouldFlip = shouldFlip
         self.tapCardPhoneListViewModel = tapCardPhoneListViewModel
+        self.shouldThemeSelf = shouldThemeSelf
         tapCardTelecomPaymentView?.tapCountry = tapCountry
     }
     
@@ -256,9 +265,11 @@ import TapCardVlidatorKit_iOS
     
     /**
      Decides which hint status to be shown based on the validation statuses for the card input fields
-     - Parameter tapCard: The current tap card input by the user
+     - Parameter with tapCard: The current tap card input by the user
+     - Parameter and cardUIStatus: The current card status whether a new card form or a saved card one
+     - Parameter isCVVFocused: Will tell the focusing state of the CVV, will be used not to show CVV hint if the field is focused in the saved card view
      */
-    @objc public func decideHintStatus(with tapCard:TapCard? = nil, and cardUIStatus:CardInputUIStatus = .NormalCard) -> TapHintViewStatusEnum {
+    @objc public func decideHintStatus(with tapCard:TapCard? = nil, and cardUIStatus:CardInputUIStatus = .NormalCard, isCVVFocused:Bool) -> TapHintViewStatusEnum {
         
         guard let tapCardTelecomPaymentView = tapCardTelecomPaymentView else {
             return .None
@@ -271,10 +282,9 @@ import TapCardVlidatorKit_iOS
         // If we are in saved card scenario, we only need to show hints based on CVV validty
         if cardUIStatus == .SavedCard {
             let (_,_,cardCVVValid,_) = tapCardTelecomPaymentView.cardInputView.fieldsValidationStatuses()
-            if !cardCVVValid {
-                newStatus = .WarningCVV
-            }
-            return newStatus
+            // We will only display the CVV hint for saved card if CVV is not focused and the CVV is not valid
+            guard !isCVVFocused, !cardCVVValid else { return .None }
+            return .WarningCVV
         }
         
         // Check first if the card nnumber has data otherwise we are in the IDLE state
