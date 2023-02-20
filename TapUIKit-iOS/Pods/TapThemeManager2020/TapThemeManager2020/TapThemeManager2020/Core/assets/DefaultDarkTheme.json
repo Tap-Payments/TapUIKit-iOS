@@ -6,6 +6,7 @@
             "black" : "#000000",
             "black50" : "#00000080",
             "black30" : "#00000026",
+            "black15" : "#00000026",
             "lightPeach" : "#98989f",
             "greyishBrown" : "#ffffff",
             "greyishBrown2" : "#C1C1C1",
@@ -398,8 +399,8 @@
                 "labelTextColor": "greyishBrown",
                 "selected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1,
@@ -424,8 +425,8 @@
                 "logoutIcon": "logoutIcon",
                 "selected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1,
@@ -451,7 +452,7 @@
                 "labelTextColor": "greyishBrown",
                 "selected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
+                        "color" : "black15",
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
@@ -480,8 +481,8 @@
                 "appleLogoTitleColor": "#000000",
                 "selected": {
                     "shadow": {
-                        "color" : "vibrantGreenTwo",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1,
@@ -511,8 +512,8 @@
                 },
                 "selected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
-                        "radius" : 3,
+                        "color" : "black15",
+                        "radius" : 4,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
                         "opacity": 1,
