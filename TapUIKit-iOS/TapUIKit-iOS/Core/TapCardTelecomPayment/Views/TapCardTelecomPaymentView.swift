@@ -422,6 +422,7 @@ extension TapCardTelecomPaymentView {
             stackView.tap_theme_backgroundColor = ThemeUIColorSelector.init(keyPath: "inlineCard.commonAttributes.backgroundColor")
             saveCrdView.changeSeparatorViewVisibilty(to: true)
         }
+        saveCrdView.changeBottomSeparatorViewVisibilty(to: (viewModel?.saveCardType == .All || viewModel?.saveCardType == .Tap))
         // The border color
         stackView.layer.tap_theme_borderColor = ThemeCgColorSelector.init(keyPath: "inlineCard.commonAttributes.borderColor")
         // The border width

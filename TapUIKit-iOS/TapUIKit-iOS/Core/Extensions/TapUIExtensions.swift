@@ -46,7 +46,7 @@ internal extension UIImageView {
             addTapGesture()
         }
     }
-
+    
     
     /// The tap gesture recognizer that listens to the tap
     private var gesture: UITapGestureRecognizer {
@@ -60,7 +60,7 @@ internal extension UIImageView {
         // Disable all the old gestures if any
         if let attachedGestures = self.gestureRecognizers {
             for l in 0 ..< attachedGestures.count {
-               self.gestureRecognizers![l].isEnabled = false
+                self.gestureRecognizers![l].isEnabled = false
             }
         }
         
@@ -68,7 +68,7 @@ internal extension UIImageView {
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(gesture)
     }
-
+    
     @objc private func tapped() {
         callback()
     }
@@ -90,7 +90,7 @@ internal extension UIImage {
     
     
     // MARK: - Black and White
-     ///Convert the image into a grayscale one
+    ///Convert the image into a grayscale one
     func toGrayScale() -> UIImage {
         let blackWhite = TapBlackWhiteImage()
         blackWhite.inputImage = self
@@ -106,10 +106,10 @@ internal extension UIImage {
 public extension UIView {
     // MARK: - Making corner radious for certain corners
     /**
-    Assigns a radious value to certain corners
-    - Parameter corners: The  corners we want to apply the radious to
-    - Parameter radius: The radius value we want  to apply
-    */
+     Assigns a radious value to certain corners
+     - Parameter corners: The  corners we want to apply the radious to
+     - Parameter radius: The radius value we want  to apply
+     */
     internal func tapRoundCorners(corners:CACornerMask, radius: CGFloat) {
         self.layer.cornerRadius = CGFloat(radius)
         self.clipsToBounds = true
@@ -128,7 +128,7 @@ public extension UIView {
             let transformAnim  = CAKeyframeAnimation(keyPath:"transform")
             transformAnim.values  = [NSValue(caTransform3D: CATransform3DMakeRotation(0.04, 0.0, 0.0, 1.0)),NSValue(caTransform3D: CATransform3DMakeRotation(-0.04 , 0, 0, 1))]
             transformAnim.autoreverses = true
-            transformAnim.duration  = 0.115
+            transformAnim.duration  = 0.1
             transformAnim.repeatCount = Float.infinity
             self.layer.add(transformAnim, forKey: "transform")
         }
@@ -159,7 +159,7 @@ public extension UIView {
         
         // Load the XIB file
         guard let nibs = bundle.loadNibNamed(identefier, owner: self, options: nil),
-            nibs.count > 0, let loadedView:UIView = nibs[0] as? UIView else { fatalError("Couldn't load Xib \(identefier)") }
+              nibs.count > 0, let loadedView:UIView = nibs[0] as? UIView else { fatalError("Couldn't load Xib \(identefier)") }
         
         let newContainerView = loadedView
         
