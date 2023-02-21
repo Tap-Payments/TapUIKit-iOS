@@ -38,6 +38,9 @@ import TapThemeManager2020
     /// The view used to ask the user if he wants to save the card for TAP for later usage
     internal var saveCrdForTapView:TapInternalSaveCard = .init()
     
+    /// Powered by tap view to be displayed within the card brands in case of a standalone card kit
+    @IBOutlet weak var poweredByTapView: PoweredByTapView!
+    
     /// The view model that has the needed payment options and data source to display the payment view
     public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
         didSet {
@@ -191,6 +194,10 @@ import TapThemeManager2020
         self.layoutIfNeeded()
         self.tapCardPhoneListView.layoutIfNeeded()
         self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
+        
+        self.poweredByTapView.layoutIfNeeded()
+        self.poweredByTapView.alpha = (finalVisibility && (viewModel?.showPoweredByTapView ?? false)) ? 1 : 0
+        
         self.updateHeight()
         
         /*// Animate showing/hiding the supported brands bar

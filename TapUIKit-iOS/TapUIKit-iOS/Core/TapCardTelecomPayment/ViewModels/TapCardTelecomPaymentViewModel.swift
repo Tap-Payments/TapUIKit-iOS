@@ -92,6 +92,9 @@ import TapCardVlidatorKit_iOS
         return attachedView.saveCrdView.saveCardSwitch.isOn
     }
     
+    /// If true, powered by tap will be visible under the card form
+    @objc public var showPoweredByTapView:Bool = false
+    
     /// Indicates if the saved card switch is activated for TAP
     @objc public var isTapSaveAllowed:Bool {
         return attachedView.saveCrdForTapView.isSavedCardEnabled
