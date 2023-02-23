@@ -191,7 +191,14 @@ import TapThemeManager2020
         let gif = try! UIImage(gifData: imageData!)
         tapLoadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
         
-        to ? pre3DSLoadingView.fadeIn() : pre3DSLoadingView.fadeOut()
+        if to {
+            pre3DSLoadingView.fadeIn()
+            cardInputView.fadeOut(duration:0.1)
+            saveCrdView.fadeOut(duration:0.1)
+            saveCrdForTapView.fadeOut(duration:0.1)
+        }else {
+            pre3DSLoadingView.fadeOut()
+        }
     }
     
     /**

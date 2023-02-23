@@ -17,7 +17,7 @@ var myContext = 0
     /// Represents the main holding view
     @IBOutlet var contentView: UIView!
     /// The view holding the webview used for theming like radius and shadows
-    @IBOutlet weak var webViewHolder: UIView!
+    @IBOutlet public weak var webViewHolder: UIView!
     /// Represents the actual backbone web view
     @IBOutlet weak var webView: WKWebView!
     /// The progress bar to show a web view is being loaded

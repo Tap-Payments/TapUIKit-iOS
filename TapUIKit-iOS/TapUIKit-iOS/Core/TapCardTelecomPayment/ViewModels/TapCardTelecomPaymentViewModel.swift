@@ -215,14 +215,13 @@ import TapThemeManager2020
         view.snp.remakeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(16)
         }
         view.layoutIfNeeded()
         attachedView.layoutIfNeeded()
-        view.fadeIn(duration:0.5) { _ in
-            self.attachedView.pre3DSLoadingView.fadeOut(duration:1)
-        }
+        view.fadeIn(duration:0.5)
+        attachedView.pre3DSLoadingView.fadeOut(duration:0.1)
     }
     
     
