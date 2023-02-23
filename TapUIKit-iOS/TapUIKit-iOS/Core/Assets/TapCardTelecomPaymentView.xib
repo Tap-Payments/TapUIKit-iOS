@@ -14,8 +14,10 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
                 <outlet property="headerView" destination="VLF-Re-aM8" id="ZCR-Oe-hcn"/>
                 <outlet property="poweredByTapView" destination="W6h-b4-8eW" id="J7G-xU-in8"/>
+                <outlet property="pre3DSLoadingView" destination="kpP-xc-tEn" id="RME-aP-6Cm"/>
                 <outlet property="stackView" destination="CZk-jP-kZU" id="9SK-eb-rzi"/>
                 <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
+                <outlet property="tapLoadingGif" destination="dvk-aG-hR4" id="RoO-Ra-lgy"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -56,6 +58,23 @@
                         <constraint firstAttribute="width" constant="100" id="mcS-qc-Efg"/>
                     </constraints>
                 </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-xc-tEn">
+                    <rect key="frame" x="16" y="30" width="533" height="170"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-aG-hR4">
+                            <rect key="frame" x="252.66666666666669" y="71" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="28" id="2Ic-mf-5e7"/>
+                                <constraint firstAttribute="width" secondItem="dvk-aG-hR4" secondAttribute="height" multiplier="1:1" id="Srp-Cj-Ox8"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="dvk-aG-hR4" firstAttribute="centerX" secondItem="kpP-xc-tEn" secondAttribute="centerX" id="8T6-V8-GeF"/>
+                        <constraint firstItem="dvk-aG-hR4" firstAttribute="centerY" secondItem="kpP-xc-tEn" secondAttribute="centerY" id="zK7-ep-wsw"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,6 +86,10 @@
                 <constraint firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" constant="16" id="Fda-Gy-8NT"/>
                 <constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="HkT-c2-1U6"/>
                 <constraint firstItem="CZk-jP-kZU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OM3-6q-VAy"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="S3n-GT-gQN"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="bottom" secondItem="CZk-jP-kZU" secondAttribute="bottom" id="Xky-jZ-IEV"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="top" id="aeQ-7R-0Wo"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="hpe-VF-n4f"/>
                 <constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" priority="750" id="lfc-qu-aN1"/>
                 <constraint firstItem="W6h-b4-8eW" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="top" id="mme-zD-W9d"/>
                 <constraint firstItem="W6h-b4-8eW" firstAttribute="bottom" secondItem="or1-yo-2AD" secondAttribute="bottom" id="qUc-sZ-HzG"/>

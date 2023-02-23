@@ -63,7 +63,7 @@
             "savedCardCvvUnderLineColor": "#009AFF",
             "shadow":{
                 "color": "#00000026",
-                "radius": 8,
+                "radius": 4,
                 "offsetWidth": 0,
                 "offsetHeight": 0,
                 "opacity": 1
@@ -351,8 +351,8 @@
         "subTitleLabelFont" : "Roboto-Regular,16",
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
-        "merchantLogoShadowRadius":12,
-        "merchantLogoShadowColor":"#54000000",
+        "merchantLogoShadowRadius":4,
+        "merchantLogoShadowColor":"#000000",
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",

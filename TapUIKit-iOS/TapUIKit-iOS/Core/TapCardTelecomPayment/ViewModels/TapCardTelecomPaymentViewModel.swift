@@ -10,6 +10,7 @@ import Foundation
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
 import TapCardVlidatorKit_iOS
+import TapThemeManager2020
 
 /// External protocol to allow the TapCardInput to pass back data and events to the parent UIViewController
 @objc public protocol TapCardTelecomPaymentProtocol {
@@ -202,6 +203,35 @@ import TapCardVlidatorKit_iOS
     /// Saves the current card data before resetting if there will be a need to restore it afterwards
     @objc public func cacheCard() {
         tapCardTelecomPaymentView?.cardInputView.saveCardDataBeforeMovingToSavedCard()
+    }
+    
+    @objc public func addFullScreen(view:UIView?) {
+        guard let view = view else { return }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.alpha = 0
+        
+        attachedView.addSubview(view)
+        attachedView.bringSubviewToFront(view)
+        view.snp.remakeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+        }
+        view.layoutIfNeeded()
+        attachedView.layoutIfNeeded()
+        view.fadeIn(duration:0.5) { _ in
+            self.attachedView.pre3DSLoadingView.fadeOut(duration:1)
+        }
+    }
+    
+    
+    /**
+     Changes the card view to show/hide the pre loading status before showing a 3ds page inside the card
+     - Parameter to: If true it will be visible and invisible otherwise
+     */
+    @objc public func change3dsLoadingStatus(to:Bool) {
+        attachedView.change3dsLoadingStatus(to: to)
     }
     
     /**

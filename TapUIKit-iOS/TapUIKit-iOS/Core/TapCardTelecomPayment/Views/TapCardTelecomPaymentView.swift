@@ -93,8 +93,10 @@ import TapThemeManager2020
             cardInputView.delegate = self
         }
     }
-    
-    
+    /// The view to be displayed to show the loading status waiting to show the 3ds page
+    @IBOutlet weak var pre3DSLoadingView: UIView!
+    /// A loader gif waiting for the 3ds page to be loaded
+    @IBOutlet weak var tapLoadingGif: UIImageView!
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -177,6 +179,19 @@ import TapThemeManager2020
         layoutIfNeeded()
         // Update the height of the total widget to reflect that
         updateHeight()
+    }
+    
+    /**
+     Changes the card view to show/hide the pre loading status before showing a 3ds page inside the card
+     - Parameter to: If true it will be visible and invisible otherwise
+     */
+    internal func change3dsLoadingStatus(to:Bool) {
+        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "Black-loader", withExtension: "gif")!)
+        let gif = try! UIImage(gifData: imageData!)
+        tapLoadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
+        
+        to ? pre3DSLoadingView.fadeIn() : pre3DSLoadingView.fadeOut()
     }
     
     /**
@@ -444,6 +459,7 @@ extension TapCardTelecomPaymentView {
             }
         }
         stackView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "inlineCard.commonAttributes.cornerRadius")
+        pre3DSLoadingView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "inlineCard.commonAttributes.cornerRadius")
         
         stackView.layer.shadowRadius = CGFloat(TapThemeManager.numberValue(for: "inlineCard.commonAttributes.shadow.radius")?.floatValue ?? 0)
         stackView.layer.tap_theme_shadowColor = ThemeCgColorSelector.init(keyPath: "inlineCard.commonAttributes.shadow.color")

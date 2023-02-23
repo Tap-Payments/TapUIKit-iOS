@@ -244,7 +244,7 @@ import TapCardScanner_iOS
      Calculates the max space that a view can be added in the sheet with respect to the current height of the views added + the maximum availble height given tor the sheet
      - Returns: The space that can be filled with respect to the crrent views heights + the maximum height the sheet can expand to
      */
-    @objc public func getMaxAvailableHeight() -> CGFloat {
+    @objc public func getMaxAvailableHeight(showingCardWebView:Bool = false) -> CGFloat {
         // Calculate the current views' height firs
         var currentViewsHeight:CGFloat = 0
         stackView.arrangedSubviews.forEach{ currentViewsHeight += ($0.frame.height > 0) ? $0.frame.height : 45 }
@@ -252,7 +252,7 @@ import TapCardScanner_iOS
         if tapActionButtonBottomConstraint.constant + tapActionButtonHeightConstraint.constant == 0 {
             return TapConstantManager.maxAllowedHeight - currentViewsHeight
         }else{
-            return TapConstantManager.maxAllowedHeight - currentViewsHeight - tapActionButton.frame.origin.y
+            return TapConstantManager.maxAllowedHeight - currentViewsHeight - (showingCardWebView ? (tapActionButtonBottomConstraint.constant + tapActionButtonHeightConstraint.constant) : tapActionButton.frame.origin.y)
         }
     }
     
