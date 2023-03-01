@@ -12,8 +12,7 @@ import TapThemeManager2020
 @objc public class PoweredByTapView: UIView {
     /// Represents the main holding view
     @IBOutlet var containerView: UIView!
-    @IBOutlet weak var poweredbyLabel: UILabel!
-    @IBOutlet weak var tapLogo: UIImageView!
+    @IBOutlet weak var poweredByTapLogo: UIImageView!
     internal let themePath:String = "poweredByTap"
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -50,10 +49,7 @@ extension PoweredByTapView {
     
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
-        poweredbyLabel.tap_theme_font = .init(stringLiteral: "\(themePath).powerLabel.font")
-        poweredbyLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).powerLabel.textColor")
-        
-        tapLogo.image = TapThemeManager.imageValue(for: "\(themePath).tapLogo")
+        poweredByTapLogo.image = TapThemeManager.imageValue(for: "\(themePath).tapLogo")
         layoutIfNeeded()
     }
     

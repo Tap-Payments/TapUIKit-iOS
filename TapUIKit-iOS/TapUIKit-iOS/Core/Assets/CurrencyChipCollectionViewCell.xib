@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,17 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CurrencyChipCollectionViewCell" id="gTV-IL-0wX" customClass="CurrencyChipCollectionViewCell" customModule="TapUIKit_iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rc5-fS-lmR">
-                        <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" priority="750" constant="90" id="94I-dp-q1w"/>
+                            <constraint firstAttribute="width" priority="750" constant="100" id="94I-dp-q1w"/>
                             <constraint firstAttribute="height" priority="750" constant="40" id="HpU-lL-Ufk"/>
                         </constraints>
                     </view>
@@ -33,13 +33,14 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fZ-gi-iR1">
-                        <rect key="frame" x="49" y="13" width="29" height="14.5"/>
+                        <rect key="frame" x="49" y="12.5" width="39" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="rc5-fS-lmR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2qy-SS-U4F"/>
                 <constraint firstItem="wcW-ae-F7U" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4Fz-oP-0Da"/>
@@ -51,7 +52,6 @@
                 <constraint firstItem="wcW-ae-F7U" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="amU-eU-Xkh"/>
                 <constraint firstAttribute="trailing" secondItem="rc5-fS-lmR" secondAttribute="trailing" id="pJf-jU-cTE"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="countryIconImageView" destination="wcW-ae-F7U" id="AGM-2k-Yve"/>
                 <outlet property="currencyCodeLabel" destination="8fZ-gi-iR1" id="6L5-kW-zLI"/>

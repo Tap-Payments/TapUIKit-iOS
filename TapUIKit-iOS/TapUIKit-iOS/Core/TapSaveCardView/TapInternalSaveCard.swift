@@ -12,6 +12,7 @@ import TapThemeManager2020
 import CommonDataModelsKit_iOS
 import LocalisationManagerKit_iOS
 import EasyTipView
+import SnapKit
 
 /// Represents the save card for tap for later view
 @objc public class TapInternalSaveCard: UIView {
@@ -59,8 +60,81 @@ import EasyTipView
         // first of all, disable the info button so the user cannot show duplicates of the tooltip
         saveInfoButton.isUserInteractionEnabled = false
         // Theme the tool tip, localise it and show it :)
-        ev = EasyTipView(text: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cardSaveForTapInfo", with: TapCommonConstants.pathForDefaultLocalisation()), preferences: themeSaveCardToolTip(), delegate: self)
-        ev?.show(animated: true, forView: saveInfoButton, withinSuperview: self.superview)
+        //ev = EasyTipView(text: TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cardSaveForTapInfo", with: TapCommonConstants.pathForDefaultLocalisation()), preferences: themeSaveCardToolTip(), delegate: self)
+        //ev?.show(animated: true, forView: saveInfoButton, withinSuperview: self.superview)
+        var preferences = EasyTipView.globalPreferences
+        preferences.drawing.backgroundColor = .clear
+        
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 0, y: -15)
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 0, y: 15)
+        preferences.animating.showInitialAlpha = 0
+        preferences.animating.showDuration = 1
+        preferences.animating.dismissDuration = 1
+        preferences.drawing.arrowPosition = .bottom
+        preferences.drawing.cornerRadius = 8
+        preferences.drawing.borderWidth = 1
+        preferences.drawing.borderColor = TapThemeManager.colorValue(for: "\(themePath).tooltip.borderColor") ?? .clear
+        preferences.positioning.bubbleInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 10)
+        preferences.positioning.contentInsets  = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+        ev = EasyTipView(contentView: generateToolTipView(), preferences: preferences, delegate: self)
+        ev?.show(animated: true, forView: saveInfoButton)
+        
+        /*EasyTipView.show(forView: self.saveInfoButton,
+                         contentView: generateToolTipView(),
+                         preferences: preferences,
+                         delegate: self)*/
+    }
+    
+    
+    internal func generateToolTipView() -> UIView {
+        let tooltipView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 112))
+        tooltipView.backgroundColor = .clear
+        
+        let blurEffect = UIBlurEffect(style: .prominent)
+        let blurView = UIVisualEffectView(frame: CGRect(x: 6, y: 6, width: 298, height: 110))
+        blurView.effect = blurEffect
+        blurView.layer.cornerRadius = 8
+        blurView.clipsToBounds = true
+        tooltipView.addSubview(blurView)
+        
+        // Add the title label
+        let titleLabel:UILabel = .init()
+        titleLabel.text = TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cardSaveForTapInfoTitle", with: TapCommonConstants.pathForDefaultLocalisation())
+        titleLabel.tap_theme_font = ThemeFontSelector.init(stringLiteral: "\(themePath).tooltip.titleFont",shouldLocalise: true)
+        titleLabel.tap_theme_textColor = .init(keyPath: "\(themePath).tooltip.titleColor")
+        tooltipView.addSubview(titleLabel)
+        titleLabel.snp.remakeConstraints { make in
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(270)
+            make.top.equalToSuperview().offset(16)
+            make.height.equalTo(22)
+        }
+        
+        titleLabel.layoutIfNeeded()
+        
+        
+        // Add the message label
+        let messageLabel:UILabel = .init()
+        messageLabel.text = TapLocalisationManager.shared.localisedValue(for: "TapCardInputKit.cardSaveForTapInfoMessage", with: TapCommonConstants.pathForDefaultLocalisation())
+        messageLabel.numberOfLines = 6
+        messageLabel.minimumScaleFactor = 0.5
+        messageLabel.sizeToFit()
+        messageLabel.tap_theme_font = ThemeFontSelector.init(stringLiteral: "\(themePath).tooltip.subTitleFont",shouldLocalise: true)
+        messageLabel.tap_theme_textColor = .init(keyPath: "\(themePath).tooltip.subTitleColor")
+        tooltipView.addSubview(messageLabel)
+        messageLabel.snp.remakeConstraints { make in
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(270)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.bottom.equalToSuperview().offset(16)
+        }
+        messageLabel.layoutIfNeeded()
+        if  TapLocalisationManager.shared.localisationLocale == "ar" {
+            titleLabel.textAlignment = .right
+            messageLabel.textAlignment = .right
+        }
+        return tooltipView
     }
     
     /// Generates the right theme for the tooltip

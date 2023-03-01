@@ -29,7 +29,7 @@ import TapApplePayKit_iOS
             viewModel.cellDelegate = self
             self.configureApplePayButton()
             viewModel.onApplePayButtonUIChanged = {
-                print("OSAMA")
+                //print("OSAMA")
             }
             // We reload the cell data from the view model
             reload()
