@@ -328,14 +328,16 @@ import TapThemeManager2020
         
         let cardInputHeight = cardInputView.requiredHeight() + (shouldShowHintView() ? 48 : 0) + saveCardHeight
         // Let us calculate the total widget height
-        let widgetHeight = cardInputHeight + 8 + tapCardPhoneListView.frame.height + headerView.frame.height
+        // Gap
+        let gap:CGFloat = cardInputHeight == 134 ? 10 : 0
+        let widgetHeight = cardInputHeight + 1 + gap + tapCardPhoneListView.frame.height + headerView.frame.height
         snp.remakeConstraints { make in
             make.height.equalTo(widgetHeight)
         }
         layoutIfNeeded()
         // Now update the height of the stack view and the card input view
         stackView.snp.remakeConstraints { make in
-            make.height.equalTo(cardInputHeight)
+            make.height.equalTo(cardInputHeight+gap)
         }
         stackView.layoutIfNeeded()
         stackView.layoutSubviews()
@@ -354,6 +356,7 @@ extension TapCardTelecomPaymentView: TapCardInputProtocol {
     public func cardFieldsAreFocused() {
         viewModel?.delegate?.cardFieldsAreFocused()
         //viewModel?.changeEnableStatus(to: true)
+        saveCrdForTapView.ev?.dismiss()
     }
     
     

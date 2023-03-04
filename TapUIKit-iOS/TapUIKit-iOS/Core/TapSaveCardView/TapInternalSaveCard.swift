@@ -76,14 +76,14 @@ import SnapKit
         preferences.drawing.borderColor = TapThemeManager.colorValue(for: "\(themePath).tooltip.borderColor") ?? .clear
         preferences.positioning.bubbleInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 10)
         preferences.positioning.contentInsets  = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
+        
         ev = EasyTipView(contentView: generateToolTipView(), preferences: preferences, delegate: self)
         ev?.show(animated: true, forView: saveInfoButton)
         
         /*EasyTipView.show(forView: self.saveInfoButton,
-                         contentView: generateToolTipView(),
-                         preferences: preferences,
-                         delegate: self)*/
+         contentView: generateToolTipView(),
+         preferences: preferences,
+         delegate: self)*/
     }
     
     
@@ -158,6 +158,7 @@ import SnapKit
         saveCardButton.image = isSavedCardEnabled ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "square.fill")
         // Inform the delegate
         delegate?.saveCardChanged(for: .Tap, to: isSavedCardEnabled)
+        ev?.dismiss()
     }
     
     /// Handles the tapping events on different UIImageViews inside the view
