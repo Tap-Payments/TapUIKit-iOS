@@ -19,6 +19,8 @@ import SnapKit
     @IBOutlet weak var cardBrandIconImageView: UIImageView!
     /// Reference to the saved card secured number
     @IBOutlet weak var cardSchemeLabel: UILabel!
+    /// Reference to the delete icon image view
+    @IBOutlet weak var deleteIconImageView: UIImageView!
     /// Reference to the delete save card button
     @IBOutlet weak var deleteCardButton: UIButton!
     /// Holds the last style theme applied
@@ -138,7 +140,7 @@ extension SavedCardCollectionViewCell {
         cardSchemeLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelTextFont",shouldLocalise:false)
         cardSchemeLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
         
-        deleteCardButton.tap_theme_setImage(selector: .init(keyPath: "\(themePath).editMode.deleteIcon"), forState: .normal)
+        deleteIconImageView.tap_theme_image = .init(keyPath: "\(themePath).editMode.deleteIcon")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -163,8 +165,10 @@ extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
     func changedEditMode(to: Bool) {
         if to {
             deleteCardButton.fadeIn()
+            deleteIconImageView.fadeIn()
         }else{
             deleteCardButton.fadeOut()
+            deleteIconImageView.fadeOut()
         }
         self.wiggle(on: to)
     }
