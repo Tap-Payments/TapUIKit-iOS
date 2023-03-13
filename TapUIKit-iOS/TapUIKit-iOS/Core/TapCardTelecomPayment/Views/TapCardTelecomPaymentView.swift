@@ -193,8 +193,9 @@ import TapThemeManager2020
         tapLoadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
         
         if to {
-            pre3DSLoadingView.fadeIn()
-            //cardInputView.fadeOut(duration:0.1)
+            pre3DSLoadingView.fadeIn(){ _ in
+                self.cardInputView.fadeOut(duration:0.0)
+            }
             saveCrdView.fadeOut(duration:0.1)
             saveCrdForTapView.fadeOut(duration:0.1)
         }else {

@@ -8,7 +8,7 @@
 
 import UIKit
 import TapUIKit_iOS
-
+import SnapKit
 
 class ExampleWallOfGloryViewController: UIViewController {
     
@@ -441,7 +441,7 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     
     func handleCardPayment(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum) {
         if validation == .Valid,
-            tapCardTelecomPaymentViewModel.decideHintStatus() == .None {
+           tapCardTelecomPaymentViewModel.decideHintStatus(isCVVFocused: tapCardTelecomPaymentViewModel.attachedView.cardInputView.cardUIStatus == .SavedCard) == .None {
             tapActionButtonViewModel.buttonStatus = .ValidPayment
             let payAction:()->() = { self.startPayment(then:false) }
             tapActionButtonViewModel.buttonActionBlock = payAction
@@ -487,6 +487,20 @@ extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    func brandDetected(for cardBrand: TapCardVlidatorKit_iOS.CardBrand, with validation: TapCardInputKit_iOS.CrardInputTextFieldStatusEnum, cardStatusUI: TapCardInputKit_iOS.CardInputUIStatus, isCVVFocused: Bool) {
+        //tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
+        // Based on the detected brand type we decide the action button status
+        if cardBrand.brandSegmentIdentifier == "telecom" {
+            handleTelecomPayment(for: cardBrand, with: validation)
+        }else if cardBrand.brandSegmentIdentifier == "cards" {
+            handleCardPayment(for: cardBrand, with: validation)
+        }
+    }
+    
+    func cardFieldsAreFocused() {
+        
+    }
+    
     func saveCardChanged(for saveCardType: SaveCardType, to enabled: Bool) {
         print("Save card changed to: \(enabled)")
     }
@@ -513,16 +527,6 @@ extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
     
     func cardDataChanged(tapCard: TapCard,cardStatusUI: CardInputUIStatus) {
         
-    }
-    
-    func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum,cardStatusUI: CardInputUIStatus) {
-        //tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
-        // Based on the detected brand type we decide the action button status
-        if cardBrand.brandSegmentIdentifier == "telecom" {
-            handleTelecomPayment(for: cardBrand, with: validation)
-        }else if cardBrand.brandSegmentIdentifier == "cards" {
-            handleCardPayment(for: cardBrand, with: validation)
-        }
     }
     
     func scanCardClicked() {

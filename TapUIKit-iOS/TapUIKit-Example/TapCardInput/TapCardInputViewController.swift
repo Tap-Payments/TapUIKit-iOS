@@ -27,7 +27,7 @@ class TapCardInputViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cardInput.delegate = self
-        cardInput.setup(for: .InlineCardInput)
+        cardInput.setup(for: .InlineCardInput, shouldFlip: true, shouldThemeSelf: true)
         
     }
     
@@ -36,9 +36,9 @@ class TapCardInputViewController: UIViewController {
         guard let uiSwitch:UISwitch = sender as? UISwitch else { return }
         cardInput.reset()
         if uiSwitch.isOn {
-            cardInput.setup(for: .InlineCardInput,allowedCardBrands: [CardBrand.visa.rawValue],cardsIconsUrls: [CardBrand.visa.rawValue:"https://img.icons8.com/color/2x/visa.png"])
+            cardInput.setup(for: .InlineCardInput,allowedCardBrands: [CardBrand.visa.rawValue],cardsIconsUrls: [CardBrand.visa.rawValue:"https://img.icons8.com/color/2x/visa.png"], shouldFlip: true, shouldThemeSelf: true)
         }else {
-            cardInput.setup(for: .InlineCardInput)
+            cardInput.setup(for: .InlineCardInput, shouldFlip: true, shouldThemeSelf: true)
         }
     }
     /*
@@ -54,6 +54,22 @@ class TapCardInputViewController: UIViewController {
 }
 
 extension TapCardInputViewController: TapCardInputProtocol {
+    func cardDataChanged(tapCard: CommonDataModelsKit_iOS.TapCard, cardStatusUI: TapCardInputKit_iOS.CardInputUIStatus, isCVVFocused: Bool) {
+        delegateTextView.text = "Card Number : \(tapCard.tapCardNumber ?? "")\nCard Name : \(tapCard.tapCardName ?? "")\nCard Expiry : \(tapCard.tapCardExpiryMonth ?? "")/\(tapCard.tapCardExpiryYear ?? "")\nCard CVV : \(tapCard.tapCardCVV ?? "")\n\(delegateTextView.text ?? "")\n"
+    }
+    
+    func brandDetected(for cardBrand: TapCardVlidatorKit_iOS.CardBrand, with validation: TapCardInputKit_iOS.CrardInputTextFieldStatusEnum, cardStatusUI: TapCardInputKit_iOS.CardInputUIStatus, isCVVFocused: Bool) {
+        delegateTextView.text = "Validation status : \(validation.toString())\n\(delegateTextView.text ?? "")\n";
+    }
+    
+    func dataChanged(tapCard: CommonDataModelsKit_iOS.TapCard, isCVVFocused: Bool) {
+        
+    }
+    
+    func cardFieldsAreFocused() {
+        
+    }
+    
     
     func closeSavedCard() {
         print("CLOSE SAVED CARD")
@@ -76,7 +92,7 @@ extension TapCardInputViewController: TapCardInputProtocol {
     
     
     func brandDetected(for cardBrand: CardBrand, with validation: CrardInputTextFieldStatusEnum,cardStatusUI: CardInputUIStatus) {
-        delegateTextView.text = "Validation status : \(validation.toString())\n\(delegateTextView.text ?? "")\n";
+        
     }
     
     
@@ -86,7 +102,7 @@ extension TapCardInputViewController: TapCardInputProtocol {
     
     
     func cardDataChanged(tapCard: TapCard,cardStatusUI: CardInputUIStatus) {
-       delegateTextView.text = "Card Number : \(tapCard.tapCardNumber ?? "")\nCard Name : \(tapCard.tapCardName ?? "")\nCard Expiry : \(tapCard.tapCardExpiryMonth ?? "")/\(tapCard.tapCardExpiryYear ?? "")\nCard CVV : \(tapCard.tapCardCVV ?? "")\n\(delegateTextView.text ?? "")\n"
+       
     }
     
     func scanCardClicked() {
