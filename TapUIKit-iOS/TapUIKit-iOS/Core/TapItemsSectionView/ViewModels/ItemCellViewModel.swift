@@ -139,9 +139,12 @@ internal protocol ItemCellViewModelDelegate {
      - Returns: Attributed string as follows : If no discount and no quantity, returns nothing. If only quantity returns the single item price, if discount returns the original price with a strike through
      */
     public func itemDiscount(with font:UIFont = UIFont.systemFont(ofSize: 12.0), and fontColor:UIColor = .lightGray) -> NSAttributedString {
+        // First let us get the x quantity text
+        let quantityText:String = "x \(itemQuantity())"
         // Check if we have a valid discount OR the quantity is more than 1, then format it based on the currency
         guard let itemModel = itemModel, let price = itemModel.price , convertCurrency.currency != .undefined else { return NSAttributedString.init(string: "") }
-        guard itemModel.quantity > 1  || itemModel.discount?.count ?? 0 > 0 else { return NSAttributedString.init(string: "") }
+        let itemPrice:String = itemPrice()
+        guard itemModel.quantity > 1  || itemModel.discount?.count ?? 0 > 0 else { return NSAttributedString.init(string: "\(itemPrice) \(quantityText)") }
         
         let quantity = itemModel.quantity
         
@@ -161,7 +164,7 @@ internal protocol ItemCellViewModelDelegate {
         
         // Create the default value which will be the case of having only quantity, hence displaying the single item price
         let toBeDisplayedPrice:Double = convertCurrency.currency.convert(from: originalCurrency?.currency, for:correctPrice)
-        let attributedText : NSMutableAttributedString =  NSMutableAttributedString(string: formatter.string(from: toBeDisplayedPrice) ?? "KD0.000")
+        let attributedText : NSMutableAttributedString =  NSMutableAttributedString(string: "\(formatter.string(from: toBeDisplayedPrice) ?? "KD0.000") \(quantityText)")
         attributedText.addAttributes([
             NSAttributedString.Key.font : font,
             NSAttributedString.Key.foregroundColor : fontColor

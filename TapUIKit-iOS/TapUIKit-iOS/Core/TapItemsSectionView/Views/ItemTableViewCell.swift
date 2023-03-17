@@ -13,12 +13,8 @@ import LocalisationManagerKit_iOS
 /// Represents the item table view cell that will show the items inside the items table view screen
 @objc public class ItemTableViewCell: TapGenericTableCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
-    @IBOutlet weak var itemDescriptionLabel: UILabel!
-    @IBOutlet weak var itemPriceLabel: UILabel!
     @IBOutlet weak var itemDiscountPriceLabel: UILabel!
-    @IBOutlet weak var itemQuantityView: UIView!
-    @IBOutlet weak var itemQuantityLabel: UILabel!
-    @IBOutlet weak var itemDescrriptionView: UIView!
+    @IBOutlet weak var showDescrptionButton: UIButton!
     @IBOutlet weak var itemDescLabel: UILabel!
     @IBOutlet weak var separatorView: TapSeparatorView!
     
@@ -75,20 +71,22 @@ import LocalisationManagerKit_iOS
     /// Reload the cell view with new data coming in
     internal func reload() {
         // Fade oit the item price label
-        let animationDuration:Double = 0.25
-        itemPriceLabel.fadeOut(duration: animationDuration)
+        let animationDuration:Double = 0
         itemDiscountPriceLabel.fadeOut(duration: animationDuration){ [weak self] (_) in
             // Now it is time to how the new data after fading in
-            self?.itemPriceLabel.fadeIn(duration: animationDuration)
             self?.itemDiscountPriceLabel.fadeIn(duration: animationDuration)
             self?.itemDiscountPriceLabel.attributedText = self?.viewModel.itemDiscount(with: self!.itemDiscountPriceLabel.font, and: self!.itemDiscountPriceLabel.textColor)
-            self?.itemPriceLabel.text = self?.viewModel.itemPrice()
         }
         // Now let the values be attached to the labels and the views
         itemTitleLabel.text = viewModel.itemTitle()
-        itemDescriptionLabel.text = viewModel.itemDesctiptionButtonTitle()
-        itemQuantityLabel.text = viewModel.itemQuantity()
         itemDescLabel.text = viewModel.itemDescription()
+        
+        if viewModel.descriptionState == .shown {
+            showDescrptionButton.setImage(.init(systemName: "minus"), for: .normal)
+        }else{
+            showDescrptionButton.setImage(.init(systemName: "plus"), for: .normal)
+        }
+        
         itemDescLabel.sizeToFit()
         self.layoutIfNeeded()
     }
@@ -134,27 +132,14 @@ extension ItemTableViewCell {
         itemTitleLabel.tap_theme_font = .init(stringLiteral: "\(themePath).titleLabelFont")
         itemTitleLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).titleLabelColor")
         
-        itemDescriptionLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont")
-        itemDescriptionLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
+        showDescrptionButton.tap_theme_tintColor = .init(stringLiteral: "\(themePath).titleLabelColor")
         
         itemDescLabel.tap_theme_font = .init(stringLiteral: "\(themePath).descLabelFont")
         itemDescLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).descLabelColor")
         itemDescLabel.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .right : .left
-        itemDescrriptionView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).descriptionBackgroundColor")
-        
-        
-        
-        itemPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).priceLabelFont")
-        itemPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).priceLabelColor")
-        itemPriceLabel.textAlignment = (TapLocalisationManager.shared.localisationLocale == "ar") ? .left : .right
         
         itemDiscountPriceLabel.tap_theme_font = .init(stringLiteral: "\(themePath).calculatedPriceLabelFont")
         itemDiscountPriceLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).calculatedPriceLabelColor")
-        
-        itemQuantityView.tap_theme_backgroundColor = .init(keyPath: "\(themePath).count.backgroundColor")
-        itemQuantityView.layer.cornerRadius = itemQuantityView.frame.width / 2
-        itemQuantityLabel.tap_theme_font = .init(stringLiteral: "\(themePath).count.countLabelFont",shouldLocalise:false)
-        itemQuantityLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).count.countLabelColor")
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -188,7 +173,7 @@ extension ItemTableViewCell:ItemCellViewModelDelegate {
     
     func reloadDescription(with state: DescriptionState) {
         guard let tableView:UITableView = self.superview as? UITableView,
-            let indexPath:IndexPath = tableView.indexPath(for: self) else { return }
+              let indexPath:IndexPath = tableView.indexPath(for: self) else { return }
         // Reload the expanded/collapsed the
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(0)) {
             tableView.reloadRows(at: [indexPath], with: .none)
