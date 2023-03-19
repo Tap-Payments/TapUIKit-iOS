@@ -145,7 +145,7 @@ import TapCardScanner_iOS
         }
         // All good, time to animate the height :)
         if delaySizeChange {
-            newSizeTimer = Timer.scheduledTimer(timeInterval: 0.1 , target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: ["newSize":newSize,"newFrame":self.frame], repeats: false)
+            newSizeTimer = Timer.scheduledTimer(timeInterval: 0.0 , target: self, selector: #selector(publishNewContentSize(timer:)), userInfo: ["newSize":newSize,"newFrame":self.frame], repeats: false)
         }else {
             newSize.height += keyboardPadding + neededBottomSpaceMargin
             

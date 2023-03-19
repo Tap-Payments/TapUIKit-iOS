@@ -372,10 +372,10 @@ import TapThemeManager2020
                 UIView.animate(withDuration: animationDuration,animations: { [weak self] in
                     self?.backgroundView?.alpha = 0
                     //modalController.view.alpha = 0
-                    },completion: { _ in
-                        self?.dismiss(animated: true, completion: {
-                            self?.delegate?.tapBottomSheetDismissed?()
-                        })
+                },completion: { _ in
+                    self?.dismiss(animated: true, completion: {
+                        self?.delegate?.tapBottomSheetDismissed?()
+                    })
                 })
             }
             //self?.dismiss(animated: true, completion: nil)
@@ -386,6 +386,16 @@ import TapThemeManager2020
     /// Will disimiss the whole controller and the presented controller in the bottom sheet
     @objc public func dismissTheController() {
         dismissBottomSheet()
+    }
+    
+    
+    /**
+     Will be fired once the tap sheet content needs to reduce its height in preparing to removing a view
+     - Parameter newHeight: The height to be reduced
+     */
+    @objc public func reduceHeight(by newHeight:CGFloat) {
+        lastRequestedHeight = lastRequestedHeight - newHeight
+        timerAction()
     }
     
     /**
