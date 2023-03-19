@@ -35,9 +35,6 @@ public struct SDKSettings {
     /// Session token.
     public private(set) var sessionToken: String?
     
-    /// Determine if the passed data is correct ones by the backend
-    internal let verifiedApplication:Bool?
-    
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
@@ -51,7 +48,6 @@ public struct SDKSettings {
         case merchant               = "merchant"
         case internalSettings       = "sdk_settings"
         case sessionToken           = "session_token"
-        case verifiedApplication    = "verified_application"
     }
 }
 
@@ -67,7 +63,6 @@ extension SDKSettings: Decodable {
         let merchantName            = try container.decode(String.self,                 forKey: .merchantName)
         let merchantLogo            = try container.decode(String.self,                 forKey: .merchantLogo)
         let merchant                = Merchant(logoURL: merchantLogo, name: merchantName)
-        let verifiedApplication     = try container.decode(Bool.self,                   forKey: .verifiedApplication)
         let internalSettings        = try container.decode(InternalSDKSettings.self,    forKey: .internalSettings)
         
         let permissions             = try container.decodeIfPresent(Permissions.self,   forKey: .permissions) ?? .tap_none
@@ -87,8 +82,7 @@ extension SDKSettings: Decodable {
                   deviceID:             deviceID,
                   merchant:             merchant,
                   internalSettings:     internalSettings,
-                  sessionToken:         sessionToken,
-                  verifiedApplication:  verifiedApplication)
+                  sessionToken:         sessionToken)
     }
 }
 
@@ -102,13 +96,16 @@ public struct TapInitResponseModel:Decodable {
     /// Data.
     public var data: SDKSettings
     /// Payment options.
-    public var cardPaymentOptions: TapPaymentOptionsReponseModel
+    public var paymentOptions: TapPaymentOptionsReponseModel
+    /// session token.
+    public var session: String
     
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
         
         case data               = "merchant"
-        case cardPaymentOptions = "payment_options"
+        case paymentOptions     = "payment_options"
+        case session            = "session"
     }
 }

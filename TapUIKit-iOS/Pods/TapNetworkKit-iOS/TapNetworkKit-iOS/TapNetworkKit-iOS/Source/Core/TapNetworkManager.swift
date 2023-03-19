@@ -111,15 +111,16 @@ public class TapNetworkManager {
                 }
             }
             
+            
+            var loggString:String = "Request :\n========\n\(request.httpMethod ?? "") \(request.url?.absoluteString ?? "")\nHeaders :\n------\n\(String(data: try! JSONSerialization.data(withJSONObject: (request.allHTTPHeaderFields ?? [:]), options: .prettyPrinted), encoding: .utf8 )!)"
+            
+            if let body = request.httpBody {
+                loggString = "\(loggString)\nBody :\n-----\n\(String(data: try! JSONSerialization.data(withJSONObject: JSONSerialization.jsonObject(with: body, options: []), options: .prettyPrinted), encoding: .utf8 )!)\n---------------\n"
+            }else{
+                loggString = "\(loggString)\nBody :\n-----\n{\n}\n---------------\n"
+            }
+            delegate?.log(string: loggString)
             if consolePrintLoggingEnabled {
-                var loggString:String = "Request :\n========\n\(request.httpMethod ?? "") \(request.url?.absoluteString ?? "")\nHeaders :\n------\n\(String(data: try! JSONSerialization.data(withJSONObject: (request.allHTTPHeaderFields ?? [:]), options: .prettyPrinted), encoding: .utf8 )!)"
-                
-                if let body = request.httpBody {
-                    loggString = "\(loggString)\nBody :\n-----\n\(String(data: try! JSONSerialization.data(withJSONObject: JSONSerialization.jsonObject(with: body, options: []), options: .prettyPrinted), encoding: .utf8 )!)\n---------------\n"
-                }else{
-                    loggString = "\(loggString)\nBody :\n-----\n{\n}\n---------------\n"
-                }
-                delegate?.log(string: loggString)
                 print(loggString)
             }
             
@@ -153,10 +154,11 @@ public class TapNetworkManager {
             
             let loggString:String = "Response :\n========\n\(operation.httpMethod.rawValue) \(operation.path)\nHeaders :\n------\n\(headersString)\nBody :\n-----\n\(bodySting)\n---------------\n"
             
+            self.delegate?.log(string: loggString)
             if self.consolePrintLoggingEnabled {
-                self.delegate?.log(string: loggString)
                 print(loggString)
             }
+            
             // Check if error came in
             if let nonNullError = error {
                 self.delegate?.log(string: nonNullError.debugDescription)

@@ -145,37 +145,24 @@ import Foundation
      - Returns: True if successfuly the file was located and converted into a JSON format, false otherwise
      */
     internal func fetchRemoteLocalisationData(filePath:URL) -> Bool {
-        var result:Bool = false
+        //var result:Bool = false
         // Validate the url
         guard validateJsonRemoteURL(remoteURL: filePath) else {
-            return result
+            return false
         }
         
-        // Then let us load the data
-        // Make it a sync call
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        let task = URLSession.shared.dataTask(with: filePath) {[weak self] (data, response, error) in
-            // Check the data is loaded properly, no errors, and the data is a parsable json format
-            if let nonNullData = data,
-               let nonNullJsonDictionary = try? JSONSerialization.jsonObject(with: nonNullData, options: .allowFragments) as? [String:Any] {
-                // All good
-                result = true
-                // Store the data for further access
-                self?.localisationData = nonNullJsonDictionary
-                self?.localisationFilePath = filePath
-                self?.localisationType = .RemoteJsonFile
-                semaphore.signal()
-            }else{
-                // Something happened
-                semaphore.signal()
+        // Try to fetch the localised value from the givn file
+        do {
+            // Check if the localisation file provided exists and readable
+            let data = try Data(contentsOf: filePath)
+            if let json:[String:Any] = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String : Any] {
+                localisationData = json
+                localisationFilePath = filePath
+                localisationType = .DirectData
+                return true
             }
-        }
-        
-        task.resume()
-        semaphore.wait()
-        
-        return result
+        } catch  {}
+        return false
     }
     
     
