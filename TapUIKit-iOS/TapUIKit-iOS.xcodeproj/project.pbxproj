@@ -55,6 +55,8 @@
 		E832E63B24B3320800E2241B /* TapCardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E832E63A24B3320800E2241B /* TapCardInputViewController.swift */; };
 		E835ADB4245850E700E55A68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E835ADB3245850E700E55A68 /* GoogleService-Info.plist */; };
 		E835ADC22459815D00E55A68 /* tapLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E835ADC12459815D00E55A68 /* tapLogo.png */; };
+		E83FEF7029C86C8F00F5077A /* CardVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FEF6E29C86C8F00F5077A /* CardVisualEffectView.swift */; };
+		E83FEF7129C86C8F00F5077A /* UIViewEffectViewiOS14.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83FEF6F29C86C8F00F5077A /* UIViewEffectViewiOS14.swift */; };
 		E8428DE72456DAF300D5A45A /* TapUIKit_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8428DF42456DB3200D5A45A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428DF32456DB3200D5A45A /* AppDelegate.swift */; };
 		E8428DF62456DB3200D5A45A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8428DF52456DB3200D5A45A /* SceneDelegate.swift */; };
@@ -305,6 +307,8 @@
 		E832E63A24B3320800E2241B /* TapCardInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCardInputViewController.swift; sourceTree = "<group>"; };
 		E835ADB3245850E700E55A68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E835ADC12459815D00E55A68 /* tapLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapLogo.png; sourceTree = "<group>"; };
+		E83FEF6E29C86C8F00F5077A /* CardVisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVisualEffectView.swift; sourceTree = "<group>"; };
+		E83FEF6F29C86C8F00F5077A /* UIViewEffectViewiOS14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewEffectViewiOS14.swift; sourceTree = "<group>"; };
 		E8428DE22456DAF300D5A45A /* TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8428DE52456DAF300D5A45A /* TapUIKit_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapUIKit_iOS.h; sourceTree = "<group>"; };
 		E8428DE62456DAF300D5A45A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -778,6 +782,8 @@
 		E8428E0E2457F8C000D5A45A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E83FEF6E29C86C8F00F5077A /* CardVisualEffectView.swift */,
+				E83FEF6F29C86C8F00F5077A /* UIViewEffectViewiOS14.swift */,
 				E8D4A089289913340082E0A4 /* UIView+SimpleAnimation.swift */,
 				E8428E0F2457F8D900D5A45A /* TapUIExtensions.swift */,
 				E80E8AA42487C053009AF18F /* Constants.swift */,
@@ -1759,6 +1765,7 @@
 				E8437F7924BE36D40059F1B8 /* TapGoPayLoginTabBarViewModel.swift in Sources */,
 				E8437F5924BC7D260059F1B8 /* TapHintViewStatusEnum.swift in Sources */,
 				E87B3C6824C707F700F1005A /* TapWebViewModel.swift in Sources */,
+				E83FEF7029C86C8F00F5077A /* CardVisualEffectView.swift in Sources */,
 				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
 				E88834AE2979CCDF006225E6 /* TapAsyncView.swift in Sources */,
 				E8437FB424C05E3E0059F1B8 /* BottomLineTextField.swift in Sources */,
@@ -1770,6 +1777,7 @@
 				E863D52729850AB3009489AC /* CountryManager.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
 				E863D5142984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift in Sources */,
+				E83FEF7129C86C8F00F5077A /* UIViewEffectViewiOS14.swift in Sources */,
 				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,
 				E8437FB024C05E3E0059F1B8 /* TapOTPStateEnum.swift in Sources */,
 				E80E8AAA2487CF8D009AF18F /* TapPresentableViewController.swift in Sources */,
