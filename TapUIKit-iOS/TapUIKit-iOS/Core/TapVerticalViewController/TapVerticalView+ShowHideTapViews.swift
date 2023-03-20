@@ -228,20 +228,27 @@ extension TapVerticalView {
     }
     
     /// Hide the action button fade out + height decrease
-    @objc  public func hideActionButton(fadeInDuation:Double = 0.25, fadeInDelay:Double = 0) {
-        tapActionButtonHeightConstraint.priority = .required
-        tapActionButtonHeightConstraint.constant = 0
-        tapActionButton.fadeOut(duration: fadeInDuation, delay: fadeInDelay)
-        tapActionButton.updateConstraints()
+    @objc  public func hideActionButton(fadeInDuation:Double = 0.25, fadeInDelay:Double = 0, keepPowredByTapView:Bool = false) {
         
-        powereByTapView.snp.remakeConstraints { make in
-            make.height.equalTo(0)
+        tapActionButton.fadeOut(duration: fadeInDuation, delay: fadeInDelay){ _ in
+            DispatchQueue.main.async {
+                self.tapActionButtonHeightConstraint.priority = .required
+                self.tapActionButtonHeightConstraint.constant = 0
+                self.tapActionButton.updateConstraints()
+            }
         }
         
-        powereByTapView.fadeOut(duration: fadeInDuation, delay: fadeInDelay)
-        powereByTapView.layoutIfNeeded()
-        powereByTapView.updateConstraints()
-        
+        if !keepPowredByTapView {
+            powereByTapView.fadeOut(duration: fadeInDuation, delay: fadeInDelay){ _ in
+                DispatchQueue.main.async {
+                    self.powereByTapView.snp.remakeConstraints { make in
+                        make.height.equalTo(0)
+                    }
+                    self.powereByTapView.layoutIfNeeded()
+                    self.powereByTapView.updateConstraints()
+                }
+            }
+        }
         layoutIfNeeded()
     }
     

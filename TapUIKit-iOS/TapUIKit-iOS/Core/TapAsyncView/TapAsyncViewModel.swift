@@ -30,6 +30,8 @@ import LocalisationManagerKit_iOS
     internal var merchantModel:TapMerchantHeaderViewModel?
     /// The charge data
     internal var chargeModel:Charge?
+    /// The charge data
+    internal var paymentOption:PaymentOption?
     
     /// Content displayed in the paymentProgressLabel
     internal var paymentProgressLabel:String {
@@ -72,7 +74,7 @@ import LocalisationManagerKit_iOS
     
     /// Content displayed in the paymentReferenceTitleLabel
     internal var paymentReferenceTitleLabel:String {
-        return String(format: TapLocalisationManager.shared.localisedValue(for: "\(localizationPath).paymentReferenceTitleLabel",with: TapCommonConstants.pathForDefaultLocalisation()), merchantModel?.title ?? "")
+        return String(format: TapLocalisationManager.shared.localisedValue(for: "\(localizationPath).paymentReferenceTitleLabel",with: TapCommonConstants.pathForDefaultLocalisation()), paymentOption?.title ?? "")
     }
     
     
@@ -110,7 +112,7 @@ import LocalisationManagerKit_iOS
     
     /// Content displayed in the paymentVisitBranchesLabel
     internal var paymentVisitBranchesLabel:String {
-        return String(format: TapLocalisationManager.shared.localisedValue(for: "\(localizationPath).paymentVisitBranchesLabel",with: TapCommonConstants.pathForDefaultLocalisation()), merchantModel?.title ?? "")
+        return String(format: TapLocalisationManager.shared.localisedValue(for: "\(localizationPath).paymentVisitBranchesLabel",with: TapCommonConstants.pathForDefaultLocalisation()), paymentOption?.title ?? "")
     }
     
     /// Content displayed in the storesURL button
@@ -131,11 +133,12 @@ import LocalisationManagerKit_iOS
      - Parameter merchantModel: The merchant data
      - Parameter chargeModel: The charge data
      */
-    @objc public init(merchantModel:TapMerchantHeaderViewModel, chargeModel:Charge) {
+    public init(merchantModel:TapMerchantHeaderViewModel, chargeModel:Charge, paymentOption:PaymentOption) {
         super.init()
         defer {
             self.merchantModel = merchantModel
             self.chargeModel = chargeModel
+            self.paymentOption = paymentOption
             self.tapAsyncView = .init()
             self.tapAsyncView?.changeViewModel(with: self)
         }

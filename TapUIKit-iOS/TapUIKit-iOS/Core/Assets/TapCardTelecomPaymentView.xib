@@ -1,121 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-<device id="retina5_5" orientation="portrait" appearance="light"/>
-<dependencies>
-<deployment identifier="iOS"/>
-<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-<capability name="Safe area layout guides" minToolsVersion="9.0"/>
-<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-</dependencies>
-<objects>
-<placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCardTelecomPaymentView" customModule="TapUIKit_iOS" customModuleProvider="target">
-<connections>
-<outlet property="cardInputView" destination="4iO-6k-uJn" id="Rga-1f-pwq"/>
-<outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
-<outlet property="headerView" destination="VLF-Re-aM8" id="ZCR-Oe-hcn"/>
-<outlet property="loadingBlurView" destination="6hT-5I-7mk" id="VgB-RA-jkJ"/>
-<outlet property="poweredByTapView" destination="W6h-b4-8eW" id="J7G-xU-in8"/>
-<outlet property="pre3DSLoadingView" destination="kpP-xc-tEn" id="RME-aP-6Cm"/>
-<outlet property="stackView" destination="CZk-jP-kZU" id="9SK-eb-rzi"/>
-<outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
-<outlet property="tapLoadingGif" destination="dvk-aG-hR4" id="RoO-Ra-lgy"/>
-</connections>
-</placeholder>
-<placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-<view contentMode="scaleToFill" id="iN0-l3-epB">
-<rect key="frame" x="0.0" y="0.0" width="565" height="232"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLF-Re-aM8" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
-<rect key="frame" x="0.0" y="0.0" width="565" height="30"/>
-<viewLayoutGuide key="safeArea" id="DoH-H2-CMc"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstAttribute="height" constant="30" id="v6e-BI-1AE"/>
-</constraints>
-</view>
-<stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CZk-jP-kZU">
-<rect key="frame" x="16" y="30" width="533" height="170"/>
-<subviews>
-<view contentMode="scaleToFill" verticalHuggingPriority="48" translatesAutoresizingMaskIntoConstraints="NO" id="4iO-6k-uJn" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
-<rect key="frame" x="0.0" y="0.0" width="533" height="170"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</view>
-</subviews>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</stackView>
-<view contentMode="scaleToFill" verticalHuggingPriority="24" translatesAutoresizingMaskIntoConstraints="NO" id="or1-yo-2AD" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target">
-<rect key="frame" x="16" y="208" width="533" height="24"/>
-<viewLayoutGuide key="safeArea" id="J03-8L-5gb"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstAttribute="height" constant="24" id="zFf-Xx-rVe"/>
-</constraints>
-</view>
-<view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-b4-8eW" customClass="PoweredByTapView" customModule="TapUIKit_iOS" customModuleProvider="target">
-<rect key="frame" x="449" y="208" width="100" height="24"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstAttribute="width" constant="100" id="mcS-qc-Efg"/>
-</constraints>
-</view>
-<view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-xc-tEn">
-<rect key="frame" x="16" y="30" width="533" height="170"/>
-<subviews>
-<visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hT-5I-7mk">
-<rect key="frame" x="0.0" y="0.0" width="533" height="170"/>
-<view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aQp-kc-9gB">
-<rect key="frame" x="0.0" y="0.0" width="533" height="170"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</view>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<blurEffect style="systemUltraThinMaterial"/>
-</visualEffectView>
-<imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-aG-hR4">
-<rect key="frame" x="252.66666666666669" y="71" width="28" height="28"/>
-<constraints>
-<constraint firstAttribute="width" constant="28" id="2Ic-mf-5e7"/>
-<constraint firstAttribute="width" secondItem="dvk-aG-hR4" secondAttribute="height" multiplier="1:1" id="Srp-Cj-Ox8"/>
-</constraints>
-</imageView>
-</subviews>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstItem="dvk-aG-hR4" firstAttribute="centerX" secondItem="kpP-xc-tEn" secondAttribute="centerX" id="8T6-V8-GeF"/>
-<constraint firstAttribute="trailing" secondItem="6hT-5I-7mk" secondAttribute="trailing" id="D7S-B0-EeX"/>
-<constraint firstItem="6hT-5I-7mk" firstAttribute="leading" secondItem="kpP-xc-tEn" secondAttribute="leading" id="Pjc-Gc-zbl"/>
-<constraint firstAttribute="bottom" secondItem="6hT-5I-7mk" secondAttribute="bottom" id="Pry-Cy-sUd"/>
-<constraint firstItem="6hT-5I-7mk" firstAttribute="top" secondItem="kpP-xc-tEn" secondAttribute="top" id="c7j-hi-XUC"/>
-<constraint firstItem="dvk-aG-hR4" firstAttribute="centerY" secondItem="kpP-xc-tEn" secondAttribute="centerY" id="zK7-ep-wsw"/>
-</constraints>
-</view>
-</subviews>
-<viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VLF-Re-aM8" secondAttribute="trailing" id="4eK-w4-mrf"/>
-<constraint firstItem="or1-yo-2AD" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="bottom" constant="8" id="5bI-D9-kXM"/>
-<constraint firstItem="VLF-Re-aM8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dna-gj-QlP"/>
-<constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="ENA-kU-aBy"/>
-<constraint firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" constant="16" id="Fda-Gy-8NT"/>
-<constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="HkT-c2-1U6"/>
-<constraint firstItem="CZk-jP-kZU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OM3-6q-VAy"/>
-<constraint firstItem="kpP-xc-tEn" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="S3n-GT-gQN"/>
-<constraint firstItem="kpP-xc-tEn" firstAttribute="bottom" secondItem="CZk-jP-kZU" secondAttribute="bottom" id="Xky-jZ-IEV"/>
-<constraint firstItem="kpP-xc-tEn" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="top" id="aeQ-7R-0Wo"/>
-<constraint firstItem="kpP-xc-tEn" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="hpe-VF-n4f"/>
-<constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" priority="750" id="lfc-qu-aN1"/>
-<constraint firstItem="W6h-b4-8eW" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="top" id="mme-zD-W9d"/>
-<constraint firstItem="W6h-b4-8eW" firstAttribute="bottom" secondItem="or1-yo-2AD" secondAttribute="bottom" id="qUc-sZ-HzG"/>
-<constraint firstItem="W6h-b4-8eW" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" id="xcy-3F-Per"/>
-<constraint firstItem="VLF-Re-aM8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBb-TV-koC"/>
-<constraint firstItem="CZk-jP-kZU" firstAttribute="top" secondItem="VLF-Re-aM8" secondAttribute="bottom" id="ziM-T8-dVV"/>
-</constraints>
-<freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-<point key="canvasLocation" x="258.69565217391306" y="126.35869565217392"/>
-</view>
-</objects>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCardTelecomPaymentView" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="cardInputView" destination="4iO-6k-uJn" id="Rga-1f-pwq"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
+                <outlet property="headerView" destination="VLF-Re-aM8" id="ZCR-Oe-hcn"/>
+                <outlet property="loadingBlurView" destination="UlU-UZ-H8C" id="9sN-6q-5Pt"/>
+                <outlet property="poweredByTapView" destination="W6h-b4-8eW" id="J7G-xU-in8"/>
+                <outlet property="pre3DSLoadingView" destination="kpP-xc-tEn" id="RME-aP-6Cm"/>
+                <outlet property="stackView" destination="CZk-jP-kZU" id="9SK-eb-rzi"/>
+                <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
+                <outlet property="tapLoadingGif" destination="dvk-aG-hR4" id="RoO-Ra-lgy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="565" height="232"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLF-Re-aM8" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="565" height="30"/>
+                    <viewLayoutGuide key="safeArea" id="DoH-H2-CMc"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="v6e-BI-1AE"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CZk-jP-kZU">
+                    <rect key="frame" x="16" y="30" width="533" height="170"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="48" translatesAutoresizingMaskIntoConstraints="NO" id="4iO-6k-uJn" customClass="TapCardInput" customModule="TapCardInputKit_iOS">
+                            <rect key="frame" x="0.0" y="0.0" width="533" height="170"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
+                <view contentMode="scaleToFill" verticalHuggingPriority="24" translatesAutoresizingMaskIntoConstraints="NO" id="or1-yo-2AD" customClass="TapCardPhoneBarList" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="16" y="208" width="533" height="24"/>
+                    <viewLayoutGuide key="safeArea" id="J03-8L-5gb"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="zFf-Xx-rVe"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-b4-8eW" customClass="PoweredByTapView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="449" y="208" width="100" height="24"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="mcS-qc-Efg"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-xc-tEn">
+                    <rect key="frame" x="16" y="30" width="533" height="170"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlU-UZ-H8C" customClass="CardVisualEffectView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="533" height="170"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-aG-hR4">
+                            <rect key="frame" x="252.66666666666669" y="71" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="28" id="2Ic-mf-5e7"/>
+                                <constraint firstAttribute="width" secondItem="dvk-aG-hR4" secondAttribute="height" multiplier="1:1" id="Srp-Cj-Ox8"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="dvk-aG-hR4" firstAttribute="centerX" secondItem="kpP-xc-tEn" secondAttribute="centerX" id="8T6-V8-GeF"/>
+                        <constraint firstItem="UlU-UZ-H8C" firstAttribute="top" secondItem="kpP-xc-tEn" secondAttribute="top" id="WFT-XC-hWV"/>
+                        <constraint firstAttribute="trailing" secondItem="UlU-UZ-H8C" secondAttribute="trailing" id="dxd-ol-doj"/>
+                        <constraint firstItem="UlU-UZ-H8C" firstAttribute="leading" secondItem="kpP-xc-tEn" secondAttribute="leading" id="uFm-uz-3AZ"/>
+                        <constraint firstAttribute="bottom" secondItem="UlU-UZ-H8C" secondAttribute="bottom" id="udX-08-nXz"/>
+                        <constraint firstItem="dvk-aG-hR4" firstAttribute="centerY" secondItem="kpP-xc-tEn" secondAttribute="centerY" id="zK7-ep-wsw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="height" secondItem="4iO-6k-uJn" secondAttribute="height" id="2B2-cd-Nr9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VLF-Re-aM8" secondAttribute="trailing" id="4eK-w4-mrf"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="bottom" constant="8" id="5bI-D9-kXM"/>
+                <constraint firstItem="VLF-Re-aM8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dna-gj-QlP"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="ENA-kU-aBy"/>
+                <constraint firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" constant="16" id="Fda-Gy-8NT"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="HkT-c2-1U6"/>
+                <constraint firstItem="CZk-jP-kZU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OM3-6q-VAy"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="S3n-GT-gQN"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="top" id="aeQ-7R-0Wo"/>
+                <constraint firstItem="kpP-xc-tEn" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="hpe-VF-n4f"/>
+                <constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" priority="750" id="lfc-qu-aN1"/>
+                <constraint firstItem="W6h-b4-8eW" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="top" id="mme-zD-W9d"/>
+                <constraint firstItem="W6h-b4-8eW" firstAttribute="bottom" secondItem="or1-yo-2AD" secondAttribute="bottom" id="qUc-sZ-HzG"/>
+                <constraint firstItem="W6h-b4-8eW" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" id="xcy-3F-Per"/>
+                <constraint firstItem="VLF-Re-aM8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBb-TV-koC"/>
+                <constraint firstItem="CZk-jP-kZU" firstAttribute="top" secondItem="VLF-Re-aM8" secondAttribute="bottom" id="ziM-T8-dVV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="258.69565217391306" y="126.35869565217392"/>
+        </view>
+    </objects>
 </document>

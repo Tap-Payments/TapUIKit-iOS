@@ -215,8 +215,8 @@ import TapThemeManager2020
         view.snp.remakeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-16)
-            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview()//.offset(-8)
+            make.leading.equalToSuperview()//.offset(8)
         }
         view.layoutIfNeeded()
         attachedView.layoutIfNeeded()
