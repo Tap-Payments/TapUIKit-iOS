@@ -29,7 +29,7 @@ import TapThemeManager2020
         }
     }
     
-    @IBOutlet weak var loadingBlurView: UIVisualEffectView!
+    @IBOutlet weak var loadingBlurView: CardVisualEffectView!
     /// The hint view to show an error/warning message to indicate to the user what does he need to do next
     internal var hintView:TapHintView = .init()
     
@@ -194,10 +194,10 @@ import TapThemeManager2020
         
         if to {
             pre3DSLoadingView.fadeIn(){ _ in
-                self.cardInputView.fadeOut(duration:0.0)
+                //self.cardInputView.fadeOut(duration:0.0)
             }
-            saveCrdView.fadeOut(duration:0.1)
-            saveCrdForTapView.fadeOut(duration:0.1)
+            saveCrdView.fadeOut(duration:0.25)
+            saveCrdForTapView.fadeOut(duration:0.25)
         }else {
             pre3DSLoadingView.fadeOut()
         }
@@ -443,6 +443,9 @@ extension TapCardTelecomPaymentView {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         
+        loadingBlurView.blurRadius = 10
+        loadingBlurView.scale = 1
+        
         // background color
         // If the card field is set to theme itself, then our parent view will be clear and coloring
         if viewModel?.shouldThemeSelf ?? false {
@@ -483,6 +486,10 @@ extension TapCardTelecomPaymentView {
         hintView.clipsToBounds = true
         hintView.layer.cornerRadius = stackView.layer.cornerRadius
         hintView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        
+        // The blur 3ds overlay
+        loadingBlurView.colorTint = TapThemeManager.colorValue(for: "inlineCard.blur3dsoverlay.tint")
+        loadingBlurView.colorTintAlpha = CGFloat(TapThemeManager.numberValue(for: "inlineCard.blur3dsoverlay.tintAlpha")?.floatValue ?? 0)
         
         layoutIfNeeded()
     }
