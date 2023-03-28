@@ -51,9 +51,9 @@ extension TapVerticalView {
         endEditing(true)
         // Remove from the stack view all the non needed view to prepare for showing the goPay sign in view
         remove(viewType: TapChipHorizontalList.self, with: .init(for:.fadeOut, with:0.3), and: true)
-        DispatchQueue.main.async{ [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(550)){ [weak self] in
             // Lastly.. add the goPay sign in view
-            self?.add(view: signGoPayView, with: [.init(for: .fadeIn,wait:0.2)])
+            self?.add(view: signGoPayView, with: [])
         }
     }
     
@@ -209,20 +209,20 @@ extension TapVerticalView {
     @objc public func showActionButton(fadeInDuation:Double = 0, fadeInDelay:Double = 0) {
         if fadeInDuation != 0 {
             tapActionButton.fadeIn(duration: fadeInDuation, delay: fadeInDelay)
-            powereByTapView.fadeIn(duration: fadeInDuation, delay: fadeInDelay)
+            //powereByTapView.fadeIn(duration: fadeInDuation, delay: fadeInDelay)
         }else{
             tapActionButton.fadeIn()
-            powereByTapView.fadeIn()
+            //powereByTapView.fadeIn()
         }
         
         tapActionButtonHeightConstraint.constant = 74
         tapActionButton.updateConstraints()
         
-        powereByTapView.snp.remakeConstraints { make in
-            make.height.equalTo(33)
-        }
-        powereByTapView.layoutIfNeeded()
-        powereByTapView.updateConstraints()
+        /*powereByTapView.snp.remakeConstraints { make in
+         make.height.equalTo(33)
+         }
+         powereByTapView.layoutIfNeeded()
+         powereByTapView.updateConstraints()*/
         
         layoutIfNeeded()
     }
@@ -238,17 +238,17 @@ extension TapVerticalView {
             }
         }
         
-        if !keepPowredByTapView {
-            powereByTapView.fadeOut(duration: fadeInDuation, delay: fadeInDelay){ _ in
-                DispatchQueue.main.async {
-                    self.powereByTapView.snp.remakeConstraints { make in
-                        make.height.equalTo(0)
-                    }
-                    self.powereByTapView.layoutIfNeeded()
-                    self.powereByTapView.updateConstraints()
-                }
-            }
-        }
+        /*if !keepPowredByTapView {
+         powereByTapView.fadeOut(duration: fadeInDuation, delay: fadeInDelay){ _ in
+         DispatchQueue.main.async {
+         self.powereByTapView.snp.remakeConstraints { make in
+         make.height.equalTo(0)
+         }
+         self.powereByTapView.layoutIfNeeded()
+         self.powereByTapView.updateConstraints()
+         }
+         }
+         }*/
         layoutIfNeeded()
     }
     

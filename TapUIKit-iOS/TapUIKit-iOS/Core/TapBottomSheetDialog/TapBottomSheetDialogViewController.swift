@@ -272,11 +272,11 @@ import TapThemeManager2020
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.tag = TapConstantManager.TapBottomSheetContainerTag
         blurredEffectView.frame = view.bounds
-        
-        //let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-        //let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-        //vibrancyEffectView.frame = view.bounds
-        //blurredEffectView.contentView.addSubview(vibrancyEffectView)
+        //blurredEffectView.alpha = 0.95
+        /*let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+         let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+         vibrancyEffectView.frame = view.bounds
+         blurredEffectView.contentView.addSubview(vibrancyEffectView)*/
         view.addSubview(blurredEffectView)
     }
     
@@ -307,14 +307,15 @@ import TapThemeManager2020
         addPullUpController(nonNullPresentController, initialStickyPointOffset: tapBottomSheetInitialHeight, animated: false, completion: { [weak self] (_) in
             DispatchQueue.main.async {
                 guard let nonNullPullUpController = self?.addedPullUpController else { return }
-                nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: true,completion: {
+                nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: false,completion: {
                     guard let delegate = self?.delegate else { return }
                     delegate.tapBottomSheetPresented?()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-                        UIView.animate(withDuration: 0.25,animations: { [weak self] in
-                            self?.backgroundView?.alpha = 1
-                        })
-                    }
+                    self?.backgroundView?.alpha = 1
+                    /*DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+                     UIView.animate(withDuration: 0.0,animations: { [weak self] in
+                     self?.backgroundView?.alpha = 1
+                     })
+                     }*/
                 })
             }
         })

@@ -50,6 +50,7 @@ extension PoweredByTapView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         poweredByTapLogo.image = TapThemeManager.imageValue(for: "\(themePath).tapLogo")
+        tap_theme_backgroundColor = .init(stringLiteral: "\(themePath).backgroundColor")
         layoutIfNeeded()
     }
     

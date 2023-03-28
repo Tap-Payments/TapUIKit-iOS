@@ -188,7 +188,7 @@ import TapThemeManager2020
      */
     internal func change3dsLoadingStatus(to:Bool) {
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
-        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "Black-loader", withExtension: "gif")!)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: TapThemeManager.stringValue(for: "inlineCard.loaderImage") ?? "Black-loader", withExtension: "gif")!)
         let gif = try! UIImage(gifData: imageData!)
         tapLoadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
         
