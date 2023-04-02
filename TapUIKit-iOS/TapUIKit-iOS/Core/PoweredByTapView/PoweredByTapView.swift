@@ -12,7 +12,8 @@ import TapThemeManager2020
 @objc public class PoweredByTapView: UIView {
     /// Represents the main holding view
     @IBOutlet var containerView: UIView!
-    @IBOutlet weak var poweredByTapLogo: UIImageView!
+    @IBOutlet var blurView: UIVisualEffectView!
+    @IBOutlet public weak var poweredByTapLogo: UIImageView!
     internal let themePath:String = "poweredByTap"
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -50,7 +51,8 @@ extension PoweredByTapView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         poweredByTapLogo.image = TapThemeManager.imageValue(for: "\(themePath).tapLogo")
-        tap_theme_backgroundColor = .init(stringLiteral: "\(themePath).backgroundColor")
+        blurView.tap_theme_backgroundColor = .init(stringLiteral: "\(themePath).blurColor")
+        backgroundColor = .clear
         layoutIfNeeded()
     }
     

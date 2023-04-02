@@ -95,7 +95,7 @@ import TapThemeManager2020
     /**
      Will be fired once the controller is presented
      */
-    @objc optional func tapBottomSheetPresented()
+    @objc optional func tapBottomSheetPresented(viewController:UIViewController?)
     
     /**
      Fetches if the swipe to dismiss enabled or disabled
@@ -309,7 +309,7 @@ import TapThemeManager2020
                 guard let nonNullPullUpController = self?.addedPullUpController else { return }
                 nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: false,completion: {
                     guard let delegate = self?.delegate else { return }
-                    delegate.tapBottomSheetPresented?()
+                    delegate.tapBottomSheetPresented?(viewController: self?.tapBottomSheetViewControllerToPresent)
                     self?.backgroundView?.alpha = 1
                     /*DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
                      UIView.animate(withDuration: 0.0,animations: { [weak self] in
