@@ -15,6 +15,12 @@ import SnapKit
 @objc class SavedCardCollectionViewCell: GenericTapChip {
     // MARK:- Variables
     
+    /// Reference to the loading view that we will display when performing delete card api
+    @IBOutlet weak var deleteCardLoadingView: UIView!
+    /// Reference to the loading gif, that is displaued when we are deleting a saved card chip
+    @IBOutlet weak var loaderGif: UIImageView!
+    /// Reference to the blur view, that is displaued when we are deleting a saved card chip
+    @IBOutlet weak var blurView: CardVisualEffectView!
     /// Reference to the saved card icon image view
     @IBOutlet weak var cardBrandIconImageView: UIImageView!
     /// Reference to the saved card secured number
@@ -141,6 +147,20 @@ extension SavedCardCollectionViewCell {
         cardSchemeLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelTextColor")
         
         deleteIconImageView.tap_theme_image = .init(keyPath: "\(themePath).editMode.deleteIcon")
+        
+        
+        blurView.blurRadius = 6
+        blurView.scale = 1
+        blurView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).blurOverlay.radius")
+        blurView.clipsToBounds = true
+        
+        blurView.colorTint = TapThemeManager.colorValue(for: "\(themePath).blurOverlay.color")
+        blurView.colorTintAlpha = CGFloat(TapThemeManager.numberValue(for: "\(themePath).blurOverlay.alpha")?.floatValue ?? 0)
+        
+        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: TapThemeManager.stringValue(for: "inlineCard.loaderImage") ?? "Black-loader", withExtension: "gif")!)
+        let gif = try! UIImage(gifData: imageData!)
+        loaderGif.setGifImage(gif, loopCount: 100)
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -177,6 +197,10 @@ extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
         selectStatusChaned(with: status)
     }
     
+    
+    func showLoadingState() {
+        deleteCardLoadingView.fadeIn(duration:1)
+    }
     
 }
 

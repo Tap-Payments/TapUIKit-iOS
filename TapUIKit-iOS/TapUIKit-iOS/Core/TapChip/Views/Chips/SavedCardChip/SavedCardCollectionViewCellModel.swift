@@ -55,6 +55,10 @@ import class UIKit.UICollectionViewCell
         viewModelDelegate?.deleteChip(for: self)
     }
     
+    public func showLoader() {
+        cellDelegate?.showLoadingState?()
+    }
+    
     // MARK:- Internal methods
     internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! SavedCardCollectionViewCell

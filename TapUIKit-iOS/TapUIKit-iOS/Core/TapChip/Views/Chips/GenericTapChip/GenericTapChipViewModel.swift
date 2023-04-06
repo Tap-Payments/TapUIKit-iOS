@@ -51,7 +51,7 @@ internal protocol GenericChipViewModelDelegate {
 
 
 /// A protocl of methods to be applied to all generated chip cells to infom the view model with needed events
-internal protocol GenericCellChipViewModelDelegate {
+@objc internal protocol GenericCellChipViewModelDelegate {
     /**
      Each view model should have an interface to know his cell is selected or nt. Fired from the cell itself
      - parameter status: tTrue if it was just selected and false otherwise
@@ -63,6 +63,11 @@ internal protocol GenericCellChipViewModelDelegate {
      - parameter to: True means, the editing mode is on
      */
     func changedEditMode(to:Bool)
+    
+    /**
+     For the saved card view model, there is a different UI it can show which is loading while deleting the card
+     */
+    @objc optional func showLoadingState()
 }
 
 /// This is a superclass for all the chips view models created, this will make sure all have the same interface/output and ease the parametery type in methods

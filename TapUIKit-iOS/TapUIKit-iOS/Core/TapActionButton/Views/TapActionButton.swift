@@ -124,7 +124,7 @@ extension TapActionButton:TapActionButtonViewDelegate {
         afterLoadingCallback = completion
         // load the gif loading image
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
-        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: "3sec-white-loader-2", withExtension: "gif")!)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: TapThemeManager.stringValue(for: "actionButton.Common.assets.loading") ?? "Black-loader", withExtension: "gif")!)
         // Shring the button with showing the loader image
         shrink(with: try! UIImage(gifData: imageData!))
     }
@@ -134,7 +134,7 @@ extension TapActionButton:TapActionButtonViewDelegate {
         let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
         // Save the callback we need to do after showing the result
         afterLoadingCallback = completion
-        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: (success) ? "white-success-mob" : "white-error-mob", withExtension: "gif")!)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: (success) ? TapThemeManager.stringValue(for: "actionButton.Common.assets.success") ?? "Black-loader" : TapThemeManager.stringValue(for: "actionButton.Common.assets.error") ?? "Black-loader", withExtension: "gif")!)
         let gif = try! UIImage(gifData: imageData!)
         loaderGif.setGifImage(gif, loopCount: 1) // Will loop forever
         if(success) {

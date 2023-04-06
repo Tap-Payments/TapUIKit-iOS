@@ -241,7 +241,11 @@ import TapThemeManager2020
         
         // Set the background color o use the theme manager one
         if let backgroundColor = backgroundColor {
+            backgroundView?.alpha = 0
             backgroundView?.backgroundColor = backgroundColor
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)){
+                self.backgroundView?.fadeIn(duration: 0.25)
+            }
         }else {
             applyTheme()
         }
@@ -310,7 +314,7 @@ import TapThemeManager2020
                 nonNullPullUpController.pullUpControllerMoveToVisiblePoint(self?.tapBottomSheetInitialHeight ?? 100, animated: false,completion: {
                     guard let delegate = self?.delegate else { return }
                     delegate.tapBottomSheetPresented?(viewController: self?.tapBottomSheetViewControllerToPresent)
-                    self?.backgroundView?.alpha = 1
+                    //self?.backgroundView?.alpha = 1
                     /*DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
                      UIView.animate(withDuration: 0.0,animations: { [weak self] in
                      self?.backgroundView?.alpha = 1

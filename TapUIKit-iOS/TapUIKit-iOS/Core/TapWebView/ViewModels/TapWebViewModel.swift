@@ -57,7 +57,7 @@ internal protocol TapWebViewDelegate {
 @objc public class TapWebViewModel:NSObject {
     
     /// Reference to the web view itself as UI that will be rendered
-    internal var webView:TapWebView = .init()
+    public var webView:TapWebView = .init()
     /// The timer used to check if no redirection is being called for the last 3 seconds
     internal var timer: Timer?
     /// The delay that we should wait for to decide if it is idle in  seonds

@@ -19,7 +19,7 @@ var myContext = 0
     /// The view holding the webview used for theming like radius and shadows
     @IBOutlet public weak var webViewHolder: UIView!
     /// Represents the actual backbone web view
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet public weak var webView: WKWebView!
     /// The progress bar to show a web view is being loaded
     @IBOutlet weak var progressView: UIProgressView!
     /// Displays a loading activity indicator for the user

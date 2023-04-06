@@ -7,10 +7,12 @@
 
 import UIKit
 import TapThemeManager2020
+import LocalisationManagerKit_iOS
 
 /// Represents the power by tap view
 @objc public class PoweredByTapView: UIView {
     /// Represents the main holding view
+    @IBOutlet weak var cardBlur: CardVisualEffectView!
     @IBOutlet var containerView: UIView!
     @IBOutlet var blurView: UIVisualEffectView!
     @IBOutlet public weak var poweredByTapLogo: UIImageView!
@@ -51,9 +53,15 @@ extension PoweredByTapView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         poweredByTapLogo.image = TapThemeManager.imageValue(for: "\(themePath).tapLogo")
-        blurView.tap_theme_backgroundColor = .init(stringLiteral: "\(themePath).blurColor")
+        //blurView.tap_theme_backgroundColor = .init(stringLiteral: "\(themePath).blurColor")
+        poweredByTapLogo.contentMode = TapLocalisationManager.shared.localisationLocale == "ar" ? .left : .right
         backgroundColor = .clear
         layoutIfNeeded()
+        
+        cardBlur.scale = 1
+        cardBlur.blurRadius = 6
+        cardBlur.colorTint = TapThemeManager.colorValue(for: "\(themePath).blurColor")
+        cardBlur.colorTintAlpha = CGFloat(TapThemeManager.numberValue(for: "\(themePath).blurAlpha")?.floatValue ?? 0)
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

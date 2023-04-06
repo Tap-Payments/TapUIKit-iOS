@@ -145,10 +145,51 @@ import TapThemeManager2020
         let finalMerchantVisibility = showMerchantSave && (cardInputView.cardUIStatus == .NormalCard)
         let finalTapVisibility      = showTapSave && (cardInputView.cardUIStatus == .NormalCard)
         
+        // prevent showing again if it is already shown
+        guard saveCrdView.isHidden != !finalMerchantVisibility else { return }
         // Adjust visibility  the save for merchant & tap views
+        saveCrdView.alpha = finalMerchantVisibility ? 0 : 1 // we make it alpha 0 if we will show it to enable fade in animation as intro
+        saveCrdForTapView.alpha = 0
         
         saveCrdForTapView.ev?.dismiss()
-        saveCrdView.isHidden = !finalMerchantVisibility
+        
+        if finalMerchantVisibility {
+            // Add it to the stack view first
+            stackView.addArrangedSubview(saveCrdView)
+            // make it not hidden
+            saveCrdView.isHidden = false
+            // Adjust the height constraint
+            saveCrdView.snp.updateConstraints { make in
+                make.height.equalTo(48)
+            }
+            // Update the height
+            saveCrdView.layoutIfNeeded()
+            saveCrdForTapView.layoutIfNeeded()
+            stackView.layoutIfNeeded()
+            layoutIfNeeded()
+            updateHeight()
+            // Time to fade in :)
+            saveCrdView.fadeIn(duration: 0.75)
+        }else{
+            // We first fade out, then we update the layout
+            // Hide it
+            self.saveCrdView.isHidden = true
+            // Remove it from the stackview
+            self.stackView.removeArrangedSubview(self.saveCrdView)
+            // Adjust the height constraint
+            self.saveCrdView.snp.updateConstraints { make in
+                make.height.equalTo(0)
+            }
+            
+            // Update the height
+            self.saveCrdView.layoutIfNeeded()
+            self.saveCrdForTapView.layoutIfNeeded()
+            self.stackView.layoutIfNeeded()
+            self.layoutIfNeeded()
+            self.updateHeight()
+        }
+        
+        /*saveCrdView.isHidden = !finalMerchantVisibility
         saveCrdForTapView.isHidden = !finalTapVisibility
         
         // Add or remove from the stackview
@@ -178,8 +219,15 @@ import TapThemeManager2020
         saveCrdForTapView.layoutIfNeeded()
         stackView.layoutIfNeeded()
         layoutIfNeeded()
+        if finalMerchantVisibility {
+            saveCrdView.fadeIn(duration: 0.75)
+        }
+        
+        if finalTapVisibility {
+            saveCrdForTapView.fadeIn(duration: 0.75)
+        }
         // Update the height of the total widget to reflect that
-        updateHeight()
+        updateHeight()*/
     }
     
     /**
@@ -265,7 +313,7 @@ import TapThemeManager2020
     /// Will add a warning/error hint view under the card input form to indicate to the user what does he miss
     internal func addHintView() {
         // We will have to update our height to reflect the addition of the hint view
-        guard let hintStatus = hintStatus else {
+        guard let hintStatus = hintStatus, hintView.viewModel.tapHintViewStatus != hintStatus else {
             removeHintView()
             return
         }
@@ -274,21 +322,38 @@ import TapThemeManager2020
         hintView.snp.remakeConstraints { make in
             make.height.equalTo(48)
         }
+        // We need to prevent fade in animation in the case where there is already a hint and we just want to change the textual content.
+        // Fade in will happen only if there is not hint view and we are going to show one
+        let alreadyVisible = !hintView.isHidden
+        if !alreadyVisible {
+            hintView.alpha = 0
+        }
         hintView.isHidden = false
         stackView.addArrangedSubview(hintView)
         updateHeight()
+        if !alreadyVisible {
+            hintView.fadeIn(duration: 0.75)
+        }
     }
     
     /// Will remove a warning/error hint view under the card input form to indicate to the user what does he miss
     internal func removeHintView() {
         // We will have to update our height to reflect the removal of the hint view
-        hintView.isHidden = true
-        stackView.removeArrangedSubview(hintView)
+        /*hintView.fadeOut(){_ in
+            DispatchQueue.main.async {
+                
+            }
+        }*/
+        // it is not already removed
+        guard !self.hintView.isHidden else { return }
+        self.hintView.isHidden = true
+        self.stackView.removeArrangedSubview(self.hintView)
         // Update the hint view type and height
-        hintView.snp.remakeConstraints { make in
+        self.hintView.snp.remakeConstraints { make in
             make.height.equalTo(0)
         }
-        updateHeight()
+        hintView.setup(with: .init(with: .None))
+        self.updateHeight()
     }
     
     /**
