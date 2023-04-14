@@ -8,10 +8,18 @@
 
 import UIKit
 import TapThemeManager2020
+import Nuke
+import LocalisationManagerKit_iOS
 // import SimpleAnimation
 
 @objc public class TapAmountSectionView: UIView {
     
+    /// The local currency label which displays the name of it
+    @IBOutlet weak var localCurrencyLabel: UILabel!
+    /// The local currency image view which displays the flag icon
+    @IBOutlet weak var localCurrencyFlag: UIImageView!
+    /// The local currency view that contains the prompt to change his currency
+    @IBOutlet weak var localCurrencyView: UIView!
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The label that will display the total amount of the transaction
@@ -52,10 +60,13 @@ import TapThemeManager2020
     private func commonInit() {
         self.containerView = setupXIB()
         translatesAutoresizingMaskIntoConstraints = false
+        localizeViews()
         applyTheme()
     }
     
-    
+    private func localizeViews() {
+        localCurrencyView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
+    }
     
     private func createObservables() {
         bindLabels()
@@ -84,6 +95,18 @@ import TapThemeManager2020
         viewModel.itemsLabelObserver = { itemsCount in
             self.itemsNumberLabel.text = itemsCount
             self.updateItemsButtonUI()
+        }
+        
+        // Bind the local currency prompt values
+        viewModel.localCurrencyNameObserver = { localCurrenyName in
+            self.localCurrencyLabel.text = "\(TapLocalisationManager.shared.localisedValue(for: "Common.currencyAlert")) \(localCurrenyName)"
+        }
+        
+        viewModel.localCurrencyFlagObserver = { localCurrencyFlag in
+            Nuke.loadImage(with: localCurrencyFlag, into: self.localCurrencyFlag) { _ in
+                self.localCurrencyFlag.fadeIn()
+                self.animateCurrencyPrompt(show: true)
+            }
         }
     }
     
@@ -142,15 +165,24 @@ import TapThemeManager2020
         self.containerView.frame = bounds
     }
     
+    /// Change the current view  with a given view model, to attach to it and read data from it afterwards
     @objc public func changeViewModel(with viewModel:TapAmountSectionViewModel) {
         self.viewModel = viewModel
     }
     
-    /// Tell the view model when the amount section view in the view is clixked by the user
+    /// Fired when the local currency prompt clicked by the user
+    @IBAction func localCurrencyPromptClicked(_ sender: Any) {
+        // First let us hide it
+        animateCurrencyPrompt(show: false)
+        // Let us inform the view model about it
+        viewModel?.localCurrencyPromptClicked()
+    }
     
+    /// Tell the view model when the amount section view in the view is clixked by the user
     @IBAction func amountSectionClicked(_ sender: Any) {
         viewModel?.amountSectionClicked()
     }
+    
     ///Tell the view model when the items in the view is clicked by the user
     @IBAction func itemsClicked(_ sender: Any) {
         viewModel?.itemsClicked()
@@ -187,6 +219,36 @@ extension TapAmountSectionView {
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         
+        localCurrencyView.alpha = 0
+        
+        localCurrencyView.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.backgroundColor")
+        localCurrencyView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).itemsNumberButtonCorner")
+        localCurrencyLabel.tap_theme_font = .init(stringLiteral: "\(themePath).itemsLabelFont")
+        localCurrencyLabel.tap_theme_textColor = .init(keyPath: "\(themePath).itemsLabelColor")
+    }
+    
+    /// Call this method to show/hide the currency prompt
+    /// - Parameter show: If true, the intro animation will be done otherwise we will take it out
+    internal func animateCurrencyPrompt(show:Bool) {
+        if show {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)){
+                self.localCurrencyView.fadeIn(duration:1)
+                self.localCurrencyView.slideIn(from: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
+                    UIView.animate(withDuration:1, delay: 0, options: [.autoreverse, .repeat, .curveEaseInOut, .allowUserInteraction]) {
+                        self.localCurrencyView.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.glowColor")
+                    }
+                }
+            }
+        } else {
+            guard let nonNullCurrencyView = self.localCurrencyView else { return }
+            nonNullCurrencyView.isUserInteractionEnabled = false
+                DispatchQueue.main.async{
+                    nonNullCurrencyView.fadeOut(duration:0.5)
+                    nonNullCurrencyView.slideOut(to: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
+                        nonNullCurrencyView.removeFromSuperview()
+                    }
+                }
+        }
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

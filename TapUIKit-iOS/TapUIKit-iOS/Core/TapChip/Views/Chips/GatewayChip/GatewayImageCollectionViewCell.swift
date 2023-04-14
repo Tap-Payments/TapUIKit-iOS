@@ -58,6 +58,7 @@ import Nuke
         Nuke.DataLoader.sharedUrlCache.removeAllCachedResponses()
         gatewayIconImageView.downloadImage(with: iconURL, nukeOptions: nil)
         gatewayIconImageView.contentMode = .scaleAspectFill
+        
         // Apply the editing ui if needed
         changedEditMode(to: viewModel.editMode)
     }

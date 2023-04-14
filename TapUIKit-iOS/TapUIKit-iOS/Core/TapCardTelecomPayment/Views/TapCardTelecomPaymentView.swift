@@ -239,7 +239,7 @@ import TapThemeManager2020
         let imageData = try? Data(contentsOf: loadingBudle.url(forResource: TapThemeManager.stringValue(for: "inlineCard.loaderImage") ?? "Black-loader", withExtension: "gif")!)
         let gif = try! UIImage(gifData: imageData!)
         tapLoadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
-        
+        tapLoadingGif.isHidden = true
         if to {
             pre3DSLoadingView.fadeIn(){ _ in
                 //self.cardInputView.fadeOut(duration:0.0)
