@@ -270,7 +270,7 @@ import Nuke
     /// A block to execute logic in view model when the items in the view is clicked by the user
     internal func itemsClicked() {
         // First of all, we need to hide the currency prompt if any
-        attachedView.animateCurrencyPrompt(show: false)
+        attachedView.animateCurrencyPrompt(show: false, shouldSlideOut: false)
         // Determine which method should we execute
         switch currentStateView {
             // Meaning, currently we are showing the normal view and we need to show the items list
@@ -311,6 +311,10 @@ import Nuke
     public func configureCurrencyPrompt(with currencyName:String, and currencyFlag:URL) {
         localCurrencyName = currencyName
         localCurrencyFlag = currencyFlag.absoluteString
+    }
+    
+    public func showLocalCurrencyPromptBack() {
+        attachedView.animateCurrencyPrompt(show: true,shouldSlideIn: false)
     }
     
     /// Handles the logic for transitioning between the normal view and show the items view

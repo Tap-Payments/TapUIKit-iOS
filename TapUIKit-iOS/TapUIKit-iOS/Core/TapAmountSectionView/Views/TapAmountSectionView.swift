@@ -229,13 +229,20 @@ extension TapAmountSectionView {
     
     /// Call this method to show/hide the currency prompt
     /// - Parameter show: If true, the intro animation will be done otherwise we will take it out
-    internal func animateCurrencyPrompt(show:Bool) {
+    /// - Parameter shouldSlideIn : If true, then will apply slide in animation after fading it in.
+    /// - Parameter shouldSlideOut: If true, then will apply slide out animation after fading it out.
+    internal func animateCurrencyPrompt(show:Bool, shouldSlideIn:Bool = true, shouldSlideOut:Bool = true) {
+        guard let _ = self.localCurrencyView else { return }
+        
         if show {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)){
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds( shouldSlideIn ? 2 : 0 )){
+                self.localCurrencyView.isUserInteractionEnabled = true
                 self.localCurrencyView.fadeIn(duration:1)
-                self.localCurrencyView.slideIn(from: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
-                    UIView.animate(withDuration:1, delay: 0, options: [.autoreverse, .repeat, .curveEaseInOut, .allowUserInteraction]) {
-                        self.localCurrencyView.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.glowColor")
+                if shouldSlideIn {
+                    self.localCurrencyView.slideIn(from: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
+                        UIView.animate(withDuration:1, delay: 0, options: [.autoreverse, .repeat, .curveEaseInOut, .allowUserInteraction]) {
+                            self.localCurrencyView.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.glowColor")
+                        }
                     }
                 }
             }
@@ -244,8 +251,10 @@ extension TapAmountSectionView {
             nonNullCurrencyView.isUserInteractionEnabled = false
                 DispatchQueue.main.async{
                     nonNullCurrencyView.fadeOut(duration:0.5)
-                    nonNullCurrencyView.slideOut(to: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
-                        nonNullCurrencyView.removeFromSuperview()
+                    if shouldSlideOut {
+                        nonNullCurrencyView.slideOut(to: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
+                            nonNullCurrencyView.removeFromSuperview()
+                        }
                     }
                 }
         }
