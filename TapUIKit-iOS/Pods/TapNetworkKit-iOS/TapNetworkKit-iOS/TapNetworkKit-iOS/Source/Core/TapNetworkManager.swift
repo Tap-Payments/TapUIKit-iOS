@@ -169,9 +169,9 @@ public class TapNetworkManager {
             }else if let jsonObject = data {
                 // first check if the data coming in represents the new payment types api error before trying to parse the data into the expected model
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .fragmentsAllowed),
-                   let newErrorModel:NewAPIErrorModel = try? .init(data: jsonData) {
+                   let newErrorModel:ApiErrorModel = try? JSONDecoder().decode(ApiErrorModel.self, from: jsonData),
+                   let error:Error = newErrorModel.errors.first?.description {
                     // Then the backend responded with a new error model we need to fail now :)
-                    let error:Error = newErrorModel.description()
                     // Failure case serialization
                     tapLoggingResponseModel = .init(headers: headersString, error_code: "Serialization", error_message: error.localizedDescription, error_description: error.debugDescription, body: bodySting)
                     

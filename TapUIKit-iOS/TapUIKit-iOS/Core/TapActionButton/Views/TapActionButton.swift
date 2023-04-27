@@ -7,10 +7,15 @@
 //
 
 import TapThemeManager2020
-
+import Nuke
 /// Represents the Tap Action Button View
 @objc public class TapActionButton: UIView {
     
+    /// The image that displays the title needed for the selected payment method. For example : Pay with KNET
+    @IBOutlet weak var paymentTitleImageView: UIImageView!
+    /// To control the correct width for the PAY WITH title image view. As it varies in widths, so if we
+    /// dynamically adjusted the width, we will keep the ratio in tact with the provided designs
+    @IBOutlet weak var paymentTitleImageViewWidthConstraint: NSLayoutConstraint!
     /// the main holder view
     @IBOutlet weak var contentView: UIView!
     /// The image used to show the laoder, success and failure animations
@@ -79,10 +84,72 @@ import TapThemeManager2020
         reload()
     }
     
-    /// Fetch the displayed title from the view model
-    private func fetchData() {
+    /// Compute the title of the payment button. This is the textual view that appears if there is no image title to be displayed
+    fileprivate func fetchTextualButtonData() {
+        if self.payButton.alpha != 1  && self.loaderGif.alpha == 0 {
+            self.payButton.fadeIn()
+        }
         payButton.setTitle(viewModel?.buttonDisplayTitle(), for: .normal)
         payButton.isUserInteractionEnabled = viewModel?.buttonStatus.isButtonEnabled() ?? false
+    }
+    
+    /// Compute the image title to be displayed in case of anny/
+    fileprivate func fetchImageTitleData() {
+        // Make sure all good and we have the needed data
+        self.paymentTitleImageView.image = nil
+        //self.paymentTitleImageView.alpha = 0
+        guard let (shouldDisplayImageTitle,imageTitleUrl) = viewModel?.paymentTitleImage(),
+        shouldDisplayImageTitle else {
+            self.paymentTitleImageView.isHidden = true
+            if self.payButton.alpha != 1  && self.loaderGif.alpha == 0 {
+                self.payButton.fadeIn()
+            }
+            return
+        }
+
+        Nuke.loadImage(with: imageTitleUrl, options: ImageLoadingOptions(placeholder: UIImage(),transition: .fadeIn(duration: 0.5)), into: self.paymentTitleImageView) { result in
+            // Make sure that even after the time we took to load the image, we now have to show it
+            guard let (shouldDisplayImageTitle,_) = self.viewModel?.paymentTitleImage(),
+                  shouldDisplayImageTitle else {
+                self.paymentTitleImageView.isHidden = true
+                if self.payButton.alpha != 1 && self.loaderGif.alpha == 0 {
+                    self.payButton.fadeIn()
+                }
+                return
+            }
+            self.payButton.alpha = 0.1
+            self.paymentTitleImageView.contentMode = .scaleAspectFit
+            self.paymentTitleImageView.translatesAutoresizingMaskIntoConstraints = false
+            // Get the width of the provided UIImage title
+            if let image:UIImage = self.paymentTitleImageView.image {
+                let widthInPoints = image.size.width
+                let widthInPixels = image.scale
+                print("WIDTH : \(widthInPixels)")
+                print("WIDTH : \(widthInPoints)")
+                DispatchQueue.main.async {
+                    self.paymentTitleImageViewWidthConstraint.constant = widthInPoints * 0.75
+                    self.paymentTitleImageView.layoutIfNeeded()
+                    self.paymentTitleImageView.updateConstraints()
+                    self.paymentTitleImageView.isHidden = false
+                }
+            }else{
+                self.paymentTitleImageView.isHidden = false
+            }
+            
+            
+            if self.paymentTitleImageView.alpha != 1 {
+                self.paymentTitleImageView.fadeIn()
+            }
+        }
+        
+    }
+    
+    /// Fetch the displayed title from the view model
+    private func fetchData() {
+        // Let us compute the title of the payment button. This is the textual view that appears if there is no image title to be displayed
+        fetchTextualButtonData()
+        // Let us also compute the image title to be displayed in case of anny
+        fetchImageTitleData()
     }
     
     /// Apply the needed logic to reload UI and localisations upon an order from the view model
@@ -119,6 +186,11 @@ import TapThemeManager2020
 
 
 extension TapActionButton:TapActionButtonViewDelegate {
+    
+    func buttonFrame() -> CGRect {
+        return bounds
+    }
+    
     func startLoading(completion: @escaping () -> () = {}) {
         // Save the callback we need to do after showing the result
         afterLoadingCallback = completion
@@ -154,6 +226,7 @@ extension TapActionButton:TapActionButtonViewDelegate {
         loaderGif.fadeOut()
         loaderGif.delegate = nil
         viewHolderWidth.constant = frame.width - 32
+        self.payButton.alpha = 0
         
         UIView.animate(withDuration: 1.0, animations: { [weak self] in
             self?.viewHolder.updateConstraints()
@@ -164,7 +237,7 @@ extension TapActionButton:TapActionButtonViewDelegate {
     }
     
     func shrink(with image:UIImage? = nil) {
-        viewHolderWidth.constant = 40
+        viewHolderWidth.constant = 48
         UIView.animate(withDuration: 1.0, animations: { [weak self] in
             self?.viewHolder.updateConstraints()
             self?.layoutIfNeeded()
@@ -173,8 +246,15 @@ extension TapActionButton:TapActionButtonViewDelegate {
         })
         
         guard let image = image else { return }
+        // In the shrinkin process we need to do the following:
         
+        // 1. Fade out the button itself.
         payButton.fadeOut()
+        // 2. Fade out the button title if any (PAY WITH KNET for example.)
+        paymentTitleImageView.fadeOut()
+        // 3. Animate the background color of the button to the solid color if there is a solid color provided by the button style from the aip
+        viewHolder.backgroundColor = viewModel?.loadingShrinkingBackgroundColor()
+        
         loaderGif.fadeIn()
         loaderGif.delegate = nil
         loaderGif.setImage(image)
@@ -195,14 +275,14 @@ extension TapActionButton {
         let status:TapActionButtonStatusEnum = viewModel?.buttonStatus ?? .InvalidPayment
         
         contentView.backgroundColor = status.buttonViewBackGroundColor()
-        viewHolder.backgroundColor = status.buttonBackGroundColor()
+        viewHolder.backgroundColor = viewModel?.backgroundColor()
         
         payButton.setTitleColor(status.buttonTitleColor(), for: .normal)
         payButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).Common.titleLabelFont")
         
         viewHolder.layer.borderColor = status.buttonBorderColor().cgColor
         viewHolder.layer.borderWidth = 1
-        viewHolder.layer.cornerRadius = 20
+        viewHolder.layer.cornerRadius = 24
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style

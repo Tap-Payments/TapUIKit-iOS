@@ -189,7 +189,7 @@ import TapThemeManager2020
     public final override func viewDidLoad() {
         super.viewDidLoad()
         // Fade out the dimming background to show it as fade in fade out as requested
-        view.backgroundColor = .clear
+        view.backgroundColor = TapThemeManager.colorValue(for: "TapVerticalView.backgroundOverlayColor")
         backgroundView = .init(frame: self.view.frame)
         backgroundView?.backgroundColor = .clear
         backgroundView?.alpha = 0
@@ -229,7 +229,7 @@ import TapThemeManager2020
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
-        //applyTheme()
+        applyTheme()
     }
     
     /**
@@ -261,7 +261,8 @@ import TapThemeManager2020
     
     
     internal func applyTheme() {
-        backgroundView?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).dimmedColor")
+        //backgroundView?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).dimmedColor")
+        view.backgroundColor = TapThemeManager.colorValue(for: "TapVerticalView.backgroundOverlayColor")
     }
     
     /**

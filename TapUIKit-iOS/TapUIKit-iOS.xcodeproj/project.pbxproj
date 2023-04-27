@@ -198,6 +198,9 @@
 		E8CD428B249610240013AEE7 /* GatewayImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8CD4289249610240013AEE7 /* GatewayImageCollectionViewCell.xib */; };
 		E8CD428D24961B050013AEE7 /* GenericTapChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD428C24961B050013AEE7 /* GenericTapChip.swift */; };
 		E8D4A08A289913340082E0A4 /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D4A089289913340082E0A4 /* UIView+SimpleAnimation.swift */; };
+		E8E19F2929FABD6D00E709F5 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E19F2529FABD6C00E709F5 /* GradientLayer.swift */; };
+		E8E19F2A29FABD6D00E709F5 /* UIGradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E19F2629FABD6C00E709F5 /* UIGradientExtension.swift */; };
+		E8E19F2B29FABD6D00E709F5 /* UIGradientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E19F2729FABD6D00E709F5 /* UIGradientHelper.swift */; };
 		E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69946249F49BE007A32FA /* ItemTableViewCell.swift */; };
 		E8E69949249F49BE007A32FA /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E69947249F49BE007A32FA /* ItemTableViewCell.xib */; };
 		E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E69993249F6446007A32FA /* TapGenericTableCell.swift */; };
@@ -450,6 +453,9 @@
 		E8CD4289249610240013AEE7 /* GatewayImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatewayImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8CD428C24961B050013AEE7 /* GenericTapChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTapChip.swift; sourceTree = "<group>"; };
 		E8D4A089289913340082E0A4 /* UIView+SimpleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleAnimation.swift"; sourceTree = "<group>"; };
+		E8E19F2529FABD6C00E709F5 /* GradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
+		E8E19F2629FABD6C00E709F5 /* UIGradientExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGradientExtension.swift; sourceTree = "<group>"; };
+		E8E19F2729FABD6D00E709F5 /* UIGradientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGradientHelper.swift; sourceTree = "<group>"; };
 		E8E69946249F49BE007A32FA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		E8E69947249F49BE007A32FA /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		E8E69993249F6446007A32FA /* TapGenericTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGenericTableCell.swift; sourceTree = "<group>"; };
@@ -782,6 +788,9 @@
 		E8428E0E2457F8C000D5A45A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E8E19F2529FABD6C00E709F5 /* GradientLayer.swift */,
+				E8E19F2629FABD6C00E709F5 /* UIGradientExtension.swift */,
+				E8E19F2729FABD6D00E709F5 /* UIGradientHelper.swift */,
 				E83FEF6E29C86C8F00F5077A /* CardVisualEffectView.swift */,
 				E83FEF6F29C86C8F00F5077A /* UIViewEffectViewiOS14.swift */,
 				E8D4A089289913340082E0A4 /* UIView+SimpleAnimation.swift */,
@@ -1726,6 +1735,7 @@
 				E8E92B42248F7AC200DD7DBB /* TapDragHandlerView.swift in Sources */,
 				E893B76F28D0F969000E0348 /* TapLoyaltyHeaderView.swift in Sources */,
 				E8437F7C24BEC79F0059F1B8 /* TapGoPayLoginBarView.swift in Sources */,
+				E8E19F2A29FABD6D00E709F5 /* UIGradientExtension.swift in Sources */,
 				E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */,
 				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
 				E8E69995249F6446007A32FA /* TapGenericTableCell.swift in Sources */,
@@ -1769,6 +1779,7 @@
 				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
 				E88834AE2979CCDF006225E6 /* TapAsyncView.swift in Sources */,
 				E8437FB424C05E3E0059F1B8 /* BottomLineTextField.swift in Sources */,
+				E8E19F2B29FABD6D00E709F5 /* UIGradientHelper.swift in Sources */,
 				E8437F8B24BEFE080059F1B8 /* GoPayLoginOptions.swift in Sources */,
 				E8437F7224BE19260059F1B8 /* TapGoPayTitleView.swift in Sources */,
 				E8861D35249F6CC30002FEDE /* TapGenericTableView.swift in Sources */,
@@ -1784,6 +1795,7 @@
 				E8437F6B24BE083E0059F1B8 /* KeyboardHelper.swift in Sources */,
 				E898450A2981030C00436499 /* CustomerShippingDataCollectionView.swift in Sources */,
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
+				E8E19F2929FABD6D00E709F5 /* GradientLayer.swift in Sources */,
 				E8437F6A24BE07900059F1B8 /* SpaceView.swift in Sources */,
 				E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */,
 				E893B77928D314A1000E0348 /* TapLoyaltyFooterView.swift in Sources */,

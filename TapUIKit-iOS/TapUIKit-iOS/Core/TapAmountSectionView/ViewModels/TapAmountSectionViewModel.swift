@@ -313,8 +313,14 @@ import Nuke
         localCurrencyFlag = currencyFlag.absoluteString
     }
     
+    /// Call it to fade in the local currency prompt
     public func showLocalCurrencyPromptBack() {
         attachedView.animateCurrencyPrompt(show: true,shouldSlideIn: false)
+    }
+    
+    /// Call it when you need to remove the currency prompt for good
+    public func removeCurrencyPrompt() {
+        attachedView.animateCurrencyPrompt(show: false)
     }
     
     /// Handles the logic for transitioning between the normal view and show the items view

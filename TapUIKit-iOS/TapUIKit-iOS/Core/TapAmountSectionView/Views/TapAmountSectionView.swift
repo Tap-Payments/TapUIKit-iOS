@@ -19,7 +19,7 @@ import LocalisationManagerKit_iOS
     /// The local currency image view which displays the flag icon
     @IBOutlet weak var localCurrencyFlag: UIImageView!
     /// The local currency view that contains the prompt to change his currency
-    @IBOutlet weak var localCurrencyView: UIView!
+    @IBOutlet weak var localCurrencyView: UIView?
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The label that will display the total amount of the transaction
@@ -65,7 +65,7 @@ import LocalisationManagerKit_iOS
     }
     
     private func localizeViews() {
-        localCurrencyView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
+        localCurrencyView?.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
     }
     
     private func createObservables() {
@@ -219,12 +219,12 @@ extension TapAmountSectionView {
         
         tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
         
-        localCurrencyView.alpha = 0
+        localCurrencyView?.alpha = 0
         
-        localCurrencyView.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.backgroundColor")
-        localCurrencyView.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).itemsNumberButtonCorner")
-        localCurrencyLabel.tap_theme_font = .init(stringLiteral: "\(themePath).itemsLabelFont")
-        localCurrencyLabel.tap_theme_textColor = .init(keyPath: "\(themePath).itemsLabelColor")
+        localCurrencyView?.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.backgroundColor")
+        localCurrencyView?.layer.tap_theme_cornerRadious = .init(keyPath: "\(themePath).itemsNumberButtonCorner")
+        localCurrencyLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).itemsLabelFont")
+        localCurrencyLabel?.tap_theme_textColor = .init(keyPath: "\(themePath).itemsLabelColor")
     }
     
     /// Call this method to show/hide the currency prompt
@@ -233,15 +233,19 @@ extension TapAmountSectionView {
     /// - Parameter shouldSlideOut: If true, then will apply slide out animation after fading it out.
     internal func animateCurrencyPrompt(show:Bool, shouldSlideIn:Bool = true, shouldSlideOut:Bool = true) {
         guard let _ = self.localCurrencyView else { return }
+        self.localCurrencyView?.isHidden = false
         
         if show {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds( shouldSlideIn ? 2 : 0 )){
-                self.localCurrencyView.isUserInteractionEnabled = true
-                self.localCurrencyView.fadeIn(duration:1)
+                self.localCurrencyView?.isUserInteractionEnabled = true
+                // We will not make a fade in, in case the user did already open the currency selector before displaying the prompt
+                self.localCurrencyView?.isHidden = self.viewModel?.currentStateView == .ItemsView
+                
+                self.localCurrencyView?.fadeIn(duration:1)
                 if shouldSlideIn {
-                    self.localCurrencyView.slideIn(from: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
+                    self.localCurrencyView?.slideIn(from: TapLocalisationManager.shared.localisationLocale == "ar" ? .left  : .right, duration: 1) { _ in
                         UIView.animate(withDuration:1, delay: 0, options: [.autoreverse, .repeat, .curveEaseInOut, .allowUserInteraction]) {
-                            self.localCurrencyView.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.glowColor")
+                            self.localCurrencyView?.tap_theme_backgroundColor = .init(keyPath: "TapCurrencyPromptView.glowColor")
                         }
                     }
                 }

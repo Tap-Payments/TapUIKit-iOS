@@ -12,7 +12,7 @@ import TapCardVlidatorKit_iOS
 /// Payment Option model.
 public struct PaymentOption: IdentifiableWithString {
     
-    public init(identifier: String, brand: CardBrand, title: String, backendImageURL: URL, isAsync: Bool, paymentType: TapPaymentType, sourceIdentifier: String? = nil, supportedCardBrands: [CardBrand], supportedCurrencies: [TapCurrencyCode], orderBy: Int, threeDLevel: ThreeDSecurityState, savedCard: SavedCard? = nil, extraFees: [ExtraFee] = []) {
+    public init(identifier: String, brand: CardBrand, title: String, backendImageURL: URL, isAsync: Bool, paymentType: TapPaymentType, sourceIdentifier: String? = nil, supportedCardBrands: [CardBrand], supportedCurrencies: [TapCurrencyCode], orderBy: Int, threeDLevel: ThreeDSecurityState, savedCard: SavedCard? = nil, extraFees: [ExtraFee] = [], paymentOptionsLogos:PaymentOptionLogos? = nil, buttonStyle: PaymentOptionButtonStyle? = nil) {
         self.identifier = identifier
         self.brand = brand
         self.title = title
@@ -26,6 +26,8 @@ public struct PaymentOption: IdentifiableWithString {
         self.threeDLevel = threeDLevel
         self.savedCard = savedCard
         self.extraFees = extraFees
+        self.paymentOptionsLogos = paymentOptionsLogos
+        self.buttonStyle = buttonStyle
     }
     
     
@@ -72,6 +74,42 @@ public struct PaymentOption: IdentifiableWithString {
     /// Will hold the related extra fees in case of saved card payment
     public var extraFees:[ExtraFee] = []
     
+    /// Will hold the list of urls to support different themes for the icons
+    public let paymentOptionsLogos:PaymentOptionLogos?
+    
+    /// Will hold the ui to be displayed in the action button if any
+    public var buttonStyle:PaymentOptionButtonStyle?
+    
+    /// Will do the correct fetching of which image to use, the default backend url or the correct light-dark cdn hosted url
+    /// - Parameter showMonoForLightMode: Indicates whether to show the light or the light colored
+    public func correctBackEndImageURL(showMonoForLightMode:Bool = false) -> URL {
+        // Check if we have right values passed in the cdn logos options
+        guard let logos = paymentOptionsLogos,
+              let lightModePNGString = logos.light?.png,
+              let darkModePNGString  = logos.dark?.png,
+              let lightModePNGUrl    = URL(string: lightModePNGString),
+              let darkModePNGUrl     = URL(string: darkModePNGString) else { return backendImageURL }
+        
+        
+        // we will return based on the theme
+        if #available(iOS 12.0, *) {
+            if UIScreen.main.traitCollection.userInterfaceStyle == .light {
+                if showMonoForLightMode {
+                    guard let lightMonoModePNGString = logos.light_colored?.png,
+                          let lightMonoModePNGUrl    = URL(string: lightMonoModePNGString) else { return lightModePNGUrl }
+                    return lightMonoModePNGUrl
+                }
+                return lightModePNGUrl
+            } else {
+                return darkModePNGUrl
+            }
+        } else {
+            // Fallback on earlier versions
+            return lightModePNGUrl
+        }
+        
+    }
+    
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
@@ -86,6 +124,8 @@ public struct PaymentOption: IdentifiableWithString {
         case orderBy                = "order_by"
         case isAsync                = "asynchronous"
         case threeDLevel            = "threeDS"
+        case paymentoptionsLogos    = "logos"
+        case buttonStyle            = "button_style"
     }
     
     private static func mapThreeDLevel(with threeD:String) -> ThreeDSecurityState
@@ -101,7 +141,6 @@ public struct PaymentOption: IdentifiableWithString {
             return .definedByMerchant
         }
     }
-    
     
     /// Converts the payment option from Tap format to the acceptable format by Apple pay kit
     public func applePayNetworkMapper() -> [PKPaymentNetwork]
@@ -155,17 +194,19 @@ extension PaymentOption: Decodable {
         
         let container           = try decoder.container(keyedBy: CodingKeys.self)
         
-        let identifier          = try container.decode          (String.self,               forKey: .identifier)
-        let brand               = try container.decode          (CardBrand.self,            forKey: .title)
-        let title               = try container.decode          (String.self,               forKey: .title)
-        let imageURL            = try container.decode          (URL.self,                  forKey: .backendImageURL)
-        let paymentType         = try container.decode          (TapPaymentType.self,       forKey: .paymentType)
-        let sourceIdentifier    = try container.decodeIfPresent (String.self,               forKey: .sourceIdentifier)
-        var supportedCardBrands = try container.decode          ([CardBrand].self,          forKey: .supportedCardBrands)
-        let supportedCurrencies = try container.decode          ([TapCurrencyCode].self,    forKey: .supportedCurrencies)
-        let orderBy             = try container.decode          (Int.self,                  forKey: .orderBy)
-        let isAsync             = try container.decode          (Bool.self,                 forKey: .isAsync)
-        let threeDLevel         = try container.decodeIfPresent (String.self,               forKey: .threeDLevel) ?? "U"
+        let identifier          = try container.decode          (String.self,                   forKey: .identifier)
+        let brand               = try container.decode          (CardBrand.self,                forKey: .title)
+        let title               = try container.decode          (String.self,                   forKey: .title)
+        let imageURL            = try container.decode          (URL.self,                      forKey: .backendImageURL)
+        let paymentType         = try container.decode          (TapPaymentType.self,           forKey: .paymentType)
+        let sourceIdentifier    = try container.decodeIfPresent (String.self,                   forKey: .sourceIdentifier)
+        var supportedCardBrands = try container.decode          ([CardBrand].self,              forKey: .supportedCardBrands)
+        let supportedCurrencies = try container.decode          ([TapCurrencyCode].self,        forKey: .supportedCurrencies)
+        let orderBy             = try container.decode          (Int.self,                      forKey: .orderBy)
+        let isAsync             = try container.decode          (Bool.self,                     forKey: .isAsync)
+        let threeDLevel         = try container.decodeIfPresent (String.self,                   forKey: .threeDLevel) ?? "U"
+        let paymentOptionsLogos = try container.decodeIfPresent (PaymentOptionLogos.self,       forKey: .paymentoptionsLogos)
+        let buttonStyle         = try container.decodeIfPresent (PaymentOptionButtonStyle.self, forKey: .buttonStyle)
         
         supportedCardBrands = supportedCardBrands.filter { $0 != .unknown }
         
@@ -178,14 +219,18 @@ extension PaymentOption: Decodable {
                   supportedCardBrands: supportedCardBrands,
                   supportedCurrencies: supportedCurrencies,
                   orderBy: orderBy,
-                  threeDLevel: PaymentOption.mapThreeDLevel(with: threeDLevel))
+                  threeDLevel: PaymentOption.mapThreeDLevel(with: threeDLevel),
+                  paymentOptionsLogos: paymentOptionsLogos,
+                  buttonStyle: buttonStyle)
     }
 }
-
+// MARK: - ThreeDSecurityState enum to provide different levels of 3ds transaction
 public enum ThreeDSecurityState {
-    
+    /// This means all transactions will pass through 3ds
     case always
+    /// This means no transactions will pass through 3ds
     case never
+    /// This means it depends on the merchant's configuration passed when starting the checkout
     case definedByMerchant
 }
 
@@ -208,4 +253,23 @@ extension PaymentOption: Equatable {
         
         return lhs.identifier == rhs.identifier
     }
+}
+
+/// Payment Option Logo model.
+public struct PaymentOptionLogo: Codable {
+    /// The SVG url
+    public let svg: String?
+    /// The PNG url
+    public let png:String?
+}
+
+
+/// Payment Option Logos model.
+public struct PaymentOptionLogos: Codable {
+    /// The light icons urls
+    public let light: PaymentOptionLogo?
+    /// The dark icons urls
+    public let dark: PaymentOptionLogo?
+    /// The light_colored icons urls
+    public let light_colored: PaymentOptionLogo?
 }

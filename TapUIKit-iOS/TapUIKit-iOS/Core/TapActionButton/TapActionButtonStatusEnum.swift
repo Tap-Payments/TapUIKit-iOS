@@ -8,7 +8,7 @@
 
 import TapThemeManager2020
 import LocalisationManagerKit_iOS
-import class CommonDataModelsKit_iOS.TapCommonConstants
+import CommonDataModelsKit_iOS
 
 /// Represents the different statuses for the tap button action statuses, defining the context, localisation and theming
 @objc public enum TapActionButtonStatusEnum:Int {
@@ -41,8 +41,6 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     case CancelPayment
     /// Where we need to show close payment button when showing async confirmation
     case AsyncClosePayment
-    
-    
     
     /**
      Decides the color of the action button based on its current status

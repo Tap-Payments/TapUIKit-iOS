@@ -7,7 +7,9 @@
 //
 
 import Foundation
-import class UIKit.UIImage
+import UIKit
+import CommonDataModelsKit_iOS
+import LocalisationManagerKit_iOS
 
 /// A protocol to communicate between the owner with this view model
 @objc public protocol TapActionButtonViewModelDelegate {
@@ -43,6 +45,9 @@ internal protocol TapActionButtonViewDelegate {
      - Parameter image: Will show this image inside the button if passed. Default is nil
      */
     func shrink(with image:UIImage?)
+    
+    /// Tells the button to send back his own frame details
+    func buttonFrame() -> CGRect
 }
 
 /// Represents the view model that controls the events and the look and feel for the Tap Action Button View
@@ -57,6 +62,9 @@ internal protocol TapActionButtonViewDelegate {
     
     /// A protocol to communicate between the owner with this view model
     @objc public var delegate:TapActionButtonViewModelDelegate?
+    
+    /// The style to be applied to the button whenever it is in the valid state
+    public var buttonStyle:PaymentOptionButtonStyle?
     
     /// A block representing the action to be executed when the button is clicked, please assign this accordignly based on the latest action required/fied from the main checkout screen
     @objc public var buttonActionBlock:()->() = {}
@@ -88,6 +96,7 @@ internal protocol TapActionButtonViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetStatusNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(StnNotificationExist(_:)), name: NSNotification.Name(rawValue: TapConstantManager.TapActionSheetBlockNotification), object: nil)
     }
+    
     
     /**
      Handles the logic needed to recieve the notifiations from other parts in the SDK to change the status and the action block of the button
@@ -141,6 +150,68 @@ internal protocol TapActionButtonViewDelegate {
             // assign the new block
             self.buttonActionBlock = actionBlock
         }
+    }
+    
+    /// Comutes the color of the action button based on its current status
+    internal func backgroundColor() -> UIColor {
+        return buttonStatus == .ValidPayment ? validPaymentButtonBackgroundColor() : buttonStatus.buttonBackGroundColor()
+    }
+    
+    /// Comutes the solid color of the action button to show in loading state based on its current status
+    internal func loadingShrinkingBackgroundColor() -> UIColor {
+        
+        // Check if we have a style passed first
+        guard let buttonStyle:PaymentOptionButtonStyle = buttonStyle,
+              buttonStatus == .ValidPayment,
+              let solidColor:UIColor = buttonStyle.loadingBasebackgroundColor() else { return buttonStatus.buttonBackGroundColor() }
+        
+        return solidColor
+    }
+    
+    /// Only in valid payments statuses we will have to check if we shall return the default or the passed style by the caller if any
+    /// If there is a passed style, it will create a color out of it but if not it will send the default valid payment color fetched from the theme file
+    internal func validPaymentButtonBackgroundColor() -> UIColor {
+        // Check if we have a style passed first
+        guard let buttonStyle:PaymentOptionButtonStyle = buttonStyle, buttonStatus == .ValidPayment else { return buttonStatus.buttonBackGroundColor() }
+        
+        let backgroundColors:[UIColor] = buttonStyle.backgroundColors()
+        
+        // If passed, let us create a color outof it
+        if backgroundColors.count > 1 {
+            // Then we have a gradient colors to apply
+            return UIColor.fromGradient(.init(direction: .rightToLeft, colors: buttonStyle.backgroundColors()), frame: viewDelegate!.buttonFrame()) ?? .black
+        }else{
+            guard let nonNullColor:UIColor = backgroundColors.first else { return buttonStatus.buttonBackGroundColor() }
+            return nonNullColor
+        }
+    }
+    
+    /**
+     Decides whether or not we shall display an image as a title inside the action  button.
+     Depends on the current status is VALID and there is a custom style passed from the caller
+     That contains valid url to be displayed
+     */
+    internal func paymentTitleImage() -> (Bool, URL?) {
+        // Compute the needed data for getting the correct URL
+        // Now let us see what will we get, based on locale and display mode
+        var displayModePath:String = "light"
+        if #available(iOS 12.0, *) {
+            displayModePath = (UIView().traitCollection.userInterfaceStyle == .dark) ? "dark" : "light"
+        }
+        // Now let us compute the path based on the locale
+        let localePath:String = "\(TapLocalisationManager.shared.localisationLocale ?? "en")"
+        
+        // Check if we have a style passed first,
+        // Then there is a valid url to load
+        guard let buttonStyle:PaymentOptionButtonStyle = buttonStyle,
+              buttonStatus == .ValidPayment,
+              let _ = buttonStyle.titlesAssets,
+              let finalURL:URL = URL(string:buttonStyle.paymentOptionImageUrl(for: displayModePath, and: localePath, with: ".png")),
+              UIApplication.shared.canOpenURL(finalURL)
+        else { return (false, nil) }
+        
+        return (true, finalURL)
+        
     }
     
     /**

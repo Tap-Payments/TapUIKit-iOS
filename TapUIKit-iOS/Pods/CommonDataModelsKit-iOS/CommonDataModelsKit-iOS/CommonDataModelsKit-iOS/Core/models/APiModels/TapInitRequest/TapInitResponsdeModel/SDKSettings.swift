@@ -99,6 +99,8 @@ public struct TapInitResponseModel:Decodable {
     public var paymentOptions: TapPaymentOptionsReponseModel
     /// session token.
     public var session: String
+    /// The model for fetching the default assets urls for themes and localisations
+    public var assets: TapAssetsModel
     
     // MARK: - Private -
     
@@ -107,5 +109,35 @@ public struct TapInitResponseModel:Decodable {
         case data               = "merchant"
         case paymentOptions     = "payment_options"
         case session            = "session"
+        case assets             = "assests"
     }
+}
+
+/// The model for fetching the default assets urls for themes and localisations
+public struct TapAssetsModel:Codable {
+    
+    /// The theme model
+    public let theme:TapThemeAssetsModel
+    
+    /// The loclisation model
+    public let localisation:TapLocalisationAssetsModel
+    
+}
+
+/// The model for fetching the default assets urls for the light and dark themes
+public struct TapThemeAssetsModel:Codable {
+    
+    /// The light mode theme url
+    public let light:String
+    
+    /// The dark mode theme url
+    public let dark:String
+    
+}
+
+
+/// The model for fetching the default assets urls for the localisations
+public struct TapLocalisationAssetsModel:Codable {
+    /// The localisation url
+    public let url:String
 }

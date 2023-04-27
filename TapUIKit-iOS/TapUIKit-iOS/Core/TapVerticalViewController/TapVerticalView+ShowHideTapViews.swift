@@ -215,7 +215,7 @@ extension TapVerticalView {
             //powereByTapView.fadeIn()
         }
         
-        tapActionButtonHeightConstraint.constant = 74
+        tapActionButtonHeightConstraint.constant = 82
         tapActionButton.updateConstraints()
         
         /*powereByTapView.snp.remakeConstraints { make in
