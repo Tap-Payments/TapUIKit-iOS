@@ -117,7 +117,7 @@ import Nuke
                 }
                 return
             }
-            self.payButton.alpha = 0.1
+            self.payButton.alpha = 0.02
             self.paymentTitleImageView.contentMode = .scaleAspectFit
             self.paymentTitleImageView.translatesAutoresizingMaskIntoConstraints = false
             // Get the width of the provided UIImage title
