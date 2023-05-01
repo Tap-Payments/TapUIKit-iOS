@@ -88,6 +88,9 @@ import LocalisationManagerKit_iOS
         }
         
         itemDescLabel.sizeToFit()
+        
+        // Separator should only be visible whenever this is not the last row
+        separatorView.isHidden = viewModel.viewModelDelegate?.isLastRow(for: viewModel) ?? true
         self.layoutIfNeeded()
     }
     

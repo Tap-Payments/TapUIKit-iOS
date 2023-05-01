@@ -264,6 +264,18 @@ import TapCardScanner_iOS
     }
     
     /**
+     Calculates the needed height to show all the views inside the checkout bottom sheet
+     - Returns: the needed height to show all the views inside the checkout bottom sheet
+     */
+    @objc public func getMinimumNeededHeight() -> CGFloat {
+        // Calculate the current views' height firs
+        var currentViewsHeight:CGFloat = 0
+        stackView.arrangedSubviews.forEach{ currentViewsHeight += ($0.frame.height > 0) ? $0.frame.height : 45 }
+        
+        return currentViewsHeight + tapActionButtonBottomConstraint.constant + tapActionButtonHeightConstraint.constant + 60
+    }
+    
+    /**
      Deletes a certain view from with Fadeout animation from the stack view
      - Parameter view: The view to be deleted
      */

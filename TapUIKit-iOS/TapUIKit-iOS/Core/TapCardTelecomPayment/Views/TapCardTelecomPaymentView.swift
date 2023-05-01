@@ -40,7 +40,7 @@ import TapThemeManager2020
     internal var saveCrdForTapView:TapInternalSaveCard = .init()
     
     /// Powered by tap view to be displayed within the card brands in case of a standalone card kit
-    @IBOutlet weak var poweredByTapView: PoweredByTapView!
+    @IBOutlet weak var poweredByTapView: UIImageView!
     
     /// The view model that has the needed payment options and data source to display the payment view
     public var tapCardPhoneListViewModel:TapCardPhoneBarListViewModel = .init() {
@@ -190,44 +190,44 @@ import TapThemeManager2020
         }
         
         /*saveCrdView.isHidden = !finalMerchantVisibility
-        saveCrdForTapView.isHidden = !finalTapVisibility
-        
-        // Add or remove from the stackview
-        if finalMerchantVisibility {
-            stackView.addArrangedSubview(saveCrdView)
-        }else{
-            stackView.removeArrangedSubview(saveCrdView)
-        }
-        
-        
-        if finalTapVisibility {
-            stackView.addArrangedSubview(saveCrdForTapView)
-        }else{
-            stackView.removeArrangedSubview(saveCrdForTapView)
-            saveCrdForTapView.isSavedCardEnabled = false
-        }
-        
-        
-        // change the height of the save card view based on the given visibility
-        saveCrdView.snp.updateConstraints { make in
-            make.height.equalTo(finalMerchantVisibility ? 48 : 0)
-        }
-        saveCrdForTapView.snp.updateConstraints { make in
-            make.height.equalTo(finalTapVisibility ? 48 : 0)
-        }
-        saveCrdView.layoutIfNeeded()
-        saveCrdForTapView.layoutIfNeeded()
-        stackView.layoutIfNeeded()
-        layoutIfNeeded()
-        if finalMerchantVisibility {
-            saveCrdView.fadeIn(duration: 0.75)
-        }
-        
-        if finalTapVisibility {
-            saveCrdForTapView.fadeIn(duration: 0.75)
-        }
-        // Update the height of the total widget to reflect that
-        updateHeight()*/
+         saveCrdForTapView.isHidden = !finalTapVisibility
+         
+         // Add or remove from the stackview
+         if finalMerchantVisibility {
+         stackView.addArrangedSubview(saveCrdView)
+         }else{
+         stackView.removeArrangedSubview(saveCrdView)
+         }
+         
+         
+         if finalTapVisibility {
+         stackView.addArrangedSubview(saveCrdForTapView)
+         }else{
+         stackView.removeArrangedSubview(saveCrdForTapView)
+         saveCrdForTapView.isSavedCardEnabled = false
+         }
+         
+         
+         // change the height of the save card view based on the given visibility
+         saveCrdView.snp.updateConstraints { make in
+         make.height.equalTo(finalMerchantVisibility ? 48 : 0)
+         }
+         saveCrdForTapView.snp.updateConstraints { make in
+         make.height.equalTo(finalTapVisibility ? 48 : 0)
+         }
+         saveCrdView.layoutIfNeeded()
+         saveCrdForTapView.layoutIfNeeded()
+         stackView.layoutIfNeeded()
+         layoutIfNeeded()
+         if finalMerchantVisibility {
+         saveCrdView.fadeIn(duration: 0.75)
+         }
+         
+         if finalTapVisibility {
+         saveCrdForTapView.fadeIn(duration: 0.75)
+         }
+         // Update the height of the total widget to reflect that
+         updateHeight()*/
     }
     
     /**
@@ -267,8 +267,8 @@ import TapThemeManager2020
         self.tapCardPhoneListView.layoutIfNeeded()
         self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
         
-        self.poweredByTapView.layoutIfNeeded()
-        self.poweredByTapView.alpha = (finalVisibility && (viewModel?.showPoweredByTapView ?? false)) ? 1 : 0
+        //self.poweredByTapView.layoutIfNeeded()
+        //self.poweredByTapView.alpha = (finalVisibility && (viewModel?.showPoweredByTapView ?? false)) ? 1 : 0
         
         self.updateHeight()
         
@@ -340,10 +340,10 @@ import TapThemeManager2020
     internal func removeHintView() {
         // We will have to update our height to reflect the removal of the hint view
         /*hintView.fadeOut(){_ in
-            DispatchQueue.main.async {
-                
-            }
-        }*/
+         DispatchQueue.main.async {
+         
+         }
+         }*/
         // it is not already removed
         guard !self.hintView.isHidden else { return }
         self.hintView.isHidden = true
@@ -555,6 +555,8 @@ extension TapCardTelecomPaymentView {
         // The blur 3ds overlay
         loadingBlurView.colorTint = TapThemeManager.colorValue(for: "inlineCard.blur3dsoverlay.tint")
         loadingBlurView.colorTintAlpha = CGFloat(TapThemeManager.numberValue(for: "inlineCard.blur3dsoverlay.tintAlpha")?.floatValue ?? 0)
+        
+        poweredByTapView.tap_theme_image = .init(keyPath: "inlineCard.poweredByTapLogo")
         
         layoutIfNeeded()
     }

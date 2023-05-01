@@ -81,6 +81,7 @@ internal protocol TapCellGenericTableViewModelDelegate {
         // Create the attached table view instance
         tableView = .init()
         tableView?.translatesAutoresizingMaskIntoConstraints = false
+        tableView?.backgroundColor = .clear
         // Assign self to be the delegate of the table created
         tableView?.changeViewMode(with: self)
         defer {
@@ -188,6 +189,10 @@ internal protocol TapCellGenericTableViewModelDelegate {
 
 
 extension TapGenericTableViewModel:TapGenericCellViewModelDelegate {
+    func isLastRow(for viewModel: ItemCellViewModel) -> Bool {
+        return dataSource.last == viewModel
+    }
+    
     func reloadRows(at indexPaths: [IndexPath]) {
         cellDelegate?.reloadRows(at: indexPaths)
     }

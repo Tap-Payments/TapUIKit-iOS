@@ -29,6 +29,11 @@ import class TapApplePayKit_iOS.TapApplePayToken
      - Parameter headerType: Represents which header was clicked
      */
     @objc func headerRightButtonClicked(in headerType:TapHorizontalHeaderType)
+    
+    /**
+     The event will be fired when the list deselected all items
+     */
+    @objc func deselectedAll()
     /**
      The event will be fired when end editing button in the header if any is clicked
      - Parameter headerType: Represents which header was clicked
@@ -298,6 +303,13 @@ internal protocol TapChipHorizontalViewModelDelegate {
         let selectedViewModel = viewModel(at: index)
         // Make sure we are not in editing mode
         guard !selectedViewModel.editMode else{
+            return
+        }
+        // Check if it is not already selected, as if it is, we will deselct on this click
+        guard selectedChip != selectedViewModel else {
+            // Inform the view model of the deselected cell that he is selected, hence, he will pass this value to his attached UIView
+            selectedChip = nil
+            delegate?.deselectedAll()
             return
         }
         // Inform the view model of the selected cell that he is selected, hence, he will pass this value to his attached UIView

@@ -52,7 +52,7 @@
                         <constraint firstAttribute="height" constant="24" id="zFf-Xx-rVe"/>
                     </constraints>
                 </view>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-b4-8eW" customClass="PoweredByTapView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-b4-8eW" customClass="UIImageView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="449" y="208" width="100" height="24"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

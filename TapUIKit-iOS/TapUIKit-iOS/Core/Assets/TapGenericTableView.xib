@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,19 +22,34 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwt-Uv-pVD" customClass="TapContentSizedTableView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96D-TO-9xp" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="BRT-eF-hia"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="iwt-Uv-pVD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="95c-8X-fFM"/>
+                <constraint firstItem="96D-TO-9xp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Gnp-OZ-In3"/>
+                <constraint firstItem="96D-TO-9xp" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="J3S-Oc-OtK"/>
                 <constraint firstItem="iwt-Uv-pVD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RC6-12-xJy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iwt-Uv-pVD" secondAttribute="bottom" id="sXJ-2Y-G57"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="96D-TO-9xp" secondAttribute="trailing" id="tsg-7y-zaB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iwt-Uv-pVD" secondAttribute="trailing" id="vj3-m0-Sso"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="153"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

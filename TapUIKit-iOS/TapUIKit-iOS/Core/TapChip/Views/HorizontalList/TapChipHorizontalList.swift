@@ -126,8 +126,8 @@ import LocalisationManagerKit_iOS
             self.adjustArabicLayout(delay: delay)
             if #available(iOS 13, *) {
                 if TapLocalisationManager.shared.localisationLocale ?? "en" == "ar" {
-                    self.adjustArabicLayout(delay: 500)
-                    self.adjustArabicLayout(delay: 900)
+                    //self.adjustArabicLayout(delay: 500)
+                    //self.adjustArabicLayout(delay: 900)
                 }
             }
         }

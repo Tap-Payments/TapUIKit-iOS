@@ -85,7 +85,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMm-Hy-33v" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="198" width="281" height="1"/>
+                                <rect key="frame" x="0.0" y="198" width="288" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="UQP-dG-i7T"/>
@@ -94,8 +94,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="RMm-Hy-33v" secondAttribute="trailing" priority="750" constant="7" id="6GP-s5-qoL"/>
-                            <constraint firstItem="RMm-Hy-33v" firstAttribute="leading" secondItem="ioR-i0-gR8" secondAttribute="leading" priority="750" constant="7" id="f1N-SD-sR7"/>
+                            <constraint firstAttribute="trailing" secondItem="RMm-Hy-33v" secondAttribute="trailing" priority="750" id="6GP-s5-qoL"/>
+                            <constraint firstItem="RMm-Hy-33v" firstAttribute="leading" secondItem="ioR-i0-gR8" secondAttribute="leading" priority="750" id="f1N-SD-sR7"/>
                         </constraints>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXh-qa-2Gi">
@@ -121,6 +121,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="itemDescLabel" destination="9cN-OB-6ES" id="Bii-ju-3Sb"/>
                 <outlet property="itemDiscountPriceLabel" destination="ZpS-sa-L6N" id="0uI-ss-fnc"/>

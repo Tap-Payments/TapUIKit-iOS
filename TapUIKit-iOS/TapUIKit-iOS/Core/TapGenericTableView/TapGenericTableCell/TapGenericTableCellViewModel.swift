@@ -17,6 +17,8 @@ internal protocol TapGenericCellViewModelDelegate {
      */
     func itemClicked(for viewModel:ItemCellViewModel)
     func reloadRows(at indexPaths:[IndexPath])
+    /// Tells if this row is the last row
+    func isLastRow(for viewModel:ItemCellViewModel) -> Bool
 }
 
 
