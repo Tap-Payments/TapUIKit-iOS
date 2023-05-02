@@ -59,6 +59,10 @@ import class UIKit.UICollectionViewCell
         cellDelegate?.showLoadingState?()
     }
     
+    public func hideLoader() {
+        cellDelegate?.hideLoadingState?()
+    }
+    
     // MARK:- Internal methods
     internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {
         return cell as! SavedCardCollectionViewCell

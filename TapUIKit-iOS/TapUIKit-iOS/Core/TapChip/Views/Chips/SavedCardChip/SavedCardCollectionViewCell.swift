@@ -202,5 +202,9 @@ extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
         deleteCardLoadingView.fadeIn(duration:1)
     }
     
+    func hideLoadingState() {
+        deleteCardLoadingView.fadeOut()
+    }
+    
 }
 

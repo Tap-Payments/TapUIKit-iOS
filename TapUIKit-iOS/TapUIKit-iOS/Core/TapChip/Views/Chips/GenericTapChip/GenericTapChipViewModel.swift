@@ -68,6 +68,11 @@ internal protocol GenericChipViewModelDelegate {
      For the saved card view model, there is a different UI it can show which is loading while deleting the card
      */
     @objc optional func showLoadingState()
+    
+    /**
+     For the saved card view model, there is a different UI it can hide which is loading while deleting the card
+     */
+    @objc optional func hideLoadingState()
 }
 
 /// This is a superclass for all the chips view models created, this will make sure all have the same interface/output and ease the parametery type in methods

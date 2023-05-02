@@ -14,7 +14,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="4X3-ae-UgX"/>
                 <outlet property="headerView" destination="VLF-Re-aM8" id="ZCR-Oe-hcn"/>
                 <outlet property="loadingBlurView" destination="UlU-UZ-H8C" id="9sN-6q-5Pt"/>
-                <outlet property="poweredByTapView" destination="W6h-b4-8eW" id="J7G-xU-in8"/>
+                <outlet property="poweredByTapView" destination="TvM-sv-pqx" id="PlW-PS-JZm"/>
                 <outlet property="pre3DSLoadingView" destination="kpP-xc-tEn" id="RME-aP-6Cm"/>
                 <outlet property="stackView" destination="CZk-jP-kZU" id="9SK-eb-rzi"/>
                 <outlet property="tapCardPhoneListView" destination="or1-yo-2AD" id="Jvu-8O-tJG"/>
@@ -52,13 +52,12 @@
                         <constraint firstAttribute="height" constant="24" id="zFf-Xx-rVe"/>
                     </constraints>
                 </view>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6h-b4-8eW" customClass="UIImageView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TvM-sv-pqx">
                     <rect key="frame" x="449" y="208" width="100" height="24"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="mcS-qc-Efg"/>
+                        <constraint firstAttribute="width" constant="100" id="2f1-IM-ZZb"/>
                     </constraints>
-                </view>
+                </imageView>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-xc-tEn">
                     <rect key="frame" x="16" y="30" width="533" height="170"/>
                     <subviews>
@@ -97,12 +96,12 @@
                 <constraint firstItem="or1-yo-2AD" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="HkT-c2-1U6"/>
                 <constraint firstItem="CZk-jP-kZU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="OM3-6q-VAy"/>
                 <constraint firstItem="kpP-xc-tEn" firstAttribute="trailing" secondItem="CZk-jP-kZU" secondAttribute="trailing" id="S3n-GT-gQN"/>
+                <constraint firstItem="TvM-sv-pqx" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" id="Waa-9t-x0v"/>
                 <constraint firstItem="kpP-xc-tEn" firstAttribute="top" secondItem="CZk-jP-kZU" secondAttribute="top" id="aeQ-7R-0Wo"/>
+                <constraint firstItem="TvM-sv-pqx" firstAttribute="bottom" secondItem="or1-yo-2AD" secondAttribute="bottom" id="bGO-oo-ejI"/>
+                <constraint firstItem="TvM-sv-pqx" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="top" id="gHJ-hN-Pnu"/>
                 <constraint firstItem="kpP-xc-tEn" firstAttribute="leading" secondItem="CZk-jP-kZU" secondAttribute="leading" id="hpe-VF-n4f"/>
                 <constraint firstItem="or1-yo-2AD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" priority="750" id="lfc-qu-aN1"/>
-                <constraint firstItem="W6h-b4-8eW" firstAttribute="top" secondItem="or1-yo-2AD" secondAttribute="top" id="mme-zD-W9d"/>
-                <constraint firstItem="W6h-b4-8eW" firstAttribute="bottom" secondItem="or1-yo-2AD" secondAttribute="bottom" id="qUc-sZ-HzG"/>
-                <constraint firstItem="W6h-b4-8eW" firstAttribute="trailing" secondItem="or1-yo-2AD" secondAttribute="trailing" id="xcy-3F-Per"/>
                 <constraint firstItem="VLF-Re-aM8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBb-TV-koC"/>
                 <constraint firstItem="CZk-jP-kZU" firstAttribute="top" secondItem="VLF-Re-aM8" secondAttribute="bottom" id="ziM-T8-dVV"/>
             </constraints>
