@@ -8,8 +8,9 @@
 
 import Foundation
 import SnapKit
-import enum TapCardVlidatorKit_iOS.CardBrand
+import TapCardVlidatorKit_iOS
 import LocalisationManagerKit_iOS
+import TapThemeManager2020
 /// Protocol to communicate between the view controlled by this view model ad the view model itself
 internal protocol TapCardPhoneBarListViewModelDelegate {
     /**
@@ -125,10 +126,17 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
             let tapCardPhoneIconView:TapCardPhoneIconView = .init()
             // Assing the view model
             tapCardPhoneIconView.setupView(with: $0)
+            // Calculate the card icon width based on the value defined in the theme manager or default if not found
+            let correctCardBrandIconWidth:CGFloat = CGFloat(TapThemeManager.numberValue(for: "cardPhoneList.icon.iconsWidth.\($0.paymentOptionIdentifier)")?.floatValue ?? 24)
             // Apply the max width constraint
             tapCardPhoneIconView.snp.remakeConstraints {
-                $0.width.equalTo(30)
+                print("WIDTH CARD : \(correctCardBrandIconWidth)")
+                $0.width.equalTo(correctCardBrandIconWidth)
                 $0.height.equalTo(24)
+            }
+            DispatchQueue.main.async {
+                tapCardPhoneIconView.updateConstraints()
+                tapCardPhoneIconView.layoutIfNeeded()
             }
             return tapCardPhoneIconView
         }
