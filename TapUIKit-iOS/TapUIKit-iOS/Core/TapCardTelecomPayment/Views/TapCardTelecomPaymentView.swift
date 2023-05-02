@@ -267,8 +267,8 @@ import TapThemeManager2020
         self.tapCardPhoneListView.layoutIfNeeded()
         self.tapCardPhoneListView.alpha = finalVisibility ? 1 : 0
         
-        //self.poweredByTapView.layoutIfNeeded()
-        //self.poweredByTapView.alpha = (finalVisibility && (viewModel?.showPoweredByTapView ?? false)) ? 1 : 0
+        self.poweredByTapView.layoutIfNeeded()
+        self.poweredByTapView.alpha = (finalVisibility && (viewModel?.showPoweredByTapView ?? false)) ? 1 : 0
         
         self.updateHeight()
         

@@ -127,7 +127,7 @@ internal protocol TapCardPhoneBarListViewModelDelegate {
             tapCardPhoneIconView.setupView(with: $0)
             // Apply the max width constraint
             tapCardPhoneIconView.snp.remakeConstraints {
-                $0.width.equalTo(24)
+                $0.width.equalTo(30)
                 $0.height.equalTo(24)
             }
             return tapCardPhoneIconView

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,11 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-dy-q3O">
-                    <rect key="frame" x="25.666666666666671" y="12.666666666666664" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="v2g-dy-q3O" secondAttribute="height" multiplier="1:1" id="YFV-ft-6TP"/>
-                        <constraint firstAttribute="width" constant="24" id="yWf-eQ-apb"/>
-                    </constraints>
+                    <rect key="frame" x="0.0" y="0.0" width="75" height="49"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyO-30-4i2">
                     <rect key="frame" x="0.0" y="0.0" width="75" height="49"/>
@@ -36,12 +32,16 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="v2g-dy-q3O" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2dl-2H-zuI"/>
                 <constraint firstItem="UyO-30-4i2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="E9w-qg-u86"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UyO-30-4i2" secondAttribute="trailing" id="bgd-ME-5lp"/>
                 <constraint firstItem="UyO-30-4i2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cZE-Kc-B8J"/>
+                <constraint firstItem="v2g-dy-q3O" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iUZ-9V-FEJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="v2g-dy-q3O" secondAttribute="bottom" id="l4m-LG-S3K"/>
                 <constraint firstItem="v2g-dy-q3O" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pAX-Vw-XCv"/>
                 <constraint firstItem="v2g-dy-q3O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rPG-Ch-C9h"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UyO-30-4i2" secondAttribute="bottom" id="sOE-92-Nhd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="v2g-dy-q3O" secondAttribute="trailing" id="wcH-qH-DNH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="-86.383928571428569"/>
