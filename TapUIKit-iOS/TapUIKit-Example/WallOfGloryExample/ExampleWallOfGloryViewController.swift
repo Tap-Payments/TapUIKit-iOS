@@ -330,6 +330,10 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
+    func deselectedAll() {
+    
+    }
+    
     func logoutChip(for viewModel: TapLogoutChipViewModel) {
         let logoutConfirmationAlert:UIAlertController = .init(title: "Are you sure you would like to sign out?", message: "The goPay cards will be hidden from the page and you will need to login again to use any of them.", preferredStyle: .alert)
         let confirmLogoutAction:UIAlertAction = .init(title: "Yes", style: .default) { [weak self] (_) in

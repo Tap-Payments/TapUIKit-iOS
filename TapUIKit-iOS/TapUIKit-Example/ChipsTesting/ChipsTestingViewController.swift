@@ -128,6 +128,10 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    func deselectedAll() {
+        
+    }
+    
     func logoutChip(for viewModel: TapLogoutChipViewModel) {
         
     }
