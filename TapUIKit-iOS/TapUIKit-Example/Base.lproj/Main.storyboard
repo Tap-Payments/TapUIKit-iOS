@@ -446,6 +446,9 @@
                             <constraint firstAttribute="trailing" secondItem="yKv-IZ-pR0" secondAttribute="trailing" constant="10" id="r5e-JW-4ji"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tapCurrencyWidget" destination="H6I-Tb-PRy" id="ozW-nT-EWI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lho-j8-TRu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,7 @@
                 <outlet property="containerView" destination="iN0-l3-epB" id="GIT-2k-A5l"/>
                 <outlet property="currencyImageView" destination="HFp-gI-kMd" id="6Zh-Uk-9IX"/>
                 <outlet property="messageLabel" destination="nC4-8o-OEK" id="TSW-VZ-n1d"/>
+                <outlet property="paddingView" destination="fmK-ub-toX" id="1dB-Zo-g5E"/>
                 <outlet property="providerImageView" destination="2iw-h7-sfz" id="Cgf-Gx-y7F"/>
             </connections>
         </placeholder>
@@ -28,14 +29,14 @@
                     <rect key="frame" x="12" y="12" width="334" height="104"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2iw-h7-sfz">
-                            <rect key="frame" x="0.0" y="0.0" width="57" height="14"/>
+                            <rect key="frame" x="0.0" y="0.0" width="57" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="57" id="1oe-5P-FOV"/>
-                                <constraint firstAttribute="height" constant="14" id="oGH-lz-grd"/>
+                                <constraint firstAttribute="height" constant="18" id="oGH-lz-grd"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal is available after converting to the supported currency" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC4-8o-OEK">
-                            <rect key="frame" x="0.0" y="29.999999999999996" width="334" height="40.666666666666657"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is available after converting to the supported currency" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC4-8o-OEK">
+                            <rect key="frame" x="0.0" y="34" width="334" height="40.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -72,6 +73,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="2iw-h7-sfz" firstAttribute="leading" secondItem="fmK-ub-toX" secondAttribute="leading" id="4sf-fa-OHR"/>
+                        <constraint firstItem="nC4-8o-OEK" firstAttribute="width" secondItem="fmK-ub-toX" secondAttribute="width" id="7o5-xV-9ht"/>
                         <constraint firstAttribute="bottom" secondItem="95u-Fs-bnh" secondAttribute="bottom" id="C8O-5P-peX"/>
                         <constraint firstAttribute="trailing" secondItem="eTe-gl-dVO" secondAttribute="trailing" id="Deo-8q-8uc"/>
                         <constraint firstAttribute="bottom" secondItem="eTe-gl-dVO" secondAttribute="bottom" id="N3A-Zv-maH"/>

@@ -23,6 +23,7 @@
 		D61A34892A1E0FAF007608A0 /* TapCurrencyWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */; };
 		D61A348B2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */; };
 		D61A348E2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */; };
+		D6799D122A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
 		E80C052924C0C5BE00B12C00 /* TapActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C052824C0C5BE00B12C00 /* TapActionButton.swift */; };
@@ -277,6 +278,7 @@
 		D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCurrencyWidgetView.xib; sourceTree = "<group>"; };
 		D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetView.swift; sourceTree = "<group>"; };
 		D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetViewController.swift; sourceTree = "<group>"; };
+		D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetViewModel.swift; sourceTree = "<group>"; };
 		DC9E6344249A1CA65DA9FC2F /* Pods-TapUIKit-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DF4C0BAE4F2FB5B88BFD1BD6 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayChipViewModel.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */,
+				D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */,
 			);
 			path = TapCurrencyWidgetView;
 			sourceTree = "<group>";
@@ -1823,6 +1826,7 @@
 				E8670CBC24988FAF003F87D8 /* TapGoPayChipCollectionViewCell.swift in Sources */,
 				E8E19F2929FABD6D00E709F5 /* GradientLayer.swift in Sources */,
 				E8437F6A24BE07900059F1B8 /* SpaceView.swift in Sources */,
+				D6799D122A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift in Sources */,
 				E8437F6124BCC5240059F1B8 /* TapHintViewModel.swift in Sources */,
 				E893B77928D314A1000E0348 /* TapLoyaltyFooterView.swift in Sources */,
 				E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */,
