@@ -8,13 +8,14 @@
 
 import UIKit
 import Nuke
+import LocalisationManagerKit_iOS
+
 public class TapCurrencyWidgetView: UIView {
 
-
+    ///  A collection of direction based views
+    @IBOutlet var toBeLocalizedViews: [UIView]!
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
-    /// The  view for padding in the xib
-    @IBOutlet var paddingView: UIView!
     /// The confirm button to change the currency to be accepted by this provider
     @IBOutlet weak var confirmButton: UIButton!
     /// The amount label which displays amount after conversion to be used with this provider
@@ -59,9 +60,6 @@ public class TapCurrencyWidgetView: UIView {
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.containerView = setupXIB()
-        paddingView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
-        messageLabel.semanticContentAttribute = .unspecified
-        messageLabel.textAlignment = .natural
         applyTheme()
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -69,6 +67,19 @@ public class TapCurrencyWidgetView: UIView {
     /// When user click on confirm button
     @IBAction func confirmClicked(_ sender: Any) {
         viewModel?.confirmClicked()
+    }
+    
+    /// Will localize the views by checking their class. If they are views we will set the semantic attributes, if text based views we will change the alignments as well
+    private func localizeViews() {
+        // Let us compute the correct semantic and text alignment
+        let semantic:UISemanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
+        let aligment:NSTextAlignment = TapLocalisationManager.shared.localisationLocale == "ar" ? .right : .left
+        toBeLocalizedViews.forEach { view in
+            view.semanticContentAttribute = semantic
+            if let label:UILabel = view as? UILabel {
+                label.textAlignment = aligment
+            }
+        }
     }
     
 }
@@ -80,6 +91,7 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
     func reload() {
         assignLabels()
         loadImages()
+        localizeViews()
     }
     
     /// Responsible for all logic needed to assign the textual info into the corresponding labels
@@ -122,7 +134,8 @@ extension TapCurrencyWidgetView {
     private func matchThemeAttributes() {
         
         let amountLabelThemePath = "\(themePath).amountLabel"
-        amountLabel.tap_theme_font = .init(stringLiteral: "\(amountLabelThemePath).font")
+        // Here we will not need to localise this label, as it is always with English letters. hence, we will always our English fonts.
+        amountLabel.tap_theme_font = .init(stringLiteral: "\(amountLabelThemePath).font",shouldLocalise: false)
         amountLabel.tap_theme_textColor = .init(keyPath: "\(amountLabelThemePath).color")
         
         let messageLabelThemePath = "\(themePath).messageLabel"

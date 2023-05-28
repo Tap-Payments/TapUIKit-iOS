@@ -86,7 +86,8 @@ public class TapCurrencyWidgetViewModel:NSObject {
     internal var messageLabel: String {
         let localisationLocale = sharedLocalisationManager.localisationLocale
         if localisationLocale == "ar" {
-            return "\(sharedLocalisationManager.localisedValue(for: "\(localizationPath).header", with:TapCommonConstants.pathForDefaultLocalisation())) \(paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle))"
+            // In case of mixed English and Arabic content in the same label, we will have to use String.localized otherwise, the content will be mixed.
+            return String.localizedStringWithFormat("%@ %@", sharedLocalisationManager.localisedValue(for: "\(localizationPath).header", with:TapCommonConstants.pathForDefaultLocalisation()), paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle))
         } else {
             return "\(paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle)) \(sharedLocalisationManager.localisedValue(for: "\(localizationPath).header", with:TapCommonConstants.pathForDefaultLocalisation()))"
         }
@@ -99,7 +100,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// Computes the currency text value
     internal var amountLabel: String {
-        return "\(convertedAmount.displaybaleSymbol) \(convertedAmount.amount)"
+        return "\(convertedAmount.currencySymbol) \(convertedAmount.amount)"
     }
     /// Computes the currency flag value
     internal var amountFlag: String {
