@@ -21,6 +21,9 @@
     "messageLabel": {
       "color": "#CFCFCF",
       "font": "Roboto-Regular,13"
+    },
+    "dropDown": {
+      "arrow": "arrowItemsIcon",
     }
   },
   "GlobalValues": {

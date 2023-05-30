@@ -45,6 +45,8 @@ public class TapCurrencyWidgetViewModel:NSObject {
     private var paymentOption: PaymentOption
     /// An external delegate to listen to events fired from the currency widget view
     private var delegate:TapCurrencyWidgetViewModelDelegate?
+    /// State of currency drop down menu
+    private var isCurrencyDropDownShown: Bool = false
     
     // MARK: - Public normal swift variables
     /// Public reference to the loyalty view itself as UI that will be rendered
@@ -112,9 +114,26 @@ public class TapCurrencyWidgetViewModel:NSObject {
         return paymentOption.correctCurrencyWidgetImageURL()
     }
     
+    /// Computes the showing or disable the multiple currencies  option
+    internal var showMultipleCurrencyOption: Bool {
+        return paymentOption.supportedCurrencies.count > 1
+    }
+    
+    ///  State of drop currency down menu
+    internal var isCurrencyDropDownExpanded: Bool {
+        return isCurrencyDropDownShown;
+    }
+    
+    /// On click on confirm button
     internal func confirmClicked() {
         delegate?.confirmClicked()
     }
+    
+    /// On click on currency 
+    internal func currencyClicked() {
+        isCurrencyDropDownShown = !isCurrencyDropDownShown
+    }
+    
     
     // MARK: - Public
     

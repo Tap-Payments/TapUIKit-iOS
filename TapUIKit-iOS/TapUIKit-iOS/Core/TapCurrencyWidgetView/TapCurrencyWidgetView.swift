@@ -26,6 +26,10 @@ public class TapCurrencyWidgetView: UIView {
     @IBOutlet weak var messageLabel: UILabel!
     /// The provider image view which displays the provider logo
     @IBOutlet weak var providerImageView: UIImageView!
+    /// The  image view which displays the chevron icon
+    @IBOutlet weak var chevronImageView: UIImageView!
+    /// The  button to show the currency drop down
+    @IBOutlet weak var currencyDropDownButton: UIButton!
     
     /// The view model controlling this view
     @objc private var viewModel:TapCurrencyWidgetViewModel?
@@ -69,6 +73,9 @@ public class TapCurrencyWidgetView: UIView {
         viewModel?.confirmClicked()
     }
     
+    @IBAction func currencyClicked(_ sender: Any) {
+        viewModel?.currencyClicked()
+    }
     /// Will localize the views by checking their class. If they are views we will set the semantic attributes, if text based views we will change the alignments as well
     private func localizeViews() {
         // Let us compute the correct semantic and text alignment
@@ -92,6 +99,23 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
         assignLabels()
         loadImages()
         localizeViews()
+        setupCurrencyDropDown()
+    }
+    
+    /// Responsible for showing or hide currency drop down
+    private func setupCurrencyDropDown() {
+        setCurrencyDropDownButtonState(hide: viewModel?.showMultipleCurrencyOption ?? false)
+        showChevronCorrectPosition(isExpanded: viewModel?.isCurrencyDropDownExpanded ?? false)
+    }
+    
+    /// Responsible show correct arrow position
+    private func showChevronCorrectPosition(isExpanded: Bool) {
+    }
+    
+    /// Responsible show or hide currency drop down button
+    private func setCurrencyDropDownButtonState(hide: Bool) {
+        currencyImageView.isHidden = hide
+        currencyDropDownButton.isEnabled = !hide
     }
     
     /// Responsible for all logic needed to assign the textual info into the corresponding labels
@@ -159,6 +183,10 @@ extension TapCurrencyWidgetView {
         confirmButton.layer.cornerRadius = confirmButton.frame.height / 2
         confirmButton.tap_theme_backgroundColor = .init(keyPath: "\(confirmButtonThemePath).backgroundColor")
         
+        let dropDownThemePath = "\(themePath).dropDown"
+
+        chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrow")
+
 
         layoutIfNeeded()
     }

@@ -12,8 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapCurrencyWidgetView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="95u-Fs-bnh" id="jPA-ef-qh4"/>
+                <outlet property="chevronImageView" destination="heq-RV-34D" id="YbM-X7-awm"/>
                 <outlet property="confirmButton" destination="eTe-gl-dVO" id="RVq-YO-ecL"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="GIT-2k-A5l"/>
+                <outlet property="currencyDropDownButton" destination="0QN-Dr-eIV" id="9oJ-Mv-eQq"/>
                 <outlet property="currencyImageView" destination="HFp-gI-kMd" id="6Zh-Uk-9IX"/>
                 <outlet property="messageLabel" destination="nC4-8o-OEK" id="TSW-VZ-n1d"/>
                 <outlet property="providerImageView" destination="2iw-h7-sfz" id="Cgf-Gx-y7F"/>
@@ -70,19 +72,41 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="heq-RV-34D">
+                            <rect key="frame" x="94" y="85.666666666666671" width="10" height="19"/>
+                            <color key="tintColor" red="0.98431372549999996" green="0.0" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="heq-RV-34D" secondAttribute="height" multiplier="10:19" id="HJh-uN-sul"/>
+                                <constraint firstAttribute="width" constant="10" id="Ip4-Xm-TKU"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QN-Dr-eIV">
+                            <rect key="frame" x="0.0" y="86" width="104" height="18"/>
+                            <buttonConfiguration key="configuration" style="plain"/>
+                            <connections>
+                                <action selector="currencyClicked:" destination="-1" eventType="touchUpInside" id="luE-GG-HAM"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="2iw-h7-sfz" firstAttribute="leading" secondItem="fmK-ub-toX" secondAttribute="leading" id="4sf-fa-OHR"/>
+                        <constraint firstItem="heq-RV-34D" firstAttribute="leading" secondItem="95u-Fs-bnh" secondAttribute="trailing" constant="7.75" id="8k8-ty-iCf"/>
+                        <constraint firstItem="95u-Fs-bnh" firstAttribute="bottom" secondItem="0QN-Dr-eIV" secondAttribute="bottom" id="9Ue-i3-SSw"/>
                         <constraint firstAttribute="bottom" secondItem="95u-Fs-bnh" secondAttribute="bottom" id="C8O-5P-peX"/>
                         <constraint firstAttribute="trailing" secondItem="eTe-gl-dVO" secondAttribute="trailing" id="Deo-8q-8uc"/>
+                        <constraint firstItem="heq-RV-34D" firstAttribute="centerY" secondItem="95u-Fs-bnh" secondAttribute="centerY" id="KR2-4z-6o3"/>
                         <constraint firstAttribute="bottom" secondItem="eTe-gl-dVO" secondAttribute="bottom" id="N3A-Zv-maH"/>
                         <constraint firstAttribute="trailing" secondItem="nC4-8o-OEK" secondAttribute="trailing" id="NvO-6r-TLy"/>
+                        <constraint firstItem="heq-RV-34D" firstAttribute="width" secondItem="heq-RV-34D" secondAttribute="height" multiplier="10:19" id="OZo-bT-sGD"/>
                         <constraint firstItem="2iw-h7-sfz" firstAttribute="top" secondItem="fmK-ub-toX" secondAttribute="top" id="QOI-07-kOO"/>
                         <constraint firstItem="nC4-8o-OEK" firstAttribute="top" secondItem="2iw-h7-sfz" secondAttribute="bottom" constant="16" id="Uz4-a4-dTG"/>
+                        <constraint firstItem="heq-RV-34D" firstAttribute="trailing" secondItem="0QN-Dr-eIV" secondAttribute="trailing" id="VLd-1a-rzd"/>
                         <constraint firstItem="95u-Fs-bnh" firstAttribute="leading" secondItem="HFp-gI-kMd" secondAttribute="trailing" constant="8" id="d8E-ge-yl8"/>
+                        <constraint firstItem="95u-Fs-bnh" firstAttribute="top" secondItem="0QN-Dr-eIV" secondAttribute="top" id="fBP-o0-141"/>
                         <constraint firstItem="HFp-gI-kMd" firstAttribute="leading" secondItem="fmK-ub-toX" secondAttribute="leading" id="fi3-uX-s6J"/>
                         <constraint firstItem="nC4-8o-OEK" firstAttribute="leading" secondItem="fmK-ub-toX" secondAttribute="leading" id="iaP-Xf-btK"/>
+                        <constraint firstItem="0QN-Dr-eIV" firstAttribute="leading" secondItem="HFp-gI-kMd" secondAttribute="leading" id="rkt-ny-wY2"/>
                         <constraint firstItem="HFp-gI-kMd" firstAttribute="centerY" secondItem="95u-Fs-bnh" secondAttribute="centerY" id="uRF-92-zlL"/>
                     </constraints>
                 </view>
