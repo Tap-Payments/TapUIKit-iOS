@@ -10,7 +10,11 @@ import UIKit
 import Nuke
 import LocalisationManagerKit_iOS
 
-public class TapCurrencyWidgetView: UIView {
+public class TapCurrencyWidgetView: UIView, ToolTipDelegate {
+    func toolTipDidComplete() {
+    
+    }
+    
 
     ///  A collection of direction based views
     @IBOutlet var toBeLocalizedViews: [UIView]!
@@ -38,6 +42,8 @@ public class TapCurrencyWidgetView: UIView {
     
     /// The path to look for localised entry in
     private let localisationPath = "CurrencyWidget"
+    
+    private let tooltipManager: TooltipManager = TooltipManager()
 
     
     // Mark:- Init methods
@@ -49,6 +55,20 @@ public class TapCurrencyWidgetView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+    }
+    
+    
+    
+    private func setupTooltips(forcing: Bool = false) {
+        guard !tooltipManager.didSetupTooltips || forcing else {
+            return
+        }
+        let button = ViewControllerTooltip.button(in: currencyDropDownButton)
+        
+        let tooltips: [ViewControllerTooltip] = [button]
+        
+        tooltipManager.delegate = self
+        tooltipManager.setup(tooltips: tooltips, darkView: self.findViewController()?.view ?? self)
     }
     
     /**
@@ -74,6 +94,8 @@ public class TapCurrencyWidgetView: UIView {
     }
     
     @IBAction func currencyClicked(_ sender: Any) {
+        setupTooltips(forcing: true)
+
         viewModel?.currencyClicked()
     }
     /// Will localize the views by checking their class. If they are views we will set the semantic attributes, if text based views we will change the alignments as well
@@ -104,18 +126,24 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
     
     /// Responsible for showing or hide currency drop down
     private func setupCurrencyDropDown() {
-        setCurrencyDropDownButtonState(hide: viewModel?.showMultipleCurrencyOption ?? false)
+        setCurrencyDropDownButtonState(show: viewModel?.showMultipleCurrencyOption ?? false)
         showChevronCorrectPosition(isExpanded: viewModel?.isCurrencyDropDownExpanded ?? false)
     }
     
     /// Responsible show correct arrow position
     private func showChevronCorrectPosition(isExpanded: Bool) {
+        let dropDownThemePath = "\(themePath).currencyDropDown"
+//        if isExpanded {
+//            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
+//        } else {
+//            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
+//        }
     }
     
     /// Responsible show or hide currency drop down button
-    private func setCurrencyDropDownButtonState(hide: Bool) {
-        currencyImageView.isHidden = hide
-        currencyDropDownButton.isEnabled = !hide
+    private func setCurrencyDropDownButtonState(show: Bool) {
+        chevronImageView.isHidden = !show
+        currencyDropDownButton.isEnabled = show
     }
     
     /// Responsible for all logic needed to assign the textual info into the corresponding labels
@@ -183,9 +211,10 @@ extension TapCurrencyWidgetView {
         confirmButton.layer.cornerRadius = confirmButton.frame.height / 2
         confirmButton.tap_theme_backgroundColor = .init(keyPath: "\(confirmButtonThemePath).backgroundColor")
         
-        let dropDownThemePath = "\(themePath).dropDown"
+        let dropDownThemePath = "\(themePath).currencyDropDown"
 
-        chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrow")
+        chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
+        chevronImageView.tap_theme_tintColor = .init(keyPath: "\(dropDownThemePath).backgroundColor")
 
 
         layoutIfNeeded()
@@ -196,5 +225,21 @@ extension TapCurrencyWidgetView {
         super.traitCollectionDidChange(previousTraitCollection)
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
+    }
+}
+
+internal extension UIView {
+    /**
+     An extension method to detect the viewcontroller which the current view is embedded in
+     - Returns: UIViewcontroller that holds the current view or nil if not found for any case
+     **/
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
     }
 }

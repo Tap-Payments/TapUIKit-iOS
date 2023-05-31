@@ -116,7 +116,8 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// Computes the showing or disable the multiple currencies  option
     internal var showMultipleCurrencyOption: Bool {
-        return paymentOption.supportedCurrencies.count > 1
+        return true
+        //        return paymentOption.supportedCurrencies.count > 1
     }
     
     ///  State of drop currency down menu
@@ -129,7 +130,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
         delegate?.confirmClicked()
     }
     
-    /// On click on currency 
+    /// On click on currency
     internal func currencyClicked() {
         isCurrencyDropDownShown = !isCurrencyDropDownShown
     }
@@ -150,5 +151,5 @@ public class TapCurrencyWidgetViewModel:NSObject {
 }
 
 
-
-
+    
+    

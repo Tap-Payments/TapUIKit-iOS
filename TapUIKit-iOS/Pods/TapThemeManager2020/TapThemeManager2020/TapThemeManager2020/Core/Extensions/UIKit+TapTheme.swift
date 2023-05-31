@@ -35,6 +35,8 @@ import class UIKit.UISegmentedControl
 import class UIKit.UIToolbar
 import class UIKit.CALayer
 import class UIKit.UIButton
+import UIKit
+
 /// This class provides extensions needed to SubViews to apply different types of theming using a nice shorthanded way. For example, instead of UIView.performSelector("setAlpha:",0) UIView.tap_alpha(0)
 
 // MARK:- UIView
