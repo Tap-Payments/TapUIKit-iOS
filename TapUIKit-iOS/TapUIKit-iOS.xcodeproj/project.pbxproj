@@ -20,10 +20,10 @@
 		627E3CDB24D8256700B2E096 /* TapLogoutChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E3CDA24D8256700B2E096 /* TapLogoutChipViewModel.swift */; };
 		627E3CDD24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627E3CDC24D83DEE00B2E096 /* TapLogoutChipCollectionViewCell.xib */; };
 		787453BF44F27DA80BB187B5 /* Pods_TapUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */; };
+		D602A3FF2A28DF120094C1D8 /* CurrencyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D602A3FE2A28DF120094C1D8 /* CurrencyTableView.xib */; };
 		D607A8222A273DFE001F5E36 /* ViewControllerTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607A8212A273DFE001F5E36 /* ViewControllerTooltip.swift */; };
 		D607A8242A273E66001F5E36 /* TooltipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607A8232A273E66001F5E36 /* TooltipView.xib */; };
 		D607A8262A273E8B001F5E36 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607A8252A273E8B001F5E36 /* TooltipView.swift */; };
-		D607A8282A278085001F5E36 /* CurrencyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607A8272A278085001F5E36 /* CurrencyTableView.xib */; };
 		D607A82A2A2780E5001F5E36 /* CurrencyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */; };
 		D61A34892A1E0FAF007608A0 /* TapCurrencyWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */; };
 		D61A348B2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */; };
@@ -284,10 +284,10 @@
 		6F53A5AEE68D2884AE702993 /* Pods-TapUIKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC2C75F993AE43B35B60D62 /* Pods_TapUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C8E08297E9489C1273CA2 /* Pods_TapUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D602A3FE2A28DF120094C1D8 /* CurrencyTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrencyTableView.xib; sourceTree = "<group>"; };
 		D607A8212A273DFE001F5E36 /* ViewControllerTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTooltip.swift; sourceTree = "<group>"; };
 		D607A8232A273E66001F5E36 /* TooltipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TooltipView.xib; sourceTree = "<group>"; };
 		D607A8252A273E8B001F5E36 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
-		D607A8272A278085001F5E36 /* CurrencyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableView.xib; sourceTree = "<group>"; };
 		D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableView.swift; sourceTree = "<group>"; };
 		D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCurrencyWidgetView.xib; sourceTree = "<group>"; };
 		D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetView.swift; sourceTree = "<group>"; };
@@ -605,9 +605,7 @@
 				D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */,
 				D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */,
 				D607A8212A273DFE001F5E36 /* ViewControllerTooltip.swift */,
-				D607A8232A273E66001F5E36 /* TooltipView.xib */,
 				D607A8252A273E8B001F5E36 /* TooltipView.swift */,
-				D607A8272A278085001F5E36 /* CurrencyTableView.xib */,
 				D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */,
 				D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */,
 				D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */,
@@ -856,9 +854,11 @@
 		E8428E112457FDE600D5A45A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D602A3FE2A28DF120094C1D8 /* CurrencyTableView.xib */,
 				E863D53129850AE4009489AC /* 02Icons16X16Search.pdf */,
 				E863D52D29850ADA009489AC /* countries.json */,
 				E88834AF2979CCF0006225E6 /* TapAsyncView.xib */,
+				D607A8232A273E66001F5E36 /* TooltipView.xib */,
 				E826ABA92970235C0074E55A /* Black-loader.gif */,
 				E89B3AA5291A78C10094E1D9 /* CountryCodeTableViewCell.xib */,
 				E866AC4228E5753900D80568 /* PoweredByTapView.xib */,
@@ -1619,11 +1619,11 @@
 				E82A56BB249A401400E3F00D /* TapHorizontalHeaderView.xib in Resources */,
 				E87DC5DD24C967BC001896DA /* tap.png in Resources */,
 				E8437F7424BE19320059F1B8 /* TapGoPayTitleView.xib in Resources */,
-				D607A8282A278085001F5E36 /* CurrencyTableView.xib in Resources */,
 				E88F9E1424BB40D800A7B470 /* TapCardScannerView.xib in Resources */,
 				E87DC5DE24C967BC001896DA /* tap@2x.png in Resources */,
 				E8437F8D24BEFE1A0059F1B8 /* GoPayLoginOptions.xib in Resources */,
 				E8BE3FAC24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib in Resources */,
+				D602A3FF2A28DF120094C1D8 /* CurrencyTableView.xib in Resources */,
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8E69996249F6446007A32FA /* TapGenericTableCell.xib in Resources */,
 				D66929422A2859FF00A81B98 /* CurrencyTableViewCell.xib in Resources */,

@@ -222,6 +222,7 @@ class TooltipManager: NSObject {
     func removeTooltips() {
         parentView?.removeTooltipView()
         parentView?.removeDarkView()
+        self.delegate?.toolTipDidComplete()
     }
     
     @objc private func viewTapped() {
@@ -289,7 +290,6 @@ extension UIView {
         let imageView = SnapshotView(image: snapshot)
         let globalPoint = convert(view.frame.origin, from: view.superview)
         imageView.frame = CGRect(origin: globalPoint, size: view.frame.size)
-//        addSubview(imageView)
         imageView.fadeIn()
     }
     

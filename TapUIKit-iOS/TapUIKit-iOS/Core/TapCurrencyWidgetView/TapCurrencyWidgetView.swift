@@ -133,9 +133,9 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
     private func showChevronCorrectPosition(isExpanded: Bool) {
         let dropDownThemePath = "\(themePath).currencyDropDown"
         if isExpanded {
-            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
-        } else {
             chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
+        } else {
+            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
         }
     }
     
@@ -213,8 +213,6 @@ extension TapCurrencyWidgetView {
         let dropDownThemePath = "\(themePath).currencyDropDown"
 
         chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
-        chevronImageView.tintColor = .cyan
-
 
         layoutIfNeeded()
     }
@@ -245,6 +243,6 @@ internal extension UIView {
 
 extension TapCurrencyWidgetView: ToolTipDelegate {
     func toolTipDidComplete() {
-        
+        viewModel?.currencyClicked()
     }
 }
