@@ -428,7 +428,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6I-Tb-PRy" customClass="TapCurrencyWidgetView" customModule="TapUIKit_iOS">
-                                <rect key="frame" x="12" y="94" width="390" height="128"/>
+                                <rect key="frame" x="12" y="82" width="390" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="N1X-g5-cr1"/>
@@ -438,10 +438,10 @@
                         <viewLayoutGuide key="safeArea" id="DrT-Ca-B7n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="H6I-Tb-PRy" firstAttribute="top" secondItem="yKv-IZ-pR0" secondAttribute="bottom" constant="12" id="3tQ-Vy-KHq"/>
                             <constraint firstItem="DrT-Ca-B7n" firstAttribute="trailing" secondItem="H6I-Tb-PRy" secondAttribute="trailing" constant="12" id="DRG-Zn-NMH"/>
                             <constraint firstItem="H6I-Tb-PRy" firstAttribute="leading" secondItem="DrT-Ca-B7n" secondAttribute="leading" constant="12" id="GXL-DA-aOh"/>
                             <constraint firstItem="yKv-IZ-pR0" firstAttribute="top" secondItem="DrT-Ca-B7n" secondAttribute="top" constant="10" id="HcR-k0-GNg"/>
+                            <constraint firstItem="H6I-Tb-PRy" firstAttribute="top" secondItem="yKv-IZ-pR0" secondAttribute="bottom" id="i2c-XP-WF8"/>
                             <constraint firstItem="yKv-IZ-pR0" firstAttribute="leading" secondItem="DrT-Ca-B7n" secondAttribute="leading" constant="10" id="nCf-Sd-R1b"/>
                             <constraint firstAttribute="trailing" secondItem="yKv-IZ-pR0" secondAttribute="trailing" constant="10" id="r5e-JW-4ji"/>
                         </constraints>

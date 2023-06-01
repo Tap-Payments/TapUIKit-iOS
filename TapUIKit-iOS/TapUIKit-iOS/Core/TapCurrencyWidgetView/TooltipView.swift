@@ -17,11 +17,13 @@ class TooltipView: UIView {
     @IBOutlet weak var verticalIndicatorCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var cardBlurView: CardVisualEffectView!
     @IBOutlet weak var container: UIView!
     
     
     var removeCallback: (() -> Void)?
-    
+    internal let themePath: String = "poweredByTap"
+
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
@@ -32,7 +34,16 @@ class TooltipView: UIView {
         isHidden = true
         
         let backgroundThemePath = "CurrencyWidget.currencyDropDown"
-        contentView.tap_theme_backgroundColor = .init(keyPath: "\(backgroundThemePath).backgroundColor")
+        contentView.backgroundColor = .clear
+//        contentView.tap_theme_backgroundColor = .init(keyPath: "\(backgroundThemePath).backgroundColor")
+        
+        cardBlurView.scale = 1
+        cardBlurView.blurRadius = 6
+        //        cardBlurView.colorTint = TapThemeManager.colorValue(for: "\(themePath).blurColor")
+        cardBlurView.colorTint = .white
+//        cardBlurView.colorTintAlpha = CGFloat(TapThemeManager.numberValue(for: "\(themePath).blurAlpha")?.floatValue ?? 0)
+        cardBlurView.colorTintAlpha = 0.73
+        
         contentView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(backgroundThemePath).cornerRadius")
         contentView.layer.tap_theme_borderColor = .init(keyPath: "\(backgroundThemePath).borderColor")
         contentView.layer.masksToBounds = true
@@ -90,23 +101,39 @@ class TooltipView: UIView {
 
 
 extension UIView {
-    func showTooltip(viewToShow: UIView,
+    internal var globalFrame: CGRect? {
+           let rootView = UIApplication.shared.keyWindow?.rootViewController?.view
+           return self.convert(self.frame, to: rootView)
+       }
+    
+    internal func showTooltip(viewToShow: UIView,
                      height: CGFloat,
                      width: CGFloat,
                      direction: TooltipDirection,
                      inView: UIView? = nil,
+                     pointView: UIView? = nil,
                      onHide: (() -> Void)? = nil) {
         removeTooltipView()
-        
+        var tooltipDirection = direction
         guard let superview = inView ?? superview else { return }
+
+        let frameRelativeToScreen = pointView?.globalFrame
+
+        if (frameRelativeToScreen?.origin.y ?? 0) + height + 20 > UIScreen.main.bounds.height, tooltipDirection == .up {
+            tooltipDirection = .down
+        }
         
+        if (frameRelativeToScreen?.origin.y ?? 0) - height - 20 < 0, tooltipDirection == .down {
+            tooltipDirection = .up
+        }
+
         DispatchQueue.main.async {
             let tooltipView = TooltipView()
             tooltipView.removeCallback = onHide
-            tooltipView.rightIndicatorView.isHidden = direction != .right
-            tooltipView.leftIndicatorView.isHidden = direction != .left
-            tooltipView.topIndicatorView.isHidden = direction != .up
-            tooltipView.bottomIndicatorView.isHidden = direction != .down
+            tooltipView.rightIndicatorView.isHidden = tooltipDirection != .right
+            tooltipView.leftIndicatorView.isHidden = tooltipDirection != .left
+            tooltipView.topIndicatorView.isHidden = tooltipDirection != .up
+            tooltipView.bottomIndicatorView.isHidden = tooltipDirection != .down
             
             superview.addSubview(tooltipView)
             
@@ -116,7 +143,7 @@ extension UIView {
             NSLayoutConstraint.activate([tooltipView.widthAnchor.constraint(equalToConstant: width)])
             NSLayoutConstraint.activate([tooltipView.heightAnchor.constraint(equalToConstant: height)])
             
-            switch direction {
+            switch tooltipDirection {
             case .up:
                 NSLayoutConstraint.activate([tooltipView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)])
             case .down:
@@ -134,7 +161,7 @@ extension UIView {
                 ])
             }
             
-            if direction.isVertical {
+            if tooltipDirection.isVertical {
                 //                let centerAnchor = tooltipView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)
                 //                centerAnchor.priority = .defaultHigh
                 tooltipView.indicatorCenterConstraint.isActive = false
@@ -145,7 +172,7 @@ extension UIView {
                     tooltipView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
                     //                    tooltipView.topIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)
                 ])
-            } else if direction.isHorizontal {
+            } else if tooltipDirection.isHorizontal {
                 let centerAnchor = tooltipView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
                 centerAnchor.priority = .defaultHigh
                 NSLayoutConstraint.activate([centerAnchor])
@@ -166,7 +193,7 @@ extension UIView {
         }
     }
     
-    public func removeTooltipView() {
+    internal func removeTooltipView() {
         DispatchQueue.main.async {
             for subview in self.subviews {
                 if let subview = subview as? TooltipView {
@@ -203,7 +230,6 @@ class TooltipManager: NSObject {
     private var parentView: UIView?
     private var tooltipToShow: Tooltip?
     var didSetupTooltips: Bool = false
-    
     weak var delegate: ToolTipDelegate?
     
     func setup(tooltipToShow: Tooltip, mainView: UIView) {
@@ -237,6 +263,7 @@ class TooltipManager: NSObject {
                                        width: tooltipToShow.width,
                                        direction: tooltipToShow.direction,
                                        inView: parentView,
+                                       pointView: tooltipToShow.view,
                                        onHide: { [weak self] in
             self?.delegate?.toolTipDidComplete()
             self?.parentView?.removeSnapshots()

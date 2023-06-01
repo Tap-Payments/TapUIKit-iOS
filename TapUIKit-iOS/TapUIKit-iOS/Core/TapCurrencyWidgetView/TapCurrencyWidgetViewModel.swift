@@ -143,7 +143,9 @@ public class TapCurrencyWidgetViewModel:NSObject {
     }
     
     internal func getSupportedCurrenciesOptions() -> [AmountedCurrency] {
-        return convertedAmounts
+        return convertedAmounts.filter {
+            $0.currency != selectedAmountCurrency?.currency
+        }
     }
     
     internal func setSelectedAmountCurrency(selectedAmountCurrency: AmountedCurrency) {

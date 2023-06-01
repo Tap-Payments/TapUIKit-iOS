@@ -11,9 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TooltipView" customModule="TapUIKit_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="bottomIndicatorView" destination="dvf-tL-pdh" id="uWf-2C-2am"/>
+                <outlet property="cardBlurView" destination="IRX-8h-bLj" id="3Eu-rD-Gp5"/>
                 <outlet property="container" destination="i3A-xr-ujR" id="Vy1-No-gn9"/>
                 <outlet property="contentView" destination="i3A-xr-ujR" id="deP-0E-5wT"/>
-                <outlet property="indicatorCenterConstraint" destination="5nu-JO-uVu" id="RkP-6c-T1Z"/>
+                <outlet property="indicatorCenterConstraint" destination="5nu-JO-uVu" id="rNe-kF-7lq"/>
                 <outlet property="leftIndicatorView" destination="rrE-kd-BUB" id="bYD-pm-jJ4"/>
                 <outlet property="rightIndicatorView" destination="yqV-UD-WAi" id="XdR-2i-RbJ"/>
                 <outlet property="topIndicatorView" destination="Umn-4Q-kkC" id="5bT-iy-Vdn"/>
@@ -25,6 +26,10 @@
             <rect key="frame" x="0.0" y="0.0" width="258" height="260"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRX-8h-bLj" customClass="CardVisualEffectView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="258" height="260"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3A-xr-ujR">
                     <rect key="frame" x="10" y="6" width="238" height="175"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,8 +77,10 @@
                 <constraint firstItem="rrE-kd-BUB" firstAttribute="trailing" secondItem="i3A-xr-ujR" secondAttribute="leading" id="2Am-ur-gia"/>
                 <constraint firstItem="yqV-UD-WAi" firstAttribute="leading" secondItem="i3A-xr-ujR" secondAttribute="trailing" id="4Mk-DR-ZlH"/>
                 <constraint firstItem="Umn-4Q-kkC" firstAttribute="centerX" secondItem="zzG-dW-eYa" secondAttribute="centerX" id="5nu-JO-uVu"/>
+                <constraint firstItem="IRX-8h-bLj" firstAttribute="leading" secondItem="zzG-dW-eYa" secondAttribute="leading" id="6Wr-AT-gGt"/>
                 <constraint firstItem="i3A-xr-ujR" firstAttribute="leading" secondItem="X6b-sW-nzO" secondAttribute="leading" constant="10" id="93Y-wh-CsD"/>
                 <constraint firstAttribute="bottom" secondItem="i3A-xr-ujR" secondAttribute="bottom" constant="10" id="PRR-gC-OxN"/>
+                <constraint firstAttribute="trailing" secondItem="IRX-8h-bLj" secondAttribute="trailing" id="RmY-8p-f5Y"/>
                 <constraint firstItem="rrE-kd-BUB" firstAttribute="centerY" secondItem="i3A-xr-ujR" secondAttribute="centerY" id="S22-kH-Ayo"/>
                 <constraint firstItem="dvf-tL-pdh" firstAttribute="centerX" secondItem="Umn-4Q-kkC" secondAttribute="centerX" id="VQV-vY-luu"/>
                 <constraint firstItem="Umn-4Q-kkC" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" id="b9B-2f-boQ"/>
@@ -81,6 +88,8 @@
                 <constraint firstItem="i3A-xr-ujR" firstAttribute="top" secondItem="Umn-4Q-kkC" secondAttribute="bottom" id="c7v-AX-Sn3"/>
                 <constraint firstItem="X6b-sW-nzO" firstAttribute="trailing" secondItem="i3A-xr-ujR" secondAttribute="trailing" constant="10" id="cPP-3H-ezZ"/>
                 <constraint firstItem="yqV-UD-WAi" firstAttribute="centerY" secondItem="rrE-kd-BUB" secondAttribute="centerY" id="f40-fg-l2R"/>
+                <constraint firstAttribute="bottom" secondItem="IRX-8h-bLj" secondAttribute="bottom" id="hK8-Nj-fvx"/>
+                <constraint firstItem="IRX-8h-bLj" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" id="sJb-IM-4eP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-189.31297709923663" y="19.718309859154932"/>
