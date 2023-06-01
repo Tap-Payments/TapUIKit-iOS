@@ -23,6 +23,9 @@ public protocol TapCurrencyWidgetViewModelDelegate {
 internal protocol TapCurrencyWidgetViewDelegate {
     /// Consolidated one point to reload view
     func reload()
+    
+    /// Remove any tool tip appear
+    func removeTooltip()
 }
 
 /// The view model that controls the data shown inside a TapCurrencyWidget
@@ -40,13 +43,16 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     
     /// The Amount user will pay when choose this payment option
-    private var convertedAmount:AmountedCurrency
+    private var convertedAmounts: [AmountedCurrency]
     /// The  payment option to be shown
     private var paymentOption: PaymentOption
     /// An external delegate to listen to events fired from the currency widget view
     private var delegate:TapCurrencyWidgetViewModelDelegate?
     /// State of currency drop down menu
     private var isCurrencyDropDownShown: Bool = false
+    /// The Amount user will pay when choose this payment option
+    private var selectedAmountCurrency: AmountedCurrency?
+
     
     // MARK: - Public normal swift variables
     /// Public reference to the loyalty view itself as UI that will be rendered
@@ -59,15 +65,16 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /**
      Init method with the needed data
-     - Parameter convertedAmount: The Amount user will pay when choose this payment option
+     - Parameter convertedAmounts: The Amounts user will pay when choose this payment option
      - Parameter currencyFlag: The Logo of currency user  pay when choose this payment option
      - Parameter paymentOptionLogo: The Logo of payment option to be shown
      - Parameter paymentOptionName: The name of payment option to be shown
      - Parameter currency: The currency being used
      */
-    public init(convertedAmount:AmountedCurrency, paymentOption:PaymentOption) {
-        self.convertedAmount = convertedAmount
+    public init(convertedAmounts: [AmountedCurrency], paymentOption:PaymentOption) {
+        self.convertedAmounts = convertedAmounts
         self.paymentOption = paymentOption
+        self.selectedAmountCurrency = convertedAmounts.first
         super.init()
         defer{
             setup()
@@ -102,11 +109,11 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// Computes the currency text value
     internal var amountLabel: String {
-        return "\(convertedAmount.currencySymbol) \(convertedAmount.amount)"
+        return "\(selectedAmountCurrency?.currencySymbol ?? "") \(selectedAmountCurrency?.amount ?? 0)"
     }
     /// Computes the currency flag value
     internal var amountFlag: String {
-        return convertedAmount.flag
+        return selectedAmountCurrency?.flag ?? ""
     }
     
     /// Computes the payment Option logo value
@@ -116,8 +123,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// Computes the showing or disable the multiple currencies  option
     internal var showMultipleCurrencyOption: Bool {
-        return true
-        //        return paymentOption.supportedCurrencies.count > 1
+       return convertedAmounts.count > 1
     }
     
     ///  State of drop currency down menu
@@ -133,6 +139,17 @@ public class TapCurrencyWidgetViewModel:NSObject {
     /// On click on currency
     internal func currencyClicked() {
         isCurrencyDropDownShown = !isCurrencyDropDownShown
+        refreshData()
+    }
+    
+    internal func getSupportedCurrenciesOptions() -> [AmountedCurrency] {
+        return convertedAmounts
+    }
+    
+    internal func setSelectedAmountCurrency(selectedAmountCurrency: AmountedCurrency) {
+        self.selectedAmountCurrency = selectedAmountCurrency
+        tapCurrencyWidgetView?.removeTooltip()
+        refreshData()
     }
     
     

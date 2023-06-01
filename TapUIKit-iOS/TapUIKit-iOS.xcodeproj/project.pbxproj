@@ -28,6 +28,10 @@
 		D61A34892A1E0FAF007608A0 /* TapCurrencyWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */; };
 		D61A348B2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */; };
 		D61A348E2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */; };
+		D66929422A2859FF00A81B98 /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66929412A2859FF00A81B98 /* CurrencyTableViewCell.xib */; };
+		D66929442A285ACE00A81B98 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */; };
+		D66929462A285D0100A81B98 /* CurrencyTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */; };
+		D66929482A28675C00A81B98 /* CurrencyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66929472A28675C00A81B98 /* CurrencyTableViewModel.swift */; };
 		D6799D122A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */; };
 		E809F65F24961F2700670A39 /* GatewayChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F65E24961F2700670A39 /* GatewayChipViewModel.swift */; };
 		E809F6612496223B00670A39 /* GenericTapChipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809F6602496223B00670A39 /* GenericTapChipViewModel.swift */; };
@@ -288,6 +292,10 @@
 		D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCurrencyWidgetView.xib; sourceTree = "<group>"; };
 		D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetView.swift; sourceTree = "<group>"; };
 		D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetViewController.swift; sourceTree = "<group>"; };
+		D66929412A2859FF00A81B98 /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
+		D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableCellViewModel.swift; sourceTree = "<group>"; };
+		D66929472A28675C00A81B98 /* CurrencyTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewModel.swift; sourceTree = "<group>"; };
 		D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetViewModel.swift; sourceTree = "<group>"; };
 		DC9E6344249A1CA65DA9FC2F /* Pods-TapUIKit-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-Example.debug.xcconfig"; path = "Target Support Files/Pods-TapUIKit-Example/Pods-TapUIKit-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DF4C0BAE4F2FB5B88BFD1BD6 /* Pods-TapUIKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapUIKit-iOS.release.xcconfig"; path = "Target Support Files/Pods-TapUIKit-iOS/Pods-TapUIKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -601,6 +609,9 @@
 				D607A8252A273E8B001F5E36 /* TooltipView.swift */,
 				D607A8272A278085001F5E36 /* CurrencyTableView.xib */,
 				D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */,
+				D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */,
+				D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */,
+				D66929472A28675C00A81B98 /* CurrencyTableViewModel.swift */,
 			);
 			path = TapCurrencyWidgetView;
 			sourceTree = "<group>";
@@ -913,6 +924,7 @@
 				E89B3AB0291CECC30094E1D9 /* TapUIKitStoryboard.storyboard */,
 				E898450B2981036400436499 /* CustomerShippingDataCollectionView.xib */,
 				D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */,
+				D66929412A2859FF00A81B98 /* CurrencyTableViewCell.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1614,6 +1626,7 @@
 				E8BE3FAC24B60F5E00F15C41 /* TapCardTelecomPaymentView.xib in Resources */,
 				E80E8AB224892531009AF18F /* TapPullUpWrapperViewController.xib in Resources */,
 				E8E69996249F6446007A32FA /* TapGenericTableCell.xib in Resources */,
+				D66929422A2859FF00A81B98 /* CurrencyTableViewCell.xib in Resources */,
 				E89B3AA7291A78C10094E1D9 /* CountryCodeTableViewCell.xib in Resources */,
 				E8437F9F24BF3F180059F1B8 /* TapGoPayPasswordView.xib in Resources */,
 				E89B3A97291252520094E1D9 /* CustomerContactDataCollectionView.xib in Resources */,
@@ -1771,6 +1784,7 @@
 				E866AC4A28E6C50700D80568 /* TapInternalSaveCard.swift in Sources */,
 				E8437F9D24BF3F070059F1B8 /* TapGoPayPasswordView.swift in Sources */,
 				627E3CD924D8254800B2E096 /* TapLogoutChipCollectionViewCell.swift in Sources */,
+				D66929482A28675C00A81B98 /* CurrencyTableViewModel.swift in Sources */,
 				E8CD347C28D07B4A0093DA26 /* TapLoyaltyViewModel.swift in Sources */,
 				E863D52A29850AB3009489AC /* CountryPickerViewController.swift in Sources */,
 				6225550424C8721A00A6FBDC /* TapAuthenticate.swift in Sources */,
@@ -1783,6 +1797,7 @@
 				E893B76F28D0F969000E0348 /* TapLoyaltyHeaderView.swift in Sources */,
 				E8437F7C24BEC79F0059F1B8 /* TapGoPayLoginBarView.swift in Sources */,
 				E8E19F2A29FABD6D00E709F5 /* UIGradientExtension.swift in Sources */,
+				D66929462A285D0100A81B98 /* CurrencyTableCellViewModel.swift in Sources */,
 				E8CD428A249610240013AEE7 /* GatewayImageCollectionViewCell.swift in Sources */,
 				D607A8262A273E8B001F5E36 /* TooltipView.swift in Sources */,
 				E82A56C2249B2B3800E3F00D /* ApplePayChipViewCellModel.swift in Sources */,
@@ -1852,6 +1867,7 @@
 				E8E69948249F49BE007A32FA /* ItemTableViewCell.swift in Sources */,
 				E8E69998249F645A007A32FA /* TapGenericTableCellViewModel.swift in Sources */,
 				E88834AD2979CCDF006225E6 /* TapAsyncViewModel.swift in Sources */,
+				D66929442A285ACE00A81B98 /* CurrencyTableViewCell.swift in Sources */,
 				D61A348B2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

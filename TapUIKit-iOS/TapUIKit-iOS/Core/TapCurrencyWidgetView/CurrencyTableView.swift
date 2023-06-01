@@ -10,9 +10,19 @@ import UIKit
 
 class CurrencyTableView: UIView {
     
+    /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
+    /// The currency table view reference
+    @IBOutlet weak var currencyTable: TapGenericTableView!
     
-    @IBOutlet weak var tableView: UITableView!
+    /// view model to control currency table view
+    var currencyTableViewModel:CurrencyTableViewModel = .init()
+    
+    /// currency widget view model to control the whole view
+    var tapCurrencyWidgetViewModel: TapCurrencyWidgetViewModel?
+    
+    /// The path to look for theme entry in
+    private let themePath = "CurrencyWidget.currencyDropDown"
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -26,32 +36,56 @@ class CurrencyTableView: UIView {
     }
     
     
+    func changeViewModel(tapCurrencyWidgetViewModel: TapCurrencyWidgetViewModel) {
+        self.tapCurrencyWidgetViewModel = tapCurrencyWidgetViewModel
+        currencyTableViewModel.dataSource = tapCurrencyWidgetViewModel.getSupportedCurrenciesOptions().map ({  amountedCurrency in
+            let currencyTableCellViewModel = CurrencyTableCellViewModel(amountedCurrency: amountedCurrency)
+            return currencyTableCellViewModel
+        })
+    }
+    
     private func commonInit() {
         self.containerView = setupXIB()
-        tableView.delegate = self
-        tableView.dataSource = self
+        currencyTableViewModel.delegate = self
+        applyTheme()
+        configureTheViewModel()
+    }
+    
+    private func configureTheViewModel() {
+        currencyTable.changeViewMode(with: currencyTableViewModel)
     }
     
 }
 
-extension CurrencyTableView: UITableViewDelegate {
+// Mark:- Theme methods
+extension CurrencyTableView {
+    /// Consolidated one point to apply all needed theme methods
+    public func applyTheme() {
+        matchThemeAttributes()
+    }
     
+    /// Match the UI attributes with the correct theming entries
+    private func matchThemeAttributes() {
+        backgroundColor = .clear
+        currencyTable.tapSeparatorView.isHidden = true
+    }
+    
+    /// Listen to light/dark mde changes and apply the correct theme based on the new style
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
+        applyTheme()
+    }
 }
 
-extension CurrencyTableView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+
+extension CurrencyTableView: TapGenericTableViewModelDelegate {
+    func didSelectTable(item viewModel: TapGenericTableCellViewModel) {
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        }
-        cell?.textLabel!.text = "test"
-        
-        return cell!
+    func itemClicked(for viewModel: TapGenericTableCellViewModel) {
+        guard let viewModel = viewModel as? CurrencyTableCellViewModel, let amountedCurrency =  viewModel.amountedCurrency else {return}
+        tapCurrencyWidgetViewModel?.setSelectedAmountCurrency(selectedAmountCurrency: amountedCurrency)
     }
-    
-    
 }
+

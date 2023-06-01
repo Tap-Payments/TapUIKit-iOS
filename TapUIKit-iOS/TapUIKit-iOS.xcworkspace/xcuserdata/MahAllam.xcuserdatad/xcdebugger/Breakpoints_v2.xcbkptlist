@@ -7,63 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EAE1CE98-16DA-4CCC-AF90-DFD8CF7176E2"
-            shouldBeEnabled = "No"
+            uuid = "64828168-96C4-41E2-851B-37B266B022FC"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetViewModel.swift"
+            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "showMultipleCurrencyOption"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ABDBF484-8389-4494-ADD6-BF9C50234198"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "setCurrencyDropDownButtonState(show:)"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "didSelectTable(item:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "ABDBF484-8389-4494-ADD6-BF9C50234198 - 269b5239eff34c25"
+                  uuid = "64828168-96C4-41E2-851B-37B266B022FC - 5d14ee2ee9dfce78"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TapUIKit_iOS.TapCurrencyWidgetView.setCurrencyDropDownButtonState(hide: Swift.Bool) -&gt; ()"
+                  symbolName = "TapUIKit_iOS.CurrencyTableView.didSelectTable(item: TapUIKit_iOS.TapGenericTableCellViewModel) -&gt; ()"
                   moduleName = "TapUIKit_iOS"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetView.swift"
+                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  uuid = "ABDBF484-8389-4494-ADD6-BF9C50234198 - 7fb65fd76b217d0e"
+                  uuid = "64828168-96C4-41E2-851B-37B266B022FC - 5d14ee2ee9dfce19"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TapUIKit_iOS.TapCurrencyWidgetView.setCurrencyDropDownButtonState(show: Swift.Bool) -&gt; ()"
+                  symbolName = "TapUIKit_iOS.CurrencyTableView.didSelectTable(item: TapUIKit_iOS.TapGenericTableCellViewModel) -&gt; ()"
                   moduleName = "TapUIKit_iOS"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetView.swift"
+                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -71,47 +55,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8671CED9-CC26-40E4-9E85-34AD1BA77E89"
-            shouldBeEnabled = "No"
+            uuid = "BA44B3D4-44FF-4B80-AD7D-1DE9086B0438"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetView.swift"
+            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "setCurrencyDropDownButtonState(show:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "itemClicked(for:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8671CED9-CC26-40E4-9E85-34AD1BA77E89 - 269b5239eff34c04"
+                  uuid = "BA44B3D4-44FF-4B80-AD7D-1DE9086B0438 - 890457e49805d5c1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TapUIKit_iOS.TapCurrencyWidgetView.setCurrencyDropDownButtonState(hide: Swift.Bool) -&gt; ()"
+                  symbolName = "TapUIKit_iOS.CurrencyTableView.itemClicked(for: TapUIKit_iOS.TapGenericTableCellViewModel) -&gt; ()"
                   moduleName = "TapUIKit_iOS"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetView.swift"
+                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "239">
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  uuid = "8671CED9-CC26-40E4-9E85-34AD1BA77E89 - 7fb65fd76b217d2f"
+                  uuid = "BA44B3D4-44FF-4B80-AD7D-1DE9086B0438 - 890457e49805d5a0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TapUIKit_iOS.TapCurrencyWidgetView.setCurrencyDropDownButtonState(show: Swift.Bool) -&gt; ()"
+                  symbolName = "TapUIKit_iOS.CurrencyTableView.itemClicked(for: TapUIKit_iOS.TapGenericTableCellViewModel) -&gt; ()"
                   moduleName = "TapUIKit_iOS"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/TapCurrencyWidgetView.swift"
+                  urlString = "file:///Users/MahAllam/ReactNative/tap/TapUIKit-iOS/TapUIKit-iOS/TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "241">
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -119,32 +103,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A24D81B1-D1CC-48AC-8A67-BD31ED4284D4"
-            shouldBeEnabled = "Yes"
+            uuid = "7ACBD48B-C324-4771-BB2F-1072768A0D3D"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/TooltipView.swift"
+            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/CurrencyTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "init(frame:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FA3B6669-02AA-40DF-8380-E5EBC2329193"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TapUIKit-iOS/Core/TapCurrencyWidgetView/TooltipView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "init?(coder:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -27,13 +27,13 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3A-xr-ujR">
                     <rect key="frame" x="10" y="6" width="238" height="175"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="175" id="JZ1-qe-tAf"/>
-                        <constraint firstAttribute="width" constant="224" id="OF4-nf-X1N"/>
+                        <constraint firstAttribute="width" constant="200" id="OF4-nf-X1N"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-tL-pdh" customClass="InvertedTriangleView" customModule="MagicTooltips" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-tL-pdh" customClass="InvertedTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="122" y="181" width="14" height="6"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -41,7 +41,7 @@
                         <constraint firstAttribute="height" constant="6" id="pld-iM-4Bf"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrE-kd-BUB" customClass="LeftTriangleView" customModule="MagicTooltips" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrE-kd-BUB" customClass="LeftTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="4" y="86.666666666666671" width="6" height="14"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -49,7 +49,7 @@
                         <constraint firstAttribute="width" constant="6" id="p8T-a0-BTI"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqV-UD-WAi" customClass="RightTriangleView" customModule="MagicTooltips" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqV-UD-WAi" customClass="RightTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="248" y="86.666666666666671" width="6" height="14"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -57,7 +57,7 @@
                         <constraint firstAttribute="width" constant="6" id="GNg-eP-fot"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Umn-4Q-kkC" userLabel="Top Indicator View" customClass="TriangleView" customModule="MagicTooltips" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Umn-4Q-kkC" userLabel="Top Indicator View" customClass="TriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="122" y="0.0" width="14" height="6"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

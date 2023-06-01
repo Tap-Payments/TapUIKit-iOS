@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="nq8-KL-3n1"/>
                 <outlet property="tableView" destination="iwt-Uv-pVD" id="sCR-NG-k0L"/>
+                <outlet property="tapSeparatorView" destination="96D-TO-9xp" id="GEF-t2-AjN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

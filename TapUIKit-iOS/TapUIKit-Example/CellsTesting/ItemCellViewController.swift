@@ -117,7 +117,8 @@ extension ItemCellViewController:TapGenericTableViewModelDelegate {
         return
     }
     
-    func itemClicked(for viewModel: ItemCellViewModel) {
+    func itemClicked(for viewModel: TapGenericTableCellViewModel) {
+        guard let viewModel = viewModel as? ItemCellViewModel else {return}
         showAlert(title: viewModel.itemTitle(), message: "You clicked on the item.. Look until now, clicking an item is worthless we are just showcasing 🙂")
     }
     

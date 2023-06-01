@@ -21,16 +21,12 @@ class TooltipView: UIView {
     
     
     var removeCallback: (() -> Void)?
-    private var timeoutTimer: Timer?
     
-    static func newInstance() -> TooltipView {
-        return Bundle(for: self).loadNibNamed("TooltipView", owner: self, options: nil)![0] as! TooltipView
-    }
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
         self.container = setupXIB()
-//        applyTheme()
+        //        applyTheme()
         
         translatesAutoresizingMaskIntoConstraints = false
         isHidden = true
@@ -62,13 +58,13 @@ class TooltipView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
- 
+        
     }
     
     func setupTimeout(_ timeout: TimeInterval) {
-        timeoutTimer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) { [weak self] (_) in
-            self?.hide()
-        }
+        //        timeoutTimer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) { [weak self] (_) in
+        //            self?.hide()
+        //        }
     }
     
     // MARK: - Animations
@@ -78,7 +74,6 @@ class TooltipView: UIView {
     }
     
     func hide() {
-        timeoutTimer?.invalidate()
         removeCallback?()
         fadeOut {
             self.removeFromSuperview()
@@ -93,11 +88,11 @@ class TooltipView: UIView {
     
 }
 
+
 extension UIView {
-    func showTooltip(title: String? = nil,
-                     message: String,
-                     timeout: TimeInterval = 10,
-                     action: String? = nil,
+    func showTooltip(viewToShow: UIView,
+                     height: CGFloat,
+                     width: CGFloat,
                      direction: TooltipDirection,
                      inView: UIView? = nil,
                      onHide: (() -> Void)? = nil) {
@@ -107,19 +102,20 @@ extension UIView {
         
         DispatchQueue.main.async {
             let tooltipView = TooltipView()
-//            let currencyTableView = CurrencyTableView()
             tooltipView.removeCallback = onHide
             tooltipView.rightIndicatorView.isHidden = direction != .right
             tooltipView.leftIndicatorView.isHidden = direction != .left
             tooltipView.topIndicatorView.isHidden = direction != .up
             tooltipView.bottomIndicatorView.isHidden = direction != .down
- 
+            
             superview.addSubview(tooltipView)
-       
-
-//            currencyTableView.translatesAutoresizingMaskIntoConstraints  = false
-
-
+            
+            
+            viewToShow.translatesAutoresizingMaskIntoConstraints  = false
+            
+            NSLayoutConstraint.activate([tooltipView.widthAnchor.constraint(equalToConstant: width)])
+            NSLayoutConstraint.activate([tooltipView.heightAnchor.constraint(equalToConstant: height)])
+            
             switch direction {
             case .up:
                 NSLayoutConstraint.activate([tooltipView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)])
@@ -139,33 +135,33 @@ extension UIView {
             }
             
             if direction.isVertical {
-                let centerAnchor = tooltipView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)
-                centerAnchor.priority = .defaultHigh
+                //                let centerAnchor = tooltipView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)
+                //                centerAnchor.priority = .defaultHigh
                 tooltipView.indicatorCenterConstraint.isActive = false
-                NSLayoutConstraint.activate([centerAnchor])
-                
+                //                NSLayoutConstraint.activate([centerAnchor])
+                //
                 NSLayoutConstraint.activate([
-                    tooltipView.trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: -10),
-                    tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor, constant: 10),
-                    tooltipView.topIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)
+                    //                    tooltipView.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 5),
+                    tooltipView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
+                    //                    tooltipView.topIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0)
                 ])
             } else if direction.isHorizontal {
                 let centerAnchor = tooltipView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
                 centerAnchor.priority = .defaultHigh
                 NSLayoutConstraint.activate([centerAnchor])
             }
-//            tooltipView.addSubview(currencyTableView)
-//            tooltipView.bringSubviewToFront(currencyTableView)
-//            let horizontalConstraint = currencyTableView.centerXAnchor.constraint(equalTo: tooltipView.centerXAnchor)
-//              let verticalConstraint = currencyTableView.centerYAnchor.constraint(equalTo: tooltipView.centerYAnchor)
-//            let widthConstraint = currencyTableView.widthAnchor.constraint(equalTo: tooltipView.widthAnchor, multiplier: 0.8)
-//
-//              let heightConstraint = currencyTableView.heightAnchor.constraint(equalTo: tooltipView.heightAnchor, multiplier: 0.8)
-//              NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+            tooltipView.addSubview(viewToShow)
+            tooltipView.bringSubviewToFront(viewToShow)
+            let horizontalConstraint = viewToShow.centerXAnchor.constraint(equalTo: tooltipView.centerXAnchor)
+            let verticalConstraint = viewToShow.centerYAnchor.constraint(equalTo: tooltipView.centerYAnchor)
+            let widthConstraint = viewToShow.widthAnchor.constraint(equalTo: tooltipView.widthAnchor, multiplier: 0.8)
+            
+            let heightConstraint = viewToShow.heightAnchor.constraint(equalTo: tooltipView.heightAnchor, multiplier: 0.8)
+            NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
             
             tooltipView.show()
-
-            tooltipView.setupTimeout(timeout)
+            
+            //            tooltipView.setupTimeout(timeout)
             
         }
     }
@@ -185,12 +181,10 @@ extension UIView {
 protocol Tooltip {
     var key: String {get}
     var view: UIView {get}
-    var didShow: Bool {get}
-    var title: String? {get}
-    var message: String {get}
+    var viewToShow: UIView {get}
+    var height: CGFloat {get}
+    var width: CGFloat {get}
     var direction: TooltipDirection {get}
-    
-    func setShown()
 }
 
 extension Tooltip {
@@ -207,59 +201,44 @@ protocol ToolTipDelegate: NSObject {
 class TooltipManager: NSObject {
     
     private var parentView: UIView?
-    private var tooltipsToShow: [Tooltip] = []
+    private var tooltipToShow: Tooltip?
     var didSetupTooltips: Bool = false
     
     weak var delegate: ToolTipDelegate?
     
-    func setup(tooltips: [Tooltip], darkView: UIView) {
+    func setup(tooltipToShow: Tooltip, mainView: UIView) {
         didSetupTooltips = true
-        
-        tooltipsToShow = tooltips
-        parentView = darkView
-        
-        guard !tooltipsToShow.allSatisfy({ $0.didShow }) else {
-            delegate?.toolTipDidComplete()
-            return
-        }
-        
-        parentView?.addDarkView { [weak self] in
-            self?.showNext()
-        }
+        self.tooltipToShow = tooltipToShow
+        parentView = mainView
     }
     
-    private func showNext() {
+    func showToolTip() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        parentView?.addDarkView { [weak self] darkView in
+            self?.show()
+            darkView.addGestureRecognizer(tapGesture)
+        }
+    }
+    func removeTooltips() {
         parentView?.removeTooltipView()
-        
-        guard let tooltip = tooltipsToShow.first else {
-            parentView?.removeDarkView()
-            if tooltipsToShow.isEmpty {
-                delegate?.toolTipDidComplete()
-            }
-            return
-        }
-        
-        tooltipsToShow.removeFirst()
-        
-        guard !tooltip.didShow else {
-            showNext()
-            return
-        }
-        
-        let isLast = tooltipsToShow.count == 0
-        
-        let action = isLast ? "Done" : "Next"
-        
-        tooltip.addSnapshot(to: parentView)
-        tooltip.view.showTooltip(title: tooltip.title,
-                                 message: tooltip.message,
-                                 action: action,
-                                 direction: tooltip.direction,
-                                 inView: parentView,
-                                 onHide: { [weak self] in
-            tooltip.setShown()
+        parentView?.removeDarkView()
+    }
+    
+    @objc private func viewTapped() {
+        removeTooltips()
+    }
+    
+    private func show() {
+        guard let tooltipToShow = tooltipToShow else { return }
+        tooltipToShow.addSnapshot(to: parentView)
+        tooltipToShow.view.showTooltip(viewToShow:tooltipToShow.viewToShow,
+                                       height: tooltipToShow.height,
+                                       width: tooltipToShow.width,
+                                       direction: tooltipToShow.direction,
+                                       inView: parentView,
+                                       onHide: { [weak self] in
+            self?.delegate?.toolTipDidComplete()
             self?.parentView?.removeSnapshots()
-            self?.showNext()
         })
     }
     
@@ -310,7 +289,7 @@ extension UIView {
         let imageView = SnapshotView(image: snapshot)
         let globalPoint = convert(view.frame.origin, from: view.superview)
         imageView.frame = CGRect(origin: globalPoint, size: view.frame.size)
-        addSubview(imageView)
+//        addSubview(imageView)
         imageView.fadeIn()
     }
     
@@ -328,7 +307,7 @@ class DarkView: UIView {
 }
 
 extension UIView {
-    func addDarkView(completion: (() -> Void)? = nil) {
+    func addDarkView(completion: ((UIView) -> Void)? = nil) {
         removeDarkView()
         
         DispatchQueue.main.async {
@@ -344,7 +323,7 @@ extension UIView {
             ])
             
             darkView.fadeIn {
-                completion?()
+                completion?(darkView)
             }
         }
     }
@@ -452,7 +431,7 @@ class RightTriangleView : UIView {
         
         guard let context = UIGraphicsGetCurrentContext() else { return }
         let color = TapThemeManager.colorValue(for: "CurrencyWidget.currencyDropDown.backgroundColor") ?? .white
-
+        
         context.beginPath()
         context.move(to: CGPoint(x: rect.minX, y: rect.maxY))
         context.addLine(to: CGPoint(x: rect.minX, y: rect.minY))

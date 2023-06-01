@@ -15,10 +15,10 @@ internal protocol TapGenericCellViewModelDelegate {
      The event will be fired when the user cliks on an Item cell
      - Parameter viewModel: Represents The attached view model
      */
-    func itemClicked(for viewModel:ItemCellViewModel)
+    func itemClicked(for viewModel:TapGenericTableCellViewModel)
     func reloadRows(at indexPaths:[IndexPath])
     /// Tells if this row is the last row
-    func isLastRow(for viewModel:ItemCellViewModel) -> Bool
+    func isLastRow(for viewModel:TapGenericTableCellViewModel) -> Bool
 }
 
 
@@ -103,6 +103,7 @@ internal protocol TapCellViewModelDelegate {
     case ItemTableCell = 0
     case CountryCodeCell = 1
     case CountryCell = 2
+    case CurrencyCell = 3
     /**
      Defines what is the theme path to look for to customise a cell based on its type
      - Returns: The theme entry location inside the Theme json file
@@ -115,6 +116,8 @@ internal protocol TapCellViewModelDelegate {
             return "itemsList.item"
         case .CountryCell:
             return "itemsList.item"
+        case .CurrencyCell:
+            return "CurrencyWidget.currencyDropDown"
         }
     }
     
@@ -130,6 +133,8 @@ internal protocol TapCellViewModelDelegate {
             return "CountryCodeTableViewCell"
         case .CountryCell:
             return "CountryTableViewCell"
+        case .CurrencyCell:
+            return "CurrencyTableViewCell"
         }
     }
 }

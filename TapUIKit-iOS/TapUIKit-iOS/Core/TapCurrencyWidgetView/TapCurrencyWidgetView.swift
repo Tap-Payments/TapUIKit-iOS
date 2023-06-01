@@ -10,12 +10,8 @@ import UIKit
 import Nuke
 import LocalisationManagerKit_iOS
 
-public class TapCurrencyWidgetView: UIView, ToolTipDelegate {
-    func toolTipDidComplete() {
+public class TapCurrencyWidgetView: UIView {
     
-    }
-    
-
     ///  A collection of direction based views
     @IBOutlet var toBeLocalizedViews: [UIView]!
     /// The container view that holds everything from the XIB
@@ -59,16 +55,14 @@ public class TapCurrencyWidgetView: UIView, ToolTipDelegate {
     
     
     
-    private func setupTooltips(forcing: Bool = false) {
-        guard !tooltipManager.didSetupTooltips || forcing else {
+    private func setupTooltips() {
+        tooltipManager.delegate = self
+        let currencyTableView = CurrencyTableView()
+        guard let viewModel = viewModel else {
             return
         }
-        let button = ViewControllerTooltip.button(in: currencyDropDownButton)
-        
-        let tooltips: [ViewControllerTooltip] = [button]
-        
-        tooltipManager.delegate = self
-        tooltipManager.setup(tooltips: tooltips, darkView: self.findViewController()?.view ?? self)
+        currencyTableView.changeViewModel(tapCurrencyWidgetViewModel: viewModel)
+        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .up, viewToShow: currencyTableView, height: 157, width: 224), mainView: self.findViewController()?.view ?? self)
     }
     
     /**
@@ -94,8 +88,8 @@ public class TapCurrencyWidgetView: UIView, ToolTipDelegate {
     }
     
     @IBAction func currencyClicked(_ sender: Any) {
-        setupTooltips(forcing: true)
-
+        setupTooltips()
+        tooltipManager.showToolTip()
         viewModel?.currencyClicked()
     }
     /// Will localize the views by checking their class. If they are views we will set the semantic attributes, if text based views we will change the alignments as well
@@ -116,6 +110,11 @@ public class TapCurrencyWidgetView: UIView, ToolTipDelegate {
 
 // Mark:- view model delegate methods
 extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
+    /// Remove tooltips
+    func removeTooltip() {
+        tooltipManager.removeTooltips()
+    }
+    
     /// Consolidated one point to reload view
     func reload() {
         assignLabels()
@@ -133,11 +132,11 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
     /// Responsible show correct arrow position
     private func showChevronCorrectPosition(isExpanded: Bool) {
         let dropDownThemePath = "\(themePath).currencyDropDown"
-//        if isExpanded {
-//            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
-//        } else {
-//            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
-//        }
+        if isExpanded {
+            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
+        } else {
+            chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
+        }
     }
     
     /// Responsible show or hide currency drop down button
@@ -213,8 +212,8 @@ extension TapCurrencyWidgetView {
         
         let dropDownThemePath = "\(themePath).currencyDropDown"
 
-        chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
-        chevronImageView.tap_theme_tintColor = .init(keyPath: "\(dropDownThemePath).backgroundColor")
+        chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
+        chevronImageView.tintColor = .cyan
 
 
         layoutIfNeeded()
@@ -241,5 +240,11 @@ internal extension UIView {
         } else {
             return nil
         }
+    }
+}
+
+extension TapCurrencyWidgetView: ToolTipDelegate {
+    func toolTipDidComplete() {
+        
     }
 }

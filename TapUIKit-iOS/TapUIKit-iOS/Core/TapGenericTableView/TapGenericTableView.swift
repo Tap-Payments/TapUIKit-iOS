@@ -17,6 +17,8 @@ import TapThemeManager2020
     @IBOutlet weak var tableView: TapContentSizedTableView!
     /// The content view that holds all inner views inside the view
     @IBOutlet weak var contentView:UIView!
+    /// The reference separator view
+    @IBOutlet weak var tapSeparatorView: TapSeparatorView!
     
     /// Keeps track of the last applied theme value
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light

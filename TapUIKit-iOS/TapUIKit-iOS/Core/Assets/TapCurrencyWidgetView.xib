@@ -73,7 +73,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronup" translatesAutoresizingMaskIntoConstraints="NO" id="heq-RV-34D">
-                            <rect key="frame" x="94" y="78" width="18" height="34"/>
+                            <rect key="frame" x="93.333333333333329" y="78" width="18" height="34"/>
                             <color key="tintColor" red="0.98431372549999996" green="0.0" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="heq-RV-34D" secondAttribute="height" multiplier="10:19" id="HJh-uN-sul"/>
@@ -81,7 +81,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QN-Dr-eIV">
-                            <rect key="frame" x="0.0" y="86" width="112" height="18"/>
+                            <rect key="frame" x="0.0" y="86" width="111.33333333333333" height="18"/>
                             <buttonConfiguration key="configuration" style="plain"/>
                             <connections>
                                 <action selector="currencyClicked:" destination="-1" eventType="touchUpInside" id="luE-GG-HAM"/>
@@ -90,8 +90,9 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="heq-RV-34D" firstAttribute="trailing" secondItem="0QN-Dr-eIV" secondAttribute="trailing" id="4Bm-UA-M50"/>
                         <constraint firstItem="2iw-h7-sfz" firstAttribute="leading" secondItem="fmK-ub-toX" secondAttribute="leading" id="4sf-fa-OHR"/>
-                        <constraint firstItem="heq-RV-34D" firstAttribute="leading" secondItem="95u-Fs-bnh" secondAttribute="trailing" constant="7.75" id="8k8-ty-iCf"/>
+                        <constraint firstItem="heq-RV-34D" firstAttribute="leading" secondItem="95u-Fs-bnh" secondAttribute="trailing" constant="7" id="8k8-ty-iCf"/>
                         <constraint firstItem="95u-Fs-bnh" firstAttribute="bottom" secondItem="0QN-Dr-eIV" secondAttribute="bottom" id="9Ue-i3-SSw"/>
                         <constraint firstAttribute="bottom" secondItem="95u-Fs-bnh" secondAttribute="bottom" id="C8O-5P-peX"/>
                         <constraint firstAttribute="trailing" secondItem="eTe-gl-dVO" secondAttribute="trailing" id="Deo-8q-8uc"/>
@@ -101,7 +102,6 @@
                         <constraint firstItem="heq-RV-34D" firstAttribute="width" secondItem="heq-RV-34D" secondAttribute="height" multiplier="10:19" id="OZo-bT-sGD"/>
                         <constraint firstItem="2iw-h7-sfz" firstAttribute="top" secondItem="fmK-ub-toX" secondAttribute="top" id="QOI-07-kOO"/>
                         <constraint firstItem="nC4-8o-OEK" firstAttribute="top" secondItem="2iw-h7-sfz" secondAttribute="bottom" constant="16" id="Uz4-a4-dTG"/>
-                        <constraint firstItem="heq-RV-34D" firstAttribute="trailing" secondItem="0QN-Dr-eIV" secondAttribute="trailing" id="VLd-1a-rzd"/>
                         <constraint firstItem="95u-Fs-bnh" firstAttribute="leading" secondItem="HFp-gI-kMd" secondAttribute="trailing" constant="8" id="d8E-ge-yl8"/>
                         <constraint firstItem="95u-Fs-bnh" firstAttribute="top" secondItem="0QN-Dr-eIV" secondAttribute="top" id="fBP-o0-141"/>
                         <constraint firstItem="HFp-gI-kMd" firstAttribute="leading" secondItem="fmK-ub-toX" secondAttribute="leading" id="fi3-uX-s6J"/>
