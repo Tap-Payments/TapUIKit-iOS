@@ -54,18 +54,6 @@ public class TapCurrencyWidgetView: UIView {
     }
     
     
-    
-    private func setupTooltips() {
-        tooltipManager.delegate = self
-        let currencyTableView = CurrencyTableView()
-        guard let viewModel = viewModel else {
-            return
-        }
-        
-        currencyTableView.changeViewModel(tapCurrencyWidgetViewModel: viewModel)
-        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .up, viewToShow: currencyTableView, height: 157, width: 224, language: TapLocalisationManager.shared.localisationLocale ?? "en"), mainView: self.findViewController()?.view ?? self)
-    }
-    
     /**
      Will redo the whole setup for the view with the new passed data from the new view model
      - Parameter with viewModel: The new view model to setup the view with
@@ -104,6 +92,17 @@ public class TapCurrencyWidgetView: UIView {
                 label.textAlignment = aligment
             }
         }
+    }
+    
+    private func setupTooltips() {
+        tooltipManager.delegate = self
+        let currencyTableView = CurrencyTableView()
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        currencyTableView.changeViewModel(tapCurrencyWidgetViewModel: viewModel)
+        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .up, viewToShow: currencyTableView, height: 157, width: 224), mainView: self.findViewController()?.view ?? self)
     }
     
 }

@@ -8,27 +8,26 @@
 
 import Foundation
 
-protocol Tooltip {
+internal protocol Tooltip {
     var view: UIView {get}
     var viewToShow: UIView {get}
     var height: CGFloat {get}
     var width: CGFloat {get}
     var direction: TooltipDirection {get}
-    var language: String {get}
 }
 
 extension Tooltip {
-    func addSnapshot(to parentView: UIView?) {
+    internal func addSnapshot(to parentView: UIView?) {
         guard direction != .center else { return }
         parentView?.addSnapshot(of: view)
     }
 }
 
-protocol ToolTipDelegate: NSObject {
+internal protocol ToolTipDelegate: NSObject {
     func toolTipDidComplete()
 }
 
-extension UIView {
+internal extension UIView {
     fileprivate var snapshot: UIImage? {
         let renderer = UIGraphicsImageRenderer(size: bounds.size)
         let image = renderer.image { ctx in

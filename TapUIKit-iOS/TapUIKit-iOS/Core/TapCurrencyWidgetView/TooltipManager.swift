@@ -44,7 +44,7 @@ class TooltipManager: NSObject {
         tooltipToShow.view.showTooltip(viewToShow:tooltipToShow.viewToShow,
                                        height: tooltipToShow.height,
                                        width: tooltipToShow.width,
-                                       direction: tooltipToShow.direction, language: tooltipToShow.language,
+                                       direction: tooltipToShow.direction,
                                        inView: parentView,
                                        pointView: tooltipToShow.view,
                                        onHide: { [weak self] in
@@ -128,99 +128,27 @@ extension UIView {
     fileprivate var showingDarkView: Bool {
         return subviews.first(where: { $0 is DarkView }) != nil
     }
-    
-    fileprivate var globalFrame: CGRect? {
-        let rootView = UIApplication.shared.keyWindow?.rootViewController?.view
-        return self.convert(self.frame, to: rootView)
-    }
-    
+ 
     fileprivate func showTooltip(viewToShow: UIView,
                                  height: CGFloat,
                                  width: CGFloat,
                                  direction: TooltipDirection,
-                                 language: String,
                                  inView: UIView? = nil,
                                  pointView: UIView? = nil,
                                  onHide: (() -> Void)? = nil) {
         removeTooltipView()
-        var tooltipDirection = direction
         guard let superview = inView ?? superview else { return }
-        
-        let frameRelativeToScreen = pointView?.globalFrame
-        
-        if (frameRelativeToScreen?.origin.y ?? 0) + height + 20 > UIScreen.main.bounds.height, tooltipDirection == .up {
-            tooltipDirection = .down
-        }
-        
-        if (frameRelativeToScreen?.origin.y ?? 0) - height - 20 < 0, tooltipDirection == .down {
-            tooltipDirection = .up
-        }
-        
+        guard let pointView = pointView else { return }
+
         DispatchQueue.main.async {
             let tooltipView = TooltipView()
+            let tooltipDirection = tooltipView.updatePositionRegardingScreenSize(pointView, height, direction)
             tooltipView.removeCallback = onHide
-            tooltipView.rightIndicatorView.isHidden = tooltipDirection != .right
-            tooltipView.leftIndicatorView.isHidden = tooltipDirection != .left
-            tooltipView.topIndicatorView.isHidden = tooltipDirection != .up
-            tooltipView.bottomIndicatorView.isHidden = tooltipDirection != .down
-            
+            tooltipView.setupArrowView(tooltipDirection: tooltipDirection)
             superview.addSubview(tooltipView)
-            
-            
-            viewToShow.translatesAutoresizingMaskIntoConstraints  = false
-            
-            NSLayoutConstraint.activate([tooltipView.widthAnchor.constraint(equalToConstant: width)])
-            NSLayoutConstraint.activate([tooltipView.heightAnchor.constraint(equalToConstant: height)])
-            
-            switch tooltipDirection {
-            case .up:
-                NSLayoutConstraint.activate([tooltipView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)])
-            case .down:
-                NSLayoutConstraint.activate([tooltipView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 0)])
-            case .right:
-                NSLayoutConstraint.activate([tooltipView.rightAnchor.constraint(equalTo: self.leftAnchor, constant: 0)])
-            case .left:
-                NSLayoutConstraint.activate([tooltipView.leftAnchor.constraint(equalTo: self.rightAnchor, constant: 0)])
-            case .center:
-                NSLayoutConstraint.activate([
-                    tooltipView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
-                    tooltipView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
-                    tooltipView.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor, constant: 37),
-                    tooltipView.trailingAnchor.constraint(greaterThanOrEqualTo: superview.trailingAnchor, constant: 37)
-                ])
-            }
-            
-            if tooltipDirection.isVertical {
-                let leadingConstraintConstant: CGFloat = 20
-                if language == "ar" {
-                    let triangleConstraintConstant: CGFloat = (pointView?.frame.origin.x ?? 0) + leadingConstraintConstant + 5
-                    NSLayoutConstraint.activate([
-                        tooltipView.topIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
-                        tooltipView.bottomIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
-                        tooltipView.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -1 * leadingConstraintConstant),
-                    ])
-                } else {
-                    let triangleConstraintConstant: CGFloat = (pointView?.frame.origin.x ?? 0) + leadingConstraintConstant + 5
-                    NSLayoutConstraint.activate([
-                        tooltipView.topIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
-                        tooltipView.bottomIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
-                        tooltipView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: leadingConstraintConstant),
-                    ])
-                }
-                
-            } else if tooltipDirection.isHorizontal {
-                let centerAnchor = tooltipView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
-                centerAnchor.priority = .defaultHigh
-                NSLayoutConstraint.activate([centerAnchor])
-            }
-            tooltipView.addSubview(viewToShow)
-            tooltipView.bringSubviewToFront(viewToShow)
-            let horizontalConstraint = viewToShow.centerXAnchor.constraint(equalTo: tooltipView.centerXAnchor)
-            let verticalConstraint = viewToShow.centerYAnchor.constraint(equalTo: tooltipView.centerYAnchor)
-            let widthConstraint = viewToShow.widthAnchor.constraint(equalTo: tooltipView.widthAnchor, multiplier: 0.8)
-            let heightConstraint = viewToShow.heightAnchor.constraint(equalTo: tooltipView.heightAnchor, multiplier: 0.8)
-            NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-            
+            tooltipView.applySizeConstraint(height: height, width: width)
+            tooltipView.setupTooltipDirection(pointView: pointView, mainView: superview, tooltipDirection: tooltipDirection)
+            tooltipView.setupViewToShow(viewToShow: viewToShow)
             tooltipView.show()
             
         }

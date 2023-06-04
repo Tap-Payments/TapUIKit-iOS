@@ -12,9 +12,10 @@
             <connections>
                 <outlet property="bottomIndicatorView" destination="dvf-tL-pdh" id="uWf-2C-2am"/>
                 <outlet property="cardBlurView" destination="IRX-8h-bLj" id="3Eu-rD-Gp5"/>
-                <outlet property="container" destination="i3A-xr-ujR" id="Vy1-No-gn9"/>
+                <outlet property="container" destination="zzG-dW-eYa" id="45w-lD-5Kr"/>
                 <outlet property="contentView" destination="i3A-xr-ujR" id="deP-0E-5wT"/>
                 <outlet property="leftIndicatorView" destination="rrE-kd-BUB" id="bYD-pm-jJ4"/>
+                <outlet property="mainView" destination="fh0-40-FMo" id="EKr-vV-Ml4"/>
                 <outlet property="rightIndicatorView" destination="yqV-UD-WAi" id="XdR-2i-RbJ"/>
                 <outlet property="topIndicatorView" destination="Umn-4Q-kkC" id="5bT-iy-Vdn"/>
             </connections>
@@ -24,17 +25,29 @@
             <rect key="frame" x="0.0" y="0.0" width="258" height="260"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRX-8h-bLj" customClass="CardVisualEffectView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-40-FMo">
                     <rect key="frame" x="10" y="10" width="238" height="240"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRX-8h-bLj" customClass="CardVisualEffectView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="238" height="240"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="IRX-8h-bLj" secondAttribute="trailing" id="WnU-G4-gZa"/>
+                        <constraint firstAttribute="bottom" secondItem="IRX-8h-bLj" secondAttribute="bottom" id="gxM-ka-2rs"/>
+                        <constraint firstItem="IRX-8h-bLj" firstAttribute="top" secondItem="fh0-40-FMo" secondAttribute="top" id="hN8-1I-hBp"/>
+                        <constraint firstItem="IRX-8h-bLj" firstAttribute="leading" secondItem="fh0-40-FMo" secondAttribute="leading" id="qaN-l7-Hxn"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3A-xr-ujR">
-                    <rect key="frame" x="10" y="69" width="238" height="181"/>
+                    <rect key="frame" x="14" y="14" width="230" height="232"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-tL-pdh" customClass="DownTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="122" y="250" width="14" height="6"/>
+                    <rect key="frame" x="122" y="249" width="14" height="6"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="14" id="dyk-xA-iRC"/>
@@ -42,7 +55,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rrE-kd-BUB" customClass="LeftTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="4" y="149.66666666666666" width="6" height="14"/>
+                    <rect key="frame" x="4" y="139.66666666666666" width="6" height="14"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="ZCQ-Gr-sxO"/>
@@ -58,7 +71,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umn-4Q-kkC" userLabel="Top Indicator View" customClass="UpTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="122" y="0.0" width="14" height="6"/>
+                    <rect key="frame" x="122" y="5" width="14" height="6"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="6" id="n6g-Wf-2eY"/>
@@ -69,14 +82,14 @@
             <viewLayoutGuide key="safeArea" id="X6b-sW-nzO"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="IRX-8h-bLj" firstAttribute="leading" secondItem="zzG-dW-eYa" secondAttribute="leading" constant="10" id="6Wr-AT-gGt"/>
-                <constraint firstItem="dvf-tL-pdh" firstAttribute="top" secondItem="IRX-8h-bLj" secondAttribute="bottom" id="Dew-eO-vGa"/>
-                <constraint firstItem="yqV-UD-WAi" firstAttribute="leading" secondItem="IRX-8h-bLj" secondAttribute="trailing" id="Oef-Pj-gjz"/>
-                <constraint firstAttribute="trailing" secondItem="IRX-8h-bLj" secondAttribute="trailing" constant="10" id="RmY-8p-f5Y"/>
-                <constraint firstItem="IRX-8h-bLj" firstAttribute="leading" secondItem="rrE-kd-BUB" secondAttribute="trailing" id="Zt4-4s-rar"/>
-                <constraint firstItem="Umn-4Q-kkC" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" id="b9B-2f-boQ"/>
-                <constraint firstAttribute="bottom" secondItem="IRX-8h-bLj" secondAttribute="bottom" constant="10" id="hK8-Nj-fvx"/>
-                <constraint firstItem="IRX-8h-bLj" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" constant="10" id="sJb-IM-4eP"/>
+                <constraint firstItem="dvf-tL-pdh" firstAttribute="top" secondItem="fh0-40-FMo" secondAttribute="bottom" constant="-1" id="Gnh-gE-lcF"/>
+                <constraint firstAttribute="trailing" secondItem="fh0-40-FMo" secondAttribute="trailing" constant="10" id="Myn-90-zb7"/>
+                <constraint firstAttribute="bottom" secondItem="fh0-40-FMo" secondAttribute="bottom" constant="10" id="Vnh-2N-cDt"/>
+                <constraint firstItem="fh0-40-FMo" firstAttribute="leading" secondItem="rrE-kd-BUB" secondAttribute="trailing" id="Vvi-Kb-H3U"/>
+                <constraint firstItem="fh0-40-FMo" firstAttribute="leading" secondItem="zzG-dW-eYa" secondAttribute="leading" constant="10" id="dNe-gT-LRg"/>
+                <constraint firstItem="fh0-40-FMo" firstAttribute="top" secondItem="Umn-4Q-kkC" secondAttribute="bottom" constant="-1" id="tfk-JZ-CmD"/>
+                <constraint firstItem="fh0-40-FMo" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" constant="10" id="vse-YE-Mr9"/>
+                <constraint firstItem="yqV-UD-WAi" firstAttribute="leading" secondItem="fh0-40-FMo" secondAttribute="trailing" id="yFb-C7-9qV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-189.31297709923663" y="19.718309859154932"/>

@@ -20,14 +20,11 @@ internal class TooltipController: Tooltip {
     var height: CGFloat
     /// View to be shown width
     var width: CGFloat
-    /// Current App language
-    var language: String
     
     
-    init(view: UIView, direction: TooltipDirection, viewToShow: UIView, height: CGFloat, width: CGFloat, language: String) {
+    init(view: UIView, direction: TooltipDirection, viewToShow: UIView, height: CGFloat, width: CGFloat) {
         self.view = view
         self.direction = direction
-        self.language = language
         self.viewToShow = viewToShow
         self.height = height
         self.width = width

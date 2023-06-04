@@ -9,6 +9,6 @@
 import Foundation
 
 /// The view model that controls the currency table view
-class CurrencyTableViewModel: TapGenericTableViewModel {
+internal class CurrencyTableViewModel: TapGenericTableViewModel {
     
 }

@@ -8,8 +8,10 @@
 
 import Foundation
 /// Triangle point to up view
-class UpTriangleView : UIView {
+internal class UpTriangleView : UIView {
     
+    private let themePath: String = "CurrencyWidget.currencyDropDown"
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -20,19 +22,30 @@ class UpTriangleView : UIView {
     
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        let color = TapThemeManager.colorValue(for: "CurrencyWidget.currencyDropDown.backgroundColor") ?? .white
+        let color = TapThemeManager.colorValue(for: "\(themePath).backgroundColor") ?? .white
+        let borderColor = TapThemeManager.colorValue(for: "\(themePath).borderColor") ?? .white
         context.beginPath()
         context.move(to: CGPoint(x: rect.minX, y: rect.maxY))
         context.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         context.addLine(to: CGPoint(x: (rect.maxX / 2.0), y: rect.minY))
         context.closePath()
         context.setFillColor(color.cgColor)
+        
+        if let path = context.path {
+            context.setStrokeColor(borderColor.cgColor)
+            context.strokePath()
+            context.addPath(path)
+        }
+        
         context.fillPath()
     }
 }
 
 /// Triangle point to down view
-class DownTriangleView : UIView {
+internal class DownTriangleView : UIView {
+    
+    private let themePath: String = "CurrencyWidget.currencyDropDown"
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,19 +58,30 @@ class DownTriangleView : UIView {
     override func draw(_ rect: CGRect) {
         
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        let color = TapThemeManager.colorValue(for: "CurrencyWidget.currencyDropDown.backgroundColor") ?? .white
+        let color = TapThemeManager.colorValue(for: "\(themePath).backgroundColor") ?? .white
+        let borderColor = TapThemeManager.colorValue(for: "\(themePath).borderColor") ?? .white
         context.beginPath()
         context.move(to: CGPoint(x: rect.minX, y: rect.minY))
         context.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         context.addLine(to: CGPoint(x: (rect.maxX / 2.0), y: rect.maxY))
         context.closePath()
         context.setFillColor(color.cgColor)
+
+        if let path = context.path {
+            context.setStrokeColor(borderColor.cgColor)
+            context.strokePath()
+            context.addPath(path)
+        }
+        
         context.fillPath()
     }
 }
 
 /// Triangle point to left view
-class LeftTriangleView : UIView {
+internal class LeftTriangleView : UIView {
+    
+    private let themePath: String = "CurrencyWidget.currencyDropDown"
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,19 +94,29 @@ class LeftTriangleView : UIView {
     override func draw(_ rect: CGRect) {
         
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        let color = TapThemeManager.colorValue(for: "CurrencyWidget.currencyDropDown.backgroundColor") ?? .white
+        let color = TapThemeManager.colorValue(for: "\(themePath).backgroundColor") ?? .white
+        let borderColor = TapThemeManager.colorValue(for: "\(themePath).borderColor") ?? .white
         context.beginPath()
         context.move(to: CGPoint(x: rect.maxX, y: rect.maxY))
         context.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         context.addLine(to: CGPoint(x: rect.minX, y: (rect.maxY / 2.0)))
         context.closePath()
         context.setFillColor(color.cgColor)
+        
+        if let path = context.path {
+            context.setStrokeColor(borderColor.cgColor)
+            context.strokePath()
+            context.addPath(path)
+        }
+        
         context.fillPath()
     }
 }
 
 /// Triangle point to right view
-class RightTriangleView : UIView {
+internal class RightTriangleView : UIView {
+    
+    private let themePath: String = "CurrencyWidget.currencyDropDown"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -95,15 +129,22 @@ class RightTriangleView : UIView {
     override func draw(_ rect: CGRect) {
         
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        let color = TapThemeManager.colorValue(for: "CurrencyWidget.currencyDropDown.backgroundColor") ?? .white
+        let color = TapThemeManager.colorValue(for: "\(themePath).backgroundColor") ?? .white
+        let borderColor = TapThemeManager.colorValue(for: "\(themePath).borderColor") ?? .white
         
         context.beginPath()
         context.move(to: CGPoint(x: rect.minX, y: rect.maxY))
         context.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
         context.addLine(to: CGPoint(x: rect.maxX, y: (rect.maxY / 2.0)))
         context.closePath()
-        
         context.setFillColor(color.cgColor)
+        
+        if let path = context.path {
+            context.setStrokeColor(borderColor.cgColor)
+            context.strokePath()
+            context.addPath(path)
+        }
+        
         context.fillPath()
     }
 }

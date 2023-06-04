@@ -26,6 +26,7 @@ internal class TooltipView: UIView {
     /// View contain every thing
     @IBOutlet weak var container: UIView!
     
+    @IBOutlet weak var mainView: UIView!
     
     var removeCallback: (() -> Void)?
     internal let themePath: String = "CurrencyWidget.currencyDropDown"
@@ -35,7 +36,6 @@ internal class TooltipView: UIView {
     private func commonInit() {
         self.container = setupXIB()
         applyTheme()
-        
         isHidden = true
         translatesAutoresizingMaskIntoConstraints = false
     }
@@ -76,23 +76,35 @@ extension TooltipView {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         
+        mainView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
+        mainView.layer.tap_theme_borderColor = .init(keyPath: "\(themePath).borderColor")
+        mainView.layer.masksToBounds = true
+        mainView.clipsToBounds = true
+        mainView.layer.borderWidth = 1
+        mainView.layer.tap_theme_borderColor = .init(keyPath: "\(themePath).borderColor")
+        
+        mainView.backgroundColor = .clear
+        
+        container.layer.shadowOpacity = 1
+        container.layer.shadowOffset = CGSize(width: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadowOffsetWidth")?.floatValue ?? 0), height: CGFloat(TapThemeManager.numberValue(for: "\(themePath).shadowOffsetHeight")?.floatValue ?? 0))
+        container.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).shadowBlur")
+        container.layer.shadowRadius = 16
+        container.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).shadowColor")
+        
+        
+        
+        container.layer.shadowColor = UIColor(red: 0.294, green: 0.282, blue: 0.278, alpha: 0.5).cgColor
+        container.layer.shadowOpacity = 1
+        container.layer.shadowRadius = 64
+        container.layer.shadowOffset = CGSize(width: 0, height: 24)
+        
         
         cardBlurView.scale = 1
         cardBlurView.blurRadius = 6
         cardBlurView.colorTint = TapThemeManager.colorValue(for: "\(themePath).backgroundColor")
-        cardBlurView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
-        cardBlurView.layer.masksToBounds = true
-        cardBlurView.clipsToBounds = false
         cardBlurView.colorTintAlpha = 0.75
         
         contentView.backgroundColor = .clear
-        contentView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
-        contentView.layer.tap_theme_borderColor = .init(keyPath: "\(themePath).borderColor")
-//        contentView.layer.masksToBounds = true
-//        contentView.clipsToBounds = false
-//        contentView.layer.shadowOpacity = 1
-        contentView.layer.tap_theme_shadowRadius = .init(keyPath: "\(themePath).shadowBlur")
-        contentView.layer.tap_theme_shadowColor = .init(keyPath: "\(themePath).shadowColor")
         
         layoutIfNeeded()
     }
@@ -103,6 +115,93 @@ extension TooltipView {
         TapThemeManager.changeThemeDisplay(for: self.traitCollection.userInterfaceStyle)
         applyTheme()
     }
+    
+    internal func updatePositionRegardingScreenSize(_ pointView: UIView?, _ height: CGFloat, _ tooltipDirection: TooltipDirection) -> TooltipDirection {
+        let frameRelativeToScreen = pointView?.globalFrame
+        
+        if (frameRelativeToScreen?.origin.y ?? 0) + height + 20 > UIScreen.main.bounds.height, tooltipDirection == .up {
+            return .down
+        }
+        
+        if (frameRelativeToScreen?.origin.y ?? 0) - height - 20 < 0, tooltipDirection == .down {
+            return .up
+        }
+        return tooltipDirection
+    }
+    
+    internal func setupArrowView(tooltipDirection: TooltipDirection) {
+        self.rightIndicatorView.isHidden = tooltipDirection != .right
+        self.leftIndicatorView.isHidden = tooltipDirection != .left
+        self.topIndicatorView.isHidden = tooltipDirection != .up
+        self.bottomIndicatorView.isHidden = tooltipDirection != .down
+    }
+    
+    internal func applySizeConstraint(height: CGFloat, width: CGFloat) {
+        NSLayoutConstraint.activate([self.widthAnchor.constraint(equalToConstant: width)])
+        NSLayoutConstraint.activate([self.heightAnchor.constraint(equalToConstant: height)])
+    }
+    
+    internal func setupViewToShow(viewToShow: UIView) {
+        self.addSubview(viewToShow)
+        self.bringSubviewToFront(viewToShow)
+        let horizontalConstraint = viewToShow.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        let verticalConstraint = viewToShow.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        let widthConstraint = viewToShow.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
+        let heightConstraint = viewToShow.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8)
+        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        viewToShow.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    internal func setupTooltipDirection(pointView: UIView, mainView: UIView, tooltipDirection: TooltipDirection) {
+        setupArrowDirection(tooltipDirection: tooltipDirection, pointView: pointView)
+        setupArrowPosition(pointView: pointView, mainView: mainView, tooltipDirection: tooltipDirection)
+    }
+    
+    private func setupArrowPosition(pointView: UIView, mainView: UIView, tooltipDirection: TooltipDirection) {
+        if tooltipDirection.isVertical {
+            let leadingConstraintConstant: CGFloat = 8
+            let triangleConstraintConstant: CGFloat = pointView.frame.origin.x + (3 * leadingConstraintConstant) + 2
+            if TapLocalisationManager.shared.localisationLocale == "ar" {
+                NSLayoutConstraint.activate([
+                    self.topIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
+                    self.bottomIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
+                    self.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -1 * leadingConstraintConstant),
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    self.topIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
+                    self.bottomIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
+                    self.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: leadingConstraintConstant),
+                ])
+            }
+            
+        } else if tooltipDirection.isHorizontal {
+            let centerAnchor = self.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0)
+            centerAnchor.priority = .defaultHigh
+            NSLayoutConstraint.activate([centerAnchor])
+        }
+    }
+    
+    private func setupArrowDirection(tooltipDirection: TooltipDirection, pointView: UIView) {
+        switch tooltipDirection {
+        case .up:
+            NSLayoutConstraint.activate([self.topAnchor.constraint(equalTo: pointView.bottomAnchor, constant: -12)])
+        case .down:
+            NSLayoutConstraint.activate([self.bottomAnchor.constraint(equalTo: pointView.topAnchor, constant: 12)])
+        case .right:
+            NSLayoutConstraint.activate([self.rightAnchor.constraint(equalTo: pointView.leftAnchor, constant: 0)])
+        case .left:
+            NSLayoutConstraint.activate([self.leftAnchor.constraint(equalTo: pointView.rightAnchor, constant: 0)])
+        case .center:
+            NSLayoutConstraint.activate([
+                self.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
+                self.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
+                self.leadingAnchor.constraint(greaterThanOrEqualTo: mainView.leadingAnchor, constant: 0),
+                self.trailingAnchor.constraint(greaterThanOrEqualTo: mainView.trailingAnchor, constant: 0)
+            ])
+        }
+    }
+    
 }
 
 
@@ -126,6 +225,12 @@ extension UIView {
             completion?()
         }
     }
+    
+    fileprivate var globalFrame: CGRect? {
+        let rootView = UIApplication.shared.keyWindow?.rootViewController?.view
+        return self.convert(self.frame, to: rootView)
+    }
+    
 }
 
 

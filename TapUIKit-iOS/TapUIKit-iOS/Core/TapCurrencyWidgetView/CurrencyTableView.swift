@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyTableView: UIView {
+internal class CurrencyTableView: UIView {
     
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
