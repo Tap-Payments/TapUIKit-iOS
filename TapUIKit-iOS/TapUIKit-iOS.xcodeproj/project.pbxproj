@@ -608,17 +608,10 @@
 		D61A34872A1E0F86007608A0 /* TapCurrencyWidgetView */ = {
 			isa = PBXGroup;
 			children = (
+				D6604BC82A2CD05B00962962 /* CurrencyTableView */,
+				D6604BC72A2CD03F00962962 /* Tooltip */,
 				D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */,
 				D6799D112A1F48C8001A621B /* TapCurrencyWidgetViewModel.swift */,
-				D607A8212A273DFE001F5E36 /* TooltipController.swift */,
-				D607A8252A273E8B001F5E36 /* TooltipView.swift */,
-				D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */,
-				D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */,
-				D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */,
-				D66929472A28675C00A81B98 /* CurrencyTableViewModel.swift */,
-				D60B251E2A2C7AFE007E8F79 /* TriangleView.swift */,
-				D60B25202A2C7BB9007E8F79 /* Tooltip.swift */,
-				D60B25222A2C7BE6007E8F79 /* TooltipManager.swift */,
 			);
 			path = TapCurrencyWidgetView;
 			sourceTree = "<group>";
@@ -629,6 +622,29 @@
 				D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */,
 			);
 			path = TapCurrencyWidgetView;
+			sourceTree = "<group>";
+		};
+		D6604BC72A2CD03F00962962 /* Tooltip */ = {
+			isa = PBXGroup;
+			children = (
+				D607A8212A273DFE001F5E36 /* TooltipController.swift */,
+				D607A8252A273E8B001F5E36 /* TooltipView.swift */,
+				D60B251E2A2C7AFE007E8F79 /* TriangleView.swift */,
+				D60B25202A2C7BB9007E8F79 /* Tooltip.swift */,
+				D60B25222A2C7BE6007E8F79 /* TooltipManager.swift */,
+			);
+			path = Tooltip;
+			sourceTree = "<group>";
+		};
+		D6604BC82A2CD05B00962962 /* CurrencyTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */,
+				D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */,
+				D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */,
+				D66929472A28675C00A81B98 /* CurrencyTableViewModel.swift */,
+			);
+			path = CurrencyTableView;
 			sourceTree = "<group>";
 		};
 		E809F65D24961F1400670A39 /* GatewayChip */ = {
