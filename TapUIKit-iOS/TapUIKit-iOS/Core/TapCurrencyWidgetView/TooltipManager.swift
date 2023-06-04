@@ -196,12 +196,14 @@ extension UIView {
                     let triangleConstraintConstant: CGFloat = (pointView?.frame.origin.x ?? 0) + leadingConstraintConstant + 5
                     NSLayoutConstraint.activate([
                         tooltipView.topIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
+                        tooltipView.bottomIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
                         tooltipView.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -1 * leadingConstraintConstant),
                     ])
                 } else {
                     let triangleConstraintConstant: CGFloat = (pointView?.frame.origin.x ?? 0) + leadingConstraintConstant + 5
                     NSLayoutConstraint.activate([
                         tooltipView.topIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
+                        tooltipView.bottomIndicatorView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: triangleConstraintConstant),
                         tooltipView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: leadingConstraintConstant),
                     ])
                 }
