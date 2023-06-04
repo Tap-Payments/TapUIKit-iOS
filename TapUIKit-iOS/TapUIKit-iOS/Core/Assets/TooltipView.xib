@@ -25,16 +25,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRX-8h-bLj" customClass="CardVisualEffectView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="10" width="258" height="250"/>
+                    <rect key="frame" x="10" y="10" width="238" height="240"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3A-xr-ujR">
-                    <rect key="frame" x="10" y="69" width="238" height="175"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3A-xr-ujR">
+                    <rect key="frame" x="10" y="69" width="238" height="181"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="175" id="JZ1-qe-tAf"/>
-                        <constraint firstAttribute="width" constant="200" id="OF4-nf-X1N"/>
-                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-tL-pdh" customClass="DownTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
                     <rect key="frame" x="122" y="244" width="14" height="6"/>
@@ -53,7 +50,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yqV-UD-WAi" customClass="RightTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="248" y="149.66666666666666" width="6" height="14"/>
+                    <rect key="frame" x="210" y="149.66666666666666" width="6" height="14"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="5EF-nD-2y8"/>
@@ -61,7 +58,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umn-4Q-kkC" userLabel="Top Indicator View" customClass="UpTriangleView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="122" y="63" width="14" height="6"/>
+                    <rect key="frame" x="122" y="0.0" width="14" height="6"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="6" id="n6g-Wf-2eY"/>
@@ -72,18 +69,10 @@
             <viewLayoutGuide key="safeArea" id="X6b-sW-nzO"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="rrE-kd-BUB" firstAttribute="trailing" secondItem="i3A-xr-ujR" secondAttribute="leading" id="2Am-ur-gia"/>
-                <constraint firstItem="yqV-UD-WAi" firstAttribute="leading" secondItem="i3A-xr-ujR" secondAttribute="trailing" id="4Mk-DR-ZlH"/>
-                <constraint firstItem="IRX-8h-bLj" firstAttribute="leading" secondItem="zzG-dW-eYa" secondAttribute="leading" id="6Wr-AT-gGt"/>
-                <constraint firstItem="i3A-xr-ujR" firstAttribute="leading" secondItem="X6b-sW-nzO" secondAttribute="leading" constant="10" id="93Y-wh-CsD"/>
-                <constraint firstAttribute="bottom" secondItem="i3A-xr-ujR" secondAttribute="bottom" constant="10" id="PRR-gC-OxN"/>
-                <constraint firstAttribute="trailing" secondItem="IRX-8h-bLj" secondAttribute="trailing" id="RmY-8p-f5Y"/>
-                <constraint firstItem="i3A-xr-ujR" firstAttribute="top" secondItem="X6b-sW-nzO" secondAttribute="top" constant="10" id="Z4T-rp-XwF"/>
+                <constraint firstItem="IRX-8h-bLj" firstAttribute="leading" secondItem="zzG-dW-eYa" secondAttribute="leading" constant="10" id="6Wr-AT-gGt"/>
+                <constraint firstAttribute="trailing" secondItem="IRX-8h-bLj" secondAttribute="trailing" constant="10" id="RmY-8p-f5Y"/>
                 <constraint firstItem="Umn-4Q-kkC" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" id="b9B-2f-boQ"/>
-                <constraint firstItem="dvf-tL-pdh" firstAttribute="top" secondItem="i3A-xr-ujR" secondAttribute="bottom" id="bi1-gD-aww"/>
-                <constraint firstItem="i3A-xr-ujR" firstAttribute="top" secondItem="Umn-4Q-kkC" secondAttribute="bottom" id="c7v-AX-Sn3"/>
-                <constraint firstItem="X6b-sW-nzO" firstAttribute="trailing" secondItem="i3A-xr-ujR" secondAttribute="trailing" constant="10" id="cPP-3H-ezZ"/>
-                <constraint firstAttribute="bottom" secondItem="IRX-8h-bLj" secondAttribute="bottom" id="hK8-Nj-fvx"/>
+                <constraint firstAttribute="bottom" secondItem="IRX-8h-bLj" secondAttribute="bottom" constant="10" id="hK8-Nj-fvx"/>
                 <constraint firstItem="IRX-8h-bLj" firstAttribute="top" secondItem="zzG-dW-eYa" secondAttribute="top" constant="10" id="sJb-IM-4eP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
