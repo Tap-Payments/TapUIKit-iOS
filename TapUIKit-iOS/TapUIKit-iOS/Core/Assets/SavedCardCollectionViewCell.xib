@@ -25,14 +25,14 @@
                             <constraint firstAttribute="height" priority="750" constant="40" id="xHu-7Z-Y9M"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O8V-dW-sfo">
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O8V-dW-sfo">
                         <rect key="frame" x="86.5" y="-7.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="ZK0-Z0-AHe"/>
                             <constraint firstAttribute="width" secondItem="O8V-dW-sfo" secondAttribute="height" multiplier="1:1" id="vWn-Ht-LOf"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAf-DC-1aD">
+                    <button hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAf-DC-1aD">
                         <rect key="frame" x="82" y="-12" width="24" height="24"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
