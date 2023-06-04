@@ -8,8 +8,6 @@
 
 import Foundation
 import TapCardVlidatorKit_iOS
-import PassKit
-
 
 /// Payment Options Response model.
 public struct TapPaymentOptionsReponseModel: IdentifiableWithString {
@@ -102,7 +100,7 @@ extension TapPaymentOptionsReponseModel: Decodable {
         let object                          = try container.decode(String.self, forKey: .object)
         var paymentOptions                  = try container.decode([PaymentOption].self, forKey: .paymentOptions)
         let currency                        = try container.decode(TapCurrencyCode.self, forKey: .currency)
-        var supportedCurrenciesAmounts      = try container.decode([AmountedCurrency].self, forKey: .supportedCurrenciesAmounts)
+        let supportedCurrenciesAmounts      = try container.decode([AmountedCurrency].self, forKey: .supportedCurrenciesAmounts)
         var savedCards                      = try container.decodeIfPresent([SavedCard].self, forKey: .savedCards)
         let merchantCountryCode             = try container.decodeIfPresent(String.self, forKey: .merchantCountryCode)
         let order                           = try container.decodeIfPresent(Order.self, forKey: .order)
@@ -110,7 +108,6 @@ extension TapPaymentOptionsReponseModel: Decodable {
         
         paymentOptions = paymentOptions.sorted(by: { $0.orderBy < $1.orderBy })
         
-        // Move any new card brand added for web based payment methods to a default one, to allow backend add new redirection payment methods on the fly
         for i in 0...paymentOptions.count-1 {
             if paymentOptions[i].brand == .unknown {
                 if paymentOptions[i].paymentType == .Web {
@@ -119,15 +116,7 @@ extension TapPaymentOptionsReponseModel: Decodable {
             }
         }
         
-        
-        // Sort the currencies
-        supportedCurrenciesAmounts = supportedCurrenciesAmounts.sorted(by: { $0.orderBy < $1.orderBy })
-        
-        // Sort the payment options and filter any unknown out
         paymentOptions = paymentOptions.filter { ($0.brand != .unknown || $0.paymentType == .ApplePay) && $0.paymentType != .All }
-        // Remove the apple pay, if the device is not supporting it
-        paymentOptions = paymentOptions.filter{ $0.paymentType != .ApplePay || ($0.paymentType == .ApplePay && PKPaymentAuthorizationController.canMakePayments(usingNetworks: $0.applePayNetworkMapper())) }
-        // Let us sort it out
         paymentOptions = paymentOptions.sorted(by: { $0.orderBy < $1.orderBy })
         
         // Filter saved cards based on allowed card types passed by the user when loading the SDK session
@@ -144,7 +133,7 @@ extension TapPaymentOptionsReponseModel: Decodable {
                   savedCards:                   savedCards,
                   merchantCountryCode:          merchantCountryCode,
                   order:                        order,
-                  loyalty:                      .init(id: "", bankName: "ADCB", bankLogo: "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/78/00/ed/7800edd0-5854-b6ce-458f-dfcf75caa495/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1024x1024.jpg", loyaltyProgramName: "ADCB TouchPoints", loyaltyPointsName: "TouchPoints", termsConditionsLink: "https://www.adcb.com/en/personal/adcb-for-you/touchpoints/touchpoints-rewards.aspx", supportedCurrencies: [.init(currency: AmountedCurrency.init(.AED, 1000, "", 2, 50,orderBy: 1), balanceAmount: 1000, minimumAmount: 100),.init(currency: AmountedCurrency.init(.EGP, 5000, "", 2, 10,orderBy: 1), balanceAmount: 5000, minimumAmount: 500)], transactionsCount: "50.000"),
+                  loyalty:                      .init(id: "", bankName: "ADCB", bankLogo: "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/78/00/ed/7800edd0-5854-b6ce-458f-dfcf75caa495/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1024x1024.jpg", loyaltyProgramName: "ADCB TouchPoints", loyaltyPointsName: "TouchPoints", termsConditionsLink: "https://www.adcb.com/en/personal/adcb-for-you/touchpoints/touchpoints-rewards.aspx", supportedCurrencies: [.init(currency: AmountedCurrency.init(.AED, 1000, "", 2, 50), balanceAmount: 1000, minimumAmount: 100),.init(currency: AmountedCurrency.init(.EGP, 5000, "", 2, 10), balanceAmount: 5000, minimumAmount: 500)], transactionsCount: "50.000"),
                   saveCardForTapCollectionFields: .init(contactDetails: [.email,.phone], shippingDetails: [.flat,.additionalLine,.city,.country]))
     }
 }

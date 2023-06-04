@@ -9,7 +9,8 @@
 import TapCardVlidatorKit_iOS
 
 /// Saved Card model.
-@objcMembers public final class SavedCard: NSObject, OptionallyIdentifiableWithString {
+@objcMembers
+@objc(CheckoutSavedCard) public final class SavedCard: NSObject, OptionallyIdentifiableWithString {
     
     // MARK: - Public -
     // MARK: Properties

@@ -5,11 +5,13 @@
             "close": "إنهاء الدفع",
             "confirm": "تأكيد",
             "next": "التالي",
+            "now": "الآن",
             "pay": "إدفع",
             "resend": "إعادة إرسال",
             "signin": "دخول"
         },
         "Common": {
+            "availableInOtherCurrencies": "متاح لعملات أخرى",
             "cancel": "إلغاء",
             "change": "تعديل",
             "close": "غلق",
@@ -25,6 +27,10 @@
             "phone": "الهاتف",
             "previous": "السابق",
             "recent": "كروت سابقة"
+        },
+        "CurrencyChangeWidget": {
+            "confirmButton": "تأكيد",
+            "header": "متاح بعد التحويل لهذه العملة"
         },
         "DeleteCard": {
             "cancel": "إلغاء",
@@ -77,6 +83,14 @@
             "Discount": "خصم",
             "hideDesc": "إخفاء الوصف",
             "showDesc": "إظهار الوصف"
+        },
+        "NFC": {
+            "disabledNFC": "NFC غير ممكّن",
+            "enableNFC": "يرجى تمكين NFC",
+            "nfcDescription": "الاتصال قريب المدى عبارة عن مجموعة من بروتوكولات الاتصال للاتصال بين جهازين إلكترونيين على مسافة 4 سم أو أقل.",
+            "nfcUnsupported": "NFC غير مدعوم!",
+            "scan": "جاهز للمسح الضوئي ، أضف البطاقة أسفل الجهاز لمسحها ضوئيًا.",
+            "scanSuccess": "تم المسح بنجاح!"
         },
         "TapAsyncSection": {
             "paymentCodeTitleLabel": "كود العملية",
@@ -165,11 +179,13 @@
             "close": "Close",
             "confirm": "Confirm",
             "next": "Next",
+            "now": "now",
             "pay": "Pay",
             "resend": "Resend OTP",
             "signin": "Signin"
         },
         "Common": {
+            "availableInOtherCurrencies": "Available in another currency",
             "cancel": "Cancel",
             "change": "change",
             "close": "CLOSE",
@@ -185,6 +201,10 @@
             "phone": "phone",
             "previous": "Previous",
             "recent": "Recent"
+        },
+        "CurrencyChangeWidget": {
+            "confirmButton": "Confirm",
+            "header": "is available after converting to the supported currency"
         },
         "DeleteCard": {
             "cancel": "Cancel",
@@ -237,6 +257,14 @@
             "Discount": "Discount",
             "hideDesc": "Hide Description",
             "showDesc": "Show Description"
+        },
+        "NFC": {
+            "disabledNFC": "NFC not enabled",
+            "enableNFC": "Please enable NFC",
+            "nfcDescription": "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less.",
+            "nfcUnsupported": "NFC is not supported!",
+            "scan": "Ready to scan, add the card under the device to scan it.",
+            "scanSuccess": "Scanned Successful!"
         },
         "TapAsyncSection": {
             "paymentCodeTitleLabel": "Order code",

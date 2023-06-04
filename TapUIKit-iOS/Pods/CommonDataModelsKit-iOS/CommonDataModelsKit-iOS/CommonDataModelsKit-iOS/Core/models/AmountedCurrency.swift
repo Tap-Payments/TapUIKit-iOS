@@ -29,8 +29,6 @@ import UIKit
     /// Will hold the list of urls to support different themes for the icons
     public var currencyLogos:CurrencyLogos? = nil
     
-    /// Ordering parameter.
-    public let orderBy: Int
     
     /// Will do the correct fetching of which image to use, the default backend url or the correct light-dark cdn hosted url
     /// - Parameter showMonoForLightMode: Indicates whether to show the light or the light colored
@@ -72,11 +70,11 @@ import UIKit
     }
     // MARK: Methods
     
-    @objc public convenience init(_ currency: TapCurrencyCode, _ amount: Double, _ flag: String, _ decimalDigits: Int = 2, _ rate: Double = 1, currencyLogos:CurrencyLogos? = nil, orderBy:Int = 1000) {
-        self.init(currency, amount, currency.symbolRawValue, flag, decimalDigits, rate, currencyLogos: currencyLogos, orderBy:orderBy)
+    @objc public convenience init(_ currency: TapCurrencyCode, _ amount: Double, _ flag: String, _ decimalDigits: Int = 2, _ rate: Double = 1, currencyLogos:CurrencyLogos? = nil) {
+        self.init(currency, amount, currency.symbolRawValue, flag, decimalDigits, rate, currencyLogos: currencyLogos)
     }
     
-    @objc public init(_ currency: TapCurrencyCode, _ amount: Double, _ currencySymbol: String, _ flag: String, _ decimalDigits: Int = 2, _ rate: Double = 1, currencyLogos:CurrencyLogos? = nil, orderBy:Int = 1000) {
+    @objc public init(_ currency: TapCurrencyCode, _ amount: Double, _ currencySymbol: String, _ flag: String, _ decimalDigits: Int = 2, _ rate: Double = 1, currencyLogos:CurrencyLogos? = nil) {
         
         self.currency       = currency
         self.amount         = amount
@@ -85,7 +83,6 @@ import UIKit
         self.decimalDigits  = decimalDigits
         self.rate           = rate
         self.currencyLogos  = currencyLogos
-        self.orderBy        = orderBy
     }
     
     // MARK: - Private -
@@ -99,7 +96,6 @@ import UIKit
         case flag           = "flag"
         case currencyLogos  = "logos"
         case decimalDigits  = "decimal_digit"
-        case orderBy        = "order_by"
     }
     
     public override func isEqual(_ object: Any?) -> Bool {
@@ -128,8 +124,3 @@ import UIKit
     /// The light_colored icons urls
     public let light_colored: CurrencyLogo?
 }
-
-
-
-// MARK: - SortableByOrder
-extension AmountedCurrency: SortableByOrder {}
