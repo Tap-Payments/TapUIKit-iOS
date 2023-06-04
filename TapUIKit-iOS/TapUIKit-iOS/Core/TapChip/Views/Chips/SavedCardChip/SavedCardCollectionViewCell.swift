@@ -63,6 +63,7 @@ import SnapKit
         changedEditMode(to: viewModel.editMode)
         changedEditMode(to: viewModel.editMode)
         // setup the long press gesture recognizer
+        setupLongPressGestureRecognizer()
     }
     
     /// Will add the long press gesture recognizer to the cell.
