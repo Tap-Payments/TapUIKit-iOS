@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import TapThemeManager2020
+import LocalisationManagerKit_iOS
 /// A view contain the Tooltip
 internal class TooltipView: UIView {
     /// Top arrow view
@@ -78,11 +79,11 @@ extension TooltipView {
         
         cardBlurView.scale = 1
         cardBlurView.blurRadius = 6
-        cardBlurView.colorTint = .init(tap_hex: "\(themePath).backgroundColor")
+        cardBlurView.colorTint = TapThemeManager.colorValue(for: "\(themePath).backgroundColor")
         cardBlurView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
         cardBlurView.layer.masksToBounds = true
         cardBlurView.clipsToBounds = false
-        cardBlurView.colorTintAlpha = 1
+        cardBlurView.colorTintAlpha = 0.75
         
         contentView.backgroundColor = .clear
         contentView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(themePath).cornerRadius")
