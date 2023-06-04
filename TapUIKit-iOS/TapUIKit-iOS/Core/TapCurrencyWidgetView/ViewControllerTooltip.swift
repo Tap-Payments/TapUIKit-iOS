@@ -8,32 +8,30 @@
 
 import Foundation
 
-import UIKit
-
-class TooltipController: Tooltip {
-   
+/// Class to controls the Tooltip
+internal class TooltipController: Tooltip {
+    /// View to be shown from
+    var view: UIView
+    /// Arrow direction
+    var direction: TooltipDirection
+    /// View to be shown
+    var viewToShow: UIView
+    /// View to be shown height
+    var height: CGFloat
+    /// View to be shown width
+    var width: CGFloat
+    /// Current App language
+    var language: String
     
     
-    init(view: UIView, direction: TooltipDirection, viewToShow: UIView, height: CGFloat, width: CGFloat) {
+    init(view: UIView, direction: TooltipDirection, viewToShow: UIView, height: CGFloat, width: CGFloat, language: String) {
         self.view = view
         self.direction = direction
-        self.key = "ds"
+        self.language = language
         self.viewToShow = viewToShow
         self.height = height
         self.width = width
     }
-    var key: String
-    
-    var view: UIView
-    
-    var direction: TooltipDirection
-    
-    var viewToShow: UIView
-    
-    var height: CGFloat
-    
-    var width: CGFloat
-    
     
 }
 

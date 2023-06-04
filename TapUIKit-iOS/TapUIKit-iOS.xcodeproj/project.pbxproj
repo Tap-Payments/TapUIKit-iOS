@@ -25,6 +25,9 @@
 		D607A8242A273E66001F5E36 /* TooltipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D607A8232A273E66001F5E36 /* TooltipView.xib */; };
 		D607A8262A273E8B001F5E36 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607A8252A273E8B001F5E36 /* TooltipView.swift */; };
 		D607A82A2A2780E5001F5E36 /* CurrencyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */; };
+		D60B251F2A2C7AFE007E8F79 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B251E2A2C7AFE007E8F79 /* TriangleView.swift */; };
+		D60B25212A2C7BB9007E8F79 /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B25202A2C7BB9007E8F79 /* Tooltip.swift */; };
+		D60B25232A2C7BE6007E8F79 /* TooltipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B25222A2C7BE6007E8F79 /* TooltipManager.swift */; };
 		D61A34892A1E0FAF007608A0 /* TapCurrencyWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */; };
 		D61A348B2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */; };
 		D61A348E2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */; };
@@ -289,6 +292,9 @@
 		D607A8232A273E66001F5E36 /* TooltipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TooltipView.xib; sourceTree = "<group>"; };
 		D607A8252A273E8B001F5E36 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		D607A8292A2780E5001F5E36 /* CurrencyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableView.swift; sourceTree = "<group>"; };
+		D60B251E2A2C7AFE007E8F79 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		D60B25202A2C7BB9007E8F79 /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
+		D60B25222A2C7BE6007E8F79 /* TooltipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipManager.swift; sourceTree = "<group>"; };
 		D61A34882A1E0FAF007608A0 /* TapCurrencyWidgetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TapCurrencyWidgetView.xib; sourceTree = "<group>"; };
 		D61A348A2A1E0FDE007608A0 /* TapCurrencyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetView.swift; sourceTree = "<group>"; };
 		D61A348D2A1E15CE007608A0 /* TapCurrencyWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCurrencyWidgetViewController.swift; sourceTree = "<group>"; };
@@ -610,6 +616,9 @@
 				D66929432A285ACE00A81B98 /* CurrencyTableViewCell.swift */,
 				D66929452A285D0100A81B98 /* CurrencyTableCellViewModel.swift */,
 				D66929472A28675C00A81B98 /* CurrencyTableViewModel.swift */,
+				D60B251E2A2C7AFE007E8F79 /* TriangleView.swift */,
+				D60B25202A2C7BB9007E8F79 /* Tooltip.swift */,
+				D60B25222A2C7BE6007E8F79 /* TooltipManager.swift */,
 			);
 			path = TapCurrencyWidgetView;
 			sourceTree = "<group>";
@@ -1757,6 +1766,7 @@
 				E82A56CA249B8A3C00E3F00D /* CurrencyChipViewModel.swift in Sources */,
 				E80E8AA52487C053009AF18F /* Constants.swift in Sources */,
 				E863D52929850AB3009489AC /* Country.swift in Sources */,
+				D60B25212A2C7BB9007E8F79 /* Tooltip.swift in Sources */,
 				E866AC4628E5865E00D80568 /* TapSaveCardView.swift in Sources */,
 				E80C053524C437DC00B12C00 /* TapActionButtonViewModel.swift in Sources */,
 				E8437FB324C05E3E0059F1B8 /* TapOtpView.swift in Sources */,
@@ -1840,6 +1850,7 @@
 				E8437F5924BC7D260059F1B8 /* TapHintViewStatusEnum.swift in Sources */,
 				E87B3C6824C707F700F1005A /* TapWebViewModel.swift in Sources */,
 				E83FEF7029C86C8F00F5077A /* CardVisualEffectView.swift in Sources */,
+				D60B251F2A2C7AFE007E8F79 /* TriangleView.swift in Sources */,
 				E82A56B8249A3FF400E3F00D /* TapGatewyHorizontalHeaderView.swift in Sources */,
 				E88834AE2979CCDF006225E6 /* TapAsyncView.swift in Sources */,
 				E8437FB424C05E3E0059F1B8 /* BottomLineTextField.swift in Sources */,
@@ -1851,6 +1862,7 @@
 				E866AC4028E5751B00D80568 /* PoweredByTapView.swift in Sources */,
 				E863D52729850AB3009489AC /* CountryManager.swift in Sources */,
 				E8C590FB24922AF600E03424 /* TapAmountSectionViewModel.swift in Sources */,
+				D60B25232A2C7BE6007E8F79 /* TooltipManager.swift in Sources */,
 				E863D5142984ED6B009489AC /* CustomerShippingDataCollectionViewModel.swift in Sources */,
 				E83FEF7129C86C8F00F5077A /* UIViewEffectViewiOS14.swift in Sources */,
 				E8861D3B249F75D60002FEDE /* ItemCellViewModel.swift in Sources */,

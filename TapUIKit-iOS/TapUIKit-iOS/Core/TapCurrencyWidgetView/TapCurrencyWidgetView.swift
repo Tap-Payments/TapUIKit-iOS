@@ -61,8 +61,9 @@ public class TapCurrencyWidgetView: UIView {
         guard let viewModel = viewModel else {
             return
         }
+        
         currencyTableView.changeViewModel(tapCurrencyWidgetViewModel: viewModel)
-        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .down, viewToShow: currencyTableView, height: 157, width: 224), mainView: self.findViewController()?.view ?? self)
+        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .up, viewToShow: currencyTableView, height: 157, width: 224, language: TapLocalisationManager.shared.localisationLocale ?? "en"), mainView: self.findViewController()?.view ?? self)
     }
     
     /**
@@ -132,11 +133,15 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
     /// Responsible show correct arrow position
     private func showChevronCorrectPosition(isExpanded: Bool) {
         let dropDownThemePath = "\(themePath).currencyDropDown"
+
         if isExpanded {
             chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
         } else {
             chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
         }
+        
+        chevronImageView.image = chevronImageView.image?.withRenderingMode(.alwaysTemplate)
+        chevronImageView.tap_theme_tintColor = .init(keyPath: "\(dropDownThemePath).arrowDownTint")
     }
     
     /// Responsible show or hide currency drop down button
@@ -213,6 +218,8 @@ extension TapCurrencyWidgetView {
         let dropDownThemePath = "\(themePath).currencyDropDown"
 
         chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
+        chevronImageView.image = chevronImageView.image?.withRenderingMode(.alwaysTemplate)
+        chevronImageView.tap_theme_tintColor = .init(keyPath: "\(dropDownThemePath).arrowDownTint")
 
         layoutIfNeeded()
     }
@@ -230,7 +237,7 @@ internal extension UIView {
      An extension method to detect the viewcontroller which the current view is embedded in
      - Returns: UIViewcontroller that holds the current view or nil if not found for any case
      **/
-    func findViewController() -> UIViewController? {
+    fileprivate func findViewController() -> UIViewController? {
         if let nextResponder = self.next as? UIViewController {
             return nextResponder
         } else if let nextResponder = self.next as? UIView {

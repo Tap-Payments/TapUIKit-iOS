@@ -21,6 +21,7 @@
     "currencyDropDown": {
       "arrowDownImageName": "chevrondown",
       "arrowUpImageName": "chevronup",
+      "arrowDownTint": "#7C7C7C",
       "backgroundColor": "#000000DE",
       "borderColor": "#3C3737DE",
       "cornerRadius": 8,
@@ -907,6 +908,7 @@
       "currencyDropDown": {
         "backgroundColor": "#000000DE",
         "borderColor": "#3C3737DE",
+        "arrowDownTint": "#7C7C7C",
         "cornerRadius": 8,
         "labelColor": "#CFCFCF99",
         "labelFont": "Roboto-Regular,13",

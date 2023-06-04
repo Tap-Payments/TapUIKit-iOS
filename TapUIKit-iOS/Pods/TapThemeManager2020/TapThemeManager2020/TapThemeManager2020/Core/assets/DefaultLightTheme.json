@@ -22,6 +22,7 @@
       "arrowDownImageName": "chevrondown",
       "arrowUpImageName": "chevronup",
       "backgroundColor": "#FFFFFFBA",
+      "arrowDownTint": "#626262",
       "borderColor": "#3C37371F",
       "cornerRadius": 8,
       "labelColor": "#626262",
