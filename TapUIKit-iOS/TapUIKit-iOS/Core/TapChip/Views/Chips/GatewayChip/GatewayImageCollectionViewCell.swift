@@ -52,7 +52,7 @@ import Nuke
     /// Holds the logic needed to display and fetch all the requied data and displays it inside the cell view
     func reload() {
         // Check if the view model has a valid icon URL
-        guard let iconURLString:String = viewModel.icon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
+        guard let iconURLString:String = viewModel.displayIcon, iconURLString.isValidURL(), let iconURL:URL = URL(string: iconURLString) else { gatewayIconImageView.image = nil
             return
         }
         //Nuke.DataLoader.sharedUrlCache.removeAllCachedResponses()
