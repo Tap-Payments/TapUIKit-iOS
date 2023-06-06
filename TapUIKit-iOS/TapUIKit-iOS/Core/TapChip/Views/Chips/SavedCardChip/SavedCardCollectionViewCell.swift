@@ -180,11 +180,6 @@ extension SavedCardCollectionViewCell {
         
         blurView.colorTint = TapThemeManager.colorValue(for: "\(themePath).blurOverlay.color")
         blurView.colorTintAlpha = CGFloat(TapThemeManager.numberValue(for: "\(themePath).blurOverlay.alpha")?.floatValue ?? 0)
-        
-        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
-        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: TapThemeManager.stringValue(for: "inlineCard.loaderImage") ?? "Black-loader", withExtension: "gif")!)
-        let gif = try! UIImage(gifData: imageData!)
-        loaderGif.setGifImage(gif, loopCount: 100)
     }
     
     /// Listen to light/dark mde changes and apply the correct theme based on the new style
@@ -223,6 +218,11 @@ extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
     
     
     func showLoadingState() {
+        let loadingBudle:Bundle = Bundle.init(for: TapActionButton.self)
+        let imageData = try? Data(contentsOf: loadingBudle.url(forResource: TapThemeManager.stringValue(for: "inlineCard.loaderImage") ?? "Black-loader", withExtension: "gif")!)
+        let gif = try! UIImage(gifData: imageData!)
+        loaderGif.setGifImage(gif, loopCount: 100)
+        
         deleteCardLoadingView.fadeIn(duration:1)
     }
     

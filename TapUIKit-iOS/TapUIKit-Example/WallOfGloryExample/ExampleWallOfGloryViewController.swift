@@ -553,6 +553,10 @@ extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
 
 
 extension ExampleWallOfGloryViewController:TapGenericTableViewModelDelegate {
+    func itemClicked(for viewModel: TapUIKit_iOS.TapGenericTableCellViewModel) {
+        
+    }
+    
     func didSelectTable(item viewModel: TapGenericTableCellViewModel) {
         return
     }
