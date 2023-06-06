@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TapThemeManager2020
 
 internal class CurrencyTableView: UIView {
     

@@ -9,6 +9,7 @@
 import TapThemeManager2020
 import LocalisationManagerKit_iOS
 import Nuke
+import TapThemeManager2020
 
 /// Represents the currency table  view cell that will show the items inside the items table view screen
 @objc public class CurrencyTableViewCell: TapGenericTableCell {

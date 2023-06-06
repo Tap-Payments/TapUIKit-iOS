@@ -9,6 +9,7 @@
 import UIKit
 import Nuke
 import LocalisationManagerKit_iOS
+import TapThemeManager2020
 
 public class TapCurrencyWidgetView: UIView {
     

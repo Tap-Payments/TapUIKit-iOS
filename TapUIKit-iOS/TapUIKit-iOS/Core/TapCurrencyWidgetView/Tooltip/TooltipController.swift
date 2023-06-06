@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TapThemeManager2020
 
 /// Class to controls the Tooltip
 internal class TooltipController: Tooltip {

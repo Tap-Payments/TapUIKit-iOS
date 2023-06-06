@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TapThemeManager2020
 /// Triangle point to up view
 internal class UpTriangleView : UIView {
     
