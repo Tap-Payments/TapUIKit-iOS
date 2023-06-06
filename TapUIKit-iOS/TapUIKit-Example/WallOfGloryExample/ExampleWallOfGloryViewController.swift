@@ -160,10 +160,10 @@ class ExampleWallOfGloryViewController: UIViewController {
         
         gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/knet.png",isDisabled: false, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/knet.png"))
         
-        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/knet.png",isDisabled: true, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/knet.png"))
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "KNET", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/knet.png",isDisabled: false, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/knet.png"))
         
         gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/benefit.png", isDisabled: false, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/benefit.png"))
-        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/benefit.png", isDisabled: true, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/benefit.png"))
+        gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "BENEFIT", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/benefit.png", isDisabled: false, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/benefit.png"))
         
         
         gatewayChipsViewModel.append(GatewayChipViewModel.init(title: "FAWRY", icon: "https://tap-assets.b-cdn.net/payment-options/v2/light/fawry.png", isDisabled: false, disabledIcon: "https://tap-assets.b-cdn.net/payment-options/v2/light/disabled/fawry.png"))
@@ -174,7 +174,7 @@ class ExampleWallOfGloryViewController: UIViewController {
         gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 5678", icon:"https://img.icons8.com/color/2x/visa.png"))
         gatewayChipsViewModel.append(SavedCardCollectionViewCellModel.init(title: "•••• 9012", icon:"https://img.icons8.com/color/2x/mastercard-logo.png"))
         
-        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .GatewayListHeader)
+        tapGatewayChipHorizontalListViewModel = .init(dataSource: gatewayChipsViewModel, headerType: .AllGatewayListHeader)
         tapGatewayChipHorizontalListViewModel.delegate = self
         
         
@@ -330,6 +330,12 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
+    
+    func didShowDisabledItems(isShow showingDisabledItem: Bool) {
+//        print("showingDisabledItem \(showingDisabledItem)")
+        tapGatewayChipHorizontalListViewModel.shouldShowRightButton(show: showingDisabledItem)
+    }
+    
     func deselectedAll() {
         
     }
@@ -411,14 +417,14 @@ extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegat
     }
     
     func headerRightButtonClicked(in headerType: TapHorizontalHeaderType) {
-        tapGatewayChipHorizontalListViewModel.editMode(changed: true)
-        tapGoPayChipsHorizontalListViewModel.editMode(changed: true)
+//        tapGatewayChipHorizontalListViewModel.editMode(changed: true)
+//        tapGoPayChipsHorizontalListViewModel.editMode(changed: true)
     }
     
     
     func headerEndEditingButtonClicked(in headerType: TapHorizontalHeaderType) {
-        tapGatewayChipHorizontalListViewModel.editMode(changed: false)
-        tapGoPayChipsHorizontalListViewModel.editMode(changed: false)
+//        tapGatewayChipHorizontalListViewModel.editMode(changed: false)
+//        tapGoPayChipsHorizontalListViewModel.editMode(changed: false)
     }
     
     func deleteChip(for viewModel: SavedCardCollectionViewCellModel) {

@@ -107,6 +107,11 @@ class TapHorizontalHeaderView: UIView {
      - Parameter show: Indicate whether to show the button or hide it
      */
     internal func shouldShowRightButton(show:Bool) {
+//        print("show \(show) shouldShowRightButton \(shouldShowRightButton)")
+        // No need to change the state and reload if it the same value
+        guard show != shouldShowRightButton else {return}
+//        print("show2 \(show) shouldShowRightButton \(shouldShowRightButton)")
+
         self.shouldShowRightButton = show
     }
     
@@ -117,6 +122,8 @@ class TapHorizontalHeaderView: UIView {
         if !self.shouldShowRightButton {
             rightButton.fadeOut()
             closeButton.fadeOut()
+        }else {
+            rightButton.fadeIn()
         }
     }
     
@@ -185,6 +192,8 @@ class TapHorizontalHeaderView: UIView {
     case SaveCardInputTitle
     /// The SELECT - EDIT header view for the list of payment gatewas and saved cards
     case GatewayListHeader
+    /// The SELECT - EDIT header view for the list of payment gatewas and saved cards
+    case AllGatewayListHeader
     /// The SELECT - EDIT header view for the list of saved card from goPay
     case GoPayListHeader
     /// The SELECT header view for the list of saved payment gatewas and saved cards and goPay is shown
@@ -199,7 +208,7 @@ class TapHorizontalHeaderView: UIView {
     /// Defines the theme entry based on the type
     func themePath() -> String {
         switch self {
-        case .GatewayListHeader,.GoPayListHeader,.GateWayListWithGoPayListHeader,.CardInputTitle,.CardInputTitleOR,.SaveCardInputTitle,.WebViewTitle,.ShippingHeader,.ContactDetailsHeader,.ContactCountryPickerHeader:
+        case .GatewayListHeader,.GoPayListHeader,.GateWayListWithGoPayListHeader,.CardInputTitle,.CardInputTitleOR,.SaveCardInputTitle,.WebViewTitle,.ShippingHeader,.ContactDetailsHeader,.ContactCountryPickerHeader,.AllGatewayListHeader:
             return "horizontalList.headers.gatewayHeader"
         case .NoHeader:
             return ""
@@ -237,6 +246,8 @@ class TapHorizontalHeaderView: UIView {
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.SaveCardHeader.contactDetailsSectionTitle","","")
         case .ContactCountryPickerHeader:
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.SaveCardHeader.contactCountryPickerHeader","","")
+        case .AllGatewayListHeader:
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle","Common.close")
         }
         
         // The left title will be GOPAY always for the case of GoPayListHeader

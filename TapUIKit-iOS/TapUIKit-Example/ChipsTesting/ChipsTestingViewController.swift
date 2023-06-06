@@ -128,6 +128,11 @@ class ChipsTestingViewController: UIViewController {
 }
 
 extension ChipsTestingViewController:TapChipHorizontalListViewModelDelegate {
+    
+    func didShowDisabledItems(isShow showingDisabledItem: Bool) {
+        print(showingDisabledItem)
+    }
+    
     func deselectedAll() {
         
     }
