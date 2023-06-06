@@ -15,6 +15,12 @@ import class TapApplePayKit_iOS.TapApplePayToken
 /// This is the public protocol for outer components to listen to events and data fired from this view model and its attached view
 @objc public protocol TapChipHorizontalListViewModelDelegate {
     /**
+     The event will be fired when user scroll
+     - Parameter showingDisabledItem: Represent if a disabled cell is showing
+     */
+    @objc func didShowDisabledItems(isShow showingDisabledItem: Bool)
+    
+    /**
      The event will be fired when a cell is selected in the attacjed uicollection voew
      - Parameter viewModel: Represents the attached view model of the selectec cell view
      */
@@ -293,6 +299,19 @@ internal protocol TapChipHorizontalViewModelDelegate {
      */
     internal func viewModel(at index:Int) -> GenericTapChipViewModel {
         return dataSource[index]
+    }
+    
+    /**
+     Fire the event and handle the logic of displaying cells
+     - Parameter visibleCells: The positions of visible cells
+     */
+    @objc public func didEndDisplaying(visibleCells indices: [IndexPath]) {
+        
+        let isShowingDisabledCells = indices
+            .map{viewModel(at: $0.row)}
+            .contains { $0.isDisabled }
+        
+        delegate?.didShowDisabledItems(isShow: isShowingDisabledCells)
     }
     
     /**

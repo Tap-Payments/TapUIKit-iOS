@@ -31,6 +31,8 @@ import SnapKit
     @IBOutlet weak var deleteCardButton: UIButton!
     /// Holds the last style theme applied
     private var lastUserInterfaceStyle:UIUserInterfaceStyle = .light
+    /// Holds the long press recognizer to start the card deletion process
+    private var longPressRecognizer: UILongPressGestureRecognizer?
     /// view model that will control the cell view
     @objc public var viewModel:SavedCardCollectionViewCellModel = .init() {
         didSet{
@@ -60,6 +62,28 @@ import SnapKit
         // Apply the editing ui if needed
         changedEditMode(to: viewModel.editMode)
         changedEditMode(to: viewModel.editMode)
+        // setup the long press gesture recognizer
+        setupLongPressGestureRecognizer()
+    }
+    
+    /// Will add the long press gesture recognizer to the cell.
+    internal func setupLongPressGestureRecognizer() {
+        // Let us remove it, if it was added before
+        if let nonNullLongPressRecognizer = longPressRecognizer {
+            removeGestureRecognizer(nonNullLongPressRecognizer)
+        }
+        // Configure the recognizer
+        longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(savedCardLongPressed))
+        // let us add it, again
+        if let nonNullLongPressRecognizer = longPressRecognizer {
+            addGestureRecognizer(nonNullLongPressRecognizer)
+        }
+    }
+    
+    /// Handles the post logic needed when a saved card cell is long pressed
+    @objc internal func savedCardLongPressed(sender: UILongPressGestureRecognizer) {
+        // let us fire the delete process
+        viewModel.deleteChip()
     }
     
     override func selectStatusChaned(with status:Bool) {
