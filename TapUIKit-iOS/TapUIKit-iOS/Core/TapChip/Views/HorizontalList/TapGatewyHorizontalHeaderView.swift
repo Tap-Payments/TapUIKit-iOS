@@ -7,7 +7,7 @@
 //
 
 import TapThemeManager2020
-import class LocalisationManagerKit_iOS.TapLocalisationManager
+import LocalisationManagerKit_iOS
 import class CommonDataModelsKit_iOS.TapCommonConstants
 
 /// The protocol to listen to events fired from the header left and right accessories
@@ -44,6 +44,10 @@ class TapHorizontalHeaderView: UIView {
     @IBOutlet var contentView: UIView!
     /// Subscribe to this to get notified upon fired events
     var delegate:TapHorizontalHeaderDelegate?
+    /// The stack view that holds the right elements
+    @IBOutlet weak var rightStackView: UIStackView!
+    /// The info image view to be displayed beside the right button
+    @IBOutlet weak var rightInfoImageView: UIImageView!
     
     /// Defines which header view should be loaded
     var headerType:TapHorizontalHeaderType? = nil {
@@ -119,11 +123,13 @@ class TapHorizontalHeaderView: UIView {
      Will be fired you want to hide or show the right button accessory
      */
     internal func handleShowingTheRightButton() {
-        if !self.shouldShowRightButton {
-            rightButton.fadeOut()
-            closeButton.fadeOut()
-        }else {
-            rightButton.fadeIn()
+        DispatchQueue.main.async {
+            if !self.shouldShowRightButton {
+                self.rightStackView.fadeOut()
+                self.closeButton.fadeOut()
+            }else {
+                self.rightStackView.fadeIn()
+            }
         }
     }
     
@@ -134,10 +140,10 @@ class TapHorizontalHeaderView: UIView {
     private func adjustRightButtonAccessory(with editing:Bool) {
         guard self.shouldShowRightButton else { return }
         if editing {
-            rightButton.fadeOut()
+            rightStackView.fadeOut()
             closeButton.fadeIn()
         }else {
-            rightButton.fadeIn()
+            rightStackView.fadeIn()
             closeButton.fadeOut()
         }
     }
@@ -162,6 +168,7 @@ class TapHorizontalHeaderView: UIView {
         leftButton.setTitle(leftTitle, for: .normal)
         rightButton.setTitle(rightTitle, for: .normal)
         closeButton.setTitle(closeEditTitle, for: .normal)
+        rightStackView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
     }
     
     
@@ -227,7 +234,7 @@ class TapHorizontalHeaderView: UIView {
         
         switch self {
         case .GatewayListHeader,.GoPayListHeader:
-            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle","Common.close")
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","Common.availableInOtherCurrencies","Common.close")
         case .GateWayListWithGoPayListHeader:
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","","")
         case .NoHeader:
@@ -247,7 +254,7 @@ class TapHorizontalHeaderView: UIView {
         case .ContactCountryPickerHeader:
             (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.SaveCardHeader.contactCountryPickerHeader","","")
         case .AllGatewayListHeader:
-            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","HorizontalHeaders.GatewayHeader.rightTitle","Common.close")
+            (leftTitleKey,rightTitleKey,endEditTitleKey) = ("HorizontalHeaders.GatewayHeader.leftTitle","Common.availableInOtherCurrencies","Common.close")
         }
         
         // The left title will be GOPAY always for the case of GoPayListHeader
@@ -277,6 +284,8 @@ extension TapHorizontalHeaderView {
         
         rightButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).rightButton.labelTextFont")
         rightButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).rightButton.labelTextColor"), forState: .normal)
+        
+        rightInfoImageView.tap_theme_tintColor = .init(keyPath: "\(themePath).rightButton.labelTextColor")
         
         closeButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).rightButton.labelTextFont")
         closeButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).rightButton.labelTextColor"), forState: .normal)

@@ -332,7 +332,7 @@ extension ExampleWallOfGloryViewController:TapAmountSectionViewModelDelegate {
 extension ExampleWallOfGloryViewController:TapChipHorizontalListViewModelDelegate {
     
     func didShowDisabledItems(isShow showingDisabledItem: Bool) {
-//        print("showingDisabledItem \(showingDisabledItem)")
+        print("showingDisabledItem \(showingDisabledItem)")
         tapGatewayChipHorizontalListViewModel.shouldShowRightButton(show: showingDisabledItem)
     }
     
