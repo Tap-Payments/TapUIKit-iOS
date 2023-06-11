@@ -73,7 +73,7 @@ DEPENDENCIES:
   - TapThemeManager2020
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Capable
     - CommonDataModelsKit-iOS
     - EasyTipView
@@ -121,6 +121,6 @@ SPEC CHECKSUMS:
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
   TapThemeManager2020: 5e2f95c0e20ec8aa77f0309720db03ad73d4749c
 
-PODFILE CHECKSUM: 414980f1cafcefca3f397fe623b317790be2785c
+PODFILE CHECKSUM: d0718e1a7a4b351bf6b94c8fc2fec10d0a0aefcb
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.1
