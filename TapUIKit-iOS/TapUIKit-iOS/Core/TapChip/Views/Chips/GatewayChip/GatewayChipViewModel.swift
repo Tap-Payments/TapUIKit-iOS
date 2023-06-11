@@ -37,6 +37,10 @@
         cellDelegate?.changedEditMode(to: to)
     }
     
+    public override func changedDisabled(to: Bool) {
+        cellDelegate?.changedDisabledMode(to: to)
+    }
+    
     // MARK:- Internal methods
     
     internal override  func correctCellType(for cell:GenericTapChip) -> GenericTapChip {

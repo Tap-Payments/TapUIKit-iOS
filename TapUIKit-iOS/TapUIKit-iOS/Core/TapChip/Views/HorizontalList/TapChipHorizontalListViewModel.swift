@@ -208,6 +208,24 @@ internal protocol TapChipHorizontalViewModelDelegate {
         cellDelegate?.deselectAll()
     }
     
+    /// Call this method to select a certain cell
+    /// - Parameter with paymentOptionIdentifier: The id of the payment option you want to select
+    /// - Parameter shouldAnimate: If set to true, the list will  scroll to the selected option. Default is false
+    @objc public func selectCell(with paymentOptionIdentifier:String, shouldAnimate:Bool = false) {
+        // let us get the index of the cell and make sure the provided view model exists in the data source
+        guard let cellIndex:Int = dataSource.firstIndex(where: { $0.paymentOptionIdentifier == paymentOptionIdentifier }) else { return }
+        // let us create the indexpath and then select then scroll to it if needed
+        let indexPath = IndexPath(item: cellIndex, section: 0)
+        DispatchQueue.main.async {
+            // Let us propagate the selection events
+            //self.didSelectItem(at: cellIndex)
+            self.listView?.viewModel.selectedChip = nil
+            self.listView?.viewModel.didSelectItem(at: cellIndex)
+            // let us select it UI wise
+            self.listView?.collectionView.selectItem(at: indexPath, animated: shouldAnimate, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+            
+        }
+    }
     
     /**
      Will be fired you want to hide or show the right button accessory
@@ -302,7 +320,7 @@ internal protocol TapChipHorizontalViewModelDelegate {
      - Parameter index: The position of the cell you want the view model of it
      - Returns: The view model that is associated to the given cell index
      */
-    internal func viewModel(at index:Int) -> GenericTapChipViewModel {
+    public func viewModel(at index:Int) -> GenericTapChipViewModel {
         return dataSource[index]
     }
     

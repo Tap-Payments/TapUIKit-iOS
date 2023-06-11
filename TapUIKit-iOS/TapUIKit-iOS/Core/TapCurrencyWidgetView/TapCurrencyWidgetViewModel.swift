@@ -46,13 +46,13 @@ public class TapCurrencyWidgetViewModel:NSObject {
     /// The Amount user will pay when choose this payment option
     private var convertedAmounts: [AmountedCurrency]
     /// The  payment option to be shown
-    private var paymentOption: PaymentOption
+    public var paymentOption: PaymentOption
     /// An external delegate to listen to events fired from the currency widget view
     private var delegate:TapCurrencyWidgetViewModelDelegate?
     /// State of currency drop down menu
     private var isCurrencyDropDownShown: Bool = false
     /// The Amount user will pay when choose this payment option
-    private var selectedAmountCurrency: AmountedCurrency?
+    public var selectedAmountCurrency: AmountedCurrency?
 
     
     // MARK: - Public normal swift variables
