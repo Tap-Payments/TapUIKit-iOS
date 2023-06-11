@@ -15,8 +15,9 @@ public protocol TapCurrencyWidgetViewModelDelegate {
     
     /**
      Will be fired when a user click on confirm button
+     - Parameter for viewModel: The view model that contains the button which clicked. This will help the delegate to know the data like (selected currency, attached payment option, etc.)
      */
-    func confirmClicked()
+    func confirmClicked(for viewModel:TapCurrencyWidgetViewModel)
     
 }
 
@@ -66,10 +67,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     /**
      Init method with the needed data
      - Parameter convertedAmounts: The Amounts user will pay when choose this payment option
-     - Parameter currencyFlag: The Logo of currency user  pay when choose this payment option
-     - Parameter paymentOptionLogo: The Logo of payment option to be shown
-     - Parameter paymentOptionName: The name of payment option to be shown
-     - Parameter currency: The currency being used
+     - Parameter paymentOption: The payment option we want to convert to
      */
     public init(convertedAmounts: [AmountedCurrency], paymentOption:PaymentOption) {
         self.convertedAmounts = convertedAmounts
@@ -79,6 +77,18 @@ public class TapCurrencyWidgetViewModel:NSObject {
         defer{
             setup()
         }
+    }
+    
+    /**
+     Will update the content displayed on the widget with the newly given data
+     - Parameter with convertedAmounts: The Amounts user will pay when choose this payment option
+     - Parameter and paymentOption: The payment option we want to convert to
+     */
+    public func updateData(with convertedAmounts: [AmountedCurrency], and paymentOption:PaymentOption) {
+        self.convertedAmounts = convertedAmounts
+        self.paymentOption = paymentOption
+        self.selectedAmountCurrency = convertedAmounts.first
+        self.refreshData()
     }
     
     // MARK: - private
@@ -133,7 +143,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// On click on confirm button
     internal func confirmClicked() {
-        delegate?.confirmClicked()
+        delegate?.confirmClicked(for: self)
     }
     
     /// On click on currency

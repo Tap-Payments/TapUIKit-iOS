@@ -226,6 +226,11 @@ internal protocol TapChipHorizontalViewModelDelegate {
         cellDelegate?.changeHeaderEditingStatus(to: to)
     }
     
+    /// call this method to tell the view model, that the enable/disable status changed and he needs to instruct the view to rerender the chips
+    @objc public func updateEnabledStatusUI() {
+        
+    }
+    
     /// Creates empty view model, added for convience
     public override init() {}
     

@@ -12,9 +12,12 @@ import LocalisationManagerKit_iOS
 import TapThemeManager2020
 
 public class TapCurrencyWidgetView: UIView {
-    
+    /// We will use the width constraint, to update the look of the payment option logo image view at run time to match the width of the payment logo we are displaying
+    @IBOutlet weak var paymentOptionLogoImageViewWidthConstrain: NSLayoutConstraint!
     ///  A collection of direction based views
     @IBOutlet var toBeLocalizedViews: [UIView]!
+    /// The view that holds the content elements
+    @IBOutlet weak var contentHolderView: UIView!
     /// The container view that holds everything from the XIB
     @IBOutlet var containerView: UIView!
     /// The confirm button to change the currency to be accepted by this provider
@@ -174,7 +177,18 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
         // Make sure we have a valid URL
         guard let paymentOptionLogo:URL = viewModel?.paymentOptionLogo else { return }
         // load the image from the URL
-        providerImageView.downloadImage(with: paymentOptionLogo, nukeOptions: options)
+        Nuke.loadImage(with: paymentOptionLogo, into: providerImageView) { result in
+            if let image:UIImage = self.providerImageView.image {
+                // Let us compute the needed width
+                let correctWidth:CGFloat = (image.size.width * image.scale) / 4
+                // Let us update our image view width
+                DispatchQueue.main.async {
+                    self.paymentOptionLogoImageViewWidthConstrain.constant = correctWidth
+                    self.providerImageView.updateConstraints()
+                    self.providerImageView.layoutIfNeeded()
+                }
+            }
+        }
     }
     
 }
@@ -199,13 +213,13 @@ extension TapCurrencyWidgetView {
         messageLabel.tap_theme_textColor = .init(keyPath: "\(messageLabelThemePath).color")
         
         let backgroundThemePath = "\(themePath).background"
-        containerView.tap_theme_backgroundColor = .init(keyPath: "\(backgroundThemePath).color")
-        containerView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(backgroundThemePath).cornerRadius")
-        containerView.layer.masksToBounds = true
-        containerView.clipsToBounds = false
-        containerView.layer.shadowOpacity = 1
-        containerView.layer.tap_theme_shadowRadius = .init(keyPath: "\(backgroundThemePath).shadow.blurRadius")
-        containerView.layer.tap_theme_shadowColor = .init(keyPath: "\(backgroundThemePath).shadow.color")
+        contentHolderView.tap_theme_backgroundColor = .init(keyPath: "\(backgroundThemePath).color")
+        contentHolderView.layer.tap_theme_cornerRadious = ThemeCGFloatSelector.init(keyPath: "\(backgroundThemePath).cornerRadius")
+        contentHolderView.layer.masksToBounds = true
+        contentHolderView.clipsToBounds = false
+        contentHolderView.layer.shadowOpacity = 1
+        contentHolderView.layer.tap_theme_shadowRadius = .init(keyPath: "\(backgroundThemePath).shadow.blurRadius")
+        contentHolderView.layer.tap_theme_shadowColor = .init(keyPath: "\(backgroundThemePath).shadow.color")
         
         let confirmButtonThemePath = "\(themePath).confirmButton"
         

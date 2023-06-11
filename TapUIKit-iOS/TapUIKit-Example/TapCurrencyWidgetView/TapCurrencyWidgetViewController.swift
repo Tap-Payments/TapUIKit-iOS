@@ -124,7 +124,7 @@ class TapCurrencyWidgetViewController: UIViewController {
     
 }
 extension TapCurrencyWidgetViewController: TapCurrencyWidgetViewModelDelegate {
-    func confirmClicked() {
-        print("Clicked")
+    func confirmClicked(for viewModel: TapUIKit_iOS.TapCurrencyWidgetViewModel) {
+        print("Confirm clicked")
     }
 }

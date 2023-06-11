@@ -63,6 +63,11 @@ internal protocol GenericChipViewModelDelegate {
      - parameter to: True means, the editing mode is on
      */
     func changedEditMode(to:Bool)
+    /**
+     Each view model should have an interface to change its ui based on the current enabled/disabled mode status
+     - parameter to: True means, enabled
+     */
+    func changedDisabledMode(to:Bool)
     
     /**
      For the saved card view model, there is a different UI it can show which is loading while deleting the card

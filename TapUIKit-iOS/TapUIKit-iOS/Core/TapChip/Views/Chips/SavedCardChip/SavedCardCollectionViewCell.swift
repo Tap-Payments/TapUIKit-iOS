@@ -199,6 +199,10 @@ extension SavedCardCollectionViewCell {
 
 
 extension SavedCardCollectionViewCell:GenericCellChipViewModelDelegate {
+    func changedDisabledMode(to: Bool) {
+        reload()
+    }
+    
     
     
     func changedEditMode(to: Bool) {

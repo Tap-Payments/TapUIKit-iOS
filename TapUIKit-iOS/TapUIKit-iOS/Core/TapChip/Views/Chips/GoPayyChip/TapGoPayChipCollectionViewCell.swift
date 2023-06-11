@@ -163,6 +163,10 @@ extension TapGoPayChipCollectionViewCell {
 
 
 extension TapGoPayChipCollectionViewCell:GenericCellChipViewModelDelegate {
+    func changedDisabledMode(to: Bool) {
+        return
+    }
+    
     
     func changedEditMode(to: Bool) {
         self.contentView.alpha = to ? 0.5 : 1

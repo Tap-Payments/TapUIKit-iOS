@@ -140,6 +140,10 @@ extension GatewayImageCollectionViewCell {
 
 
 extension GatewayImageCollectionViewCell:GenericCellChipViewModelDelegate{
+    func changedDisabledMode(to: Bool) {
+        reload()
+    }
+    
     
     func changedEditMode(to: Bool) {
         self.contentView.alpha = to ? 0.5 : 1

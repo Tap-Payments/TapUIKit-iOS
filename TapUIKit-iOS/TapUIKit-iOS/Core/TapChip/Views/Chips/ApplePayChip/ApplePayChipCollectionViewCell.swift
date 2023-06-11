@@ -160,6 +160,11 @@ extension ApplePayChipCollectionViewCell {
 
 extension ApplePayChipCollectionViewCell:GenericCellChipViewModelDelegate {
     
+    func changedDisabledMode(to: Bool) {
+        return
+    }
+    
+    
     func changedEditMode(to: Bool) {
         self.contentView.alpha = to ? 0.5 : 1
         self.isUserInteractionEnabled = !to
@@ -168,6 +173,5 @@ extension ApplePayChipCollectionViewCell:GenericCellChipViewModelDelegate {
     func changeSelection(with status: Bool) {
         selectStatusChaned(with: status)
     }
-    
     
 }

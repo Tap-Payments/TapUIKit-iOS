@@ -127,6 +127,9 @@ extension TapLogoutChipCollectionViewCell {
 
 extension TapLogoutChipCollectionViewCell:GenericCellChipViewModelDelegate {
     
+    func changedDisabledMode(to: Bool) {
+        return
+    }
     
     func changedEditMode(to: Bool) {
         self.isHidden = !to

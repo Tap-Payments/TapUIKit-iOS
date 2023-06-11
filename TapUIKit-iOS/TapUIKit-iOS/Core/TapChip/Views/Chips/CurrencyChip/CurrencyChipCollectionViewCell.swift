@@ -150,6 +150,10 @@ extension CurrencyChipCollectionViewCell {
 
 
 extension CurrencyChipCollectionViewCell:GenericCellChipViewModelDelegate {
+    func changedDisabledMode(to: Bool) {
+        return
+    }
+    
     
     func changedEditMode(to: Bool) {
         // Currency chip doesn't care about this
