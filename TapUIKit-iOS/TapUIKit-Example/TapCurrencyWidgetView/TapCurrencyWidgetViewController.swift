@@ -115,7 +115,7 @@ class TapCurrencyWidgetViewController: UIViewController {
                                 AmountedCurrency(.EUR, 100, "https://tap-assets.b-cdn.net/currency/v2/light/EUR.png"),
                                 AmountedCurrency(.GBP, 100, "https://tap-assets.b-cdn.net/currency/v2/light/GBP.png")]
         
-        let viewModel = TapCurrencyWidgetViewModel(convertedAmounts: convertedAmounts, paymentOption: paymentOption)
+        let viewModel = TapCurrencyWidgetViewModel(convertedAmounts: convertedAmounts, paymentOption: paymentOption, type: TapCurrencyWidgetType.disabledPaymentOption)
         
         // inject view model
         tapCurrencyWidget.changeViewModel(with: viewModel)

@@ -43,6 +43,8 @@ public class TapCurrencyWidgetViewModel:NSObject {
     internal var viewDelegate:TapCurrencyWidgetViewDelegate?
     
     
+    /// Type of widget if it for disabled or enabled and have multi currencies
+    private var type: TapCurrencyWidgetType
     /// The Amount user will pay when choose this payment option
     private var convertedAmounts: [AmountedCurrency]
     /// The  payment option to be shown
@@ -61,6 +63,15 @@ public class TapCurrencyWidgetViewModel:NSObject {
         return tapCurrencyWidgetView ?? .init()
     }
     
+    private var messageLabelLocalizationPath: String {
+        switch type {
+        case .disabledPaymentOption:
+            return "\(localizationPath).header"
+        case .enabledPaymentOption:
+            return "\(localizationPath).enabledHeader"
+        }
+    }
+    
     
     
     
@@ -69,16 +80,17 @@ public class TapCurrencyWidgetViewModel:NSObject {
      - Parameter convertedAmounts: The Amounts user will pay when choose this payment option
      - Parameter paymentOption: The payment option we want to convert to
      */
-    public init(convertedAmounts: [AmountedCurrency], paymentOption:PaymentOption) {
+    public init(convertedAmounts: [AmountedCurrency], paymentOption:PaymentOption, type:TapCurrencyWidgetType) {
         self.convertedAmounts = convertedAmounts
         self.paymentOption = paymentOption
         self.selectedAmountCurrency = convertedAmounts.first
+        self.type = type
         super.init()
         defer{
             setup()
         }
     }
-    
+
     /**
      Will update the content displayed on the widget with the newly given data
      - Parameter with convertedAmounts: The Amounts user will pay when choose this payment option
@@ -106,9 +118,9 @@ public class TapCurrencyWidgetViewModel:NSObject {
         let localisationLocale = sharedLocalisationManager.localisationLocale
         if localisationLocale == "ar" {
             // In case of mixed English and Arabic content in the same label, we will have to use String.localized otherwise, the content will be mixed.
-            return String.localizedStringWithFormat("%@ %@", sharedLocalisationManager.localisedValue(for: "\(localizationPath).header", with:TapCommonConstants.pathForDefaultLocalisation()), paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle))
+            return String.localizedStringWithFormat("%@ %@", sharedLocalisationManager.localisedValue(for: messageLabelLocalizationPath, with:TapCommonConstants.pathForDefaultLocalisation()), paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle))
         } else {
-            return "\(paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle)) \(sharedLocalisationManager.localisedValue(for: "\(localizationPath).header", with:TapCommonConstants.pathForDefaultLocalisation()))"
+            return "\(paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle)) \(sharedLocalisationManager.localisedValue(for: messageLabelLocalizationPath, with:TapCommonConstants.pathForDefaultLocalisation()))"
         }
         
     }
@@ -179,6 +191,11 @@ public class TapCurrencyWidgetViewModel:NSObject {
     }
 }
 
+/// Type of TapCurrencyWidget if it for disabled payment option or enabled payment option
+public enum TapCurrencyWidgetType {
+    case disabledPaymentOption
+    case enabledPaymentOption
+}
 
     
     
