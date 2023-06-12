@@ -214,6 +214,10 @@ import LocalisationManagerKit_iOS
 /// Here we map the collection view methods to read from the view model data
 extension TapChipHorizontalList:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.didEndDisplaying(visibleCells: self.collectionView.indexPathsForVisibleItems)
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         viewModel.didEndDisplaying(visibleCells: self.collectionView.indexPathsForVisibleItems)
     }
