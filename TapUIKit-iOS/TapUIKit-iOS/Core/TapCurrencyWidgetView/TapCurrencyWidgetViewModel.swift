@@ -79,6 +79,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
      Init method with the needed data
      - Parameter convertedAmounts: The Amounts user will pay when choose this payment option
      - Parameter paymentOption: The payment option we want to convert to
+     - Parameter type: The type of TapCurrencyWidget if it for disabled or enabled payment method
      */
     public init(convertedAmounts: [AmountedCurrency], paymentOption:PaymentOption, type:TapCurrencyWidgetType) {
         self.convertedAmounts = convertedAmounts
