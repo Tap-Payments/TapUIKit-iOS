@@ -19,13 +19,17 @@ import TapNetworkKit_iOS
     /// Indicates the mode the merchant wants to run the sdk with. Default is sandbox mode
     @objc public static var sdkMode:SDKMode = .sandbox
     /// Inidcates the tap provided keys for this merchant to use for his transactions. If not set, any transaction will fail. Please if you didn't get a tap key yet, refer to https://www.tap.company/en/sell
-    @objc public static var secretKey:SecretKey = .init(sandbox: "sk_test_cvSHaplrPNkJO7dhoUxDYjqA",
+    @objc public static var secretKey:SecretKey = .init(sandbox: "pk_test_Vlk842B1EA7tDN5QbrfGjYzh",
                                                         production: "sk_live_QglH8V7Fw6NPAom4qRcynDK2")
     
     //MARK: Internal values
     
     /// The apple pay tokenization block. it will be called once we get an apple pay token from the apple pay system itself.
     internal var tokenizedBlock:((TapApplePayToken)->())?
+    
+    
+    /// The latest checkout profile api response
+    public static var intitModelResponse: TapInitResponseModel?
     
 //    var paymentController = PKPaymentAuthorizationController.init()
     
@@ -69,11 +73,17 @@ import TapNetworkKit_iOS
      - Parameter presenter: The UIViewcontroller you want to show the native Apple Pay sheet in
      - Parameter tapApplePayRequest: The Tap apple request wrapper that has the valid data of your transaction
      - Parameter tokenized: The block to be called once the user successfully authorize the payment
+     - Parameter onErrorOccured: The block to call whenever there's an issue showing apple pay sheet
      */
-    @objc public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->())) {
+    @objc public func authorizePayment(in presenter:UIViewController, for tapApplePayRequest:TapApplePayRequest, tokenized:@escaping ((TapApplePayToken)->()), onErrorOccured: @escaping((TapApplePayRequestValidationError)->())) {
         
+        // let us make sure the passed data are valid and allowed as merchant configuration
+        guard validate(tapApplePayRequest: tapApplePayRequest) == .Valid else {
+            onErrorOccured(validate(tapApplePayRequest: tapApplePayRequest))
+            return
+        }
         
-        //FlurryLogger.logEvent(with: "Apple_Pay_Authorize_Payment_Called", timed:false , params:tapApplePayRequest.asDictionary())
+        // Now we are ok to start, let us do it
         
         self.tokenizedBlock = tokenized
         tapApplePayRequest.updateValues()
@@ -110,7 +120,29 @@ import TapNetworkKit_iOS
         
     }
     
+    /**
+     Call this method before showing the controller that will use the Apple pay. Without correctly setupping the SDK, it will not work afterwards
+     - Parameter merchantKey : The public keys you get for sandbox and production from Tap integration team
+     - Parameter onSuccess : A callback whenever it is correctly setupped, meaning the backend responded with session token and this merchant has apple pay enabled
+     - Parameter onErrorOccured: A callback to indicate what error did we face while trying to setup the SDK
+     */
+    @objc public static func setupTapMerchantApplePay(merchantKey: SecretKey, onSuccess: @escaping ()->(), onErrorOccured: @escaping (String?)->() ) {
+        // Reset data
+        TapApplePay.secretKey = merchantKey
+        TapApplePay.intitModelResponse = nil
+        
+        // Call the checkoutprofile api
+        loadMerchantData(for: nil) { response in
+            TapApplePay.intitModelResponse = response
+            onSuccess()
+        } onErrorOccured: { _, _, error in
+            onErrorOccured(error?.localizedDescription)
+        }
+    }
+    
     //MARK: private methods
+    
+    
     /**
      Create a card token api request
      - Parameter for applePayToken: The native iOS Apple Pay token
@@ -124,6 +156,27 @@ import TapNetworkKit_iOS
         }
     }
     
+    
+    /**
+     Validate the provided tapApplePayRequest to make sure it matches the tap's merchant data
+     - Parameter tapApplePayRequest: The apple pay request configured by the merchant
+     - Returns: The error or nil if all good
+     */
+    internal func validate(tapApplePayRequest:TapApplePayRequest) -> TapApplePayRequestValidationError {
+        // First check if the merchant did initialise the sdk and called checkout profile api correctly
+        guard let checkoutProfile = TapApplePay.intitModelResponse else { return .NotInitialized }
+        
+        // Now let us check if Tap enabled Apple pay for this merchant
+        guard let applePayPaymentOption = checkoutProfile.paymentOptions.paymentOptions.first(where: { $0.paymentType == .ApplePay }) else { return .NotSupportedApplPay }
+        
+        // Then check if the passed currency is enabled for the merchant
+        guard applePayPaymentOption.supportedCurrencies.contains(tapApplePayRequest.currencyCode) else { return .NotSupportedCurrency }
+        
+        // Then check if the passed card brand is enabled for the merchant
+        guard Set(tapApplePayRequest.paymentNetworks.map{ $0.tapCardBrand }).isSubset(of: Set(applePayPaymentOption.supportedCardBrands)) else { return .NotSupportedCardBrand }
+        
+        return .Valid
+    }
     
     /**
      Respinsiboe for calling create token for a card api
@@ -152,6 +205,31 @@ import TapNetworkKit_iOS
         } onError: { (session, result, errorr) in
             // In case of an error we execute the on error block
             onErrorOccured(session, result, errorr.debugDescription)
+        }
+    }
+    
+    /// Will fetch the merchant data from checkoutprofile api
+    /// - Parameter for tapApplePayRequest: The apple pay request passed by the merchant the includes the details of his required order
+    /// - Parameter onResponseReady: A block to call when getting the response
+    /// - Parameter onErrorOccured: A block to call when an error occured
+    ///
+    internal static func loadMerchantData(for tapApplePayRequest:TapApplePayRequest?,onResponeReady: @escaping (TapInitResponseModel) -> () = {_ in}, onErrorOccured: @escaping(TapNetworkManager.RequestCompletionClosure)) {
+        
+        let tapPaymentOptionsRequestModel:TapPaymentOptionsRequestModel = TapPaymentOptionsRequestModel(transactionMode: .purchase, amount: tapApplePayRequest?.paymentAmount ?? 1, items: [.init(title: "PAY", description: "APPLE PAY", price: tapApplePayRequest?.paymentAmount ?? 1, quantity: 1, discount: nil, currency: tapApplePayRequest?.currencyCode ?? .USD)], shipping: nil, taxes: nil, currency: tapApplePayRequest?.currencyCode ?? .USD, merchantID: nil, customer: .defaultCustomer(), destinationGroup: nil, paymentType: .Device, totalAmount: tapApplePayRequest?.paymentAmount ?? 1, topup: nil, reference: nil, supportedCurrencies:nil)
+        
+        // Change the model into a dictionary
+        guard let bodyDictionary = TapApplePay.convertModelToDictionary(tapPaymentOptionsRequestModel, callingCompletionOnFailure: { error in
+            return
+        }) else { return }
+        
+        NetworkManager.shared.makeApiCall(routing: .CheckoutProfileApi, resultType: TapInitResponseModel.self, body: .init(body: bodyDictionary), httpMethod: .POST) { (session, result, error) in
+            guard let initModel:TapInitResponseModel = result as? TapInitResponseModel else {
+                onErrorOccured(nil, nil, "Cannot load your data")
+                return
+            }
+            onResponeReady(initModel)
+        } onError: { (session, result, errorr) in
+            onErrorOccured(session, result, errorr)
         }
     }
     

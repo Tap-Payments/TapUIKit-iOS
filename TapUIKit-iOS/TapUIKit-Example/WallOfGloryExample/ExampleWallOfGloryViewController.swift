@@ -497,6 +497,10 @@ extension ExampleWallOfGloryViewController: TapAuthenticateDelegate {
 
 
 extension ExampleWallOfGloryViewController:TapCardTelecomPaymentProtocol {
+    func showSavedCard() -> Bool {
+        return true
+    }
+    
     func brandDetected(for cardBrand: TapCardVlidatorKit_iOS.CardBrand, with validation: TapCardInputKit_iOS.CrardInputTextFieldStatusEnum, cardStatusUI: TapCardInputKit_iOS.CardInputUIStatus, isCVVFocused: Bool) {
         //tapActionButtonViewModel.buttonStatus = (validation == .Valid) ? .ValidPayment : .InvalidPayment
         // Based on the detected brand type we decide the action button status

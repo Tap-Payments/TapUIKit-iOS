@@ -65,7 +65,6 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
     }
     /**
      Configure the apple pay request attached to the apple pay chip, wil be used to pass it to the PassKit when clicked
-     - Parameter countryCode: The country the transaction is occurign in
      - Parameter currencyCode: The currency the transaction will be using
      - Parameter paymentNetworks: The list of allowed networks can be used bby the user to perform the transaction
      - Parameter applePayButtonType: The type of the pay button (Chekout, pay, book, etc)
@@ -75,9 +74,9 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
      - Parameter merchantID: The Apple pay merchant id to be used inside the apple pay kit
      - Parameter recurringPaymentRequest: Defines the recurring payment request Please check [Apple Pay docs](https://developer.apple.com/documentation/passkit/pkrecurringpaymentrequest). NOTE: This will only be availble for iOS 16+ and subscripion parameter is on.
      */
-    @objc public func configureApplePayRequest(with countryCode:TapCountryCode = .KW , currencyCode:TapCurrencyCode = .KWD, paymentNetworks:[TapApplePayPaymentNetwork.RawValue] = [TapApplePayPaymentNetwork.Amex.rawValue,TapApplePayPaymentNetwork.MasterCard.rawValue,TapApplePayPaymentNetwork.Visa.rawValue], applePayButtonType:TapApplePayButtonType = .AppleLogoOnly, applePayButtonStyle:TapApplePayButtonStyleOutline = .Black, paymentItems:[PKPaymentSummaryItem] = [], amount:Double = 10, merchantID:String = "merchant.tap.gosell", recurringPaymentRequest:Any? = nil) {
+    @objc public func configureApplePayRequest(currencyCode:TapCurrencyCode = .KWD, paymentNetworks:[TapApplePayPaymentNetwork.RawValue] = [TapApplePayPaymentNetwork.Amex.rawValue,TapApplePayPaymentNetwork.MasterCard.rawValue,TapApplePayPaymentNetwork.Visa.rawValue], applePayButtonType:TapApplePayButtonType = .AppleLogoOnly, applePayButtonStyle:TapApplePayButtonStyleOutline = .Black, paymentItems:[PKPaymentSummaryItem] = [], amount:Double = 10, merchantID:String = "merchant.tap.gosell", recurringPaymentRequest:Any? = nil) {
         
-        tapApplePayRequest.build(with: countryCode, paymentNetworks: paymentNetworks.map{ TapApplePayPaymentNetwork.init(rawValue: $0)! }, paymentItems: paymentItems, paymentAmount: amount, currencyCode: currencyCode, merchantID: merchantID, recurringPaymentRequest: recurringPaymentRequest)
+        tapApplePayRequest.build(paymentNetworks: paymentNetworks.map{ TapApplePayPaymentNetwork.init(rawValue: $0)! }, paymentItems: paymentItems, paymentAmount: amount, currencyCode: currencyCode, merchantID: merchantID, recurringPaymentRequest: recurringPaymentRequest)
         
         self.applePayButtonType = applePayButtonType
         self.applePayButtonStyle = applePayButtonStyle
@@ -95,7 +94,7 @@ import enum CommonDataModelsKit_iOS.TapCurrencyCode
         tapApplePay.authorizePayment(in: .init(), for: tapApplePayRequest) { [weak self] (token) in
             guard let nonNullSelf = self else { return }
             nonNullSelf.viewModelDelegate?.applePayAuthoized(for: nonNullSelf, with: token)
-        }
+        } onErrorOccured: { _ in }
     }
     
     public override func didDeselectItem() {

@@ -23,6 +23,10 @@ public let TapThemeUpdateNotification = "TapThemeUpdateNotification"
     @objc public fileprivate(set) static var currentThemeIndex: Int = 0
     /// Defines a global variable to state if the theme is already applied,hence the subviews doesn't need to reset the theme again
     @objc public var themeAlreadyApplied: Bool = false
+    /// Indicates whether to show the light mono
+    @objc public static var showMonoForLightMode:Bool = false
+    /// Indicates whether to show the dark colored
+    @objc public static var showColoredForDarkMode:Bool = false
     
     fileprivate static var lightModeTheme:NSDictionary?
     fileprivate static var darkModeTheme:NSDictionary?

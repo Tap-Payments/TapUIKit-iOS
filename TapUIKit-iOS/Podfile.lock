@@ -1,6 +1,6 @@
 PODS:
   - Capable/Colors (1.1.4)
-  - CommonDataModelsKit-iOS (1.0.128):
+  - CommonDataModelsKit-iOS (1.0.130):
     - SwiftyRSA
     - TapAdditionsKitV2
     - TapCardVlidatorKit-iOS
@@ -19,13 +19,13 @@ PODS:
   - SwiftyRSA/ObjC (1.7.0)
   - TapAdditionsKitV2 (0.0.9):
     - TapSwiftFixesV2
-  - TapApplePayKit-iOS (1.0.15):
+  - TapApplePayKit-iOS (1.0.17):
     - CommonDataModelsKit-iOS
     - TapApplicationV2
     - TapNetworkKit-iOS
   - TapApplicationV2 (0.0.2):
     - TapAdditionsKitV2
-  - TapCardInputKit-iOS (1.0.63):
+  - TapCardInputKit-iOS (1.0.64):
     - CommonDataModelsKit-iOS
     - LocalisationManagerKit-iOS
     - Nuke
@@ -52,7 +52,7 @@ PODS:
   - TapSwiftFixesV2/CoreGraphics (1.0.0)
   - TapSwiftFixesV2/Exceptions (1.0.0)
   - TapSwiftFixesV2/Threading (1.0.0)
-  - TapThemeManager2020 (1.0.85):
+  - TapThemeManager2020 (1.0.86):
     - LocalisationManagerKit-iOS
     - TapFontKit-iOS
 
@@ -99,7 +99,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Capable: 9f420f2a80a12144814ea2f0ba196516a0827ca1
-  CommonDataModelsKit-iOS: fbec5fb214564fee7e08a2ddfdd2d6d03d443c4f
+  CommonDataModelsKit-iOS: ca5429617cdef7f0520439b832b2245775079413
   EasyTipView: a92b6edc377b81c5ac18e9fd35d5ee78e9409488
   FlagKit: eca7dc89064b0c986302ba9acefad1bf80a435b1
   LocalisationManagerKit-iOS: 4c140a36e66d34af69424a311659df3bd6cc793a
@@ -110,16 +110,16 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
   TapAdditionsKitV2: 9846381c32b150303cbeff355550d3500a98f77d
-  TapApplePayKit-iOS: ee41761d68a7eb0522d333c3d59770446af59cc1
+  TapApplePayKit-iOS: 96e0418e1a71de24cbc7f17a2aa7c5fd539e66f6
   TapApplicationV2: aee3d046c4272778431e1535de6cab34e1269f8c
-  TapCardInputKit-iOS: efad8a093d610f17ebe686bb964be5d28a9defcd
+  TapCardInputKit-iOS: 69c210a821b3fd250d7aec09d6756502b38e492a
   TapCardScanner-iOS: 9db044847348ddb7a3b4ca262b33842e83d71a6e
   TapCardVlidatorKit-iOS: 00ac65c44019f955234640e5d4ca583f639edca2
   TapFontKit-iOS: 51ed2ddbe9f2b5ece1cc587ed45af9147e5c6fc1
   TapKeychain: 143aa70bb2d1b094e0298e944660264034c79849
   TapNetworkKit-iOS: 92c8c7feae384dc2595f8f270853ee3cf8ea3380
   TapSwiftFixesV2: a8623a7273c6790b9754ec7e272e96fce7d3a800
-  TapThemeManager2020: 5e2f95c0e20ec8aa77f0309720db03ad73d4749c
+  TapThemeManager2020: 1675bf0feaf58ac24355adc7bd1d8f75fe9ffcc4
 
 PODFILE CHECKSUM: d0718e1a7a4b351bf6b94c8fc2fec10d0a0aefcb
 
