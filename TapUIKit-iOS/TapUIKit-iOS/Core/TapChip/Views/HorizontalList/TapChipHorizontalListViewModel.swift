@@ -154,6 +154,12 @@ internal protocol TapChipHorizontalViewModelDelegate {
         }
     }
     
+    /// Instructs the view model to scroll to index
+    /// - Parameter index: The index to scroll to
+    @objc public func scrollTo(index:Int) {
+        attachedView.collectionView.scrollToItem(at: .init(row: index, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
     /**
      Deletes a certain cell
      - Parameter viewModel:The view model we want to remove its cell
@@ -206,6 +212,7 @@ internal protocol TapChipHorizontalViewModelDelegate {
     /// Call this method when you want to deselct all selected items inside the horizontal list
     @objc public func deselectAll() {
         cellDelegate?.deselectAll()
+        self.selectedChip = nil
     }
     
     /// Call this method to select a certain cell

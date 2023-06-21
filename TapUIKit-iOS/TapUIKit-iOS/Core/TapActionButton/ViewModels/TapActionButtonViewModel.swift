@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CommonDataModelsKit_iOS
 import LocalisationManagerKit_iOS
-
+import TapThemeManager2020
 /// A protocol to communicate between the owner with this view model
 @objc public protocol TapActionButtonViewModelDelegate {
     /// Fired whenever the button started loading state
@@ -163,7 +163,7 @@ internal protocol TapActionButtonViewDelegate {
         // Check if we have a style passed first
         guard let buttonStyle:PaymentOptionButtonStyle = buttonStyle,
               buttonStatus == .ValidPayment,
-              let solidColor:UIColor = buttonStyle.loadingBasebackgroundColor() else { return buttonStatus.buttonBackGroundColor() }
+              let solidColor:UIColor = buttonStyle.loadingBasebackgroundColor(showMonoForLightMode: TapThemeManager.showMonoForLightMode, showColoredForDarkMode: TapThemeManager.showColoredForDarkMode) else { return buttonStatus.buttonBackGroundColor() }
         
         return solidColor
     }
@@ -174,12 +174,12 @@ internal protocol TapActionButtonViewDelegate {
         // Check if we have a style passed first
         guard let buttonStyle:PaymentOptionButtonStyle = buttonStyle, buttonStatus == .ValidPayment else { return buttonStatus.buttonBackGroundColor() }
         
-        let backgroundColors:[UIColor] = buttonStyle.backgroundColors()
+        let backgroundColors:[UIColor] = buttonStyle.backgroundColors(showMonoForLightMode: TapThemeManager.showMonoForLightMode, showColoredForDarkMode: TapThemeManager.showColoredForDarkMode)
         
         // If passed, let us create a color outof it
         if backgroundColors.count > 1 {
             // Then we have a gradient colors to apply
-            return UIColor.fromGradient(.init(direction: .rightToLeft, colors: buttonStyle.backgroundColors()), frame: viewDelegate!.buttonFrame()) ?? .black
+            return UIColor.fromGradient(.init(direction: .rightToLeft, colors: buttonStyle.backgroundColors(showMonoForLightMode: TapThemeManager.showMonoForLightMode, showColoredForDarkMode: TapThemeManager.showColoredForDarkMode)), frame: viewDelegate!.buttonFrame()) ?? .black
         }else{
             guard let nonNullColor:UIColor = backgroundColors.first else { return buttonStatus.buttonBackGroundColor() }
             return nonNullColor
@@ -194,9 +194,9 @@ internal protocol TapActionButtonViewDelegate {
     internal func paymentTitleImage() -> (Bool, URL?) {
         // Compute the needed data for getting the correct URL
         // Now let us see what will we get, based on locale and display mode
-        var displayModePath:String = "light"
+        var displayModePath:String = TapThemeManager.showMonoForLightMode ? "light_mono" : "light"
         if #available(iOS 12.0, *) {
-            displayModePath = (UIView().traitCollection.userInterfaceStyle == .dark) ? "dark" : "light"
+            displayModePath = (UIView().traitCollection.userInterfaceStyle == .dark) ? TapThemeManager.showColoredForDarkMode ? "dark_colored" : "dark" : TapThemeManager.showMonoForLightMode ? "light_mono" : "light"
         }
         // Now let us compute the path based on the locale
         let localePath:String = "\(TapLocalisationManager.shared.localisationLocale ?? "en")"

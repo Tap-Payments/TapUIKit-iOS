@@ -41,7 +41,7 @@ internal protocol TapCardPhoneIconViewDelegate {
     /// Represent the url for the image to be loaded inside this icon
     internal var tapCardPhoneIconUrlObserver:(String)->() = { _ in } {
         didSet{
-            tapCardPhoneIconUrlObserver(tapCardPhoneIconUrl)
+            tapCardPhoneIconUrlObserver(logoUrl)
         }
     }
     
@@ -54,11 +54,25 @@ internal protocol TapCardPhoneIconViewDelegate {
         }
     }
     
+    /// Represent the icon state
+    @objc public var isDisabled: Bool = true {
+        didSet{
+            tapCardPhoneIconUrlObserver(logoUrl)
+        }
+    }
+    
+    /// Represent the disabled icon url
+    @objc public var tapCardDisabledPhoneIconUrl: String = "" {
+        didSet{
+            tapCardPhoneIconUrlObserver(logoUrl)
+        }
+    }
+    
     /// Represent the url for the image to be loaded inside this icon
     @objc public var tapCardPhoneIconUrl:String = "" {
         didSet{
             // Update the observabe with the new url
-            tapCardPhoneIconUrlObserver(tapCardPhoneIconUrl)
+            tapCardPhoneIconUrlObserver(logoUrl)
         }
     }
     
@@ -77,6 +91,18 @@ internal protocol TapCardPhoneIconViewDelegate {
             bindObservables()
         }
     }
+    
+    /// Return the correct image url according to state
+    internal var logoUrl:String {
+        get{
+            if (isDisabled) {
+                return tapCardDisabledPhoneIconUrl
+            } else{
+                return tapCardPhoneIconUrl
+            }
+        }
+    }
+    
     
     /// Delegae to communicate between the view controlled by this view model ad the view model itself
     internal var viewDelegate:TapCardPhoneIconViewDelegate?
@@ -143,13 +169,15 @@ internal protocol TapCardPhoneIconViewDelegate {
      - Parameter tapCardPhoneIconUrl: Represent the url for the image to be loaded inside
      this icon
      */
-    @objc public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "", paymentOptionIdentifier:String = "") {
+    @objc public init(tapCardPhoneIconStatus: TapCardPhoneIconStatus = .selected, associatedCardBrand:CardBrand, tapCardPhoneIconUrl: String = "", paymentOptionIdentifier:String = "", isDisabled: Bool = false, tapCardDisabledPhoneIconUrl: String = "") {
         super.init()
         defer{
-            self.tapCardPhoneIconStatus     = tapCardPhoneIconStatus
-            self.tapCardPhoneIconUrl        = tapCardPhoneIconUrl
-            self.associatedCardBrand        = associatedCardBrand
-            self.paymentOptionIdentifier    = paymentOptionIdentifier
+            self.tapCardPhoneIconStatus      = tapCardPhoneIconStatus
+            self.tapCardPhoneIconUrl         = tapCardPhoneIconUrl
+            self.associatedCardBrand         = associatedCardBrand
+            self.paymentOptionIdentifier     = paymentOptionIdentifier
+            self.isDisabled                  = isDisabled
+            self.tapCardDisabledPhoneIconUrl = tapCardDisabledPhoneIconUrl
         }
     }
 }

@@ -168,6 +168,7 @@ class TapHorizontalHeaderView: UIView {
         leftButton.setTitle(leftTitle, for: .normal)
         rightButton.setTitle(rightTitle, for: .normal)
         closeButton.setTitle(closeEditTitle, for: .normal)
+        rightStackView.isHidden = rightTitle == ""
         rightStackView.semanticContentAttribute = TapLocalisationManager.shared.localisationLocale == "ar" ? .forceRightToLeft : .forceLeftToRight
     }
     

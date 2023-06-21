@@ -80,6 +80,7 @@ public class TapCurrencyWidgetView: UIView {
         viewModel?.confirmClicked()
     }
     
+    /// When the user clicks on the drop down to show the supported currencies list
     @IBAction func currencyClicked(_ sender: Any) {
         setupTooltips()
         tooltipManager.showToolTip()
@@ -98,8 +99,11 @@ public class TapCurrencyWidgetView: UIView {
         }
     }
     
+    /// Will adjust the UI and the data source for the popup that shows a drop down selector to choose one of the supported of the currencies if the current currency widgets supports 2+ currencies.
     private func setupTooltips() {
+        // Assign the delgates
         tooltipManager.delegate = self
+        // let us create the selection table and fetch its correct data source
         let currencyTableView = CurrencyTableView()
         guard let viewModel = viewModel else {
             return

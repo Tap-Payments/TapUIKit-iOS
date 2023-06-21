@@ -61,7 +61,7 @@ import Nuke
         // Icon url change and Tab status change callbacks
         viewModel.tapCardPhoneIconStatusObserver = { [weak self] iconStatus in
             // once the icon is changed, we need to load the icon
-            self?.loadIcon(from: viewModel.tapCardPhoneIconUrl, with: iconStatus)
+            self?.loadIcon(from: viewModel.logoUrl, with: iconStatus)
             // once the status is changed we need to update the theme
             self?.applyTheme()
         }

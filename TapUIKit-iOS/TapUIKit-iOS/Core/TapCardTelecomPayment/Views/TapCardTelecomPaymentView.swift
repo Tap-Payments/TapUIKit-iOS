@@ -143,7 +143,7 @@ import TapThemeManager2020
     internal func shouldShowSaveCardView(_ showMerchantSave:Bool, _ showTapSave:Bool) {
         // If we are in the status of saved card, this will not be visible ever
         let finalMerchantVisibility = showMerchantSave && (cardInputView.cardUIStatus == .NormalCard)
-        let finalTapVisibility      = showTapSave && (cardInputView.cardUIStatus == .NormalCard)
+        _      = showTapSave && (cardInputView.cardUIStatus == .NormalCard)
         
         // prevent showing again if it is already shown
         guard saveCrdView.isHidden != !finalMerchantVisibility else { return }
@@ -371,7 +371,7 @@ import TapThemeManager2020
     }
     
     /// Used to reset all segment selections and input fields upon changing the data source
-    private func clearViews() {
+    internal func clearViews() {
         // Adjust the header view
         headerView.headerType = viewModel?.cardHeaderType ?? .CardInputTitle
         // Reset the card input

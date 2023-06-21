@@ -9,6 +9,7 @@
 import Foundation
 import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
+import TapThemeManager2020
 
 /// An external delegate to listen to events fired from the whole loyalty widget
 public protocol TapCurrencyWidgetViewModelDelegate {
@@ -63,18 +64,6 @@ public class TapCurrencyWidgetViewModel:NSObject {
         return tapCurrencyWidgetView ?? .init()
     }
     
-    private var messageLabelLocalizationPath: String {
-        switch type {
-        case .disabledPaymentOption:
-            return "\(localizationPath).header"
-        case .enabledPaymentOption:
-            return "\(localizationPath).enabledHeader"
-        }
-    }
-    
-    
-    
-    
     /**
      Init method with the needed data
      - Parameter convertedAmounts: The Amounts user will pay when choose this payment option
@@ -105,6 +94,15 @@ public class TapCurrencyWidgetViewModel:NSObject {
     }
     
     // MARK: - private
+    private var messageLabelLocalizationPath: String {
+        switch type {
+        case .disabledPaymentOption:
+            return "\(localizationPath).header"
+        case .enabledPaymentOption:
+            return "\(localizationPath).enabledHeader"
+        }
+    }
+    
     /// function to setup viewmodel
     private func setup() {
         self.tapCurrencyWidgetView = .init()
@@ -119,9 +117,9 @@ public class TapCurrencyWidgetViewModel:NSObject {
         let localisationLocale = sharedLocalisationManager.localisationLocale
         if localisationLocale == "ar" {
             // In case of mixed English and Arabic content in the same label, we will have to use String.localized otherwise, the content will be mixed.
-            return String.localizedStringWithFormat("%@ %@", sharedLocalisationManager.localisedValue(for: messageLabelLocalizationPath, with:TapCommonConstants.pathForDefaultLocalisation()), paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle))
+            return String.localizedStringWithFormat("%@ %@", sharedLocalisationManager.localisedValue(for: messageLabelLocalizationPath, with:TapCommonConstants.pathForDefaultLocalisation()), paymentOption.displayableTitle)
         } else {
-            return "\(paymentOption.displayableTitle(for: localisationLocale ?? paymentOption.displayableTitle)) \(sharedLocalisationManager.localisedValue(for: messageLabelLocalizationPath, with:TapCommonConstants.pathForDefaultLocalisation()))"
+            return "\(paymentOption.displayableTitle) \(sharedLocalisationManager.localisedValue(for: messageLabelLocalizationPath, with:TapCommonConstants.pathForDefaultLocalisation()))"
         }
         
     }
@@ -141,7 +139,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// Computes the payment Option logo value
     internal var paymentOptionLogo: URL {
-        return paymentOption.correctCurrencyWidgetImageURL()
+        return paymentOption.correctCurrencyWidgetImageURL(showMonoForLightMode: TapThemeManager.showMonoForLightMode, showColoredForDarkMode: TapThemeManager.showColoredForDarkMode)
     }
     
     /// Computes the showing or disable the multiple currencies  option

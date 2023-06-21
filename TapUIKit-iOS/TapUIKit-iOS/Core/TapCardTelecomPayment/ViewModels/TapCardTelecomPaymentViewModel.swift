@@ -60,6 +60,10 @@ import TapThemeManager2020
     
     /// Fires when one of the card fields is now focused & none of them were focused before.
     @objc func cardFieldsAreFocused()
+    
+    /// Asks of the saved card option can be displayed
+    /// - Returns: True means, no run time logic is forcing the card element not to show the save card option, otherwise it will forced not be shown.
+    @objc func showSavedCard() -> Bool
 }
 
 /// Represents a view model to control the wrapper view that does the needed connections between cardtelecomBar, card input and telecom input
@@ -131,7 +135,8 @@ import TapThemeManager2020
         // Also we need to make sure we are in the saved card flow already
         guard saveCardType != .None,
               allCardFieldsValid(),
-              attachedView.cardInputView.cardUIStatus != .SavedCard else { return (false,false) }
+              attachedView.cardInputView.cardUIStatus != .SavedCard,
+              delegate?.showSavedCard() ?? true else { return (false,false) }
         // Then yes we should show the save card view :)
         return ((saveCardType == .All || saveCardType == .Merchant),(( saveCardType == .All || saveCardType == .Tap) && self.isMerchantSaveAllowed))
         
@@ -260,6 +265,18 @@ import TapThemeManager2020
         }
     }
     
+    /// Call this method to refire the notification of the current card brand after run time currency change coming from the currency card widget
+    @objc public func reValidateTheCard() {
+        // First we need to reinform the parent app that now the currency changed, hence, the validation of the card brand may change
+        let (cardBrand, validationStatus) = attachedView.cardInputView.cardBrandWithStatus()
+        guard let cardBrand = cardBrand else { return }
+        delegate?.brandDetected(for: cardBrand , with: .init(status: validationStatus), cardStatusUI: .NormalCard, isCVVFocused: false)
+        
+        // Then, let us re-render the card element to see if it is ok now to show the save card switch or not
+        let (merchantSaveCard,tapSaveCard) = shouldShowSaveCardView()
+        attachedView.shouldShowSaveCardView(merchantSaveCard, tapSaveCard)
+    }
+    
     /// If we need to update post logic details based on enable settings
     internal func postChangingEnablementLogic(enabled:Bool) {
         // If we are disabling the card view
@@ -267,7 +284,8 @@ import TapThemeManager2020
             // then we will have to hide the saved card component as well
             attachedView.saveCrdView.saveCardSwitch.setOn(false, animated: true)
             attachedView.saveCrdView.saveCardSwitchChanged(attachedView.saveCrdView.saveCardSwitch)
-            
+            // let us also unfocus all the card elements
+            attachedView.cardInputView.endEditing(true)
             // let us store the current card data
             attachedView.cardInputView.saveCardDataBeforeMovingToSavedCard()
         }else{
