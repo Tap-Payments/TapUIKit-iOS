@@ -44,7 +44,7 @@ public class TapCurrencyWidgetView: UIView {
     private let localisationPath = "CurrencyWidget"
     
     private let tooltipManager: TooltipManager = TooltipManager()
-
+    
     
     // Mark:- Init methods
     override init(frame: CGRect) {
@@ -110,7 +110,7 @@ public class TapCurrencyWidgetView: UIView {
         }
         
         currencyTableView.changeViewModel(tapCurrencyWidgetViewModel: viewModel)
-        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .up, viewToShow: currencyTableView, height: 157, width: 224), mainView: self.findViewController()?.view ?? self)
+        tooltipManager.setup(tooltipToShow: TooltipController(view: chevronImageView, direction: .up, viewToShow: currencyTableView, height: viewModel.drowDownListHeight , width: 224), mainView: self.findViewController()?.view ?? self)
     }
     
 }
@@ -140,7 +140,7 @@ extension TapCurrencyWidgetView:TapCurrencyWidgetViewDelegate {
     /// Responsible show correct arrow position
     private func showChevronCorrectPosition(isExpanded: Bool) {
         let dropDownThemePath = "\(themePath).currencyDropDown"
-
+        
         if isExpanded {
             chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowUpImageName")
         } else {
@@ -234,11 +234,11 @@ extension TapCurrencyWidgetView {
         confirmButton.tap_theme_backgroundColor = .init(keyPath: "\(confirmButtonThemePath).backgroundColor")
         
         let dropDownThemePath = "\(themePath).currencyDropDown"
-
+        
         chevronImageView.tap_theme_image = .init(keyPath: "\(dropDownThemePath).arrowDownImageName")
         chevronImageView.image = chevronImageView.image?.withRenderingMode(.alwaysTemplate)
         chevronImageView.tap_theme_tintColor = .init(keyPath: "\(dropDownThemePath).arrowDownTint")
-
+        
         layoutIfNeeded()
     }
     

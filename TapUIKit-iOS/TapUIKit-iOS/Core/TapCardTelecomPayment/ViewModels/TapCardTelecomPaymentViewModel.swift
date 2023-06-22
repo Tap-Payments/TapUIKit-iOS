@@ -72,7 +72,7 @@ import TapThemeManager2020
     // MARK:- Internal variables
     
     /// Reference to the tabbar of payments icons + the card + the phone input view to be rendered
-    internal var tapCardTelecomPaymentView:TapCardTelecomPaymentView?
+    public var tapCardTelecomPaymentView:TapCardTelecomPaymentView?
     
     // MARK:- Public variables
     

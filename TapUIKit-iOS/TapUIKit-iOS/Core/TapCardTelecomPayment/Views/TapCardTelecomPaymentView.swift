@@ -296,7 +296,7 @@ import TapThemeManager2020
         guard let status = status, status != .None else {
             viewModel?.delegate?.hideHints()
             removeHintView()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.ValidPayment] )
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification: viewModel?.allCardFieldsValid() ?? false ? TapActionButtonStatusEnum.ValidPayment : TapActionButtonStatusEnum.InvalidPayment] )
             return
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification:TapActionButtonStatusEnum.InvalidPayment] )

@@ -20,6 +20,13 @@ public protocol TapCurrencyWidgetViewModelDelegate {
      */
     func confirmClicked(for viewModel:TapCurrencyWidgetViewModel)
     
+    /**
+     Will be fired when a user click on confirm button
+     - Parameter for viewModel: The view model that contains the button which clicked. This will help the delegate to know the data like (selected currency, attached payment option, etc.)
+     - Parameter and isOpened: If true, means the drop down is being visible now.
+     */
+    func dropDownClicked(for viewModel:TapCurrencyWidgetViewModel,and isOpened:Bool)
+    
 }
 
 internal protocol TapCurrencyWidgetViewDelegate {
@@ -112,6 +119,12 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     
     // MARK: - Internal functions
+    /// Will compute the needed height for the drop down list,
+    /// if it is a singleton then 12px padding + 50px height + 12x padding
+    /// if it is 2+ items then 50px heght * count
+    internal var drowDownListHeight:CGFloat {
+        return getSupportedCurrenciesOptions().count == 1 ? 64.0 : CGFloat(50 * getSupportedCurrenciesOptions().count)
+    }
     /// Computes the message label value
     internal var messageLabel: String {
         let localisationLocale = sharedLocalisationManager.localisationLocale
@@ -161,6 +174,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     internal func currencyClicked() {
         isCurrencyDropDownShown = !isCurrencyDropDownShown
         refreshData()
+        delegate?.dropDownClicked(for: self, and: isCurrencyDropDownShown)
     }
     
     internal func getSupportedCurrenciesOptions() -> [AmountedCurrency] {

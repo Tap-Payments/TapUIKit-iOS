@@ -119,13 +119,13 @@ extension TooltipView {
     internal func updatePositionRegardingScreenSize(_ pointView: UIView?, _ height: CGFloat, _ tooltipDirection: TooltipDirection) -> TooltipDirection {
         let frameRelativeToScreen = pointView?.globalFrame
         
-        if (frameRelativeToScreen?.origin.y ?? 0) + height + 20 > UIScreen.main.bounds.height, tooltipDirection == .up {
+        /*if (frameRelativeToScreen?.origin.y ?? 0) + height + 20 > UIScreen.main.bounds.height, tooltipDirection == .up {
             return .down
         }
         
         if (frameRelativeToScreen?.origin.y ?? 0) - height - 20 < 0, tooltipDirection == .down {
             return .up
-        }
+        }*/
         return tooltipDirection
     }
     
@@ -163,13 +163,13 @@ extension TooltipView {
             let triangleConstraintConstant: CGFloat = pointView.frame.origin.x + (3 * leadingConstraintConstant) + 2
             if TapLocalisationManager.shared.localisationLocale == "ar" {
                 NSLayoutConstraint.activate([
-                    self.topIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
+                    self.topIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant - 8),
                     self.bottomIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
                     self.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -1 * leadingConstraintConstant),
                 ])
             } else {
                 NSLayoutConstraint.activate([
-                    self.topIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
+                    self.topIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant - 8),
                     self.bottomIndicatorView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: triangleConstraintConstant),
                     self.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: leadingConstraintConstant),
                 ])
