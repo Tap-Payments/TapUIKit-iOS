@@ -12,7 +12,7 @@ import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
 import SnapKit
 import TapThemeManager2020
-import FlagKit
+//import FlagKit
 
 /// Defines the View used to display the fields data collection for customer when saving a card for tap
 @objc public class CustomerShippingDataCollectionView: UIView {
@@ -106,7 +106,7 @@ import FlagKit
         guard let country:TapCountry = viewModel?.selectedCountry else { return }
         
         countryNameLabel.text = country.localizedName(for: TapLocalisationManager.shared.localisationLocale ?? "en")
-        countryFlagImageView.image = Flag(countryCode: country.countryCode.rawValue)!.originalImage
+        //countryFlagImageView.image = Flag(countryCode: country.countryCode.rawValue)!.originalImage
     }
     
     /// Assigns the text fields delegates to self
