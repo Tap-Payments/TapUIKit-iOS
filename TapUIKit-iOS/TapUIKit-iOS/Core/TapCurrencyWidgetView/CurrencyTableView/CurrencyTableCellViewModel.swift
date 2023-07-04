@@ -26,8 +26,9 @@ internal protocol CurrencyTableCellViewModelDelegate {
     /// The  model to be represented by this view model
     internal var amountedCurrency: AmountedCurrency?
     internal var delegate: CurrencyTableCellViewModelDelegate?
-    
-
+    /// Defines if the table view is showing only 1 item to display different sizing
+    internal var isSingleCell:Bool = false
+ 
     /// The delegate that the associated cell needs to subscribe to know the events and actions it should do
     internal var cellDelegate:TapCellViewModelDelegate? {
         didSet{
@@ -47,9 +48,11 @@ internal protocol CurrencyTableCellViewModelDelegate {
     /**
      Creates a new CurrencyTableCellViewModel
      - Parameter tapCurrencyCodeModel: The tap currency code model model to be represented by this view model
+     - Parameter isSingleCell: Defines if the table view is showing only 1 item to display different sizing
      */
-    @objc public init(amountedCurrency: AmountedCurrency) {
+    @objc public init(amountedCurrency: AmountedCurrency, isSingleCell:Bool) {
         self.amountedCurrency = amountedCurrency
+        self.isSingleCell = isSingleCell
     }
     
     

@@ -123,7 +123,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     /// if it is a singleton then 12px padding + 50px height + 12x padding
     /// if it is 2+ items then 50px heght * count
     internal var drowDownListHeight:CGFloat {
-        return getSupportedCurrenciesOptions().count == 1 ? 64.0 : CGFloat(50 * getSupportedCurrenciesOptions().count)
+        return getSupportedCurrenciesOptions().count == 1 ? 62.0 : CGFloat(46 * getSupportedCurrenciesOptions().count)
     }
     /// Computes the message label value
     internal var messageLabel: String {

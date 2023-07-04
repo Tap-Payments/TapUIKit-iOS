@@ -61,6 +61,9 @@ import Nuke
         
         // Apply the editing ui if needed
         changedEditMode(to: viewModel.editMode)
+        
+        // Change the bg color based on the status
+        tap_theme_backgroundColor = viewModel.isDisabled ? .init(keyPath: "\(themePath).disabledBackgroundColor") : .init(keyPath: "\(themePath).backgroundColor")
     }
     
     override func tapChipType() -> TapChipType {
@@ -104,7 +107,7 @@ extension GatewayImageCollectionViewCell {
         
         let shadowPath:String = isSelected ? "selected" : "unSelected"
         
-        tap_theme_backgroundColor = .init(keyPath: "\(themePath).backgroundColor")
+        tap_theme_backgroundColor = viewModel.isDisabled ? .init(keyPath: "\(themePath).disabledBackgroundColor") : .init(keyPath: "\(themePath).backgroundColor")
         layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
         gatewayIconImageView.layer.tap_theme_cornerRadious = .init(keyPath: "horizontalList.chips.radius")
         

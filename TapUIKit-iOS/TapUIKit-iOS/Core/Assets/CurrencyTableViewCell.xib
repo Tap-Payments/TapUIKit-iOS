@@ -15,11 +15,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CurrencyTableViewCell" rowHeight="32" id="h3v-q3-b7V" customClass="CurrencyTableViewCell" customModule="TapUIKit_iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="224" height="50"/>
+        <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CurrencyTableViewCell" rowHeight="24" id="h3v-q3-b7V" customClass="CurrencyTableViewCell" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="224" height="42"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="h3v-q3-b7V" id="JWH-KK-KR4">
-                <rect key="frame" x="0.0" y="0.0" width="224" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="224" height="42"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDs-Yo-B0t">
@@ -32,41 +32,43 @@
                                     <constraint firstAttribute="height" constant="11" id="NaS-fg-IH9"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ITEM TITLE ITEM TITLE ITEM TITLEjhg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ2-Xd-fy9">
-                                <rect key="frame" x="31.666666666666671" y="-3.3333333333333321" width="184" height="33"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zob-s4-g9U">
+                                <rect key="frame" x="31.666666666666671" y="-2" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dJ2-Xd-fy9" firstAttribute="leading" secondItem="tnX-Qd-67z" secondAttribute="trailing" constant="8.5" id="6r6-mn-CrT"/>
                             <constraint firstItem="tnX-Qd-67z" firstAttribute="leading" secondItem="oDs-Yo-B0t" secondAttribute="leading" constant="8" id="MpX-Ad-zod"/>
+                            <constraint firstItem="tnX-Qd-67z" firstAttribute="centerY" secondItem="oDs-Yo-B0t" secondAttribute="centerY" id="bbI-lJ-Jvk"/>
                             <constraint firstAttribute="height" constant="26" id="bnb-NR-et8"/>
-                            <constraint firstItem="tnX-Qd-67z" firstAttribute="centerY" secondItem="dJ2-Xd-fy9" secondAttribute="centerY" id="qlh-Il-LHJ"/>
-                            <constraint firstAttribute="trailing" secondItem="dJ2-Xd-fy9" secondAttribute="trailing" constant="8.5" id="t0f-GG-Vpa"/>
-                            <constraint firstItem="dJ2-Xd-fy9" firstAttribute="centerY" secondItem="oDs-Yo-B0t" secondAttribute="centerY" id="z8l-bv-IOL"/>
+                            <constraint firstItem="zob-s4-g9U" firstAttribute="centerY" secondItem="tnX-Qd-67z" secondAttribute="centerY" id="hXZ-OA-CpV"/>
+                            <constraint firstItem="zob-s4-g9U" firstAttribute="leading" secondItem="tnX-Qd-67z" secondAttribute="trailing" constant="8.5" id="zuq-Za-xkO"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="oDs-Yo-B0t" firstAttribute="top" secondItem="JWH-KK-KR4" secondAttribute="top" constant="8" id="7g7-OO-XVf"/>
+                    <constraint firstItem="oDs-Yo-B0t" firstAttribute="centerY" secondItem="JWH-KK-KR4" secondAttribute="centerY" id="AQs-ax-loT"/>
                     <constraint firstItem="oDs-Yo-B0t" firstAttribute="leading" secondItem="JWH-KK-KR4" secondAttribute="leading" id="MXQ-AH-cOp"/>
                     <constraint firstAttribute="trailing" secondItem="oDs-Yo-B0t" secondAttribute="trailing" id="gwf-Yo-ddc"/>
-                    <constraint firstAttribute="bottom" secondItem="oDs-Yo-B0t" secondAttribute="bottom" id="zTN-Zf-P4O"/>
+                    <constraint firstAttribute="bottom" secondItem="oDs-Yo-B0t" secondAttribute="bottom" id="hv3-AW-bqr"/>
+                    <constraint firstItem="oDs-Yo-B0t" firstAttribute="top" secondItem="JWH-KK-KR4" secondAttribute="top" constant="8" id="q8L-cE-FtK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="6vB-vM-EHm"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="amountLabel" destination="dJ2-Xd-fy9" id="3yo-jO-k6p"/>
+                <outlet property="amountLabel" destination="zob-s4-g9U" id="C7s-KK-IYW"/>
+                <outlet property="bottomConstraint" destination="hv3-AW-bqr" id="lzV-Pe-AHL"/>
+                <outlet property="centerYConstraint" destination="AQs-ax-loT" id="Z4M-5V-f7j"/>
                 <outlet property="currencyFlagImageView" destination="tnX-Qd-67z" id="hfn-7S-ldC"/>
+                <outlet property="topConstraint" destination="q8L-cE-FtK" id="xRM-3f-Egc"/>
                 <outletCollection property="toBeLocalizedDirectionViews" destination="oDs-Yo-B0t" collectionClass="NSMutableArray" id="mpp-oZ-kVW"/>
-                <outletCollection property="toBeLocalizedDirectionViews" destination="dJ2-Xd-fy9" collectionClass="NSMutableArray" id="x9D-S1-dWK"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="175.78125"/>
+            <point key="canvasLocation" x="137.40458015267174" y="171.12676056338029"/>
         </tableViewCell>
     </objects>
 </document>

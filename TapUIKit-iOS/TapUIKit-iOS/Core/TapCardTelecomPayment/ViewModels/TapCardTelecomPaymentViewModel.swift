@@ -247,11 +247,13 @@ import TapThemeManager2020
         // Check if it is neccessary
         guard (to && self.attachedView.alpha != 1) || (!to && self.attachedView.alpha != 0) else { return }
         
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.3) {
             if !to {
-                self.attachedView.alpha = 0.3
+                self.attachedView.alpha = 0.4
+                self.attachedView.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
             }else{
                 self.attachedView.alpha = 1
+                self.attachedView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }
         } completion: { done in
             if to {

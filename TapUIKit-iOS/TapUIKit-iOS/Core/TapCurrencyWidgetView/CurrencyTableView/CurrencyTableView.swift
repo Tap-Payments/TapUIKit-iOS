@@ -40,7 +40,7 @@ internal class CurrencyTableView: UIView {
     func changeViewModel(tapCurrencyWidgetViewModel: TapCurrencyWidgetViewModel) {
         self.tapCurrencyWidgetViewModel = tapCurrencyWidgetViewModel
         currencyTableViewModel.dataSource = tapCurrencyWidgetViewModel.getSupportedCurrenciesOptions().map ({  amountedCurrency in
-            let currencyTableCellViewModel = CurrencyTableCellViewModel(amountedCurrency: amountedCurrency)
+            let currencyTableCellViewModel = CurrencyTableCellViewModel(amountedCurrency: amountedCurrency, isSingleCell: tapCurrencyWidgetViewModel.getSupportedCurrenciesOptions().count == 1)
             return currencyTableCellViewModel
         })
     }

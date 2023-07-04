@@ -232,6 +232,7 @@ extension TapCurrencyWidgetView {
         confirmButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(confirmButtonThemePath).titleFont")
         confirmButton.layer.cornerRadius = confirmButton.frame.height / 2
         confirmButton.tap_theme_backgroundColor = .init(keyPath: "\(confirmButtonThemePath).backgroundColor")
+        confirmButton.titleEdgeInsets = .init(top: TapLocalisationManager.shared.localisationLocale == "ar" ? 4 : 0, left: 0, bottom: 0, right: 0)
         
         let dropDownThemePath = "\(themePath).currencyDropDown"
         

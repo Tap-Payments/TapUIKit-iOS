@@ -15,7 +15,7 @@ import TapThemeManager2020
 @objc public class CurrencyTableViewCell: TapGenericTableCell {
     
     /// The amount label reference
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var amountLabel: UIButton!
     
     /// The currency Flag ImageView  reference
     @IBOutlet weak var currencyFlagImageView: UIImageView!
@@ -35,6 +35,9 @@ import TapThemeManager2020
             }
         }
     }
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     // MARK:- Internal methods
     
@@ -70,7 +73,7 @@ import TapThemeManager2020
     
     /// Responsabile for bind labels
     private func setUILabels() {
-        self.amountLabel.text = viewModel.amount()
+        self.amountLabel.setTitle(viewModel.amount(), for: .normal)
     }
     
     /// Responsible for all logic needed to load images
@@ -93,6 +96,7 @@ import TapThemeManager2020
         // Defensive coding it is the correct view model type
         guard let correctTypeModel:CurrencyTableCellViewModel = viewModel as? CurrencyTableCellViewModel else { return }
         self.viewModel = correctTypeModel
+        adjustConstraints()
     }
     
     /// The path to look for theme entry in
@@ -104,7 +108,23 @@ import TapThemeManager2020
     
     /// Used as a consolidated method to do all the needed steps upon creating the view
     private func commonInit() {
+        adjustConstraints()
         applyTheme()
+    }
+    
+    
+    /// Adjusts the UI constraints based on whether this table view shows only 1 cell or multiple ones
+    private func adjustConstraints() {
+        if let _ = topConstraint {
+            topConstraint.isActive = !viewModel.isSingleCell
+        }
+        if let _ = bottomConstraint {
+            bottomConstraint.isActive = !viewModel.isSingleCell
+        }
+        if let _ = centerYConstraint {
+            //centerYConstraint.isActive = viewModel.isSingleCell
+        }
+        layoutIfNeeded()
     }
     
 }
@@ -120,8 +140,12 @@ extension CurrencyTableViewCell {
     /// Match the UI attributes with the correct theming entries
     private func matchThemeAttributes() {
         backgroundColor = .clear
-        amountLabel.tap_theme_font = .init(stringLiteral: "\(themePath).labelFont")
-        amountLabel.tap_theme_textColor = .init(stringLiteral: "\(themePath).labelColor")
+        amountLabel.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).labelFont")
+        amountLabel.tap_theme_tintColor = .init(keyPath: "\(themePath).labelColor")
+        amountLabel.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).labelColor"), forState: .normal)
+        
+        amountLabel.titleEdgeInsets = .init(top: TapLocalisationManager.shared.localisationLocale == "ar" ? 5 : 0, left: 0, bottom: 0, right: 0)
+        
         layer.masksToBounds = true
         clipsToBounds = false
     }

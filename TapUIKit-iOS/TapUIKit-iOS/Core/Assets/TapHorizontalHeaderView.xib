@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,23 +38,21 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jj3-l1-jKa">
-                    <rect key="frame" x="350" y="0.0" width="46" height="30"/>
+                    <rect key="frame" x="353.66666666666669" y="0.0" width="42.333333333333314" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ho1-Bg-UIV">
-                            <rect key="frame" x="0.0" y="9" width="30" height="12"/>
+                            <rect key="frame" x="0.0" y="10.666666666666668" width="30" height="8.6666666666666679"/>
                             <connections>
                                 <action selector="rightButtonClicked:" destination="-1" eventType="touchUpInside" id="9xt-nv-fCI"/>
                             </connections>
                         </button>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RmS-Az-5B1">
-                            <rect key="frame" x="34" y="9.9999999999999982" width="12" height="10.666666666666666"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="infoheader" translatesAutoresizingMaskIntoConstraints="NO" id="RmS-Az-5B1">
+                            <rect key="frame" x="34" y="10.666666666666668" width="8.3333333333333357" height="8.6666666666666679"/>
                             <color key="tintColor" red="0.62352941176470589" green="0.62352941176470589" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="RmS-Az-5B1" secondAttribute="height" multiplier="1:1" id="OUc-ng-SY2"/>
-                                <constraint firstAttribute="width" constant="12" id="dFQ-GT-vru"/>
+                                <constraint firstAttribute="width" constant="8.5" id="dFQ-GT-vru"/>
                             </constraints>
-                            <imageReference key="image" image="info.circle" catalog="system" symbolScale="default"/>
-                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                         </imageView>
                     </subviews>
                     <constraints>
@@ -79,7 +76,7 @@
         </view>
     </objects>
     <resources>
-        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="infoheader" width="9" height="9"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

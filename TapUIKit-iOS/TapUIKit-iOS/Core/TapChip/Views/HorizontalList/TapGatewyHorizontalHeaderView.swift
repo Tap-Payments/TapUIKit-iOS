@@ -285,7 +285,9 @@ extension TapHorizontalHeaderView {
         
         rightButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).rightButton.labelTextFont")
         rightButton.tap_theme_setTitleColor(selector: .init(keyPath: "\(themePath).rightButton.labelTextColor"), forState: .normal)
+        rightButton.titleEdgeInsets = .init(top: TapLocalisationManager.shared.localisationLocale == "ar" ? 3 : 0, left: 0, bottom: 0, right: 0)
         
+        rightInfoImageView.tap_theme_image = .init(keyPath: "\(themePath).rightButton.infoIcon")
         rightInfoImageView.tap_theme_tintColor = .init(keyPath: "\(themePath).rightButton.labelTextColor")
         
         closeButton.titleLabel?.tap_theme_font = .init(stringLiteral: "\(themePath).rightButton.labelTextFont")
