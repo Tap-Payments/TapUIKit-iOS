@@ -191,7 +191,6 @@ import TapThemeManager2020
         // Fade out the dimming background to show it as fade in fade out as requested
         view.backgroundColor = TapThemeManager.colorValue(for: "TapVerticalView.backgroundOverlayColor")
         backgroundView = .init(frame: self.view.frame)
-        backgroundView?.backgroundColor = .clear
         backgroundView?.alpha = 0
         view.addSubview(backgroundView!)
         view.sendSubviewToBack(backgroundView!)
@@ -206,6 +205,11 @@ import TapThemeManager2020
         }
         //guard let nonNullPullUpController = addedPullUpController else { return }
         //self.removePullUpController(nonNullPullUpController, animated: false)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        backgroundView?.fadeIn(duration: 0.75, delay: 0, completion: { _ in })
     }
     
     /// Call this method when you need the bottom controller to update its look based in reloading th configurations from the data source again
@@ -244,7 +248,7 @@ import TapThemeManager2020
             backgroundView?.alpha = 0
             backgroundView?.backgroundColor = backgroundColor
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)){
-                self.backgroundView?.fadeIn(duration: 0.25)
+                //self.backgroundView?.fadeIn(duration: 0.25)
             }
         }else {
             applyTheme()
@@ -261,8 +265,8 @@ import TapThemeManager2020
     
     
     internal func applyTheme() {
-        //backgroundView?.tap_theme_backgroundColor = .init(keyPath: "\(themePath).dimmedColor")
-        view.backgroundColor = TapThemeManager.colorValue(for: "TapVerticalView.backgroundOverlayColor")
+        backgroundView?.backgroundColor = TapThemeManager.colorValue(for: "TapVerticalView.backgroundOverlayColor")
+        self.view.backgroundColor = .clear//TapThemeManager.colorValue(for: "TapVerticalView.backgroundOverlayColor")
     }
     
     /**

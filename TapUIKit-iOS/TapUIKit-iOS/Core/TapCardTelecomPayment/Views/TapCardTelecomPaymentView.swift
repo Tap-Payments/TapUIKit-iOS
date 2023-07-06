@@ -67,7 +67,7 @@ import TapThemeManager2020
     /// Used to collect any reactive garbage
     internal var hintStatus:TapHintViewStatusEnum? {
         didSet{
-            if hintStatus != oldValue {reportHintStatus(with: hintStatus )}
+            if hintStatus != oldValue {validateHintStatus(with: hintStatus )}
         }
     }
     
@@ -286,16 +286,57 @@ import TapThemeManager2020
     }
     
     /**
+     Decides if we will show a warning view for the detected status or not. As we have extra conditions to meet based on the text field of the card element
+     - Parameter status: The hint status to be reported. If nill, then we will insntruct the delegate to hide all the statuses
+     */
+    internal func validateHintStatus(with status:TapHintViewStatusEnum?) {
+        // Make sure we have a watning status, not a NONE one
+        guard let status = status, status != .None else {
+            // If no hint to show, then we are ready to move on with our normal logic flow
+            reportHintStatus(with: status)
+            return
+        }
+        // let us decide the conditions based on the warning field
+        var canShowHint:Bool = false
+        
+        switch status {
+        case .WarningCVV:
+            canShowHint = cardInputView.showShowHintForCVVField()
+        case .WarningExpiryCVV:
+            canShowHint = cardInputView.showShowHintForExpiryField()
+        case .ErrorCardNumber:
+            canShowHint = cardInputView.showShowHintForNumberField()
+        case .WarningName:
+            canShowHint = cardInputView.showShowHintForNameField()
+        default:
+            // If not related to warnings, we can go with the our normal logic flow
+            reportHintStatus(with: status)
+            return
+        }
+        
+        // Now based on the conditions calclations we will see what to do
+        if canShowHint {
+            reportHintStatus(with: status)
+        }else{
+            //reportHintStatus(with: .None)
+            hintStatus = .None
+            removeHintView()
+        }
+    }
+    
+    /**
      Decides which delegate function about hint status to be called
      - Parameter status: The hint status to be reported. If nill, then we will insntruct the delegate to hide all the statuses
      */
     internal func reportHintStatus(with status:TapHintViewStatusEnum?) {
         // Check if there is a status to show, or we need to hide the hint view
         matchThemeAttributes()
-        
+        // Make sure we have a watning status, not a NONE one
         guard let status = status, status != .None else {
+            // We don't have a hint to show
             viewModel?.delegate?.hideHints()
             removeHintView()
+            // let us inform the parent app about the status by checking the card fields
             NotificationCenter.default.post(name: NSNotification.Name(rawValue:  TapConstantManager.TapActionSheetStatusNotification), object: nil, userInfo: [TapConstantManager.TapActionSheetStatusNotification: viewModel?.allCardFieldsValid() ?? false ? TapActionButtonStatusEnum.ValidPayment : TapActionButtonStatusEnum.InvalidPayment] )
             return
         }
@@ -313,7 +354,7 @@ import TapThemeManager2020
     /// Will add a warning/error hint view under the card input form to indicate to the user what does he miss
     internal func addHintView() {
         // We will have to update our height to reflect the addition of the hint view
-        guard let hintStatus = hintStatus, hintView.viewModel.tapHintViewStatus != hintStatus else {
+        guard let hintStatus = hintStatus, hintView.viewModel.tapHintViewStatus != hintStatus, hintStatus != .None else {
             removeHintView()
             return
         }

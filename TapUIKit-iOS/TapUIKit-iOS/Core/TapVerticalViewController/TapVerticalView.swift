@@ -62,7 +62,7 @@ import TapCardScanner_iOS
     
     /// Computes the needed bottom space margin including the button + the powered by tap view
     internal var neededBottomSpaceMargin:Double {
-        return tapActionButtonHeightConstraint.constant + tapActionButtonBottomConstraint.constant
+        return 0//tapActionButtonHeightConstraint.constant + tapActionButtonBottomConstraint.constant - 50.0
     }
     
     
@@ -252,7 +252,7 @@ import TapCardScanner_iOS
         if showingCardWebView {
             // Then we need to remove the height of this view, as we will replace it with the web view already
             if let view:TapCardTelecomPaymentView = stackView.arrangedSubviews.first(where: { $0 is TapCardTelecomPaymentView } ) as? TapCardTelecomPaymentView {
-                currentViewsHeight -= view.frame.height - 140
+                currentViewsHeight -= view.frame.height// - 180
             }
         }
         

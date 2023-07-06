@@ -28,7 +28,7 @@ public protocol TapCurrencyWidgetViewModelDelegate {
     func dropDownClicked(for viewModel:TapCurrencyWidgetViewModel,and isOpened:Bool)
     
 }
-
+/// A delegate to communicate with the tao currency widget view
 internal protocol TapCurrencyWidgetViewDelegate {
     /// Consolidated one point to reload view
     func reload()
@@ -47,9 +47,10 @@ public class TapCurrencyWidgetViewModel:NSObject {
     internal var localizationPath = "CurrencyChangeWidget"
     /// Configure the localisation Manager
     internal let sharedLocalisationManager = TapLocalisationManager.shared
-    
+    /// A delegate to communicate with the tao currency widget view
     internal var viewDelegate:TapCurrencyWidgetViewDelegate?
-    
+    /// Indicates to show the currency symbol or the currency code
+    internal var tapCurrencyFormatterSymbol:TapCurrencyFormatterSymbol = .ISO
     
     /// Type of widget if it for disabled or enabled and have multi currencies
     private var type: TapCurrencyWidgetType
@@ -117,6 +118,33 @@ public class TapCurrencyWidgetViewModel:NSObject {
         self.refreshData()
     }
     
+    /**
+     Computes a formatted currency localized string representation for a given amount
+     - Parameter amount: The double amount want to be formatted
+     - Parameter currencyCode: The currency code we want to format with
+     - Returns: A formatted localized currency paired string
+     */
+    private func currencyFormatted(amount:Double, currencyCode:TapCurrencyCode?, decimalDigits:Int?) -> String {
+        guard let currencyCode = currencyCode, currencyCode != .undefined  else {
+            return ""
+        }
+        let weakTapCurrencyFormatterSymbol = tapCurrencyFormatterSymbol
+        
+        let formatter = TapAmountedCurrencyFormatter {
+            $0.currency = currencyCode
+            $0.decimalDigits = decimalDigits ?? 2
+            $0.locale = CurrencyLocale.englishUnitedStates
+            // Check if the caller wants to show the currency symbol instead of the code
+            if weakTapCurrencyFormatterSymbol == .LocalSymbol {
+                $0.currencySymbol = currencyCode.symbolRawValue
+                $0.localizeCurrencySymbol = true
+            }else{
+                $0.currencySymbol = currencyCode.appleRawValue
+            }
+        }
+        return formatter.string(from: amount) ?? "KD0.000"
+    }
+    
     
     // MARK: - Internal functions
     /// Will compute the needed height for the drop down list,
@@ -143,7 +171,7 @@ public class TapCurrencyWidgetViewModel:NSObject {
     
     /// Computes the currency text value
     internal var amountLabel: String {
-        return "\(selectedAmountCurrency?.currencySymbol ?? "") \(selectedAmountCurrency?.amount ?? 0)"
+        return currencyFormatted(amount: selectedAmountCurrency?.amount ?? 0, currencyCode: selectedAmountCurrency?.currency, decimalDigits: selectedAmountCurrency?.decimalDigits) //"\(selectedAmountCurrency?.currencySymbol ?? "") \(selectedAmountCurrency?.amount ?? 0)"
     }
     /// Computes the currency flag value
     internal var amountFlag: String {

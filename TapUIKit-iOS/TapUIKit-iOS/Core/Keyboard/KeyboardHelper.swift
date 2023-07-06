@@ -144,8 +144,9 @@ class KeyboardHelper: NSObject
             if(false == isKeyboardShown)
             {
                 isKeyboardShown = true
+                var r = CGRect(x: keyboardRect.origin.x, y: keyboardRect.origin.y, width: keyboardRect.width, height: keyboardRect.height + 55)
                 
-                self.keyboardRect = keyboardRect
+                self.keyboardRect = r
                                 
                 scrollIfNeeded()
                 
@@ -171,7 +172,9 @@ class KeyboardHelper: NSObject
             
             if(isKeyboardShown)
             {
-                self.keyboardRect = keyboardRect
+                var r = CGRect(x: keyboardRect.origin.x, y: keyboardRect.origin.y, width: keyboardRect.width, height: keyboardRect.height + 55)
+                
+                self.keyboardRect = r
                 
                 onKeyboardWillBeResized?(keyboardRect)
             }

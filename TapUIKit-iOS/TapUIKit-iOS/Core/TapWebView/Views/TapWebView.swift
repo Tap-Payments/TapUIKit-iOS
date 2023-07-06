@@ -120,7 +120,7 @@ var myContext = 0
         guard let viewModel = viewModel else { return }
         webView.navigationDelegate = viewModel
         webViewHeaderView.isHidden = !viewModel.shouldShowHeaderView
-        cancelButton.isHidden = !webViewHeaderView.isHidden
+        //cancelButton.isHidden = !webViewHeaderView.isHidden
     }
 }
 

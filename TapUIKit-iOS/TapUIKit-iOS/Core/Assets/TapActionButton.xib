@@ -22,11 +22,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pi-Oh-5Gg">
-                    <rect key="frame" x="107" y="18" width="200" height="48"/>
+                    <rect key="frame" x="107" y="0.0" width="200" height="48"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qec-Kh-Rs4">
                             <rect key="frame" x="25" y="0.0" width="150" height="48"/>
@@ -71,9 +71,9 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="3Pi-Oh-5Gg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="In5-w1-ms9"/>
+                <constraint firstItem="3Pi-Oh-5Gg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="In5-w1-ms9"/>
                 <constraint firstItem="3Pi-Oh-5Gg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kcg-de-iss"/>
-                <constraint firstAttribute="bottom" secondItem="3Pi-Oh-5Gg" secondAttribute="bottom" priority="750" constant="16" id="rFO-BC-DET"/>
+                <constraint firstAttribute="bottom" secondItem="3Pi-Oh-5Gg" secondAttribute="bottom" priority="750" id="rFO-BC-DET"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139" y="109"/>

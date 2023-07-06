@@ -159,9 +159,9 @@ extension TapVerticalView {
      */
     internal func addSpaceView(with spaceRect:CGRect) {
         // Push the action button by the required space height
-        tapActionButtonBottomConstraint.constant = spaceRect.height - 150
+        tapActionButtonBottomConstraint.constant = spaceRect.height - 250
         // Save the current pushing padding height
-        keyboardPadding = spaceRect.height - 80
+        keyboardPadding = spaceRect.height - 230
         if #available(iOS 13.0, *) {}else {
             keyboardPadding = 0
         }
@@ -188,7 +188,7 @@ extension TapVerticalView {
     internal func removeSpaceView(with spaceView:CGRect) {
         
         // Pull the action button by the required space height
-        tapActionButtonBottomConstraint.constant = 0
+        tapActionButtonBottomConstraint.constant = 30
         // Push the action button by the required space height
         keyboardPadding = 0
         // Adjust the content size of the current tap sheet to fire a notification that the size changed
@@ -215,7 +215,7 @@ extension TapVerticalView {
             //powereByTapView.fadeIn()
         }
         
-        tapActionButtonHeightConstraint.constant = 82
+        tapActionButtonHeightConstraint.constant = 48
         tapActionButton.updateConstraints()
         
         /*powereByTapView.snp.remakeConstraints { make in

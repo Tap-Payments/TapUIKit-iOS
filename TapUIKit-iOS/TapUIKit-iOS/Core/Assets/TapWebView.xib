@@ -29,10 +29,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74v-QA-PIj">
-                    <rect key="frame" x="20" y="10" width="374" height="866"/>
+                    <rect key="frame" x="20" y="88" width="374" height="788"/>
                     <subviews>
                         <wkWebView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhS-Te-Nn7">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="866"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="788"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <wkWebViewConfiguration key="configuration">
                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -83,7 +83,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaW-dY-GP0" customClass="TapHorizontalHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                     <viewLayoutGuide key="safeArea" id="JuZ-bz-Of2"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
@@ -93,7 +93,7 @@
             <constraints>
                 <constraint firstItem="z6Z-Ii-mE9" firstAttribute="trailing" secondItem="74v-QA-PIj" secondAttribute="trailing" constant="20" id="3Ds-v8-7FJ"/>
                 <constraint firstItem="74v-QA-PIj" firstAttribute="leading" secondItem="z6Z-Ii-mE9" secondAttribute="leading" constant="20" id="P4F-nN-88Y"/>
-                <constraint firstAttribute="bottom" secondItem="74v-QA-PIj" secondAttribute="bottom" constant="20" id="PNk-Qz-h2T"/>
+                <constraint firstAttribute="bottom" secondItem="74v-QA-PIj" secondAttribute="bottom" id="PNk-Qz-h2T"/>
                 <constraint firstAttribute="trailing" secondItem="aaW-dY-GP0" secondAttribute="trailing" id="QnU-Ta-WNw"/>
                 <constraint firstItem="lqX-dg-AzR" firstAttribute="centerY" secondItem="GhC-ib-zIA" secondAttribute="centerY" id="Ver-Gj-gBf"/>
                 <constraint firstAttribute="trailing" secondItem="ziA-l6-8iY" secondAttribute="trailing" id="YuZ-iH-daw"/>
