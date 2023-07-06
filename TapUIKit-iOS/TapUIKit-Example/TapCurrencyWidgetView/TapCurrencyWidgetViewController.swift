@@ -124,6 +124,10 @@ class TapCurrencyWidgetViewController: UIViewController {
     
 }
 extension TapCurrencyWidgetViewController: TapCurrencyWidgetViewModelDelegate {
+    func dropDownClicked(for viewModel: TapUIKit_iOS.TapCurrencyWidgetViewModel, and isOpened: Bool) {
+        
+    }
+    
     func confirmClicked(for viewModel: TapUIKit_iOS.TapCurrencyWidgetViewModel) {
         print("Confirm clicked")
     }
