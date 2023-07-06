@@ -209,7 +209,7 @@ import TapThemeManager2020
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        backgroundView?.fadeIn(duration: 0.75, delay: 0, completion: { _ in })
+        backgroundView?.fadeIn(duration: 0.75, delay: 0.5, completion: { _ in })
     }
     
     /// Call this method when you need the bottom controller to update its look based in reloading th configurations from the data source again

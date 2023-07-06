@@ -168,6 +168,47 @@ internal protocol TapActionButtonViewDelegate {
         return solidColor
     }
     
+    /// Generates the correct loader image on the action button based on light and dark and mono
+    internal func gifImageName() -> String {
+        var computedGifName:String = TapThemeManager.stringValue(for: "actionButton.Common.assets.loading") ?? "Black-loader"
+        if #available(iOS 12.0, *) {
+            if UIView().traitCollection.userInterfaceStyle == .dark && TapThemeManager.showColoredForDarkMode {
+                computedGifName = "3sec-white-loader-2"
+            }else if UIView().traitCollection.userInterfaceStyle == .light && TapThemeManager.showMonoForLightMode {
+                computedGifName = "Black-loader"
+            }
+        }
+        return computedGifName
+    }
+    
+    
+    /// Generates the correct success image on the action button based on light and dark and mono
+    internal func successImageName() -> String {
+        var computedGifName:String = TapThemeManager.stringValue(for: "actionButton.Common.assets.success") ?? "Black-loader"
+        if #available(iOS 12.0, *) {
+            if UIView().traitCollection.userInterfaceStyle == .dark && TapThemeManager.showColoredForDarkMode {
+                computedGifName = "white-success-mob"
+            }else if UIView().traitCollection.userInterfaceStyle == .light && TapThemeManager.showMonoForLightMode {
+                computedGifName = "black-success-mob"
+            }
+        }
+        return computedGifName
+    }
+    
+    
+    /// Generates the correct error image on the action button based on light and dark and mono
+    internal func errorImageName() -> String {
+        var computedGifName:String = TapThemeManager.stringValue(for: "actionButton.Common.assets.error") ?? "Black-loader"
+        if #available(iOS 12.0, *) {
+            if UIView().traitCollection.userInterfaceStyle == .dark && TapThemeManager.showColoredForDarkMode {
+                computedGifName = "white-error-mob"
+            }else if UIView().traitCollection.userInterfaceStyle == .light && TapThemeManager.showMonoForLightMode {
+                computedGifName = "white-error-mob"
+            }
+        }
+        return computedGifName
+    }
+    
     /// Only in valid payments statuses we will have to check if we shall return the default or the passed style by the caller if any
     /// If there is a passed style, it will create a color out of it but if not it will send the default valid payment color fetched from the theme file
     internal func validPaymentButtonBackgroundColor() -> UIColor {
@@ -179,7 +220,7 @@ internal protocol TapActionButtonViewDelegate {
         // If passed, let us create a color outof it
         if backgroundColors.count > 1 {
             // Then we have a gradient colors to apply
-            return UIColor.fromGradient(.init(direction: .rightToLeft, colors: buttonStyle.backgroundColors(showMonoForLightMode: TapThemeManager.showMonoForLightMode, showColoredForDarkMode: TapThemeManager.showColoredForDarkMode)), frame: viewDelegate!.buttonFrame()) ?? .black
+            return UIColor.fromGradient(.init(direction: TapLocalisationManager.shared.localisationLocale == "ar" ? .rightToLeft : .leftToRight, colors: buttonStyle.backgroundColors(showMonoForLightMode: TapThemeManager.showMonoForLightMode, showColoredForDarkMode: TapThemeManager.showColoredForDarkMode)), frame: viewDelegate!.buttonFrame()) ?? .black
         }else{
             guard let nonNullColor:UIColor = backgroundColors.first else { return buttonStatus.buttonBackGroundColor() }
             return nonNullColor
