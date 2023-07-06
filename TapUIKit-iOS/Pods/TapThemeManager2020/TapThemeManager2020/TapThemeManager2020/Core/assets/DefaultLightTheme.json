@@ -519,6 +519,7 @@
             },
             "gatewayChip": {
                 "backgroundColor": "white",
+                "disabledBackgroundColor": "#F1F1F1",
                 "logoutIcon": "logoutIcon",
                 "selected": {
                     "shadow": {
@@ -616,6 +617,7 @@
                     "labelTextFont": "Roboto-Regular,10"
                 },
                 "rightButton": {
+                    "infoIcon": "infoheader",
                     "labelTextColor": "#9F9F9F",
                     "labelTextFont": "Roboto-Regular,10"
                 }

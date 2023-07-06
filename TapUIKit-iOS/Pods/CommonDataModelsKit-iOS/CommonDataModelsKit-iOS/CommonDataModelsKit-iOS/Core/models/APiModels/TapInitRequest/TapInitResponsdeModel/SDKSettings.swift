@@ -90,7 +90,7 @@ extension SDKSettings: Decodable {
 
 
 /// goSell SDK settings data model.
-@objcMembers public class TapInitResponseModel:NSObject, Decodable {
+public struct TapInitResponseModel:Decodable {
     
     // MARK: - Internal -
     // MARK: Properties

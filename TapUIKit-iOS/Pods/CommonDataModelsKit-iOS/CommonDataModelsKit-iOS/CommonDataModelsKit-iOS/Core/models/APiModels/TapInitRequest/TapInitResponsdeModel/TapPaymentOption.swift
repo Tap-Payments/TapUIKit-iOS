@@ -93,8 +93,8 @@ public struct PaymentOption: IdentifiableWithString {
     /// - Parameter lang: Indicates whether to show arabic text or english text
     public func displayableTitle(for lang:String) -> String {
         switch lang.lowercased() {
-            case "ar": return titleAr
-            default  : return title
+        case "ar": return titleAr
+        default  : return title
         }
     }
     
@@ -116,7 +116,7 @@ public struct PaymentOption: IdentifiableWithString {
         
         // we will return based on the theme
         if #available(iOS 12.0, *) {
-            return UIScreen.main.traitCollection.userInterfaceStyle == .light ? showMonoForLightMode ? lightMonoModePNGUrl : lightMonoModePNGUrl : showColoredForDarkMode ? darkColoredModePNGUrl : darkModePNGUrl
+            return UIScreen.main.traitCollection.userInterfaceStyle == .light ? showMonoForLightMode ? lightMonoModePNGUrl : lightModePNGUrl : showColoredForDarkMode ? darkColoredModePNGUrl : darkModePNGUrl
         } else {
             // Fallback on earlier versions
             return lightModePNGUrl
