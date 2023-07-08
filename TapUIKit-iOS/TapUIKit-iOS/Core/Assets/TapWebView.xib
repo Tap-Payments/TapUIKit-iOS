@@ -39,7 +39,7 @@
                                 <wkPreferences key="preferences"/>
                             </wkWebViewConfiguration>
                         </wkWebView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv2-k1-mK9">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qv2-k1-mK9">
                             <rect key="frame" x="326" y="0.0" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Qv2-k1-mK9" secondAttribute="height" multiplier="1:1" id="54a-XH-ljJ"/>

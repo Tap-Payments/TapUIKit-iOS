@@ -17,6 +17,9 @@ public class TapConstantManager {
     static let TapBottomSheetMinimumYPoint:CGFloat = 35
     public static let TapActionSheetStatusNotification:String = "ActionButtonStatusChanged"
     public static let TapActionSheetBlockNotification:String = "ActionButtonBlockChanged"
+    public static let TapBackButtonVisibilityNotification:String = "TapBackButtonVisibilityNotification"
+    public static let TapBackButtonBlockNotification:String = "TapBackButtonBlockNotification"
+    
     public static let TapAnimationDuration:Double = 0.75
     
     static var maxAllowedHeight:CGFloat {

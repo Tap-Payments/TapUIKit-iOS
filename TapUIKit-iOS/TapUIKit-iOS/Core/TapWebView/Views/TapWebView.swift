@@ -128,7 +128,7 @@ var myContext = 0
 extension TapWebView: TapWebViewDelegate {
     func updateHeaderView(with visibility: Bool) {
         webViewHeaderView.isHidden = !visibility
-        cancelButton.isHidden = !webViewHeaderView.isHidden
+        //cancelButton.isHidden = !webViewHeaderView.isHidden
     }
     
     func reloadWebView() {

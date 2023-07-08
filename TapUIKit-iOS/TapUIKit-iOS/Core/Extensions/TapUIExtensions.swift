@@ -100,6 +100,16 @@ internal extension UIImage {
         blackWhite.brightness = 0.8
         return blackWhite.filterImage() ??  self
     }
+    
+    //MARK: - Horizontally flipping UIImage
+    /// Mirron an UIImage around the Y axis
+     func flippedImage() -> UIImage?{
+        if let _cgImag = self.cgImage {
+            let flippedimg = UIImage(cgImage: _cgImag, scale:self.scale , orientation: UIImage.Orientation.upMirrored)
+            return flippedimg
+        }
+        return nil
+    }
 }
 
 
