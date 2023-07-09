@@ -214,7 +214,8 @@ import TapThemeManager2020
     
     /// Adds a view on top of the current card element
     /// - Parameter view: The view to add on top full size of the card element view
-    @objc public func addFullScreen(view:UIView?) {
+    /// - Parameter shouldFadeIn: The view added will fade in if it is true. Otherwise, it will appear right away
+    @objc public func addFullScreen(view:UIView?, shouldFadeIn:Bool = false) {
         guard let view = view else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alpha = 0
@@ -229,7 +230,11 @@ import TapThemeManager2020
         }
         view.layoutIfNeeded()
         attachedView.layoutIfNeeded()
-        view.fadeIn(duration:0.5)
+        if shouldFadeIn {
+            view.fadeIn(duration:0.5)
+        }else{
+            view.alpha = 1
+        }
         attachedView.pre3DSLoadingView.fadeOut(duration:0.1)
     }
     

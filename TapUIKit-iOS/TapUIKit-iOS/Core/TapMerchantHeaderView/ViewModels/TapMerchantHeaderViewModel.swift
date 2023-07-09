@@ -8,6 +8,7 @@
 
 import class LocalisationManagerKit_iOS.TapLocalisationManager
 import class CommonDataModelsKit_iOS.TapCommonConstants
+import SnapKit
 
 /// The protocl that informs the subscriber of any events happened/fired from the HeaderView
 @objc public protocol TapMerchantHeaderViewDelegate {
@@ -22,7 +23,7 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
 /// The view model that controlls the data shown inside a TapMerchantHeaderView
 @objc public class TapMerchantHeaderViewModel:NSObject {
     
-    // MARK:- Internal CallBacks Observables
+    //MARK: - Internal CallBacks Observables
     /// The text to be displayed in the title label
     internal var titleObservable:((String?)->()) = { _ in } {
         didSet{
@@ -47,7 +48,20 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     internal var merchantHeaderView:TapMerchantHeaderView?
     
     
-    // MARK:- Public normal swift variables
+    //MARK: - Public normal swift variables
+    /// Defines the type of the separator at the bottom of the merchant header. Default is gapped
+    @objc public var merchantViewBottomSeparatorType:MerchantHeaderSeparatorType = .Gapped {
+        didSet{
+            attachedView.separatorView.snp.remakeConstraints { make in
+                make.leading.equalToSuperview().offset(merchantViewBottomSeparatorType == .Gapped ? 19 : 0)
+                make.trailing.equalToSuperview().offset(merchantViewBottomSeparatorType == .Gapped ? 19 : 0)
+            }
+            DispatchQueue.main.async {
+                self.attachedView.separatorView.layoutIfNeeded()
+            }
+        }
+    }
+    
     /// Public reference to the merchant header view itself as UI that will be rendered
     @objc public var attachedView:TapMerchantHeaderView {
         return merchantHeaderView ?? .init()
@@ -80,12 +94,8 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
     }
     
     
+    /// The delegate that listens to the callbacks from the merchant header
     @objc public var delegate:TapMerchantHeaderViewDelegate?
-    
-    /// Localisation kit keypath
-    internal var localizationPath = "TapMerchantSection"
-    /// Configure the localisation Manager
-    internal let sharedLocalisationManager = TapLocalisationManager.shared
     /**
      Init method with the needed data
      - Parameter title: The text to be displayed in the title label, default is localized Payment For
@@ -104,8 +114,24 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         
     }
     
+    /**
+     The text to be displayed in initials placeholder for merchant logo
+     - Returns: Whether a predefined passed value from the parent or the default localization for Merchant Name
+     */
+    @objc public func getMerchantPlaceHolder() -> String {
+        // Make sure we have a merchant name of length > 0
+        guard let merchantName = subTitle,merchantName.count > 0 else { return "" }
+        return merchantName.prefix(1).uppercased()
+    }
     
-    // MARK:- Internal methods to let the view talks with the delegate
+    
+    //MARK: - Internal methods to let the view talks with the delegate
+    
+    /// Localisation kit keypath
+    internal var localizationPath = "TapMerchantSection"
+    /// Configure the localisation Manager
+    internal let sharedLocalisationManager = TapLocalisationManager.shared
+    
     /// A block to execute logic in view model when the icon in the view is clicked by the user
     internal func iconClicked() {
         delegate?.iconClicked?()
@@ -120,15 +146,12 @@ import class CommonDataModelsKit_iOS.TapCommonConstants
         delegate?.closeButtonClicked()
     }
     
-    
-    /**
-     The text to be displayed in initials placeholder for merchant logo
-     - Returns: Whether a predefined passed value from the parent or the default localization for Merchant Name
-     */
-    @objc public func getMerchantPlaceHolder() -> String {
-        // Make sure we have a merchant name of length > 0
-        guard let merchantName = subTitle,merchantName.count > 0 else { return "" }
-        return merchantName.prefix(1).uppercased()
-    }
-    
+}
+
+/// Defines the type of the separator at the bottom of the merchant header
+@objc public enum MerchantHeaderSeparatorType:Int {
+    /// This means, the separator will have a width edge to edge
+    case EdgeToEdge
+    /// This means, the separator will have leading & trailing gaps
+    case Gapped
 }

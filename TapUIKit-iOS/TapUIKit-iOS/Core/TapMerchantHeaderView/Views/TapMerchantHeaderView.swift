@@ -12,6 +12,7 @@ import Nuke
 import TapThemeManager2020
 import LocalisationManagerKit_iOS
 import CommonDataModelsKit_iOS
+import SnapKit
 
 /// A view represents the merchant header section in the checkout UI
 @objc public class TapMerchantHeaderView: UIView {
@@ -32,6 +33,8 @@ import CommonDataModelsKit_iOS
     @IBOutlet weak var subtitleLabel: UILabel!
     /// Used to push the merchant name a bit in Arabic language
     @IBOutlet weak var topSpaceBetweenMerchantNameAndTitleConstraint: NSLayoutConstraint!
+    /// The bottom separator view
+    @IBOutlet weak var separatorView: TapSeparatorView!
     
     @objc public var viewModel:TapMerchantHeaderViewModel? {
         didSet{

@@ -1,150 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-<device id="retina5_5" orientation="portrait" appearance="light"/>
-<dependencies>
-<deployment identifier="iOS"/>
-<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-<capability name="Safe area layout guides" minToolsVersion="9.0"/>
-<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-</dependencies>
-<customFonts key="customFonts">
-<array key="Roboto-Regular.ttf">
-<string>Roboto-Regular</string>
-</array>
-</customFonts>
-<objects>
-<placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapMerchantHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
-<connections>
-<outlet property="cancelButton" destination="CzY-lx-UvI" id="2Vp-LN-HWV"/>
-<outlet property="containerView" destination="iN0-l3-epB" id="saE-Vs-exU"/>
-<outlet property="merchantLogoContainerView" destination="LSR-b8-URD" id="Bn1-rG-aKU"/>
-<outlet property="merchantLogoImageView" destination="ntH-9Y-XA4" id="uvl-BN-n75"/>
-<outlet property="merchantLogoPlaceHolderInitialLabel" destination="V39-sF-WDu" id="H0Z-W9-f1s"/>
-<outlet property="subtitleLabel" destination="O6B-nj-GYC" id="XO3-rp-IWo"/>
-<outlet property="titleLabel" destination="ru4-Og-B3o" id="fnJ-bW-Vcy"/>
-<outlet property="topSpaceBetweenMerchantNameAndTitleConstraint" destination="ODE-c3-b5R" id="LiS-Q4-6iT"/>
-</connections>
-</placeholder>
-<placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-<view contentMode="scaleToFill" id="iN0-l3-epB">
-<rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru4-Og-B3o">
-<rect key="frame" x="66" y="4" width="0.0" height="0.0"/>
-<fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-<color key="textColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
-<nil key="highlightedColor"/>
-</label>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6B-nj-GYC">
-<rect key="frame" x="66" y="5" width="0.0" height="0.0"/>
-<directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
-<fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-<color key="textColor" red="0.29411764705882354" green="0.28235294117647058" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
-<nil key="highlightedColor"/>
-</label>
-<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6X-cO-idT" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
-<rect key="frame" x="19" y="53.666666666666664" width="376" height="1.3333333333333357"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstAttribute="height" constant="1.5" id="vN5-E7-gHa"/>
-</constraints>
-</view>
-<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsh-mW-HOs">
-<rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
-<constraints>
-<constraint firstAttribute="height" constant="55" id="a7p-bb-tj6"/>
-</constraints>
-<connections>
-<action selector="headerViewClicked:" destination="-1" eventType="touchUpInside" id="O9c-qB-qrr"/>
-</connections>
-</button>
-<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOw-Pk-KqX">
-<rect key="frame" x="16" y="0.0" width="40" height="40"/>
-<subviews>
-<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSR-b8-URD">
-<rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-<subviews>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V39-sF-WDu">
-<rect key="frame" x="20" y="20" width="0.0" height="0.0"/>
-<fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-<color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<nil key="highlightedColor"/>
-</label>
-</subviews>
-<color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstAttribute="width" secondItem="LSR-b8-URD" secondAttribute="height" multiplier="1:1" id="Jew-kw-eeD"/>
-<constraint firstItem="V39-sF-WDu" firstAttribute="centerX" secondItem="LSR-b8-URD" secondAttribute="centerX" id="Mbe-cr-kQl"/>
-<constraint firstItem="V39-sF-WDu" firstAttribute="centerY" secondItem="LSR-b8-URD" secondAttribute="centerY" id="hBI-I1-er1"/>
-</constraints>
-</view>
-<imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntH-9Y-XA4">
-<rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-</imageView>
-<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysZ-ai-VeZ">
-<rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-<connections>
-<action selector="iconClicked:" destination="-1" eventType="touchUpInside" id="cKZ-Kt-cul"/>
-</connections>
-</button>
-</subviews>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstAttribute="width" constant="40" id="3PD-p0-PMy"/>
-<constraint firstItem="ntH-9Y-XA4" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="leading" id="7Wd-XE-WbV"/>
-<constraint firstAttribute="bottom" secondItem="ntH-9Y-XA4" secondAttribute="bottom" id="7aH-sL-blV"/>
-<constraint firstAttribute="width" secondItem="yOw-Pk-KqX" secondAttribute="height" multiplier="1:1" id="Njd-tX-Hx3"/>
-<constraint firstItem="LSR-b8-URD" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="leading" id="Ocb-we-ajK"/>
-<constraint firstItem="ntH-9Y-XA4" firstAttribute="top" secondItem="yOw-Pk-KqX" secondAttribute="top" id="PEr-GZ-2jg"/>
-<constraint firstItem="ysZ-ai-VeZ" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="leading" id="Rh8-M8-6T1"/>
-<constraint firstAttribute="trailing" secondItem="LSR-b8-URD" secondAttribute="trailing" id="ZEX-cA-3Qa"/>
-<constraint firstAttribute="trailing" secondItem="ysZ-ai-VeZ" secondAttribute="trailing" id="cmM-T9-kED"/>
-<constraint firstItem="LSR-b8-URD" firstAttribute="top" secondItem="yOw-Pk-KqX" secondAttribute="top" id="eti-Ho-AqP"/>
-<constraint firstAttribute="bottom" secondItem="ysZ-ai-VeZ" secondAttribute="bottom" id="qGJ-uc-Y9g"/>
-<constraint firstItem="ysZ-ai-VeZ" firstAttribute="top" secondItem="yOw-Pk-KqX" secondAttribute="top" id="rvL-xy-SQi"/>
-<constraint firstAttribute="trailing" secondItem="ntH-9Y-XA4" secondAttribute="trailing" id="so5-cr-AAM"/>
-<constraint firstAttribute="bottom" secondItem="LSR-b8-URD" secondAttribute="bottom" id="yDL-cm-H2d"/>
-</constraints>
-</view>
-<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzY-lx-UvI">
-<rect key="frame" x="366" y="4" width="32" height="32"/>
-<constraints>
-<constraint firstAttribute="height" constant="32" id="mz8-yr-Duf"/>
-</constraints>
-<state key="normal" image="closeCheckoutIcon"/>
-<connections>
-<action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="Ir5-4A-q7o"/>
-</connections>
-</button>
-</subviews>
-<viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-<color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstItem="CzY-lx-UvI" firstAttribute="centerY" secondItem="yOw-Pk-KqX" secondAttribute="centerY" id="5Xv-sp-qR9"/>
-<constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CzY-lx-UvI" secondAttribute="trailing" constant="16" id="7cZ-pz-IQr"/>
-<constraint firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" priority="750" constant="19" id="AZx-tL-oOS"/>
-<constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ru4-Og-B3o" secondAttribute="trailing" constant="16" id="EKE-3t-adQ"/>
-<constraint firstItem="vsh-mW-HOs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ehc-Vn-IN6"/>
-<constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" constant="19" id="IvH-V0-pjR"/>
-<constraint firstItem="vsh-mW-HOs" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Jnt-HN-adQ"/>
-<constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
-<constraint firstItem="CzY-lx-UvI" firstAttribute="width" secondItem="CzY-lx-UvI" secondAttribute="height" multiplier="1:1" id="dxu-s8-Nc8"/>
-<constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
-<constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
-<constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
-<constraint firstItem="yOw-Pk-KqX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ogw-He-kAH"/>
-<constraint firstItem="CzY-lx-UvI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6B-nj-GYC" secondAttribute="trailing" constant="16" id="sR8-Pa-2Rm"/>
-<constraint firstItem="vsh-mW-HOs" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="szu-71-ege"/>
-<constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="tzR-Tl-aDE"/>
-<constraint firstItem="ru4-Og-B3o" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="vD0-za-T5D"/>
-<constraint firstItem="vsh-mW-HOs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="wet-em-ezU"/>
-</constraints>
-<freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-<point key="canvasLocation" x="137.68115942028987" y="152.85326086956522"/>
-</view>
-</objects>
-<resources>
-<image name="closeCheckoutIcon" width="13" height="14"/>
-</resources>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TapMerchantHeaderView" customModule="TapUIKit_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="CzY-lx-UvI" id="2Vp-LN-HWV"/>
+                <outlet property="containerView" destination="iN0-l3-epB" id="saE-Vs-exU"/>
+                <outlet property="merchantLogoContainerView" destination="LSR-b8-URD" id="Bn1-rG-aKU"/>
+                <outlet property="merchantLogoImageView" destination="ntH-9Y-XA4" id="uvl-BN-n75"/>
+                <outlet property="merchantLogoPlaceHolderInitialLabel" destination="V39-sF-WDu" id="H0Z-W9-f1s"/>
+                <outlet property="separatorView" destination="e6X-cO-idT" id="jD9-mO-Vud"/>
+                <outlet property="subtitleLabel" destination="O6B-nj-GYC" id="XO3-rp-IWo"/>
+                <outlet property="titleLabel" destination="ru4-Og-B3o" id="fnJ-bW-Vcy"/>
+                <outlet property="topSpaceBetweenMerchantNameAndTitleConstraint" destination="ODE-c3-b5R" id="LiS-Q4-6iT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru4-Og-B3o">
+                    <rect key="frame" x="66" y="4" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <color key="textColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6B-nj-GYC">
+                    <rect key="frame" x="66" y="5" width="0.0" height="0.0"/>
+                    <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                    <color key="textColor" red="0.29411764705882354" green="0.28235294117647058" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6X-cO-idT" customClass="TapSeparatorView" customModule="TapUIKit_iOS" customModuleProvider="target">
+                    <rect key="frame" x="19" y="53.666666666666664" width="376" height="1.3333333333333357"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1.5" id="vN5-E7-gHa"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsh-mW-HOs">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="a7p-bb-tj6"/>
+                    </constraints>
+                    <connections>
+                        <action selector="headerViewClicked:" destination="-1" eventType="touchUpInside" id="O9c-qB-qrr"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOw-Pk-KqX">
+                    <rect key="frame" x="16" y="0.0" width="40" height="40"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSR-b8-URD">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V39-sF-WDu">
+                                    <rect key="frame" x="20" y="20" width="0.0" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="LSR-b8-URD" secondAttribute="height" multiplier="1:1" id="Jew-kw-eeD"/>
+                                <constraint firstItem="V39-sF-WDu" firstAttribute="centerX" secondItem="LSR-b8-URD" secondAttribute="centerX" id="Mbe-cr-kQl"/>
+                                <constraint firstItem="V39-sF-WDu" firstAttribute="centerY" secondItem="LSR-b8-URD" secondAttribute="centerY" id="hBI-I1-er1"/>
+                            </constraints>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntH-9Y-XA4">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysZ-ai-VeZ">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <connections>
+                                <action selector="iconClicked:" destination="-1" eventType="touchUpInside" id="cKZ-Kt-cul"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="3PD-p0-PMy"/>
+                        <constraint firstItem="ntH-9Y-XA4" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="leading" id="7Wd-XE-WbV"/>
+                        <constraint firstAttribute="bottom" secondItem="ntH-9Y-XA4" secondAttribute="bottom" id="7aH-sL-blV"/>
+                        <constraint firstAttribute="width" secondItem="yOw-Pk-KqX" secondAttribute="height" multiplier="1:1" id="Njd-tX-Hx3"/>
+                        <constraint firstItem="LSR-b8-URD" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="leading" id="Ocb-we-ajK"/>
+                        <constraint firstItem="ntH-9Y-XA4" firstAttribute="top" secondItem="yOw-Pk-KqX" secondAttribute="top" id="PEr-GZ-2jg"/>
+                        <constraint firstItem="ysZ-ai-VeZ" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="leading" id="Rh8-M8-6T1"/>
+                        <constraint firstAttribute="trailing" secondItem="LSR-b8-URD" secondAttribute="trailing" id="ZEX-cA-3Qa"/>
+                        <constraint firstAttribute="trailing" secondItem="ysZ-ai-VeZ" secondAttribute="trailing" id="cmM-T9-kED"/>
+                        <constraint firstItem="LSR-b8-URD" firstAttribute="top" secondItem="yOw-Pk-KqX" secondAttribute="top" id="eti-Ho-AqP"/>
+                        <constraint firstAttribute="bottom" secondItem="ysZ-ai-VeZ" secondAttribute="bottom" id="qGJ-uc-Y9g"/>
+                        <constraint firstItem="ysZ-ai-VeZ" firstAttribute="top" secondItem="yOw-Pk-KqX" secondAttribute="top" id="rvL-xy-SQi"/>
+                        <constraint firstAttribute="trailing" secondItem="ntH-9Y-XA4" secondAttribute="trailing" id="so5-cr-AAM"/>
+                        <constraint firstAttribute="bottom" secondItem="LSR-b8-URD" secondAttribute="bottom" id="yDL-cm-H2d"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzY-lx-UvI">
+                    <rect key="frame" x="366" y="4" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="mz8-yr-Duf"/>
+                    </constraints>
+                    <state key="normal" image="closeCheckoutIcon"/>
+                    <connections>
+                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="Ir5-4A-q7o"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="CzY-lx-UvI" firstAttribute="centerY" secondItem="yOw-Pk-KqX" secondAttribute="centerY" id="5Xv-sp-qR9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CzY-lx-UvI" secondAttribute="trailing" constant="16" id="7cZ-pz-IQr"/>
+                <constraint firstAttribute="trailing" secondItem="e6X-cO-idT" secondAttribute="trailing" priority="750" constant="19" id="AZx-tL-oOS"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ru4-Og-B3o" secondAttribute="trailing" constant="16" id="EKE-3t-adQ"/>
+                <constraint firstItem="vsh-mW-HOs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Ehc-Vn-IN6"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" constant="19" id="IvH-V0-pjR"/>
+                <constraint firstItem="vsh-mW-HOs" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Jnt-HN-adQ"/>
+                <constraint firstItem="O6B-nj-GYC" firstAttribute="top" secondItem="ru4-Og-B3o" secondAttribute="bottom" constant="1" id="ODE-c3-b5R"/>
+                <constraint firstItem="CzY-lx-UvI" firstAttribute="width" secondItem="CzY-lx-UvI" secondAttribute="height" multiplier="1:1" id="dxu-s8-Nc8"/>
+                <constraint firstItem="yOw-Pk-KqX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="efT-K2-mat"/>
+                <constraint firstItem="e6X-cO-idT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k8F-EU-KKI"/>
+                <constraint firstItem="ru4-Og-B3o" firstAttribute="top" secondItem="LSR-b8-URD" secondAttribute="top" constant="4" id="lpl-GO-9sc"/>
+                <constraint firstItem="yOw-Pk-KqX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ogw-He-kAH"/>
+                <constraint firstItem="CzY-lx-UvI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6B-nj-GYC" secondAttribute="trailing" constant="16" id="sR8-Pa-2Rm"/>
+                <constraint firstItem="vsh-mW-HOs" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="szu-71-ege"/>
+                <constraint firstItem="O6B-nj-GYC" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="tzR-Tl-aDE"/>
+                <constraint firstItem="ru4-Og-B3o" firstAttribute="leading" secondItem="yOw-Pk-KqX" secondAttribute="trailing" constant="10" id="vD0-za-T5D"/>
+                <constraint firstItem="vsh-mW-HOs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="wet-em-ezU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.85326086956522"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="closeCheckoutIcon" width="13" height="13"/>
+    </resources>
 </document>

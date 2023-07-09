@@ -84,10 +84,10 @@ var myContext = 0
         
         webViewHolder.clipsToBounds = false
         webView.clipsToBounds = true
-        webView.layer.cornerRadius = 8
+       /* webView.layer.cornerRadius = 8
         webViewHolder.layer.shadowColor = UIColor(white: 0, alpha: 0.15).cgColor
         webViewHolder.layer.shadowOpacity = 1
-        webViewHolder.layer.shadowRadius = 4
+        webViewHolder.layer.shadowRadius = 4*/
         
         applyTheme()
     }
