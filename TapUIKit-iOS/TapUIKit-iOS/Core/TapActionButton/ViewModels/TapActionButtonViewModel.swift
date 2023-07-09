@@ -189,7 +189,7 @@ internal protocol TapActionButtonViewDelegate {
             if UIView().traitCollection.userInterfaceStyle == .dark && TapThemeManager.showColoredForDarkMode {
                 computedGifName = "white-success-mob"
             }else if UIView().traitCollection.userInterfaceStyle == .light && TapThemeManager.showMonoForLightMode {
-                computedGifName = "black-success-mob"
+                computedGifName = "white-success-mob"
             }
         }
         return computedGifName

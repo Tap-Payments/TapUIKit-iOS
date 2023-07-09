@@ -135,6 +135,18 @@ public struct TapThemeAssetsModel:Codable {
     /// The dark mode theme url
     public let dark:String
     
+    /// A path to the mobile only theme, helps in reducing the KB loaded. The default url contents has themes for mobile & web
+    public var lighMobileOnly:String {
+        var mutatingLight = light
+        return mutatingLight.tap_replaceFirstOccurrence(of: "TapThemeMobile", with: "TapThemeMobileOnly")
+    }
+    
+    /// A path to the mobile only theme, helps in reducing the KB loaded. The default url contents has themes for mobile & web
+    public var darkMobileOnly:String {
+        var mutatingDark = dark
+        return mutatingDark.tap_replaceFirstOccurrence(of: "TapThemeMobile", with: "TapThemeMobileOnly")
+    }
+    
 }
 
 

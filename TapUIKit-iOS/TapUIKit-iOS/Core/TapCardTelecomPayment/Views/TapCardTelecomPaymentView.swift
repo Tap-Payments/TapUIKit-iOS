@@ -241,11 +241,20 @@ import TapThemeManager2020
         tapLoadingGif.setGifImage(gif, loopCount: 100) // Will loop forever
         tapLoadingGif.isHidden = true
         if to {
-            pre3DSLoadingView.fadeIn(){ _ in
-                //self.cardInputView.fadeOut(duration:0.0)
+            pre3DSLoadingView.fadeIn()
+            
+            if saveCrdView.alpha == 1 && !saveCrdView.isHidden {
+                saveCrdView.fadeOut(duration:0.25) { _ in
+                    DispatchQueue.main.async {
+                        let totalHeight:CGFloat = self.frame.height - 40 //self.saveCrdView.frame.height
+                        self.snp.remakeConstraints { make in
+                            make.height.equalTo(totalHeight)
+                        }
+                        self.layoutIfNeeded()
+                    }
+                }
+                saveCrdForTapView.fadeOut(duration:0.25)
             }
-            saveCrdView.fadeOut(duration:0.25)
-            saveCrdForTapView.fadeOut(duration:0.25)
         }else {
             pre3DSLoadingView.fadeOut()
         }

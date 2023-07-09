@@ -136,6 +136,7 @@ import TapThemeManager2020
         guard saveCardType != .None,
               allCardFieldsValid(),
               attachedView.cardInputView.cardUIStatus != .SavedCard,
+              attachedView.pre3DSLoadingView.alpha == 0,
               delegate?.showSavedCard() ?? true else { return (false,false) }
         // Then yes we should show the save card view :)
         return ((saveCardType == .All || saveCardType == .Merchant),(( saveCardType == .All || saveCardType == .Tap) && self.isMerchantSaveAllowed))
