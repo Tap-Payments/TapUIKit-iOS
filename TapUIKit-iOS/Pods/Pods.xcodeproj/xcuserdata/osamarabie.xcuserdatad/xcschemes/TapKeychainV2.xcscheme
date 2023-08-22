@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9FB907AAFDB0530AEA6CA76A05AE3BBC"
-               BuildableName = "McPicker.framework"
-               BlueprintName = "McPicker"
+               BlueprintIdentifier = "7D7CA289C7EAC480E1D88A58624285ED"
+               BuildableName = "TapKeychainV2.framework"
+               BlueprintName = "TapKeychainV2"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

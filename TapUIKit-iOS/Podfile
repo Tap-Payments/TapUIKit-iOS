@@ -28,7 +28,6 @@ target 'TapUIKit-iOS' do
   pod 'TapCardVlidatorKit-iOS'
   pod 'TapCardInputKit-iOS'
   pod 'TapCardScanner-iOS'
-  pod 'McPicker'
   pod 'EasyTipView'
 post_install do |installer|
   installer.pods_project.build_configurations.each do |config|

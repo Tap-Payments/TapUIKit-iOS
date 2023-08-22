@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double McPickerVersionNumber;
-FOUNDATION_EXPORT const unsigned char McPickerVersionString[];
+FOUNDATION_EXPORT double TapKeychainV2VersionNumber;
+FOUNDATION_EXPORT const unsigned char TapKeychainV2VersionString[];
 

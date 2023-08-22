@@ -17,7 +17,7 @@ import TapCardVlidatorKit_iOS
     
     /// Object type.
     public let object: String
-	
+    
     /// Last four digits.
     public let lastFourDigits: String
     
@@ -48,6 +48,9 @@ import TapCardVlidatorKit_iOS
     /// Address on card.
     public private(set) var address: Address?
     
+    /// Card issuer
+    public private(set) var issuer: Issuer?
+    
     // MARK: - Private -
     
     private enum CodingKeys: String, CodingKey {
@@ -64,11 +67,12 @@ import TapCardVlidatorKit_iOS
         case customerIdentifier = "customer"
         case fingerprint        = "fingerprint"
         case address            = "address"
+        case issuer             = "issuer"
     }
     
     // MARK: Methods
     
-    private init(identifier: String, object: String, lastFourDigits: String, expirationMonth: Int, expirationYear: Int, binNumber: String, brand: CardBrand, funding: String, cardholderName: String?, customerIdentifier: String?, fingerprint: String, address: Address?) {
+    private init(identifier: String, object: String, lastFourDigits: String, expirationMonth: Int, expirationYear: Int, binNumber: String, brand: CardBrand, funding: String, cardholderName: String?, customerIdentifier: String?, fingerprint: String, address: Address?, issuer:Issuer?) {
         
         self.identifier         = identifier
         self.object             = object
@@ -82,28 +86,50 @@ import TapCardVlidatorKit_iOS
         self.customerIdentifier = customerIdentifier
         self.fingerprint        = fingerprint
         self.address            = address
+        self.issuer             = issuer
+    }
+}
+
+// MARK: - Encodable
+extension TokenizedCard: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(identifier, forKey: .identifier)
+        try container.encodeIfPresent(object, forKey: .object)
+        try container.encodeIfPresent(lastFourDigits, forKey: .lastFourDigits)
+        try container.encodeIfPresent(expirationMonth, forKey: .expirationMonth)
+        try container.encodeIfPresent(expirationYear, forKey: .expirationYear)
+        try container.encodeIfPresent(binNumber, forKey: .binNumber)
+        try container.encodeIfPresent(brand, forKey: .brand)
+        try container.encodeIfPresent(funding, forKey: .funding)
+        try container.encodeIfPresent(cardholderName, forKey: .cardholderName)
+        try container.encodeIfPresent(customerIdentifier, forKey: .customerIdentifier)
+        try container.encodeIfPresent(fingerprint, forKey: .fingerprint)
+        try container.encodeIfPresent(address, forKey: .address)
+        try container.encodeIfPresent(issuer, forKey: .issuer)
     }
 }
 
 // MARK: - Decodable
 extension TokenizedCard: Decodable {
     
-	public convenience init(from decoder: Decoder) throws {
+    public convenience init(from decoder: Decoder) throws {
         
         let container           = try decoder.container(keyedBy: CodingKeys.self)
-    
-        let identifier         = try container.decode                      		(String.self,       forKey: .identifier)
-        let object             = try container.decode                      		(String.self,       forKey: .object)
-        let lastFourDigits     = try container.decode                      		(String.self,       forKey: .lastFourDigits)
-        let expirationMonth    = try container.decode                      		(Int.self,          forKey: .expirationMonth)
-        let expirationYear     = try container.decode                      		(Int.self,          forKey: .expirationYear)
-        let binNumber          = try container.decode                      		(String.self,       forKey: .binNumber)
-        let brand              = try container.decode                      		(CardBrand.self,    forKey: .brand)
-        let funding            = try container.decode                      		(String.self,       forKey: .funding)
+        
+        let identifier         = try container.decode                              (String.self,       forKey: .identifier)
+        let object             = try container.decode                              (String.self,       forKey: .object)
+        let lastFourDigits     = try container.decode                              (String.self,       forKey: .lastFourDigits)
+        let expirationMonth    = try container.decode                              (Int.self,          forKey: .expirationMonth)
+        let expirationYear     = try container.decode                              (Int.self,          forKey: .expirationYear)
+        let binNumber          = try container.decode                              (String.self,       forKey: .binNumber)
+        let brand              = try container.decode                              (CardBrand.self,    forKey: .brand)
+        let funding            = try container.decode                              (String.self,       forKey: .funding)
         let cardholderName     = try container.decodeIfPresent                  (String.self,       forKey: .cardholderName)
-        let customerIdentifier = try container.decodeIfPresent             		(String.self,       forKey: .customerIdentifier)
-        let fingerprint        = try container.decode                      		(String.self,       forKey: .fingerprint)
-        let address            = try container.decodeIfPresent	(Address.self,      forKey: .address)
+        let customerIdentifier = try container.decodeIfPresent                     (String.self,       forKey: .customerIdentifier)
+        let fingerprint        = try container.decode                              (String.self,       forKey: .fingerprint)
+        let address            = try container.decodeIfPresent                    (Address.self,      forKey: .address)
+        let issuer             = try container.decodeIfPresent                  (Issuer.self,      forKey: .issuer)
         
         self.init(identifier:           identifier,
                   object:               object,
@@ -116,6 +142,14 @@ extension TokenizedCard: Decodable {
                   cardholderName:       cardholderName,
                   customerIdentifier:   customerIdentifier,
                   fingerprint:          fingerprint,
-                  address:              address)
+                  address:              address,
+                  issuer:               issuer)
     }
+}
+
+
+
+// MARK: - Issuer
+@objcMembers public final class Issuer: NSObject, Codable {
+    let bank, country, id: String?
 }

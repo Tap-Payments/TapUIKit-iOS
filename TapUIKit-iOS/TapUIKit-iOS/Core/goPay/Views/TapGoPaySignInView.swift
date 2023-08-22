@@ -9,7 +9,7 @@
 import UIKit
 import TapCardInputKit_iOS
 import CommonDataModelsKit_iOS
-import McPicker
+//import McPicker
 
 /// External protocol to allow the GoPaySignIn View to pass back data and events to the parent UIViewController
 @objc public protocol TapGoPaySignInViewProtocol {
@@ -233,7 +233,7 @@ import McPicker
     
     /// Handles th logic to show the country picker below the GoPay login fields
     internal func showCountryPicker() {
-        self.endEditing(true)
+        /*self.endEditing(true)
         // Check if we have more than one country to show
         guard let countries:[TapCountry] = goPayLoginOptionsView.tapGoPayLoginBarViewModel?.allowedCountries,
               countries.count > 1 else { return }
@@ -256,14 +256,14 @@ import McPicker
             }) { (Selections, Index) in
                 
             }
-        }
+        }*/
     }
     
     /**
      Apply the needed theming for the country picker
      - Parameter mcPicker: The picker we need to theme
      */
-    internal func configureCountryPicker(for mcPicker:McPicker) {
+    /*internal func configureCountryPicker(for mcPicker:McPicker) {
         // BACKGROUND COLORS
         mcPicker.backgroundColor = .gray
         mcPicker.backgroundColorAlpha = 0
@@ -275,7 +275,7 @@ import McPicker
         let cancelButton = McPickerBarButtonItem.cancel(mcPicker: mcPicker, barButtonSystemItem: .cancel) // or system items
         // Set custom toolbar items
         mcPicker.setToolbarItems(items: [fixedSpace, cancelButton, flexibleSpace, fireButton, fixedSpace])
-    }
+    }*/
     
     /**
      Apply a new country for the phone input
